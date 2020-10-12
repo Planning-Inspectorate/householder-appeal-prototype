@@ -8,12 +8,15 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
+      <strong class="govuk-tag govuk-tag--turquoise">
+      20/500818/FULL
+    </strong>
+      <h1 class="govuk-heading-l">
         Provide information for a householder planning appeal
       </h1>
-      <p>An appeal has been started for application <strong class="govuk-tag govuk-tag--turquoise">
-      20/500818/FULL
-    </strong></p>
+      
+    <p>Use the links below to submit your information. Sections can be completed in any order.</p>
+
       <p>You need to provide your evidence by {{ 7 | daysInFuture }}.</p>
 
       <ol class="app-task-list lpaq">
@@ -107,7 +110,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="site-notice-ip" aria-describedby="appellant-submission-status">
-                  Relating to interested parties
+                  Interested parties
                 </a>
               </span>
                <strong id="section-status" class="{{data['interested-parties-completed']}}" >{{data['interested-parties-completedText']}}</strong>
