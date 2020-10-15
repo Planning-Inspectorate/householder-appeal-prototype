@@ -15,7 +15,7 @@
         Provide information for a householder planning appeal
       </h1>
       
-    <p>Use the links below to submit your information. Sections can be completed in any order.</p>
+    <p>Use the links below to submit your information. You can complete the sections in any order.</p>
 
       <p>You need to provide your evidence by {{ 7 | daysInFuture }}.</p>
 
@@ -37,7 +37,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="conditions" aria-describedby="other-appeals-status">
-                  List of suggested conditions
+                  Tell us about any suggested conditions
                 </a>
               </span>
                <strong id="section-status" class="{{data['conditions-completed']}}" >{{data['conditions-completedText']}}</strong>
@@ -45,7 +45,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="other-appeals" aria-describedby="other-appeals-status">
-                  Other appeals in the immediate area
+                  Tell us about any appeals in the immediate area
                 </a>
               </span>
                <strong id="section-status" class="{{data['other-appeals-completed']}}" >{{data['other-appeals-completedText']}}</strong>
@@ -70,38 +70,23 @@
 
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">3. </span>Site notices
+            <span class="app-task-list__section-number">3. </span>Documents to upload
           </h2>
           <ul class="app-task-list__items">
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="site-notice" aria-describedby="appellant-submission-status">
-                  Information about site notices and local advertisements
-                </a>
-              </span>
-               <strong id="section-status" class="{{data['site-notice-completed']}}" >{{data['site-notice-completedText']}}</strong>
-            </li>
-          </ul>
-        </li>
 
-        <li>
-          <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">4. </span>Documents to include
-          </h2>
-          <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="case-file" aria-describedby="appellant-submission-status">
-                  Planning application case file
+                  The plans used to reach the decision (mandatory)
                 </a>
               </span>
                <strong id="section-status" class="{{data['case-file-completed']}}" >{{data['case-file-completedText']}}</strong>
             </li>
-
+            
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="planning-history" aria-describedby="appellant-submission-status">
-                  Planning history
+                  Planning history (if applicable)
                 </a>
               </span>
                <strong id="section-status" class="{{data['planning-history-completed']}}" >{{data['planning-history-completedText']}}</strong>
@@ -109,17 +94,8 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="site-notice-ip" aria-describedby="appellant-submission-status">
-                  Interested parties
-                </a>
-              </span>
-               <strong id="section-status" class="{{data['interested-parties-completed']}}" >{{data['interested-parties-completedText']}}</strong>
-            </li>
-
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
                 <a href="officers-report" aria-describedby="appellant-submission-status">
-                  Planning Officer's report
+                  Planning Officer's report (mandatory)
                 </a>
               </span>
                <strong id="section-status" class="{{data['officers-report-completed']}}" >{{data['officers-report-completedText']}}</strong>
@@ -127,8 +103,26 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
+                <a href="site-notice" aria-describedby="appellant-submission-status">
+                  Site notices (if applicable)
+                </a>
+              </span>
+               <strong id="section-status" class="{{data['site-notice-completed']}}" >{{data['site-notice-completedText']}}</strong>
+            </li> 
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="site-notice-ip" aria-describedby="appellant-submission-status">
+                  Interested parties (if applicable)
+                </a>
+              </span>
+               <strong id="section-status" class="{{data['interested-parties-completed']}}" >{{data['interested-parties-completedText']}}</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
                 <a href="statutory" aria-describedby="appellant-submission-status">
-                  Statutory development plan policy
+                  Statutory development plan policy (if applicable)
                 </a>
               </span>
                <strong id="section-status" class="{{data['statutory-completed']}}" >{{data['statutory-completedText']}}</strong>
@@ -137,7 +131,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="policy" aria-describedby="appellant-submission-status">
-                  Other relevant policies
+                  Other relevant policies (if applicable)
                 </a>
               </span>
                <strong id="section-status" class="{{data['policies-completed']}}" >{{data['policies-completedText']}}</strong>
@@ -146,7 +140,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="supplementary" aria-describedby="appellant-submission-status">
-                  Supplementary planning document extracts
+                  Supplementary planning document extracts (if applicable)
                 </a>
               </span>
                <strong id="section-status" class="{{data['supplementary-completed']}}" >{{data['supplementary-completedText']}}</strong>
@@ -155,7 +149,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="development-plan" aria-describedby="appellant-submission-status">
-                  Development Plan Document or Neighbourhood Plan
+                  Development Plan Document or Neighbourhood Plan (if applicable)
                 </a>
               </span>
                <strong id="section-status" class="{{data['dpd-completed']}}" >{{data['dpd-completedText']}}</strong>
@@ -164,11 +158,9 @@
           </ul>
         </li>
 
-        
-
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">5. Submit your evidence</span>
+            <span class="app-task-list__section-number">4. Before you submit</span>
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
