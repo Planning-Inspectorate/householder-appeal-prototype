@@ -68,7 +68,7 @@ router.post('/check-lpa-section2', function (req, res) {
   let conservation = req.session.data['citizenship-conditional-3']
 
   if (Array.isArray(conservation) && conservation[0] === 'on') {
-    res.redirect('/lpa-submission/conservation-publicity')
+    res.redirect('/lpa-submission/conservation-map-upload')
   } else {
     res.redirect('/lpa-submission/lpa-task-list')
   }

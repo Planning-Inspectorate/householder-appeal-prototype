@@ -243,7 +243,11 @@ let uploads = [{
   uploadUrl: '/ajax-supporting-docs',
   deleteUrl: '/ajax-supporting-docs-delete',
   fieldName: 'supporting-docs'
-},]
+},{
+  uploadUrl: '/ajax-conservation-area-map',
+  deleteUrl: '/ajax-conservation-area-map-delete',
+  fieldName: 'conservation-area-map'
+  }]
 
 
 uploads.forEach(function(item, index, array){

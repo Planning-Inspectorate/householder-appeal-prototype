@@ -282,6 +282,41 @@ module.exports = {
       "documents": [
         "downloads/P20-10658-F.zip"
       ]
-    }
+    },
+    "sections-completed" :"0",
+"sections-completed-text" :"Application incomplete",
+"appellant-submission-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
+"appellant-submission-completed-text" :"Not started",
+"conditions-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
+"conditions-completed-text" :"Not started",
+"other-appeals-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
+"other-appeals-completed-text" :"Not started",
+"section2-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
+"section2-completed-text" :"Not started",
+"case-file-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
+"case-file-completed-text" :"Not started",
+"officers-report-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
+"officers-report-completed-text" :"Not started",
+"interested-parties-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
+"interested-parties-completed-text" :"Not started",
+"interested-parties2-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
+"interested-parties2-completed-text" :"Not started",
+"interested-parties3-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
+"interested-parties3-completed-text" :"Not started",
+"site-notice-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
+"site-notice-completed-text" :"Not started",
+"planning-history-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
+"planning-history-completed-text" :"Not started",
+"statutory-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
+"statutory-completed-text" :"Not started",
+"policies-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
+"policies-completed-text" :"Not started",
+"supplementary-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
+"supplementary-completed-text" :"Not started",
+"dpd-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
+"dpd-completed-text" :"Not started",
+"check-answers" :"govuk-tag govuk-tag--grey app-task-list__tag",
+"check-answers-link" :"Check your answers",
+"check-answers-text" :"Cannot start yet"
 
 }

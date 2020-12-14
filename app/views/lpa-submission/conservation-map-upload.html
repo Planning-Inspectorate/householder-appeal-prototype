@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% set headerTitle = "Appellant stuff" %}
+  
+
+{% block pageTitle %}
+  LPA 
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds"> 
+    <form action="conservation-publicity" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal site</span>
+
+            <h1 class="govuk-heading-l">
+              Upload the Conservation Area map and guidance
+            </h1>
+            <p>If you’ve already uploaded this in a previous question you don’t need to do it again.</p>
+
+          {% set uploadHtml %}
+            {{ govukFileUpload({
+              id: "conservation-area-map",
+              name: "conservation-area-map",
+              classes: 'moj-multi-file-upload__input',
+              label: {
+                text: "Upload files",
+                classes: 'govuk-label--m'
+              },
+              attributes: { multiple: '' },
+              errorMessage: errorMessage
+            }) }}
+
+            {{govukButton({
+              text: 'Upload file',
+              classes: 'govuk-button--secondary moj-multi-file-upload__button'
+            })}}
+          {% endset %}
+
+          {{ mojMultiFileUpload({
+            uploadedFiles: {
+              heading: { text: 'Files added' },
+              items: data.uploadedFiles | filesByFieldName("conservation-area-map")
+            },
+            uploadHtml: uploadHtml
+          }) }}
+
+      <div class="govuk-form-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </div>
+    </form>
+  </div>
+
+   <div class="govuk-grid-column-one-third"> 
+    <table class="govuk-table">
+      <caption class="govuk-table__caption">Appeal details</caption>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Planning application number</th>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--turquoise">
+      20/500818/FULL
+    </strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Site address</th>
+          <td class="govuk-table__cell">22 Argyll Street, Maidstone</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Appellant Name</th>
+          <td class="govuk-table__cell">Manish Sharma</td>
+        </tr>
+      </tbody>
+    </table>  
+  </div>
+  
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
+
+  new MOJFrontend.MultiFileUpload({
+    container: $('.moj-multi-file-upload'),
+    uploadUrl: '/ajax-conservation-area-map',
+    deleteUrl: '/ajax-conservation-area-map-delete',
+    fieldName: 'conservation-area-map'
+    });
+  }
+</script>
+{% endblock %}
+
