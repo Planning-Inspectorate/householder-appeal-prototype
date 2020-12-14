@@ -46,19 +46,12 @@
       classes: 'govuk-button--secondary moj-multi-file-upload__button'
     })}}
   {% endset %}
-  {% set params ={
-    uploadedFiles: {
-      heading: { text: 'Files added' },
-      items: data.uploadedFiles | filesByFieldName("documents")
-    },
-    uploadHtml: uploadHtml
-  } %}
 
 
   <div class="govuk-inset-text">File size should be no more than 1.21GB</div>
-<div class="moj-multi-file-upload {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
-  <div class="moj-multi-file__uploaded-files {% if params.uploadedFiles.items.length == 0 %}moj-hidden{% endif%}">
-    <h2 class="govuk-heading-m">{{ params.uploadedFiles.heading.html | safe if params.uploadedFiles.heading.html else params.uploadedFiles.heading.text }}</h2>
+<div class="moj-multi-file-upload" >
+  <div class="moj-multi-file__uploaded-files">
+    <h2 class="govuk-heading-m">Files added</h2>
     <div class="govuk-summary-list moj-multi-file-upload__list">
       <div class="moj-multi-file__uploaded-files govuk-form-group govuk-form-group--error">
 
@@ -101,7 +94,7 @@
   </div>
 
   <div class="moj-multi-file-upload__upload">
-    {{ params.uploadHtml | safe }}
+    {{ uploadHtml | safe }}
   </div>
 
   <details class="govuk-details" data-module="govuk-details">
