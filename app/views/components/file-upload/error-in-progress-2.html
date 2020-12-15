@@ -13,9 +13,19 @@
 
 
 
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Your file is still uploading",
+      href: "#file-2"
+    }
+  ]
+}) }}
+
 <h1 class="govuk-heading-l">Upload files</h1>
 
-<form action="error-in-progress-2" method="post" enctype="multipart/form-data">
+<form action="/components/file-upload/confirm" method="post" enctype="multipart/form-data">
 
 <div class="govuk-summary-list moj-multi-file-upload__list">
   {% set uploadHtml %}
@@ -44,7 +54,7 @@
   <div class="moj-multi-file__uploaded-files">
     <h2 class="govuk-heading-m">Files added</h2>
     <div class="govuk-summary-list moj-multi-file-upload__list">
-      <div class="moj-multi-file__uploaded-files govuk-form-group">
+      <div class="moj-multi-file__uploaded-files govuk-form-group govuk-form-group--error">
 
         <div class="govuk-summary-list__row moj-multi-file-upload__row">  
           <dd class="govuk-summary-list__value moj-multi-file-upload__message">
