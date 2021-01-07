@@ -8,7 +8,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="verification-confirmation" method="post" novalidate>
+      <form action="/verify-email-post" method="post" novalidate>
         <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Save and return</span>
         <h1 class="govuk-heading-l">Continue your appeal later</h1>
         <p>We'll send you an email to confirm your email address. ​</p>
@@ -20,15 +20,7 @@
           <input class="govuk-input" id="appellant-email" name="appellant-email" value="{{ data['appellant-email'] }}" type="text">
         </div>
 
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="application-number">
-            Your original planning application number
-          </label>
-          <div id="application-number-hint" class="govuk-hint">
-            You can find this on the decision letter from your local planning department
-          </div>         
-          <input value="{{ data['application-number'] }}" class="govuk-input govuk-!-width-one-half" id="application-number" name="application-number" aria-describedby="application-number-hint" type="text">
-        </div>
+
         
         <button class="govuk-button" data-module="govuk-button">
           Send email

@@ -12,6 +12,16 @@ const moment = require("moment");
 const axios = require("axios");
 const idoxScraperUrl = process.env.IDOX_SCRAPER_URL;
 
+//notify stuff
+const NotifyClient = require('notifications-node-client').NotifyClient
+
+try{
+  const notifyApiKey = process.env.NOTIFYAPIKEY;
+  var notifyClient = new NotifyClient(notifyApiKey);
+} catch (error){
+  console.error(error);
+}
+
 // Add your routes here - above the module.exports line
 
 // SUBMISSION - APPEAL STATEMENT
@@ -570,4 +580,68 @@ router.get("/complete-appeal-task-list", function(req, res, next){
   res.redirect("/submit-appeal/task-list")
 })
 
+
+
+//email verification
+
+router.post("/verify-email-post", function(req, res, next){
+  let templateId = "1824bf6e-bc22-4db8-9d5e-d75462cf19af";
+  let emailAddress = req.body['appellant-email'];
+  let personalisation = {
+    name: "Manish Sharma"
+  };
+  notifyClient
+    .sendEmail(templateId, emailAddress, {
+      personalisation: personalisation
+    })
+    .then(function(response){
+      console.log(response)
+      res.redirect("appellant-submission/save-return/verification-confirmation");
+    })
+    .catch(function(err){
+      console.error(err.statusCode)
+      console.error(err.errors)
+      res.redirect("appellant-submission/save-return/verification-confirmation");
+    })
+})
+
+
+router.post("/appellant-submission/save-return/verification-confirmation", function(req, res, next){
+  let code = req.body["verification-code"];
+
+  if(!code || code == ""){
+    res.locals.verificationError = true;
+    res.locals.verificationMessage = "Enter a verification code";
+    
+    res.render("appellant-submission/save-return/verification-confirmation");
+  } else if(code == "8356"){
+
+    let emailAddress = req.session.data['appellant-email'];
+    let templateId = "2c4327d6-6219-4add-98d2-c53ade362bab"
+    notifyClient.sendEmail(templateId, emailAddress, {})
+      .then(function(response){
+        console.log(response)
+        res.redirect("/appellant-submission/save-return/email-confirmed")
+      })
+      .catch(function(err){
+        console.error(err.statusCode)
+        console.error(err.errors)
+        console.error(err)
+        res.redirect("/appellant-submission/save-return/email-confirmed")
+    })
+
+  } else {
+    res.locals.verificationError = true;
+    res.locals.verificationMessage = "Verfication code is incorrect";
+    
+    res.render("appellant-submission/save-return/verification-confirmation");
+  }
+})
+
+router.get("/saved-appeal/:apealId", function(req, res, next){
+    res.redirect("/appellant-submission/task-list")
+})
+
 module.exports = router
+
+

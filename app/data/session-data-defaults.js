@@ -17,7 +17,7 @@ Example usage:
 
 */
 
-module.exports = {
+let data = {
 
   cases: [],
 
@@ -284,39 +284,40 @@ module.exports = {
       ]
     },
     "sections-completed" :"0",
-"sections-completed-text" :"Application incomplete",
-"appellant-submission-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
-"appellant-submission-completed-text" :"Not started",
-"conditions-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
-"conditions-completed-text" :"Not started",
-"other-appeals-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
-"other-appeals-completed-text" :"Not started",
-"section2-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
-"section2-completed-text" :"Not started",
-"case-file-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
-"case-file-completed-text" :"Not started",
-"officers-report-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
-"officers-report-completed-text" :"Not started",
-"interested-parties-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
-"interested-parties-completed-text" :"Not started",
-"interested-parties2-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
-"interested-parties2-completed-text" :"Not started",
-"interested-parties3-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
-"interested-parties3-completed-text" :"Not started",
-"site-notice-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
-"site-notice-completed-text" :"Not started",
-"planning-history-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
-"planning-history-completed-text" :"Not started",
-"statutory-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
-"statutory-completed-text" :"Not started",
-"policies-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
-"policies-completed-text" :"Not started",
-"supplementary-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
-"supplementary-completed-text" :"Not started",
-"dpd-completed" :"govuk-tag govuk-tag--grey app-task-list__tag",
-"dpd-completed-text" :"Not started",
-"check-answers" :"govuk-tag govuk-tag--grey app-task-list__tag",
-"check-answers-link" :"Check your answers",
-"check-answers-text" :"Cannot start yet"
+    "sections-completed-text": "Application incomplete",
+    "your-details-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
+    "your-details-completed-text": "Not started",
+    "applicant-name-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
+    "applicant-name-completed-text": "Not started",
+    "appeal-statement-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
+    "appeal-statement-completed-text": "Not started",
+    "upload-appeal-docs-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
+    "upload-appeal-docs-completed-text": "Not started",
+    "other-appeal-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
+    "other-appeal-completed-text": "Not started",
+    "application-upload-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
+    "application-upload-completed-text": "Not started",
+    "decision-notice-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
+    "decision-notice-completed-text": "Not started",
+    "site-location-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
+    "site-location-completed-text":"Not started",
+    "site-access-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
+    "site-access-completed-text": "Not started",
+    "site-access-info-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
+    "site-access-info-completed-text": "Not started",
+    "safety-access-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
+    "safety-access-completed-text": "Not started",
+    "site-ownership-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
+    "site-ownership-completed-text": "Not started",
+    "email-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
+    "email-completed-text": "Not started",
+    "application-number-completed": "govuk-tag govuk-tag--grey  app-task-list__tag",
+    "application-number-completed-text": "Not started",
+    "application-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
+    "application-completed-link": "Check your answers",
+    "application-completed-text": "Cannot start yet"
 
 }
+
+
+module.exports = data;
