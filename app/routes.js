@@ -588,7 +588,7 @@ router.post("/verify-email-post", function(req, res, next){
   let templateId = "1824bf6e-bc22-4db8-9d5e-d75462cf19af";
   let emailAddress = req.body['appellant-email'];
   let personalisation = {
-    name: "Manish Sharma"
+    name: req.body['appellant-name']
   };
   notifyClient
     .sendEmail(templateId, emailAddress, {
@@ -617,8 +617,11 @@ router.post("/appellant-submission/save-return/verification-confirmation", funct
   } else if(code == "8356"){
 
     let emailAddress = req.session.data['appellant-email'];
-    let templateId = "2c4327d6-6219-4add-98d2-c53ade362bab"
-    notifyClient.sendEmail(templateId, emailAddress, {})
+    let templateId = "2c4327d6-6219-4add-98d2-c53ade362bab";
+    let personalisation = {
+      name: req.body['appellant-name']
+    };
+    notifyClient.sendEmail(templateId, emailAddress, personalisation)
       .then(function(response){
         console.log(response)
         res.redirect("/appellant-submission/save-return/email-confirmed")

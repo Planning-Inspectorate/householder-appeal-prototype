@@ -7,7 +7,7 @@
 {% block content %}
   <div class="govuk-grid-row">
 <div class="govuk-grid-column-two-thirds">
-  <form action="other-appeals" method="post" novalidate>
+  <form action="task-list" method="post" novalidate>
     <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Your appeal</span>
     <h1 class="govuk-heading-l">
       Any other documents to support your appeal​
@@ -46,7 +46,7 @@
 
     <div class="govuk-form-group">
       <button class="govuk-button" data-module="govuk-button">
-        Continue
+        Save and continue
       </button>
       <input type="hidden" name="upload-appeal-docs-completed" value="govuk-tag app-task-list__tag">
       <input type="hidden" name="upload-appeal-docs-completed-text" value="Completed">
@@ -55,8 +55,7 @@
 </div>
 
 <div class="govuk-grid-column-one-third">
-      {% include "includes/_save.html" %}
-    </div>
+    
   </div>
 {% endblock %}
 

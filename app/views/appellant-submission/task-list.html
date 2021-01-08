@@ -89,14 +89,6 @@
               </span>
               <strong name="supporting-documents-status" class="{{data['upload-appeal-docs-completed']}}" >{{data['upload-appeal-docs-completed-text']}}</strong>
             </li>
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="other-appeals">
-                  Other relevant appeals at this address
-                </a>
-              </span>
-              <strong name="other-appeals-status" class="{{data['other-appeal-completed']}}" >{{data['other-appeal-completed-text']}}</strong>
-            </li>
           </ul>
         </li>
 
@@ -173,7 +165,6 @@
     </div>
 
     <div class="govuk-grid-column-one-third">
-      {% include "includes/_save.html" %}
-    </div>
+    
   </div>
 {% endblock %}
