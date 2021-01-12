@@ -621,7 +621,9 @@ router.post("/appellant-submission/save-return/verification-confirmation", funct
     let personalisation = {
       name: req.body['appellant-name']
     };
-    notifyClient.sendEmail(templateId, emailAddress, personalisation)
+    notifyClient.sendEmail(templateId, emailAddress, {
+      personalisation: personalisation 
+    })
       .then(function(response){
         console.log(response)
         res.redirect("/appellant-submission/save-return/email-confirmed")
