@@ -30,9 +30,23 @@
           <li><a href="/guidance/before-you-appeal">guidance</a></li>
         </ul>
         <p><a href="/public/images/decisionnotice_plsrd.pdf" download>Decision notice (PDF)</a></p>
-        <p><a class="govuk-button" href="appellant-submission/start-your-appeal">
+        <form action="/appellant-submission/start-your-appeal" method="post" novalidate="">
+          <h3 class="govuk-heading-s">Email verification code</h3>
+          <input type="hidden" name="saveReturnUrl" value="/verify-email-post">
+          <button class="govuk-button" href="appellant-submission/start-your-appeal">
           View  prototype
-        </a> </p>
+          </button>
+        </form>
+
+        <form action="/appellant-submission/start-your-appeal" method="post" novalidate="">
+          <h3 class="govuk-heading-s">Email verification by password</h3>
+          <input type="hidden" name="saveReturnUrl" value="create-password">
+          <button class="govuk-button" href="appellant-submission/start-your-appeal">
+          View  prototype
+          </button>
+        </form>
+
+
         <p><a href="/appellant-submission/task-list">Skip to taks list</a></p>
         
       </dt>
