@@ -606,15 +606,17 @@ router.post("/verify-email-post", function(req, res, next){
 })
 
 
+router.post("/verify-email-post", function(req, res, next){
+  
+
+  res.redeirect
+})
+
+
 router.post("/appellant-submission/save-return/verification-confirmation", function(req, res, next){
   let code = req.body["verification-code"];
 
-  if(!code || code == ""){
-    res.locals.verificationError = true;
-    res.locals.verificationMessage = "Enter a verification code";
-    
-    res.render("appellant-submission/save-return/verification-confirmation");
-  } else if(code == "8356"){
+  if(code == "8356"){
 
     let emailAddress = req.session.data['appellant-email'];
     let templateId = "2c4327d6-6219-4add-98d2-c53ade362bab";
@@ -635,6 +637,11 @@ router.post("/appellant-submission/save-return/verification-confirmation", funct
         res.redirect("/appellant-submission/save-return/email-confirmed")
     })
 
+  } else if(!code || code == ""){
+    res.locals.verificationError = true;
+    res.locals.verificationMessage = "Enter your verification code";
+    
+    res.render("appellant-submission/save-return/verification-confirmation");
   } else {
     res.locals.verificationError = true;
     res.locals.verificationMessage = "Verfication code is incorrect";
@@ -645,6 +652,37 @@ router.post("/appellant-submission/save-return/verification-confirmation", funct
 
 router.get("/saved-appeal/:apealId", function(req, res, next){
     res.redirect("/appellant-submission/task-list")
+})
+
+
+router.post("/appellant-submission/save-return/verify-email", function(req, res, next){
+  console.log(req.headers)
+
+  let templateId = "ae735dfa-a603-494b-bf15-3c2fda150d1a";
+  let emailAddress = req.session.data['appellant-email'];
+  console.log(emailAddress)
+  let personalisation = {
+    name: req.session.data['appellant-name'],
+    url: `http://${req.headers.host}/confirm-email/jqmc0vqyaxngfbc585u1` 
+  };
+  notifyClient
+    .sendEmail(templateId, emailAddress, {
+      personalisation: personalisation
+    })
+    .then(function(response){
+      console.log(response)
+      next()
+    })
+    .catch(function(err){
+      console.error(err.statusCode)
+      console.error(err)
+      next()
+    })
+})
+
+
+router.get("/confirm-email/:id", function(req, res, next){
+  res.redirect("/appellant-submission/save-return/confirm-your-email")
 })
 
 module.exports = router

@@ -1,0 +1,38 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Your details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <span class="govuk-caption-l">Confirm your email</span>
+
+        <form action="email-confirmed" method="post" novalidate>
+        
+
+
+          {{ govukInput({
+            label: {
+              text: "Your password",
+              classes: "govuk-label--l",
+              isPageHeading: false
+            },
+            id: "password",
+            name: "password",
+            type: "password"
+          }) }}
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+
+        </div>
+  </div>
+
+{% endblock %}
