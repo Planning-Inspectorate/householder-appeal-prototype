@@ -663,14 +663,14 @@ router.post("/appellant-submission/save-return/verify-email", function(req, res,
   console.log(emailAddress)
   let personalisation = {
     name: req.session.data['appellant-name'],
-    url: `http://${req.headers.host}/confirm-email/jqmc0vqyaxngfbc585u1` 
+    url: `${req.headers.origin}/confirm-email/jqmc0vqyaxngfbc585u1` 
   };
   notifyClient
     .sendEmail(templateId, emailAddress, {
       personalisation: personalisation
     })
     .then(function(response){
-      console.log(response)
+      //console.log(response)
       next()
     })
     .catch(function(err){
@@ -683,6 +683,27 @@ router.post("/appellant-submission/save-return/verify-email", function(req, res,
 
 router.get("/confirm-email/:id", function(req, res, next){
   res.redirect("/appellant-submission/save-return/confirm-your-email")
+})
+
+router.post("/appellant-submission/save-return/email-confirmed-2", function(req, res, next){
+  let emailAddress = req.session.data['appellant-email'];
+    let templateId = "2c4327d6-6219-4add-98d2-c53ade362bab";
+    let personalisation = {
+      name: req.session.data['appellant-name']
+    };
+    notifyClient.sendEmail(templateId, emailAddress, {
+      personalisation: personalisation 
+    })
+      .then(function(response){
+        console.log(response)
+        next()
+      })
+      .catch(function(err){
+        console.error(err.statusCode)
+        console.error(err.errors)
+        console.error(err)
+        next()
+    })
 })
 
 module.exports = router
