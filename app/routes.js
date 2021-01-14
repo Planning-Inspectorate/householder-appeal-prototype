@@ -621,7 +621,8 @@ router.post("/appellant-submission/save-return/verification-confirmation", funct
     let emailAddress = req.session.data['appellant-email'];
     let templateId = "2c4327d6-6219-4add-98d2-c53ade362bab";
     let personalisation = {
-      name: req.body['appellant-name']
+      name: req.session.data['appellant-name'],
+      url: `${req.headers.origin}/saved-appeal/e26qbhysx4s5vfgj0z8w`
     };
     notifyClient.sendEmail(templateId, emailAddress, {
       personalisation: personalisation 
