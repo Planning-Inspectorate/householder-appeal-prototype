@@ -707,6 +707,32 @@ router.post("/appellant-submission/save-return/email-confirmed-2", function(req,
     })
 })
 
+router.post("/appellant-submission/save-return/reset-confirmation", function(req, res, next){
+  let emailAddress = req.body['recovery-email'];
+    let templateId = "07f89c70-9f5d-4f43-840c-8453b49ded06";
+    let personalisation = {
+      url: `${req.headers.origin}/reset-password/jqmc0vqyaxngfbc585u1`
+    };
+    notifyClient.sendEmail(templateId, emailAddress, {
+      personalisation: personalisation 
+    })
+      .then(function(response){
+        console.log(response)
+        next()
+      })
+      .catch(function(err){
+        console.error(err.statusCode)
+        console.error(err.errors)
+        console.error(err)
+        next()
+    })
+
+})
+
+router.get("/reset-password/:id", function(req, res, next){
+  res.redirect("/appellant-submission/save-return/reset-new-password")
+})
+
 module.exports = router
 
 
