@@ -1,0 +1,164 @@
+{%set data = [{
+  "id": 1,
+  "name": "Lawton McLeish",
+  "email": "lmcleish0@mapquest.com",
+  "address": {
+    "street": "73 Scofield Terrace",
+    "city": "Buckland",
+    "country": "GB"
+  },
+  "started": "2021/01/15",
+  "dueDate": "2021/01/20",
+  "planningNumber": "84196/APP/2020/0591 "
+}, {
+  "id": 2,
+  "name": "Gayel Gerin",
+  "email": "ggerin1@prlog.org",
+  "address": {
+    "street": "9986 Saint Paul Terrace",
+    "city": "Carlton",
+    "country": "GB"
+  },
+  "started": "2021/01/11",
+  "dueDate": "2021/01/27",
+  "planningNumber": "25709/APP/2020/7261 "
+}, {
+  "id": 3,
+  "name": "Quillan Plaice",
+  "email": "qplaice2@mozilla.org",
+  "address": {
+    "street": "470 Birchwood Road",
+    "city": "Ashley",
+    "country": "GB"
+  },
+  "started": "2021/01/02",
+  "dueDate": "2021/01/22",
+  "planningNumber": "76395/APP/2020/0631 "
+}, {
+  "id": 4,
+  "name": "Emera Prahm",
+  "email": "eprahm3@edublogs.org",
+  "address": {
+    "street": "1920 Sloan Drive",
+    "city": "Seaton",
+    "country": "GB"
+  },
+  "started": "2021/01/13",
+  "dueDate": "2021/01/29",
+  "planningNumber": "17169/APP/2020/5035 "
+}, {
+  "id": 5,
+  "name": "Quillan Ianitti",
+  "email": "qianitti4@patch.com",
+  "address": {
+    "street": "950 Chinook Park",
+    "city": "Whitwell",
+    "country": "GB"
+  },
+  "started": "2021/01/20",
+  "dueDate": "2021/02/01",
+  "planningNumber": "36730/APP/2020/1137 "
+}, {
+  "id": 6,
+  "name": "Daryn Evers",
+  "email": "devers5@i2i.jp",
+  "address": {
+    "street": "0784 Hintze Junction",
+    "city": "London",
+    "country": "GB"
+  },
+  "started": "2021/01/08",
+  "dueDate": "2021/01/19",
+  "planningNumber": "54700/APP/2020/8150 "
+}, {
+  "id": 7,
+  "name": "Cully Binion",
+  "email": "cbinion6@irs.gov",
+  "address": {
+    "street": "78969 Portage Court",
+    "city": "Birmingham",
+    "country": "GB"
+  },
+  "started": "2021/01/12",
+  "dueDate": "2021/01/17",
+  "planningNumber": "69860/APP/2020/9324 "
+}, {
+  "id": 8,
+  "name": "Adrienne Jakubovski",
+  "email": "ajakubovski7@symantec.com",
+  "address": {
+    "street": "4821 La Follette Terrace",
+    "city": "Merton",
+    "country": "GB"
+  },
+  "started": "2021/01/05",
+  "dueDate": "2021/02/01",
+  "planningNumber": "72444/APP/2020/8487 "
+}, {
+  "id": 9,
+  "name": "Arnold McCracken",
+  "email": "amccracken8@about.com",
+  "address": {
+    "street": "28 Jana Alley",
+    "city": "Marston",
+    "country": "GB"
+  },
+  "started": "2021/01/08",
+  "dueDate": "2021/01/30",
+  "planningNumber": "28254/APP/2020/6891 "
+}, {
+  "id": 10,
+  "name": "Terence Erie",
+  "email": "terie9@fastcompany.com",
+  "address": {
+    "street": "9 Riverside Trail",
+    "city": "Seaton",
+    "country": "GB"
+  },
+  "started": "2021/01/08",
+  "dueDate": "2021/01/31",
+  "planningNumber": "80644/APP/2020/9959 "
+}]
+%}
+
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  Planning appeals
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">London Borough of Hillingdon</span>
+      
+
+      <h1 class="govuk-heading-l">
+        Planning appeals
+      </h1>
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption">Householder planning appeals</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Appeal details</th>
+            <th scope="col" class="govuk-table__header">Location</th>
+            <th scope="col" class="govuk-table__header">Due date</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for appeal in data %}
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="/lpa-submission/lpa-task-list" title="">{{appeal.planningNumber}}</a></td>
+            <td class="govuk-table__cell">{{appeal.address.street}}</td>
+            <td class="govuk-table__cell">{{appeal.dueDate |formatDate ("D MMMM")}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+          </div>
+  </div>
+{% endblock %}
