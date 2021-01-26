@@ -133,5 +133,16 @@ module.exports = function (env) {
 
 
 
+  filters.formatAppealStatus = function(daysAgo){
+    let date = moment().subtract(daysAgo, "days");
+    
+    if(daysAgo < 0){
+      return "Not started"
+    } else {
+      return date.add(7, "days").format("D MMMM YYYY");
+    }
+
+  }
+
   return filters
 }

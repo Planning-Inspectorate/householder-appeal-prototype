@@ -733,6 +733,12 @@ router.get("/reset-password/:id", function(req, res, next){
   res.redirect("/appellant-submission/save-return/reset-new-password")
 })
 
+
+router.get("/lpa-account", function(req, res, next){
+  req.session.data.appeals = require("./data/appeals.json");
+  next();
+});
+
 module.exports = router
 
 
