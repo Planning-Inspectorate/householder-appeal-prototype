@@ -27,13 +27,13 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
-          {% for appeal in data.appeals | sort(true, false, "startedDaysAgo") %}
+          {% for appeal in appeals | sort(true, false, "startedDaysAgo") %}
           <tr class="govuk-table__row">
             <td scope="row" class="govuk-table__cell">
               {% if appeal.startedDaysAgo > 0 %}
-                <a class="govuk-link--no-visited-state" href="/lpa-submission/lpa-task-list">{{appeal.planningNumber}}</a>
+                <a class="govuk-link--no-visited-state" href="/lpa-submission/lpa-task-list/{{appeal.id}}">{{appeal.planningNumber}}</a>
               {% else %}
-                <a class="govuk-link--no-visited-state" href="/lpa-submission/new-appeal">{{appeal.planningNumber}}</a>
+                <a class="govuk-link--no-visited-state" href="/lpa-submission/new-appeal/{{appeal.id}}">{{appeal.planningNumber}}</a>
               {% endif %}
 
               </td>

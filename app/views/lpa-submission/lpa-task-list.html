@@ -8,9 +8,9 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <strong class="govuk-tag govuk-tag--turquoise">
-      20/500818/FULL
-    </strong>
+      <spam class="govuk-caption govuk-caption-l">
+        {{ data.appeal.planningNumber }}
+      </spam>
       <h1 class="govuk-heading-l">
         Householder planning appeal questionnaire
       </h1>
@@ -21,7 +21,11 @@
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
     <span class="govuk-warning-text__assistive">Warning</span>
-    You need to complete this by {{ 7 | daysInFuture }}.
+    {% if data.appal.startedDaysAgo > 7 %}
+    You need to complete this by {{ data.appeal.startedDaysAgo | formatAppealStatus }}.
+    {% else %}
+    The due date was {{ data.appeal.startedDaysAgo | formatAppealStatus }}.
+    {% endif %}
   </strong>
 </div>
 
@@ -35,7 +39,7 @@
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="appellant-submission" aria-describedby="appellant-submission-status">
+                <a href="/lpa-submission/appellant-submission" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
                   Review accuracy of the appellant's submission
                 </a>
               </span>
@@ -43,7 +47,7 @@
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="conditions" aria-describedby="other-appeals-status">
+                <a href="/lpa-submission/conditions" aria-describedby="other-appeals-status" class="govuk-link--no-visited-state">
                   Do you have any extra conditions?
                 </a>
               </span>
@@ -51,7 +55,7 @@
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="other-appeals" aria-describedby="other-appeals-status">
+                <a href="/lpa-submission/other-appeals" aria-describedby="other-appeals-status" class="govuk-link--no-visited-state">
                   Tell us about any appeals in the immediate area
                 </a>
               </span>
@@ -66,7 +70,7 @@
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="section-2-list" aria-describedby="appellant-submission-status">
+                <a href="/lpa-submission/section-2-list" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
                   Tell us about the appeal site
                 </a>
               </span>
@@ -83,7 +87,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="case-file" aria-describedby="appellant-submission-status">
+                <a href="/lpa-submission/case-file" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
                   Upload the plans used to reach the decision
                 </a>
               </span>
@@ -92,7 +96,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="officers-report" aria-describedby="appellant-submission-status">
+                <a href="/lpa-submission/officers-report" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
                   Upload the Planning Officer's report
                 </a>
               </span>
@@ -116,7 +120,7 @@
 
            <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="site-notice-ip" aria-describedby="appellant-submission-status">
+                <a href="/lpa-submission/site-notice-ip" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
                   Telling interested parties about the application
                 </a>
               </span>
@@ -125,7 +129,7 @@
 
              <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="correspondence" aria-describedby="appellant-submission-status">
+                <a href="/lpa-submission/correspondence" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
                   Representations from interested parties
                 </a>
               </span>
@@ -134,7 +138,7 @@
 
              <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="representations" aria-describedby="appellant-submission-status">
+                <a href="/lpa-submission/representations" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
                   Notifying interested parties of the appeal
                 </a>
               </span>
@@ -143,7 +147,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="site-notice" aria-describedby="appellant-submission-status">
+                <a href="/lpa-submission/site-notice" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
                   Site notices
                 </a>
               </span>
@@ -152,7 +156,7 @@
             
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="planning-history" aria-describedby="appellant-submission-status">
+                <a href="/lpa-submission/planning-history" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
                   Planning history
                 </a>
               </span>
@@ -161,7 +165,7 @@
             
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="statutory" aria-describedby="appellant-submission-status">
+                <a href="/lpa-submission/statutory" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
                   Statutory development plan policy
                 </a>
               </span>
@@ -170,7 +174,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="policy" aria-describedby="appellant-submission-status">
+                <a href="/lpa-submission/policy" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
                   Other relevant policies
                 </a>
               </span>
@@ -179,7 +183,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="supplementary" aria-describedby="appellant-submission-status">
+                <a href="/lpa-submission/supplementary" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
                   Supplementary planning document extracts
                 </a>
               </span>
@@ -188,7 +192,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="development-plan" aria-describedby="appellant-submission-status">
+                <a href="/lpa-submission/development-plan" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
                   Development Plan Document or Neighbourhood Plan
                 </a>
               </span>

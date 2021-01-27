@@ -110,16 +110,16 @@
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Planning application number</th>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--turquoise">
-      20/500818/FULL
+      {{ data.appeal.planningNumber }}
     </strong></td>
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Site address</th>
-          <td class="govuk-table__cell">22 Argyll Street, Maidstone</td>
+          <td class="govuk-table__cell">{{ data.appeal.address.street }}</td>
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Appellant Name</th>
-          <td class="govuk-table__cell">Manish Sharma</td>
+          <td class="govuk-table__cell">{{ data.appeal.name.first }} {{ data.appeal.name.last }}</td>
         </tr>
       </tbody>
     </table>  

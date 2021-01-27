@@ -1,4 +1,4 @@
-[{
+module.exports = [{
   "id": 1,
   "startedDaysAgo": 10,
   "name": {
@@ -10,7 +10,7 @@
     "street": "36547 Butterfield Center",
     "postcode": "PH43",
     "country": "United Kingdom",
-    "city": "Kinloch"
+    "city": "Bradford"
   },
   "planningNumber": "48269/APP/2020/1482"
 }, {
@@ -40,7 +40,7 @@
     "street": "095 Hermina Way",
     "postcode": "BT2",
     "country": "United Kingdom",
-    "city": "Belfast"
+    "city": "Bradford"
   },
   "planningNumber": "54045/APP/2020/9308"
 }, {
@@ -55,7 +55,7 @@
     "street": "970 Farwell Road",
     "postcode": "BS41",
     "country": "United Kingdom",
-    "city": "Bristol"
+    "city": "Bradford"
   },
   "planningNumber": "69368/APP/2020/7212"
 }, {
@@ -85,7 +85,7 @@
     "street": "92 Moulton Pass",
     "postcode": "GU32",
     "country": "United Kingdom",
-    "city": "Weston"
+    "city": "Bradford"
   },
   "planningNumber": "56593/APP/2020/2636"
 }, {
@@ -100,7 +100,7 @@
     "street": "18715 Alpine Hill",
     "postcode": "NR34",
     "country": "United Kingdom",
-    "city": "Brampton"
+    "city": "Bradford"
   },
   "planningNumber": "37468/APP/2020/4609"
 }, {
@@ -115,7 +115,7 @@
     "street": "473 Aberg Point",
     "postcode": "CH48",
     "country": "United Kingdom",
-    "city": "Wirral"
+    "city": "Bradford"
   },
   "planningNumber": "53227/APP/2020/4967"
 }, {
@@ -130,7 +130,7 @@
     "street": "2 Goodland Parkway",
     "postcode": "BS37",
     "country": "United Kingdom",
-    "city": "Horton"
+    "city": "Bradford"
   },
   "planningNumber": "11762/APP/2020/4965"
 }, {
@@ -145,7 +145,7 @@
     "street": "33488 Forest Dale Junction",
     "postcode": "N3",
     "country": "United Kingdom",
-    "city": "Church End"
+    "city": "Bradford"
   },
   "planningNumber": "86602/APP/2020/4422"
 }, {
@@ -160,7 +160,7 @@
     "street": "01014 Stuart Plaza",
     "postcode": "S33",
     "country": "United Kingdom",
-    "city": "Sheffield"
+    "city": "Bradford"
   },
   "planningNumber": "58621/APP/2020/8620"
 }, {
@@ -175,7 +175,7 @@
     "street": "09405 School Street",
     "postcode": "BT66",
     "country": "United Kingdom",
-    "city": "Craigavon"
+    "city": "Bradford"
   },
   "planningNumber": "97231/APP/2020/9785"
 }, {
@@ -190,7 +190,7 @@
     "street": "56415 Eliot Drive",
     "postcode": "NG34",
     "country": "United Kingdom",
-    "city": "Newton"
+    "city": "Bradford"
   },
   "planningNumber": "76165/APP/2020/6803"
 }, {
@@ -205,7 +205,7 @@
     "street": "99 Mitchell Trail",
     "postcode": "GU32",
     "country": "United Kingdom",
-    "city": "Weston"
+    "city": "Bradford"
   },
   "planningNumber": "62584/APP/2020/8494"
 }, {
@@ -220,7 +220,7 @@
     "street": "3 Northfield Trail",
     "postcode": "CT15",
     "country": "United Kingdom",
-    "city": "Sutton"
+    "city": "Bradford"
   },
   "planningNumber": "13415/APP/2020/1212"
 }, {
@@ -235,7 +235,7 @@
     "street": "4998 Buena Vista Trail",
     "postcode": "SY4",
     "country": "United Kingdom",
-    "city": "Pentre"
+    "city": "Bradford"
   },
   "planningNumber": "42813/APP/2020/4710"
 }, {
@@ -250,7 +250,7 @@
     "street": "0 Linden Court",
     "postcode": "CT15",
     "country": "United Kingdom",
-    "city": "Sutton"
+    "city": "Bradford"
   },
   "planningNumber": "64372/APP/2020/4534"
 }, {
@@ -265,7 +265,7 @@
     "street": "9 Florence Hill",
     "postcode": "OX7",
     "country": "United Kingdom",
-    "city": "Dean"
+    "city": "Bradford"
   },
   "planningNumber": "05419/APP/2020/6101"
 }, {
@@ -280,7 +280,7 @@
     "street": "9326 Waxwing Place",
     "postcode": "AB39",
     "country": "United Kingdom",
-    "city": "Aberdeen"
+    "city": "Bradford"
   },
   "planningNumber": "25992/APP/2020/4826"
 }, {
@@ -295,7 +295,7 @@
     "street": "82 Morning Terrace",
     "postcode": "CV35",
     "country": "United Kingdom",
-    "city": "Hatton"
+    "city": "Bradford"
   },
   "planningNumber": "93259/APP/2020/1533"
 }]
