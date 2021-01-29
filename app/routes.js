@@ -737,22 +737,27 @@ router.get("/reset-password/:id", function(req, res, next){
 
 
 router.get("/lpa-account", function(req, res, next){
-  console.log(appealsList)
-
   res.locals.appeals = appealsList;
   res.render("lpa-account/index")
 });
 
 router.get("/lpa-submission/lpa-task-list/:appealId", function(req, res, next){
-  req.session.data.appeal = appealsList.find(appeal => appeal.id == req.params.appealId);
+  res.locals.appeal = appealsList.find(appeal => appeal.id == req.params.appealId);
 
   res.render("lpa-submission/lpa-task-list");
 })
 
 router.get("/lpa-submission/new-appeal/:appealId", function(req, res, next){
-  req.session.data.appeal = appealsList.find(appeal => appeal.id == req.params.appealId);
+  res.locals.appeal = appealsList.find(appeal => appeal.id == req.params.appealId);
 
   res.render("lpa-submission/new-appeal");
+})
+
+
+router.get("/lpa-submission/:appealId/:pageName", function(req, res, next){
+  res.locals.appeal = appealsList.find(appeal => appeal.id == req.params.appealId);
+
+  res.render(`lpa-submission/${req.params.pageName}`);
 })
 
 module.exports = router

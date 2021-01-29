@@ -8,9 +8,9 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <strong class="govuk-tag govuk-tag--turquoise">
-      {{ data.appeal.planningNumber }}
-    </strong>
+      <span class="govuk-caption govuk-caption-l">
+        {{ appeal.planningNumber }}
+      </span>
       <h1 class="govuk-heading-l">
         Householder planning appeal questionnaire
       </h1>
@@ -21,7 +21,11 @@
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
     <span class="govuk-warning-text__assistive">Warning</span>
-    You need to complete this by {{ 7 | daysInFuture }}.
+    {% if appal.startedDaysAgo > 7 %}
+    You need to complete this by {{ appeal.startedDaysAgo | formatAppealStatus }}.
+    {% else %}
+    The due date was {{ appeal.startedDaysAgo | formatAppealStatus }}.
+    {% endif %}
   </strong>
 </div>
 

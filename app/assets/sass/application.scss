@@ -164,3 +164,9 @@ $govuk-assets-path: '/govuk/assets/';
 .user-inout-text {
 	white-space: pre-wrap;
 }
+
+
+.pins-inset-text--small {
+	margin-top: govuk-spacing(2);
+	margin-bottom: govuk-spacing(2);
+}

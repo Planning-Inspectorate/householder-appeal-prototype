@@ -15,116 +15,15 @@
       {{headerTitle}}
     </h1>
 
-  <p>The appellant submitted the following information on {{ 3 | daysAgo }}.</p>
 
-  <table class="govuk-table">
-      <caption class="govuk-table__caption">Appeal details</caption>
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Planning application number</th>
-          <td class="govuk-table__cell"><strong>
-      {{ data.appeal.planningNumber }}
-    </strong></td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Site address</th>
-          <td class="govuk-table__cell">{{ data.appeal.address.street }}</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Appellant Name</th>
-          <td class="govuk-table__cell">{{ data.appeal.name.first }} {{ data.appeal.name.last }}</td>
-        </tr>
-      </tbody>
-    </table>  
-
-    <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
-
-      <div class="govuk-accordion__section ">
-        <div class="govuk-accordion__section-header">
-          <h2 class="govuk-accordion__section-heading">
-            <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
-              The local planning department
-            </span>
-          </h2>
-        </div>
-        <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
-          <ul class="govuk-list govuk-list--bullet">
-            <li><strong>Maidstone Borough Council</strong> is the local planning department</li>
-            <li>The appellant provided the <a href="/public/images/Decision_Notice-sprint18.pdf">decision letter</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="govuk-accordion__section ">
-        <div class="govuk-accordion__section-header">
-          <h2 class="govuk-accordion__section-heading">
-            <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-              The original planning application
-            </span>
-          </h2>
-        </div>
-        <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
-          <ul class="govuk-list govuk-list--bullet">
-            <li>The planning application number is <strong>{{ data.appeal.planningNumber }}</strong></li>
-            <li>The name on the application is <strong>{{ data.appeal.name.first }} {{ data.appeal.name.last }}</strong></li>
-            <li>The date of application is <strong>12 December 2019</strong></li>
-            <li>The appellant provided their <a href="/public/images/application.pdf">original planning application</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="govuk-accordion__section ">
-        <div class="govuk-accordion__section-header">
-          <h2 class="govuk-accordion__section-heading">
-            <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
-              The appeal site
-            </span>
-          </h2>
-        </div>
-        <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
-          <ul class="govuk-list govuk-list--bullet">
-            <li>The appeal site address is <strong>{{ data.appeal.address.street }}</strong></li>
-            <li>The site is in a Green Belt</li>
-            <li>The Inspector cannot see the whole of the appeal site from public land:
-              <ul>
-                <li><em>"It's restricted as the extension is at the rear, so they'd need to come through the house to view. We have no rear access and are in woodland. I guess they could climb a tree?"</em></li>
-              </ul>
-
-            </li>
-            <li>There are health and safety issues:
-              <ul>
-                <li><em>"We have dogs"</em></li>
-              </ul>
-            </li>
-            <li>The appellant owns the whole appeal site</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="govuk-accordion__section ">
-        <div class="govuk-accordion__section-header">
-          <h2 class="govuk-accordion__section-heading">
-            <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
-              The appeal statement and supporting documents
-            </span>
-          </h2>
-        </div>
-        <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
-          <ul class="govuk-list govuk-list--bullet">
-            <li>The appellant provided an <a href="/public/images/appeal-statement.pdf">appeal statement</a></li>
-            <li>There were no other supporting documents</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+  {% include "lpa-submission/_appeal-details.html" %}
+  
  
 
 
   </div>
 
-   <div class="govuk-grid-column-one-third"> 
-    
-  </div>
+
   
 </div>
 

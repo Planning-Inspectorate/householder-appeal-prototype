@@ -53,25 +53,7 @@
   </div>
 
    <div class="govuk-grid-column-one-third"> 
-    <table class="govuk-table">
-      <caption class="govuk-table__caption">Appeal details</caption>
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Planning application number</th>
-          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--turquoise">
-      {{ data.appeal.planningNumber }}
-    </strong></td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Site address</th>
-          <td class="govuk-table__cell">{{ data.appeal.address.street }}</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Appellant Name</th>
-          <td class="govuk-table__cell">{{ data.appeal.name.first }} {{ data.appeal.name.last }}</td>
-        </tr>
-      </tbody>
-    </table>  
+    {% include "lpa-submission/_key-details.html" %} 
   </div>
   
 </div>

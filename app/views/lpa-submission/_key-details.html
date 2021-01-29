@@ -1,0 +1,21 @@
+<table class="govuk-table">
+      <caption class="govuk-table__caption">Appeal details</caption>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Planning application number</th>
+          <td class="govuk-table__cell">{{ appeal.planningNumber }}</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Site address</th>
+          <td class="govuk-table__cell">
+            {{ appeal.address.street }} <br>
+            {{ appeal.address.city }} <br>
+            {{ appeal.address.postcode }}
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Appellant Name</th>
+          <td class="govuk-table__cell">{{ appeal.name.first }} {{ appeal.name.last }}</td>
+        </tr>
+      </tbody>
+    </table>  
