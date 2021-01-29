@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% set headerTitle = "Appellant stuff" %}
+  
+
+{% block pageTitle %}
+  LPA 
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds"> 
+    <form action="conservation-area" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal site</span>
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "green-belt",
+        name: "green-belt",
+        fieldset: {
+          legend: {
+            text: "Is the appeal site in a green belt?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: checked("green-belt", "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: checked("green-belt", "no")
+
+          }
+        ]
+      }) }}
+
+      
+      <div class="govuk-form-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </div>
+    </form>
+  </div>
+
+   <div class="govuk-grid-column-one-third"> 
+    {% include "lpa-submission/_key-details.html" %} 
+  </div>
+  
+</div>
+{% endblock %}

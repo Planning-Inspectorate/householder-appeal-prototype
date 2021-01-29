@@ -76,13 +76,14 @@ router.post('/who-are-you-post', function (req, res) {
 
 ///////////////////////////////////////////////////////////////
 
-router.post('/check-lpa-section2', function (req, res) {
-  let conservation = req.session.data['citizenship-conditional-3']
+router.post('/lpa-submission/:appealId/conservation-area-post', function (req, res) {
 
-  if (Array.isArray(conservation) && conservation[0] === 'on') {
-    res.redirect('/lpa-submission/conservation-map-upload')
+  if (req.body['conservation-area'] === "yes") {
+    res.redirect(`/lpa-submission/${req.params.appealId}/conservation-map-upload`)
   } else {
-    res.redirect('/lpa-submission/lpa-task-list')
+    req.session.data["section2-completed"] = "govuk-tag app-task-list__task-completed";
+    req.session.data["section2-completed-text"] = "Completed";
+    res.redirect(`/lpa-submission/lpa-task-list/${req.params.appealId}`)
   }
 })
 
@@ -108,13 +109,15 @@ router.post('/site-notice-post', function (req, res) {
 })
 
 
-router.post('/check-conservation', function (req, res) {
+router.post('/lpa-submission/:appealId/conservation-publicity-post', function (req, res) {
   let conservationupload = req.session.data['is-accurate']
 
   if (conservationupload == "yes") {
-    res.redirect('/lpa-submission/conservation-publicity-upload')
+    res.redirect(`/lpa-submission/${req.params.appealId}/conservation-publicity-upload`)
   } else {
-    res.redirect('/lpa-submission/lpa-task-list')
+    req.session.data["section2-completed"] = "govuk-tag app-task-list__task-completed";
+    req.session.data["section2-completed-text"] = "Completed";
+    res.redirect(`/lpa-submission/lpa-task-list/${req.params.appealId}`)
   }
 })
 

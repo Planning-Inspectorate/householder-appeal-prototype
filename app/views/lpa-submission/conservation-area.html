@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% set headerTitle = "Appellant stuff" %}
+  
+
+{% block pageTitle %}
+  LPA 
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds"> 
+    <form action="conservation-area-post" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal site</span>
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "conservation-area",
+        name: "conservation-area",
+        fieldset: {
+          legend: {
+            text: "Is the appeal site in or near a conservation area?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: checked("conservation-area", "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: checked("conservation-area", "no")
+
+          }
+        ]
+      }) }}
+
+      
+      <div class="govuk-form-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </div>
+    </form>
+  </div>
+
+   <div class="govuk-grid-column-one-third"> 
+    {% include "lpa-submission/_key-details.html" %} 
+  </div>
+  
+</div>
+{% endblock %}

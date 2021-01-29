@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% set headerTitle = "Appellant stuff" %}
+  
+
+{% block pageTitle %}
+  LPA 
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds"> 
+    <form action="neighbours-land" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal site</span>
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "public-land",
+        name: "public-land",
+        fieldset: {
+          legend: {
+            text: "Can the Inspector see the relevant parts of the appeal site from public land?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: checked("public-land", "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: checked("public-land", "no")
+
+          }
+        ]
+      }) }}
+
+    
+      <input type="hidden" name="section2-completed-text" value="In Progress">
+      <div class="govuk-form-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </div>
+    </form>
+  </div>
+
+   <div class="govuk-grid-column-one-third"> 
+    {% include "lpa-submission/_key-details.html" %} 
+  </div>
+  
+</div>
+{% endblock %}
