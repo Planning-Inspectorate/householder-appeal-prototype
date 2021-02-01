@@ -21,10 +21,10 @@
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
     <span class="govuk-warning-text__assistive">Warning</span>
-    {% if appal.startedDaysAgo > 7 %}
-    You need to complete this by {{ appeal.startedDaysAgo | formatAppealStatus }}.
-    {% else %}
+    {% if appeal.startedDaysAgo > 7 %}
     The due date was {{ appeal.startedDaysAgo | formatAppealStatus }}.
+    {% else %}
+    You need to complete this by {{ appeal.startedDaysAgo | formatAppealStatus }}.
     {% endif %}
   </strong>
 </div>
