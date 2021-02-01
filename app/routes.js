@@ -756,12 +756,27 @@ router.get("/lpa-submission/new-appeal/:appealId", function(req, res, next){
   res.render("lpa-submission/new-appeal");
 })
 
+router.post("/lpa-submission/:appealId/supplementary-post", function(req, res, next){
+
+  if(req.body["supplementary-docs"] == "yes"){
+    res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-file-upload`)
+  } else {
+    req.session.data["supplementary-completed"] = "govuk-tag app-task-list__task-completed";
+    req.session.data["supplementary-completed-text"] = "Completed";
+    res.redirect(`/lpa-submission/${req.params.appealId}/lpa-task-list`)
+  }
+
+})
+
+
 
 router.get("/lpa-submission/:appealId/:pageName", function(req, res, next){
   res.locals.appeal = appealsList.find(appeal => appeal.id == req.params.appealId);
 
   res.render(`lpa-submission/${req.params.pageName}`);
 })
+
+
 
 module.exports = router
 
