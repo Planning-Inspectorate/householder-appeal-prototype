@@ -24,7 +24,11 @@
               Does the information from the appellant accurately reflect the original planning application?
             </dt>
             <dd class="govuk-summary-list__value">
-               No<br>Name on original planning application is Mr. M. G. Sharma
+               {% if data['is-accurate'] === 'no' %}
+                {{ data['is-accurate-more-detail'] }}
+               {% else %}
+                {{data['is-accurate']}}
+               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="appellant-submission">
@@ -37,7 +41,11 @@
               Do you have any extra conditions?
             </dt>
             <dd class="govuk-summary-list__value">
-               No
+               {% if data['extra-conditions'] === 'yes' %}
+                {{ data['extra-conditions-more-detail'] }}
+               {% else %}
+                {{data['extra-conditions']}}
+               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="conditions">
@@ -50,8 +58,11 @@
               Are there any other appeals adjacent or close to the site still being considered?
             </dt>
             <dd class="govuk-summary-list__value">
-               Yes<br>
-               W/828006F, W/799012F
+               {% if data['other-appeals'] === 'yes' %}
+                {{ data['other-appeals-more-detail'] }}
+               {% else %}
+                {{data['other-appeals']}}
+               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="other-appeals">
@@ -67,11 +78,11 @@
             <dt class="govuk-summary-list__key">
               Can the Inspector see the relevant parts of the appeal site from public land?
             </dt>
-            <dd class="govuk-summary-list__value">Yes
+            <dd class="govuk-summary-list__value">{{data['public-land']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/section-2-list">
-                Change<span class="govuk-visually-hidden"> </span>
+              <a class="govuk-link" href="public-land">
+                Change<span class="govuk-visually-hidden"> if the Inspector see the relevant parts of the appeal site from public land</span>
               </a>
             </dd>
           </div>
@@ -79,11 +90,11 @@
             <dt class="govuk-summary-list__key">
               Would the Inspector need to enter the appeal the site?
             </dt>
-            <dd class="govuk-summary-list__value">No
+            <dd class="govuk-summary-list__value">{{data['enter-appeal-site']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/section-2-list">
-                Change<span class="govuk-visually-hidden"> </span>
+              <a class="govuk-link" href="enter-appeal-site">
+                Change<span class="govuk-visually-hidden"> if the inspector would need to enter the appeal site </span>
               </a>
             </dd>
           </div>
@@ -92,10 +103,15 @@
             <dt class="govuk-summary-list__key">
               Would the Inspector need access to a neighbour’s land?
             </dt>
-            <dd class="govuk-summary-list__value">Yes<br>123 Holland Drive, Sussex SE6 7FF you can see the impact on neighbour's light
+            <dd class="govuk-summary-list__value">
+              {% if data['neighbours-land'] === 'yes' %}
+                {{ data['neighbours-land-more-detail'] }}
+               {% else %}
+                {{data['neighbours-land']}}
+               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/section-2-list">
+              <a class="govuk-link" href="neighbours-land">
                 Change<span class="govuk-visually-hidden"> </span>
               </a>
             </dd>
@@ -105,11 +121,16 @@
             <dt class="govuk-summary-list__key">
               Would the development affect the setting of a listed building?
             </dt>
-            <dd class="govuk-summary-list__value">No
+            <dd class="govuk-summary-list__value">
+              {% if data['listed-building'] === 'yes' %}
+                {{ data['listed-building-more-detail'] }}
+               {% else %}
+                {{data['listed-building']}}
+               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/lpa-submission/section-2-list">
-                Change<span class="govuk-visually-hidden"> </span>
+                Change<span class="govuk-visually-hidden"> if the development affect the setting of a listed building</span>
               </a>
             </dd>
           </div>
@@ -118,11 +139,11 @@
             <dt class="govuk-summary-list__key">
               Is the appeal site in a green belt?
             </dt>
-            <dd class="govuk-summary-list__value">No
+            <dd class="govuk-summary-list__value">{{data['green-belt']}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/lpa-submission/section-2-list">
-                Change<span class="govuk-visually-hidden"> </span>
+                Change<span class="govuk-visually-hidden"> if the appeal site in a green belt</span>
               </a>
             </dd>
           </div>
@@ -131,14 +152,52 @@
             <dt class="govuk-summary-list__key">
               Is the appeal site in or near a Conservation Area?
             </dt>
-            <dd class="govuk-summary-list__value">No
+            <dd class="govuk-summary-list__value">{{data['conservation-area']}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/lpa-submission/section-2-list">
-                Change<span class="govuk-visually-hidden"> </span>
+                Change<span class="govuk-visually-hidden"> if the appeal site in or near a Conservation Area</span>
               </a>
             </dd>
           </div>
+
+          {% if data['conservation-area'] == "yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Conservation area map and guidance
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ multiFileDisplay({
+                uploadedFiles: data.uploadedFiles | filesByFieldName("conservation-area-map")
+              }) }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/lpa-submission/section-2-list">
+                Change<span class="govuk-visually-hidden"> the Conservation Area map and guidance</span>
+              </a>
+            </dd>
+          </div>
+
+            <dt class="govuk-summary-list__key">
+              Did you publicise that the site is within a conservation area or affects a listed building?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['publicise-conservation-area'] %}
+                {{ multiFileDisplay({
+                  uploadedFiles: data.uploadedFiles | filesByFieldName("conservation-area-map")
+                }) }}
+              {% else %}
+                {{data['publicise-conservation-area']}}
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/lpa-submission/section-2-list">
+                Change<span class="govuk-visually-hidden"> the Conservation Area map and guidance</span>
+              </a>
+            </dd>
+          </div>
+
+          {% endif %}
 
         </dl>
 
