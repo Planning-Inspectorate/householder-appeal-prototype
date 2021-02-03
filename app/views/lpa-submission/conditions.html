@@ -14,7 +14,7 @@
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal</span>
 
       <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset" aria-describedby="is-accurate-conditional-hint">
+        <fieldset class="govuk-fieldset" aria-describedby="extra-conditions-conditional-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
               Do you have any extra conditions? 
@@ -39,24 +39,24 @@
             
       
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="is-accurate-conditional-2" name="is-accurate" type="radio" value="phone" data-aria-controls="conditional-is-accurate-conditional-2">
-              <label class="govuk-label govuk-radios__label" for="is-accurate-conditional-2">
+              <input class="govuk-radios__input" id="extra-conditions-conditional-2" name="extra-conditions" type="radio" value="yes" {{checked('extra-conditions', 'yes')}} data-aria-controls="conditional-extra-conditions-conditional-2">
+              <label class="govuk-label govuk-radios__label" for="extra-conditions-conditional-2">
                 Yes
               </label>
             </div>
 
-            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-is-accurate-conditional-2">
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-extra-conditions-conditional-2">
               <div class="govuk-form-group">
-                <label id="site-access-conditional-hint" class="govuk-label" for="more-detail">
+                <label id="site-access-conditional-hint" class="govuk-label" for="extra-conditions-more-detail">
                   Copy and paste the list of conditions.
                 </label>
-                <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                <textarea class="govuk-textarea" id="extra-conditions-more-detail" name="extra-conditions-more-detail" rows="5" aria-describedby="extra-conditions-more-detail-hint">{{data['extra-conditions-more-detail']}}</textarea>
               </div>
             </div>
 
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="is-accurate-conditional" name="is-accurate" type="radio" value="email" data-aria-controls="conditional-is-accurate-conditional">
-              <label class="govuk-label govuk-radios__label" for="is-accurate-conditional">
+              <input class="govuk-radios__input" id="extra-conditions-conditional" name="extra-conditions" type="radio" value="no" {{checked('extra-conditions', 'no')}} data-aria-controls="conditional-extra-conditions-conditional">
+              <label class="govuk-label govuk-radios__label" for="extra-conditions-conditional">
                 No
               </label>
             </div>

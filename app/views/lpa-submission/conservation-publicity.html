@@ -14,7 +14,7 @@
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal site</span>
 
       <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset" aria-describedby="is-accurate-conditional-hint">
+        <fieldset class="govuk-fieldset" aria-describedby="publicise-conservation-area-conditional-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
               Did you publicise that the site is within a conservation area or affects a listed building?
@@ -25,15 +25,15 @@
             
       
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="is-accurate-conditional-2" name="is-accurate" type="radio" value="yes" data-aria-controls="conditional-is-accurate-conditional-2">
-              <label class="govuk-label govuk-radios__label" for="is-accurate-conditional-2">
+              <input class="govuk-radios__input" id="publicise-conservation-area-conditional-2" name="publicise-conservation-area" type="radio" value="yes" {{checked('publicise-conservation-area', 'yes')}} data-aria-controls="conditional-publicise-conservation-area-conditional-2">
+              <label class="govuk-label govuk-radios__label" for="publicise-conservation-area-conditional-2">
                 Yes
               </label>
             </div>
 
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="is-accurate-conditional" name="is-accurate" type="radio" value="no" data-aria-controls="conditional-is-accurate-conditional">
-              <label class="govuk-label govuk-radios__label" for="is-accurate-conditional">
+              <input class="govuk-radios__input" id="publicise-conservation-area-conditional" name="publicise-conservation-area" type="radio" value="no" {{checked('publicise-conservation-area', 'no')}} data-aria-controls="conditional-publicise-conservation-area-conditional">
+              <label class="govuk-label govuk-radios__label" for="publicise-conservation-area-conditional">
                 No
               </label>
             </div>
