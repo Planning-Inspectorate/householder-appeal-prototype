@@ -13,8 +13,18 @@
     <form action="green-belt" method="post" novalidate>
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal site</span>
 
+
+      {% set detailsHtml %}
+          {{ govukTextarea({
+            name: "neighbours-more-detail",
+            id: "neighbours-more-detail",
+            label: {
+              text: "Tell us the full address and why you think a visit is required."
+            }
+          }) }}
+        {% endset -%}
+
       {{ govukRadios({
-        classes: "govuk-radios--inline",
         idPrefix: "listed-building",
         name: "listed-building",
         fieldset: {
@@ -28,7 +38,10 @@
           {
             value: "yes",
             text: "Yes",
-            checked: checked("listed-building", "yes")
+            checked: checked("listed-building", "yes"),
+            conditional: {
+              html: detailsHtml
+            }
           },
           {
             value: "no",
