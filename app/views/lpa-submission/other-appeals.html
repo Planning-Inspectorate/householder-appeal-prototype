@@ -12,7 +12,7 @@
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal</span>
 
       <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset" aria-describedby="is-accurate-conditional-hint">
+        <fieldset class="govuk-fieldset" aria-describedby="other-appeals-conditional-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
               Are there any other appeals adjacent or close to the site still being considered?
@@ -23,24 +23,24 @@
             
       
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="is-accurate-conditional-2" name="is-accurate" type="radio" value="phone" data-aria-controls="conditional-is-accurate-conditional-2">
-              <label class="govuk-label govuk-radios__label" for="is-accurate-conditional-2">
+              <input class="govuk-radios__input" id="other-appeals-conditional-2" name="other-appeals" type="radio" value="yes" {{checked('other-appeals', 'yes')}} data-aria-controls="conditional-other-appeals-conditional-2">
+              <label class="govuk-label govuk-radios__label" for="other-appeals-conditional-2">
                 Yes
               </label>
             </div>
 
-            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-is-accurate-conditional-2">
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-other-appeals-conditional-2">
               <div class="govuk-form-group">
-                <label id="site-access-conditional-hint" class="govuk-label" for="more-detail">
+                <label id="site-access-conditional-hint" class="govuk-label" for="other-appeals-more-detail">
                   Enter appeal reference number(s).
                 </label>
                 <div id="event-name-hint" class="govuk-hint">You can enter more than one, separated by commas</div>
-                <input class="govuk-input" id="more-detail" name="more-detail"  aria-describedby="more-detail-hint" type="text">
+                <input class="govuk-input" id="other-appeals-more-detail" name="other-appeals-more-detail" value="{{data['other-appeals-more-detail']}}"  aria-describedby="other-appeals-more-detail-hint" type="text">
               </div>
             </div>
 <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="is-accurate-conditional" name="is-accurate" type="radio" value="email" data-aria-controls="conditional-is-accurate-conditional">
-              <label class="govuk-label govuk-radios__label" for="is-accurate-conditional">
+              <input class="govuk-radios__input" id="other-appeals-conditional" name="other-appeals" type="radio" value="no" {{checked('other-appeals', 'no')}} data-aria-controls="conditional-other-appeals-conditional">
+              <label class="govuk-label govuk-radios__label" for="other-appeals-conditional">
                 No
               </label>
             </div>

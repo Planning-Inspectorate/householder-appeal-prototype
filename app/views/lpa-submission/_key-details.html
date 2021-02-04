@@ -1,21 +1,18 @@
-<table class="govuk-table">
-      <caption class="govuk-table__caption">Appeal details</caption>
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Planning application number</th>
-          <td class="govuk-table__cell">{{ appeal.planningNumber }}</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Site address</th>
-          <td class="govuk-table__cell">
-            {{ appeal.address.street }} <br>
-            {{ appeal.address.city }} <br>
-            {{ appeal.address.postcode }}
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Appellant Name</th>
-          <td class="govuk-table__cell">{{ appeal.name.first }} {{ appeal.name.last }}</td>
-        </tr>
-      </tbody>
-    </table>  
+<h3 class="govuk-heading-m">Appeal details</h3>
+
+
+<h4 class="govuk-heading-s govuk-!-margin-bottom-1">Planning application number</h4>
+<p class="govuk-!-margin-bottom-2">{{ appeal.planningNumber }}</p>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<h4 class="govuk-heading-s govuk-!-margin-bottom-1">Site address</h4>
+<p class="govuk-!-margin-bottom-2">
+    {{ appeal.address.street }} <br>
+    {{ appeal.address.city }} <br>
+    {{ appeal.address.postcode }}</p>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+<h4 class="govuk-heading-s govuk-!-margin-bottom-1">Appellant Name</h4>
+<p class="govuk-!-margin-bottom-2">{{ appeal.name.first }} {{ appeal.name.last }}</p>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+

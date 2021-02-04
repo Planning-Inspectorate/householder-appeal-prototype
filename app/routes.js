@@ -110,7 +110,7 @@ router.post('/site-notice-post', function (req, res) {
 
 
 router.post('/lpa-submission/:appealId/conservation-publicity-post', function (req, res) {
-  let conservationupload = req.session.data['is-accurate']
+  let conservationupload = req.session.data['publicise-conservation-area']
 
   if (conservationupload == "yes") {
     res.redirect(`/lpa-submission/${req.params.appealId}/conservation-publicity-upload`)
