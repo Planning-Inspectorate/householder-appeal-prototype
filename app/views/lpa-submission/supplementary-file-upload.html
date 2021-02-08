@@ -1,4 +1,4 @@
-  {% extends "layout.html" %}
+{% extends "layout.html" %}
 
 {% set headerTitle = "Appellant stuff" %}
   
@@ -10,39 +10,40 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds"> 
-    <form action="supplementary-status" method="post" novalidate>
+    <form action="supplementary-file-list" method="post" novalidate>
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
-      <h1 class="govuk-heading-l">
-              Supplementary planning document
-            </h1>
-          
+
+        <h1 class="govuk-heading-l">
+          Supplementary planning documents
+        </h1>
+
           {% set uploadHtml %}
             {{ govukFileUpload({
-              id: "supplementary-planning-upload",
-              name: "supplementary-planning-upload",
+              id: "supplementary",
+              name: "supplementary",
               classes: 'moj-multi-file-upload__input',
               label: {
-                text: "Upload a file",
+                text: "Upload files",
                 classes: 'govuk-label--m'
               },
+              attributes: { multiple: '' },
               errorMessage: errorMessage
             }) }}
 
-
+            {{govukButton({
+              text: 'Upload file',
+              classes: 'govuk-button--secondary moj-multi-file-upload__button'
+            })}}
           {% endset %}
 
           {{ mojMultiFileUpload({
             uploadedFiles: {
               heading: { text: 'Files added' },
-              items: data.uploadedFiles | filesByFieldName("supplementary-planning-upload")
+              items: data.uploadedFiles | filesByFieldName("supplementary-planning")
             },
             uploadHtml: uploadHtml
           }) }}
 
-
-
-      <input type="hidden" name="supplementary-completed" value="govuk-tag app-task-list__task-completed">
-      <input type="hidden" name="supplementary-completed-text" value="Completed">
       <div class="govuk-form-group">
         <button class="govuk-button" data-module="govuk-button">
           Save and continue
@@ -52,11 +53,23 @@
   </div>
 
    <div class="govuk-grid-column-one-third"> 
-    {% include "lpa-submission/_key-details.html" %} 
+    
   </div>
   
 </div>
 {% endblock %}
-{% block pageScripts %}
 
+{% block pageScripts %}
+<script>
+if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
+
+  new MOJFrontend.MultiFileUpload({
+    container: $('.moj-multi-file-upload'),
+    uploadUrl: '/ajax-supplementary-planning',
+    deleteUrl: '/ajax-supplementary-planning-delete',
+    fieldName: 'supplementary-planning'
+    });
+  }
+</script>
 {% endblock %}
+

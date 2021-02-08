@@ -1,0 +1,76 @@
+  {% extends "layout.html" %}
+
+{% set headerTitle = "Appellant stuff" %}
+  
+
+{% block pageTitle %}
+  LPA 
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds"> 
+    <form action="supplementary-emerging" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
+
+{% set dateHtml %}
+{{ govukDateInput({
+  id: "adopted-date",
+  namePrefix: "adopted-date",
+  fieldset: {
+    legend: {
+      text: "Tell us the date of adoption."
+    }
+  },
+  hint: {
+    text: "For example, 27 3 2007"
+  }
+}) }}
+{% endset -%}
+
+
+          
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "changed-name",
+  name: "changed-name",
+  fieldset: {
+    legend: {
+      text: "Was it formally adopted?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },  
+  items: [
+    {
+      value: "yes",
+      text: "Yes",
+      conditional: {
+        html: dateHtml
+      }
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+      
+      <div class="govuk-form-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </div>
+    </form>
+  </div>
+
+   <div class="govuk-grid-column-one-third"> 
+    
+  </div>
+  
+</div>
+{% endblock %}
+{% block pageScripts %}
+
+{% endblock %}

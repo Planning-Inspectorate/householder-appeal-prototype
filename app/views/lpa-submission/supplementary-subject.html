@@ -10,20 +10,32 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds"> 
-    <form action="supplementary-subject" method="post" novalidate>
+    <form action="supplementary-adopted" method="post" novalidate>
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
 
           
-      {{ govukInput({
-        label: {
-          text: "What is the status of the document?",
-          classes: "govuk-label--l",
-          isPageHeading: true
-        },
-        id: "supplementarty-status",
-        name: "supplementarty-status"
-      }) }}
-
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "changed-name",
+  name: "changed-name",
+  fieldset: {
+    legend: {
+      text: "Was it the subject of public consultation and consequent modification?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
 
       
       <div class="govuk-form-group">
