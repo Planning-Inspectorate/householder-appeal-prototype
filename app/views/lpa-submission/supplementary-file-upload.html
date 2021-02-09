@@ -10,7 +10,7 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds"> 
-    <form action="supplementary-file-list" method="post" novalidate>
+    <form action="supplementary-adopted" method="post" novalidate>
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
 
         <h1 class="govuk-heading-l">
@@ -19,8 +19,8 @@
 
           {% set uploadHtml %}
             {{ govukFileUpload({
-              id: "supplementary",
-              name: "supplementary",
+              id: "supplementary-planning",
+              name: "supplementary-planning",
               classes: 'moj-multi-file-upload__input',
               label: {
                 text: "Upload files",

@@ -759,7 +759,7 @@ router.get("/lpa-submission/new-appeal/:appealId", function(req, res, next){
 router.post("/lpa-submission/:appealId/supplementary-post", function(req, res, next){
 
   if(req.body["supplementary-docs"] == "yes"){
-    res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-file-upload`)
+    res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-name`)
   } else {
     req.session.data["supplementary-completed"] = "govuk-tag app-task-list__task-completed";
     req.session.data["supplementary-completed-text"] = "Completed";
@@ -775,6 +775,50 @@ router.get("/lpa-submission/:appealId/:pageName", function(req, res, next){
 
   res.render(`lpa-submission/${req.params.pageName}`);
 })
+
+let saveSupplementaryDetails = function(req){
+  if (!req.session.supplementaryDocsList){
+    req.session.data.supplementaryDocsList = [];
+  }
+
+  
+  let details = {
+    "name": req.session.data["supplementary-name"],
+    "stage": req.session.data["supplementary-stage"],
+    "adopted":  req.session.data["supplementary-adopted"],
+    "adopted-date-day": req.session.data["supplementary-adopted-date-day"],
+    "adopted-date-month": req.session.data["supplementary-adopted-date-month"],
+    "adopted-date-year": req.session.data["supplementary-adopted-date-year"]
+  }
+
+  if(!req.session.data.uploadedFiles){
+    details.files = [];
+  } else {
+    details.files = req.session.data.uploadedFiles.filter(file => file.fieldname === "supplementary-planning");
+  }
+
+  req.session.data.supplementaryDocsList.push(details);
+
+}
+
+
+router.post("/lpa-submission/:appealId/supplementary-adopted-post", function(req, res, next){
+
+  if(req.body["supplementary-adopted"] == "yes"){
+    saveSupplementaryDetails(req);
+    res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-file-list`)
+  } else {
+    res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-stage`)
+  }
+
+})
+
+router.post("/lpa-submission/:appealId/supplementary-stage-post", function(req, res, next){
+  saveSupplementaryDetails(req);
+  res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-file-list`);
+})
+
+
 
 
 

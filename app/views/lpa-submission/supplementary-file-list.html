@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 
 {% set headerTitle = "Appellant stuff" %}
-{% set files = data.uploadedFiles | filesByFieldName("supplementary-planning") %}
 {% block pageTitle %}
   LPA 
 {% endblock %}
@@ -15,12 +14,12 @@
       
       <p>Complete a section for each file</p>
 
-      <h2 class="govuk-heading-s">{{ files.length }} files uploaded</h2>
+      <h2 class="govuk-heading-s">{{ data.supplementaryDocsList.length }} files uploaded</h2>
       <ul class="pins-file-list">
 
-        {% for file in files %}
+        {% for document in data.supplementaryDocsList %}
         <li class="pins-file-list__item">
-          <a class="pins-file-list__link" href="supplementary-status?file={{file.filename}}">{{file.originalname}}</a>
+          <a class="pins-file-list__link" href="supplementary-status?file={{file.filename}}">{{document.name}}</a>
           <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="your-details-status">Not started</strong>
         </li>
         {% endfor %}

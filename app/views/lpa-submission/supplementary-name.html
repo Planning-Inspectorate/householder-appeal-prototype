@@ -10,18 +10,21 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds"> 
-    <form action="supplementary-subject" method="post" novalidate>
+    <form action="supplementary-file-upload" method="post" novalidate>
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
 
           
       {{ govukInput({
         label: {
-          text: "What is the status of the document?",
+          text: "What is the name of the Supplementary Planning document?",
           classes: "govuk-label--l",
           isPageHeading: true
         },
-        id: "supplementarty-status",
-        name: "supplementarty-status"
+        id: "supplementary-name",
+        name: "supplementary-name",
+          hint: {
+            text: "If there is more than 1, you will be able to add more later"
+          }
       }) }}
 
 

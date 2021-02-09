@@ -10,13 +10,13 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds"> 
-    <form action="supplementary-emerging" method="post" novalidate>
+    <form action="supplementary-adopted-post" method="post" novalidate>
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
 
 {% set dateHtml %}
 {{ govukDateInput({
-  id: "adopted-date",
-  namePrefix: "adopted-date",
+  id: "supplementary-adopted-date",
+  namePrefix: "supplementary-adopted-date",
   fieldset: {
     legend: {
       text: "Tell us the date of adoption."
@@ -32,8 +32,8 @@
           
 {{ govukRadios({
   classes: "govuk-radios--inline",
-  idPrefix: "changed-name",
-  name: "changed-name",
+  idPrefix: "supplementary-adopted",
+  name: "supplementary-adopted",
   fieldset: {
     legend: {
       text: "Was it formally adopted?",
