@@ -19,6 +19,8 @@ Example usage:
 
 let data = {
 
+  cookieBanner: "on",
+
   saveReturnUrl: "/verify-email-post",
 
   cases: [],

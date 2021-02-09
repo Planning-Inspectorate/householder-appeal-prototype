@@ -763,6 +763,11 @@ router.get("/lpa-submission/:appealId/:pageName", function(req, res, next){
   res.render(`lpa-submission/${req.params.pageName}`);
 })
 
+router.get("/cookies", function(req, res, next){
+  res.locals.referer = req.headers.referer
+  res.render("cookies/index")
+})
+
 module.exports = router
 
 

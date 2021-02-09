@@ -170,3 +170,8 @@ $govuk-assets-path: '/govuk/assets/';
 	margin-top: govuk-spacing(2);
 	margin-bottom: govuk-spacing(2);
 }
+
+
+.govuk-hint p {
+	color: $govuk-secondary-text-colour
+}

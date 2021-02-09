@@ -1,7 +1,23 @@
-{% if shouldShowCookieMessage %}
-  <div class="app-cookie-banner">
-    <p class="app-cookie-banner__message">
-      {{cookieText | safe }}
-    </p>
+
+
+{% if data.cookieBanner == "on" %}
+
+<div class="govuk-width-container govuk-!-padding-top-3">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h3 class="govuk-heading-m">Cookies on appeal a householder planning decision service</h3>
+
+      <p>We use <a href=/cookies>cookies to collect information</a> about how you use the appeal a householder planning decision service. We use this information to make the website work as well as possible and improve government services.</p>
+
+      <form action="" method="get" accept-charset="utf-8">
+      	<input type="hidden" name="cookieBanner" value="off">
+      	<input type="hidden" name="optional-cookies" value="on">
+      	<button class="govuk-button govuk-!-margin-right-7" name="">Accept all cookies</button>
+      	<a href="/cookies" class="govuk-button govuk-button--secondary">Set cookie preferences</a>
+      </form>
+    </div>
   </div>
+
+</div>
+
 {% endif %}
