@@ -26,6 +26,10 @@ try{
 
 // Add your routes here - above the module.exports line
 
+router.post("/", function(req, res, next){
+  res.render('index')
+})
+
 // SUBMISSION - APPEAL STATEMENT
 router.post('/check-statement', function (req, res) {
   let sense = req.session.data['sense-check']
