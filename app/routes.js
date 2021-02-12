@@ -795,7 +795,7 @@ let saveSupplementaryDetails = function(req){
     details.files = [];
   } else {
     details.files = req.session.data.uploadedFiles.filter(file => file.fieldname === "supplementary-planning");
-    req.session.data.uploadedFiles.filter(file => file.fieldname === "supplementary-planning");
+    req.session.data.uploadedFiles = req.session.data.uploadedFiles.filter(file => file.fieldname != "supplementary-planning")
   }
 
   let newObject = JSON.parse(JSON.stringify(details));
