@@ -28,6 +28,17 @@
 }) }}
 {% endset -%}
 
+{% set stageHtml %}
+{{ govukInput({
+        label: {
+          text: "Tell is what stage this has reached"
+        },
+        id: "supplementary-stage",
+        name: "supplementary-stage"
+      }) }}
+
+{% endset -%}
+
 
           
 {{ govukRadios({
@@ -51,7 +62,10 @@
     },
     {
       value: "no",
-      text: "No"
+      text: "No",
+      conditional: {
+        html: stageHtml
+      }
     }
   ]
 }) }}

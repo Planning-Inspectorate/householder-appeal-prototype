@@ -8,7 +8,7 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds"> 
-    <form action="supplementary-file-list" method="post" novalidate>
+    <form action="lpa-task-list" method="post" novalidate>
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
       <h1 class="govuk-heading-l">Supplementary planning documents</h1>
       
@@ -17,15 +17,34 @@
       <h2 class="govuk-heading-s">{{ data.supplementaryDocsList.length }} files uploaded</h2>
       <ul class="pins-file-list">
 
-        {% for document in data.supplementaryDocsList %}
-        <li class="pins-file-list__item">
-          <a class="pins-file-list__link" href="supplementary-status?file={{file.filename}}">{{document.name}}</a>
-          <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="your-details-status">Not started</strong>
-        </li>
-        {% endfor %}
-      </ul>
 
-      <a href="supplementary-file-upload" class="govuk-button govuk-button--secondary">Add or remove files</a>
+      <dl class="govuk-summary-list">
+        {% for document in data.supplementaryDocsList %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__value">
+            <a href="supplementary-name">{{document.name}}</a>
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if document.adopted == "yes" %}
+              Adopted on {{document['adopted-date-day']}} {{document['adopted-date-month'] | formatMonth }} {{document['adopted-date-year']}} 
+            {% else %}
+              {{ document.stage }}
+            {% endif %}
+            
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Remove<span class="govuk-visually-hidden"> {{document.name}} supplementary planning document</span>
+            </a>
+          </dd>
+        </div>
+        {% endfor %}
+        
+      </dl>
+      <input type="hidden" name="supplementary-completed" value="govuk-tag app-task-list__task-completed">
+      <input type="hidden" name="supplementary-completed-text" value="Completed">
+      <a href="supplementary-name" class="govuk-button govuk-button--secondary">Add another</a>
 
       
       <div class="govuk-form-group">

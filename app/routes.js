@@ -777,7 +777,7 @@ router.get("/lpa-submission/:appealId/:pageName", function(req, res, next){
 })
 
 let saveSupplementaryDetails = function(req){
-  if (!req.session.supplementaryDocsList){
+  if (!req.session.data.supplementaryDocsList){
     req.session.data.supplementaryDocsList = [];
   }
 
@@ -795,28 +795,24 @@ let saveSupplementaryDetails = function(req){
     details.files = [];
   } else {
     details.files = req.session.data.uploadedFiles.filter(file => file.fieldname === "supplementary-planning");
+    req.session.data.uploadedFiles.filter(file => file.fieldname === "supplementary-planning");
   }
 
-  req.session.data.supplementaryDocsList.push(details);
+  let newObject = JSON.parse(JSON.stringify(details));
+
+  console.log(newObject)
+  req.session.data.supplementaryDocsList.push( newObject );
 
 }
 
 
 router.post("/lpa-submission/:appealId/supplementary-adopted-post", function(req, res, next){
 
-  if(req.body["supplementary-adopted"] == "yes"){
-    saveSupplementaryDetails(req);
-    res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-file-list`)
-  } else {
-    res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-stage`)
-  }
-
-})
-
-router.post("/lpa-submission/:appealId/supplementary-stage-post", function(req, res, next){
   saveSupplementaryDetails(req);
   res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-file-list`);
+
 })
+
 
 
 
