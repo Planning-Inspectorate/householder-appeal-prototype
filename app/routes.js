@@ -26,6 +26,10 @@ try{
 
 // Add your routes here - above the module.exports line
 
+router.post("/", function(req, res, next){
+  res.render('index')
+})
+
 // SUBMISSION - APPEAL STATEMENT
 router.post('/check-statement', function (req, res) {
   let sense = req.session.data['sense-check']
@@ -776,6 +780,7 @@ router.get("/lpa-submission/:appealId/:pageName", function(req, res, next){
   res.render(`lpa-submission/${req.params.pageName}`);
 })
 
+
 let saveSupplementaryDetails = function(req){
   if (!req.session.data.supplementaryDocsList){
     req.session.data.supplementaryDocsList = [];
@@ -815,8 +820,10 @@ router.post("/lpa-submission/:appealId/supplementary-adopted-post", function(req
 
 
 
-
-
+router.get("/cookies", function(req, res, next){
+  res.locals.referer = req.headers.referer
+  res.render("cookies/index")
+})
 
 module.exports = router
 
