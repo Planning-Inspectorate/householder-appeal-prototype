@@ -780,6 +780,12 @@ router.get("/lpa-submission/:appealId/:pageName", function(req, res, next){
   res.render(`lpa-submission/${req.params.pageName}`);
 })
 
+router.get("/lpa-submission/:appealId/:pageName/:pageName2", function(req, res, next){
+  res.locals.appeal = appealsList.find(appeal => appeal.id == req.params.appealId);
+
+  res.render(`lpa-submission/${req.params.pageName}/${req.params.pageName2}`);
+})
+
 
 let saveSupplementaryDetails = function(req){
   if (!req.session.data.supplementaryDocsList){
@@ -817,6 +823,8 @@ router.post("/lpa-submission/:appealId/supplementary-adopted-post", function(req
   res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-file-list`);
 
 })
+
+
 
 
 
