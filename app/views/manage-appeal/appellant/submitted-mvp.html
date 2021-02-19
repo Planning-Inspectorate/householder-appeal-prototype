@@ -1,0 +1,57 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  Your details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <h1 class="govuk-heading-l">
+        Your planning appeal
+      </h1>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Appellant Name</dt>
+          <dd class="govuk-summary-list__value">{{data.user.name.first}} {{data.user.name.last}}</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Site address</dt>
+          <dd class="govuk-summary-list__value">{{data.user.location.street.number}} {{data.user.location.street.name}},
+                {{data.user.location.city}}</dd>
+        </div>
+      </dl>
+      <h2 class="govuk-heading-m">Stages of your appeal</h2>
+
+      <ol class="timeline">
+
+        <li class="timeline__entry">
+          <h2 class="timeline__header">Appeal received </h2>
+          <span class="timeline__sub-header govuk-!-margin-bottom-5">{{ 0 | daysAgo }}</span>
+          <p><a href="appeal-details">View your appeal details</a></p>
+        </li>
+
+        <li class="timeline__entry">
+          <h2 class="timeline__header">The local planning department submit their case file</h2>
+          <p>Your local planning department will submit their case file from the original planning application. This usually takes around 3 weeks from the date you submit your appeal. </p>
+        </li>
+
+        <li class="timeline__entry">
+          <h2 class="timeline__header">Site visit</h2>
+          <p>An Inspector may need to visit the appeal site. We'll contact you to confirm a date a time.</p>
+        </li>
+
+        <li class="timeline__entry">
+          <h2 class="timeline__header">Decision</h2>
+          <p>The Inspector will consider the evidence from all parties to make a decision.</p>
+        </li>
+      </ol>
+
+
+    </div>
+  </div>  
+
+{% endblock %}
