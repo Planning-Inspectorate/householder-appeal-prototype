@@ -7,123 +7,48 @@
 {% block content %}
   <div class="govuk-grid-row">
 <div class="govuk-grid-column-two-thirds">
-  <form action="/check-statement" method="post" novalidate>
+  <form action="sensitive-information" method="post" novalidate>
+
     <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Your appeal</span>
-    <h1 class="govuk-heading-l">
-      Upload your appeal statement
-    </h1>  
-    
-    <p>Your appeal statement (also known as a 'grounds for appeal') should explain why you think the local planning department's decision to refuse your planning application was incorrect.​</p>
-    <p>You should respond to all the reasons for refusal (you can find these on the decision letter) and include any other information that supports your appeal.​</p>
-    <p>If you mention any other documents in your appeal statement, for example photographs, you can upload those in the next step.​
 
-​</p>
-    
-    <details class="govuk-details" data-module="govuk-details">
-      <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">
-          How to write your appeal statement
-        </span>
-      </summary>
-      <div class="govuk-details__text">
-        <p>When you appeal, the Planning Inspectorate looks at whether the local planning department (also referred to as 'Local Planning Authority' or 'LPA') correctly applied the relevant planning policies to your original planning application.</p>
-        <p>The decision will be based on the local planning department’s development plan, which can be found on the local planning department’s website.</p>
-        <p>When deciding whether a planning application is in line with the development plan, they may have taken into account some or all of the following:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>the possible impact on the surrounding area</li>
-          <li>the proposed use of the development</li>
-          <li>the number, size, layout, position and external appearance of buildings</li>
-          <li>the infrastructure available (for example, roads) and proposed means of access</li>
-          <li>landscaping requirements</li>
-        </ul>
-        <p>You should set out why you are appealing the decision in your appeal statement (also called a ‘grounds of appeal’). It should respond to the local planning department’s reasons for refusal, which can be found on the decision letter.</p>
-        <p>If you think there is other relevant information that supports your appeal, this is the opportunity to highlight it to the Planning Inspectorate.</p>
-
-
-        <h4 class="govuk-heading-s">Reasons for refusal</h4>
-        <p>TThe first step is to read the local planning department’s decision letter, where they list their reasons for refusing the planning application. Each reason for refusal will mention the planning policy their decision is based on, and may also refer to additional planning documents.</p> 
-        <p>You should also read the planning officer’s report, and any planning committee meeting notes (if applicable). If you think the local planning department's decision to refuse your application is incorrect, explain why in your statement.</p>
-        
-
-        <h4 class="govuk-heading-s">Supporting documents</h4>
-        <p>If you refer to any documents, for example photographs, in your appeal statement, you need to explain why you think they are relevant in your statement and then upload them in the next step.</p>
-
-        
-        <h4 class="govuk-heading-s">Responding to comments from interested parties</h4>
-        <p>There may have been comments (also called ‘representations’) from interested parties on the original planning application. You can respond to them in your appeal statement if you want to. </p>            
-
-      </div>
-    </details>
-    <p>Your statement cannot include any sensitive information (see 'What is sensitive information?'). </p>
-    <details class="govuk-details" data-module="govuk-details">
-      <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">
-          What is sensitive information?
-        </span>
-      </summary>
-      <div class="govuk-details__text">
-        <h4 class="govuk-heading-s">Use of language and sensitive information</h4>
-        <p>Your statement must not include racist, inflammatory or abusive language.​​</p>
-        <p>Do not include sensitive information in your statement, as you'll be asked to resubmit and this will delay your appeal.​​​​</p>
-
-        <p>Sensitive information refers to:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>Comments from children</li>
-          <li>Information relating to children</li>
-          <li>Information relating to health</li>
-          <li>Information relating to crime</li>
-          <li>Any information relating to an individual’s:
-            <ol type="i">
-              <li>race</li>
-              <li>ethnic origin</li>
-              <li>politics</li>
-              <li>religion</li>
-              <li>trade union membership</li>
-              <li>genetics</li>
-              <li>physical characteristics</li>
-              <li>sex life</li>
-              <li>sexual orientation</li>
-            </ol>
-          </li>
-        </ul>
-      </div>
-    </details>
-    <div class="govuk-inset-text">File size should be no more than 1.21GB</div>
-    <div class="govuk-form-group">
-      <label class="govuk-heading-m" for="appeal-statement">
-        Upload your appeal statement
-      </label>
-      <input value="{{ data['appeal-statement'] }}" class="govuk-file-upload" id="appeal-statement" name="appeal-statement" type="file">
-    </div>
-
-    <details class="govuk-details" data-module="govuk-details">
-      <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">
-          Help with file formats
-        </span>
-      </summary>
-      <div class="govuk-details__text">
-        Please upload your statement in one of the following formats:
-        <ul class="govuk-list--bullets">
-          <li>PDF &ndash; <strong>.pdf</strong></li>
-          <li>Microsoft Word &ndash; <strong>.doc</strong> or <strong>.docx</strong></li>
-          <li>TIF &ndash; <strong>.tif</strong> or <strong>.tiff</strong></li>
-          <li>JPEG &ndash; <strong>.jpg</strong> or <strong>.jpeg</strong></li>
-          <li>PNG &ndash; <strong>.png</strong></li>
-        </ul>
-      </div>
-    </details>
 
     <div class="govuk-form-group">
-        <div class="govuk-checkboxes">
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="sense-check" name="sense-check" value="on" type="checkbox">
-            <label class="govuk-label govuk-checkboxes__label" for="sense-check">
-              I confirm that I have not included sensitive information in my appeal statement.
-            </label>
-          </div>
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="reason-for-appeal">
+      Tell us why the reason for your appeal
+    </label>
+    </h1>
+
+  
+  
+  <div id="reason-for-appeal-hint" >
+    
+  
+      <details class="govuk-details" data-module="govuk-details" open="">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Help with reason for appeal
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="govuk-body">You should respond to the local planning department’s reasons for refusal, which can be found on the decision letter.</p>
+  
+          <p class="govuk-body">If you think there is other relevant information that supports your appeal, this is the opportunity to highlight it to the Planning Inspectorate.</p>
+  
+          <p class="govuk-body">If you refer to any documents, for example photographs, in your appeal statement, you need to explain why you think they are relevant in your statement and then upload them in the next step.</p>
+  
+          <p class="govuk-body">There may have been comments (also called ‘representations’) from interested parties on the original planning application. You can respond to them in your appeal statement if you want to.</p>
         </div>
-    </div>
+      </details>
+  
+      
+  </div>
+
+
+  <textarea class="govuk-textarea" id="reason-for-appeal" name="reason-for-appeal" rows="5" aria-describedby="reason-for-appeal-hint"></textarea>
+</div>
+
+    <p><a href="appeal-statement-upload" title="">Upload a document instead</a></p>
 
     <div class="govuk-form-group">
       <button class="govuk-button" data-module="govuk-button">
