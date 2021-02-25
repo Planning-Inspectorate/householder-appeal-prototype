@@ -37,7 +37,7 @@ router.post('/check-statement', function (req, res) {
   if (Array.isArray(sense) && sense[0] === 'on') {
     res.redirect('/appellant-submission/supporting-documents')
   } else {
-    res.redirect('/appellant-submission/appeal-statement-error')
+    res.redirect('/appellant-submission/sensitive-information-error')
   }
 })
 

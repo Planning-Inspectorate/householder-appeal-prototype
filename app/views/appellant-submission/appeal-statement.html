@@ -14,7 +14,7 @@
 
     <div class="govuk-form-group">
   <h1 class="govuk-label-wrapper">
-    <label class="govuk-label govuk-label--l" for="reason-for-appeal">
+    <label class="govuk-label govuk-label--l govuk-!-padding-bottom-3" for="reason-for-appeal">
       Tell us why the reason for your appeal
     </label>
     </h1>
@@ -24,7 +24,7 @@
   <div id="reason-for-appeal-hint" >
     
   
-      <details class="govuk-details" data-module="govuk-details" open="">
+      <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
             Help with reason for appeal
@@ -47,7 +47,6 @@
 
   <textarea class="govuk-textarea" id="reason-for-appeal" name="reason-for-appeal" rows="5" aria-describedby="reason-for-appeal-hint"></textarea>
 </div>
-
     <p><a href="appeal-statement-upload" title="">Upload a document instead</a></p>
 
     <div class="govuk-form-group">
@@ -55,9 +54,7 @@
         Save and continue
       </button>
     </div>
-    <input type="hidden" name="sense-check" value="{{ data['appeal-confirmation'] }}">
-    <input type="hidden" name="appeal-statement-completed" value="govuk-tag app-task-list__tag">
-    <input type="hidden" name="appeal-statement-completed-text" value="Completed">
+
   </form>
 </div>
 
