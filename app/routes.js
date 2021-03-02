@@ -267,15 +267,15 @@ router.post('/eligibility/listed-building-post', function (req, res) {
 })
 
 
-router.post('/consent-eligibility-v4', function (req, res) {
-  let hasconsent = req.session.data['how-contacted']
+router.post('/householder-post', function (req, res) {
+  let hasconsent = req.session.data['householder']
 
   if (hasconsent === 'yes') {
-    res.redirect('/appellant-submission/listed-building')
+    res.redirect('/appellant-submission/decision-date')
   } else if (hasconsent === 'no') {
     res.redirect('/appellant-submission/consent-out')
   } else {
-    res.redirect('/appellant-submission/consent')
+    res.redirect('/appellant-submission/householder')
   }
 })
 
@@ -283,7 +283,7 @@ router.post('/appellant-submission/listed-building-post', function (req, res) {
   let haslisted = req.session.data['listed-building']
 
   if (haslisted === 'no') {
-    res.redirect('/appellant-submission/appeal-statement-info')
+    res.redirect('/appellant-submission/costs')
   } else if (haslisted === 'yes') {
     res.redirect('/appellant-submission/listed-out')
   } else {
@@ -291,6 +291,18 @@ router.post('/appellant-submission/listed-building-post', function (req, res) {
   }
 })
 
+
+router.post('/costs-post', function (req, res) {
+  let haslisted = req.session.data['costs']
+
+  if (haslisted === 'no') {
+    res.redirect('/appellant-submission/appeal-statement-info')
+  } else if (haslisted === 'yes') {
+    res.redirect('/appellant-submission/costs-out')
+  } else {
+    res.redirect('/appellant-submission/costs')
+  }
+})
 
 router.post('/eligibility/planning-department-post', function(req, res, next){
   let redirectUrl = req.session.data["idox-prototype-url"];
@@ -312,15 +324,12 @@ router.post('/appellant-submission/planning-department-post', function(req, res,
   let redirectUrl = req.session.data["idox-prototype-url"];
   let dept = req.body['planning-department'];
   console.log(dept)
-  if(dept === 'SGC') {
-    req.session.data.planningError = false;
-    res.redirect('/appellant-submission/consent')
-  } else if (dept === ""){
+  if (dept === ""){
     req.session.data.planningError = true;
     res.redirect('/appellant-submission/planning-department')
   } else {
     req.session.data.planningError = false;
-    res.redirect('/appellant-submission/planning-department-out')
+    res.redirect('/appellant-submission/listed-building')
   }
 })
 
