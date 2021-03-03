@@ -271,11 +271,23 @@ router.post('/householder-post', function (req, res) {
   let hasconsent = req.session.data['householder']
 
   if (hasconsent === 'yes') {
-    res.redirect('/appellant-submission/decision-date')
+    res.redirect('/appellant-submission/enforcement')
   } else if (hasconsent === 'no') {
     res.redirect('/appellant-submission/consent-out')
   } else {
     res.redirect('/appellant-submission/householder')
+  }
+})
+
+router.post('/enforcement-post', function (req, res) {
+  let enforcement = req.session.data['enforcement']
+
+  if (enforcement === 'no') {
+    res.redirect('/appellant-submission/decision-date')
+  } else if (enforcement === 'yes') {
+    res.redirect('/appellant-submission/enforcement-out')
+  } else {
+    res.redirect('/appellant-submission/enforcement')
   }
 })
 
