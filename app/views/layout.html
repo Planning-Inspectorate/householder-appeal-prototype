@@ -44,7 +44,9 @@
 {% endblock %}
 
 {% block header %}
-  {% include "includes/cookie-banner.html" %}
+  {% if not alwaysHideCookieBanner %}
+    {% include "includes/cookie-banner.html" %}
+  {% endif %}
   {# Set serviceName in config.js. #}
   {{ govukHeader({
     homepageUrl: "/",
@@ -59,7 +61,7 @@
 
 {% block main %}
   <div class="govuk-width-container {{ containerClasses }}">
-    
+
     <main id="main-content" role="main"{% if mainLang %} lang="{{ mainLang }}"{% endif %}>
 
       {% if not hidePhaseBanner %}
@@ -69,7 +71,7 @@
         },
         html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
       }) }}
-      
+
 
       {{ govukBackLink({
         text: "Back",
@@ -78,9 +80,9 @@
 
       {% endif %}
       <div class="govuk-main-wrapper {{ mainClasses }}">
-        
+
           {% block content %}{% endblock %}
-        
+
       </div>
     </main>
   </div>

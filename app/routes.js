@@ -12,7 +12,22 @@ const moment = require("moment");
 const axios = require("axios");
 const idoxScraperUrl = process.env.IDOX_SCRAPER_URL;
 
-  let appealsList = require("./data/appeals.js");
+let appealsList = require("./data/appeals.js");
+
+//cookie stuff
+
+router.all("*", function(req, res, next){
+  res.locals.alwaysHideCookieBanner = process.env.HIDE_COOKIE_BANNER;
+  console.log(res.locals.alwaysHideCookieBanner);
+  next();
+})
+
+
+router.get("/cookies", function(req, res, next){
+  res.locals.referer = req.headers.referer
+  res.render("cookies/index")
+})
+
 
 //notify stuff
 const NotifyClient = require('notifications-node-client').NotifyClient
@@ -150,11 +165,11 @@ router.all("/components/select-council", function(req,res,next){
   fs.readFile(__basedir + "/app/data/local-authority-eng.json", function(err, data){
     res.locals.councils = localCouncils.sort(sortByProperty("name"));
     next()
-      
+
   });
 
-  
-});  
+
+});
 
 
 
@@ -165,7 +180,7 @@ router.post("/components/search-council/results", function(req, res, next){
   request.get("https://api.postcodes.io/postcodes/" + postcode, (error, response, body) => {
      let json = JSON.parse(body);
 
-  
+
     if(json.status === 200){
       res.locals.councilName = json.result.admin_district;
       res.render("components/search-council/results");
@@ -175,7 +190,7 @@ router.post("/components/search-council/results", function(req, res, next){
       res.locals.councilName = json.error;
       res.render("components/search-council/results");
     }
-    
+
   });
 });
 
@@ -203,9 +218,9 @@ router.post('/eligibility/decision-date-post', function (req, res) {
     } else {
       res.redirect('/eligibility/planning-department')
     }
-  } 
+  }
 
-  
+
 })
 
 router.post('/appellant-submission/decision-date-post', function (req, res) {
@@ -232,26 +247,26 @@ router.post('/appellant-submission/decision-date-post', function (req, res) {
     } else {
       res.redirect('/appellant-submission/planning-department')
     }
-  } 
+  }
 
-  
+
 })
 
 router.all('/eligibility/planning-department', function(req,res,next){
-  
+
   res.locals.councils = localCouncils.sort(sortByProperty("name"));
-  
+
   next()
-  
+
 });
 
 router.all('/appellant-submission/planning-department', function(req,res,next){
-  
+
   res.locals.councils = localCouncils.sort(sortByProperty("name"));
-  
+
   next()
-  
-});  
+
+});
 
 
 router.post('/eligibility/listed-building-post', function (req, res) {
@@ -357,9 +372,9 @@ router.post("/submit-appeal/planning-number-post", function(req, res, next){
   } else {
     res.redirect("/submit-appeal/reference-number-not-found")
   }
-  
 
-  
+
+
 })
 
 
@@ -388,7 +403,7 @@ router.post("/submit-appeal/planning-number-post-2", function(req, res, next){
 
   res.redirect('/submit-appeal/postcode')
 
-  
+
 })
 
 
@@ -404,7 +419,7 @@ router.post("/submit-appeal/postcode-post-ajax", function(req, res, next){
         res.send({
           redirect: "/submit-appeal/reference-number-not-found"
         });
-      } 
+      }
 
       if(planningDetails) {
         clearInterval(interval);
@@ -434,11 +449,11 @@ router.post("/submit-appeal/postcode-post-ajax", function(req, res, next){
       }
     }
   }
-  
+
   checkResponse();
-  
+
   var interval = setInterval(checkResponse, 1000);
-  
+
 
 })
 
@@ -453,7 +468,7 @@ router.post("/submit-appeal/postcode-post", function(req, res, next){
       if(planningDetails.error){
         clearInterval(interval);
         res.redirect("/submit-appeal/reference-number-not-found");
-      } 
+      }
 
       if(planningDetails) {
         clearInterval(interval);
@@ -477,11 +492,11 @@ router.post("/submit-appeal/postcode-post", function(req, res, next){
       }
     }
   }
-  
+
   checkResponse();
-  
+
   var interval = setInterval(checkResponse, 1000);
-  
+
 
 })
 
@@ -506,7 +521,7 @@ router.post("/submit-appeal/contact-details-post", function(req, res, next){
       req.session.data["alt-contact-details-completed-text"] = "In progress";
       res.redirect('/submit-appeal/address')
     }
-    
+
     req.session.data["alt-contact-details-completed"] = "";
     req.session.data["alt-contact-details-completed-text"] = "Completed";
     res.redirect('/submit-appeal/task-list')
@@ -558,8 +573,8 @@ router.all("/submit-appeal/task-list", function(req, res, next){
       complete: false,
     },{
       sections: [
-        req.session.data["alt-appeal-statement-completed-text"], 
-        req.session.data["alt-upload-appeal-docs-completed-text"], 
+        req.session.data["alt-appeal-statement-completed-text"],
+        req.session.data["alt-upload-appeal-docs-completed-text"],
         req.session.data["alt-other-appeal-completed-text"]
         ],
       complete: false
@@ -606,7 +621,7 @@ router.get("/get-session-data.json", function(req, res, next){
 
 router.get("/complete-appeal-task-list", function(req, res, next){
   req.session.data = require("./data/complete-appeal.js");
-  
+
   res.redirect("/submit-appeal/task-list")
 })
 
@@ -637,7 +652,7 @@ router.post("/verify-email-post", function(req, res, next){
 
 
 router.post("/verify-email-post", function(req, res, next){
-  
+
 
   res.redeirect
 })
@@ -655,7 +670,7 @@ router.post("/appellant-submission/save-return/verification-confirmation", funct
       url: `${req.headers.origin}/saved-appeal/e26qbhysx4s5vfgj0z8w`
     };
     notifyClient.sendEmail(templateId, emailAddress, {
-      personalisation: personalisation 
+      personalisation: personalisation
     })
       .then(function(response){
         console.log(response)
@@ -671,12 +686,12 @@ router.post("/appellant-submission/save-return/verification-confirmation", funct
   } else if(!code || code == ""){
     res.locals.verificationError = true;
     res.locals.verificationMessage = "Enter your verification code";
-    
+
     res.render("appellant-submission/save-return/verification-confirmation");
   } else {
     res.locals.verificationError = true;
     res.locals.verificationMessage = "Verfication code is incorrect";
-    
+
     res.render("appellant-submission/save-return/verification-confirmation");
   }
 })
@@ -694,7 +709,7 @@ router.post("/appellant-submission/save-return/verify-email", function(req, res,
   console.log(emailAddress)
   let personalisation = {
     name: req.session.data['appellant-name'],
-    url: `${req.headers.origin}/confirm-email/jqmc0vqyaxngfbc585u1` 
+    url: `${req.headers.origin}/confirm-email/jqmc0vqyaxngfbc585u1`
   };
   notifyClient
     .sendEmail(templateId, emailAddress, {
@@ -723,7 +738,7 @@ router.post("/appellant-submission/save-return/email-confirmed-2", function(req,
       name: req.session.data['appellant-name']
     };
     notifyClient.sendEmail(templateId, emailAddress, {
-      personalisation: personalisation 
+      personalisation: personalisation
     })
       .then(function(response){
         console.log(response)
@@ -744,7 +759,7 @@ router.post("/appellant-submission/save-return/reset-confirmation", function(req
       url: `${req.headers.origin}/reset-password/jqmc0vqyaxngfbc585u1`
     };
     notifyClient.sendEmail(templateId, emailAddress, {
-      personalisation: personalisation 
+      personalisation: personalisation
     })
       .then(function(response){
         console.log(response)
@@ -813,7 +828,7 @@ let saveSupplementaryDetails = function(req){
     req.session.data.supplementaryDocsList = [];
   }
 
-  
+
   let details = {
     "name": req.session.data["supplementary-name"],
     "stage": req.session.data["supplementary-stage"],
@@ -845,15 +860,4 @@ router.post("/lpa-submission/:appealId/supplementary-adopted-post", function(req
 
 })
 
-
-
-
-
-router.get("/cookies", function(req, res, next){
-  res.locals.referer = req.headers.referer
-  res.render("cookies/index")
-})
-
 module.exports = router
-
-
