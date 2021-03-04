@@ -26,6 +26,10 @@ try{
 
 // Add your routes here - above the module.exports line
 
+router.post("/", function(req, res, next){
+  res.render('index')
+})
+
 // SUBMISSION - APPEAL STATEMENT
 router.post('/check-statement', function (req, res) {
   let sense = req.session.data['sense-check']
@@ -756,11 +760,77 @@ router.get("/lpa-submission/new-appeal/:appealId", function(req, res, next){
   res.render("lpa-submission/new-appeal");
 })
 
+router.post("/lpa-submission/:appealId/supplementary-post", function(req, res, next){
+
+  if(req.body["supplementary-docs"] == "yes"){
+    res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-name`)
+  } else {
+    req.session.data["supplementary-completed"] = "govuk-tag app-task-list__task-completed";
+    req.session.data["supplementary-completed-text"] = "Completed";
+    res.redirect(`/lpa-submission/${req.params.appealId}/lpa-task-list`)
+  }
+
+})
+
+
 
 router.get("/lpa-submission/:appealId/:pageName", function(req, res, next){
   res.locals.appeal = appealsList.find(appeal => appeal.id == req.params.appealId);
 
   res.render(`lpa-submission/${req.params.pageName}`);
+})
+
+router.get("/lpa-submission/:appealId/:pageName/:pageName2", function(req, res, next){
+  res.locals.appeal = appealsList.find(appeal => appeal.id == req.params.appealId);
+
+  res.render(`lpa-submission/${req.params.pageName}/${req.params.pageName2}`);
+})
+
+
+let saveSupplementaryDetails = function(req){
+  if (!req.session.data.supplementaryDocsList){
+    req.session.data.supplementaryDocsList = [];
+  }
+
+  
+  let details = {
+    "name": req.session.data["supplementary-name"],
+    "stage": req.session.data["supplementary-stage"],
+    "adopted":  req.session.data["supplementary-adopted"],
+    "adopted-date-day": req.session.data["supplementary-adopted-date-day"],
+    "adopted-date-month": req.session.data["supplementary-adopted-date-month"],
+    "adopted-date-year": req.session.data["supplementary-adopted-date-year"]
+  }
+
+  if(!req.session.data.uploadedFiles){
+    details.files = [];
+  } else {
+    details.files = req.session.data.uploadedFiles.filter(file => file.fieldname === "supplementary-planning");
+    req.session.data.uploadedFiles = req.session.data.uploadedFiles.filter(file => file.fieldname != "supplementary-planning")
+  }
+
+  let newObject = JSON.parse(JSON.stringify(details));
+
+  console.log(newObject)
+  req.session.data.supplementaryDocsList.push( newObject );
+
+}
+
+
+router.post("/lpa-submission/:appealId/supplementary-adopted-post", function(req, res, next){
+
+  saveSupplementaryDetails(req);
+  res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-file-list`);
+
+})
+
+
+
+
+
+router.get("/cookies", function(req, res, next){
+  res.locals.referer = req.headers.referer
+  res.render("cookies/index")
 })
 
 module.exports = router

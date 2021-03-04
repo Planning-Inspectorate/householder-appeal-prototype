@@ -1,0 +1,139 @@
+{% set items = [
+            {
+            name: "A Shop Keepers Guide to Securing Their Premises",
+            adopted: true,
+            date: "19 December 2012"
+          },
+          {
+            name: "Bradford City Centre Design Guide",
+            adopted: true,
+            date: "21 March 2006"
+          },
+          {
+            name: "City Centre Affordable Housing",
+            adopted: true,
+            date: "1 January 2012"
+          },
+          {
+            name: "Homes and Neighbourhoods - A guide to designing in Bradford",
+            adopted: true,
+            date: "1 January 2012"
+          },
+          {
+            name: "Hot Food Takeaways",
+            adopted: true,
+            date: "1 January 2012"
+          },
+          {
+            name: "Householder",
+            adopted: true,
+            date: "1 January 2012"
+          },
+          {
+            name: "Landscape Character",
+            adopted: true,
+            date: "1 January 2012"
+          },
+          {
+            name: "Menston Housing Sites",
+            adopted: true,
+            date: "1 January 2012"
+          },
+          {
+            name: "Planning for Crime Prevention",
+            adopted: true,
+            date: "1 January 2012"
+          },
+          {
+            name: "Planning Obligations",
+            adopted: true,
+            date: "1 January 2012"
+          },
+          {
+            name: "Shopfront Design Guide",
+            adopted: true,
+            date: "1 January 2012"
+          },
+          {
+            name: "Sustainable Design Guide",
+            adopted: true,
+            date: "1 January 2012"
+          },
+          {
+  name: "Affordable Housing",
+  adopted: false,
+  stage: "In preparation"
+},{
+  name: "Open Space and Built Recreational Facilities",
+  adopted: false,
+  stage: "In preparation"
+},{
+  name: "South Pennine Moors",
+  adopted: false,
+  stage: "In preparation"
+},{
+  name: "Tree Protection",
+  adopted: false,
+  stage: "In preparation"
+}
+          ] %}
+
+
+
+{% extends "layout.html" %}
+
+{% set headerTitle = "Appellant stuff" %}
+{% block pageTitle %}
+  LPA 
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds"> 
+    <form action="lpa-task-list" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
+      <h1 class="govuk-heading-l">Supplementary planning documents</h1>
+      
+
+      <ul class="pins-file-list">
+
+
+      <dl class="govuk-summary-list">
+        {% for item in items %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__value">
+            <a href="supplementary-planning-documents/view"">{{item.name}}</a>
+          </dt>
+
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Remove<span class="govuk-visually-hidden"> {{item.name}} supplementary planning document</span>
+            </a>
+          </dd>
+        </div>
+        {% endfor %}
+        
+      </dl>
+      <input type="hidden" name="supplementary-completed" value="govuk-tag app-task-list__task-completed">
+      <input type="hidden" name="supplementary-completed-text" value="Completed">
+      <a href="supplementary-planning-documents/supplementary-name" class="govuk-button govuk-button--secondary">Add another</a>
+
+      
+      <div class="govuk-form-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Save and Continue
+        </button>
+      </div>
+    </form>
+  </div>
+
+   <!-- <div class="govuk-grid-column-one-third"> 
+    {% include "lpa-submission/_key-details.html" %} 
+  </div> -->
+  
+</div>
+{% endblock %}
+{% block pageScripts %}
+
+{% endblock %}

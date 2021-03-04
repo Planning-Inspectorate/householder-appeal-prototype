@@ -1,18 +1,18 @@
 {% extends "layout.html" %}
 
 {% set headerTitle = "Appellant stuff" %}
-  
+
 
 {% block pageTitle %}
-  LPA 
+  LPA
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds"> 
+  <div class="govuk-grid-column-two-thirds">
     <form action="listed-building" method="post" novalidate>
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal site</span>
-      
+
 
         {% set detailsHtml %}
           {{ govukTextarea({
@@ -30,7 +30,7 @@
         name: "neighbours-land",
         fieldset: {
           legend: {
-            text: "Would the inspector need access to a neighbours land?",
+            text: "Would the Inspector need access to a neighbour's land?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -61,9 +61,9 @@
     </form>
   </div>
 
-   <div class="govuk-grid-column-one-third"> 
-    {% include "lpa-submission/_key-details.html" %} 
+   <div class="govuk-grid-column-one-third">
+    {% include "lpa-submission/_key-details.html" %}
   </div>
-  
+
 </div>
 {% endblock %}

@@ -1,0 +1,100 @@
+  {% extends "layout.html" %}
+
+{% set headerTitle = "Appellant stuff" %}
+  
+
+{% block pageTitle %}
+  LPA 
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds"> 
+    <form action="supplementary-post" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
+
+          
+        {{ govukCheckboxes({
+          idPrefix: "waste",
+          name: "waste",
+          fieldset: {
+            legend: {
+              text: "What Supplementary Planning Documents were used?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Select all that apply."
+          },
+          items: [
+            {
+            value: "A Shop Keepers Guide to Securing Their Premises",
+            text: "A Shop Keepers Guide to Securing Their Premises"
+          },
+          {
+            value: "Bradford City Centre Design Guide",
+            text: "Bradford City Centre Design Guide"
+          },
+          {
+            value: "City Centre Affordable Housing",
+            text: "City Centre Affordable Housing"
+          },
+          {
+            value: "Homes and Neighbourhoods - A guide to designing in Bradford",
+            text: "Homes and Neighbourhoods - A guide to designing in Bradford"
+          },
+          {
+            value: "Hot Food Takeaways",
+            text: "Hot Food Takeaways"
+          },
+          {
+            value: "Householder",
+            text: "Householder"
+          },
+          {
+            value: "Landscape Character",
+            text: "Landscape Character"
+          },
+          {
+            value: "Menston Housing Sites",
+            text: "Menston Housing Sites"
+          },
+          {
+            value: "Planning for Crime Prevention",
+            text: "Planning for Crime Prevention"
+          },
+          {
+            value: "Planning Obligations",
+            text: "Planning Obligations"
+          },
+          {
+            value: "Shopfront Design Guide",
+            text: "Shopfront Design Guide"
+          },
+          {
+            value: "Sustainable Design Guide",
+            text: "Sustainable Design Guide"
+          }
+          ]
+        }) }}
+
+        <p><a href="supplementary-existing-edit" title="">Add or change Supplementary Planning Documents</a></p>
+      
+      <div class="govuk-form-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </div>
+    </form>
+  </div>
+
+   <div class="govuk-grid-column-one-third"> 
+    {% include "lpa-submission/_key-details.html" %} 
+  </div>
+  
+</div>
+{% endblock %}
+{% block pageScripts %}
+
+{% endblock %}

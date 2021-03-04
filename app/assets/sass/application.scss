@@ -21,6 +21,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "pins/govuk";
 @import "pins/lpaq";
 @import "pins/save-return";
+@import "pins/file-list";
 
 
 .autocomplete__option {
@@ -169,4 +170,9 @@ $govuk-assets-path: '/govuk/assets/';
 .pins-inset-text--small {
 	margin-top: govuk-spacing(2);
 	margin-bottom: govuk-spacing(2);
+}
+
+
+.govuk-hint p {
+	color: $govuk-secondary-text-colour
 }

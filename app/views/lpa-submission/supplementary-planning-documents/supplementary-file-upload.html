@@ -1,27 +1,26 @@
 {% extends "layout.html" %}
 
 {% set headerTitle = "Appellant stuff" %}
-
+  
 
 {% block pageTitle %}
-  LPA
+  LPA 
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <form action="conservation-publicity" method="post" novalidate>
-      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal site</span>
+  <div class="govuk-grid-column-two-thirds"> 
+    <form action="supplementary-adopted" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
 
-            <h1 class="govuk-heading-l">
-              Upload the conservation area map and guidance
-            </h1>
-
+        <h1 class="govuk-heading-l">
+          Supplementary planning documents
+        </h1>
 
           {% set uploadHtml %}
             {{ govukFileUpload({
-              id: "conservation-area-map",
-              name: "conservation-area-map",
+              id: "supplementary-planning",
+              name: "supplementary-planning",
               classes: 'moj-multi-file-upload__input',
               label: {
                 text: "Upload files",
@@ -40,7 +39,7 @@
           {{ mojMultiFileUpload({
             uploadedFiles: {
               heading: { text: 'Files added' },
-              items: data.uploadedFiles | filesByFieldName("conservation-area-map")
+              items: data.uploadedFiles | filesByFieldName("supplementary-planning")
             },
             uploadHtml: uploadHtml
           }) }}
@@ -53,10 +52,10 @@
     </form>
   </div>
 
-   <div class="govuk-grid-column-one-third">
-    {% include "lpa-submission/_key-details.html" %}
+   <div class="govuk-grid-column-one-third"> 
+    
   </div>
-
+  
 </div>
 {% endblock %}
 
@@ -66,10 +65,11 @@ if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
 
   new MOJFrontend.MultiFileUpload({
     container: $('.moj-multi-file-upload'),
-    uploadUrl: '/ajax-conservation-area-map',
-    deleteUrl: '/ajax-conservation-area-map-delete',
-    fieldName: 'conservation-area-map'
+    uploadUrl: '/ajax-supplementary-planning',
+    deleteUrl: '/ajax-supplementary-planning-delete',
+    fieldName: 'supplementary-planning'
     });
   }
 </script>
 {% endblock %}
+

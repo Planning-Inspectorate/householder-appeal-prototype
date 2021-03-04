@@ -28,11 +28,11 @@
 {% from "govuk/components/tag/macro.njk"              import govukTag %}
 {% from "govuk/components/textarea/macro.njk"         import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"     import govukWarningText %}
+{% from "govuk/components/cookie-banner/macro.njk"       import govukCookieBanner %}
 
 {%- from "templates/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
 {%- from "templates/multi-file-display/macro.njk" import multiFileDisplay -%}
 {%- from "templates/loading-page/macro.njk" import loadingPage -%}
-
 
 
 {% block head %}
@@ -117,7 +117,7 @@
           text: "Terms and conditions"
         },
         {
-          href: "#2",
+          href: "/cookies",
           text: "Privacy and cookies"
         },
         {

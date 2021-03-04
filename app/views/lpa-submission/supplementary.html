@@ -10,67 +10,37 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds"> 
-    <form action="lpa-task-list-complete" method="post" novalidate>
+    <form action="supplementary-post" method="post" novalidate>
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
-      <h1 class="govuk-heading-l">
-              Supplementary planning document
-            </h1>
+
           
-          <p>If applicable, upload extracts from any supplementary planning document you feel is relevant. This includes any supplementary planning guidance published under previous provisions and still in place.</p>
-          {% set uploadHtml %}
-            {{ govukFileUpload({
-              id: "supplementary-planning",
-              name: "supplementary-planning",
-              classes: 'moj-multi-file-upload__input',
-              label: {
-                text: "Upload files",
-                classes: 'govuk-label--m'
-              },
-              attributes: { multiple: '' },
-              errorMessage: errorMessage
-            }) }}
-
-            {{govukButton({
-              text: 'Upload file',
-              classes: 'govuk-button--secondary moj-multi-file-upload__button'
-            })}}
-          {% endset %}
-
-          {{ mojMultiFileUpload({
-            uploadedFiles: {
-              heading: { text: 'Files added' },
-              items: data.uploadedFiles | filesByFieldName("supplementary-planning")
+        {{ govukRadios({
+          idPrefix: "supplementary-docs",
+          name: "supplementary-docs",
+          fieldset: {
+            legend: {
+              text: "Are there any supplementary planning documents?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
             },
-            uploadHtml: uploadHtml
-          }) }}
-
-        <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset" aria-describedby="is-accurate-conditional-hint">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
-          
-            <ol class="govuk-list govuk-list--number">
-              <li><label id="supplementary-1" class="govuk-label" for="more-detail-1">What is its status?</label>
-              <input class="govuk-input" id="more-detail-1" name="more-detail-1" type="text"></li>
-
-              <li><label id="supplementary-2" class="govuk-label" for="more-detail-2">Was it the subject of public consultation and consequent modification?</label>
-              <input class="govuk-input" id="more-detail-2" name="more-detail-2" type="text"></li>
-
-              <li><label id="supplementary-3" class="govuk-label" for="more-detail-3">If it was it formally adopted, tell us the date of adoption.</label>
-              <input class="govuk-input" id="more-detail-3" name="more-detail-3" type="text"></li>
-
-              <li><label id="supplementary-3" class="govuk-label" for="more-detail-4">If it's an emerging document, tell us what stage it has reached.</label>
-                  <input class="govuk-input" id="more-detail-4" name="more-detail-4" type="text"></li>
-            </ol>
-            
-            </fieldset>
-        </div>
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
 
 
-      <input type="hidden" name="supplementary-completed" value="govuk-tag app-task-list__task-completed">
-      <input type="hidden" name="supplementary-completed-text" value="Completed">
+      
       <div class="govuk-form-group">
         <button class="govuk-button" data-module="govuk-button">
-          Save and continue
+          Continue
         </button>
       </div>
     </form>
@@ -83,15 +53,5 @@
 </div>
 {% endblock %}
 {% block pageScripts %}
-<script>
-if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
 
-  new MOJFrontend.MultiFileUpload({
-    container: $('.moj-multi-file-upload'),
-    uploadUrl: '/ajax-supplementary-planning',
-    deleteUrl: '/ajax-supplementary-planning-delete',
-    fieldName: 'supplementary-planning'
-    });
-  }
-</script>
 {% endblock %}
