@@ -15,6 +15,8 @@
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-heading-l">Are there any health and safety issues on the appeal site?</h1>
             </legend>
+            <p> Tell us about any health and safety issues on the appeal site in case an Inspector needs to carry out a site visit.</p>
+<p>The appeal site is the area of property or land that your original planning application relates to.</P>
             <details class="govuk-details" data-module="govuk-details">
               <summary class="govuk-details__summary">
                 <span class="govuk-details__summary-text">
@@ -51,7 +53,7 @@
                   <textarea value="{{ data['safety-detail'] }}" class="govuk-textarea" id="safety-detail" name="safety-detail" rows="5" aria-describedby="more-detail-hint">{{ data['safety-detail'] }}</textarea>
                 </div>
               </div>
-              
+
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="how-contacted-conditional-2" name="safety" {{ checked('safety', 'no') }} type="radio" value="no">
                 <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
