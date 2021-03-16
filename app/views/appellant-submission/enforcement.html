@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Your details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/enforcement-post" method="post" novalidate>
+        <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Before you start</span>
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "enforcement",
+          name: "enforcement",
+          fieldset: {
+            legend: {
+              text: "Have you received an enforcement notice?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "An enforcement notice is issued if your local planning department thinks you have carried out building work without the correct planning permission.​"
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        <div class="govuk-form-group">
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
