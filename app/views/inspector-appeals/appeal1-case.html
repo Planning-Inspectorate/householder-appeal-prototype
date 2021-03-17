@@ -10,29 +10,20 @@
 {% endblock %}
 
 
-
 {% block content %}
 <div class="govuk-breadcrumbs">
   <ol class="govuk-breadcrumbs__list">
-
     <li class="govuk-breadcrumbs__list-item">
-       <a class="govuk-breadcrumbs__link" href="index">All my appeals</a>
+       <a class="govuk-breadcrumbs__link" href="index">< All my appeals</a>
     </li>
   </ol>
 </div>
 
-
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        27 High Street, PL4 2AA
-        <span class="govuk-caption-xl">Appeal Reference: APP/2020/56789/01234</span>
-      </h1>
-
-
-      <h2 class="govuk-heading-m"> </h2>
-
+  <div class="govuk-grid-column-full-width">
+    <h1 class="govuk-heading-xl">
+      27 High Street, PL4 2AA
+      <span class="govuk-caption-xl">Appeal Reference: APP/2020/56789/01234</span>
+    </h1>
 
 <nav class="moj-sub-navigation" aria-label="Sub navigation">
 
@@ -52,7 +43,11 @@
 
 </nav>
 
-     <h2 class="govuk-heading-l">Case Files</h2>
+  </div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Overview of case</h2>
      <dl class="govuk-summary-list">
        <div class="govuk-summary-list__row">
          <dt class="govuk-summary-list__key">
@@ -119,10 +114,7 @@
          </dd>
        </div>
      </dl>
-
-
-
-<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+     <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
   <div class="govuk-accordion__section">
     <div class="govuk-accordion__section-header">
       <h2 class="govuk-accordion__section-heading">
@@ -269,7 +261,7 @@
             Telling interested parties
           </dt>
           <dd class="govuk-summary-list__value">
-          Yes
+          <a href="#">Letters and site noices for interested parties</a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -277,7 +269,7 @@
             Representations
           </dt>
           <dd class="govuk-summary-list__value">
-            No
+            <a href="#">Representations from interested parties</a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -285,141 +277,81 @@
             Notifying interested parties
           </dt>
           <dd class="govuk-summary-list__value">
-          <a href="#">48269/APP/2020/1234</a><br>
-            <a href="#">48269/APP/2020/5234</a>
+          <a href="#">Notification letter and list of addresses</a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Notifying interested parties
+            Original planning application publicised?
           </dt>
           <dd class="govuk-summary-list__value">
-          <a href="#">48269/APP/2020/1234</a><br>
-            <a href="#">48269/APP/2020/5234</a>
+            Yes
           </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Notifying interested parties
+            Planning history
           </dt>
           <dd class="govuk-summary-list__value">
-          <a href="#">48269/APP/2020/1234</a><br>
-            <a href="#">48269/APP/2020/5234</a>
+          <a href="#">Planning history and other documents used in application</a><br>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Notifying interested parties
+            Statutory policies
           </dt>
           <dd class="govuk-summary-list__value">
-          <a href="#">48269/APP/2020/1234</a><br>
-            <a href="#">48269/APP/2020/5234</a>
+          <a href="#">Statutory development plan policies used</a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Notifying interested parties
+            Other policies
           </dt>
           <dd class="govuk-summary-list__value">
-          <a href="#">48269/APP/2020/1234</a><br>
-            <a href="#">48269/APP/2020/5234</a>
+          <a href="#">Other relevant policies used</a>
           </dd>
         </div>
-
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Supplementary planning documents
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <a href="#">Any relevant extracts from supplementary planning documents</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Development plan or neighbourhood plan submitted?
+          </dt>
+          <dd class="govuk-summary-list__value">
+          Yes
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+          Relevance to appeal
+          </dt>
+          <dd class="govuk-summary-list__value">
+        Changes in progress and relevance to appeal goes here
+          </dd>
+        </div>
       </dl>
     </div>
   </div>
-
-
-
-  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="site-visit">
-    <h2 class="govuk-heading-l">Site Visit</h2>
-
-
-
-
-<p>An <b>Unaccompanied Visit has been arranged for: </b><br>
-
-<br>03 February 2021 at 9:00am - <a href="#">Reschedule Visit</a><br>
-<br>Please be aware that rescheduling a visit will automatically send out a new letter to the apellent / agent.
-</p>
-<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
-  <div class="govuk-accordion__section">
-    <div class="govuk-accordion__section-header">
-      <h2 class="govuk-accordion__section-heading">
-        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-          Contact Information
-        </span>
-      </h2>
-    </div>
-    <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
-      <p class='govuk-body'>This is the content for Writing well for the application form.</p>
-
-
-
-  <dl class="govuk-summary-list">
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Case officer
-    </dt>
-    <dd class="govuk-summary-list__value">
-      <p class="govuk-body">Case Officer Name</p>
-      <p class="govuk-body">0123456 7890</p>
-      <p class="govuk-body">caseofficer1@planninginspectorate.gov.uk</p>
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Apellant details
-    </dt>
-    <dd class="govuk-summary-list__value">
-      <p class="govuk-body">Appellant Name</p>
-      <p class="govuk-body">07700 900457</p>
-      <p class="govuk-body">sarah.phillips@example.com</p>
-    </dd>
-  </div>
-</dl>
-
-
     </div>
   </div>
-  <div class="govuk-accordion__section">
-    <div class="govuk-accordion__section-header">
-      <h2 class="govuk-accordion__section-heading">
-        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-          Special Arrangements
-        </span>
-      </h2>
-    </div>
-    <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
-      <p class='govuk-body'>This are no special arrangements for this site visit.</p>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m">
+        Contact Details</h2>
+        <p class="gov-body"><b>Case officer:</b><br>
+          Tom Smith<br>
+          <a href="#">tom.smith@gmail.com</a><br>
+          01234 567890</p>
     </div>
   </div>
-
-
-
-
-
-
 </div>
-
-
-  </div>
-  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="decision">
-    <h2 class="govuk-heading-l">Decision</h2>
-        <p>
-    <div class="govuk-form-group">
-  <label class="govuk-label" for="file-upload-1">
-    Upload a decision notice here. Or link to <a href="#">Dart</a>.
-  </label>
-  <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
-</div>
-</p>
-  </div>
-
-</div>
-
-
 
 
 
