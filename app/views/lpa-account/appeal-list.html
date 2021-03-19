@@ -1,0 +1,54 @@
+
+
+{% extends "layout-lpa.html" %}
+
+{% block pageTitle %}
+  Planning appeals
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <span class="govuk-caption-l">{{ data.lpaName }}</span>
+
+
+      <h1 class="govuk-heading-l">
+        Planning appeals
+      </h1>
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption">Householder planning appeals</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Appeal details</th>
+            <th scope="col" class="govuk-table__header">Location</th>
+            <th scope="col" class="govuk-table__header">Questionnaire due</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for appeal in appeals | sort(true, false, "startedDaysAgo") %}
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {% if appeal.startedDaysAgo > 0 %}
+                <a class="govuk-link--no-visited-state" href="/lpa-submission/lpa-task-list/{{appeal.id}}">{{appeal.planningNumber}}</a>
+              {% else %}
+                <a class="govuk-link--no-visited-state" href="/lpa-submission/new-appeal/{{appeal.id}}">{{appeal.planningNumber}}</a>
+              {% endif %}
+
+              </td>
+            <td class="govuk-table__cell">{{appeal.address.street}}</td>
+            <td class="govuk-table__cell">
+
+              {{ appeal.startedDaysAgo | formatAppealStatus }}
+
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+          </div>
+  </div>
+{% endblock %}
