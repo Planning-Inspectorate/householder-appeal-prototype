@@ -329,7 +329,7 @@
             </dt>
             <dd class="govuk-summary-list__value">
                {{ multiFileDisplay({
-                uploadedFiles: data.uploadedFiles | filesByFieldName("statutory")
+                uploadedFiles: files
               }) }}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -372,7 +372,7 @@
                     {% endif %}</p>
 
                     {{ multiFileDisplay({
-                      uploadedFiles: data.uploadedFiles | filesByFieldName("supplementary-planning")
+                      uploadedFiles: document.files
                     }) }}
 
 
