@@ -798,6 +798,10 @@ router.get("/lpa-submission/new-appeal/:appealId", function(req, res, next){
 
 router.post("/lpa-submission/:appealId/supplementary-post", function(req, res, next){
 
+  if(req.session.data.supplementaryDocsList){
+    res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-file-list`)
+  }
+
   if(req.body["supplementary-docs"] == "yes"){
     res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-name`)
   } else {
