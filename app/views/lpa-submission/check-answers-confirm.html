@@ -131,7 +131,7 @@
                {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/section-2-list">
+              <a class="govuk-link" href="section-2-list">
                 Change<span class="govuk-visually-hidden"> if the development affect the setting of a listed building</span>
               </a>
             </dd>
@@ -144,7 +144,7 @@
             <dd class="govuk-summary-list__value">{{data['green-belt']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/section-2-list">
+              <a class="govuk-link" href="section-2-list">
                 Change<span class="govuk-visually-hidden"> if the appeal site in a green belt</span>
               </a>
             </dd>
@@ -157,7 +157,7 @@
             <dd class="govuk-summary-list__value">{{data['conservation-area']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/section-2-list">
+              <a class="govuk-link" href="section-2-list">
                 Change<span class="govuk-visually-hidden"> if the appeal site in or near a Conservation Area</span>
               </a>
             </dd>
@@ -174,7 +174,7 @@
               }) }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/section-2-list">
+              <a class="govuk-link" href="section-2-list">
                 Change<span class="govuk-visually-hidden"> the Conservation Area map and guidance</span>
               </a>
             </dd>
@@ -193,7 +193,7 @@
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/section-2-list">
+              <a class="govuk-link" href="section-2-list">
                 Change<span class="govuk-visually-hidden"> the Conservation Area map and guidance</span>
               </a>
             </dd>
@@ -215,7 +215,7 @@
               }) }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/case-file">
+              <a class="govuk-link" href="case-file">
                 Change<span class="govuk-visually-hidden"> </span>
               </a>
             </dd>
@@ -231,7 +231,7 @@
               }) }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/officers-report">
+              <a class="govuk-link" href="officers-report">
                 Change<span class="govuk-visually-hidden"> </span>
               </a>
             </dd>
@@ -253,7 +253,7 @@
               }) }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/site-notice-ip">
+              <a class="govuk-link" href="site-notice-ip">
                 Change<span class="govuk-visually-hidden"> </span>
               </a>
             </dd>
@@ -269,7 +269,7 @@
               }) }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/correspondence">
+              <a class="govuk-link" href="correspondence">
                 Change<span class="govuk-visually-hidden"> </span>
               </a>
             </dd>
@@ -285,7 +285,7 @@
               }) }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/representations">
+              <a class="govuk-link" href="representations">
                 Change<span class="govuk-visually-hidden"> </span>
               </a>
             </dd>
@@ -301,7 +301,7 @@
               }) }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/site-notice">
+              <a class="govuk-link" href="site-notice">
                 Change<span class="govuk-visually-hidden"> </span>
               </a>
             </dd>
@@ -317,7 +317,7 @@
               }) }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/planning-history">
+              <a class="govuk-link" href="planning-history">
                 Change<span class="govuk-visually-hidden"> </span>
               </a>
             </dd>
@@ -333,7 +333,7 @@
               }) }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/statutory">
+              <a class="govuk-link" href="statutory">
                 Change<span class="govuk-visually-hidden"> </span>
               </a>
             </dd>
@@ -349,7 +349,7 @@
               }) }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/policy">
+              <a class="govuk-link" href="policy">
                 Change<span class="govuk-visually-hidden"> </span>
               </a>
             </dd>
@@ -360,12 +360,29 @@
               Supplementary planning documents
             </dt>
             <dd class="govuk-summary-list__value">
-               {{ multiFileDisplay({
-                uploadedFiles: data.uploadedFiles | filesByFieldName("supplementary-planning")
-              }) }}
+              <p>{{data.supplementaryDocsList.length}} documents</p>
+              <ul class="govuk-list govuk-list--bullet">
+                {% for document in data.supplementaryDocsList %}
+                <li>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-0">{{document.name}}</h4>
+                    <p>{% if document.adopted == "yes" %}
+                      Adopted on {{document['adopted-date-day']}} {{document['adopted-date-month'] | formatMonth }} {{document['adopted-date-year']}}
+                    {% else %}
+                      {{ document.stage }}
+                    {% endif %}</p>
+
+                    {{ multiFileDisplay({
+                      uploadedFiles: data.uploadedFiles | filesByFieldName("supplementary-planning")
+                    }) }}
+
+
+
+                  </li>
+                {% endfor %}
+              </ul>
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/supplementary">
+              <a class="govuk-link" href="supplementary">
                 Change<span class="govuk-visually-hidden"> </span>
               </a>
             </dd>
@@ -379,7 +396,7 @@
                No files uploaded
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/lpa-submission/development-plan">
+              <a class="govuk-link" href="development-plan">
                 Change<span class="govuk-visually-hidden"> </span>
               </a>
             </dd>
