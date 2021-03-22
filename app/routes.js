@@ -139,13 +139,13 @@ router.post('/appellant-submission-check', function (req, res) {
 })
 
 
-router.post('/site-notice-post', function (req, res) {
+router.post('/lpa-submission/:appealId/site-notice-post', function (req, res) {
   let publicised = req.session.data['was-publicised']
 
   if (publicised == "true") {
-    res.redirect('/lpa-submission/site-notice-documents')
+    res.redirect(`/lpa-submission/${req.params.appealId}/site-notice-documents`)
   } else {
-    res.redirect('/lpa-submission/lpa-task-list-complete')
+    res.redirect(`/lpa-submission/lpa-task-list/${req.params.appealId}`)
   }
 })
 
