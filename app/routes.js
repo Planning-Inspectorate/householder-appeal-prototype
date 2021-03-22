@@ -106,6 +106,28 @@ router.post('/lpa-submission/:appealId/conservation-area-post', function (req, r
   }
 })
 
+
+router.post('/lpa-submission/:appealId/interested-parties-appeal-post', function (req, res) {
+
+  if (req.body['interested-parties-appeal'] === "yes") {
+    res.redirect(`/lpa-submission/${req.params.appealId}/interested-parties-appeal-upload`)
+  } else {
+    req.session.data["interested-parties-appeal-completed"] = "govuk-tag app-task-list__task-completed";
+    req.session.data["interested-parties-appeal-completed-text"] = "Completed";
+    res.redirect(`/lpa-submission/lpa-task-list/${req.params.appealId}`)
+  }
+})
+router.post('/lpa-submission/:appealId/other-policies-post', function (req, res) {
+
+  if (req.body['other-policies'] === "yes") {
+    res.redirect(`/lpa-submission/${req.params.appealId}/other-policies-upload`)
+  } else {
+    req.session.data["other-policies-completed"] = "govuk-tag app-task-list__task-completed";
+    req.session.data["other-policies-completed-text"] = "Completed";
+    res.redirect(`/lpa-submission/lpa-task-list/${req.params.appealId}`)
+  }
+})
+
 router.post('/appellant-submission-check', function (req, res) {
   let accuracy = req.session.data['is-accurate']
 
