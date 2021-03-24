@@ -1,17 +1,17 @@
 {% extends "layout.html" %}
 
 {% set headerTitle = "Appellant stuff" %}
-  
+
 
 {% block pageTitle %}
-  LPA 
+  LPA
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds"> 
+  <div class="govuk-grid-column-two-thirds">
     <form action="conservation-area-post" method="post" novalidate>
-      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal site</span>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Policies related to the planning application</span>
 
       {{ govukRadios({
         idPrefix: "conservation-area",
@@ -38,7 +38,7 @@
         ]
       }) }}
 
-      
+
       <div class="govuk-form-group">
         <button class="govuk-button" data-module="govuk-button">
           Save and continue
@@ -47,9 +47,9 @@
     </form>
   </div>
 
-   <div class="govuk-grid-column-one-third"> 
-    {% include "lpa-submission/_key-details.html" %} 
+   <div class="govuk-grid-column-one-third">
+    {% include "lpa-submission/_key-details.html" %}
   </div>
-  
+
 </div>
 {% endblock %}
