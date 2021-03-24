@@ -50,9 +50,9 @@ router.post('/check-statement', function (req, res) {
   let sense = req.session.data['sense-check']
 
   if (Array.isArray(sense) && sense[0] === 'on') {
-    res.redirect('/appellant-submission/supporting-documents')
+    res.redirect('/appellant-submission/supporting-documents-needed')
   } else {
-    res.redirect('/appellant-submission/appeal-statement-error')
+    res.redirect('/appellant-submission/sensitive-information-error')
   }
 })
 
@@ -88,6 +88,19 @@ router.post('/who-are-you-post', function (req, res) {
     res.redirect('/appellant-submission/your-details')
   } else {
     res.redirect('/appellant-submission/who-are-you')
+  }
+})
+
+router.post("/supporting-documents-post", function(req, res, next){
+  if(req.body['supporting-docs-needed'] === "yes"){
+    res.redirect("/appellant-submission/supporting-documents")
+  } else if (req.body['supporting-docs-needed'] === "no"){
+    req.session.data["upload-appeal-docs-completed"] = "govuk-tag app-task-list__tag";
+    req.session.data["upload-appeal-docs-completed-text"] = "Completed";
+    res.redirect("/appellant-submission/task-list")
+  } else {
+    res.redirect("/appellant-submission/supporting-documents-needed")
+
   }
 })
 

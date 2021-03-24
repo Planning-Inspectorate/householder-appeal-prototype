@@ -8,47 +8,54 @@
   <div class="govuk-grid-row">
 <div class="govuk-grid-column-two-thirds">
   <form action="sensitive-information" method="post" novalidate>
-
     <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Your appeal</span>
-
-
-    <div class="govuk-form-group">
-  <h1 class="govuk-label-wrapper">
-    <label class="govuk-label govuk-label--l govuk-!-padding-bottom-3" for="reason-for-appeal">
-      Tell us the reason for your appeal
-    </label>
-    </h1>
-    <p class="govuk-body">
-This is your appeal statement and is where you should tell us the reasons for your appeal. You should explain how you think the local planning department's decision to refuse your planning application was incorrect.
-
-
-  <div id="reason-for-appeal-hint" >
-
-
-      <details class="govuk-details" data-module="govuk-details">
+    <h1 class="govuk-heading-l">
+      Upload your reasons for appeal
+    </h1>  
+   <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            Help with reason for appeal
+            Help with reasons for appeal
           </span>
         </summary>
         <div class="govuk-details__text">
           <p class="govuk-body">You should respond to the local planning department’s reasons for refusal, which can be found on the decision letter.</p>
-
+  
           <p class="govuk-body">If you think there is other relevant information that supports your appeal, this is the opportunity to highlight it to the Planning Inspectorate.</p>
-
+  
           <p class="govuk-body">If you refer to any documents, for example photographs, in your appeal statement, you need to explain why you think they are relevant in your statement and then upload them in the next step.</p>
-
+  
           <p class="govuk-body">There may have been comments (also called ‘representations’) from interested parties on the original planning application. You can respond to them in your appeal statement if you want to.</p>
         </div>
       </details>
 
+    <div class="govuk-inset-text">File size should be no more than 1.21GB</div>
+    <div class="govuk-form-group">
+      <label class="govuk-heading-m" for="appeal-statement">
+        Upload your appeal statement
+      </label>
+      <input value="{{ data['appeal-statement'] }}" class="govuk-file-upload" id="appeal-statement" name="appeal-statement" type="file">
+    </div>
 
-  </div>
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Help with file formats
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        Please upload your statement in one of the following formats:
+        <ul class="govuk-list--bullets">
+          <li>PDF &ndash; <strong>.pdf</strong></li>
+          <li>Microsoft Word &ndash; <strong>.doc</strong> or <strong>.docx</strong></li>
+          <li>TIF &ndash; <strong>.tif</strong> or <strong>.tiff</strong></li>
+          <li>JPEG &ndash; <strong>.jpg</strong> or <strong>.jpeg</strong></li>
+          <li>PNG &ndash; <strong>.png</strong></li>
+        </ul>
+      </div>
+    </details>
 
 
-  <textarea class="govuk-textarea" id="reason-for-appeal" name="reason-for-appeal" rows="5" aria-describedby="reason-for-appeal-hint"></textarea>
-</div>
-    <p><a href="appeal-statement-upload" title="">Upload a document instead</a></p>
 
     <div class="govuk-form-group">
       <button class="govuk-button" data-module="govuk-button">
@@ -60,6 +67,6 @@ This is your appeal statement and is where you should tell us the reasons for yo
 </div>
 
 <div class="govuk-grid-column-one-third">
-
+    
   </div>
 {% endblock %}
