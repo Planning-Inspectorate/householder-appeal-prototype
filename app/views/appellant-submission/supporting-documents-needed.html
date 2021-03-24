@@ -9,10 +9,10 @@
 <div class="govuk-grid-column-two-thirds">
   <form action="/supporting-documents-post" method="post" novalidate>
     <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Your appeal</span>
-    
+
 
     {% set hintHtml %}
-    <p>If you have referred to any documents in your appeal statement, for example photographs, upload them here.​</p>
+    <p>You should upload any documents referred to in your appeal statement to support your reasons for appeal, such as photographs.​</p>
     <p>You do not need to upload the plans from your original planning application.</p>
     {% endset %}
 
@@ -21,7 +21,7 @@
         name: "supporting-docs-needed",
         fieldset: {
           legend: {
-            text: "Do you want to upload any other documents to dupport your appeal?",
+            text: "Do you want to upload any other documents to support your appeal?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -54,7 +54,7 @@
 
     {% endblock %}
 
-   
+
 
 
 
