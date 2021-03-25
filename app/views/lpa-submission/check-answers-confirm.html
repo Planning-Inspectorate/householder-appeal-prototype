@@ -72,10 +72,22 @@
               </a>
             </dd>
           </div>
-        </dl>
 
-        <h2 class="govuk-heading-m">About the appeal site</h2>
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Notifying interested parties about the appeal
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ multiFileDisplay({
+                uploadedFiles: data.uploadedFiles | filesByFieldName("interested-parties")
+              }) }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="representations">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Can the Inspector see the relevant parts of the appeal site from public land?
@@ -150,6 +162,165 @@
             </dd>
           </div>
 
+
+
+        </dl>
+
+        <h2 class="govuk-heading-m">About the planning application</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Plans used to make decision
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ multiFileDisplay({
+                uploadedFiles: data.uploadedFiles | filesByFieldName("casefile")
+              }) }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="case-file">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Planning Officer's report
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ multiFileDisplay({
+                uploadedFiles: data.uploadedFiles | filesByFieldName("officers-report")
+              }) }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="officers-report">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Did the original application require a site notice and/or a local advertisement?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ multiFileDisplay({
+                uploadedFiles: data.uploadedFiles | filesByFieldName("site-notice")
+              }) }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="site-notice">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Telling interested parties of the application
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ multiFileDisplay({
+                uploadedFiles: data.uploadedFiles | filesByFieldName("site-notice")
+              }) }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="site-notice-ip">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Representations from interested parties
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ multiFileDisplay({
+                uploadedFiles: data.uploadedFiles | filesByFieldName("correspondence")
+              }) }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="correspondence">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Planning history
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ multiFileDisplay({
+                uploadedFiles: data.uploadedFiles | filesByFieldName("planning-history")
+              }) }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="planning-history">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+
+        <h2 class="govuk-heading-m">Policies related to the planning application</h2>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Statutory development plan policy
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ multiFileDisplay({
+                uploadedFiles: data.uploadedFiles | filesByFieldName("statutory")
+              }) }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="statutory">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+
+
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Supplementary planning documents
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>{{data.supplementaryDocsList.length}} documents</p>
+              <ul class="govuk-list govuk-list--bullet">
+                {% for document in data.supplementaryDocsList %}
+                <li>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-0">{{document.name}}</h4>
+                    <p>{% if document.adopted == "yes" %}
+                      Adopted on {{document['adopted-date-day']}} {{document['adopted-date-month'] | formatMonth }} {{document['adopted-date-year']}}
+                    {% else %}
+                      {{ document.stage }}
+                    {% endif %}</p>
+
+                    {{ multiFileDisplay({
+                      uploadedFiles: data.uploadedFiles | filesByFieldName("supplementary-planning")
+                    }) }}
+
+
+
+                  </li>
+                {% endfor %}
+              </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="supplementary">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Is the appeal site in or near a conservation area?
@@ -201,144 +372,6 @@
 
           {% endif %}
 
-        </dl>
-
-        <h2 class="govuk-heading-m">Required documents</h2>
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Plans used to make decision
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ multiFileDisplay({
-                uploadedFiles: data.uploadedFiles | filesByFieldName("casefile")
-              }) }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="case-file">
-                Change<span class="govuk-visually-hidden"> </span>
-              </a>
-            </dd>
-          </div>
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Planning Officer's report
-            </dt>
-            <dd class="govuk-summary-list__value">
-               {{ multiFileDisplay({
-                uploadedFiles: data.uploadedFiles | filesByFieldName("officers-report")
-              }) }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="officers-report">
-                Change<span class="govuk-visually-hidden"> </span>
-              </a>
-            </dd>
-          </div>
-        </dl>
-
-
-        <h2 class="govuk-heading-m">Optional supporting documents</h2>
-
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Telling interested parties of the application
-            </dt>
-            <dd class="govuk-summary-list__value">
-               {{ multiFileDisplay({
-                uploadedFiles: data.uploadedFiles | filesByFieldName("site-notice")
-              }) }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="site-notice-ip">
-                Change<span class="govuk-visually-hidden"> </span>
-              </a>
-            </dd>
-          </div>
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Representations from interested parties
-            </dt>
-            <dd class="govuk-summary-list__value">
-               {{ multiFileDisplay({
-                uploadedFiles: data.uploadedFiles | filesByFieldName("correspondence")
-              }) }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="correspondence">
-                Change<span class="govuk-visually-hidden"> </span>
-              </a>
-            </dd>
-          </div>
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Notifying interested parties about the appeal
-            </dt>
-            <dd class="govuk-summary-list__value">
-               {{ multiFileDisplay({
-                uploadedFiles: data.uploadedFiles | filesByFieldName("interested-parties")
-              }) }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="representations">
-                Change<span class="govuk-visually-hidden"> </span>
-              </a>
-            </dd>
-          </div>
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Did the original application require a site notice and/or a local advertisement?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ multiFileDisplay({
-                uploadedFiles: data.uploadedFiles | filesByFieldName("site-notice")
-              }) }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="site-notice">
-                Change<span class="govuk-visually-hidden"> </span>
-              </a>
-            </dd>
-          </div>
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Planning history
-            </dt>
-            <dd class="govuk-summary-list__value">
-               {{ multiFileDisplay({
-                uploadedFiles: data.uploadedFiles | filesByFieldName("planning-history")
-              }) }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="planning-history">
-                Change<span class="govuk-visually-hidden"> </span>
-              </a>
-            </dd>
-          </div>
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Statutory development plan policy
-            </dt>
-            <dd class="govuk-summary-list__value">
-               {{ multiFileDisplay({
-                uploadedFiles: data.uploadedFiles | filesByFieldName("statutory")
-              }) }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="statutory">
-                Change<span class="govuk-visually-hidden"> </span>
-              </a>
-            </dd>
-          </div>
-
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Other relevant policies
@@ -350,53 +383,6 @@
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="policy">
-                Change<span class="govuk-visually-hidden"> </span>
-              </a>
-            </dd>
-          </div>
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Supplementary planning documents
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <p>{{data.supplementaryDocsList.length}} documents</p>
-              <ul class="govuk-list govuk-list--bullet">
-                {% for document in data.supplementaryDocsList %}
-                <li>
-                  <h4 class="govuk-heading-s govuk-!-margin-bottom-0">{{document.name}}</h4>
-                    <p>{% if document.adopted == "yes" %}
-                      Adopted on {{document['adopted-date-day']}} {{document['adopted-date-month'] | formatMonth }} {{document['adopted-date-year']}}
-                    {% else %}
-                      {{ document.stage }}
-                    {% endif %}</p>
-
-                    {{ multiFileDisplay({
-                      uploadedFiles: data.uploadedFiles | filesByFieldName("supplementary-planning")
-                    }) }}
-
-
-
-                  </li>
-                {% endfor %}
-              </ul>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="supplementary">
-                Change<span class="govuk-visually-hidden"> </span>
-              </a>
-            </dd>
-          </div>
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Development Plan Document or Neighbourhood Plan
-            </dt>
-            <dd class="govuk-summary-list__value">
-               No files uploaded
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="development-plan">
                 Change<span class="govuk-visually-hidden"> </span>
               </a>
             </dd>
