@@ -47,7 +47,7 @@
   {# Set serviceName in config.js. #}
   {{ govukHeader({
     homepageUrl: "/",
-    serviceName: serviceName,
+    serviceName: "Reply to a householder planning appeal",
     serviceUrl: "task-list",
     containerClasses: "govuk-width-container"
   }) }}
@@ -58,7 +58,7 @@
 
 {% block main %}
   <div class="govuk-width-container {{ containerClasses }}">
-    
+
     <main id="main-content" role="main"{% if mainLang %} lang="{{ mainLang }}"{% endif %}>
       {{ govukPhaseBanner({
         tag: {
@@ -73,10 +73,10 @@
         href: "javascript:history.back()"
       }) }}
       <div class="govuk-main-wrapper {{ mainClasses }}">
-        
+
           {% block content %}{% endblock %}
           {% include "includes/_lpa.html" %}
-        
+
       </div>
     </main>
   </div>
