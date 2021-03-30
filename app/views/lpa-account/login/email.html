@@ -1,0 +1,37 @@
+{% extends "layout-lpa-no-back.html" %}
+
+{% block pageTitle %}
+  Please complete | Appeal a planning decision
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="email-post" method="post" novalidate>
+        {{ govukInput({
+          label: {
+            text: "Email address",
+            isPageHeading: true,
+            classes: "govuk-label--l"
+          },
+          hint: {
+            text: "You must have access to a " + data.lpaName + " email address to continue."
+          },
+          id: "lpa-account-email",
+          name: "lpa-account-email",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false
+          }) }}
+
+
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

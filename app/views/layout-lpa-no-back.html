@@ -1,0 +1,22 @@
+{% set serviceName = "Reply to a householder planning appeal" %}
+
+{% extends "layout.html" %}
+{% block main %}
+  <div class="govuk-width-container {{ containerClasses }}">
+
+    <main id="main-content" role="main"{% if mainLang %} lang="{{ mainLang }}"{% endif %}>
+      {{ govukPhaseBanner({
+        tag: {
+          text: "beta"
+        },
+        html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+      }) }}
+
+      <div class="govuk-main-wrapper {{ mainClasses }}">
+
+          {% block content %}{% endblock %}
+
+      </div>
+    </main>
+  </div>
+{% endblock %}

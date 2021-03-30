@@ -25,6 +25,8 @@ let data = {
 
   cases: [],
 
+  lpaName: "Bradford City Council",
+
   // Insert values here
 
   user: {
@@ -320,7 +322,7 @@ let data = {
     "application-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
     "application-completed-link": "Check your answers",
     "application-completed-text": "Cannot start yet",
-    
+
     "appellant-submission-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
     "appellant-submission-completed-text": "Not started",
     "conditions-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
