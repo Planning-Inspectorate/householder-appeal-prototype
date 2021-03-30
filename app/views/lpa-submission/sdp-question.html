@@ -10,37 +10,36 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="enter-appeal-site" method="post" novalidate>
-      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal site</span>
+    <form action="/site-notice-post" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Other supporting documents</span>
 
       {{ govukRadios({
-        classes: "",
-        idPrefix: "public-land",
-        name: "public-land",
+        idPrefix: "sdp-needed",
+        name: "sdp-needed",
         fieldset: {
           legend: {
-            text: "Can the Inspector see the relevant parts of the appeal site from public land?",
+            text: "Is there a statutory development plan relevant to the appeal?",
             isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
+            classes: "govuk-fieldset__legend--xl"
           }
+        },
+        hint: {
+          text: ""
         },
         items: [
           {
             value: "yes",
             text: "Yes",
-            checked: checked("public-land", "yes")
-          },
-          {
+            checked: checked("sdp-needed", "yes")
+          },{
             value: "no",
             text: "No",
-            checked: checked("public-land", "no")
-
+            checked: checked("sdp-needed", "no")
           }
         ]
       }) }}
 
 
-      <input type="hidden" name="about-site-completed-text" value="In Progress">
       <div class="govuk-form-group">
         <button class="govuk-button" data-module="govuk-button">
           Save and continue

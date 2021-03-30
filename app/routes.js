@@ -119,6 +119,28 @@ router.post('/lpa-submission/:appealId/conservation-area-post', function (req, r
   }
 })
 
+
+router.post('/lpa-submission/:appealId/interested-parties-appeal-post', function (req, res) {
+
+  if (req.body['interested-parties-appeal'] === "yes") {
+    res.redirect(`/lpa-submission/${req.params.appealId}/interested-parties-appeal-upload`)
+  } else {
+    req.session.data["interested-parties-appeal-completed"] = "govuk-tag app-task-list__task-completed";
+    req.session.data["interested-parties-appeal-completed-text"] = "Completed";
+    res.redirect(`/lpa-submission/lpa-task-list/${req.params.appealId}`)
+  }
+})
+router.post('/lpa-submission/:appealId/other-policies-post', function (req, res) {
+
+  if (req.body['other-policies'] === "yes") {
+    res.redirect(`/lpa-submission/${req.params.appealId}/other-policies-upload`)
+  } else {
+    req.session.data["other-policies-completed"] = "govuk-tag app-task-list__task-completed";
+    req.session.data["other-policies-completed-text"] = "Completed";
+    res.redirect(`/lpa-submission/lpa-task-list/${req.params.appealId}`)
+  }
+})
+
 router.post('/appellant-submission-check', function (req, res) {
   let accuracy = req.session.data['is-accurate']
 
@@ -130,13 +152,13 @@ router.post('/appellant-submission-check', function (req, res) {
 })
 
 
-router.post('/site-notice-post', function (req, res) {
+router.post('/lpa-submission/:appealId/site-notice-post', function (req, res) {
   let publicised = req.session.data['was-publicised']
 
   if (publicised == "true") {
-    res.redirect('/lpa-submission/site-notice-documents')
+    res.redirect(`/lpa-submission/${req.params.appealId}/site-notice-documents`)
   } else {
-    res.redirect('/lpa-submission/lpa-task-list-complete')
+    res.redirect(`/lpa-submission/lpa-task-list/${req.params.appealId}`)
   }
 })
 
@@ -792,9 +814,9 @@ router.get("/reset-password/:id", function(req, res, next){
 })
 
 
-router.get("/lpa-account", function(req, res, next){
+router.get("/lpa-account/appeal-list", function(req, res, next){
   res.locals.appeals = appealsList;
-  res.render("lpa-account/index")
+  res.render("lpa-account/appeal-list")
 });
 
 router.get("/lpa-submission/lpa-task-list/:appealId", function(req, res, next){
@@ -816,7 +838,7 @@ router.post("/lpa-submission/:appealId/supplementary-post", function(req, res, n
   }
 
   if(req.body["supplementary-docs"] == "yes"){
-    res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-name`)
+    res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-existing-list`)
   } else {
     req.session.data["supplementary-completed"] = "govuk-tag app-task-list__task-completed";
     req.session.data["supplementary-completed-text"] = "Completed";

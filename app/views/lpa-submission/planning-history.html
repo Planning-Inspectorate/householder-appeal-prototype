@@ -1,23 +1,23 @@
 {% extends "layout.html" %}
 
 {% set headerTitle = "case file" %}
-  
+
 
 {% block pageTitle %}
-  LPA 
+  LPA
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds"> 
-    <form action="lpa-task-list-complete" method="post" novalidate>
-      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
+  <div class="govuk-grid-column-two-thirds">
+    <form action="lpa-task-list" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the planning application</span>
 
-      
+
             <h1 class="govuk-heading-l">
               Planning history
             </h1>
-      
+
           <p>If applicable, upload the planning history (for example, previous planning permissions) and the documents used when considering the application.</p>
         {% set uploadHtml %}
             {{ govukFileUpload({
@@ -56,10 +56,10 @@
     </form>
   </div>
 
-   <div class="govuk-grid-column-one-third"> 
-    {% include "lpa-submission/_key-details.html" %} 
+   <div class="govuk-grid-column-one-third">
+    {% include "lpa-submission/_key-details.html" %}
   </div>
-  
+
 </div>
 {% endblock %}
 

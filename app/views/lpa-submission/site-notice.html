@@ -1,17 +1,17 @@
 \{% extends "layout.html" %}
 
 {% set headerTitle = "Appellant stuff" %}
-  
+
 
 {% block pageTitle %}
-  LPA 
+  LPA
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds"> 
-    <form action="/site-notice-post" method="post" novalidate>
-      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
+  <div class="govuk-grid-column-two-thirds">
+    <form action="site-notice-post" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the planning application</span>
 
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby="is-accurate-conditional-hint">
@@ -21,8 +21,8 @@
             </h1>
           </legend>
           <div class="govuk-radios" data-module="govuk-radios">
-            
-      
+
+
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="is-accurate-conditional-2" name="was-publicised" type="radio" value="true" data-aria-controls="conditional-is-accurate-conditional-2">
               <label class="govuk-label govuk-radios__label" for="is-accurate-conditional-2">
@@ -52,9 +52,9 @@
     </form>
   </div>
 
-   <div class="govuk-grid-column-one-third"> 
-    {% include "lpa-submission/_key-details.html" %} 
+   <div class="govuk-grid-column-one-third">
+    {% include "lpa-submission/_key-details.html" %}
   </div>
-  
+
 </div>
 {% endblock %}

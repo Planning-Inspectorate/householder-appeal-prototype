@@ -10,16 +10,15 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="enter-appeal-site" method="post" novalidate>
-      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal site</span>
+    <form action="interested-parties-appeal-post" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal </span>
 
       {{ govukRadios({
-        classes: "",
-        idPrefix: "public-land",
-        name: "public-land",
+        idPrefix: "interested-parties-appeal",
+        name: "interested-parties-appeal",
         fieldset: {
           legend: {
-            text: "Can the Inspector see the relevant parts of the appeal site from public land?",
+            text: "Have you notified interested paries about the appeal?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -28,19 +27,18 @@
           {
             value: "yes",
             text: "Yes",
-            checked: checked("public-land", "yes")
+            checked: checked("interested-parties-appeal", "yes")
           },
           {
             value: "no",
             text: "No",
-            checked: checked("public-land", "no")
+            checked: checked("interested-parties-appeal", "no")
 
           }
         ]
       }) }}
 
 
-      <input type="hidden" name="about-site-completed-text" value="In Progress">
       <div class="govuk-form-group">
         <button class="govuk-button" data-module="govuk-button">
           Save and continue

@@ -14,7 +14,7 @@
       <h1 class="govuk-heading-l">
         Householder planning appeal questionnaire
       </h1>
-      
+
     <p class="govuk-body-l">Use the links below to submit your information. You can complete the sections in any order.</p>
 
     <div class="govuk-warning-text">
@@ -61,27 +61,29 @@
               </span>
                <strong id="section-status" class="{{data['other-appeals-completed']}}" >{{data['other-appeals-completed-text']}}</strong>
             </li>
-          </ul>
-        </li>
-        <li>
-          <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">2. </span>About the appeal site
-          </h2>
-          <ul class="app-task-list__items">
+
             <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="/lpa-submission/{{appeal.id}}/public-land" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
-                  Tell us about the appeal site
-                </a>
-              </span>
-               <strong id="section-status" class="{{data['section2-completed']}}" >{{data['section2-completed-text']}}</strong>
-            </li>
+             <span class="app-task-list__task-name">
+               <a href="/lpa-submission/{{appeal.id}}/interested-parties-appeal" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
+                 Notifying interested parties of the appeal
+               </a>
+             </span>
+              <strong id="section-status" class="{{data['interested-parties-appeal-completed']}}" >{{data['interested-parties-appeal-completed-text']}}</strong>
+           </li>
+           <li class="app-task-list__item">
+             <span class="app-task-list__task-name">
+               <a href="/lpa-submission/{{appeal.id}}/public-land" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
+                 Tell us about the appeal site
+               </a>
+             </span>
+              <strong id="section-status" class="{{data['about-site-completed']}}" >{{data['about-site-completed-text']}}</strong>
+           </li>
           </ul>
         </li>
 
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">3. </span>Required documents
+            <span class="app-task-list__section-number">2. </span>About the planning application
           </h2>
           <ul class="app-task-list__items">
 
@@ -102,48 +104,6 @@
               </span>
                <strong id="section-status" class="{{data['officers-report-completed']}}" >{{data['officers-report-completed-text']}}</strong>
             </li>
-          </ul>
-        </li>
-
-
-         <li>
-          <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">4. </span> Optional supporting documents
-          </h2>
-          <ul class="app-task-list__items">
-
-           <li class="app-task-list__item" style="border-top-color: #fff; padding: 0;">
-              <span class="app-task-list__task-name">
-                <p>Only include documents that were considered when making a decision on the application.</p>
-              </span>
-            </li>
-
-           <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="/lpa-submission/{{appeal.id}}/site-notice-ip" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
-                  Telling interested parties about the application
-                </a>
-              </span>
-               <strong id="section-status" class="{{data['interested-parties-completed']}}" >{{data['interested-parties-completed-text']}}</strong>
-            </li>
-
-             <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="/lpa-submission/{{appeal.id}}/correspondence" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
-                  Representations from interested parties
-                </a>
-              </span>
-               <strong id="section-status" class="{{data['interested-parties2-completed']}}" >{{data['interested-parties2-completed-text']}}</strong>
-            </li>
-
-             <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="/lpa-submission/{{appeal.id}}/representations" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
-                  Notifying interested parties of the appeal
-                </a>
-              </span>
-               <strong id="section-status" class="{{data['interested-parties3-completed']}}" >{{data['interested-parties3-completed-text']}}</strong>
-            </li>
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
@@ -152,17 +112,51 @@
                 </a>
               </span>
                <strong id="section-status" class="{{data['site-notice-completed']}}" >{{data['site-notice-completed-text']}}</strong>
-            </li> 
-            
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="/lpa-submission/{{appeal.id}}/planning-history" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
-                  Planning history
-                </a>
-              </span>
-               <strong id="section-status" class="{{data['planning-history-completed']}}" >{{data['planning-history-completed-text']}}</strong>
             </li>
-            
+
+            <li class="app-task-list__item">
+               <span class="app-task-list__task-name">
+                 <a href="/lpa-submission/{{appeal.id}}/site-notice-ip" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
+                   Telling interested parties about the application
+                 </a>
+               </span>
+                <strong id="section-status" class="{{data['interested-parties-completed']}}" >{{data['interested-parties-completed-text']}}</strong>
+             </li>
+
+
+
+              <li class="app-task-list__item">
+               <span class="app-task-list__task-name">
+                 <a href="/lpa-submission/{{appeal.id}}/correspondence" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
+                   Representations from interested parties
+                 </a>
+               </span>
+                <strong id="section-status" class="{{data['interested-parties2-completed']}}" >{{data['interested-parties2-completed-text']}}</strong>
+             </li>
+
+             <li class="app-task-list__item">
+               <span class="app-task-list__task-name">
+                 <a href="/lpa-submission/{{appeal.id}}/planning-history" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
+                   Planning history
+                 </a>
+               </span>
+                <strong id="section-status" class="{{data['planning-history-completed']}}" >{{data['planning-history-completed-text']}}</strong>
+             </li>
+          </ul>
+        </li>
+
+
+         <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">3. </span> Policies related to the planning application
+          </h2>
+          <ul class="app-task-list__items">
+
+           <li class="app-task-list__item" style="border-top-color: #fff; padding: 0;">
+              <span class="app-task-list__task-name">
+                <p>Only include documents that were considered when making a decision on the application.</p>
+              </span>
+            </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="/lpa-submission/{{appeal.id}}/statutory" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
@@ -171,16 +165,6 @@
               </span>
                <strong id="section-status" class="{{data['statutory-completed']}}" >{{data['statutory-completed-text']}}</strong>
             </li>
-
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="/lpa-submission/{{appeal.id}}/policy" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
-                  Other relevant policies
-                </a>
-              </span>
-               <strong id="section-status" class="{{data['policies-completed']}}" >{{data['policies-completed-text']}}</strong>
-            </li>
-
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="/lpa-submission/{{appeal.id}}/supplementary" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
@@ -190,21 +174,35 @@
                <strong id="section-status" class="{{data['supplementary-completed']}}" >{{data['supplementary-completed-text']}}</strong>
             </li>
 
+
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="/lpa-submission/{{appeal.id}}/development-plan" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
-                  Development Plan Document or Neighbourhood Plan
+                <a href="/lpa-submission/{{appeal.id}}/conservation-area" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
+                  Conservation Area
                 </a>
               </span>
-               <strong id="section-status" class="{{data['dpd-completed']}}" >{{data['dpd-completed-text']}}</strong>
+               <strong id="section-status" class="{{data['conservation-completed']}}" >{{data['conservation-completed-text']}}</strong>
             </li>
 
+
+
+
+
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="/lpa-submission/{{appeal.id}}/other-policies" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
+                  Other relevant policies
+                </a>
+              </span>
+               <strong id="section-status" class="{{data['other-policies-completed']}}" >{{data['other-policies-completed-text']}}</strong>
+            </li>
           </ul>
         </li>
 
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">5. Before you submit</span>
+            <span class="app-task-list__section-number">4. Before you submit</span>
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
@@ -216,7 +214,7 @@
               {% endif %}
               </span>
                <strong id="check-answers" class="{{data['check-answers']}}" >{{data['check-answers-text']}}</strong>
-              
+
             </li>
           </ul>
         </li>

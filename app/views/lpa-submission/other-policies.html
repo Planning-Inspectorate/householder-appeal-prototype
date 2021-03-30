@@ -10,16 +10,15 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="enter-appeal-site" method="post" novalidate>
-      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal site</span>
+    <form action="other-policies-post" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Policies related to the planning application</span>
 
       {{ govukRadios({
-        classes: "",
-        idPrefix: "public-land",
-        name: "public-land",
+        idPrefix: "other-policies",
+        name: "other-policies",
         fieldset: {
           legend: {
-            text: "Can the Inspector see the relevant parts of the appeal site from public land?",
+            text: "Are there any other relevant policies?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -28,19 +27,21 @@
           {
             value: "yes",
             text: "Yes",
-            checked: checked("public-land", "yes")
+            checked: checked("other-policies", "yes")
           },
           {
             value: "no",
             text: "No",
-            checked: checked("public-land", "no")
+            checked: checked("other-policies", "no")
 
           }
         ]
       }) }}
 
-
-      <input type="hidden" name="about-site-completed-text" value="In Progress">
+      <input type="hidden" name="other-policies-completed" value="govuk-tag app-task-list__task-completed">
+      <input type="hidden" name="other-policies-completed-text" value="Completed">
+      <input type="hidden" name="check-answers-compelete" value="true">
+      <input type="hidden" name="check-answers-text" value="Not started">
       <div class="govuk-form-group">
         <button class="govuk-button" data-module="govuk-button">
           Save and continue

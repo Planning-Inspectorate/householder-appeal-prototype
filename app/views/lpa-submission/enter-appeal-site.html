@@ -13,6 +13,15 @@
     <form action="neighbours-land" method="post" novalidate>
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal site</span>
 
+      {% set detailsHtml %}
+        {{ govukTextarea({
+          name: "enter-appeal-site-more-detail",
+          id: "enter-appeal-site-more-detail",
+          label: {
+            text: "Tell us why the Inspector would need to enter the appeal site."
+          }
+        }) }}
+      {% endset -%}
       {{ govukRadios({
         idPrefix: "enter-appeal-site",
         name: "enter-appeal-site",
@@ -27,7 +36,10 @@
           {
             value: "yes",
             text: "Yes",
-            checked: checked("enter-appeal-site", "yes")
+            checked: checked("enter-appeal-site", "yes"),
+            conditional: {
+              html: detailsHtml
+            }
           },
           {
             value: "no",
