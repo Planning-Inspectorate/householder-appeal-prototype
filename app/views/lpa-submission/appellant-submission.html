@@ -1,7 +1,7 @@
-{% extends "layout.html" %}
+{% extends "layout-lpa.html" %}
 
 {% set headerTitle = "Review accuracy of appellant's submission" %}
-  
+
 
 {% block pageTitle %}
   {{headerTitle}}
@@ -35,7 +35,7 @@
                 Yes
               </label>
             </div>
-      
+
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="is-accurate-conditional-2" name="is-accurate" type="radio" value="no" {{checked('is-accurate', 'no')}} data-aria-controls="conditional-is-accurate-conditional-2">
               <label class="govuk-label govuk-radios__label" for="is-accurate-conditional-2">
@@ -66,10 +66,10 @@
     </form>
   </div>
 
-   <div class="govuk-grid-column-one-third"> 
-    
+   <div class="govuk-grid-column-one-third">
+
   </div>
-  
+
 </div>
 
 {% endblock %}
