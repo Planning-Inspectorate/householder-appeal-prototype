@@ -908,7 +908,7 @@ router.post("/lpa-account/login/email-post", function(req, res, next){
 
   if(!email || email.search("@") === -1){
     //invalid email
-    res.redirect("/lpa-account/login/email-error")
+    res.redirect("/lpa-account/login/email")
   } else{
     res.redirect("/lpa-account/login/email-sent")
   }

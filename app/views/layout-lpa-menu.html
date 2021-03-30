@@ -1,0 +1,26 @@
+
+{% extends "layout.html" %}
+
+
+{% block header %}
+  {% if not alwaysHideCookieBanner %}
+    {% include "includes/cookie-banner.html" %}
+  {% endif %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/lpa-account",
+    containerClasses: "govuk-width-container",
+    navigation: [
+    {
+      href: "/lpa-account/appeal-list",
+      text: "Appeals"
+    },
+    {
+      href: "/lpa-account/manage-documents",
+      text: "Manage documents"
+    }
+  ]
+  }) }}
+{% endblock %}

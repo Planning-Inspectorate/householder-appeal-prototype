@@ -7,18 +7,42 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">Continue your appeal later</h1>
-      <p>We'll send you an email to confirm your email address. ​</p>
-      <p>Once you've confirmed, we'll email you again with a link to get back into your appeal.</p>
+      <h1 class="govuk-heading-l">Check your email</h1>
+      <p>We've sent an email to with a one time password to {{ data['lpa-account-email'] }}.​</p>
 
 
-          <button class="govuk-button" data-module="govuk-button">
-            Continue
-          </button>
+      <form action="/lpa-submission/new-appeal/4" method="post" novalidate>
 
-      </form>
+        {{ govukInput({
+          label: {
+            text: "Enter one time password",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          },
+          classes: "govuk-input--width-5",
+          id: "one-time-password",
+          name: "one-time-password"
+        }) }}
+
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h4 class="govuk-heading-s">If you're having problems</h4>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Check the email hasn't gone into your spam/bulk folder.</li>
+        <li>We can <a href="return-info">resend the email.</a></li>
+        <li><a class="govuk-link" href="#">Email our customer support team</a> or call them on 0303 44 5000.</li>
+      </ul>
+
+      <br><br><br><br><br><br>
+      <p><a href="/lpa-account/login/emails/one-time-password" target="_blank">(View one time password email)</a></p>
+      </div>
+
 
     </div>
-  </div>
-
 {% endblock %}
