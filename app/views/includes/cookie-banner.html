@@ -1,5 +1,4 @@
-
-{% if data.cookieBanner == "on" %}
+{% if data.cookieBanner == "on" and not alwaysHideCookieBanner %}
 
 {% set html %}
   <p>We use some essential cookies to make this service work.</p>

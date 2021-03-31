@@ -10,35 +10,21 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="conservation-area-post" method="post" novalidate>
+    <form action="lpa-task-list" method="post" novalidate>
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Policies related to the planning application</span>
 
-      {{ govukRadios({
-        idPrefix: "conservation-area",
-        name: "conservation-area",
-        fieldset: {
-          legend: {
-            text: "Is the appeal site in or near a conservation area?",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
-          }
-        },
-        items: [
-          {
-            value: "yes",
-            text: "Yes",
-            checked: checked("conservation-area", "yes")
-          },
-          {
-            value: "no",
-            text: "No",
-            checked: checked("conservation-area", "no")
+      {{ govukTextarea({
+        id: "statutory-extra-details",
+        name: "statutory-extra-details",
+        label: {
+          text: "Tell us what sections of the statutory development plan are relevant (optional)",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        }
 
-          }
-        ]
       }) }}
-
-
+      <input type="hidden" name="statutory-completed" value="govuk-tag app-task-list__task-completed">
+      <input type="hidden" name="statutory-completed-text" value="Completed">
       <div class="govuk-form-group">
         <button class="govuk-button" data-module="govuk-button">
           Save and continue

@@ -1,22 +1,24 @@
 {% extends "layout.html" %}
 
 {% set headerTitle = "Appellant stuff" %}
-  
+
 
 {% block pageTitle %}
-  LPA 
+  LPA
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds"> 
-    <form action="lpa-task-list-complete" method="post" novalidate>
-      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
+  <div class="govuk-grid-column-two-thirds">
+    <form action="statutory-extra-details" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Policies related to the planning application</span>
 
 
           <h1 class="govuk-heading-l">
             Statutory development plan policy
           </h1>
+
+          <p>Include any Neighbourhood Plan relevant to this appeal.</p>
           {% set uploadHtml %}
             {{ govukFileUpload({
               id: "statutory",
@@ -38,13 +40,12 @@
 
           {{ mojMultiFileUpload({
             uploadedFiles: {
-              heading: { text: 'Files added' },
+            heading: { text: 'Files added' },
               items: data.uploadedFiles | filesByFieldName("statutory")
             },
             uploadHtml: uploadHtml
           }) }}
-      <input type="hidden" name="statutory-completed" value="govuk-tag app-task-list__task-completed">
-      <input type="hidden" name="statutory-completed-text" value="Completed">
+
       <div class="govuk-form-group">
         <button class="govuk-button" data-module="govuk-button">
           Save and continue
@@ -53,10 +54,10 @@
     </form>
   </div>
 
-   <div class="govuk-grid-column-one-third"> 
-    {% include "lpa-submission/_key-details.html" %} 
+   <div class="govuk-grid-column-one-third">
+    {% include "lpa-submission/_key-details.html" %}
   </div>
-  
+
 </div>
 {% endblock %}
 
