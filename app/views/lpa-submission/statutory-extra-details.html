@@ -1,0 +1,41 @@
+{% extends "layout-lpa.html" %}
+
+{% set headerTitle = "Appellant stuff" %}
+
+
+{% block pageTitle %}
+  LPA
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="lpa-task-list" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Policies related to the planning application</span>
+
+      {{ govukTextarea({
+        id: "statutory-extra-details",
+        name: "statutory-extra-details",
+        label: {
+          text: "Tell us what sections of the statutory development plan are relevant (optional)",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        }
+
+      }) }}
+      <input type="hidden" name="statutory-completed" value="govuk-tag app-task-list__task-completed">
+      <input type="hidden" name="statutory-completed-text" value="Completed">
+      <div class="govuk-form-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </div>
+    </form>
+  </div>
+
+   <div class="govuk-grid-column-one-third">
+    {% include "lpa-submission/_key-details.html" %}
+  </div>
+
+</div>
+{% endblock %}

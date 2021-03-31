@@ -1,0 +1,91 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  Inspector Screens - My Appeals
+{% endblock %}
+
+{% block content %}
+<style>
+
+.govuk-header__container {
+    border-bottom: 10px solid #224d42;
+}
+
+</style>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <p></p>
+  </div>
+  <div class="govuk-grid-column-one-half">
+    <p align="right"> <b>Marie Lightman</b>:
+   <a href="index" class="govuk-link">Sign out</a></p>
+  </div>
+</div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-l">Details of site visit</h1>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            27 High Street<br>Plymouth<br>PL4 2AA
+          </dd>
+          <dd class="govuk-summary-list__actions">
+
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of site visit
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Access Required (ARSV)
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="visit-type">
+              Change<span class="govuk-visually-hidden"> visit type</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            15 February 2021
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="visit-date">
+              Change<span class="govuk-visually-hidden"> date</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Time
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">09:30am - 11:30am</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="visit-time">
+              Change<span class="govuk-visually-hidden"> time</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Confirm site visit and send letter",
+        href: "appeal1-visit-arranged.html"
+      }) }}
+
+
+    </div>
+  </div>
+{% endblock %}

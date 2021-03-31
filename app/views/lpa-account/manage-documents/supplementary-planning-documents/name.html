@@ -1,34 +1,32 @@
   {% extends "layout.html" %}
 
 {% set headerTitle = "Appellant stuff" %}
-  
+
 
 {% block pageTitle %}
-  LPA 
+  LPA
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds"> 
-    <form action="supplementary-file-upload" method="post" novalidate>
-      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
+  <div class="govuk-grid-column-two-thirds">
+    <form action="upload" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Supplementary planning documents</span>
 
-          
+
       {{ govukInput({
         label: {
           text: "What is the name of the Supplementary Planning document?",
           classes: "govuk-label--l",
           isPageHeading: true
         },
-        id: "supplementary-name",
-        name: "supplementary-name",
-          hint: {
-            text: "Add one supplementary planning document at a time. You will be able to add more later.  "
-          }
+        id: "new-sdp-name",
+        name: "new-sdp-name",
+        value: "Householder"
       }) }}
 
 
-      
+
       <div class="govuk-form-group">
         <button class="govuk-button" data-module="govuk-button">
           Continue
@@ -37,10 +35,10 @@
     </form>
   </div>
 
-   <div class="govuk-grid-column-one-third"> 
-    
+   <div class="govuk-grid-column-one-third">
+
   </div>
-  
+
 </div>
 {% endblock %}
 {% block pageScripts %}

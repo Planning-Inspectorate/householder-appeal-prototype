@@ -1,0 +1,133 @@
+  {% extends "layout.html" %}
+
+{% set headerTitle = "Appellant stuff" %}
+
+
+{% block pageTitle %}
+  LPA
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="view-updated" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Supplementary planning documents</span>
+
+{% set dateHtml %}
+<div class="govuk-form-group">
+<fieldset class="govuk-fieldset" role="group" aria-describedby="supplementary-adopted-date-hint">
+
+  <legend class="govuk-fieldset__legend">
+
+    Tell us the date of adoption.
+
+  </legend>
+
+
+  <div id="supplementary-adopted-date-hint" class="govuk-hint">
+    For example, 27 3 2007
+  </div>
+
+
+  <div class="govuk-date-input" id="supplementary-adopted-date">
+
+    <div class="govuk-date-input__item">
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-date-input__label" for="supplementary-adopted-date-day">
+          Day
+        </label>
+
+      <input value="16" class="govuk-input govuk-date-input__input govuk-input--width-2" id="supplementary-adopted-date-day" name="supplementary-adopted-date-day" type="text" pattern="[0-9]*" inputmode="numeric">
+      </div>
+    </div>
+
+    <div class="govuk-date-input__item">
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-date-input__label" for="supplementary-adopted-date-month">
+          Month
+        </label>
+
+      <input value="03" class="govuk-input govuk-date-input__input govuk-input--width-2" id="supplementary-adopted-date-month" name="supplementary-adopted-date-month" type="text" pattern="[0-9]*" inputmode="numeric">
+      </div>
+    </div>
+
+    <div class="govuk-date-input__item">
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-date-input__label" for="supplementary-adopted-date-year">
+          Year
+        </label>
+
+      <input value="2012" class="govuk-input govuk-date-input__input govuk-input--width-4" id="supplementary-adopted-date-year" name="supplementary-adopted-date-year" type="text" pattern="[0-9]*" inputmode="numeric">
+      </div>
+    </div>
+
+  </div>
+
+
+</fieldset>
+
+
+</div>
+{% endset -%}
+
+{% set stageHtml %}
+{{ govukInput({
+        label: {
+          text: "Tell us what stage this has reached"
+        },
+        id: "supplementary-stage",
+        name: "supplementary-stage"
+      }) }}
+
+{% endset -%}
+
+
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "supplementary-adopted",
+  name: "supplementary-adopted",
+  fieldset: {
+    legend: {
+      text: "Was it formally adopted?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes",
+      conditional: {
+        html: dateHtml
+      },
+      checked: true
+    },
+    {
+      value: "no",
+      text: "No",
+      conditional: {
+        html: stageHtml
+      }
+    }
+  ]
+}) }}
+
+
+      <div class="govuk-form-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </div>
+    </form>
+  </div>
+
+   <div class="govuk-grid-column-one-third">
+
+  </div>
+
+</div>
+{% endblock %}
+{% block pageScripts %}
+
+{% endblock %}

@@ -1,0 +1,31 @@
+
+
+{% extends "layout-lpa.html" %}
+
+{% block pageTitle %}
+  Planning appeals
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <span class="govuk-caption-l">{{ data.lpaName }}</span>
+
+
+      <h1 class="govuk-heading-l">
+        Manage Documents
+      </h1>
+     <ul class="govuk-list">
+       <li>
+         <a href="#">Statutory development plan</a>
+       </li>
+       <li>
+         <a href="manage-documents/supplementary-planning-documents">Supplementary planning documents</a>
+       </li>
+
+     </ul>
+
+      </div>
+  </div>
+{% endblock %}

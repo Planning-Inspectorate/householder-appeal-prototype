@@ -1,86 +1,90 @@
-  {% extends "layout.html" %}
+{% set items = [
+          {
+            name: "Bradford City Centre Design Guide",
+            adopted: true,
+            date: "21 March 2006"
+          },
+          {
+            name: "City Centre Affordable Housing",
+            adopted: true,
+            date: "1 January 2012"
+          },
+          {
+            name: "Homes and Neighbourhoods - A guide to designing in Bradford",
+            adopted: true,
+            date: "1 January 2012"
+          },
+          {
+            name: "Householder",
+            adopted: true,
+            date: "1 January 2012"
+          },
+          {
+            name: "Affordable Housing",
+            adopted: false,
+            stage: "In preparation"
+          },{
+            name: "Open Space and Built Recreational Facilities",
+            adopted: false,
+            stage: "In preparation"
+          },{
+            name: "South Pennine Moors",
+            adopted: false,
+            stage: "In preparation"
+          },{
+            name: "Tree Protection",
+            adopted: false,
+            stage: "In preparation"
+          }
+          ] %}
+
+{% extends "layout-lpa.html" %}
 
 {% set headerTitle = "Appellant stuff" %}
-  
+
 
 {% block pageTitle %}
-  LPA 
+  LPA
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds"> 
+  <div class="govuk-grid-column-two-thirds">
     <form action="supplementary-post" method="post" novalidate>
-      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Policies related to the planning application</span>
 
-          
-        {{ govukCheckboxes({
-          idPrefix: "waste",
-          name: "waste",
-          fieldset: {
-            legend: {
-              text: "What Supplementary Planning Documents were used?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          hint: {
-            text: "Select all that apply."
-          },
-          items: [
-            {
-            value: "A Shop Keepers Guide to Securing Their Premises",
-            text: "A Shop Keepers Guide to Securing Their Premises"
-          },
-          {
-            value: "Bradford City Centre Design Guide",
-            text: "Bradford City Centre Design Guide"
-          },
-          {
-            value: "City Centre Affordable Housing",
-            text: "City Centre Affordable Housing"
-          },
-          {
-            value: "Homes and Neighbourhoods - A guide to designing in Bradford",
-            text: "Homes and Neighbourhoods - A guide to designing in Bradford"
-          },
-          {
-            value: "Hot Food Takeaways",
-            text: "Hot Food Takeaways"
-          },
-          {
-            value: "Householder",
-            text: "Householder"
-          },
-          {
-            value: "Landscape Character",
-            text: "Landscape Character"
-          },
-          {
-            value: "Menston Housing Sites",
-            text: "Menston Housing Sites"
-          },
-          {
-            value: "Planning for Crime Prevention",
-            text: "Planning for Crime Prevention"
-          },
-          {
-            value: "Planning Obligations",
-            text: "Planning Obligations"
-          },
-          {
-            value: "Shopfront Design Guide",
-            text: "Shopfront Design Guide"
-          },
-          {
-            value: "Sustainable Design Guide",
-            text: "Sustainable Design Guide"
-          }
-          ]
-        }) }}
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="supp-docs-used-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What Supplementary Planning Documents were used?
+            </h1>
+          </legend>
+          <div id="supp-docs-used-hint" class="govuk-hint">
+            Select all that apply.
+          </div>
+          <div class="govuk-checkboxes">
+            <h3 class="govuk-heading-s">Adopted documents</h3>
 
-        <p><a href="supplementary-existing-edit" title="">Add or change Supplementary Planning Documents</a></p>
-      
+            {% for item in items | selectattr("adopted") %}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="supp-docs-used" name="supp-docs-used" type="checkbox" value="{{item.name}}" {{checked('supp-docs-used', item.name)}} >
+                <label class="govuk-label govuk-checkboxes__label" for="supp-docs-used">
+                  {{item.name}}
+                </label>
+                <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                  Adopted {{ item.date }}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+        </fieldset>
+      </div>
+
+
+        <p><a href="/lpa-account/manage-documents/supplementary-planning-documents" title="">Add or change Supplementary Planning Documents</a></p>
+
       <div class="govuk-form-group">
         <button class="govuk-button" data-module="govuk-button">
           Continue
@@ -89,10 +93,10 @@
     </form>
   </div>
 
-   <div class="govuk-grid-column-one-third"> 
-    {% include "lpa-submission/_key-details.html" %} 
+   <div class="govuk-grid-column-one-third">
+    {% include "lpa-submission/_key-details.html" %}
   </div>
-  
+
 </div>
 {% endblock %}
 {% block pageScripts %}

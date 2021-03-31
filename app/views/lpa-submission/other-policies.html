@@ -1,0 +1,58 @@
+{% extends "layout-lpa.html" %}
+
+{% set headerTitle = "Appellant stuff" %}
+
+
+{% block pageTitle %}
+  LPA
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="other-policies-post" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Policies related to the planning application</span>
+
+      {{ govukRadios({
+        idPrefix: "other-policies",
+        name: "other-policies",
+        fieldset: {
+          legend: {
+            text: "Are there any other relevant policies?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: checked("other-policies", "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: checked("other-policies", "no")
+
+          }
+        ]
+      }) }}
+
+      <input type="hidden" name="other-policies-completed" value="govuk-tag app-task-list__task-completed">
+      <input type="hidden" name="other-policies-completed-text" value="Completed">
+      <input type="hidden" name="check-answers-compelete" value="true">
+      <input type="hidden" name="check-answers-text" value="Not started">
+      <div class="govuk-form-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </div>
+    </form>
+  </div>
+
+   <div class="govuk-grid-column-one-third">
+    {% include "lpa-submission/_key-details.html" %}
+  </div>
+
+</div>
+{% endblock %}

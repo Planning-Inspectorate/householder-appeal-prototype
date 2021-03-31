@@ -1,27 +1,27 @@
-{% extends "layout.html" %}
+{% extends "layout-lpa.html" %}
 
 {% set headerTitle = "Appellant stuff" %}
-  
+
 
 {% block pageTitle %}
-  LPA 
+  LPA
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds"> 
-    <form action="lpa-task-list-complete" method="post" novalidate>
-      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
+  <div class="govuk-grid-column-two-thirds">
+    <form action="lpa-task-list" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Policies related to the planning application</span>
+
 
             <h1 class="govuk-heading-l">
-              Notifying interested parties of the appeal
+              Other relevant policies
             </h1>
-          <p>If applicable, upload the letter used to notify interested parties about the appeal, and a list of their addresses.</p>
-                
-        {% set uploadHtml %}
+            <p>If applicable, upload extracts from any other relevant policies that were considered in making the decision. </p>
+          {% set uploadHtml %}
             {{ govukFileUpload({
-              id: "interested-parties",
-              name: "interested-parties",
+              id: "policy",
+              name: "policy",
               classes: 'moj-multi-file-upload__input',
               label: {
                 text: "Upload files",
@@ -40,13 +40,12 @@
           {{ mojMultiFileUpload({
             uploadedFiles: {
               heading: { text: 'Files added' },
-              items: data.uploadedFiles | filesByFieldName("interested-parties")
+              items: data.uploadedFiles | filesByFieldName("policy")
             },
             uploadHtml: uploadHtml
           }) }}
-
-          <input type="hidden" name="interested-parties3-completed" value="govuk-tag app-task-list__task-completed">
-          <input type="hidden" name="interested-parties3-completed-text" value="Completed">
+      <input type="hidden" name="policies-completed" value="govuk-tag app-task-list__task-completed">
+      <input type="hidden" name="policies-completed-text" value="Completed">
       <div class="govuk-form-group">
         <button class="govuk-button" data-module="govuk-button">
           Save and continue
@@ -55,12 +54,13 @@
     </form>
   </div>
 
-   <div class="govuk-grid-column-one-third"> 
-    {% include "lpa-submission/_key-details.html" %} 
+   <div class="govuk-grid-column-one-third">
+    {% include "lpa-submission/_key-details.html" %}
   </div>
-  
+
 </div>
 {% endblock %}
+
 
 {% block pageScripts %}
 <script>
@@ -68,9 +68,9 @@ if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
 
   new MOJFrontend.MultiFileUpload({
     container: $('.moj-multi-file-upload'),
-    uploadUrl: '/ajax-interested-parties',
-    deleteUrl: '/ajax-interested-parties-delete',
-    fieldName: 'interested-parties'
+    uploadUrl: '/ajax-policy',
+    deleteUrl: '/ajax-policy-delete',
+    fieldName: 'policy'
     });
   }
 </script>
