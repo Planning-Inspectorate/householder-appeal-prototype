@@ -902,6 +902,11 @@ router.post("/lpa-submission/:appealId/supplementary-adopted-post", function(req
 
 //lpa login
 
+router.get("/lpa-account/login/email", function(req, res, next){
+  req.session.data.lpaRedirectUrl = req.query.url;
+  next()
+})
+
 router.post("/lpa-account/login/email-post", function(req, res, next){
   let email = req.session.data["lpa-account-email"];
 
@@ -909,30 +914,30 @@ router.post("/lpa-account/login/email-post", function(req, res, next){
   if(!email || email.search("@") === -1){
     //invalid email
     res.redirect("/lpa-account/login/email")
-  } else{
-    res.redirect("/lpa-account/login/email-sent")
   }
 
 
-  // let templateId = "1824bf6e-bc22-4db8-9d5e-d75462cf19af";
-  // let emailAddress = req.body['appellant-email'];
-  // let personalisation = {
-  //   name: req.body['appellant-name']
-  // };
-  // notifyClient
-  //   .sendEmail(templateId, emailAddress, {
-  //     personalisation: personalisation
-  //   })
-  //   .then(function(response){
-  //     console.log(response)
-  //     res.redirect("appellant-submission/save-return/verification-confirmation");
-  //   })
-  //   .catch(function(err){
-  //     console.error(err.statusCode)
-  //     console.error(err.errors)
-  //     res.redirect("appellant-submission/save-return/verification-confirmation");
-  //   })
+  let templateId = "345f0fcf-496b-47a7-acb7-4449f3c2859e";
+  let emailAddress = req.body['lpa-account-email'];
+  notifyClient
+    .sendEmail(templateId, emailAddress)
+    .then(function(response){
+      console.log(response)
+      res.redirect("/lpa-account/login/email-sent")
+    })
+    .catch(function(err){
+      console.error(err.statusCode)
+      console.error(err.errors)
+      res.redirect("/lpa-account/login/email-sent")
+    })
 });
+
+
+router.post("/lpa-account/login/email-sent-post", function(req, res, next){
+  let url = decodeURIComponent(req.session.data.lpaRedirectUrl);
+
+  res.redirect(url);
+})
 
 
 module.exports = router
