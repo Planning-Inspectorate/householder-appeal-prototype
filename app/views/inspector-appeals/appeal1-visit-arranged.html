@@ -60,12 +60,48 @@
 </nav>
 
      <h2 class="govuk-heading-l">Site Visit</h2>
-     <p>You have <b>not arranged</b> a site visit</p>
+     <p>You have arranged a site visit</p>
+
+     <dl class="govuk-summary-list govuk-summary-list--no-border">
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+           Type of visit
+         </dt>
+         <dd class="govuk-summary-list__value">
+         Access required (ARSV)
+         </dd>
+       </div>
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+           Date
+         </dt>
+         <dd class="govuk-summary-list__value">
+         15 February 2021
+         </dd>
+       </div>
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+          Time
+         </dt>
+         <dd class="govuk-summary-list__value">
+            9:30am - 11:30am
+         </dd>
+       </div>
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+           Site visit letter / email
+         </dt>
+         <dd class="govuk-summary-list__value">
+           <a href="#">View letter sent to appellant</a>
+         </dd>
+       </div>
+
+     </dl>
 
      {% from "govuk/components/button/macro.njk" import govukButton %}
 
      {{ govukButton({
-       text: "Arrange site visit",
+       text: "Re-arrange site visit",
        href: "visit-type.html"
      }) }}
 
