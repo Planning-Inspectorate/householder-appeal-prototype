@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 
-  
+
 
 {% block pageTitle %}
   Your details
@@ -26,7 +26,7 @@
             {{data.user.name.first}} {{data.user.name.last}}
           </dd>
         </div>
-
+<!--
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Your email
@@ -35,7 +35,7 @@
             {{data.user.email}}
           </dd>
         </div>
-
+-->
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Planning application number
@@ -43,8 +43,8 @@
           <dd class="govuk-summary-list__value">
             <p class="govuk-body">{{ data.user.completeAppeal['application-number'] }}</p>
           </dd>
-          
-        </div> 
+
+        </div>
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -82,8 +82,8 @@
                 uploadedFiles: data.user.completeAppeal.uploadedFiles | filesByFieldName("planning-application")
               }) }}
           </dd>
-          
-        </div>     
+
+        </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-summary-list__key--no-border">
             Decision letter
@@ -93,7 +93,7 @@
                 uploadedFiles: data.user.completeAppeal.uploadedFiles | filesByFieldName("decision-letter")
               }) }}
           </dd>
-          
+
         </div>
       </dl>
 
@@ -111,7 +111,7 @@
                 uploadedFiles: data.user.completeAppeal.uploadedFiles | filesByFieldName("appeal-statement")
               }) }}
           </dd>
-          
+
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -121,9 +121,9 @@
             {{ multiFileDisplay({
                 uploadedFiles: data.user.completeAppeal.uploadedFiles | filesByFieldName("supporting-docs")
               }) }}
-            
+
           </dd>
-          
+
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-summary-list__key--no-border">
@@ -136,7 +136,7 @@
             <p>Yes</p>
             {% endif %}
           </dd>
-          
+
         </div>
       </dl>
 
@@ -146,7 +146,7 @@
       {% set appealSiteHtml %}
 
       <dl class="govuk-summary-list">
-        
+
          <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Do you own the whole appeal site?
@@ -154,7 +154,7 @@
           <dd class="govuk-summary-list__value">
             yes
           </dd>
-          
+
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -167,7 +167,7 @@
             <p>Yes</p>
             {% endif %}
           </dd>
-          
+
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-summary-list__key--no-border">
@@ -180,7 +180,7 @@
             <p>No</p>
             {% endif %}
           </dd>
-          
+
         </div>
       </dl>
 
@@ -211,14 +211,14 @@
               html: appealSiteHtml
             }
           }
-          
-          
+
+
         ]
       }) }}
 
 
-      
-      
+
+
   </div>
 
 {% endblock %}
