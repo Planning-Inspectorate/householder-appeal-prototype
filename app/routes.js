@@ -321,7 +321,7 @@ router.post('/householder-post', function (req, res) {
   let hasconsent = req.session.data['householder']
 
   if (hasconsent === 'yes') {
-    res.redirect('/appellant-submission/enforcement')
+    res.redirect('/appellant-submission/decision-date')
   } else if (hasconsent === 'no') {
     res.redirect('/appellant-submission/consent-out')
   } else {
@@ -333,7 +333,7 @@ router.post('/enforcement-post', function (req, res) {
   let enforcement = req.session.data['enforcement']
 
   if (enforcement === 'no') {
-    res.redirect('/appellant-submission/decision-date')
+    res.redirect('/appellant-submission/listed-building')
   } else if (enforcement === 'yes') {
     res.redirect('/appellant-submission/enforcement-out')
   } else {
@@ -391,7 +391,7 @@ router.post('/appellant-submission/planning-department-post', function(req, res,
     res.redirect('/appellant-submission/planning-department')
   } else {
     req.session.data.planningError = false;
-    res.redirect('/appellant-submission/listed-building')
+    res.redirect('/appellant-submission/enforcement')
   }
 })
 
