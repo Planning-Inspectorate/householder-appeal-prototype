@@ -114,10 +114,10 @@
 
         </div>
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
+          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border">
             Documents to support your appeal
           </dt>
-          <dd class="govuk-summary-list__value">
+          <dd class="govuk-summary-list__value govuk-summary-list__key--no-border">
             {{ multiFileDisplay({
                 uploadedFiles: data.user.completeAppeal.uploadedFiles | filesByFieldName("supporting-docs")
               }) }}
@@ -125,7 +125,7 @@
           </dd>
 
         </div>
-        <div class="govuk-summary-list__row">
+        <!--div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-summary-list__key--no-border">
             Other relevant appeals
           </dt>
@@ -137,7 +137,7 @@
             {% endif %}
           </dd>
 
-        </div>
+        </div-->
       </dl>
 
       {% endset %}
