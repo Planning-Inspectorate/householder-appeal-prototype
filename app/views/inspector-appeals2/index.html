@@ -1,0 +1,81 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  Inspector Screens - My Appeals
+{% endblock %}
+
+{% block content %}
+<style>
+
+.govuk-header__container {
+    border-bottom: 10px solid #224d42;
+}
+
+</style>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full-width">
+      <h1 class="govuk-heading-xl">
+        All my appeals
+        <span class="govuk-caption-xl">Householder planning appeals</span>
+      </h1>
+<p>Below are a list of your appeals in target date order.</p>
+<table class="govuk-table">
+  <caption class="govuk-table__caption">&nbsp;</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header app-custom-class">Appeal reference</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Location</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Ministerial target</th>
+    </tr>
+
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell"><a href="appeal1-case.html">48269/APP/2020/1234</a></td>
+      <td class="govuk-table__cell">27 High Street, Plymouth, PL4 2AA</td>
+      <td class="govuk-table__cell">12 February 2021</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell"><a href="appeal1-case.html">48269/APP/2020/1234</a></td>
+      <td class="govuk-table__cell">29 High Street, Plymouth, PL4 2AA</td>
+      <td class="govuk-table__cell">12 February 2021</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell"><a href="appeal1-case.html">48269/APP/2020/1234</a></td>
+      <td class="govuk-table__cell">33 High Street, Plymouth, PL4 2AA</td>
+      <td class="govuk-table__cell">12 February 2021</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell"><a href="appeal1-case.html">48269/APP/2020/5678</a></td>
+      <td class="govuk-table__cell">12 Low Street,  Plymouth, PL4 2BB</td>
+      <td class="govuk-table__cell">22 March 2021</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell"><a href="appeal1-case.html">48269/APP/2020/2345</a></td>
+      <td class="govuk-table__cell">13 Low Street,  Plymouth, PL4 2AB</td>
+      <td class="govuk-table__cell">22 March 2021</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell"><a href="appeal1-case.html">48269/APP/2020/3456</a></td>
+      <td class="govuk-table__cell">30 Middle Street,  Plymouth, PL5 2AA</td>
+      <td class="govuk-table__cell">12 April 2021</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell"><a href="appeal1-case.html">48269/APP/2020/3456</a></td>
+      <td class="govuk-table__cell">32 Middle Street,  Plymouth, PL5 2AA</td>
+      <td class="govuk-table__cell">12 April 2021</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell"><a href="appeal1-case.html">48269/APP/2020/4567</a></td>
+      <td class="govuk-table__cell">35 Middle Street,  Plymouth, PL4 2AA</td>
+      <td class="govuk-table__cell">15 April 2021</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+    </div>
+  </div>
+{% endblock %}

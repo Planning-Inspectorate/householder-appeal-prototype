@@ -1,0 +1,95 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  Your details
+{% endblock %}
+
+{% block content %}
+<style>
+
+.govuk-header__container {
+    border-bottom: 10px solid #009999;
+}
+
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <p><!--<a href="index" class="govuk-back-link">All my appeals</a>--></p>
+  </div>
+  <div class="govuk-grid-column-one-half">
+  <p align="right"> <b>Inspector: </b>Marie Lightman</p>
+  </div>
+</div>
+
+<div class="govuk-grid-column-full-width">
+      <h1 class="govuk-heading-xl">
+        Marie Lightman's Appeals
+        <span class="govuk-caption-xl">Householder planning appeals</span>
+      </h1>
+
+
+
+<p>Below are a list of your appeals in ministerial target date order.</p>
+<table class="govuk-table">
+  <caption class="govuk-table__caption">&nbsp;</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header app-custom-class">Site address</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Ministerial target</th>
+      <th scope="col" class="govuk-table__header app-custom-class">LPA</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Site visit details</th>
+    </tr>
+
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell"><a href="appeal1-overview.html">131 High Street,Bradford, BD6 1JK</a></td>
+      <td class="govuk-table__cell">15 August 2021</td>
+      <td class="govuk-table__cell">Bradford</td>
+      <td class="govuk-table__cell">ARSV W/C 2 August</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell"><a href="appeal1-overview.html">26 High Street,Bradford, BD6 1JK</a></td>
+      <td class="govuk-table__cell">16 August 2021</td>
+      <td class="govuk-table__cell">Bradford</td>
+      <td class="govuk-table__cell">ARSV W/C 2 August</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell"><a href="appeal1-overview.html">44 Low Street,Bradford, BD6 1JA</a></td>
+      <td class="govuk-table__cell">23 August 2021</td>
+      <td class="govuk-table__cell">Bradford</td>
+      <td class="govuk-table__cell">ARSV W/C 9 August</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell"><a href="appeal1-overview.html">12 Low Street,Bradford, BD6 1JA</a></td>
+      <td class="govuk-table__cell">1 September 2021</td>
+      <td class="govuk-table__cell">Bradford</td>
+      <td class="govuk-table__cell">ARSV W/C 16 August</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell"><a href="appeal1-overview.html">29 Middle Street,Bradford, BD6 1AA</a></td>
+      <td class="govuk-table__cell">5 September 2021</td>
+      <td class="govuk-table__cell">Bradford</td>
+      <td class="govuk-table__cell">USV - W/C 23 August</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell"><a href="appeal1-overview.html">45 Middle Street,Bradford, BD6 1AA</a></td>
+      <td class="govuk-table__cell">12 September 2021</td>
+      <td class="govuk-table__cell">Bradford</td>
+      <td class="govuk-table__cell">USV W/C 23 August</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell"><a href="appeal1-overview.html">88 Middle Street,Bradford, BD6 1AA</a></td>
+      <td class="govuk-table__cell">15 September 2021</td>
+      <td class="govuk-table__cell">Bradford</td>
+      <td class="govuk-table__cell">ASV W/C 23 August</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+    </div>
+  </div>
+{% endblock %}
