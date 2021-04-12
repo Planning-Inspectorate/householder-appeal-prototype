@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Appeal statement | Appeal a householder planning decision
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+
+  <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+    <h2 class="govuk-error-summary__title" id="error-summary-title">
+      There is a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+      <ul class="govuk-list govuk-error-summary__list">
+        <li>
+          <a href="#sense-check">You cannot provide a statement that includes sensitive information</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <form action="/check-statement" method="post" novalidate>
+    <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Your appeal</span>
+    <h1 class="govuk-heading-l">
+      Sensitive information
+    </h1>  
+    
+
+    <p>Your statement cannot include any sensitive information (see 'What is sensitive information?'). </p>
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          What is sensitive information?
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <h4 class="govuk-heading-s">Use of language and sensitive information</h4>
+        <p>Your statement must not include racist, inflammatory or abusive language.​​</p>
+        <p>Do not include sensitive information in your statement, as you'll be asked to resubmit and this will delay your appeal.​​​​</p>
+
+        <p>Sensitive information refers to:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Comments from children</li>
+          <li>Information relating to children</li>
+          <li>Information relating to health</li>
+          <li>Information relating to crime</li>
+          <li>Any information relating to an individual’s:
+            <ol type="i">
+              <li>race</li>
+              <li>ethnic origin</li>
+              <li>politics</li>
+              <li>religion</li>
+              <li>trade union membership</li>
+              <li>genetics</li>
+              <li>physical characteristics</li>
+              <li>sex life</li>
+              <li>sexual orientation</li>
+            </ol>
+          </li>
+        </ul>
+      </div>
+    </details>
+
+
+    <div class="govuk-form-group govuk-form-group--error">
+        <div class="govuk-checkboxes">
+          <span id="sensitive-check-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> You cannot provide a statement that includes sensitive information
+          </span>
+          <div class="govuk-checkboxes__item">
+
+            <input class="govuk-checkboxes__input govuk-input--error" id="sense-check" name="sense-check" type="checkbox">
+            <label class="govuk-label govuk-checkboxes__label" for="sense-check">
+              I confirm that I have not included sensitive information in my appeal statement.
+            </label>
+          </div>
+        </div>
+    </div>
+
+    <div class="govuk-form-group">
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+    </div>
+    <input type="hidden" name="sense-check" value="{{ data['appeal-confirmation'] }}">
+    <input type="hidden" name="appeal-statement-completed" value="govuk-tag app-task-list__tag">
+    <input type="hidden" name="appeal-statement-completed-text" value="Completed">
+  </form>
+</div>
+
+<div class="govuk-grid-column-one-third">
+    
+  </div>
+{% endblock %}

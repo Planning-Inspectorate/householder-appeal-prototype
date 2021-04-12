@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block backLink %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../supplementary-planning-documents"
+}) }}
+{% endblock %}
+
+{% set headerTitle = "Appellant stuff" %}
+{% block pageTitle %}
+  LPA
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% set html %}
+      <h3 class="govuk-notification-banner__heading">
+       Supplementary planning document has been updated
+      </h3>
+    {% endset %}
+
+    {{ govukNotificationBanner({
+      html: html,
+      type: 'success'
+    }) }}
+
+
+    <form action="lpa-task-list" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Supplementary planning documents</span>
+      <h1 class="govuk-heading-l">Householder</h1>
+
+
+      <div class="govuk-inset-text">
+        <p>2 documents uploaded</p>
+        <ul class="govuk-list">
+          <li><a href="https://www.bradford.gov.uk/media/2991/householderspddocument.pdf">householderspddocument.pdf</a></li>
+          <li><a href="https://www.bradford.gov.uk/media/2992/adoptionstatement.pdf">adoptionstatement.pdf</a></li>
+        </ul>
+      </div>
+
+      <p>Adopted 16 March 2012.</p>
+
+      <p><a href="name" title="" class="govuk-button govuk-button--secondary">Edit details</a></p>
+  </div>
+
+   <!-- <div class="govuk-grid-column-one-third">
+    {% include "lpa-submission/_key-details.html" %}
+  </div> -->
+
+</div>
+{% endblock %}
+{% block pageScripts %}
+
+{% endblock %}

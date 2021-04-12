@@ -1,6 +1,6 @@
 
 
-{% extends "layout-no-back.html" %}
+{% extends "layout-lpa-no-back.html" %}
 
 {% block pageTitle %}
   Planning appeals
@@ -10,8 +10,8 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters">
-      <span class="govuk-caption-l">London Borough of Hillingdon</span>
-      
+      <span class="govuk-caption-l">{{ data.lpaName }}</span>
+
 
       <h1 class="govuk-heading-l">
         Planning appeals
@@ -39,9 +39,9 @@
               </td>
             <td class="govuk-table__cell">{{appeal.address.street}}</td>
             <td class="govuk-table__cell">
-              
+
               {{ appeal.startedDaysAgo | formatAppealStatus }}
-              
+
             </td>
           </tr>
           {% endfor %}
