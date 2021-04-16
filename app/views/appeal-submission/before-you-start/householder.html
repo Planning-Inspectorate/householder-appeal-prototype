@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Your details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+        <span class="govuk-caption-l">Before you start</span>
+
+        {{ govukRadios({
+          idPrefix: "appsub-bys-householder",
+          name: "appsub-bys-householder",
+          fieldset: {
+            legend: {
+              text: "Did you apply for 'householder planning permission'?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "'Householder planning permission' is a specific type of planning permission. You can check what you applied for on your original planning application form."
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("appsub-bys-householder", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("appsub-bys-householder", "No")
+            }
+          ]
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "What is householder planning permission?",
+          html: '<p>&lsquo;Householder planning permission&rsquo; covers projects for altering or enlarging a single house. These include:​</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>conservatories​</li>
+              <li>dormer windows​</li>
+              <li>extensions​</li>
+              <li>garages, car ports and outbuildings​</li>
+              <li>loft conversions</li>
+            </ul>'
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

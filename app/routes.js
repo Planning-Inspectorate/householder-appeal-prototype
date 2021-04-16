@@ -939,5 +939,6 @@ router.post("/lpa-account/login/email-sent-post", function(req, res, next){
   res.redirect(url);
 })
 
+require('./routes/appeal-submission.js')(router);
 
 module.exports = router
