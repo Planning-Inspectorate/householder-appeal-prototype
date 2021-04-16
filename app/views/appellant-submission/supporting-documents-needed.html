@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Supporting appeal documents | Appeal a householder planning decision
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+  <form action="/supporting-documents-post" method="post" novalidate>
+    <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Your appeal</span>
+
+
+    {% set hintHtml %}
+    <p>You should upload any documents referred to in your appeal statement to support your reasons for appeal, such as photographs.​</p>
+    <p>You do not need to upload the plans from your original planning application.</p>
+    {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "supporting-docs-needed",
+        name: "supporting-docs-needed",
+        fieldset: {
+          legend: {
+            text: "Do you want to upload any other documents to support your appeal?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          html: hintHtml
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+       <div class="govuk-form-group">
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+    </div>
+
+  </form>
+</div>
+</div>
+
+
+    {% endblock %}
+
+
+
+
+
+{% block pageScripts %}
+<script>
+if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
+  new MOJFrontend.MultiFileUpload({
+    container: $('.moj-multi-file-upload'),
+    uploadUrl: '/ajax-supporting-docs',
+    deleteUrl: '/ajax-supporting-docs-delete',
+    fieldName: 'supporting-docs'
+    });
+  }
+</script>
+{% endblock %}

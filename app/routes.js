@@ -50,9 +50,9 @@ router.post('/check-statement', function (req, res) {
   let sense = req.session.data['sense-check']
 
   if (Array.isArray(sense) && sense[0] === 'on') {
-    res.redirect('/appellant-submission/supporting-documents')
+    res.redirect('/appellant-submission/supporting-documents-needed')
   } else {
-    res.redirect('/appellant-submission/appeal-statement-error')
+    res.redirect('/appellant-submission/sensitive-information-error')
   }
 })
 
@@ -91,6 +91,19 @@ router.post('/who-are-you-post', function (req, res) {
   }
 })
 
+router.post("/supporting-documents-post", function(req, res, next){
+  if(req.body['supporting-docs-needed'] === "yes"){
+    res.redirect("/appellant-submission/supporting-documents")
+  } else if (req.body['supporting-docs-needed'] === "no"){
+    req.session.data["upload-appeal-docs-completed"] = "govuk-tag app-task-list__tag";
+    req.session.data["upload-appeal-docs-completed-text"] = "Completed";
+    res.redirect("/appellant-submission/task-list")
+  } else {
+    res.redirect("/appellant-submission/supporting-documents-needed")
+
+  }
+})
+
 
 
 ///////////////////////////////////////////////////////////////
@@ -106,6 +119,28 @@ router.post('/lpa-submission/:appealId/conservation-area-post', function (req, r
   }
 })
 
+
+router.post('/lpa-submission/:appealId/interested-parties-appeal-post', function (req, res) {
+
+  if (req.body['interested-parties-appeal'] === "yes") {
+    res.redirect(`/lpa-submission/${req.params.appealId}/interested-parties-appeal-upload`)
+  } else {
+    req.session.data["interested-parties-appeal-completed"] = "govuk-tag app-task-list__task-completed";
+    req.session.data["interested-parties-appeal-completed-text"] = "Completed";
+    res.redirect(`/lpa-submission/lpa-task-list/${req.params.appealId}`)
+  }
+})
+router.post('/lpa-submission/:appealId/other-policies-post', function (req, res) {
+
+  if (req.body['other-policies'] === "yes") {
+    res.redirect(`/lpa-submission/${req.params.appealId}/other-policies-upload`)
+  } else {
+    req.session.data["other-policies-completed"] = "govuk-tag app-task-list__task-completed";
+    req.session.data["other-policies-completed-text"] = "Completed";
+    res.redirect(`/lpa-submission/lpa-task-list/${req.params.appealId}`)
+  }
+})
+
 router.post('/appellant-submission-check', function (req, res) {
   let accuracy = req.session.data['is-accurate']
 
@@ -117,13 +152,13 @@ router.post('/appellant-submission-check', function (req, res) {
 })
 
 
-router.post('/site-notice-post', function (req, res) {
+router.post('/lpa-submission/:appealId/site-notice-post', function (req, res) {
   let publicised = req.session.data['was-publicised']
 
   if (publicised == "true") {
-    res.redirect('/lpa-submission/site-notice-documents')
+    res.redirect(`/lpa-submission/${req.params.appealId}/site-notice-documents`)
   } else {
-    res.redirect('/lpa-submission/lpa-task-list-complete')
+    res.redirect(`/lpa-submission/lpa-task-list/${req.params.appealId}`)
   }
 })
 
@@ -286,7 +321,7 @@ router.post('/householder-post', function (req, res) {
   let hasconsent = req.session.data['householder']
 
   if (hasconsent === 'yes') {
-    res.redirect('/appellant-submission/enforcement')
+    res.redirect('/appellant-submission/decision-date')
   } else if (hasconsent === 'no') {
     res.redirect('/appellant-submission/consent-out')
   } else {
@@ -298,7 +333,7 @@ router.post('/enforcement-post', function (req, res) {
   let enforcement = req.session.data['enforcement']
 
   if (enforcement === 'no') {
-    res.redirect('/appellant-submission/decision-date')
+    res.redirect('/appellant-submission/listed-building')
   } else if (enforcement === 'yes') {
     res.redirect('/appellant-submission/enforcement-out')
   } else {
@@ -356,7 +391,7 @@ router.post('/appellant-submission/planning-department-post', function(req, res,
     res.redirect('/appellant-submission/planning-department')
   } else {
     req.session.data.planningError = false;
-    res.redirect('/appellant-submission/listed-building')
+    res.redirect('/appellant-submission/enforcement')
   }
 })
 
@@ -779,9 +814,9 @@ router.get("/reset-password/:id", function(req, res, next){
 })
 
 
-router.get("/lpa-account", function(req, res, next){
+router.get("/lpa-account/appeal-list", function(req, res, next){
   res.locals.appeals = appealsList;
-  res.render("lpa-account/index")
+  res.render("lpa-account/appeal-list")
 });
 
 router.get("/lpa-submission/lpa-task-list/:appealId", function(req, res, next){
@@ -798,8 +833,12 @@ router.get("/lpa-submission/new-appeal/:appealId", function(req, res, next){
 
 router.post("/lpa-submission/:appealId/supplementary-post", function(req, res, next){
 
+  if(req.session.data.supplementaryDocsList){
+    res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-file-list`)
+  }
+
   if(req.body["supplementary-docs"] == "yes"){
-    res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-name`)
+    res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-existing-list`)
   } else {
     req.session.data["supplementary-completed"] = "govuk-tag app-task-list__task-completed";
     req.session.data["supplementary-completed-text"] = "Completed";
@@ -859,5 +898,46 @@ router.post("/lpa-submission/:appealId/supplementary-adopted-post", function(req
   res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-file-list`);
 
 })
+
+
+//lpa login
+
+router.get("/lpa-account/login/email", function(req, res, next){
+  req.session.data.lpaRedirectUrl = req.query.url;
+  next()
+})
+
+router.post("/lpa-account/login/email-post", function(req, res, next){
+  let email = req.session.data["lpa-account-email"];
+
+
+  if(!email || email.search("@") === -1){
+    //invalid email
+    res.redirect("/lpa-account/login/email")
+  }
+
+
+  let templateId = "345f0fcf-496b-47a7-acb7-4449f3c2859e";
+  let emailAddress = req.body['lpa-account-email'];
+  notifyClient
+    .sendEmail(templateId, emailAddress)
+    .then(function(response){
+      console.log(response)
+      res.redirect("/lpa-account/login/email-sent")
+    })
+    .catch(function(err){
+      console.error(err.statusCode)
+      console.error(err.errors)
+      res.redirect("/lpa-account/login/email-sent")
+    })
+});
+
+
+router.post("/lpa-account/login/email-sent-post", function(req, res, next){
+  let url = decodeURIComponent(req.session.data.lpaRedirectUrl);
+
+  res.redirect(url);
+})
+
 
 module.exports = router
