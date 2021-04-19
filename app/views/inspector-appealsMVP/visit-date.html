@@ -1,0 +1,61 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  Inspector Screens - My Appeals
+{% endblock %}
+
+{% block content %}
+<style>
+
+.govuk-header__container {
+    border-bottom: 10px solid #224d42;
+}
+
+</style>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "appeal1-case.html"
+  }) }}
+  </div>
+  <div class="govuk-grid-column-one-half">
+      <p align="right"> <b>Inspector: </b>Marie Lightman</p>
+  </div>
+</div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+      {{ govukDateInput({
+        id: "passport-issued",
+        namePrefix: "passport-issued",
+        fieldset: {
+          legend: {
+            text: "What date do you wish to carry out your site visit?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "For example, 12 11 2021"
+        }
+      }) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue",
+  href: "visit-time"
+}) }}
+
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,373 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  Inspector Screens - My Appeals - Case Files
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+
+.govuk-header__container {
+    border-bottom: 10px solid #009999;
+}
+  .moj-sub-navigation__link[aria-current="page"]:before {
+    background-color: #009999;
+}
+
+
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <p><a href="my-index" class="govuk-back-link">All my appeals</a></p>
+  </div>
+  <div class="govuk-grid-column-one-half">
+    <p align="right"> <b>Inspector: </b>Marie Lightman</p>
+  </div>
+</div>
+
+<div class="govuk-grid-column-full-width">
+      <h1 class="govuk-heading-xl">
+        131 High Street, Bradford, BD6 1JK
+        <span class="govuk-caption-xl">Appeal Reference: APP/2020/56789/01234</span>
+      </h1>
+
+  <nav class="moj-sub-navigation" aria-label="Sub navigation">
+  <ul class="moj-sub-navigation__list">
+    <li class="moj-sub-navigation__item">
+      <a class="moj-sub-navigation__link" aria-current="page" href="appeal1-case">Overview</a>
+    </li>
+    <li class="moj-sub-navigation__item">
+      <a class="moj-sub-navigation__link" href="appeal1-visit">Site Visit</a>
+    </li>
+    <li class="moj-sub-navigation__item">
+      <a class="moj-sub-navigation__link" href="appeal1-decision">Decision</a>
+    </li>
+  </ul>
+  </nav>
+
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Overview of case</h2>
+     <dl class="govuk-summary-list">
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+           Site Visit
+         </dt>
+         <dd class="govuk-summary-list__value">
+           <strong class="govuk-tag govuk-tag--grey">Not scheduled</strong>
+         </dd>
+       </div>
+       <!--<div class="govuk-summary-list__row">
+     <dt class="govuk-summary-list__key">
+        Agent name
+         </dt>
+         <dd class="govuk-summary-list__value">
+           Mary Gray
+         </dd>
+       </div>-->
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+           Target date
+         </dt>
+         <dd class="govuk-summary-list__value">
+           15 August 2021
+         </dd>
+       </div>
+      <!--    <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+          Description of works
+         </dt>
+         <dd class="govuk-summary-list__value">
+           <p class="govuk-body">Loft conversion end of terrace</p>
+         </dd>
+       </div>-->
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+          Local Planning Authority
+         </dt>
+         <dd class="govuk-summary-list__value">
+           <p class="govuk-body">Bradford Council</p>
+         </dd>
+       </div>
+        <!--  <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+          Appellant name
+         </dt>
+         <dd class="govuk-summary-list__value">
+           <p class="govuk-body">Manish Sharma</p>
+         </dd>
+       </div>
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+          Appellant email address
+         </dt>
+         <dd class="govuk-summary-list__value">
+           <p class="govuk-body">manish.sharma@gmail.com</p>
+         </dd>
+       </div>
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+          Appellant phone number
+         </dt>
+         <dd class="govuk-summary-list__value">
+           <p class="govuk-body">01234 56789</p>
+         </dd>
+       </div>-->
+     </dl>
+     <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+          Appellant's documents
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+
+      <dl class="govuk-summary-list govuk-summary-list--no-border">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name of applicant
+          </dt>
+          <dd class="govuk-summary-list__value">
+          Stephen Davies
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of application
+          </dt>
+          <dd class="govuk-summary-list__value">
+            12 December 2020
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Application documents
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ multiFileDisplay({
+                uploadedFiles: data.user.completeAppeal.uploadedFiles | filesByFieldName("planning-application")
+              }) }}
+             <a href="#">Decision letter</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal documents
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <a href="#">Appeal statement</a><br>
+             <a href="#">Appeal form</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Other supporting documents
+          </dt>
+          <dd class="govuk-summary-list__value">
+             <a href="#">Supportingdocument1.pdf</a><br>
+             <a href="#">Supportingdocument2.pdf</a><br>
+             <a href="#">Supportingdocument3.pdf</a><br>
+          </dd>
+        </div>
+      </dl>
+
+    </div>
+  </div>
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+          Plans and Planning Officer's report
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+
+      <dl class="govuk-summary-list govuk-summary-list--no-border">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Plans used to reach decision
+          </dt>
+          <dd class="govuk-summary-list__value">
+          <a href="#">Plans uploaded by local planning authority</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Planning Officers report
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <a href="#">Planning Officer's report</a>
+          </dd>
+        </div>
+
+      </dl>
+
+    </div>
+  </div>
+
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+          Local Planning Authority appeal information
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+      <dl class="govuk-summary-list govuk-summary-list--no-border">
+<!--
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Information accurately reflects application
+          </dt>
+          <dd class="govuk-summary-list__value">
+          Yes
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Extra conditions
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+        </div>-->
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Other relevant appeals nearby
+          </dt>
+          <dd class="govuk-summary-list__value">
+         48269/APP/2020/1234 <br>
+             48269/APP/2020/5234
+          </dd>
+        </div>
+
+      </dl>
+    </div>
+  </div>
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-5">
+          Other supporting documents from Local Planning Authority
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-5">
+      <dl class="govuk-summary-list govuk-summary-list--no-border">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Telling interested parties
+          </dt>
+          <dd class="govuk-summary-list__value">
+          <a href="#">Letter1.pdf</a><br>  <a href="#">Letter2.pdf</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Representations
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <a href="#">Representations.pdf</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Notifying interested parties
+          </dt>
+          <dd class="govuk-summary-list__value">
+          <a href="#">Notificationletter.pdf</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Original planning application publicised?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Yes
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Planning history
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <a href="#">Document1.pdf</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Statutory policies
+          </dt>
+          <dd class="govuk-summary-list__value">
+          <a href="#">Policy1.pdf</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Other policies
+          </dt>
+          <dd class="govuk-summary-list__value">
+          <a href="#">policy2.pdf</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Supplementary planning documents
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <a href="#">Extract1.pdf</a><br><a href="#">Extract2.pdf</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Development plan or neighbourhood plan submitted?
+          </dt>
+          <dd class="govuk-summary-list__value">
+          Yes
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+          Relevance to appeal
+          </dt>
+          <dd class="govuk-summary-list__value">
+        Changes in progress and relevance to appeal goes here
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m">
+        Contact Details</h2>
+        <p class="gov-body"><b>Case officer:</b><br>
+          Tom Smith<br>
+          <a href="#">tom.smith@gmail.com</a><br>
+          01234 567890</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}
