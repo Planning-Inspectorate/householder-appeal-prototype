@@ -10,24 +10,15 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="neighbours-land" method="post" novalidate>
+    <form action="conservation-area-policy-post" method="post" novalidate>
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal site</span>
 
-      {% set detailsHtml %}
-        {{ govukTextarea({
-          name: "enter-appeal-site-more-detail",
-          id: "enter-appeal-site-more-detail",
-          label: {
-            text: "Tell us why the Inspector would need to enter the appeal site."
-          }
-        }) }}
-      {% endset -%}
       {{ govukRadios({
-        idPrefix: "enter-appeal-site",
-        name: "enter-appeal-site",
+        idPrefix: "conservation-area",
+        name: "conservation-area",
         fieldset: {
           legend: {
-            text: "Would the Inspector need to enter the appeal site?",
+            text: "Is the appeal site in or near a conservation area?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -36,22 +27,20 @@
           {
             value: "yes",
             text: "Yes",
-            checked: checked("enter-appeal-site", "yes"),
-            conditional: {
-              html: detailsHtml
-            }
+            checked: checked("conservation-area", "yes")
           },
           {
             value: "no",
             text: "No",
-            checked: checked("enter-appeal-site", "no")
+            checked: checked("conservation-area", "no")
+
           }
         ]
       }) }}
 
 
-      <input type="hidden" name="enter-appeal-site-completed" value="govuk-tag app-task-list__task-completed">
-      <input type="hidden" name="enter-appeal-site-completed-text" value="Completed">
+      <input type="hidden" name="conservation-completed" value="govuk-tag app-task-list__task-completed">
+      <input type="hidden" name="conservation-completed-text" value="In progress">
       <div class="govuk-form-group">
         <button class="govuk-button" data-module="govuk-button">
           Save and continue
