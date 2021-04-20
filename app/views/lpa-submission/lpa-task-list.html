@@ -70,20 +70,75 @@
              </span>
               <strong id="section-status" class="{{data['interested-parties-appeal-completed']}}" >{{data['interested-parties-appeal-completed-text']}}</strong>
            </li>
+         </ul>
+       </li>
+
+       <li>
+         <h2 class="app-task-list__section">
+           <span class="app-task-list__section-number">2. </span>About the appeal site
+         </h2>
+         <ul class="app-task-list__items">
+
            <li class="app-task-list__item">
              <span class="app-task-list__task-name">
-               <a href="/lpa-submission/{{appeal.id}}/public-land" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
-                 Tell us about the appeal site
+               <a href="/lpa-submission/{{appeal.id}}/public-land" aria-describedby="public-land-status" class="govuk-link--no-visited-state">
+                 Can the relevant parts of the appeal site be seen from public land?
                </a>
              </span>
-              <strong id="section-status" class="{{data['about-site-completed']}}" >{{data['about-site-completed-text']}}</strong>
+              <strong id="section-status" class="{{data['public-land-completed']}}" >{{data['public-land-completed-text']}}</strong>
            </li>
+
+           <li class="app-task-list__item">
+             <span class="app-task-list__task-name">
+               <a href="/lpa-submission/{{appeal.id}}/enter-appeal-site" aria-describedby="enter-appeal-site-status" class="govuk-link--no-visited-state">
+                 Will the inspector need to enter the appeal site?
+               </a>
+             </span>
+              <strong id="section-status" class="{{data['enter-appeal-site-completed']}}" >{{data['enter-appeal-site-completed-text']}}</strong>
+           </li>
+
+           <li class="app-task-list__item">
+             <span class="app-task-list__task-name">
+               <a href="/lpa-submission/{{appeal.id}}/neighbours-land" aria-describedby="neighbours-land-status" class="govuk-link--no-visited-state">
+                 Would the Inspector need access to a neighbour's land?
+               </a>
+             </span>
+              <strong id="section-status" class="{{data['neighbours-land-completed']}}" >{{data['neighbours-land-completed-text']}}</strong>
+           </li>
+
+           <li class="app-task-list__item">
+             <span class="app-task-list__task-name">
+               <a href="/lpa-submission/{{appeal.id}}/listed-building" aria-describedby="listed-building-status" class="govuk-link--no-visited-state">
+                 Would this affect the setting of a listed building?
+               </a>
+             </span>
+              <strong id="section-status" class="{{data['listed-building-completed']}}" >{{data['listed-building-completed-text']}}</strong>
+           </li>
+
+           <li class="app-task-list__item">
+             <span class="app-task-list__task-name">
+               <a href="/lpa-submission/{{appeal.id}}/green-belt" aria-describedby="green-belt-status" class="govuk-link--no-visited-state">
+                 Is the appeal site in a green belt?
+               </a>
+             </span>
+              <strong id="section-status" class="{{data['green-belt-completed']}}" >{{data['green-belt-completed-text']}}</strong>
+           </li>
+
+           <li class="app-task-list__item">
+             <span class="app-task-list__task-name">
+               <a href="/lpa-submission/{{appeal.id}}/conservation-area" aria-describedby="conservation-area-status" class="govuk-link--no-visited-state">
+                 Is the appeal site in or near a conservation area?
+               </a>
+             </span>
+              <strong id="section-status" class="{{data['conservation-area-completed']}}" >{{data['conservation-area-completed-text']}}</strong>
+           </li>
+
           </ul>
         </li>
 
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">2. </span>About the planning application
+            <span class="app-task-list__section-number">3. </span>About the planning application
           </h2>
           <ul class="app-task-list__items">
 
@@ -148,7 +203,7 @@
 
          <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">3. </span> Policies related to the planning application
+            <span class="app-task-list__section-number">4. </span> Policies related to the planning application
           </h2>
           <ul class="app-task-list__items">
 
@@ -177,7 +232,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="/lpa-submission/{{appeal.id}}/conservation-area" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
+                <a href="/lpa-submission/{{appeal.id}}/conservation-area-policy" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
                   Conservation Area
                 </a>
               </span>
@@ -202,13 +257,13 @@
 
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">4. Before you submit</span>
+            <span class="app-task-list__section-number">5. Before you submit</span>
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
               {% if data['check-answers-compelete'] == "true" %}
-                <a href="check-answers-confirm" aria-describedby="check-answers">Check your answers</a>
+                <a href="/lpa-submission/{{appeal.id}}/check-answers-confirm" aria-describedby="check-answers">Check your answers</a>
               {% else %}
                   Check your answers
               {% endif %}
