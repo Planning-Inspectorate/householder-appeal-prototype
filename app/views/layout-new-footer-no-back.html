@@ -29,8 +29,6 @@
 {% from "govuk/components/textarea/macro.njk"         import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"     import govukWarningText %}
 {% from "govuk/components/cookie-banner/macro.njk"       import govukCookieBanner %}
-{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
-
 
 {%- from "templates/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
 {%- from "templates/multi-file-display/macro.njk" import multiFileDisplay -%}
@@ -69,17 +67,10 @@
       {% if not hidePhaseBanner %}
       {{ govukPhaseBanner({
         tag: {
-          text: "Prototype"
+          text: "prototype"
         },
         html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
       }) }}
-
-      {% block backLink %}
-      {{ govukBackLink({
-        text: "Back",
-        href: "javascript:history.back()"
-      }) }}
-      {% endblock %}
 
       {% endif %}
       <div class="govuk-main-wrapper {{ mainClasses }}">
@@ -97,48 +88,42 @@
 
 
 {% if useAutoStoreData %}
-  {% block footer %}
-    {{ govukFooter({
-  navigation: [
+{% block footer %}
+  {{ govukFooter({
+  meta: {
+    items: [
     {
-      title: "Contact the Planning Inspectorate",
-      columns: 2,
-      items: [
-        {
-          href: "tel:03034445000",
-          text: "Customer Support: England 0303 444 5000"
-        },
-        {
-          href: "mailto:enquiries@planninginspectorate.gov.uk",
-          text: "enquiries@planninginspectorate.gov.uk"
-        }
-      ]
+      href: "/help/accessibility-statement",
+      text: "Accessibility statement",
+      attributes: { "data-cy":"Accessibility" }
     },
     {
-      title: "Service information",
-      items: [
-        {
-          href: "#1",
-          text: "Terms and conditions"
-        },
-        {
-          href: "/cookies",
-          text: "Privacy and cookies"
-        },
-        {
-          href: "#3",
-          text: "Accessibility"
-        },
-        {
-          href: "/prototype-admin/clear-data",
-          text: "Clear data"
-          }
-      ]
+      href: "/help/contact",
+      text: "Contact",
+      attributes: { "data-cy":"Contact" }
+    },
+    {
+      href: "/cookies",
+      text: "Cookies",
+      attributes: { "data-cy":"Cookies" }
+    },
+    {
+      href: "/help/privacy",
+      text: "Privacy policy",
+      attributes: { "data-cy":"Privacy Policy" }
+    },
+    {
+      href: "/help/terms-and-conditions",
+      text: "Terms and conditions",
+      attributes: { "data-cy":"Terms and conditions" }
     }
-  ]
-}) }}
 
-  {% endblock %}
+    ],
+    "html": 'Built by the <a href="https://www.gov.uk/government/organisations/planning-inspectorate" class="govuk-footer__link">Planning Inspectorate</a>'
+  }
+
+  }) }}
+{% endblock %}
 {% endif %}
 
 {% block bodyEnd %}

@@ -1,0 +1,183 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  Prototype list
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <span class="govuk-caption-xl">Appeal a householder planning decision</span>
+      <h1 class="govuk-heading-xl">
+        Prototype list
+      </h1>
+
+      <h2 class="govuk-heading-l">Appellant submission</h2>
+
+    </div>
+
+  <div class="govuk-grid-column-one-half">
+      <p>End to end submission, including:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Start page</li>
+        <li>Eligibility/routing</li>
+        <li>Task lisk/appeal submission</li>
+        <li>save and return</li>
+        <li><a href="/guidance/before-you-appeal">guidance</a></li>
+      </ul>
+      <p><a href="/public/images/decisionnotice_plsrd.pdf" download>Decision notice (PDF)</a></p>
+      <form action="/appellant-submission/start-your-appeal" method="post" novalidate="">
+        <h2 class="govuk-heading-s">Email verification code</h2>
+        <input type="hidden" name="saveReturnUrl" value="/verify-email-post">
+        <input type="hidden" name="saveRecoveryUrl" value="save-return/recovery">
+        <button class="govuk-button" href="appellant-submission/start-your-appeal">
+        View  prototype
+        </button>
+      </form>
+
+      <form action="/appellant-submission/start-your-appeal" method="post" novalidate="">
+        <h2 class="govuk-heading-s">Email verification by password</h2>
+        <input type="hidden" name="saveReturnUrl" value="save-return/create-password">
+        <input type="hidden" name="saveRecoveryUrl" value="save-return/recovery-password">
+        <button class="govuk-button" href="/appellant-submission/start-your-appeal">
+        View  prototype
+        </button>
+      </form>
+
+
+      <p><a href="/appellant-submission/task-list">Skip to task list</a></p>
+
+  </div>
+  <div class="govuk-grid-column-one-half">
+    <h3 class="govuk-heading-s">Current version</h3>
+    <p>Not user tested</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="https://pins-ds.atlassian.net/browse/AS-749" title="">AS-749</a> - simplified appeal statement
+      </li>
+      <li>
+        <a href="https://pins-ds.atlassian.net/browse/AS-1188" title="">AS-1188</a> - 404 error page
+      </li>
+      <li>
+        <a href="https://pins-ds.atlassian.net/browse/AS-950" title="">AS-950</a> - eligibility changes, add costs question
+      </li>
+    </ul>
+    <h3 class="govuk-heading-s">Version history</h3>
+
+    <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 6 - 25 February 2021
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>Git tag: "v6"</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Updated save and return & email verification <br><a href="https://pins-ds.atlassian.net/browse/AS-236">AS-236</a></li>
+            <li>Content updates</li>
+          </ul>
+          <ul class="govuk-list">
+            <li><a href="https://has-appeal-archive-6.herokuapp.com/appellant-submission/start-your-appeal">Email verification code journey</a></li>
+            <li><a href="https://has-appeal-archive-6.herokuapp.com/appellant-submission/start-your-appeal">Email verification by password</a></li>
+            <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/494534657/Sprint+9+UR">User research</a></li>
+          </ul>
+        </div>
+      </details>
+
+    <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 5 - Sprint 6
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>Git tag: "v5"</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Removed question about other appeal.</li>
+          </ul>
+          <ul class="govuk-list">
+            <li><a href="https://has-appeal-archive-5.herokuapp.com/appellant-submission/start-your-appeal" target="_blank" class="govuk-link">View prototype</a></li>
+            <li>No user research findings</li>
+          </ul>
+        </div>
+      </details>
+
+    <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 4 - Sprint 4
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>Git tag: "v4"</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Added PDF print view of appeal submission (for internal use only)</li>
+            <li>Added LPA/decision date to check answers page</li>
+            <li>Content updates</li>
+          </ul>
+          <ul class="govuk-list">
+            <li><a href="https://has-appeal-archive-4.herokuapp.com/appellant-submission/start-your-appeal" target="_blank" class="govuk-link">View prototype</a></li>
+            <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/336855045/Sprint+4+UR" target="_blank">User research findings</a></li>
+          </ul>
+        </div>
+      </details>
+
+
+
+    <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 3 - Sprint 3
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>Git tag: "v3"</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Capture whether submission is from agent, and to ensure we capture the name of the person bringing the appeal to add to the case file.</li>
+            <li>Added save and return</li>
+          </ul>
+          <ul class="govuk-list">
+            <li><a href="https://has-appeal-archive-3.herokuapp.com/appellant-submission/start-your-appeal" target="_blank" class="govuk-link">View prototype</a></li>
+            <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/336855045/Sprint+4+UR" target="_blank">User research findings</a></li>
+          </ul>
+        </div>
+      </details>
+
+
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 2 - Sprint 2
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>Re-work of submission prototype based on MVP story map. Git tag: "v2"</p>
+          <ul class="govuk-list">
+            <li><a href="https://has-appeal-archive-2.herokuapp.com/appellant-submission/start-your-appeal" target="_blank" class="govuk-link">View prototype</a></li>
+            <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/313655361/Sprint+2+UR" target="_blank">User research findings</a></li>
+          </ul>
+        </div>
+      </details>
+
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 1 - Sprint 1
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>Re-work of submission prototype based on MVP story map. Git tag: "v1"</p>
+          <ul class="govuk-list">
+            <li><a href="https://has-appeal-archive-1.herokuapp.com/appellant-submission/start-your-appeal" target="_blank" class="govuk-link">View prototype</a></li>
+            <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/288882922/Sprint+1+UR" target="_blank">User research findings</a></li>
+          </ul>
+        </div>
+      </details>
+
+  </div>
+</div>
+{% endblock %}

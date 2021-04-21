@@ -1,0 +1,62 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  Prototype list
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <span class="govuk-caption-xl">Appeal a householder planning decision</span>
+      <h1 class="govuk-heading-xl">
+        Prototype list
+      </h1>
+
+      <h2 class="govuk-heading-l">Appellant submission integration</h2>
+
+    </div>
+      <div class="govuk-grid-column-one-half">
+          <p>User journey for LPA/Idox integration</p>
+          <p>Full user journey for proposed beta, from start page through to appeal submit.</p>
+          <ul class="govuk-list govuk-list--bullet">
+              <li>Select South Gloucestershire Council</li>
+              <li>P20/12345/F - Refused. Able to appeal</li>
+              <li>P20/56789/F - Refused. Over deadline.</li>
+            </ul>
+
+          <a class="govuk-button" href="/appellant-submission-integration/start-your-appeal">View prototype</a>
+          <p>Skip to:</p>
+          <ul class="govuk-list">
+            <li><a href="/submit-appeal/task-list">Task list</a></li>
+            <li><a href="/complete-appeal-task-list">Completed task list</a></li>
+          </ul>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <h4 class="govuk-heading-s">Current version</h4>
+        <p>Last updated: Sprint 3</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Added questions for information not provided by local planning department's website.</li>
+          <li>Added task list</li>
+        </ul>
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Version 1 - Sprint 3
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <p>User journey created based on proof of concept for idox integration.</p>
+            <ul class="govuk-list">
+              <li><a href="https://has-appeal-archive-2.herokuapp.com/eligibility/start-your-appeal" class="govuk-link">View prototype</a></li>
+              <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/313753678/Sprint+3+UR">User research findings</a></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+  </div>
+</div>
+{% endblock %}
