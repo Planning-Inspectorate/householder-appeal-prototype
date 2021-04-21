@@ -1,0 +1,106 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  Prototype list
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <span class="govuk-caption-xl">Appeal a householder planning decision</span>
+      <h1 class="govuk-heading-xl">
+        Prototype list
+      </h1>
+
+      <h2 class="govuk-heading-l">Information from local council</h2>
+
+    </div>
+    <div class="govuk-grid-column-one-half">
+        <p>The LPA questionnaire</p>
+
+        <p><a href="/lpa-account/appeal-list" title="">Local Planning Department appeals list</a></p>
+
+        <p><a href="lpa-submission/email-received">View  email (received)</a> </p>
+
+        <p><a href="lpa-submission/email-started">View  email (started)</a></p>
+
+    </div>
+    <div class="govuk-grid-column-one-half">
+
+      <h3 class="govuk-heading-s">Current version</h3>
+
+      <ul class="govuk-list govuk-list-bulleted">
+        <li><a href="https://pins-ds.atlassian.net/browse/AS-1126">AS-1126</a> - iterations following testing with LPA users</li>
+        <li><a href="https://pins-ds.atlassian.net/browse/AS-1581">AS-1581</a> -  basic log in to appeal using email</li>
+      </ul>
+
+
+      <h3 class="govuk-heading-s">Version history</h3>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 3 - 25 February 2021
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Improvements to prototype <a href="https://pins-ds.atlassian.net/browse/AS-152">AS-152</a></li>
+            <li>Update to supplementary planning docs <a href="https://pins-ds.atlassian.net/browse/AS-323">AS-323</a></li>
+            <li>List of submitted appeals <a href="https://pins-ds.atlassian.net/browse/AS-788">AS-788</a></li>
+          </ul>
+          <ul class="govuk-list">
+            <li><a href="https://has-appeal-archive-6.herokuapp.com/lpa-submission/email-received" class="govuk-link">View email received</a></li>
+            <li><a href="https://has-appeal-archive-6.herokuapp.com/lpa-submission/email-started" class="govuk-link">View email started</a></li>
+            <li><a href="https://has-appeal-archive-6.herokuapp.com/lpa-account" class="govuk-link">Appeal list</a></li>
+            <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/430866595/Week+1+Sprint+9+Discussion+Guide+-+Beta+LPA">User research</a></li>
+          </ul>
+        </div>
+      </details>
+
+
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 2 - sprint 4
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Iteration based on user research by Liam</li>
+            <li>Multiple file uploader added by Jamie</li>
+            <li>2nd iteration based on user research by Liam</li>
+          </ul>
+          <ul class="govuk-list">
+            <li><a href="https://has-appeal-archive-5.herokuapp.com/lpa-submission/email-received" class="govuk-link">View email received</a></li>
+            <li><a href="https://has-appeal-archive-5.herokuapp.com/lpa-submission/email-started" class="govuk-link">View email started</a></li>
+            <li>No user research</li>
+          </ul>
+        </div>
+      </details>
+
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 1 - Alpha sprint 20
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>First version of questionnaire based on <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/154337658/Revised+LPA+Questionnaire+for+beta+service+feedback">Picasso service questions</a></p>
+          <ul class="govuk-list">
+            <li><a href="https://has-appeal-alpha.herokuapp.com/lpa-submission/email" class="govuk-link">View prototype</a></li>
+            <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/260571176/Sprint+20+UR">User research findings</a></li>
+          </ul>
+        </div>
+      </details>
+
+
+    </div>
+
+  </div>
+</div>
+{% endblock %}
