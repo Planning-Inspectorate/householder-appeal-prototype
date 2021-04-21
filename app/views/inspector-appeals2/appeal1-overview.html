@@ -41,7 +41,7 @@
   <nav class="moj-sub-navigation" aria-label="Sub navigation">
   <ul class="moj-sub-navigation__list">
     <li class="moj-sub-navigation__item">
-      <a class="moj-sub-navigation__link" aria-current="page" href="appeal1-case">Overview</a>
+      <a class="moj-sub-navigation__link" aria-current="page" href="appeal1-overview">Overview</a>
     </li>
     <li class="moj-sub-navigation__item">
       <a class="moj-sub-navigation__link" href="appeal1-visit">Site Visit</a>
@@ -63,23 +63,23 @@
            Site Visit
          </dt>
          <dd class="govuk-summary-list__value">
-           <strong class="govuk-tag govuk-tag--grey">Not scheduled</strong>
+           <strong class="govuk-tag govuk-tag--grey">WC 8 August 2021 (ARSV)</strong>
          </dd>
        </div>
-       <div class="govuk-summary-list__row">
+<!--       <div class="govuk-summary-list__row">
          <dt class="govuk-summary-list__key">
           Agent name
          </dt>
          <dd class="govuk-summary-list__value">
            Mary Gray
          </dd>
-       </div>
+     </div> -->
        <div class="govuk-summary-list__row">
          <dt class="govuk-summary-list__key">
            Target date
          </dt>
          <dd class="govuk-summary-list__value">
-           23 January 2021
+           15 August 2021
          </dd>
        </div>
        <div class="govuk-summary-list__row">
@@ -98,7 +98,7 @@
            <p class="govuk-body">Bradford Council</p>
          </dd>
        </div>
-       <div class="govuk-summary-list__row">
+  <!--      <div class="govuk-summary-list__row">
          <dt class="govuk-summary-list__key">
           Appellant name
          </dt>
@@ -121,7 +121,7 @@
          <dd class="govuk-summary-list__value">
            <p class="govuk-body">01234 56789</p>
          </dd>
-       </div>
+       </div>-->
      </dl>
      <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
   <div class="govuk-accordion__section">
@@ -140,7 +140,7 @@
             Name of applicant
           </dt>
           <dd class="govuk-summary-list__value">
-          Stephen Davies
+          Maria Sharma
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -148,7 +148,7 @@
             Date of application
           </dt>
           <dd class="govuk-summary-list__value">
-            2 December 2020
+            12 December 2020
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -159,7 +159,7 @@
             {{ multiFileDisplay({
                 uploadedFiles: data.user.completeAppeal.uploadedFiles | filesByFieldName("planning-application")
               }) }}<br>
-             <a href="#">Decision letter</a>
+             <a href="#">Decisionletter.pdf</a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -167,8 +167,8 @@
             Appeal documents
           </dt>
           <dd class="govuk-summary-list__value">
-            <a href="#">Appeal statement</a><br>
-             <a href="#">Appeal form</a>
+            <a href="#">Appealstatement.doc</a><br>
+             <a href="#">Appealform.pd<f/a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -176,7 +176,9 @@
             Other supporting documents
           </dt>
           <dd class="govuk-summary-list__value">
-             <a href="#">Supporting docs uploaded by appellant</a>
+             <a href="#">Supportingdocument1.pdf</a><br>
+             <a href="#">Supportingdocument2.pdf</a><br>
+             <a href="#">Supportingdocument3.pdf</a>
           </dd>
         </div>
       </dl>
@@ -199,7 +201,7 @@
             Plans used to reach decision
           </dt>
           <dd class="govuk-summary-list__value">
-          <a href="#">Plans uploaded by local planning authority</a>
+          <a href="#">Plans uploaded by local planning authority.pdf</a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -207,7 +209,7 @@
             Planning Officers report
           </dt>
           <dd class="govuk-summary-list__value">
-            <a href="#">Planning Officer's initial thoughts</a>
+            <a href="#">Planning Officersreport.pdf</a>
           </dd>
         </div>
 
