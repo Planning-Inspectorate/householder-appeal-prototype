@@ -13,6 +13,7 @@ module.exports = function (router) {
   })
 
   router.post('/'+base+'/before-you-start/decisiondate', function (req, res) {
+    res.redirect('/'+base+'/before-you-start/planningdepartment');
 /*
     if (req.session.data['appsub-bys-householder'] == "Yes"){
       res.redirect('/'+base+'/before-you-start/decisiondate');
