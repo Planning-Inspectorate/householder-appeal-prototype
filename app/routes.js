@@ -48,12 +48,14 @@ router.post("/", function(req, res, next){
 // SUBMISSION - APPEAL STATEMENT
 router.post('/check-statement', function (req, res) {
   let sense = req.session.data['sense-check']
-
+  res.redirect('/appellant-submission/supporting-documents-needed')
+/*
   if (Array.isArray(sense) && sense[0] === 'on') {
     res.redirect('/appellant-submission/supporting-documents-needed')
   } else {
     res.redirect('/appellant-submission/sensitive-information-error')
   }
+*/
 })
 
 // SUBMISSION - SITE OWNERSHIP
