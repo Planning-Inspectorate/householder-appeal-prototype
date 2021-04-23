@@ -48,12 +48,12 @@ router.post("/", function(req, res, next){
 // SUBMISSION - APPEAL STATEMENT
 router.post('/check-statement', function (req, res) {
   let sense = req.session.data['sense-check']
-  res.redirect('/appellant-submission/supporting-documents-needed')
+  res.redirect('/appellant-submission/v7/supporting-documents-needed')
 /*
   if (Array.isArray(sense) && sense[0] === 'on') {
-    res.redirect('/appellant-submission/supporting-documents-needed')
+    res.redirect('/appellant-submission/v7/supporting-documents-needed')
   } else {
-    res.redirect('/appellant-submission/sensitive-information-error')
+    res.redirect('/appellant-submission/v7/sensitive-information-error')
   }
 */
 })
@@ -63,9 +63,9 @@ router.post('/check-site-ownership', function (req, res) {
   let owner = req.session.data['site-owner-names']
 
   if (owner === 'no') {
-    res.redirect('/appellant-submission/site-ownership-certb')
+    res.redirect('/appellant-submission/v7/site-ownership-certb')
   } else {
-    res.redirect('/appellant-submission/site-access')
+    res.redirect('/appellant-submission/v7/site-access')
   }
 })
 
@@ -75,9 +75,9 @@ router.post('/check-submission', function (req, res) {
   let agreed = req.session.data['appellant-confirmation']
 
   if (Array.isArray(agreed) && agreed[0] === 'on') {
-    res.redirect('/appellant-submission/confirmation')
+    res.redirect('/appellant-submission/v7/confirmation')
   } else {
-    res.redirect('/appellant-submission/submission-error')
+    res.redirect('/appellant-submission/v7/submission-error')
   }
 })
 
@@ -87,21 +87,21 @@ router.post('/who-are-you-post', function (req, res) {
   let user = req.session.data['who-are-you']
 
   if (user == "agent" || user == "applicant") {
-    res.redirect('/appellant-submission/your-details')
+    res.redirect('/appellant-submission/v7/your-details')
   } else {
-    res.redirect('/appellant-submission/who-are-you')
+    res.redirect('/appellant-submission/v7/who-are-you')
   }
 })
 
 router.post("/supporting-documents-post", function(req, res, next){
   if(req.body['supporting-docs-needed'] === "yes"){
-    res.redirect("/appellant-submission/supporting-documents")
+    res.redirect("/appellant-submission/v7/supporting-documents")
   } else if (req.body['supporting-docs-needed'] === "no"){
     req.session.data["upload-appeal-docs-completed"] = "govuk-tag app-task-list__tag";
     req.session.data["upload-appeal-docs-completed-text"] = "Completed";
-    res.redirect("/appellant-submission/task-list")
+    res.redirect("/appellant-submission/v7/task-list")
   } else {
-    res.redirect("/appellant-submission/supporting-documents-needed")
+    res.redirect("/appellant-submission/v7/supporting-documents-needed")
 
   }
 })
@@ -274,12 +274,12 @@ router.post('/eligibility/decision-date-post', function (req, res) {
 
 })
 
-router.post('/appellant-submission/decision-date-post', function (req, res) {
+router.post('/appellant-submission/v7/decision-date-post', function (req, res) {
   let day = req.session.data['decision-date-day'],
       month = req.session.data['decision-date-month'],
       year = req.session.data['decision-date-year'];
    if(!day || !month  || !year) {
-     res.redirect('/appellant-submission/decision-date-error')
+     res.redirect('/appellant-submission/v7/decision-date-error')
    }
 
   let date = moment(`${year}-${month}-${day}`, "Y-M-D", true);
@@ -287,16 +287,16 @@ router.post('/appellant-submission/decision-date-post', function (req, res) {
   console.log(date.isValid());
 
   if(date.isValid() === false){
-    res.redirect('/appellant-submission/decision-date-error')
+    res.redirect('/appellant-submission/v7/decision-date-error')
   } else{
     let checkDate = date.add(12, "weeks");
     let today = moment();
     if(checkDate.isBefore(today, "days")){
 
       req.session.data.deadlineDate = checkDate.format("D MMMM YYYY");
-      res.redirect('/appellant-submission/decision-date-out')
+      res.redirect('/appellant-submission/v7/decision-date-out')
     } else {
-      res.redirect('/appellant-submission/planning-department')
+      res.redirect('/appellant-submission/v7/planning-department')
     }
   }
 
@@ -311,7 +311,7 @@ router.all('/eligibility/planning-department', function(req,res,next){
 
 });
 
-router.all('/appellant-submission/planning-department', function(req,res,next){
+router.all('/appellant-submission/v7/planning-department', function(req,res,next){
 
   res.locals.councils = localCouncils.sort(sortByProperty("name"));
 
@@ -337,11 +337,11 @@ router.post('/householder-post', function (req, res) {
   let hasconsent = req.session.data['householder']
 
   if (hasconsent === 'yes') {
-    res.redirect('/appellant-submission/decision-date')
+    res.redirect('/appellant-submission/v7/decision-date')
   } else if (hasconsent === 'no') {
-    res.redirect('/appellant-submission/consent-out')
+    res.redirect('/appellant-submission/v7/consent-out')
   } else {
-    res.redirect('/appellant-submission/householder')
+    res.redirect('/appellant-submission/v7/householder')
   }
 })
 
@@ -349,23 +349,23 @@ router.post('/enforcement-post', function (req, res) {
   let enforcement = req.session.data['enforcement']
 
   if (enforcement === 'no') {
-    res.redirect('/appellant-submission/listed-building')
+    res.redirect('/appellant-submission/v7/listed-building')
   } else if (enforcement === 'yes') {
-    res.redirect('/appellant-submission/enforcement-out')
+    res.redirect('/appellant-submission/v7/enforcement-out')
   } else {
-    res.redirect('/appellant-submission/enforcement')
+    res.redirect('/appellant-submission/v7/enforcement')
   }
 })
 
-router.post('/appellant-submission/listed-building-post', function (req, res) {
+router.post('/appellant-submission/v7/listed-building-post', function (req, res) {
   let haslisted = req.session.data['listed-building']
 
   if (haslisted === 'no') {
-    res.redirect('/appellant-submission/costs')
+    res.redirect('/appellant-submission/v7/costs')
   } else if (haslisted === 'yes') {
-    res.redirect('/appellant-submission/listed-out')
+    res.redirect('/appellant-submission/v7/listed-out')
   } else {
-    res.redirect('/appellant-submission/listed-building')
+    res.redirect('/appellant-submission/v7/listed-building')
   }
 })
 
@@ -374,11 +374,11 @@ router.post('/costs-post', function (req, res) {
   let haslisted = req.session.data['costs']
 
   if (haslisted === 'no') {
-    res.redirect('/appellant-submission/appeal-statement-info')
+    res.redirect('/appellant-submission/v7/appeal-statement-info')
   } else if (haslisted === 'yes') {
-    res.redirect('/appellant-submission/costs-out')
+    res.redirect('/appellant-submission/v7/costs-out')
   } else {
-    res.redirect('/appellant-submission/costs')
+    res.redirect('/appellant-submission/v7/costs')
   }
 })
 
@@ -398,16 +398,16 @@ router.post('/eligibility/planning-department-post', function(req, res, next){
   }
 })
 
-router.post('/appellant-submission/planning-department-post', function(req, res, next){
+router.post('/appellant-submission/v7/planning-department-post', function(req, res, next){
   let redirectUrl = req.session.data["idox-prototype-url"];
   let dept = req.body['planning-department'];
   console.log(dept)
   if (dept === ""){
     req.session.data.planningError = true;
-    res.redirect('/appellant-submission/planning-department')
+    res.redirect('/appellant-submission/v7/planning-department')
   } else {
     req.session.data.planningError = false;
-    res.redirect('/appellant-submission/enforcement')
+    res.redirect('/appellant-submission/v7/enforcement')
   }
 })
 
@@ -686,19 +686,23 @@ router.post("/verify-email-post", function(req, res, next){
   let personalisation = {
     name: req.body['appellant-name']
   };
+  res.redirect("/appellant-submission/v7/save-return/verification-confirmation");
+  // commenting out to allow user through journey
+  /*
   notifyClient
     .sendEmail(templateId, emailAddress, {
       personalisation: personalisation
     })
     .then(function(response){
       console.log(response)
-      res.redirect("appellant-submission/save-return/verification-confirmation");
+      res.redirect("/appellant-submission/v7/save-return/verification-confirmation");
     })
     .catch(function(err){
       console.error(err.statusCode)
       console.error(err.errors)
-      res.redirect("appellant-submission/save-return/verification-confirmation");
+      res.redirect("/appellant-submission/v7/save-return/verification-confirmation");
     })
+  */
 })
 
 
@@ -709,8 +713,11 @@ router.post("/verify-email-post", function(req, res, next){
 })
 
 
-router.post("/appellant-submission/save-return/verification-confirmation", function(req, res, next){
+router.post("/appellant-submission/v7/save-return/verification-confirmation", function(req, res, next){
   let code = req.body["verification-code"];
+  res.redirect("/appellant-submission/v7/save-return/email-confirmed");
+  // commenting out to allow user through journey
+  /*
 
   if(code == "8356"){
 
@@ -725,34 +732,35 @@ router.post("/appellant-submission/save-return/verification-confirmation", funct
     })
       .then(function(response){
         console.log(response)
-        res.redirect("/appellant-submission/save-return/email-confirmed")
+        res.redirect("/appellant-submission/v7/save-return/email-confirmed")
       })
       .catch(function(err){
         console.error(err.statusCode)
         console.error(err.errors)
         console.error(err)
-        res.redirect("/appellant-submission/save-return/email-confirmed")
+        res.redirect("/appellant-submission/v7/save-return/email-confirmed")
     })
 
   } else if(!code || code == ""){
     res.locals.verificationError = true;
     res.locals.verificationMessage = "Enter your verification code";
 
-    res.render("appellant-submission/save-return/verification-confirmation");
+    res.render("appellant-submission/v7/save-return/verification-confirmation");
   } else {
     res.locals.verificationError = true;
     res.locals.verificationMessage = "Verfication code is incorrect";
 
-    res.render("appellant-submission/save-return/verification-confirmation");
+    res.render("appellant-submission/v7/save-return/verification-confirmation");
   }
+  */
 })
 
 router.get("/saved-appeal/:apealId", function(req, res, next){
-    res.redirect("/appellant-submission/task-list")
+    res.redirect("/appellant-submission/v7/task-list")
 })
 
 
-router.post("/appellant-submission/save-return/verify-email", function(req, res, next){
+router.post("/appellant-submission/v7/save-return/verify-email", function(req, res, next){
   console.log(req.headers)
 
   let templateId = "ae735dfa-a603-494b-bf15-3c2fda150d1a";
@@ -779,10 +787,10 @@ router.post("/appellant-submission/save-return/verify-email", function(req, res,
 
 
 router.get("/confirm-email/:id", function(req, res, next){
-  res.redirect("/appellant-submission/save-return/confirm-your-email")
+  res.redirect("/appellant-submission/v7/save-return/confirm-your-email")
 })
 
-router.post("/appellant-submission/save-return/email-confirmed-2", function(req, res, next){
+router.post("/appellant-submission/v7/save-return/email-confirmed-2", function(req, res, next){
   let emailAddress = req.session.data['appellant-email'];
     let templateId = "2c4327d6-6219-4add-98d2-c53ade362bab";
     let personalisation = {
@@ -803,7 +811,7 @@ router.post("/appellant-submission/save-return/email-confirmed-2", function(req,
     })
 })
 
-router.post("/appellant-submission/save-return/reset-confirmation", function(req, res, next){
+router.post("/appellant-submission/v7/save-return/reset-confirmation", function(req, res, next){
   let emailAddress = req.body['recovery-email'];
     let templateId = "07f89c70-9f5d-4f43-840c-8453b49ded06";
     let personalisation = {
@@ -826,7 +834,7 @@ router.post("/appellant-submission/save-return/reset-confirmation", function(req
 })
 
 router.get("/reset-password/:id", function(req, res, next){
-  res.redirect("/appellant-submission/save-return/reset-new-password")
+  res.redirect("/appellant-submission/v7/save-return/reset-new-password")
 })
 
 

@@ -11,105 +11,15 @@
 <div class="govuk-width-container">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      <!--span class="govuk-caption-xl">Appeal a householder planning decision</span-->
-
+      <span class="govuk-caption-xl">Appeal a householder planning decision</span>
       <h1 class="govuk-heading-xl">
-        PINS Prototypes
+        Prototype list
       </h1>
 
-      <h2 class="govuk-heading-l">Introduction to Appeal a householder planning decision</h2>
-      <p class="govuk-body">
-        The Householder Appeal Service enables a householder to have their home improvement application reconsidered. Applications are made to the Local Planning Authority (LPA), which is usually their local council and, if refused, legislation provides homeowners with a right of appeal. 
-      <p>
-      <p class="govuk-body">
-        These prototypes cover different journeys for the 'Appeal a householder planning decision' for users such as the appellant, agents acting on behalf of the appellant, local planning authorities, and inspectors.
-      <p>
+      <h2 class="govuk-heading-l">Beta</h2>
 
-      <h2 class="govuk-heading-l">Private Beta Prototypes</h2>
-      
-      <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
-        <div class="govuk-accordion__section ">
-          <div class="govuk-accordion__section-header">
-            <h2 class="govuk-accordion__section-heading">
-              <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                Appellant submission
-              </span>
-            </h2>
-          </div>
-          <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
-
-            {{ govukTag({
-              classes: "govuk-tag--green",
-              text: "READY FOR UR"
-            }) }}
-            <h3 class="govuk-heading-m">
-              Version 7 - End to end appellant submission journey 
-            </h3>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>
-                <a href="/guidance/before-you-appeal">Start journey from guidance pages</a>
-              </li>
-              <li>
-                <a href="/appellant-submission/task-list">Start journey from task list</a>
-              </li>
-              <li>
-                <a href="/public/images/decisionnotice_plsrd.pdf">Decision notice (PDF)</a>
-              </li>
-            </ul>
-
-            <details class="govuk-details govuk-!-margin-bottom-3" data-module="govuk-details">
-              <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text">
-                  Email verification journeys
-                </span>
-              </summary>
-              <div class="govuk-details__text">
-                <form action="/appellant-submission/start-your-appeal" method="post" novalidate="">
-                  <input type="hidden" name="saveReturnUrl" value="/verify-email-post">
-                  <input type="hidden" name="saveRecoveryUrl" value="save-return/recovery">
-                  <button class="govuk-button" href="appellant-submission/start-your-appeal">
-                  Email verification code prototype
-                  </button>
-                </form>
-                <form action="/appellant-submission/start-your-appeal" method="post" novalidate="">
-                  <input type="hidden" name="saveReturnUrl" value="save-return/create-password">
-                  <input type="hidden" name="saveRecoveryUrl" value="save-return/recovery-password">
-                  <button class="govuk-button govuk-!-margin-bottom-0" href="/appellant-submission/start-your-appeal">
-                    Email verification by password prototype
-                  </button>
-                </form>
-              </div>
-            </details>
-            
-            <details class="govuk-details" data-module="govuk-details">
-              <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text">
-                  JIRA Tickets (3)
-                </span>
-              </summary>
-              <div class="govuk-details__text">
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>
-                    <a href="https://pins-ds.atlassian.net/browse/AS-749" target="_blank">AS-749</a> - simplified appeal statement
-                  </li>
-                  <li>
-                    <a href="https://pins-ds.atlassian.net/browse/AS-1188" target="_blank">AS-1188</a> - 404 error page
-                  </li>
-                  <li>
-                    <a href="https://pins-ds.atlassian.net/browse/AS-950" target="_blank">AS-950</a> - eligibility changes, add costs question
-                  </li>
-                </ul>
-              </div>
-            </details>
-
-          </div>
-        </div>
-      </div>
-
-
-
-
-
+    </div>
+  </div>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
         <h3 class="govuk-heading-m">Appellant submission</h3>
@@ -119,7 +29,7 @@
           <li>Eligibility/routing</li>
           <li>Task lisk/appeal submission</li>
           <li>save and return</li>
-          <li><a href="/guidance/before-you-appeal">guidance</a></li>
+          <li><a href="/appellant-submission/v7/guidance/before-you-appeal">guidance</a></li>
         </ul>
         <p><a href="/public/images/decisionnotice_plsrd.pdf" download>Decision notice (PDF)</a></p>
         <form action="/appellant-submission/start-your-appeal" method="post" novalidate="">
@@ -511,7 +421,7 @@
     <div class="govuk-grid-column-full">
 
 
-      <h2 class="govuk-heading-l">Alpha Prototypes</h2>
+      <h2 class="govuk-heading-l">Alpha</h2>
       <p>Prototypes developed during alpha have been moved to a separate server:</p>
       <p><a href="https://has-appeal-alpha.herokuapp.com/">View alpha prototypes</a></p>
     </div>
