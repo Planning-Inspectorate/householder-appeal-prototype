@@ -13,17 +13,17 @@
 <style>
 
 .govuk-header__container {
-    border-bottom: 10px solid #009999;
+    border-bottom: 10px solid #224d42;
 }
 .moj-sub-navigation__link[aria-current="page"]:before {
-    background-color: #009999;
+    background-color: #224d42;
 }
 
 
 </style>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-half">
-    <p><a href="my-index" class="govuk-back-link">All my appeals</a></p>
+    <p><a href="index" class="govuk-back-link">All my appeals</a></p>
   </div>
   <div class="govuk-grid-column-one-half">
     <p align="right"> <b>Inspector: </b>Marie Lightman</p>
@@ -31,7 +31,7 @@
 </div>
 <div class="govuk-grid-column-full-width">
       <h1 class="govuk-heading-xl">
-      131 High Street, Bradford, BD6 1JK
+        131 High Street, Bradford, BD6 1JK
         <span class="govuk-caption-xl">Appeal Reference: APP/2020/56789/01234</span>
       </h1>
 
@@ -40,7 +40,7 @@
 
 <ul class="moj-sub-navigation__list">
 <li class="moj-sub-navigation__item">
-  <a class="moj-sub-navigation__link" href="appeal1-overview">Overview</a>
+  <a class="moj-sub-navigation__link" href="appeal1-case">Case Files</a>
 </li>
 
 <li class="moj-sub-navigation__item">
@@ -55,12 +55,48 @@
 </nav>
 
      <h2 class="govuk-heading-l">Site Visit</h2>
-     <p>You have <b>not arranged</b> a site visit</p>
+     <p>You have arranged a site visit</p>
+
+     <dl class="govuk-summary-list govuk-summary-list--no-border">
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+           Type of visit
+         </dt>
+         <dd class="govuk-summary-list__value">
+         Access required (ARSV)
+         </dd>
+       </div>
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+           Date
+         </dt>
+         <dd class="govuk-summary-list__value">
+         15 February 2021
+         </dd>
+       </div>
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+          Time
+         </dt>
+         <dd class="govuk-summary-list__value">
+            9:30am - 11:30am
+         </dd>
+       </div>
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+           Site visit letter / email
+         </dt>
+         <dd class="govuk-summary-list__value">
+           <a href="#">View letter sent to appellant</a>
+         </dd>
+       </div>
+
+     </dl>
 
      {% from "govuk/components/button/macro.njk" import govukButton %}
 
      {{ govukButton({
-       text: "Arrange site visit",
+       text: "Re-arrange site visit",
        href: "visit-type.html"
      }) }}
 
@@ -82,7 +118,7 @@
             Address of appeal site
           </dt>
           <dd class="govuk-summary-list__value">
-          131 High Street, Bradford, BD6 1JK
+          27 High Street, Plymouth, PL4 2AA
           </dd>
         </div>
         <div class="govuk-summary-list__row">

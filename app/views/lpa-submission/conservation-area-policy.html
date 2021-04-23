@@ -10,8 +10,8 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="conservation-area-post" method="post" novalidate>
-      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal site</span>
+    <form action="conservation-area-policy-post" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Policies related to the planning application</span>
 
       {{ govukRadios({
         idPrefix: "conservation-area",
@@ -39,8 +39,8 @@
       }) }}
 
 
-      <input type="hidden" name="conservation-area-completed" value="govuk-tag app-task-list__task-completed">
-      <input type="hidden" name="conservation-area-completed-text" value="Completed">
+      <input type="hidden" name="conservation-completed" value="govuk-tag app-task-list__task-completed">
+      <input type="hidden" name="conservation-completed-text" value="In progress">
       <div class="govuk-form-group">
         <button class="govuk-button" data-module="govuk-button">
           Save and continue

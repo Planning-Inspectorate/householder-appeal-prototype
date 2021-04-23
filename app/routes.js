@@ -110,7 +110,21 @@ router.post("/supporting-documents-post", function(req, res, next){
 
 ///////////////////////////////////////////////////////////////
 
+router.post('/lpa-submission/:appealId/check-appeal-site', function (req, res) {
+
+    req.session.data["about-site-completed"] = "govuk-tag app-task-list__task-completed";
+    req.session.data["about-site-completed-text"] = "Completed";
+    res.redirect(`/lpa-submission/lpa-task-list/${req.params.appealId}`)
+})
+
 router.post('/lpa-submission/:appealId/conservation-area-post', function (req, res) {
+
+    req.session.data["section2-completed"] = "govuk-tag app-task-list__task-completed";
+    req.session.data["section2-completed-text"] = "Completed";
+    res.redirect(`/lpa-submission/lpa-task-list/${req.params.appealId}`)
+})
+
+router.post('/lpa-submission/:appealId/conservation-area-policy-post', function (req, res) {
 
   if (req.body['conservation-area'] === "yes") {
     res.redirect(`/lpa-submission/${req.params.appealId}/conservation-map-upload`)
