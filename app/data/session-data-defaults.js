@@ -317,6 +317,8 @@ let data = {
     "site-ownership-completed-text": "Not started",
     "email-completed": "govuk-tag govuk-tag--grey app-task-list__tag",
     "email-completed-text": "Not started",
+    "planning-department-completed": "govuk-tag govuk-tag--grey  app-task-list__tag",
+    "planning-department-completed-text": "Not started",
     "application-number-completed": "govuk-tag govuk-tag--grey  app-task-list__tag",
     "application-number-completed-text": "Not started",
     "application-completed": "govuk-tag govuk-tag--grey app-task-list__tag",

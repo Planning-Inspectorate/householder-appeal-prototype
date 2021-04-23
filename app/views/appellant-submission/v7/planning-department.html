@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Your details
+  What is the name of the local planning department? - Eligibility - Appeal a householder planning decision - GOV.UK
 {% endblock %}
 
 {% block content %}
@@ -43,7 +43,7 @@
         <select class="govuk-select govuk-input--width-20" id="select-council" data-councilpicker name="planning-department">
           <option value=""></option>
           {% for council in councils %}
-            <option value="{{council.key}}" {{ checked('council', council.key) }}>{{council['official-name']}}</option>
+            <option value="{{council.NAME}}">{{council['NAME']}}</option>
           {% endfor %}
         </select>
         </div>

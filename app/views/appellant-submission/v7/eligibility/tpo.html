@@ -1,40 +1,45 @@
-{% extends "layout.html" %}
+{% extends "layout-new-footer.html" %}
 
 {% block pageTitle %}
-Have you received an enforcement notice?- Eligibility - Appeal a householder planning decision - GOV.UK
+  Did you appeal a tree preservation order decision? - Eligibility - Appeal a planning decision - GOV.UK
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="/enforcement-post" method="post" novalidate>
+      <form action="/tpo-post" method="post" novalidate>
         <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Before you start</span>
-
-        {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "enforcement",
-          name: "enforcement",
+          idPrefix: "tpo",
+          name: "tpo",
+          errorMessage: errors['tpo'] and {
+            text: errors['tpo'].msg
+          },
           fieldset: {
             legend: {
-              text: "Have you received an enforcement notice?",
+              text: "Did you apply cut down or carry out work on a protected tree?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            text: "An enforcement notice is issued if your local planning department thinks you have carried out building work without the correct planning permission.​"
+            text: ""
           },
           items: [
             {
               value: "yes",
-              text: "Yes"
+              text: "Yes",
+              attributes: { "data-cy": "answer-yes" },
+              checked: tpo == true
             },
             {
               value: "no",
-              text: "No"
+              text: "No",
+              attributes: { "data-cy": "answer-no" },
+              checked: tpo == false
             }
           ]
         }) }}

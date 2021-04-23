@@ -1,0 +1,64 @@
+{% extends "layout-new-footer.html" %}
+
+{% block pageTitle %}
+  Do you want your appeal decided through the fast track procedure? - Eligibility - Appeal a planning decision - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/fast-track-post" method="post" novalidate>
+        <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Before you start</span>
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "fast-track",
+          name: "fast-track",
+          errorMessage: errors['fast-track'] and {
+            text: errors['fast-track'].msg
+          },
+          fieldset: {
+            legend: {
+              text: "Do you want your appeal decided through the fast track procedure?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Appeals dealt with by the Fast Track procedure are usually decided more quickly than those which proceed through a hearing because of this we recommend the Fast Track procedure."
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes",
+              attributes: { "data-cy": "answer-yes" },
+              checked: fast-track == true
+            },
+            {
+              value: "no",
+              text: "No",
+              attributes: { "data-cy": "answer-no" },
+              checked: fast-track == false
+            }
+          ]
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "What is the fast track procedure?",
+          html: "<p>Appeals dealt with by the Fast Track procedure are usually decided more quickly than those which proceed through a hearing.</p>
+          <p>However, if you or the Council ask to be heard by the Inspector we will organise a hearing which will take the form of a round table discussion.</p>
+          ",
+          attributes: { "data-cy":"details-fast-track"}
+        }) }}
+
+        {{ govukButton({
+          text: "Continue",
+          type: "submit",
+          attributes: { "data-cy":"button-save-and-continue"}
+        }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
