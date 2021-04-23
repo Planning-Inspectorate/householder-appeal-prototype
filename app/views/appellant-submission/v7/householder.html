@@ -8,58 +8,55 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="/householder-post" method="post" novalidate>
-        <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Before you start</span>
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="householder-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Did you apply for 'householder planning permission'?
-              </h1>
-            </legend>
-            <p id="householder-hint">'Householder planning permission' is a specific type of planning permission. You can check what you applied for on your original planning application form.</p>
-            <div class="govuk-radios govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="Hhouseholder-conditional" name="householder" type="radio" value="yes" data-aria-controls="conditional-householder-conditional">
-                <label class="govuk-label govuk-radios__label" for="householder-conditional">
-                  Yes
-                </label>
-              </div>
 
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="Hhouseholder-conditional-2" name="householder" type="radio" value="no" data-aria-controls="conditional-Hhouseholder-conditional-2">
-                <label class="govuk-label govuk-radios__label" for="householder-conditional-2">
-                  No
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
+      <form action="/householder-post" method="post">
+        <span class="govuk-caption-l">Before you start</span>
 
-        <details class="govuk-details" data-module="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-              What is householder planning permission?
-            </span>
-          </summary>
-          <div class="govuk-details__text">
-            <p>'Householder planning permission' covers projects for altering or enlarging a single house. These include:​</p>
+        {{ govukRadios({
+          idPrefix: "householder",
+          name: "householder",
+          fieldset: {
+            legend: {
+              text: "Did you apply for 'householder planning permission'?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "'Householder planning permission' is a specific type of planning permission. You can check what you applied for on your original planning application form."
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes",
+              checked: checked("householder", "Yes")
+            },
+            {
+              value: "no",
+              text: "No",
+              checked: checked("householder", "No")
+            }
+          ]
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "What is householder planning permission?",
+          html: '<p>&lsquo;Householder planning permission&rsquo; covers projects for altering or enlarging a single house. These include:​</p>
             <ul class="govuk-list govuk-list--bullet">
               <li>conservatories​</li>
               <li>dormer windows​</li>
               <li>extensions​</li>
               <li>garages, car ports and outbuildings​</li>
               <li>loft conversions</li>
-            </ul>
-          </div>
-        </details>
+            </ul>'
+        }) }}
 
-        <div class="govuk-form-group">
-          <button class="govuk-button" data-module="govuk-button">
-            Continue
-          </button>
-        </div>
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
       </form>
+
     </div>
   </div>
 

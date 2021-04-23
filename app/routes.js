@@ -17,11 +17,14 @@ let appealsList = require("./data/appeals.js");
 //cookie stuff
 
 router.all("*", function(req, res, next){
-  res.locals.alwaysHideCookieBanner = process.env.HIDE_COOKIE_BANNER;
-  console.log(res.locals.alwaysHideCookieBanner);
+  if (!req.session.data.mode) {
+    let mode = "";
+    let querystring = req.query;
+    if (querystring["mode"]) { mode = querystring["mode"]}
+    req.session.data.mode = mode;
+  }
   next();
 })
-
 
 router.get("/cookies", function(req, res, next){
   res.locals.referer = req.headers.referer
@@ -135,7 +138,6 @@ router.post('/lpa-submission/:appealId/conservation-area-policy-post', function 
   }
 })
 
-
 router.post('/lpa-submission/:appealId/interested-parties-appeal-post', function (req, res) {
 
   if (req.body['interested-parties-appeal'] === "yes") {
@@ -194,7 +196,8 @@ router.post('/lpa-submission/:appealId/conservation-publicity-post', function (r
 
 //autocomplete
 
-const localCouncils = require("./data/local-authority-eng.json");
+//const localCouncils = require("./data/local-authority-eng.json");
+const localCouncils = require("./data/lpacsvjson.json");
 const planningApplications = require("./data/planning-applications.json");
 
 
@@ -209,7 +212,8 @@ function sortByProperty(property){
    }
 }
 
-
+// registers were retired by GDS on 15 Mar 2021
+// https://data.gov.uk/dataset/a8f488fd-eaea-4176-92b0-6d0437b4d121/historical-gov-uk-registers
 router.all("/components/select-council", function(req,res,next){
   const url = "https://local-authority-eng.register.gov.uk/records.json";
 
@@ -255,19 +259,27 @@ router.post('/eligibility/decision-date-post', function (req, res) {
 
   let date = moment(`${year}-${month}-${day}`, "Y-M-D", true);
 
-  console.log(date.isValid());
-
   if(date.isValid() === false){
     res.redirect('/eligibility/decision-date-error')
-  } else{
-    let checkDate = date.add(12, "weeks");
+  } else {
+    let istpo = req.session.data['tpo'],
+    checkDate = '';
+    if (istpo === "yes") {
+      checkDate = date.add(28, "days");
+    } else {
+      checkDate = date.add(12, "weeks");
+    }
     let today = moment();
     if(checkDate.isBefore(today, "days")){
 
       req.session.data.deadlineDate = checkDate.format("D MMMM YYYY");
       res.redirect('/eligibility/decision-date-out')
     } else {
-      res.redirect('/eligibility/planning-department')
+      if (istpo === "yes") {
+        res.redirect('/eligibility/fast-track')
+      } else {
+        res.redirect('/eligibility/planning-department')
+      }
     }
   }
 
@@ -289,7 +301,13 @@ router.post('/appellant-submission/v7/decision-date-post', function (req, res) {
   if(date.isValid() === false){
     res.redirect('/appellant-submission/v7/decision-date-error')
   } else{
-    let checkDate = date.add(12, "weeks");
+    let istpo = req.session.data['tpo'],
+    checkDate = '';
+    if (istpo === "yes") {
+      checkDate = date.add(28, "days");
+    } else {
+      checkDate = date.add(12, "weeks");
+    }
     let today = moment();
     if(checkDate.isBefore(today, "days")){
 
@@ -313,8 +331,33 @@ router.all('/eligibility/planning-department', function(req,res,next){
 
 router.all('/appellant-submission/v7/planning-department', function(req,res,next){
 
-  res.locals.councils = localCouncils.sort(sortByProperty("name"));
+  res.locals.councils = localCouncils.sort(sortByProperty("NAME"));
+  planningdepartment = req.session.data.planningdepartment;
 
+  let departmentsByName = {};
+  let departments = {};
+  const lpaList = localCouncils.sort(sortByProperty("NAME"));
+  const data = lpaList;
+
+  departments = data.map((department) => {
+    departmentsByName[department.NAME] = department;
+    return department.NAME;
+  });
+
+  const departmentsToNunjucksItems = (departments, planningdepartment ) => [
+    {
+      value: undefined,
+      text: undefined,
+      selected: false,
+    },
+    data.map((department) => ({
+      value: department.NAME,
+      text: department.NAME,
+      selected: planningdepartment === department.NAME,
+    })),
+  ];
+
+  res.locals.departments = departmentsToNunjucksItems();
   next()
 
 });
@@ -333,12 +376,17 @@ router.post('/eligibility/listed-building-post', function (req, res) {
 })
 
 
-router.post('/householder-post', function (req, res) {
-  let hasconsent = req.session.data['householder']
+router.get('/householder-post', function (req, res) {
+  let householder = req.session.data['householder']
+  let mode = req.session.data.mode;
 
-  if (hasconsent === 'yes') {
-    res.redirect('/appellant-submission/v7/decision-date')
-  } else if (hasconsent === 'no') {
+  if (householder === 'yes') {
+    if(mode === 'integrated') {
+      res.redirect('appellant-submission/v7/enforcement')
+    } else {
+      res.redirect('/appellant-submission/v7/decision-date')
+    }
+  } else if (householder === 'no') {
     res.redirect('/appellant-submission/v7/consent-out')
   } else {
     res.redirect('/appellant-submission/v7/householder')
@@ -346,10 +394,15 @@ router.post('/householder-post', function (req, res) {
 })
 
 router.post('/enforcement-post', function (req, res) {
-  let enforcement = req.session.data['enforcement']
+  let enforcement = req.session.data['enforcement'],
+    istpo = req.session.data['tpo'];
 
   if (enforcement === 'no') {
-    res.redirect('/appellant-submission/v7/listed-building')
+    if (istpo === "yes") {
+      res.redirect('/appellant-submission/v7/costs')
+    } else {
+      res.redirect('/appellant-submission/v7/listed-building')
+    }
   } else if (enforcement === 'yes') {
     res.redirect('/appellant-submission/v7/enforcement-out')
   } else {
@@ -370,12 +423,20 @@ router.post('/appellant-submission/v7/listed-building-post', function (req, res)
 })
 
 
-router.post('/costs-post', function (req, res) {
-  let haslisted = req.session.data['costs']
+router.post('/appellant-submission/v7/costs-post', function (req, res) {
+  let hascosts = req.session.data['costs'],
+    mode = req.session.data.mode,
+    istpo = req.session.data['tpo'];
 
-  if (haslisted === 'no') {
-    res.redirect('/appellant-submission/v7/appeal-statement-info')
-  } else if (haslisted === 'yes') {
+  if (hascosts === 'no') {
+    if (istpo === 'yes') {
+      res.redirect('/appellant-submission/v7/task-list-tpo')
+    } else if (mode === 'integrated') {
+      res.redirect('/submit-appeal/task-list')
+    } else {
+      res.redirect('/appellant-submission/v7/appeal-statement-info')
+    }
+  } else if (hascosts === 'yes') {
     res.redirect('/appellant-submission/v7/costs-out')
   } else {
     res.redirect('/appellant-submission/v7/costs')
@@ -394,19 +455,34 @@ router.post('/eligibility/planning-department-post', function(req, res, next){
     res.redirect('/eligibility/planning-department')
   } else {
     req.session.data.planningError = false;
-    res.redirect('/eligibility/planning-department-out')
+    req.session.data['planning-department-completed-text'] = "completed"
+    req.session.data['planning-department-completed'] = "govuk-tag app-task-list__tag"
+    res.redirect('/eligibility/enforcement')
   }
 })
 
 router.post('/appellant-submission/v7/planning-department-post', function(req, res, next){
-  let redirectUrl = req.session.data["idox-prototype-url"];
   let dept = req.body['planning-department'];
-  console.log(dept)
+
+  let mode = req.session.data.mode;
   if (dept === ""){
     req.session.data.planningError = true;
     res.redirect('/appellant-submission/v7/planning-department')
+  } else if (mode === 'integrated') {
+    if (dept === 'SGC') {
+      req.session.data.planningError = false;
+      req.session.data.planningdepartment = dept;
+      req.session.data['planning-department-completed-text'] = "completed"
+      req.session.data['planning-department-completed'] = "govuk-tag app-task-list__tag"
+      res.redirect('/submit-appeal/planning-number')
+    } else {
+      res.redirect('/appellant-submission/v7/integrated/planning-department-out')
+    }
   } else {
     req.session.data.planningError = false;
+    req.session.data.planningdepartment = dept;
+    req.session.data['planning-department-completed-text'] = "completed"
+    req.session.data['planning-department-completed'] = "govuk-tag app-task-list__tag"
     res.redirect('/appellant-submission/v7/enforcement')
   }
 })
@@ -963,6 +1039,28 @@ router.post("/lpa-account/login/email-sent-post", function(req, res, next){
   res.redirect(url);
 })
 
-require('./routes/appeal-submission.js')(router);
+router.post('/tpo-post', function (req, res) {
+  let istpo = req.session.data['tpo']
+
+  if (istpo === 'yes') {
+    res.redirect('/appellant-submission/v7/decision-date')
+  } else if (istpo === 'no') {
+    res.redirect('/appellant-submission/v7/eligibility/tpo-out')
+  } else {
+    res.redirect('/appellant-submission/v7//eligibility/tpo')
+  }
+})
+
+router.post('/fast-track-post', function (req, res) {
+  let isfasttrack = req.session.data['fast-track']
+
+  if (isfasttrack === 'yes') {
+    res.redirect('/eligibility/planning-department')
+  } else if (isfasttrack === 'no') {
+    res.redirect('/eligibility/fast-track-out')
+  } else {
+    res.redirect('/eligibility/fast-track')
+  }
+})
 
 module.exports = router

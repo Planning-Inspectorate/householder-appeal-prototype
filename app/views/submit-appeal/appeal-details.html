@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-  
+
 
 {% block pageTitle %}
   Your details
@@ -9,14 +9,14 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      
+
 
       <h1 class="govuk-heading-xl">
         Your planning details
         <span class="govuk-caption-xl">Planning application number: {{ data.planningDetails.Reference }}</span>
       </h1>
 
-      
+
       <p>We've found the following planning application on South Gloucestershire Council's website:</p>
 
 
@@ -46,7 +46,7 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data.planningDetails['Proposal'] }}
-              
+
           </dd>
         </div>
 
@@ -56,7 +56,7 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data.planningDetails.Decision }}
-              
+
           </dd>
         </div>
 
@@ -78,25 +78,25 @@
           </dd>
         </div> -->
 
-      </dl>      
+      </dl>
 
       {% if data.planningDetails['Decision Issued Date'] | formatIdoxDateIsWithinDeadline %}
       <div class="govuk-inset-text">
         The deadline for appealing is {{ data.planningDetails['Decision Issued Date'] | formatIdoxDeadlineDate }}
       </div>
-      <a class="govuk-button" href="householder-appeal">Appeal this planning decision</a>
+      <a class="govuk-button" href="/appellant-submission/v7/householder">Appeal this planning decision</a>
 
       {% else %}
         <div class="govuk-inset-text">
         <p>The deadline for appeal was {{ data.planningDetails['Decision Issued Date'] | formatIdoxDeadlineDate }}.</p>
-        <p>You might still be able to appeal under certain circumstances. Contact the planning inspectorate to find out more. </p>      
+        <p>You might still be able to appeal under certain circumstances. Contact the planning inspectorate to find out more. </p>
       </div>
       {% endif %}
 
       <h2 class="govuk-heading-m">Not your planning application?</h2>
 
-      <p>If this is not the correct planning application, you can <a class="govuk-link" href="/eligibility/planning-department">search again</a>.</p>
-      
+      <p>If this is not the correct planning application, you can <a class="govuk-link" href="/appellant-submission/v7/planning-department">search again</a>.</p>
+
   </div>
 
 {% endblock %}

@@ -1,54 +1,77 @@
 {% extends "layout.html" %}
 
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{% set title="Are you claiming for costs as part of your appeal? - Eligibility - Appeal a householder planning decision - GOV.UK" %}
+
 {% block pageTitle %}
-  Are you claiming for costs as part of your appeal? - Eligibility - Appeal a householder planning decision - GOV.UK
+  {% if errors %}
+    {% set title="Error: " + title %}
+  {% endif %}
+  {{ title }}
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
+
     <div class="govuk-grid-column-two-thirds">
-      <form action="/costs-post" method="post" novalidate>
-        <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Before you start</span>
-        {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-        {% set hintHtml %}
-        <p>If you are claiming for costs, you must do this when you appeal. <a href="https://www.gov.uk/guidance/appeals#the-award-of-costs--general" target="_blank">Check the guidance for claiming costs</a> to find out if this is something you can do.</p>
-        {% endset %}
+      {% if errors %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errorSummary
+        }) }}
+      {% endif %}
 
-          {{ govukRadios({
-            classes: "",
-            idPrefix: "costs",
-            name: "costs",
-            fieldset: {
-              legend: {
-                text: "Are you claiming for costs as part of your appeal?",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--l"
-              }
+      <form action="/appellant-submission/v7/costs-post" method="post" novalidate>
+
+        <span class="govuk-caption-l">Before you start</span>
+
+        {{ govukRadios({
+          idPrefix: "costs",
+          name: "costs",
+          fieldset: {
+            legend: {
+              text: "Are you claiming for costs as part of your appeal?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l govuk-heading-l"
+            }
+          },
+          errorMessage: errors['costs'] and {
+            text: errors['costs'].msg
+          },
+          hint: {
+            html: 'If you are claiming for costs, you must do this when you appeal. <a data-cy="appeal-awards-costs" href="https://www.gov.uk/guidance/appeals#the-award-of-costs--general" target="_blank">Check the guidance for claiming costs</a> to find out if this is something you can do.'
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes",
+              attributes: { "data-cy":"answer-yes"},
+              checked: appeal.eligibility.isClaimingCosts == true
             },
-            hint: {
-              htmk: hintHtml
-            },
-            items: [
-              {
-                value: "yes",
-                text: "Yes"
-              },
-              {
-                value: "no",
-                text: "No"
-              }
-            ]
-          }) }}
+            {
+              value: "no",
+              text: "No",
+              attributes: { "data-cy":"answer-no"},
+              checked: appeal.eligibility.isClaimingCosts == false
+            }
+          ]
+        }) }}
 
-        <div class="govuk-form-group">
-          <button class="govuk-button" data-module="govuk-button">
-            Continue
-          </button>
-        </div>
+        {{ govukButton({
+          text: "Continue",
+          type: "submit",
+          attributes: { "data-cy":"button-save-and-continue"}
+        }) }}
+
       </form>
     </div>
+
   </div>
 
 {% endblock %}

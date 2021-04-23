@@ -24,7 +24,7 @@
 
 
     <form action="planning-number-post" method="post" novalidate id="planing-number-submit">
-      
+
       <div class="govuk-form-group" id="planning-number-form-group">
         <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="postcode">
             What is your original planning application number?
@@ -67,7 +67,7 @@
 
 
 {% block pageScripts %}
-<script> 
+<script>
 
 
 
@@ -75,7 +75,7 @@ $(document).on("submit", "#planing-number-submit", function(event){
   event.preventDefault();
   console.log(event);
 
-  
+
 
   if(!$("#caseref").val()){
     $("#planning-number-form-group").addClass("govuk-form-group--error");
@@ -89,14 +89,14 @@ $(document).on("submit", "#planing-number-submit", function(event){
 
     let thisForm = this;
 
-    setTimeout(function(){ 
+    setTimeout(function(){
       thisForm.submit()
-    }, 30000);
+    }, 5000);
 
   }
 
 
-  
+
 })
 
 

@@ -1,50 +1,68 @@
 {% extends "layout.html" %}
 
-{% block pageTitle %}
-  Your details
-{% endblock %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% set title = "Is your appeal about a listed building? - Eligibility - Appeal a householder planning decision - GOV.UK" %}
+{% if errors %}{% set title="Error: " + title %}{% endif %}
+{% block pageTitle %}{{ title }}{% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <form action="listed-building-post" method="post" novalidate>
-        <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Before you start</span>
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Is your appeal about a listed building?
-              </h1>
-            </legend>
-        
-            <div class="govuk-radios govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="how-contacted-conditional" name="listed-building" type="radio" value="yes" data-aria-controls="conditional-how-contacted-conditional">
-                <label class="govuk-label govuk-radios__label" for="how-contacted-conditional">
-                  Yes
-                </label>
-              </div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="how-contacted-conditional-2" name="listed-building" type="radio" value="no" data-aria-controls="conditional-how-contacted-conditional-2">
-                <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
-                  No
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
+    {% if errorSummary %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorSummary
+      }) }}
+    {% endif %}
 
-        
+    <form action="/appellant-submission/v7/listed-building-post" method="POST" novalidate>
 
-        <div class="govuk-form-group">
-          <button class="govuk-button" data-module="govuk-button">
-            Continue
-          </button>
-        </div>
-      </form>
-    </div>
+      <span class="govuk-caption-l">Before you start</span>
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "listed-building",
+        name: "listed-building",
+        fieldset: {
+          legend: {
+            text: "Is your appeal about a listed building?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            attributes: { "data-cy": "answer-yes" },
+            checked: appeal.eligibility.isListedBuilding == true
+          },
+          {
+            value: "no",
+            text: "No",
+            attributes: { "data-cy": "answer-no" },
+            checked: appeal.eligibility.isListedBuilding == false
+          }
+        ],
+        errorMessage: errors['is-your-appeal-about-a-listed-building'] and {
+          text: errors['is-your-appeal-about-a-listed-building'].msg
+        }
+      }) }}
+
+      {{ govukButton({
+        text: "Continue",
+        type: "submit",
+        attributes: { "data-cy":"button-save-and-continue"}
+      }) }}
+
+    </form>
   </div>
+</div>
 
 {% endblock %}

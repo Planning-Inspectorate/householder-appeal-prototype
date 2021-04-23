@@ -1,60 +1,64 @@
-{% extends "layout.html" %}
+{% extends "layout-new-footer.html" %}
 
 {% block pageTitle %}
-  Local Planning authority details
+What's the decision date on the letter from the local planning department? - Eligibility - Appeal a planning decision - GOV.UK
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="decision-date-post" method="post" novalidate>
-        <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Before you start</span>
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="has-permission-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                What's the decision date on the letter from the local planning department?​
-              </h1>
-            </legend>
-          <div class="govuk-date-input" id="decision-date">
-             <span id="has-permission-hint" class="govuk-hint">
-                    For example, 20 04 2020
-                  </span>
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="decision-date-day">
-                  Day
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="decision-date-day" name="decision-date-day" type="text" pattern="[0-9]*" inputmode="numeric">
-              </div>
-            </div>
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="decision-date-month">
-                  Month
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="decision-date-month" name="decision-date-month" type="text" pattern="[0-9]*" inputmode="numeric">
-              </div>
-            </div>
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="decision-date-year">
-                  Year
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="decision-date-year" name="decision-date-year" type="text" pattern="[0-9]*" inputmode="numeric">
-              </div>
-            </div>
-          </div>
-          
-        </fieldset>
-        </div>
-        <p class="govuk-form-group govuk-!-padding-bottom-2"><a href="applicant-out">I have not received a decision from the local planning department​</a></p>
-         <div class="govuk-form-group">
-          <button class="govuk-button" data-module="govuk-button">
-            Continue
-          </button>
-        </div>
+      <span class="govuk-caption-l">Before you start</span>
+
+      <form action="/eligibility/decision-date-post" method="POST" novalidate>
+
+        {{ govukDateInput( {
+          id: "decision-date",
+          namePrefix: "decision-date",
+          fieldset: {
+            legend: {
+              text: "What's the decision date on the letter from the local planning department?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "For example, 20 04 2020"
+          },
+          errorMessage: errors and {
+            text: errors['decision-date'].msg or errors['decision-date-day'].msg or errors['decision-date-month'].msg or errors['decision-date-year'].msg
+          },
+          items: [
+            {
+              classes: "govuk-input--width-2 govuk-input--error" if errors['decision-date'] or errors['decision-date-day'] else "govuk-input--width-2",
+              name: "day",
+              value: decision-date-day
+            },
+            {
+              classes: "govuk-input--width-2 govuk-input--error" if errors['decision-date'] or errors['decision-date-month'] else "govuk-input--width-2",
+              name: "month",
+              value: decision-date-month
+
+            },
+            {
+              classes: "govuk-input--width-4 govuk-input--error" if errors['decision-date'] or errors['decision-date-year'] else "govuk-input--width-4",
+              name: "year",
+              value: decision-date-year
+            }
+          ]
+        } ) }}
+
+        <p class="govuk-form-group govuk-!-padding-bottom-2">
+          <a data-cy="no-decision-received" class="govuk-link" href="/eligibility/no-decision">I have not received a
+            decision from the local planning department</a>
+        </p>
+
+        {{ govukButton({
+          text: "Continue",
+          type: "submit",
+          attributes: { "data-cy":"button-save-and-continue"}
+        }) }}
+
       </form>
     </div>
   </div>
