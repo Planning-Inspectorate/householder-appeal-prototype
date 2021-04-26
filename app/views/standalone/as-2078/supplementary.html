@@ -1,0 +1,133 @@
+{% extends "layout-lpa.html" %}
+
+
+{% block pageTitle %}
+  LPA 
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds"> 
+    <form action="" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
+
+      <h2 class="govuk-heading-l">
+        Supplementary planning document extracts
+      </h2>
+      <p class="govuk-body">
+        You can add one supplementary planning document at a time. You will be able to add more later.
+      <p>
+          
+
+      {{ govukInput({
+        label: {
+          classes: "govuk-label--m govuk-!-margin-top-8",
+          text: "What is the name of the Supplementary Planning document?"
+        },
+        id: "as2078-supplementary-name",
+        name: "as2078-supplementary-name"
+      }) }}
+
+
+      {{ govukFileUpload({
+        id: "as2078-supplementary-file",
+        name: "as2078-supplementary-file",
+        formGroup: {
+          classes: "govuk-!-margin-bottom-3"
+        },
+        label: {
+          classes: "govuk-label--m govuk-!-margin-top-8",
+          text: "Upload a file"
+        }
+      }) }}
+      {{ govukDetails({
+        classes: "govuk-!-margin-bottom-8",
+        summaryText: "Accepted file formats",
+        html: '
+          <ul class="govuk-list govuk-list--bullet">
+            <li>PDF &ndash; <strong>.pdf</strong></li>
+            <li>Microsfot Word &ndash; <strong>.doc</strong> or <strong>.docx</strong></li>
+            <li>TIF &ndash; <strong>.tif</strong> or <strong>.tiff</strong></li>
+            <li>JPEG &ndash; <strong>.jpg</strong> or <strong>.jpeg</strong></li>
+            <li>PNG &ndash; <strong>.png</strong></li>
+          </ul>
+        '
+      }) }}
+
+
+      {% set dateHtml %}
+        {{ govukDateInput({
+          id: "as2078-supplementary-adopted-date",
+          namePrefix: "as2078-supplementary-adopted-date",
+          fieldset: {
+            legend: {
+              text: "Tell us the date of adoption."
+            }
+          },
+          hint: {
+            text: "For example, 27 3 2007"
+          }
+        }) }}
+      {% endset -%}
+      {% set stageHtml %}
+        {{ govukInput({
+          label: {
+            text: "Tell us what stage this has reached"
+          },
+          id: "as2078-supplementary-adopted-stage",
+          name: "as2078-supplementary-adopted-stage"
+        }) }}
+      {% endset -%}
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "as2078-supplementary-adopted",
+        name: "as2078-supplementary-adopted",
+        fieldset: {
+          legend: {
+            text: "Was it formally adopted?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m govuk-!-margin-top-8"
+          }
+        },  
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            conditional: {
+              html: dateHtml
+            }
+          },
+          {
+            value: "no",
+            text: "No",
+            conditional: {
+              html: stageHtml
+            }
+          }
+        ]
+      }) }}
+      
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          href: "/standalone/as-2078/supplementary-cancel",
+          text: "Cancel",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
+
+    </form>
+  </div>
+
+   <div class="govuk-grid-column-one-third"> 
+    
+  </div>
+  
+</div>
+{% endblock %}
+{% block pageScripts %}
+
+{% endblock %}
