@@ -1,0 +1,56 @@
+  {% extends "layout-lpa.html" %}
+
+{% set headerTitle = "Appellant stuff" %}
+
+
+{% block pageTitle %}
+  LPA
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Policies related to the planning application</span>
+
+      {{ govukRadios({
+        idPrefix: "as2078-supplementary-docs",
+        name: "as2078-supplementary-docs",
+        fieldset: {
+          legend: {
+            text: "Are there any supplementary planning documents?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: checked("as2078-supplementary-docs", "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: checked("as2078-supplementary-docs", "no")
+          }
+        ]
+      }) }}
+
+      <div class="govuk-form-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </div>
+    </form>
+  </div>
+
+   <div class="govuk-grid-column-one-third">
+    {% include "lpa-submission/_key-details.html" %}
+  </div>
+
+</div>
+{% endblock %}
+{% block pageScripts %}
+
+{% endblock %}

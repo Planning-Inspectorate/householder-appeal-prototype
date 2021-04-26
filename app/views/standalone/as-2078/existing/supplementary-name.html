@@ -1,0 +1,48 @@
+  {% extends "layout-lpa.html" %}
+
+{% set headerTitle = "Appellant stuff" %}
+  
+
+{% block pageTitle %}
+  LPA 
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds"> 
+    <form action="supplementary-file-upload" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
+
+          
+      {{ govukInput({
+        label: {
+          text: "What is the name of the Supplementary Planning document?",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        id: "supplementary-name",
+        name: "supplementary-name",
+          hint: {
+            text: "Add one supplementary planning document at a time. You will be able to add more later.  "
+          }
+      }) }}
+
+
+      
+      <div class="govuk-form-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </div>
+    </form>
+  </div>
+
+   <div class="govuk-grid-column-one-third"> 
+    
+  </div>
+  
+</div>
+{% endblock %}
+{% block pageScripts %}
+
+{% endblock %}
