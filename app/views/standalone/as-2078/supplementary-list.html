@@ -1,0 +1,64 @@
+{% extends "layout-lpa.html" %}
+
+{% block pageTitle %}
+  LPA 
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds"> 
+    <form action="lpa-task-list" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
+      <h1 class="govuk-heading-l">Supplementary planning documents</h1>
+      
+      <dl class="govuk-summary-list">
+        
+        {% set i = 0 %}
+        {% for file in data['as2078-files'] %}
+          {% set i = i + 1 %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__value">
+              {{file.name}}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if file.adopted == "yes" %}
+                Adopted on {{file['adopted_day']}} {{file['adopted_month'] }} {{file['adopted_year']}} 
+              {% else %}
+                {{ file.adopted_stage }}
+              {% endif %}
+              
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/standalone/as-2078/remove?row={{ i }}">
+                Remove<span class="govuk-visually-hidden"> {{document.name}}</span>
+              </a>
+            </dd>
+          </div>
+
+        {% endfor %}
+      
+      </dl>
+
+      <input type="hidden" name="supplementary-completed" value="govuk-tag app-task-list__task-completed">
+      <input type="hidden" name="supplementary-completed-text" value="Completed">
+      <a href="supplementary" class="govuk-button govuk-button--secondary">Upload another document</a>
+
+      
+      <div class="govuk-form-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Save and Continue
+        </button>
+      </div>
+    </form>
+  </div>
+
+   <!-- <div class="govuk-grid-column-one-third"> 
+    {% include "lpa-submission/_key-details.html" %} 
+  </div> -->
+  
+</div>
+{% endblock %}
+{% block pageScripts %}
+
+{% endblock %}
