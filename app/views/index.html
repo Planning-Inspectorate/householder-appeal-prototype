@@ -66,14 +66,14 @@
                     </span>
                   </summary>
                   <div class="govuk-details__text">
-                    <form action="/appellant-submission/start-your-appeal" method="post" novalidate="">
+                    <form action="/appellant-submission/v7/start-your-appeal" method="post" novalidate="">
                       <input type="hidden" name="saveReturnUrl" value="/verify-email-post">
                       <input type="hidden" name="saveRecoveryUrl" value="save-return/recovery">
                       <button class="govuk-button" href="appellant-submission/start-your-appeal">
                       Email verification code prototype
                       </button>
                     </form>
-                    <form action="/appellant-submission/start-your-appeal" method="post" novalidate="">
+                    <form action="/appellant-submission/v7/start-your-appeal" method="post" novalidate="">
                       <input type="hidden" name="saveReturnUrl" value="save-return/create-password">
                       <input type="hidden" name="saveRecoveryUrl" value="save-return/recovery-password">
                       <button class="govuk-button govuk-!-margin-bottom-0" href="/appellant-submission/start-your-appeal">
@@ -339,6 +339,34 @@
             </div>
           </div>
           <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full">
+
+                <h3 class="govuk-heading-m">
+                  Upload supporting documents journeys
+                </h3> 
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>
+                    <a href="/standalone/as-2078/existing/supplementary" title="">Existing flow from Archive 6</a>
+                    {{ govukTag({
+                      classes: "govuk-tag--red govuk-!-margin-left-1",
+                      text: "WIP"
+                    }) }}
+                  </li>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m">
+                  End to end journey
+                </h3> 
+              </div>
+            </div>
 
             <div class="govuk-grid-row">
               <div class="govuk-grid-column-one-half">
