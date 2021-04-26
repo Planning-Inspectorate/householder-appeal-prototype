@@ -14,8 +14,7 @@ const idoxScraperUrl = process.env.IDOX_SCRAPER_URL;
 
 let appealsList = require("./data/appeals.js");
 
-//cookie stuff
-
+//check mode - integrated or not
 router.all("*", function(req, res, next){
   if (!req.session.data.mode) {
     let mode = "";
@@ -26,6 +25,7 @@ router.all("*", function(req, res, next){
   next();
 })
 
+//cookie stuff
 router.get("/cookies", function(req, res, next){
   res.locals.referer = req.headers.referer
   res.render("cookies/index")
@@ -296,8 +296,6 @@ router.post('/appellant-submission/v7/decision-date-post', function (req, res) {
 
   let date = moment(`${year}-${month}-${day}`, "Y-M-D", true);
 
-  console.log(date.isValid());
-
   if(date.isValid() === false){
     res.redirect('/appellant-submission/v7/decision-date-error')
   } else{
@@ -446,8 +444,8 @@ router.post('/appellant-submission/v7/costs-post', function (req, res) {
 router.post('/eligibility/planning-department-post', function(req, res, next){
   let redirectUrl = req.session.data["idox-prototype-url"];
   let dept = req.body['planning-department'];
-  console.log(dept)
-  if(dept === 'SGC') {
+
+  if(dept === 'South Gloucestershire') {
     req.session.data.planningError = false;
     res.redirect('/submit-appeal/planning-number')
   } else if (dept === ""){
@@ -469,7 +467,7 @@ router.post('/appellant-submission/v7/planning-department-post', function(req, r
     req.session.data.planningError = true;
     res.redirect('/appellant-submission/v7/planning-department')
   } else if (mode === 'integrated') {
-    if (dept === 'SGC') {
+    if (dept === 'South Gloucestershire') {
       req.session.data.planningError = false;
       req.session.data.planningdepartment = dept;
       req.session.data['planning-department-completed-text'] = "completed"
