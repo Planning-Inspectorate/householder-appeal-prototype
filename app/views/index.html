@@ -343,103 +343,135 @@
             <div class="govuk-grid-row">
               <div class="govuk-grid-column-full">
 
-                <h3 class="govuk-heading-m">
-                  Upload supporting documents journeys
-                </h3> 
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>
-                    <a href="/standalone/as-2078/lpa-task-list" title="">One page for upload</a>
+                <div class="govuk-inset-text govuk-!-margin-top-0">
+                  <h3 class="govuk-heading-m">
+                    Upload supporting documents journey
                     {{ govukTag({
-                      classes: "govuk-tag--red govuk-!-margin-left-1",
-                      text: "WIP"
+                      classes: "govuk-tag--purple govuk-!-margin-left-1",
+                      text: "In review"
                     }) }}
-                  </li>
-                </ul>
-              </div>
-            </div>
+                  </h3> 
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                      <a href="/standalone/as-2078/lpa-task-list" title="">Start journey from task list</a>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div class="govuk-inset-text govuk-!-margin-top-0">
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    Version 4
+                    {{ govukTag({
+                      classes: "govuk-tag--yellow govuk-!-margin-left-1",
+                      text: "Ready for UR"
+                    }) }}
+                  </h3>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                      <a href="/lpa-account/appeal-list" title="">Local Planning Department appeals list</a>
+                    </li>
+                    <li>
+                      <a class="govuk-link" href="lpa-submission/email-received">View email (received)</a>
+                    </li>
+                    <li>
+                      <a class="govuk-link" href="lpa-submission/email-started">View email (started)</a>
+                    </li>
+                  </ul>
 
-            <div class="govuk-grid-row">
-              <div class="govuk-grid-column-full">
-                <h3 class="govuk-heading-m govuk-!-margin-top-7">
-                  End to end journey
-                </h3> 
-              </div>
-            </div>
+                  <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Jira Tickets (2)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <ul class="govuk-list govuk-list-bulleted">
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-1126">AS-1126</a> - iterations following testing with LPA users</li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-1581">AS-1581</a> -  basic log in to appeal using email</li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+                
+                <div class="govuk-inset-text govuk-!-margin-top-0">
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    Version 3 - 25 February 2021
+                    {{ govukTag({
+                      classes: "govuk-tag--green govuk-!-margin-left-1",
+                      text: "Ready for dev"
+                    }) }}
+                  </h3>
+                  
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li><a href="https://has-appeal-archive-6.herokuapp.com/lpa-submission/email-received" class="govuk-link">View email received</a></li>
+                    <li><a href="https://has-appeal-archive-6.herokuapp.com/lpa-submission/email-started" class="govuk-link">View email started</a></li>
+                    <li><a href="https://has-appeal-archive-6.herokuapp.com/lpa-account" class="govuk-link">Appeal list</a></li>
+                    <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/430866595/Week+1+Sprint+9+Discussion+Guide+-+Beta+LPA">User research</a></li>
+                  </ul>
 
-            <div class="govuk-grid-row">
-              <div class="govuk-grid-column-one-half">
-                  <p class="govuk-body"><a href="/lpa-account/appeal-list" title="">Local Planning Department appeals list</a></p>
-                  <p class="govuk-body"><a class="govuk-button" href="lpa-submission/email-received">
-                    View email (received)
-                  </a></p>
-                  <p class="govuk-body"><a class="govuk-button" href="lpa-submission/email-started">
-                    View email (started)
-                  </a></p>
-              </div>
-              <div class="govuk-grid-column-one-half">
-                <h4 class="govuk-heading-s">Current version</h4>
-                <ul class="govuk-list govuk-list-bulleted">
-                  <li><a href="https://pins-ds.atlassian.net/browse/AS-1126">AS-1126</a> - iterations following testing with LPA users</li>
-                  <li><a href="https://pins-ds.atlassian.net/browse/AS-1581">AS-1581</a> -  basic log in to appeal using email</li>
-                </ul>
-
-                <h3 class="govuk-heading-s">Version history</h3>
-
-                <details class="govuk-details" data-module="govuk-details">
-                  <summary class="govuk-details__summary">
-                    <span class="govuk-details__summary-text">
-                      Version 3 - 25 February 2021
-                    </span>
-                  </summary>
-                  <div class="govuk-details__text">
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>Improvements to prototype <a href="https://pins-ds.atlassian.net/browse/AS-152">AS-152</a></li>
-                      <li>Update to supplementary planning docs <a href="https://pins-ds.atlassian.net/browse/AS-323">AS-323</a></li>
-                      <li>List of submitted appeals <a href="https://pins-ds.atlassian.net/browse/AS-788">AS-788</a></li>
-                    </ul>
-                    <ul class="govuk-list">
-                      <li><a href="https://has-appeal-archive-6.herokuapp.com/lpa-submission/email-received" class="govuk-link">View email received</a></li>
-                      <li><a href="https://has-appeal-archive-6.herokuapp.com/lpa-submission/email-started" class="govuk-link">View email started</a></li>
-                      <li><a href="https://has-appeal-archive-6.herokuapp.com/lpa-account" class="govuk-link">Appeal list</a></li>
-                      <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/430866595/Week+1+Sprint+9+Discussion+Guide+-+Beta+LPA">User research</a></li>
-                    </ul>
-                  </div>
-                </details>
-
-                <details class="govuk-details" data-module="govuk-details">
-                  <summary class="govuk-details__summary">
-                    <span class="govuk-details__summary-text">
-                      Version 2 - sprint 4
-                    </span>
-                  </summary>
-                  <div class="govuk-details__text">
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>Iteration based on user research by Liam</li>
-                      <li>Multiple file uploader added by Jamie</li>
-                      <li>2nd iteration based on user research by Liam</li>
-                    </ul>
-                    <ul class="govuk-list">
+                  <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Jira Tickets (3)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>Improvements to prototype <a href="https://pins-ds.atlassian.net/browse/AS-152">AS-152</a></li>
+                        <li>Update to supplementary planning docs <a href="https://pins-ds.atlassian.net/browse/AS-323">AS-323</a></li>
+                        <li>List of submitted appeals <a href="https://pins-ds.atlassian.net/browse/AS-788">AS-788</a></li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+                
+                <div class="govuk-inset-text govuk-!-margin-top-0">
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    Version 2 - Sprint 4
+                    {{ govukTag({
+                      classes: "govuk-tag--grey govuk-!-margin-left-1",
+                      text: "Archived"
+                    }) }}
+                  </h3>
+                  
+                  <ul class="govuk-list govuk-list--bullet">
                       <li><a href="https://has-appeal-archive-5.herokuapp.com/lpa-submission/email-received" class="govuk-link">View email received</a></li>
                       <li><a href="https://has-appeal-archive-5.herokuapp.com/lpa-submission/email-started" class="govuk-link">View email started</a></li>
                       <li>No user research</li>
-                    </ul>
-                  </div>
-                </details>
+                  </ul>
 
-                <details class="govuk-details" data-module="govuk-details">
-                  <summary class="govuk-details__summary">
-                    <span class="govuk-details__summary-text">
-                      Version 1 - Alpha sprint 20
-                    </span>
-                  </summary>
-                  <div class="govuk-details__text">
-                    <p class="govuk-body">First version of questionnaire based on <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/154337658/Revised+LPA+Questionnaire+for+beta+service+feedback">Picasso service questions</a></p>
-                    <ul class="govuk-list">
-                      <li><a href="https://has-appeal-alpha.herokuapp.com/lpa-submission/email" class="govuk-link">View prototype</a></li>
-                      <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/260571176/Sprint+20+UR">User research findings</a></li>
-                    </ul>
-                  </div>
-                </details>
+                  <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Updates (3)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <ul class="govuk-list govuk-list--bullet">
+                      <li>Iteration based on user research by Liam</li>
+                      <li>Multiple file uploader added by Jamie</li>
+                      <li>2nd iteration based on user research by Liam</li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+                
+                <div class="govuk-inset-text govuk-!-margin-top-0">
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    Version 1 - Alpha sprint 20
+                    {{ govukTag({
+                      classes: "govuk-tag--grey govuk-!-margin-left-1",
+                      text: "Archived"
+                    }) }}
+                  </h3>
+                  <p class="govuk-body">
+                    First version of questionnaire based on <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/154337658/Revised+LPA+Questionnaire+for+beta+service+feedback">Picasso service questions</a>
+                  <p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li><a href="https://has-appeal-alpha.herokuapp.com/lpa-submission/email" class="govuk-link">View prototype</a></li>
+                    <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/260571176/Sprint+20+UR">User research findings</a></li>
+                  </ul>
+                </div>
 
               </div>
             </div>
