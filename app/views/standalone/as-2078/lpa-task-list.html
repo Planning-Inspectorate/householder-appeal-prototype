@@ -56,12 +56,12 @@
                <strong id="section-status" class="{{data['other-appeals-completed']}}" >{{data['other-appeals-completed-text']}}</strong>
             </li>
 
-            <li class="app-task-list__item">
+            <!--li class="app-task-list__item">
              <span class="app-task-list__task-name">
                  Notifying interested parties of the appeal
              </span>
               <strong id="section-status" class="{{data['interested-parties-appeal-completed']}}" >{{data['interested-parties-appeal-completed-text']}}</strong>
-           </li>
+           </li-->
          </ul>
        </li>
 
@@ -72,6 +72,13 @@
          <ul class="app-task-list__items">
 
            <li class="app-task-list__item">
+             <span class="app-task-list__task-name">
+                 Tell us about the appeal site
+             </span>
+              <strong id="section-status" class="{{data['public-land-completed']}}" >{{data['public-land-completed-text']}}</strong>
+           </li>
+
+           <!--li class="app-task-list__item">
              <span class="app-task-list__task-name">
                  Can the relevant parts of the appeal site be seen from public land?
              </span>
@@ -111,7 +118,7 @@
                  Is the appeal site in or near a conservation area?
              </span>
               <strong id="section-status" class="{{data['conservation-area-completed']}}" >{{data['conservation-area-completed-text']}}</strong>
-           </li>
+           </li-->
 
           </ul>
         </li>
@@ -136,7 +143,7 @@
                <strong id="section-status" class="{{data['officers-report-completed']}}" >{{data['officers-report-completed-text']}}</strong>
             </li>
 
-            <li class="app-task-list__item">
+            <!--li class="app-task-list__item">
               <span class="app-task-list__task-name">
                   Site notices
               </span>
@@ -144,27 +151,25 @@
             </li>
 
             <li class="app-task-list__item">
-               <span class="app-task-list__task-name">
-                   Telling interested parties about the application
-               </span>
-                <strong id="section-status" class="{{data['interested-parties-completed']}}" >{{data['interested-parties-completed-text']}}</strong>
-             </li>
+              <span class="app-task-list__task-name">
+                  Telling interested parties about the application
+              </span>
+              <strong id="section-status" class="{{data['interested-parties-completed']}}" >{{data['interested-parties-completed-text']}}</strong>
+            </li>
 
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                  Representations from interested parties
+              </span>
+              <strong id="section-status" class="{{data['interested-parties2-completed']}}" >{{data['interested-parties2-completed-text']}}</strong>
+            </li>
 
-
-              <li class="app-task-list__item">
-               <span class="app-task-list__task-name">
-                   Representations from interested parties
-               </span>
-                <strong id="section-status" class="{{data['interested-parties2-completed']}}" >{{data['interested-parties2-completed-text']}}</strong>
-             </li>
-
-             <li class="app-task-list__item">
-               <span class="app-task-list__task-name">
-                   Planning history
-               </span>
-                <strong id="section-status" class="{{data['planning-history-completed']}}" >{{data['planning-history-completed-text']}}</strong>
-             </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                  Planning history
+              </span>
+              <strong id="section-status" class="{{data['planning-history-completed']}}" >{{data['planning-history-completed-text']}}</strong>
+            </li-->
           </ul>
         </li>
 
@@ -180,12 +185,56 @@
                 <p>Only include documents that were considered when making a decision on the application.</p>
               </span>
             </li>
+
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                  Statutory development plan policy
+                Telling interested parties about the application
               </span>
-               <strong id="section-status" class="{{data['statutory-completed']}}" >{{data['statutory-completed-text']}}</strong>
+               <strong id="section-status" class="govuk-tag govuk-tag--grey app-task-list__tag" >Not started</strong>
             </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Representations from interested parties
+              </span>
+               <strong id="section-status" class="govuk-tag govuk-tag--grey app-task-list__tag" >Not started</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Notifying interested parties of the appeal
+              </span>
+               <strong id="section-status" class="govuk-tag govuk-tag--grey app-task-list__tag" >Not started</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Site notices
+              </span>
+               <strong id="section-status" class="govuk-tag govuk-tag--grey app-task-list__tag" >Not started</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Planning history
+              </span>
+               <strong id="section-status" class="govuk-tag govuk-tag--grey app-task-list__tag" >Not started</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Statutory development plan policy
+              </span>
+               <strong id="section-status" class="govuk-tag govuk-tag--grey app-task-list__tag" >Not started</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Other relevant policies
+              </span>
+               <strong id="section-status" class="govuk-tag govuk-tag--grey app-task-list__tag" >Not started</strong>
+            </li>
+
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="/standalone/as-2078/supplementary-redirect" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
@@ -195,25 +244,13 @@
                <strong id="section-status" class="{{data['supplementary-completed']}}" >{{data['supplementary-completed-text']}}</strong>
             </li>
 
-
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                Conservation Area
+                Development Plan Document or Neighbourhood Plan
               </span>
-               <strong id="section-status" class="{{data['conservation-completed']}}" >{{data['conservation-completed-text']}}</strong>
+               <strong id="section-status" class="govuk-tag govuk-tag--grey app-task-list__tag" >Not started</strong>
             </li>
 
-
-
-
-
-
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                Other relevant policies
-              </span>
-               <strong id="section-status" class="{{data['other-policies-completed']}}" >{{data['other-policies-completed-text']}}</strong>
-            </li>
           </ul>
         </li>
 
