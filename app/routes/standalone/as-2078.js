@@ -22,7 +22,7 @@ module.exports = function (router) {
 
     router.get(base+'supplementary-redirect', function (req, res) {
       // take the user to the right screen based on previous actions (if any)
-      if (!req.session.data['as2078-files']) {
+      if (!req.session.data['as2078-files'] ||req.session.data['as2078-files'].length === 0 ) {
         // if no files uploaded yet, go to upload first file
         res.redirect(base+'supplementary');
       } else {
