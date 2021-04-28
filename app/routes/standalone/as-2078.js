@@ -78,7 +78,7 @@ module.exports = function (router) {
     
   })
 
-  router.post(base+'remove', function (req, res) {
+  router.post(base+'delete', function (req, res) {
 
     // remove item from array
     req.session.data['as2078-files'].splice(req.session.data['deleterow'],1);

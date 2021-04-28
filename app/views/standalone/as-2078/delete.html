@@ -11,7 +11,7 @@
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
 
       <h2 class="govuk-heading-l">
-        Remove supplementary planning document
+        Delete supplementary planning document
       </h2>          
       
       <dl class="govuk-summary-list">
@@ -43,7 +43,7 @@
             <div class="govuk-checkboxes__item">
               <input class="govuk-checkboxes__input" id="areyousure" name="areyousure" type="checkbox" value="delete">
               <label class="govuk-label govuk-checkboxes__label" for="areyousure">
-                Yes, I want to remove this supplementary planning document
+                Yes, I want to delete this supplementary planning document
               </label>
             </div>
           </div>
@@ -55,7 +55,7 @@
         <input type="hidden" name="deleterow" id ="deleterow" value="{{ data['row']-1 }}">
 
         {{ govukButton({
-          text: "Remove",
+          text: "Delete",
           disabled: true,
           classes: "govuk-button--warning govuk-!-margin-right-5"
         }) }}
