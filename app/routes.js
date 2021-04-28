@@ -374,7 +374,9 @@ router.post('/costs-post', function (req, res) {
   let haslisted = req.session.data['costs']
 
   if (haslisted === 'no') {
-    res.redirect('/appellant-submission/v7/appeal-statement-info')
+    // res.redirect('/appellant-submission/v7/appeal-statement-info')
+    // removed above line for AS-1892
+    res.redirect('/appellant-submission/v7/who-are-you')
   } else if (haslisted === 'yes') {
     res.redirect('/appellant-submission/v7/costs-out')
   } else {
