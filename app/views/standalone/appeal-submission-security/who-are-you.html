@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Your details | Appeal a householder planning decision
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post" novalidate>
+        <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About you</span>
+ 
+        {% set agentRep %}
+        {{ govukInput({
+          id: "applicant-name",
+          name: "applicant-name",
+          type: "",
+          value: data['applicant-name'],
+          classes: "",
+          label: {
+            text: "Name of applicant"
+          }
+        }) }}
+        {% endset -%}
+
+        
+        {{ govukRadios({
+          classes: "",
+          idPrefix: "who-are-you",
+          name: "who-are-you",
+          fieldset: {
+            legend: {
+              text: "Was the original planning application made in your name?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "If you are not the applicant, you must be have their permission to submit an appeal on their behalf."
+          },
+          items: [
+            {
+               value: "applicant",
+              text: "Yes, the original application was made in my name​",
+              checked: checked("who-are-you", "applicant")
+            },
+            {
+              value: "agent",
+              text: "No, I'm an agent acting on behalf of the applicant​",
+              checked: checked("who-are-you", "agent"),
+              conditional: {
+                html: agentRep
+              }
+            
+            }
+          ]
+        }) }}
+
+        <button class= "govuk-button" value="">Continue
+        </button>
+      </form>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+    
+
+  </div>
+
+  <!-- 
+    <input type="hidden" name="sections-completed" value="1">
+        <input type="hidden" name="your-details-completed" value="govuk-tag app-task-list__tag">
+        <input type="hidden" name="your-details-completed-text" value="Completed">
+
+      -->
+{% endblock %}
+
+
