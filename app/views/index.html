@@ -37,73 +37,107 @@
           <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
 
             <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full">
+                
+                <div class="govuk-inset-text govuk-!-margin-top-0">
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    Version 7 - End to end appellant submission journey
+                    {{ govukTag({
+                      classes: "govuk-tag--yellow govuk-!-margin-left-1",
+                      text: "Ready for UR"
+                    }) }}
+                  </h3>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                      <a href="/guidance/before-you-appeal">Start journey from guidance pages</a>
+                    </li>
+                    <li>
+                      <a href="/appellant-submission/v7/task-list">Start journey from task list</a>
+                    </li>
+                    <li>
+                      <a href="/public/images/decisionnotice_plsrd.pdf">Decision notice (PDF)</a>
+                    </li>
+                  </ul>
+                  <details class="govuk-details govuk-!-margin-bottom-3" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Email verification journeys
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <form action="/appellant-submission/v7/start-your-appeal" method="post" novalidate="">
+                        <input type="hidden" name="saveReturnUrl" value="/verify-email-post">
+                        <input type="hidden" name="saveRecoveryUrl" value="/appellant-submission/v7/save-return/recovery">
+                        <button class="govuk-button" href="appellant-submission/start-your-appeal">
+                        Email verification code prototype
+                        </button>
+                      </form>
+                      <form action="/appellant-submission/v7/start-your-appeal" method="post" novalidate="">
+                        <input type="hidden" name="saveReturnUrl" value="/appellant-submission/v7/save-return/create-password">
+                        <input type="hidden" name="saveRecoveryUrl" value="/appellant-submission/v7/save-return/recovery-password">
+                        <button class="govuk-button govuk-!-margin-bottom-0" href="/appellant-submission/start-your-appeal">
+                          Email verification by password prototype
+                        </button>
+                      </form>
+                    </div>
+                  </details>
+                  <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        JIRA Tickets (3)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>
+                          <a href="https://pins-ds.atlassian.net/browse/AS-749" target="_blank">AS-749</a> - simplified appeal statement
+                        </li>
+                        <li>
+                          <a href="https://pins-ds.atlassian.net/browse/AS-1188" target="_blank">AS-1188</a> - 404 error page
+                        </li>
+                        <li>
+                          <a href="https://pins-ds.atlassian.net/browse/AS-950" target="_blank">AS-950</a> - eligibility changes, add costs question
+                        </li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+                
+                <div class="govuk-inset-text govuk-!-margin-top-0">
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    Version 6 - 25 February 2021
+                    {{ govukTag({
+                      classes: "govuk-tag--grey govuk-!-margin-left-1",
+                      text: "Archived"
+                    }) }}
+                  </h3>
+                  <p class="govuk-body">Git tag: "v6"</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li><a href="https://has-appeal-archive-6.herokuapp.com/appellant-submission/start-your-appeal">Email verification code journey</a></li>
+                    <li><a href="https://has-appeal-archive-6.herokuapp.com/appellant-submission/start-your-appeal">Email verification by password</a></li>
+                    <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/494534657/Sprint+9+UR">User research</a></li>
+                    </li>
+                  </ul>
+                  <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        JIRA Tickets (1)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>Updated save and return &amp; email verification <br><a href="https://pins-ds.atlassian.net/browse/AS-236">AS-236</a></li>
+                        <li>Content updates</li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="govuk-grid-row">
               <div class="govuk-grid-column-one-half">
-
-                {{ govukTag({
-                  classes: "govuk-tag--yellow govuk-!-margin-bottom-1",
-                  text: "READY FOR UR"
-                }) }}
-
-                <h3 class="govuk-heading-m">
-                  v7 - End to end appellant submission journey
-                </h3>
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>
-                    <a href="/guidance/before-you-appeal">Start journey from guidance pages</a>
-                  </li>
-                  <li>
-                    <a href="/appellant-submission/v7/task-list">Start journey from task list</a>
-                  </li>
-                  <li>
-                    <a href="/public/images/decisionnotice_plsrd.pdf">Decision notice (PDF)</a>
-                  </li>
-                </ul>
-
-                <details class="govuk-details govuk-!-margin-bottom-3" data-module="govuk-details">
-                  <summary class="govuk-details__summary">
-                    <span class="govuk-details__summary-text">
-                      Email verification journeys
-                    </span>
-                  </summary>
-                  <div class="govuk-details__text">
-                    <form action="/appellant-submission/v7/start-your-appeal" method="post" novalidate="">
-                      <input type="hidden" name="saveReturnUrl" value="/verify-email-post">
-                      <input type="hidden" name="saveRecoveryUrl" value="/appellant-submission/v7/save-return/recovery">
-                      <button class="govuk-button" href="appellant-submission/start-your-appeal">
-                      Email verification code prototype
-                      </button>
-                    </form>
-                    <form action="/appellant-submission/v7/start-your-appeal" method="post" novalidate="">
-                      <input type="hidden" name="saveReturnUrl" value="/appellant-submission/v7/save-return/create-password">
-                      <input type="hidden" name="saveRecoveryUrl" value="/appellant-submission/v7/save-return/recovery-password">
-                      <button class="govuk-button govuk-!-margin-bottom-0" href="/appellant-submission/start-your-appeal">
-                        Email verification by password prototype
-                      </button>
-                    </form>
-                  </div>
-                </details>
-
-                <details class="govuk-details" data-module="govuk-details">
-                  <summary class="govuk-details__summary">
-                    <span class="govuk-details__summary-text">
-                      JIRA Tickets (3)
-                    </span>
-                  </summary>
-                  <div class="govuk-details__text">
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>
-                        <a href="https://pins-ds.atlassian.net/browse/AS-749" target="_blank">AS-749</a> - simplified appeal statement
-                      </li>
-                      <li>
-                        <a href="https://pins-ds.atlassian.net/browse/AS-1188" target="_blank">AS-1188</a> - 404 error page
-                      </li>
-                      <li>
-                        <a href="https://pins-ds.atlassian.net/browse/AS-950" target="_blank">AS-950</a> - eligibility changes, add costs question
-                      </li>
-                    </ul>
-                  </div>
-                </details>
-
               </div>
               <div class="govuk-grid-column-one-half">
 
@@ -342,6 +376,66 @@
 
             <div class="govuk-grid-row">
               <div class="govuk-grid-column-full">
+                
+                <!--div class="govuk-inset-text govuk-!-margin-top-0">
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    Version 8 - LPA Questionnaire journey
+                    {{ govukTag({
+                      classes: "govuk-tag--red govuk-!-margin-left-1",
+                      text: "WIP"
+                    }) }}
+                  </h3>
+                  <p class="govuk-body">
+                    This version includes one time passcode security.<br>
+                    Currently you can only get as far as the task list.
+                  <p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                      <a href="/lpa-questionnaire/v8/email/started" title="">Start journey from 'Householder appeal started' email</a>
+                    </li>
+                  </ul>
+
+                  <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Jira Tickets (1)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <ul class="govuk-list govuk-list-bulleted">
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2123">AS-2123</a> - LPA Accessing Questionnaire</li>
+                      </ul>
+                    </div>
+                  </details>
+                </div-->
+
+                <div class="govuk-inset-text govuk-!-margin-top-0">
+                  <h3 class="govuk-heading-m">
+                    LPA Questionnaire security journey
+                    {{ govukTag({
+                      classes: "govuk-tag--red govuk-!-margin-left-1",
+                      text: "WIP"
+                    }) }}
+                  </h3> 
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                      <a href="/standalone/lpa-questionnaire-security/email/started" title="">Start journey from 'Householder appeal started' email</a>
+                    </li>
+                  </ul>
+
+                  <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Jira Tickets (1)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <ul class="govuk-list govuk-list-bulleted">
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2123">AS-2123</a> - LPA Accessing Questionnaire</li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
                   <h3 class="govuk-heading-m">

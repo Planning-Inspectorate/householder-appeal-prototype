@@ -1,0 +1,40 @@
+{% extends "layout-email.html" %}
+
+{% block pageTitle %}
+  New householder planning appeal
+{% endblock %}
+
+{% block content %}
+<p><strong>Subject:</strong> 9617 The Avenue, XM26 7YS – householder appeal started </p>
+<p><strong>From:</strong> appeals@planninginspectorate.gov.uk</p>
+
+<img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-two-thirds">
+    <p>Householder planning appeal PI123456</p>
+    <p>Dear [Name of local planning department]</p>
+
+    <p>We’ve started a householder appeal against the refusal of planning application <strong>20/500818/FULL</strong>.</p>
+
+    <p>
+      <strong>Appeal site:</strong><br>
+      9617 The Avenue <br>
+      Maidstone<br>
+      XM26 7YS
+    </p>
+    <p>This will be decided by written representations.</p>
+    <p>You need to <a href="../security/email">submit your questionnaire and other documents</a> for the appeal by [date].​</p>
+
+    <p>
+      <strong>Contacting the appellant</strong><br>
+      You need to email a copy of the questionnaire to the appellant at: <a href="mailto:">[email address]</a>
+    </p>
+    <!--The appellant has asked to be contacted by post. You need to send a copy of the questionnaire to them at the address above.</p>-->
+    <br><br>
+    
+    <p>Thank you,<br>The Planning Inspectorate​</p>
+​
+  </div>
+</div>
+{% endblock %}
