@@ -8,7 +8,7 @@
 <style>
 
 .govuk-header__container {
-    border-bottom: 10px solid #224d42;
+    border-bottom: 10px solid #009999;
 }
 
 </style>
@@ -27,93 +27,7 @@
 
           <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <!--  <h1 class="govuk-fieldset__heading">
-                What time do you want to carry out your site visit?
-              </h1>
-            </legend>
-            <p><b><br>Start time:</b></p>
-
-            <div class="govuk-date-input" id="dob">
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="dob-day">
-                    Hour
-                  </label>
-                  <input class="govuk-input govuk-input--width-2" id="astarthour" name="starthour" type="number">
-                  </div>
-              </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="dob-month">
-                    Min
-                  </label>
-                  <input class="govuk-input govuk-input--width-2" id="astartmin" name="startmin" type="number"></div>
-              </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  {{ govukSelect({
-                    id: "am-pm",
-                    name: "am-pm",
-                    label: {
-                      text: "am/pm"
-                    },
-                    items: [
-                      {
-                        value: "08:30",
-                        text: "am"
-                      },
-                      {
-                        value: "pm",
-                        text: "pm",
-                        selected: true
-                      }
-
-                    ]
-                  }) }}</div>
-              </div>
-              </div>
-
-              <p><b><br><br>End time:</b></p>
-              <div class="govuk-date-input" id="dob">
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="dob-day">
-                      Hour
-                    </label>
-                    <input class="govuk-input govuk-input--width-2" id="astarthour" name="starthour" type="number">
-                    </div>
-                </div>
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="dob-month">
-                      Min
-                    </label>
-                    <input class="govuk-input govuk-input--width-2" id="astartmin" name="startmin" type="number"></div>
-                </div>
-
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    {{ govukSelect({
-                      id: "am-pm",
-                      name: "am-pm",
-                      label: {
-                        text: "am/pm"
-                      },
-                      items: [
-                        {
-                          value: "08:30",
-                          text: "am"
-                        },
-                        {
-                          value: "pm",
-                          text: "pm",
-                          selected: true
-                        }
-
-                      ]
-                    }) }}</div>
-                </div>
-                 -->
+    
                 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
           {{ govukRadios({
@@ -128,31 +42,31 @@
             },
             items: [
               {
-                value: "9to11am",
+                value: "9:00am - 11:00am",
                 text: "9:00am - 11:00am"
               },
               {
-                value: "10to12",
+                value: "10:00am - midday",
                 text: "10:00am - midday"
               },
               {
-                value: "11to1",
+                value: "11:00am - 1:00pm",
                 text: "11:00am - 1:00pm"
               },
               {
-                value: "12to2",
+                value: "midday - 2:00pm",
                 text: "midday - 2:00pm"
               },
               {
-                value: "1to3",
+                value: "1:00pm - 3:00pm",
                 text: "1:00pm - 3:00pm"
               },
               {
-                value: "2to4",
+                value: "2:00pm - 4:00pm",
                 text: "2:00pm - 4:00pm"
               },
               {
-                value: "3to5",
+                value: "3:00pm - 5:00pm",
                 text: "3:00pm - 5:00pm"
               }
           ]
