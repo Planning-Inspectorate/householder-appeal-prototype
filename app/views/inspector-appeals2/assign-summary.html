@@ -7,9 +7,6 @@
 {% block content %}
 <style>
 
-.govuk-header__container {
-    border-bottom: 10px solid #009999;
-}
 
 </style>
 <div class="govuk-grid-row">
@@ -23,7 +20,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters">
 
-      <h1 class="govuk-heading-l">Details of site visit</h1>
+      <h1 class="govuk-heading-l">Provisional site visit</h1>
 
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
@@ -39,49 +36,27 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Type of site visit
+            Week Commencing
           </dt>
           <dd class="govuk-summary-list__value">
-            Access Required (ARSV)
+             9th August 2021 -
+{{ data['passport-issued-day'] }}
+{{ data['passport-issued-month'] }}
+{{ data['passport-issued-year'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="visit-type">
+            <a class="govuk-link" href="assign1">
               Change<span class="govuk-visually-hidden"> visit type</span>
             </a>
           </dd>
         </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Date
-          </dt>
-          <dd class="govuk-summary-list__value">
-            15 February 2021
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="visit-date">
-              Change<span class="govuk-visually-hidden"> date</span>
-            </a>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Time
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <p class="govuk-body">09:30am - 11:30am</p>
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="visit-time">
-              Change<span class="govuk-visually-hidden"> time</span>
-            </a>
-          </dd>
-        </div>
+
       </dl>
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
       {{ govukButton({
-        text: "Confirm site visit and send letter",
-        href: "appeal1-visit-arranged.html"
+        text: "Confirm provisional site visit and assign to me",
+        href: "my-index.html"
       }) }}
 
 
