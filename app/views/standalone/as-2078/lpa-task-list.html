@@ -1,0 +1,274 @@
+{% extends "layout-lpa-no-back.html" %}
+
+{% block pageTitle %}
+  Provide information for a householder planning appeal
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption govuk-caption-l">
+        {{ appeal.planningNumber }}
+      </span>
+      <h1 class="govuk-heading-l">
+        Householder planning appeal questionnaire
+      </h1>
+
+    <p class="govuk-body-l">Use the links below to submit your information. You can complete the sections in any order.</p>
+
+    <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    {% if appeal.startedDaysAgo > 7 %}
+    The due date was {{ appeal.startedDaysAgo | formatAppealStatus }}.
+    {% else %}
+    You need to complete this by {{ appeal.startedDaysAgo | formatAppealStatus }}.
+    {% endif %}
+  </strong>
+</div>
+
+
+      <ol class="app-task-list lpaq">
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span>About the appeal
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Review accuracy of the appellant's submission
+              </span>
+               <strong id="section-status" class="{{data['appellant-submission-completed']}}" >{{data['appellant-submission-completed-text']}}</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                  Do you have any extra conditions?
+              </span>
+               <strong id="section-status" class="{{data['conditions-completed']}}" >{{data['conditions-completed-text']}}</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                  Tell us about any appeals in the immediate area
+              </span>
+               <strong id="section-status" class="{{data['other-appeals-completed']}}" >{{data['other-appeals-completed-text']}}</strong>
+            </li>
+
+            <!--li class="app-task-list__item">
+             <span class="app-task-list__task-name">
+                 Notifying interested parties of the appeal
+             </span>
+              <strong id="section-status" class="{{data['interested-parties-appeal-completed']}}" >{{data['interested-parties-appeal-completed-text']}}</strong>
+           </li-->
+         </ul>
+       </li>
+
+       <li>
+         <h2 class="app-task-list__section">
+           <span class="app-task-list__section-number">2. </span>About the appeal site
+         </h2>
+         <ul class="app-task-list__items">
+
+           <li class="app-task-list__item">
+             <span class="app-task-list__task-name">
+                 Tell us about the appeal site
+             </span>
+              <strong id="section-status" class="{{data['public-land-completed']}}" >{{data['public-land-completed-text']}}</strong>
+           </li>
+
+           <!--li class="app-task-list__item">
+             <span class="app-task-list__task-name">
+                 Can the relevant parts of the appeal site be seen from public land?
+             </span>
+              <strong id="section-status" class="{{data['public-land-completed']}}" >{{data['public-land-completed-text']}}</strong>
+           </li>
+
+           <li class="app-task-list__item">
+             <span class="app-task-list__task-name">
+                 Will the inspector need to enter the appeal site?
+             </span>
+              <strong id="section-status" class="{{data['enter-appeal-site-completed']}}" >{{data['enter-appeal-site-completed-text']}}</strong>
+           </li>
+
+           <li class="app-task-list__item">
+             <span class="app-task-list__task-name">
+                 Would the Inspector need access to a neighbour's land?
+             </span>
+              <strong id="section-status" class="{{data['neighbours-land-completed']}}" >{{data['neighbours-land-completed-text']}}</strong>
+           </li>
+
+           <li class="app-task-list__item">
+             <span class="app-task-list__task-name">
+                 Would this affect the setting of a listed building?
+             </span>
+              <strong id="section-status" class="{{data['listed-building-completed']}}" >{{data['listed-building-completed-text']}}</strong>
+           </li>
+
+           <li class="app-task-list__item">
+             <span class="app-task-list__task-name">
+                 Is the appeal site in a green belt?
+             </span>
+              <strong id="section-status" class="{{data['green-belt-completed']}}" >{{data['green-belt-completed-text']}}</strong>
+           </li>
+
+           <li class="app-task-list__item">
+             <span class="app-task-list__task-name">
+                 Is the appeal site in or near a conservation area?
+             </span>
+              <strong id="section-status" class="{{data['conservation-area-completed']}}" >{{data['conservation-area-completed-text']}}</strong>
+           </li-->
+
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">3. </span>About the planning application
+          </h2>
+          <ul class="app-task-list__items">
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                  Upload the plans used to reach the decision
+              </span>
+               <strong id="section-status" class="{{data['case-file-completed']}}" >{{data['case-file-completed-text']}}</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                  Upload the Planning Officer's report
+              </span>
+               <strong id="section-status" class="{{data['officers-report-completed']}}" >{{data['officers-report-completed-text']}}</strong>
+            </li>
+
+            <!--li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                  Site notices
+              </span>
+               <strong id="section-status" class="{{data['site-notice-completed']}}" >{{data['site-notice-completed-text']}}</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                  Telling interested parties about the application
+              </span>
+              <strong id="section-status" class="{{data['interested-parties-completed']}}" >{{data['interested-parties-completed-text']}}</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                  Representations from interested parties
+              </span>
+              <strong id="section-status" class="{{data['interested-parties2-completed']}}" >{{data['interested-parties2-completed-text']}}</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                  Planning history
+              </span>
+              <strong id="section-status" class="{{data['planning-history-completed']}}" >{{data['planning-history-completed-text']}}</strong>
+            </li-->
+          </ul>
+        </li>
+
+
+         <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">4. </span> Policies related to the planning application
+          </h2>
+          <ul class="app-task-list__items">
+
+           <li class="app-task-list__item" style="border-top-color: #fff; padding: 0;">
+              <span class="app-task-list__task-name">
+                <p>Only include documents that were considered when making a decision on the application.</p>
+              </span>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Telling interested parties about the application
+              </span>
+               <strong id="section-status" class="govuk-tag govuk-tag--grey app-task-list__tag" >Not started</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Representations from interested parties
+              </span>
+               <strong id="section-status" class="govuk-tag govuk-tag--grey app-task-list__tag" >Not started</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Notifying interested parties of the appeal
+              </span>
+               <strong id="section-status" class="govuk-tag govuk-tag--grey app-task-list__tag" >Not started</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Site notices
+              </span>
+               <strong id="section-status" class="govuk-tag govuk-tag--grey app-task-list__tag" >Not started</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Planning history
+              </span>
+               <strong id="section-status" class="govuk-tag govuk-tag--grey app-task-list__tag" >Not started</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Statutory development plan policy
+              </span>
+               <strong id="section-status" class="govuk-tag govuk-tag--grey app-task-list__tag" >Not started</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Other relevant policies
+              </span>
+               <strong id="section-status" class="govuk-tag govuk-tag--grey app-task-list__tag" >Not started</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="/standalone/as-2078/supplementary-redirect" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state">
+                  Supplementary planning document
+                </a>
+              </span>
+               <strong id="section-status" class="{{data['supplementary-completed']}}" >{{data['supplementary-completed-text']}}</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Development Plan Document or Neighbourhood Plan
+              </span>
+               <strong id="section-status" class="govuk-tag govuk-tag--grey app-task-list__tag" >Not started</strong>
+            </li>
+
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">5. Before you submit</span>
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Check your answers
+              </span>
+               <strong id="check-answers" class="{{data['check-answers']}}" >{{data['check-answers-text']}}</strong>
+
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </div>
+{% endblock %}

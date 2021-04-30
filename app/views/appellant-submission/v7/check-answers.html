@@ -1,0 +1,304 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check answers | Appeal a householder planning decision
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Submit your appeal</span>
+      <h1 class="govuk-heading-l">
+        Check your answers
+      </h1>
+      <p>Before you submit your appeal, check that the information you've provided is correct.</p>
+
+<h2 class="govuk-heading-m">Before you start</h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Local planning department
+          </dt>
+          <dd class="govuk-summary-list__value">
+             <p>South Gloucestershire Council</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          </dd>
+        </div>
+        
+      </dl>
+
+
+
+      <h2 class="govuk-heading-m">About you</h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Was the original planning application made in your name?
+          </dt>
+          <dd class="govuk-summary-list__value">
+             <p>
+             {{ "yes" if data['who-are-you'] == 'applicant'}}
+             {{ "no" if data['who-are-you'] == 'agent'}}
+            </p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="who-are-you">
+              Change<span class="govuk-visually-hidden"> if the application was made in your name</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data['who-are-you'] == 'agent' %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Applicant name
+          </dt>
+          <dd class="govuk-summary-list__value">
+             <p>{{ data['applicant-name'] }}</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="who-are-you">
+              Change<span class="govuk-visually-hidden"> applicant name</span>
+            </a>
+          </dd>
+        </div>    
+        {% endif %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Your name
+          </dt>
+          <dd class="govuk-summary-list__value">
+             <p>{{ data['appellant-name'] }}</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="your-details">
+              Change<span class="govuk-visually-hidden"> your name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Your email
+          </dt>
+          <dd class="govuk-summary-list__value">
+             <p>{{ data['appellant-email'] }}</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="your-details">
+              Change<span class="govuk-visually-hidden"> your email</span>
+            </a>
+          </dd>
+        </div>
+
+        
+      </dl>
+
+      <h2 class="govuk-heading-m">About the original planning application</h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Planning application number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">{{ data['application-number'] }}</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="upload-application">
+              Change<span class="govuk-visually-hidden"> uploaded application form</span>
+            </a>
+          </dd>
+        </div>  
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Planning application form
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">{{ data['application-upload'] }}</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="upload-application">
+              Change<span class="govuk-visually-hidden"> uploaded application form</span>
+            </a>
+          </dd>
+        </div>     
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Decision letter
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">{{ data['decision-notice'] }}</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="upload-decision">
+              Change<span class="govuk-visually-hidden"> uploaded decision notice</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-m">About your appeal</h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Your appeal statement
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p>{{ data['appeal-statement'] }}</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="grounds-of-appeal">
+              Change<span class="govuk-visually-hidden"> appeal statement</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Documents to support your appeal
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ multiFileDisplay({
+                uploadedFiles: data.uploadedFiles | filesByFieldName("supporting-docs")
+              }) }}
+            
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="supporting-documents">
+              Change<span class="govuk-visually-hidden"> other documents to support your appeal</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+     <h2 class="govuk-heading-m">Visiting the appeal site</h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address of the appeal site
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p>Buckingham Palace<br>London<br>SW1A 2AA
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="site-location">
+              Change<span class="govuk-visually-hidden"> site location</span>
+            </a>
+          </dd>
+        </div>
+         <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Do you own the whole appeal site?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            yes
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="site-ownership">
+              Change<span class="govuk-visually-hidden"> site ownership</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Can the Inspector see the whole of the appeal site from a public road?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['site-access'] === 'no' %}
+              <div class="user-inout-text">{{ data['site-access-more-detail'] }}</div>
+            {% else %}
+            <p>Yes</p>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="site-access">
+              Change<span class="govuk-visually-hidden"> public visibility of site</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Any health and safety issues?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['safety'] === 'yes' %}
+              <div class="user-inout-text">{{ data['safety-detail'] }}</div>
+            {% else %}
+            <p>No</p>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="site-access-safety">
+              Change<span class="govuk-visually-hidden"> health and safety concerns of site</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      
+      <form action="submission" method="post" novalidate>
+        <button class="govuk-button" data-module="govuk-button">
+            Continue
+        </button>
+      </form>
+    </div>
+
+    
+  </div>
+
+{% endblock %}
+
+
+
+
+{% block footer %}
+    {{ govukFooter({
+  navigation: [
+    {
+      title: "Contact the Planning Inspectorate",
+      columns: 2,
+      items: [
+        {
+          href: "tel:03034445000",
+          text: "Customer Support: England 0303 444 5000"
+        },
+        {
+          href: "mailto:enquiries@planninginspectorate.gov.uk",
+          text: "enquiries@planninginspectorate.gov.uk"
+        }
+      ]
+    },
+    {
+      title: "Service information",
+      items: [
+        {
+          href: "#1",
+          text: "Terms and conditions"
+        },
+        {
+          href: "#2",
+          text: "Privacy and cookies"
+        },
+        {
+          href: "#3",
+          text: "Accessibility"
+        },
+        {
+          href: "/prototype-admin/clear-data",
+          text: "Clear data"
+          },
+        {
+          href: "/appellant-submission/check-answers-print",
+          text: "Check answers printable"
+          }
+      ]
+    }
+  ]
+}) }}
+
+  {% endblock %}

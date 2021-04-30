@@ -10,7 +10,7 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="lpa-task-list" method="post" novalidate>
+    <form action="conservation-area" method="post" novalidate>
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About the appeal site</span>
 
       {{ govukRadios({
@@ -37,8 +37,8 @@
           }
         ]
       }) }}
-      <input type="hidden" name="about-site-completed" value="govuk-tag app-task-list__task-completed">
-      <input type="hidden" name="about-site-completed-text" value="Completed">
+      <input type="hidden" name="green-belt-completed" value="govuk-tag app-task-list__task-completed">
+      <input type="hidden" name="green-belt-completed-text" value="Completed">
 
       <div class="govuk-form-group">
         <button class="govuk-button" data-module="govuk-button">

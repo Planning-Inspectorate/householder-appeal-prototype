@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Your details
+{% endblock %}
+
+{% block content %}
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="planning-department-post" method="post" novalidate>
+        <span class="govuk-caption-l">Before you start</span>
+        <div class="govuk-form-group {{'govuk-form-group--error' if data.planningError }}">
+          <label class="govuk-label govuk-label--l" for="postcode">
+            What's the name of your local planning department?
+          </label>
+          <p class="govuk-hint">Enter the name of the local planning department (sometimes called a Local Planning Authority or LPA) that dealt with your original planning application.</p>
+          <select class="govuk-select govuk-input--width-20" id="select-council" data-councilpicker name="planning-department">
+            <option value=""></option>
+            {% for council in councils %}
+              <option value="{{council.key}}" {{ checked('council', council.key) }}>{{council['official-name']}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="govuk-form-group">
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+$(document).ready(function(){
+
+  accessibleAutocomplete.enhanceSelectElement({
+    selectElement: document.querySelector('#select-council'),
+    showAllValues: true,
+    defaultValue: ""
+  })
+
+})
+</script>
+{% endblock %}
