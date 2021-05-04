@@ -8,14 +8,14 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">Check your email</h1>
-      <p>We've sent an email with a one time passcode to {{ data['lpa-'+version+'-account-email'] }}.​</p>
+      <p>We've sent an email with a one-time passcode to {{ data['lpa-'+version+'-account-email'] }}.​</p>
 
 
       <form action="" method="post" novalidate>
 
         {{ govukInput({
           label: {
-            text: "Enter one time passcode",
+            text: "Enter one-time passcode",
             classes: "govuk-label--m",
             isPageHeading: false
           },
@@ -40,7 +40,7 @@
       </ul>
 
       <br><br><br><br><br><br>
-      <p><a href="../email/one-time-passcode" target="_blank">(View one time passcode email)</a></p>
+      <p><a href="../email/one-time-passcode" target="_blank">(View one-time passcode email)</a></p>
       </div>
 
 
