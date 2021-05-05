@@ -55,7 +55,9 @@
 </nav>
 
      <h2 class="govuk-heading-l">Site visit</h2>
-     <p>A week commencing date of 9 August 2021 is booked in Chart.<br>You have <b>not arranged</b> a site visit</p>
+     <p>A week commencing date of {{ data['passport-issued-day'] }}
+     {{ data['passport-issued-month'] | formatMonth }}
+     {{ data['passport-issued-year'] }} is booked in Chart.<br>You have <b>not arranged</b> a site visit</p>
 
      {% from "govuk/components/button/macro.njk" import govukButton %}
 

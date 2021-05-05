@@ -63,7 +63,9 @@
            Site Visit
          </dt>
          <dd class="govuk-summary-list__value">
-           <strong class="govuk-tag govuk-tag--grey"> (ARSV) W/C 9 August 2021</strong>
+           <strong class="govuk-tag govuk-tag--green">{{data['site-visit-type'] | default("Provisional W/C") }} {{ data['passport-issued-day'] }}
+           {{ data['passport-issued-month'] | formatMonth }}
+           {{ data['passport-issued-year'] }}  {{ data['site-visit-time'] }}</strong>
          </dd>
        </div>
 <!--       <div class="govuk-summary-list__row">
