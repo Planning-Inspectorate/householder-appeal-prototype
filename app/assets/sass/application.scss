@@ -176,3 +176,7 @@ $govuk-assets-path: '/govuk/assets/';
 .govuk-hint p {
 	color: $govuk-secondary-text-colour
 }
+
+.gov-link--disabled:link {
+	color: black;
+}

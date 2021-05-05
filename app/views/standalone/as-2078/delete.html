@@ -1,0 +1,100 @@
+{% extends "layout-lpa.html" %}
+
+{% block pageTitle %}
+  LPA 
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds"> 
+
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
+
+      <h2 class="govuk-heading-l">
+        Delete supplementary planning document
+      </h2>          
+      
+      <dl class="govuk-summary-list">
+        
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__value">
+            {{ data['as2078-files'][data['row']-1]['name'] }}
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['as2078-files'][data['row']-1]['adopted'] == "yes" %}
+              Adopted on {{ data['as2078-files'][data['row']-1]['adopted_day'] }} {{ data['as2078-files'][data['row']-1]['adopted_month'] }} {{ data['as2078-files'][data['row']-1]['adopted_year'] }}
+            {% else %}
+              {{ data['as2078-files'][data['row']-1]['adopted_stage'] }}
+            {% endif %}
+            
+          </dd>
+        </div>
+      
+      </dl>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h2 class="govuk-fieldset__heading">
+              Are you sure?
+            </h2>
+          </legend>
+          <div class="govuk-checkboxes govuk-checkboxes--small">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="areyousure" name="areyousure" type="checkbox" value="delete">
+              <label class="govuk-label govuk-checkboxes__label" for="areyousure">
+                Yes, I want to delete this supplementary planning document
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <form action="" method="post">
+
+        <input type="hidden" name="deleterow" id ="deleterow" value="{{ data['row']-1 }}">
+
+        {{ govukButton({
+          text: "Delete",
+          disabled: true,
+          classes: "govuk-button--warning govuk-!-margin-right-5"
+        }) }}
+
+        {{ govukButton({
+          href: "/standalone/as-2078/supplementary-list",
+          text: "Cancel",
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </form>
+        
+    </div>
+
+    <div class="govuk-grid-column-one-third"> 
+      
+    </div>
+    
+  </div>
+
+  <!-- End of content -->
+
+{% endblock %}
+
+<!-- DO NOT enter page content after the above block -->
+
+{% block pageScripts %}
+
+	<script>
+    $( "#areyousure" ).on( "change", function() {
+      var $this = $(".govuk-button--warning");
+      if ($this.hasClass('govuk-button--disabled')) {
+        $this.removeAttr('disabled');
+        $this.removeClass('govuk-button--disabled');
+      } else {
+        $this.attr('disabled', 'disabled');
+        $this.addClass('govuk-button--disabled');
+      }
+    });
+  </script>
+
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Appeal statement | Appeal a householder planning decision
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+  <form action="/check-statement" method="post" novalidate>
+    <span class="govuk-caption-l">Your appeal</span>
+
+    <h1 class="govuk-heading-l">
+      Sensitive information
+    </h1>
+
+    <p class="govuk-body">We only collect sensitive information to the extent it is relevant to an appeal.</p>
+    <p class="govuk-body">Your appeal statement should set out why the local planning department's decision was incorrect. You should refer to the policies they used in their decision, and their development plan.</p>
+    <p class="govuk-body">You may choose to include sensitive information in your appeal statement. Think carefully about whether any sensitive information you provide is necessary and relevant to your case.</p>
+    <p class="govuk-body">Your appeal and appeal statement will be shared with your local planning department.</p>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          What is sensitive information?
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <h4 class="govuk-heading-s">Use of language and sensitive information</h4>
+        <p class="govuk-body">You should not use racist, inflammatory or abusive language, or include sensitive information (also called 'special category information') about yourself or others in your statement.</p>
+        <p class="govuk-body">If you do, you will be asked to resubmit and this will delay your appeal (or invalidate it, if you do not resubmit in time).</p>
+        <h4 class="govuk-heading-s">Types of sensitive information</h4>
+        <p class="govuk-body">
+          Sensitive information refers to:
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>comments from children</li>
+          <li>information relating to children</li>
+          <li>information relating to health</li>
+          <li>information relating to crime</li>
+        </ul>
+        <p class="govuk-body">
+          It also means any information relating to an individual's:
+        <p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>race</li>
+          <li>ethnic origin</li>
+          <li>politics</li>
+          <li>religion</li>
+          <li>trade union membership</li>
+          <li>genetics</li>
+          <li>physical characteristics</li>
+          <li>sex life</li>
+          <li>sexual orientation</li>
+        </ul>
+      </div>
+    </details>
+    
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend">
+          Have you included information which may be considered sensitive in your reasons for appeal?
+        </legend>
+        <div class="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="sense-check" name="sense-check" type="radio" value="Yes" aria-describedby="sense-check-item-hint">
+            <label class="govuk-label govuk-radios__label" for="sense-check">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="sense-check-2" name="sense-check" type="radio" value="No" aria-describedby="sense-check-2-item-hint">
+            <label class="govuk-label govuk-radios__label" for="sense-check-2">
+              No
+            </label>
+          </div>
+        </div>
+
+      </fieldset>
+    </div>
+
+    <!--div class="govuk-form-group">
+        <div class="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="sense-check" name="sense-check" value="on" type="checkbox">
+            <label class="govuk-label govuk-checkboxes__label" for="sense-check">
+              I confirm that I have not included sensitive information in my appeal statement.
+            </label>
+          </div>
+        </div>
+    </div-->
+
+    <div class="govuk-form-group">
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+    </div>
+    <input type="hidden" name="sense-check" value="{{ data['appeal-confirmation'] }}">
+    <input type="hidden" name="appeal-statement-completed" value="govuk-tag app-task-list__tag">
+    <input type="hidden" name="appeal-statement-completed-text" value="Completed">
+  </form>
+</div>
+
+<div class="govuk-grid-column-one-third">
+
+  </div>
+{% endblock %}

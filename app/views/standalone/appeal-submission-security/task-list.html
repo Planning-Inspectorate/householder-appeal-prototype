@@ -1,0 +1,170 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  Appeal a householder planning decision
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Appeal a householder planning decision
+      </h1>
+      <p>A householder appeal must be received by the Planning Inspectorate within 12 weeks of the decision date.</p>
+      <p>If you do not submit it in time, you will lose your right to appeal.</p>
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">{{data['sections-completed-text']}}</h2>
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{data['sections-completed']}} of 5 sections.</p>
+
+      <ol class="app-task-list">
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span> About you
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();" aria-describedby="your-details-status">
+                  Your details
+                </a>
+              </span>
+              <strong class="{{data['your-details-completed']}}" id="your-details-status">{{data['your-details-completed-text']}}</strong>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span> About the original planning application
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();">
+                  Planning application number
+                </a>
+              </span>
+              <strong name="application-number-status" class="{{data['application-number-completed']}}" >{{data['application-number-completed-text']}}</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();">
+                  Upload the original planning application form
+                </a>
+              </span>
+              <strong name="application-upload-status" class="{{data['application-upload-completed']}}" >{{data['application-upload-completed-text']}}</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();">
+                  Upload the decision letter
+                </a>
+              </span>
+              <strong name="decision-notice-status" class="{{data['decision-notice-completed']}}" >{{data['decision-notice-completed-text']}}</strong>
+            </li>
+
+          </ul>
+        </li>
+
+         <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">3. </span> About your appeal
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();" aria-describedby="appeal-statement-status">
+                  The reason for your appeal
+                </a>
+              </span>
+              <strong name="appeal-statement-status" class="{{data['appeal-statement-completed']}}" >{{data['appeal-statement-completed-text']}}</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();">
+                 Any other documents to support your appeal​
+                </a>
+              </span>
+              <strong name="supporting-documents-status" class="{{data['upload-appeal-docs-completed']}}" >{{data['upload-appeal-docs-completed-text']}}</strong>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">4. </span> Visiting the appeal site
+          </h2>
+          <ul class="app-task-list__items">
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();">
+                  Address of the appeal site
+                </a>
+              </span>
+              <strong name="site-location-status" class="{{data['site-location-completed']}}" >{{data['site-location-completed-text']}}</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();">
+                  Ownership of the appeal site
+                </a>
+              </span>
+              <strong name="site-ownership-status" class="{{data['site-ownership-completed']}}" >{{data['site-ownership-completed-text']}}</strong>
+            </li>
+
+
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();">
+                  Access to the appeal site
+                </a>
+              </span>
+              <strong name="site-access-status" class="{{data['site-access-completed']}}" >{{data['site-access-completed-text']}}</strong>
+            </li>
+             <!--<li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="site-access-notes">
+                  Any notes for the Inspector
+                </a>
+              </span>
+              <strong name="site-access-notes" class="{{data['site-access-notes-completed']}}" >{{data['site-access-notes-completed-text']}}</strong>
+            </li>-->
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();">
+                  Any health and safety issues
+                </a>
+              </span>
+              <strong name="site-access-status" class="{{data['safety-access-completed']}}" >{{data['safety-access-completed-text']}}</strong>
+
+            </li>
+
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">5. </span> Submit your appeal
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                {{data['application-completed-link']}}
+              </span>
+               <strong name="site-ownership-status" class="{{data['application-completed']}}" >{{data['application-completed-text']}}</strong>
+            </li>
+          </ul>
+        </li>
+
+      </ol>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+  </div>
+{% endblock %}
