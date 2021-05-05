@@ -10,4 +10,10 @@ module.exports = function (router) {
     res.redirect(base+'task-list');
   })
 
+  // About the appeal
+
+    router.post(base+'about-the-appeal/review-accuracy', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+
 }

@@ -1,7 +1,16 @@
-{% extends "layout-lpa-no-back.html" %}
+{% extends "layouts/lpa-questionnaire/v8.html" %}
 
 {% block pageTitle %}
   Provide information for a householder planning appeal
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -10,7 +19,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <span class="govuk-caption govuk-caption-l">
-        48269/APP/2020/1482
+        20/500818/FULL
       </span>
       <h1 class="govuk-heading-xl">
         Householder planning appeal questionnaire
@@ -18,7 +27,7 @@
 
       <p class="govuk-body-l">Use the links below to submit your information. You can complete the sections in any order.</p>
 
-      <!--div class="govuk-warning-text">
+      <div class="govuk-warning-text">
         <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
         <strong class="govuk-warning-text__text">
           <span class="govuk-warning-text__assistive">Warning</span>
@@ -28,7 +37,7 @@
           You need to complete this by {{ appeal.startedDaysAgo | formatAppealStatus }}.
           {% endif %}
         </strong>
-      </div-->
+      </div>
 
       <ol class="app-task-list">
 
@@ -40,7 +49,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <!--a href="/lpa-submission/{{appeal.id}}/appellant-submission" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state"-->
-                  <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
+                  <a href="about-the-appeal/review-accuracy" class="govuk-link">
                     Review accuracy of the appellant's submission
                   </a>
                 <!--/a-->
@@ -299,8 +308,8 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <!--a href="/lpa-submission/{{appeal.id}}/supplementary" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state"-->
-                  <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
-                 S  tatutory development plan policy
+                <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
+                  Statutory development plan policy
                 </a>
                 <!--/a-->
               </span>
