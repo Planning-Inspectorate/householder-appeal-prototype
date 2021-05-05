@@ -42,7 +42,7 @@
             Type of site visit
           </dt>
           <dd class="govuk-summary-list__value">
-            Access Required (ARSV)
+             {{ data['site-visit-type'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="visit-type">
@@ -55,7 +55,9 @@
             Date
           </dt>
           <dd class="govuk-summary-list__value">
-            15 February 2021
+            {{ data['passport-issued-day'] }}
+            {{ data['passport-issued-month'] | formatMonth }}
+            {{ data['passport-issued-year'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="visit-date">
@@ -68,7 +70,7 @@
             Time
           </dt>
           <dd class="govuk-summary-list__value">
-            <p class="govuk-body">09:30am - 11:30am</p>
+            <p class="govuk-body">  {{ data['site-visit-time'] }}</p>
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="visit-time">

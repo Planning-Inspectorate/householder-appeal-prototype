@@ -10,12 +10,14 @@
 
 {% block content %}
 
+
+
 <style>
 
 
 
 </style>
-
+  <form action="assign1" method="post" novalidate>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-half">
     <p><a href="index" class="govuk-back-link">Available appeals</a></p>
@@ -30,12 +32,12 @@
         131 High Street, Bradford, BD6 1JK
         <span class="govuk-caption-xl">Appeal Reference: APP/2020/56789/01234</span>
       </h1>
-      {% from "govuk/components/button/macro.njk" import govukButton %}
 
-      {{ govukButton({
-        text: "Assign to me",
-        href: "assign1"
-      }) }}
+      <button class="govuk-button" data-module="govuk-button">
+  Assign to me
+</button>
+
+
 </div>
 
 <div class="govuk-grid-row">

@@ -39,9 +39,9 @@
             Week Commencing
           </dt>
           <dd class="govuk-summary-list__value">
-             9th August 2021 -
+             
 {{ data['passport-issued-day'] }}
-{{ data['passport-issued-month'] }}
+{{ data['passport-issued-month'] | formatMonth }}
 {{ data['passport-issued-year'] }}
           </dd>
           <dd class="govuk-summary-list__actions">

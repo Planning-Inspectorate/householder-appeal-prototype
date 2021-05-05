@@ -28,43 +28,48 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters">
 
+<form action="visit-date" method="post" novalidate>
 
 
-      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+        What type of site visit are you arranging?
+        </h1>
+      </legend>
+      <div class="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="site-visit-type" name="site-visit-type" type="radio" value="ARSV">
+          <label class="govuk-label govuk-radios__label" for="site-visit-type">
+            Access required site visit (ARSV)
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="site-visit-type-2" name="site-visit-type" type="radio" value="USV">
+          <label class="govuk-label govuk-radios__label" for="site-visit-type-2">
+            Uncaccompanied site visit (USV)
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="site-visit-type-3" name="site-visit-type" type="radio" value="ASV">
+          <label class="govuk-label govuk-radios__label" for="site-visit-type-3">
+            Accompanied site visit (ASV)
+          </label>
+        </div>
 
-{{ govukRadios({
-  idPrefix: "what-type-of-site-visit",
-  name: "what-type-of-site-visit",
-  fieldset: {
-    legend: {
-      text: "What type of site visit are you arranging?",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--l"
-    }
-  },
-  items: [
-    {
-      value: "ARSV",
-      text: "Access required site visit (ARSV)"
-    },
-    {
-      value: "USV",
-      text: "Uncaccompanied site visit (USV)"
-    },
-    {
-      value: "ASV",
-      text: "Accompanied site visit (ASV)"
-    }
-]
+      </div>
 
-}) }}
+    </fieldset>
+  </div>
 
-{% from "govuk/components/button/macro.njk" import govukButton %}
+<input type="hidden" name="answers-checked" value="true">
 
-{{ govukButton({
-  text: "Continue",
-  href: "visit-date.html"
-}) }}
+<button type="submit" class="govuk-button" data-module="govuk-button">
+  Continue
+</button>
+
+</form>
 
 
     </div>
