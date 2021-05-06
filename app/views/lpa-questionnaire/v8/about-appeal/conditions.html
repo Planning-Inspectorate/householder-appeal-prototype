@@ -52,23 +52,23 @@
 
       {% set listconditionsHtml %}
         {{ govukTextarea({
-          id: "lpaq-"+version+"-abouttheappeal-conditions-listconditions",
-          name: "lpaq-"+version+"-abouttheappeal-conditions-listconditions",
+          id: "lpaq-"+version+"-aboutappeal-conditions-listconditions",
+          name: "lpaq-"+version+"-aboutappeal-conditions-listconditions",
           label: {
             text: "Copy and paste the list of conditions"
           },
-          value: data["lpaq-"+version+"-abouttheappeal-conditions-listconditions"]
+          value: data["lpaq-"+version+"-aboutappeal-conditions-listconditions"]
         }) }}
       {% endset -%}
 
       {{ govukRadios({
-        idPrefix: "lpaq-"+version+"-abouttheappeal-conditions",
-        name: "lpaq-"+version+"-abouttheappeal-conditions",
+        idPrefix: "lpaq-"+version+"-aboutappeal-conditions",
+        name: "lpaq-"+version+"-aboutappeal-conditions",
         items: [
           {
             value: "Yes",
             text: "Yes",
-            checked: checked("lpaq-"+version+"-abouttheappeal-conditions", "Yes"),
+            checked: checked("lpaq-"+version+"-aboutappeal-conditions", "Yes"),
             conditional: {
               html: listconditionsHtml
             }
@@ -76,7 +76,7 @@
           {
             value: "No",
             text: "No",
-            checked: checked("lpaq-"+version+"-abouttheappeal-conditions", "No")
+            checked: checked("lpaq-"+version+"-aboutappeal-conditions", "No")
           }
         ]
       }) }}

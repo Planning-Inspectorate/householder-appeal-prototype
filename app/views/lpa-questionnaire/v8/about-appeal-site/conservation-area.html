@@ -26,24 +26,24 @@
       About the appeal site
     </span>
     <h1 class="govuk-heading-l">
-      Is the appeal site in a green belt?
+      Is the appeal site in or near a conservation area?
     </h1>
     
     <form action="" method="post">
 
       {{ govukRadios({
-        idPrefix: "lpaq-"+version+"-abouttheappealsite-greenbelt",
-        name: "lpaq-"+version+"-abouttheappealsite-greenbelt",
+        idPrefix: "lpaq-"+version+"-aboutappealsite-conservationarea",
+        name: "lpaq-"+version+"-aboutappealsite-conservationarea",
         items: [
           {
             value: "Yes",
             text: "Yes",
-            checked: checked("lpaq-"+version+"-abouttheappealsite-greenbelt", "Yes")
+            checked: checked("lpaq-"+version+"-aboutappealsite-conservationarea", "Yes")
           },
           {
             value: "No",
             text: "No",
-            checked: checked("lpaq-"+version+"-abouttheappealsite-greenbelt", "No")
+            checked: checked("lpaq-"+version+"-aboutappealsite-conservationarea", "No")
           }
         ]
       }) }}

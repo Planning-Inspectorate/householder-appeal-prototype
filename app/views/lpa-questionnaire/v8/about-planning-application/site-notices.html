@@ -23,41 +23,27 @@
   <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-l">
-      About the appeal site
+      About the appeal
     </span>
     <h1 class="govuk-heading-l">
-      Would the Inspector need access to a neighbour's land?
+      Did you publicise the original planning application?
     </h1>
     
     <form action="" method="post">
 
-      {% set telluswhyHtml %}
-        {{ govukTextarea({
-          id: "lpaq-"+version+"-abouttheappealsite-neighboursland-telluswhy",
-          name: "lpaq-"+version+"-abouttheappealsite-neighboursland-telluswhy",
-          label: {
-            text: "Tell us the full address and why you think a visit is required"
-          },
-          value: data["lpaq-"+version+"-abouttheappealsite-neighboursland-telluswhy"]
-        }) }}
-      {% endset %}
-
       {{ govukRadios({
-        idPrefix: "lpaq-"+version+"-abouttheappealsite-neighboursland",
-        name: "lpaq-"+version+"-abouttheappealsite-neighboursland",
+        idPrefix: "lpaq-"+version+"-aboutplanningapplication-sitenotices",
+        name: "lpaq-"+version+"-aboutplanningapplication-sitenotices",
         items: [
           {
             value: "Yes",
             text: "Yes",
-            checked: checked("lpaq-"+version+"-abouttheappealsite-neighboursland", "Yes"),
-            conditional: {
-              html: telluswhyHtml
-            }
+            checked: checked("lpaq-"+version+"-aboutplanningapplication-sitenotices", "Yes")
           },
           {
             value: "No",
             text: "No",
-            checked: checked("lpaq-"+version+"-abouttheappealsite-neighboursland", "No")
+            checked: checked("lpaq-"+version+"-aboutplanningapplication-sitenotices", "No")
           }
         ]
       }) }}
