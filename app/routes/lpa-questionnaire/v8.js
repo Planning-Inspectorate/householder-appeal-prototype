@@ -16,4 +16,16 @@ module.exports = function (router) {
       res.redirect(base+'task-list');
     })
 
+    router.post(base+'about-the-appeal/conditions', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+
+    router.post(base+'about-the-appeal/other-appeals', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+
+    router.post(base+'about-the-appeal/interested-parties', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+
 }
