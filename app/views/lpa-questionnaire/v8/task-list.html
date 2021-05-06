@@ -46,46 +46,57 @@
             <span class="app-task-list__section-number">1. </span>About the appeal
           </h2>
           <ul class="app-task-list__items">
+
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <!--a href="/lpa-submission/{{appeal.id}}/appellant-submission" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state"-->
-                  <a href="about-the-appeal/review-accuracy" class="govuk-link">
-                    Review accuracy of the appellant's submission
-                  </a>
-                <!--/a-->
+                <a href="about-the-appeal/review-accuracy" class="govuk-link">
+                  Review accuracy of the appellant's submission
+                </a>
               </span>
-               <strong id="section-status" class="{{data['appellant-submission-completed']}}" >{{data['appellant-submission-completed-text']}}</strong>
-            </li>
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <!--a href="/lpa-submission/{{appeal.id}}/conditions" aria-describedby="other-appeals-status" class="govuk-link--no-visited-state"-->
-                  <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
-                    Do you have any extra conditions?
-                  </a>
-                <!--/a-->
-              </span>
-               <strong id="section-status" class="{{data['conditions-completed']}}" >{{data['conditions-completed-text']}}</strong>
-            </li>
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <!--a href="/lpa-submission/{{appeal.id}}/other-appeals" aria-describedby="other-appeals-status" class="govuk-link--no-visited-state"-->
-                  <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
-                    Tell us about any appeals in the immediate area
-                  </a>
-                <!--/a-->
-              </span>
-               <strong id="section-status" class="{{data['other-appeals-completed']}}" >{{data['other-appeals-completed-text']}}</strong>
+              {% if data["lpaq-"+version+"-abouttheappeal-accurate"] %}
+                <strong class="govuk-tag app-task-list__tag" id="list-review-accuracy-status">Completed</strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-review-accuracy-status">Not started</strong>
+              {% endif %}
             </li>
 
             <li class="app-task-list__item">
-             <span class="app-task-list__task-name">
-               <!--a href="/lpa-submission/{{appeal.id}}/interested-parties-appeal" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state"-->
-                <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
-                   Notifying interested parties of the appeal
-                  </a>
-               <!--/a-->
-             </span>
-              <strong id="section-status" class="{{data['interested-parties-appeal-completed']}}" >{{data['interested-parties-appeal-completed-text']}}</strong>
+              <span class="app-task-list__task-name">
+                <a href="about-the-appeal/conditions" class="govuk-link">
+                  Do you have any extra conditions?
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-abouttheappeal-conditions"] %}
+                <strong class="govuk-tag app-task-list__tag" id="list-conditions-status">Completed</strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-conditions-status">Not started</strong>
+              {% endif %}
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-the-appeal/other-appeals" class="govuk-link">
+                  Tell us about any appeals in the immediate area
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-abouttheappeal-otherappeals"] %}
+                <strong class="govuk-tag app-task-list__tag" id="list-other-appeals-status">Completed</strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-other-appeals-status">Not started</strong>
+              {% endif %}
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-the-appeal/interested-parties" class="govuk-link">
+                  Notifying interested parties of the appeal
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-abouttheappeal-interestedparties"] %}
+                <strong class="govuk-tag app-task-list__tag" id="list-interested-parties-status">Completed</strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-interested-parties-status">Not started</strong>
+              {% endif %}
            </li>
          </ul>
        </li>
