@@ -34,6 +34,11 @@
 {% from "govuk/components/textarea/macro.njk"            import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"        import govukWarningText %}
 
+<!-- Added for multi-file upload -->
+{%- from "templates/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
+{%- from "templates/multi-file-display/macro.njk" import multiFileDisplay -%}
+{%- from "templates/loading-page/macro.njk" import loadingPage -%}
+
 {% block head %}
   {% include "includes/head.html" %}
 {% endblock %}

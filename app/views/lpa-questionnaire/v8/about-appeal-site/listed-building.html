@@ -26,24 +26,38 @@
       About the appeal site
     </span>
     <h1 class="govuk-heading-l">
-      Is the appeal site in or near a conservation area?
+      Would the development affect the setting of a listed building?
     </h1>
     
     <form action="" method="post">
 
+      {% set telluswhyHtml %}
+        {{ govukTextarea({
+          id: "lpaq-"+version+"-aboutappealsite-listedbuilding-telluswhy",
+          name: "lpaq-"+version+"-aboutappealsite-listedbuilding-telluswhy",
+          label: {
+            text: "Add the relevant listing description from the List of Buildings of Special Architectural or Historic Interest"
+          },
+          value: data["lpaq-"+version+"-aboutappealsite-listedbuilding-telluswhy"]
+        }) }}
+      {% endset %}
+
       {{ govukRadios({
-        idPrefix: "lpaq-"+version+"-abouttheappealsite-conservationarea",
-        name: "lpaq-"+version+"-abouttheappealsite-conservationarea",
+        idPrefix: "lpaq-"+version+"-aboutappealsite-listedbuilding",
+        name: "lpaq-"+version+"-aboutappealsite-listedbuilding",
         items: [
           {
             value: "Yes",
             text: "Yes",
-            checked: checked("lpaq-"+version+"-abouttheappealsite-conservationarea", "Yes")
+            checked: checked("lpaq-"+version+"-aboutappealsite-listedbuilding", "Yes"),
+            conditional: {
+              html: telluswhyHtml
+            }
           },
           {
             value: "No",
             text: "No",
-            checked: checked("lpaq-"+version+"-abouttheappealsite-conservationarea", "No")
+            checked: checked("lpaq-"+version+"-aboutappealsite-listedbuilding", "No")
           }
         ]
       }) }}

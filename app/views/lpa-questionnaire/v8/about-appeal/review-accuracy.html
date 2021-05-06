@@ -175,18 +175,18 @@
 
       {% set whynotHtml %}
         {{ govukTextarea({
-          id: "lpaq-"+version+"-abouttheappeal-accurate-whynot",
-          name: "lpaq-"+version+"-abouttheappeal-accurate-whynot",
+          id: "lpaq-"+version+"-aboutappeal-accurate-whynot",
+          name: "lpaq-"+version+"-aboutappeal-accurate-whynot",
           label: {
             text: "Tell us why not"
           },
-          value: data["lpaq-"+version+"-abouttheappeal-accurate-whynot"]
+          value: data["lpaq-"+version+"-aboutappeal-accurate-whynot"]
         }) }}
       {% endset -%}
 
       {{ govukRadios({
-        idPrefix: "lpaq-"+version+"-abouttheappeal-accurate",
-        name: "lpaq-"+version+"-abouttheappeal-accurate",
+        idPrefix: "lpaq-"+version+"-aboutappeal-accurate",
+        name: "lpaq-"+version+"-aboutappeal-accurate",
         fieldset: {
           legend: {
             text: "Does the information from the appellant accurately reflect the original planning application?",
@@ -197,12 +197,12 @@
           {
             value: "Yes",
             text: "Yes",
-            checked: checked("lpaq-"+version+"-abouttheappeal-accurate", "Yes")
+            checked: checked("lpaq-"+version+"-aboutappeal-accurate", "Yes")
           },
           {
             value: "No",
             text: "No",
-            checked: checked("lpaq-"+version+"-abouttheappeal-accurate", "No"),
+            checked: checked("lpaq-"+version+"-aboutappeal-accurate", "No"),
             conditional: {
               html: whynotHtml
             }

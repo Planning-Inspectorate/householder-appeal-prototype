@@ -33,26 +33,26 @@
 
       {% set listsappealsHtml %}
         {{ govukInput({
-          id: "lpaq-"+version+"-abouttheappeal-otherappeals-listappeals",
-          name: "lpaq-"+version+"-abouttheappeal-otherappeals-listappeals",
+          id: "lpaq-"+version+"-aboutappeal-otherappeals-listappeals",
+          name: "lpaq-"+version+"-aboutappeal-otherappeals-listappeals",
           label: {
             text: "Enter appeal reference number(s)"
           },
           hint: {
             text: "You can enter more than one, separated by commas"
           },
-          value: data["lpaq-"+version+"-abouttheappeal-otherappeals-listappeals"]
+          value: data["lpaq-"+version+"-aboutappeal-otherappeals-listappeals"]
         }) }}
       {% endset -%}
 
       {{ govukRadios({
-        idPrefix: "lpaq-"+version+"-abouttheappeal-otherappeals",
-        name: "lpaq-"+version+"-abouttheappeal-otherappeals",
+        idPrefix: "lpaq-"+version+"-aboutappeal-otherappeals",
+        name: "lpaq-"+version+"-aboutappeal-otherappeals",
         items: [
           {
             value: "Yes",
             text: "Yes",
-            checked: checked("lpaq-"+version+"-abouttheappeal-otherappeals", "Yes"),
+            checked: checked("lpaq-"+version+"-aboutappeal-otherappeals", "Yes"),
             conditional: {
               html: listsappealsHtml
             }
@@ -60,7 +60,7 @@
           {
             value: "No",
             text: "No",
-            checked: checked("lpaq-"+version+"-abouttheappeal-otherappeals", "No")
+            checked: checked("lpaq-"+version+"-aboutappeal-otherappeals", "No")
           }
         ]
       }) }}
