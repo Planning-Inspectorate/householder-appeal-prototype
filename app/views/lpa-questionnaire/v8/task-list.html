@@ -54,9 +54,9 @@
                 </a>
               </span>
               {% if data["lpaq-"+version+"-abouttheappeal-accurate"] %}
-                <strong class="govuk-tag app-task-list__tag" id="list-review-accuracy-status">Completed</strong>
+                <strong class="govuk-tag app-task-list__tag" id="list--abouttheappeal-accurate-status">Completed</strong>
               {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-review-accuracy-status">Not started</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list--abouttheappeal-accurate-status">Not started</strong>
               {% endif %}
             </li>
 
@@ -67,9 +67,9 @@
                 </a>
               </span>
               {% if data["lpaq-"+version+"-abouttheappeal-conditions"] %}
-                <strong class="govuk-tag app-task-list__tag" id="list-conditions-status">Completed</strong>
+                <strong class="govuk-tag app-task-list__tag" id="list-abouttheappeal-conditions-status">Completed</strong>
               {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-conditions-status">Not started</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-abouttheappeal-conditions-status">Not started</strong>
               {% endif %}
             </li>
 
@@ -80,9 +80,9 @@
                 </a>
               </span>
               {% if data["lpaq-"+version+"-abouttheappeal-otherappeals"] %}
-                <strong class="govuk-tag app-task-list__tag" id="list-other-appeals-status">Completed</strong>
+                <strong class="govuk-tag app-task-list__tag" id="list-abouttheappeal-otherappeals-status">Completed</strong>
               {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-other-appeals-status">Not started</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-abouttheappeal-otherappeals-status">Not started</strong>
               {% endif %}
             </li>
 
@@ -93,85 +93,97 @@
                 </a>
               </span>
               {% if data["lpaq-"+version+"-abouttheappeal-interestedparties"] %}
-                <strong class="govuk-tag app-task-list__tag" id="list-interested-parties-status">Completed</strong>
+                <strong class="govuk-tag app-task-list__tag" id="list-abouttheappeal-interestedparties-status">Completed</strong>
               {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-interested-parties-status">Not started</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-abouttheappeal-interestedparties-status">Not started</strong>
               {% endif %}
            </li>
          </ul>
-       </li>
+        </li>
 
-       <li>
-         <h2 class="app-task-list__section">
-           <span class="app-task-list__section-number">2. </span>About the appeal site
-         </h2>
-         <ul class="app-task-list__items">
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span>About the appeal site
+          </h2>
+          <ul class="app-task-list__items">
 
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-               <!--a href="/lpa-submission/{{appeal.id}}/public-land" aria-describedby="public-land-status" class="govuk-link--no-visited-state"-->
-                <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
-                 Can parts of the appeal site be seen from public land?
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-the-appeal-site/public-land" class="govuk-link">
+                  Can parts of the appeal site be seen from public land?
                 </a>
-               <!--/a-->
-             </span>
-            <strong id="section-status" class="{{data['public-land-completed']}}" >{{data['public-land-completed-text']}}</strong>
-          </li>
+              </span>
+              {% if data["lpaq-"+version+"-abouttheappealsite-publicland"] %}
+                <strong class="govuk-tag app-task-list__tag" id="list-abouttheappealsite-publicland-status">Completed</strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-abouttheappealsite-publicland-status">Not started</strong>
+              {% endif %}
+            </li>
 
-           <li class="app-task-list__item">
-             <span class="app-task-list__task-name">
-               <!--a href="/lpa-submission/{{appeal.id}}/enter-appeal-site" aria-describedby="enter-appeal-site-status" class="govuk-link--no-visited-state"-->
-                <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
-                   Will the inspector need to enter the appeal site?
-                  </a>
-               <!--/a-->
-             </span>
-              <strong id="section-status" class="{{data['enter-appeal-site-completed']}}" >{{data['enter-appeal-site-completed-text']}}</strong>
-           </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-the-appeal-site/enter-site" class="govuk-link">
+                  Will the inspector need to enter the appeal site?
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-abouttheappealsite-entersite"] %}
+                <strong class="govuk-tag app-task-list__tag" id="listabouttheappealsite-entersite-status">Completed</strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="listabouttheappealsite-entersite-status">Not started</strong>
+              {% endif %}
+            </li>
 
-           <li class="app-task-list__item">
-             <span class="app-task-list__task-name">
-               <!--a href="/lpa-submission/{{appeal.id}}/neighbours-land" aria-describedby="neighbours-land-status" class="govuk-link--no-visited-state"-->
-                <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
-                   Would the Inspector need access to a neighbour's land?
-                  </a>
-               <!--/a-->
-             </span>
-              <strong id="section-status" class="{{data['neighbours-land-completed']}}" >{{data['neighbours-land-completed-text']}}</strong>
-           </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-the-appeal-site/neighbours-land" class="govuk-link">
+                  Would the Inspector need access to a neighbour's land?
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-abouttheappealsite-neighboursland"] %}
+                <strong class="govuk-tag app-task-list__tag" id="list-abouttheappealsite-neighboursland-status">Completed</strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-abouttheappealsite-neighboursland-status">Not started</strong>
+              {% endif %}
+            </li>
 
-           <li class="app-task-list__item">
-             <span class="app-task-list__task-name">
-               <!--a href="/lpa-submission/{{appeal.id}}/listed-building" aria-describedby="listed-building-status" class="govuk-link--no-visited-state"-->
-                <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
-                   Would this affect the setting of a listed building?
-                  </a>
-               <!--/a-->
-             </span>
-              <strong id="section-status" class="{{data['listed-building-completed']}}" >{{data['listed-building-completed-text']}}</strong>
-           </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-the-appeal-site/listed-building" class="govuk-link">
+                  Would this affect the setting of a listed building?
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-abouttheappealsite-listedbuilding"] %}
+                <strong class="govuk-tag app-task-list__tag" id="list-abouttheappealsite-listedbuilding-status">Completed</strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-abouttheappealsite-listedbuilding-status">Not started</strong>
+              {% endif %}
+            </li>
 
-           <li class="app-task-list__item">
-             <span class="app-task-list__task-name">
-               <!--a href="/lpa-submission/{{appeal.id}}/green-belt" aria-describedby="green-belt-status" class="govuk-link--no-visited-state"-->
-                <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
-                   Is the appeal site in a green belt?
-                  </a>
-               <!--/a-->
-             </span>
-              <strong id="section-status" class="{{data['green-belt-completed']}}" >{{data['green-belt-completed-text']}}</strong>
-           </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-the-appeal-site/green-belt" class="govuk-link">
+                  Is the appeal site in a green belt?
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-abouttheappealsite-greenbelt"] %}
+                <strong class="govuk-tag app-task-list__tag" id="list-abouttheappealsite-greenbelt-status">Completed</strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-abouttheappealsite-greenbelt-status">Not started</strong>
+              {% endif %}
+            </li>
 
-           <li class="app-task-list__item">
-             <span class="app-task-list__task-name">
-               <!--a href="/lpa-submission/{{appeal.id}}/conservation-area" aria-describedby="conservation-area-status" class="govuk-link--no-visited-state"-->
-                <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
-                   Is the appeal site in or near a conservation area?
-                  </a>
-               <!--/a-->
-             </span>
-              <strong id="section-status" class="{{data['conservation-area-completed']}}" >{{data['conservation-area-completed-text']}}</strong>
-           </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-the-appeal-site/conservation-area" class="govuk-link">
+                  Is the appeal site in or near a conservation area?
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-abouttheappealsite-conservationarea"] %}
+                <strong class="govuk-tag app-task-list__tag" id="list-abouttheappealsite-conservationarea-status">Completed</strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-abouttheappealsite-conservationarea-status">Not started</strong>
+              {% endif %}
+            </li>
 
           </ul>
         </li>

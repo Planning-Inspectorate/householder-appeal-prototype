@@ -28,4 +28,30 @@ module.exports = function (router) {
       res.redirect(base+'task-list');
     })
 
+  // About the appeal site
+  
+    router.post(base+'about-the-appeal-site/public-land', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+  
+    router.post(base+'about-the-appeal-site/enter-site', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+  
+    router.post(base+'about-the-appeal-site/neighbours-land', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+  
+    router.post(base+'about-the-appeal-site/listed-building', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+  
+    router.post(base+'about-the-appeal-site/green-belt', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+  
+    router.post(base+'about-the-appeal-site/conservation-area', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+
 }
