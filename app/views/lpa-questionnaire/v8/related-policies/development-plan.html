@@ -23,41 +23,45 @@
   <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-l">
-      About the appeal site
+      Policies related to the planning application
     </span>
     <h1 class="govuk-heading-l">
-      Will the Inspector need to enter the appeal site?
+      Development Plan Document or Neighbourhood Plan
     </h1>
+
+    <p class="govuk-body">
+      Has any Development Plan Document or Neighbourhood Plan relevant to this appeal been submitted for examination (or in the case of a Neighbourhood Plan, been examined and is awaiting a referendum)?
+    </p>
     
     <form action="" method="post">
 
-      {% set telluswhyHtml %}
+      {% set aboutchangesHtml %}
         {{ govukTextarea({
-          id: "lpaq-"+version+"-aboutappealsite-entersite-telluswhy",
-          name: "lpaq-"+version+"-aboutappealsite-entersite-telluswhy",
+          id: "lpaq-"+version+"-relatedpolicies-developmentplan-aboutchanges",
+          name: "lpaq-"+version+"-relatedpolicies-developmentplan-aboutchanges",
           label: {
-            text: "Tell us why the Inspector will need to enter the appeal site"
+            text: "Tell us about any substantive changes in the progress of the emerging plan, and their relevance to this appeal (if the plan may not be adopted before the Inspector issues their decision)"
           },
-          value: data["lpaq-"+version+"-aboutappealsite-entersite-telluswhy"]
+          value: data["lpaq-"+version+"-relatedpolicies-developmentplan-aboutchanges"]
         }) }}
-      {% endset %}
+      {% endset -%}
 
       {{ govukRadios({
-        idPrefix: "lpaq-"+version+"-aboutappealsite-entersite",
-        name: "lpaq-"+version+"-aboutappealsite-entersite",
+        idPrefix: "lpaq-"+version+"-relatedpolicies-developmentplan",
+        name: "lpaq-"+version+"-relatedpolicies-developmentplan",
         items: [
           {
             value: "Yes",
             text: "Yes",
-            checked: checked("lpaq-"+version+"-aboutappealsite-entersite", "Yes"),
+            checked: checked("lpaq-"+version+"-relatedpolicies-developmentplan", "Yes"),
             conditional: {
-              html: telluswhyHtml
+              html: aboutchangesHtml
             }
           },
           {
             value: "No",
             text: "No",
-            checked: checked("lpaq-"+version+"-aboutappealsite-entersite", "No")
+            checked: checked("lpaq-"+version+"-relatedpolicies-developmentplan", "No")
           }
         ]
       }) }}

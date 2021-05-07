@@ -86,4 +86,19 @@ module.exports = function (router) {
       res.redirect(base+'task-list');
     })
 
+
+    // Policies related to the planning application
+    
+      router.post(base+'related-policies/statutory', function (req, res) {
+        res.redirect(base+'task-list');
+      })
+    
+      router.post(base+'related-policies/relevant', function (req, res) {
+        res.redirect(base+'task-list');
+      })
+    
+      router.post(base+'related-policies/development-plan', function (req, res) {
+        res.redirect(base+'task-list');
+      })
+
 }
