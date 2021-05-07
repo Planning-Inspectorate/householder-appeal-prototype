@@ -110,7 +110,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="about-appeal-site/public-land" class="govuk-link">
-                  Can parts of the appeal site be seen from public land?
+                  Can the Inspector see the relevant parts of the appeal site from public land?
                 </a>
               </span>
               {% if data["lpaq-"+version+"-aboutappealsite-publicland"] %}
@@ -281,94 +281,94 @@
             <span class="app-task-list__section-number">4. </span> Policies related to the planning application
           </h2>
           <ul class="app-task-list__items">
-
-           <li class="app-task-list__item" style="border-top-color: #fff; padding: 0;">
-              <span class="app-task-list__task-name">
-                <p class="govuk-body">
-                  Only include documents that were considered when making a decision on the application.
-                <p>
-              </span>
-            </li>
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <!--a href="/lpa-submission/{{appeal.id}}/statutory" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state"-->
+            <!--
+              <li class="app-task-list__item" style="border-top-color: #fff; padding: 0;">
+                <span class="app-task-list__task-name">
+                  <p class="govuk-body">
+                    Only include documents that were considered when making a decision on the application.
+                  <p>
+                </span>
+              </li>
+              <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
                   <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
                     Telling interested parties about the application
                   </a>
-                <!--/a-->
-              </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Optional</strong>
-            </li>
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <!--a href="/lpa-submission/{{appeal.id}}/supplementary" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state"-->
+                </span>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Optional</strong>
+              </li>
+              <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
                   <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
                     Representations from interested parties
                   </a>
-                <!--/a-->
-              </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Optional</strong>
-            </li>
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <!--a href="/lpa-submission/{{appeal.id}}/supplementary" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state"-->
+                </span>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Optional</strong>
+              </li>
+              <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
                   <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
                     Notifying interested parties of the appeal
                   </a>
-                <!--/a-->
-              </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Optional</strong>
-            </li>
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <!--a href="/lpa-submission/{{appeal.id}}/supplementary" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state"-->
+                </span>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Optional</strong>
+              </li>
+              <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
                   <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
                     Site notices
                   </a>
-                <!--/a-->
-              </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Optional</strong>
-            </li>
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <!--a href="/lpa-submission/{{appeal.id}}/supplementary" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state"-->
+                </span>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Optional</strong>
+              </li>
+              <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
                   <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
                     Planning history
                   </a>
-                <!--/a-->
-              </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Optional</strong>
-            </li>
+                </span>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Optional</strong>
+              </li>
+            -->
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <!--a href="/lpa-submission/{{appeal.id}}/supplementary" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state"-->
-                <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
+                <a href="related-policies/statutory" class="govuk-link">
                   Statutory development plan policy
                 </a>
-                <!--/a-->
               </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Optional</strong>
+              {% if data["lpaq-"+version+"-relatedpolicies-statutory"] %}
+                <strong class="govuk-tag app-task-list__tag" id="list-relatedpolicies-statutory-status">Completed</strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-relatedpolicies-statutory-status">Optional</strong>
+              {% endif %}
             </li>
+            
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <!--a href="/lpa-submission/{{appeal.id}}/supplementary" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state"-->
-                  <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
-                    Other relevant policies
-                  </a>
-                <!--/a-->
+                <a href="related-policies/relevant" class="govuk-link">
+                  Other relevant policies
+                </a>
               </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Optional</strong>
+              {% if data["lpaq-"+version+"-relatedpolicies-relevant"] %}
+                <strong class="govuk-tag app-task-list__tag" id="list-relatedpolicies-relevant-status">Completed</strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-relatedpolicies-relevant-status">Optional</strong>
+              {% endif %}
             </li>
+            
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <!--a href="/lpa-submission/{{appeal.id}}/supplementary" aria-describedby="appellant-submission-status" class="govuk-link--no-visited-state"-->
-                  <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">
-                    Development Plan Document or Neighbourhood Plan
-                  </a>
-                <!--/a-->
+                <a href="related-policies/development-plan" class="govuk-link">
+                  Development Plan Document or Neighbourhood Plan
+                </a>
               </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Optional</strong>
+              {% if data["lpaq-"+version+"-relatedpolicies-developmentplan"] %}
+                <strong class="govuk-tag app-task-list__tag" id="list-relatedpolicies-developmentplan-status">Completed</strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-relatedpolicies-developmentplan-status">Optional</strong>
+              {% endif %}
             </li>
+            
           </ul>
         </li>
 
@@ -378,15 +378,47 @@
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
+
+                {%
+                  if data["lpaq-"+version+"-aboutappeal-accurate"]
+                  and data["lpaq-"+version+"-aboutappeal-conditions"]
+                  and data["lpaq-"+version+"-aboutappeal-otherappeals"]
+                  and data["lpaq-"+version+"-aboutappeal-interestedparties"]
+                  and data["lpaq-"+version+"-aboutappealsite-publicland"]
+                  and data["lpaq-"+version+"-aboutappealsite-entersite"]
+                  and data["lpaq-"+version+"-aboutappealsite-neighboursland"]
+                  and data["lpaq-"+version+"-aboutappealsite-listedbuilding"]
+                  and data["lpaq-"+version+"-aboutappealsite-greenbelt"]
+                  and data["lpaq-"+version+"-aboutappealsite-conservationarea"]
+                  and data["lpaq-"+version+"-aboutplanningapplication-uploadplans"]
+                  and data["lpaq-"+version+"-aboutplanningapplication-officersreport"]
+                  and data["lpaq-"+version+"-aboutplanningapplication-sitenotices"]
+                  and data["lpaq-"+version+"-aboutplanningapplication-interestedparties"]
+                  and data["lpaq-"+version+"-aboutplanningapplication-representations"]
+                  and data["lpaq-"+version+"-aboutplanningapplication-planninghistory"]
+                %}
+
+                  <span class="app-task-list__task-name">
+                    <a href="/lpa-questionnaire/{{version}}/check-your-answers" class="govuk-link">
+                      Check your answers
+                    </a>
+                  </span>
+                  <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-relatedpolicies-developmentplan-status">Not started</strong>
+
+                {% else %}
+                  <span class="app-task-list__task-name">
+                    Check your answers
+                  </span>
+                  <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-relatedpolicies-developmentplan-status">Cannot start yet</strong>
+                {% endif %}
+<!--
               {% if data['check-answers-compelete'] == "true" %}
-                <!--a href="/lpa-submission/{{appeal.id}}/check-answers-confirm" aria-describedby="check-answers">Check your answers</a-->
               {% else %}
                   Check your answers
               {% endif %}
               </span>
                <strong id="check-answers" class="{{data['check-answers']}}" >{{data['check-answers-text']}}</strong>
-
+-->
             </li>
           </ul>
         </li>
