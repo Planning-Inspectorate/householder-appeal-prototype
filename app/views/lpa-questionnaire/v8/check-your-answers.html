@@ -40,6 +40,9 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data["lpaq-"+version+"-aboutappeal-accurate"] }}
+            {% if data["lpaq-"+version+"-aboutappeal-accurate"] == "No" %}
+              <br>{{ data["lpaq-"+version+"-aboutappeal-accurate-whynot"] }}
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -53,6 +56,9 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data["lpaq-"+version+"-aboutappeal-conditions"] }}
+            {% if data["lpaq-"+version+"-aboutappeal-conditions"] == "Yes" %}
+              <br>{{ data["lpaq-"+version+"-aboutappeal-conditions-listconditions"] }}
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -66,6 +72,9 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data["lpaq-"+version+"-aboutappeal-otherappeals"] }}
+            {% if data["lpaq-"+version+"-aboutappeal-conditions"] == "Yes" %}
+              <br>{{ data["lpaq-"+version+"-aboutappeal-otherappeals-listappeals"] }}
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -110,6 +119,9 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data["lpaq-"+version+"-aboutappealsite-entersite"] }}
+            {% if data["lpaq-"+version+"-aboutappealsite-entersite"] == "Yes" %}
+              <br>{{ data["lpaq-"+version+"-aboutappealsite-entersite-telluswhy"] }}
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -123,6 +135,9 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data["lpaq-"+version+"-aboutappealsite-neighboursland"] }}
+            {% if data["lpaq-"+version+"-aboutappealsite-neighboursland"] == "Yes" %}
+              <br>{{ data["lpaq-"+version+"-aboutappealsite-neighboursland-telluswhy"] }}
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -136,6 +151,9 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data["lpaq-"+version+"-aboutappealsite-listedbuilding"] }}
+            {% if data["lpaq-"+version+"-aboutappealsite-listedbuilding"] == "Yes" %}
+              <br>{{ data["lpaq-"+version+"-aboutappealsite-listedbuilding-telluswhy"] }}
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -179,7 +197,15 @@
             Upload the plans used to reach the decision
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data["lpaq-"+version+"-aboutplanningapplication-uploadplans"] }}
+            <p>2 files uploaded</p>
+            <ul class="govuk-list">
+              <li>  
+                <a href="javascript:preventdefault();" download="">Plan_735649.pdf</a> 
+              </li> 
+              <li>  
+                <a href="javascript:preventdefault();" download="">Plans_6295766.pdf</a> 
+              </li>
+            </ul>
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -192,7 +218,12 @@
             Upload the Planning Officer's report
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data["lpaq-"+version+"-aboutplanningapplication-officersreport"] }}
+            <p>1 file uploaded</p>
+            <ul class="govuk-list">
+              <li>  
+                <a href="javascript:preventdefault();" download="">OffReport_3451.pdf</a> 
+              </li> 
+            </ul>
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -218,7 +249,12 @@
             Telling interested parties about the application
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data["lpaq-"+version+"-aboutplanningapplication-interestedparties"] }}
+            <p>1 file uploaded</p>
+            <ul class="govuk-list">
+              <li>  
+                <a href="javascript:preventdefault();" download="">IntPartiesLetter.pdf</a> 
+              </li> 
+            </ul>
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -231,7 +267,12 @@
             Representations from interested parties
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data["lpaq-"+version+"-aboutplanningapplication-representations"] }}
+            <p>1 file uploaded</p>
+            <ul class="govuk-list">
+              <li>  
+                <a href="javascript:preventdefault();" download="">Represent_121.pdf</a> 
+              </li> 
+            </ul>
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -244,7 +285,21 @@
             Planning history
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data["lpaq-"+version+"-aboutplanningapplication-planninghistory"] }}
+            <p>4 files uploaded</p>
+            <ul class="govuk-list">
+              <li>  
+                <a href="javascript:preventdefault();" download="">PlanningHistory_31.pdf</a> 
+              </li> 
+              <li>  
+                <a href="javascript:preventdefault();" download="">PlanningHistory_31a.pdf</a> 
+              </li> 
+              <li>  
+                <a href="javascript:preventdefault();" download="">PlanningHistory_31b.pdf</a> 
+              </li> 
+              <li>  
+                <a href="javascript:preventdefault();" download="">PlanningHistory_32.pdf</a> 
+              </li> 
+            </ul>
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -262,7 +317,11 @@
             Statutory development plan policy
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data["lpaq-"+version+"-relatedpolicies-statutory"] }}
+            {% if data["lpaq-"+version+"-relatedpolicies-statutory"] %}
+              {{ data["lpaq-"+version+"-relatedpolicies-statutory"] }}
+            {% else %}
+              Not provided
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -275,7 +334,11 @@
             Other relevant policies
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data["lpaq-"+version+"-relatedpolicies-relevant"] }}
+            {% if data["lpaq-"+version+"-relatedpolicies-relevant"] %}
+              {{ data["lpaq-"+version+"-relatedpolicies-relevant"] }}
+            {% else %}
+              Not provided
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -288,7 +351,11 @@
             Development Plan Document or Neighbourhood Plan
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data["lpaq-"+version+"-relatedpolicies-developmentplan"] }}
+            {% if data["lpaq-"+version+"-relatedpolicies-developmentplan"] %}
+              {{ data["lpaq-"+version+"-relatedpolicies-developmentplan"] }}
+            {% else %}
+              Not provided
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -308,16 +375,11 @@
         iconFallbackText: "Warning"
       }) }}
 
-      <form action="/form-handler" method="post" novalidate>
-
-        <input type="hidden" name="answers-checked" value="true">
-
-        <button class="govuk-button" data-module="govuk-button">
-          Submit
-        </button>
-
-      </form>
-
+      {{ govukButton({
+        href: "confirmation",
+        text: "Submit"
+      }) }}
+      
     </div>
   </div>
 {% endblock %}
