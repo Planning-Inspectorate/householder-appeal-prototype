@@ -1,0 +1,64 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  Inspector Screens - My Appeals
+{% endblock %}
+
+{% block content %}
+<style>
+
+
+</style>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <p></p>
+  </div>
+  <div class="govuk-grid-column-one-half">
+  <p align="right"> <b>Inspector: </b>Marie Lightman</p>
+  </div>
+</div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-l">Provisional site visit</h1>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            131 High Street, Bradford, BD6 1JK
+          </dd>
+          <dd class="govuk-summary-list__actions">
+
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Week Commencing
+          </dt>
+          <dd class="govuk-summary-list__value">
+{{ data['passport-issued-day'] }}
+{{ data['passport-issued-month'] | formatMonth }}
+{{ data['passport-issued-year'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="assign1">
+              Change<span class="govuk-visually-hidden"> provisional visit</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Confirm provisional site visit and assign to me",
+        href: "my-index.html"
+      }) }}
+
+
+    </div>
+  </div>
+{% endblock %}

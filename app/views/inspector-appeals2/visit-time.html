@@ -8,7 +8,7 @@
 <style>
 
 .govuk-header__container {
-    border-bottom: 10px solid #224d42;
+    border-bottom: 10px solid #009999;
 }
 
 </style>
@@ -27,148 +27,76 @@
 
           <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <!--  <h1 class="govuk-fieldset__heading">
-                What time do you want to carry out your site visit?
-              </h1>
-            </legend>
-            <p><b><br>Start time:</b></p>
 
-            <div class="govuk-date-input" id="dob">
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="dob-day">
-                    Hour
-                  </label>
-                  <input class="govuk-input govuk-input--width-2" id="astarthour" name="starthour" type="number">
-                  </div>
-              </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="dob-month">
-                    Min
-                  </label>
-                  <input class="govuk-input govuk-input--width-2" id="astartmin" name="startmin" type="number"></div>
-              </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  {{ govukSelect({
-                    id: "am-pm",
-                    name: "am-pm",
-                    label: {
-                      text: "am/pm"
-                    },
-                    items: [
-                      {
-                        value: "08:30",
-                        text: "am"
-                      },
-                      {
-                        value: "pm",
-                        text: "pm",
-                        selected: true
-                      }
+              <form action="visit-summary" method="post" novalidate>
 
-                    ]
-                  }) }}</div>
-              </div>
-              </div>
 
-              <p><b><br><br>End time:</b></p>
-              <div class="govuk-date-input" id="dob">
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="dob-day">
-                      Hour
-                    </label>
-                    <input class="govuk-input govuk-input--width-2" id="astarthour" name="starthour" type="number">
+                <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                      <h1 class="govuk-fieldset__heading">
+                      What time do you want to carry out your site visit?
+                      </h1>
+                    </legend>
+                    <div class="govuk-radios">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="site-visit-time" name="site-visit-time" type="radio" value="9:00am - 11:00am">
+                        <label class="govuk-label govuk-radios__label" for="site-visit-time">
+                          9:00am - 11:00am
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="site-visit-time-2" name="site-visit-time" type="radio" value="10:00am - midday">
+                        <label class="govuk-label govuk-radios__label" for="site-visit-time-2">
+                          10:00am - midday
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="site-visit-time-3" name="site-visit-time" type="radio" value="11:00am - 1:00pm">
+                        <label class="govuk-label govuk-radios__label" for="site-visit-time-3">
+                          11:00am - 1:00pm
+                        </label>
+                      </div>
+                      <div class="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="site-visit-time4" name="site-visit-time" type="radio" value="midday - 2:00pm">
+                          <label class="govuk-label govuk-radios__label" for="site-visit-time4">
+                            midday - 2:00pm
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="site-visit-time-5" name="site-visit-time" type="radio" value="1:00pm - 3:00pm">
+                          <label class="govuk-label govuk-radios__label" for="site-visit-time-5">
+                            1:00pm - 3:00pm
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="site-visit-time-6" name="site-visit-time" type="radio" value="2:00pm - 4:00pm">
+                          <label class="govuk-label govuk-radios__label" for="site-visit-time-6">
+                            2:00pm - 4:00pm
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="site-visit-time-7" name="site-visit-time" type="radio" value="3:00pm - 5:00pm">
+                          <label class="govuk-label govuk-radios__label" for="site-visit-time-7">
+                            3:00pm - 5:00pm
+                          </label>
+                        </div>
                     </div>
+
+                  </fieldset>
                 </div>
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="dob-month">
-                      Min
-                    </label>
-                    <input class="govuk-input govuk-input--width-2" id="astartmin" name="startmin" type="number"></div>
-                </div>
+                  <br>
+              <input type="hidden" name="answers-checked" value="true">
 
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    {{ govukSelect({
-                      id: "am-pm",
-                      name: "am-pm",
-                      label: {
-                        text: "am/pm"
-                      },
-                      items: [
-                        {
-                          value: "08:30",
-                          text: "am"
-                        },
-                        {
-                          value: "pm",
-                          text: "pm",
-                          selected: true
-                        }
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+              </button>
 
-                      ]
-                    }) }}</div>
-                </div>
-                 -->
-                {% from "govuk/components/radios/macro.njk" import govukRadios %}
+              </form>
 
-          {{ govukRadios({
-            idPrefix: "what-type-of-site-visit",
-            name: "what-type-of-site-visit",
-            fieldset: {
-              legend: {
-                text: "What time do you want to carry out your site visit?",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--l"
-              }
-            },
-            items: [
-              {
-                value: "9to11am",
-                text: "9:00am - 11:00am"
-              },
-              {
-                value: "10to12",
-                text: "10:00am - midday"
-              },
-              {
-                value: "11to1",
-                text: "11:00am - 1:00pm"
-              },
-              {
-                value: "12to2",
-                text: "midday - 2:00pm"
-              },
-              {
-                value: "1to3",
-                text: "1:00pm - 3:00pm"
-              },
-              {
-                value: "2to4",
-                text: "2:00pm - 4:00pm"
-              },
-              {
-                value: "3to5",
-                text: "3:00pm - 5:00pm"
-              }
-          ]
-
-          }) }}
           </fieldset>
         </div>
-
-
-{% from "govuk/components/button/macro.njk" import govukButton %}
-
-{{ govukButton({
-  text: "Continue",
-  href: "visit-summary.html"
-}) }}
-
 
     </div>
   </div>

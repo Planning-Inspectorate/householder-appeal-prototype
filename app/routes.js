@@ -926,6 +926,32 @@ router.post("/lpa-submission/:appealId/supplementary-adopted-post", function(req
 })
 
 
+// Inspector appeals - checks for ARSV to set time slot else ignores time
+router.post('/inspector-appeals2/visit-type-arsv-check', function (req, res) {
+  let owner = req.session.data['site-visit-type']
+//console.log("here");
+  if (owner === 'ARSV') {
+    req.session.data['ARSV'] = 'ARSV'
+  } else {
+    req.session.data['ARSV'] = 'ASV'
+    req.session.data['site-visit-time'] = 'N/A'
+  }
+res.redirect('visit-date')
+})
+
+router.post('/inspector-appeals2/visit-type-date-check', function (req, res) {
+  let owner = req.session.data['site-visit-type']
+//console.log("here");
+  if (owner === 'ARSV') {
+    res.redirect('visit-time')
+  } else {
+    res.redirect('visit-summary')
+  }
+
+})
+
+// Inspector appeals end
+
 //lpa login
 
 router.get("/lpa-account/login/email", function(req, res, next){

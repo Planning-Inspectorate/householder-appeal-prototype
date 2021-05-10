@@ -8,13 +8,18 @@
 <style>
 
 .govuk-header__container {
-    border-bottom: 10px solid #224d42;
+    border-bottom: 10px solid #009999;
 }
 
 </style>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-half">
-    <p></p>
+    <p>      {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+        {{ govukBackLink({
+          text: "Back",
+          href: "appeal1-visit.html"
+        }) }}</p>
   </div>
   <div class="govuk-grid-column-one-half">
   <p align="right"> <b>Inspector: </b>Marie Lightman</p>
@@ -23,42 +28,48 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters">
 
+<form action="visit-type-arsv-check" method="post" novalidate>
 
-      {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-{{ govukRadios({
-  idPrefix: "what-type-of-site-visit",
-  name: "what-type-of-site-visit",
-  fieldset: {
-    legend: {
-      text: "What type of site visit are you arranging?",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--l"
-    }
-  },
-  items: [
-    {
-      value: "ARSV",
-      text: "Access required site visit (ARSV)"
-    },
-    {
-      value: "USV",
-      text: "Uncaccompanied (USV)"
-    },
-    {
-      value: "ASV",
-      text: "Accompanied (ASV)"
-    }
-]
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+        What type of site visit are you arranging?
+        </h1>
+      </legend>
+      <div class="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="site-visit-type" name="site-visit-type" type="radio" value="ARSV">
+          <label class="govuk-label govuk-radios__label" for="site-visit-type">
+            Access required site visit (ARSV)
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="site-visit-type-2" name="site-visit-type" type="radio" value="USV">
+          <label class="govuk-label govuk-radios__label" for="site-visit-type-2">
+            Uncaccompanied site visit (USV)
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="site-visit-type-3" name="site-visit-type" type="radio" value="ASV">
+          <label class="govuk-label govuk-radios__label" for="site-visit-type-3">
+            Accompanied site visit (ASV)
+          </label>
+        </div>
 
-}) }}
+      </div>
 
-{% from "govuk/components/button/macro.njk" import govukButton %}
+    </fieldset>
+  </div>
 
-{{ govukButton({
-  text: "Continue",
-  href: "visit-date.html"
-}) }}
+<input type="hidden" name="answers-checked" value="true">
+
+<button type="submit" class="govuk-button" data-module="govuk-button">
+  Continue
+</button>
+
+</form>
 
 
     </div>

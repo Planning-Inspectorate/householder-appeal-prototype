@@ -1,31 +1,26 @@
 {% extends "layout-no-back.html" %}
 
 {% block pageTitle %}
-  Inspector Screens - My Appeals - Case Files
+  Inspector Screens - Appeals - Unassigned Overview
 {% endblock %}
 
 {% block beforeContent %}
 
 {% endblock %}
 
-
 {% block content %}
-
 <style>
 
 .govuk-header__container {
     border-bottom: 10px solid #009999;
 }
-  .moj-sub-navigation__link[aria-current="page"]:before {
-    background-color: #009999;
-}
-
 
 </style>
 
+  <form action="assign1" method="post" novalidate>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-half">
-    <p><a href="my-index" class="govuk-back-link">All my appeals</a></p>
+    <p><a href="index" class="govuk-back-link">Available appeals</a></p>
   </div>
   <div class="govuk-grid-column-one-half">
     <p align="right"> <b>Inspector: </b>Marie Lightman</p>
@@ -38,60 +33,35 @@
         <span class="govuk-caption-xl">Appeal Reference: APP/2020/56789/01234</span>
       </h1>
 
-  <nav class="moj-sub-navigation" aria-label="Sub navigation">
-  <ul class="moj-sub-navigation__list">
-    <li class="moj-sub-navigation__item">
-      <a class="moj-sub-navigation__link" aria-current="page" href="appeal1-overview">Overview</a>
-    </li>
-    <li class="moj-sub-navigation__item">
-      <a class="moj-sub-navigation__link" href="appeal1-visit">Site visit</a>
-    </li>
-    <li class="moj-sub-navigation__item">
-      <a class="moj-sub-navigation__link" href="appeal1-decision">Decision</a>
-    </li>
-  </ul>
-  </nav>
+      <button class="govuk-button" data-module="govuk-button">
+  Assign to me
+</button>
+
 
 </div>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-l">Overview of case</h2>
+      <h2 class="govuk-heading-l">Overview</h2>
      <dl class="govuk-summary-list">
        <div class="govuk-summary-list__row">
          <dt class="govuk-summary-list__key">
            Site Visit
          </dt>
          <dd class="govuk-summary-list__value">
-           <strong class="govuk-tag govuk-tag--green">({{data['site-visit-type'] | default("Provisional W/C") }}) {{ data['passport-issued-day'] }}
-           {{ data['passport-issued-month'] | formatMonth }}
-           {{ data['passport-issued-year'] }}  {{ data['site-visit-time'] }}</strong>
+           <strong class="govuk-tag govuk-tag--grey">NOT SCHEDULED (ARSV)</strong>
          </dd>
        </div>
-<!--       <div class="govuk-summary-list__row">
-         <dt class="govuk-summary-list__key">
-          Agent name
-         </dt>
-         <dd class="govuk-summary-list__value">
-           Mary Gray
-         </dd>
-     </div> -->
+
        <div class="govuk-summary-list__row">
          <dt class="govuk-summary-list__key">
-           Target date
+           Ministerial target
          </dt>
          <dd class="govuk-summary-list__value">
            15 August 2021
          </dd>
        </div>
-<!-- <div class="govuk-summary-list__row">
-         <dt class="govuk-summary-list__key">
-          Description of works
-         </dt>
-         <dd class="govuk-summary-list__value">
-           <p class="govuk-body">Loft conversion end of terrace</p>
-         </dd>
-       </div> -->
+
        <div class="govuk-summary-list__row">
          <dt class="govuk-summary-list__key">
           Local Planning Authority
@@ -100,30 +70,6 @@
            <p class="govuk-body">Bradford Council</p>
          </dd>
        </div>
-  <!--      <div class="govuk-summary-list__row">
-         <dt class="govuk-summary-list__key">
-          Appellant name
-         </dt>
-         <dd class="govuk-summary-list__value">
-           <p class="govuk-body">Manish Sharma</p>
-         </dd>
-       </div>
-       <div class="govuk-summary-list__row">
-         <dt class="govuk-summary-list__key">
-          Appellant email address
-         </dt>
-         <dd class="govuk-summary-list__value">
-           <p class="govuk-body">manish.sharma@gmail.com</p>
-         </dd>
-       </div>
-       <div class="govuk-summary-list__row">
-         <dt class="govuk-summary-list__key">
-          Appellant phone number
-         </dt>
-         <dd class="govuk-summary-list__value">
-           <p class="govuk-body">01234 56789</p>
-         </dd>
-       </div>-->
      </dl>
      <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
   <div class="govuk-accordion__section">
@@ -184,6 +130,7 @@
           </dd>
         </div>
       </dl>
+
     </div>
   </div>
   <div class="govuk-accordion__section">
@@ -366,6 +313,9 @@
     </div>
   </div>
 </div>
+
+
+
 
 
 {% endblock %}
