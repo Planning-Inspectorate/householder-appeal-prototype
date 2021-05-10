@@ -33,15 +33,17 @@
       You do not need to tell us about the standard conditions that will be applied to any successful appeal.
     </p>
     {% set conditionsHTML %}
-      <p class="govuk-body">
-        a) The development hereby permitted shall begin not later than three years from the date of this decision.
-      <p>
-      <p class="govuk-body">
-        b) The materials to be used in the construction of the external surfaces of the development hereby permitted shall match those used in the existing building.
-      <p>
-      <p class="govuk-body">
-        c) The development hereby permitted shall be carried out in accordance with the approved plans.
-      <p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          The development hereby permitted shall begin not later than 3 years from the date of this decision
+        </li>
+        <li>
+          The materials to be used in the construction of the external surfaces of the development hereby permitted shall match those used in the existing building
+        </li>
+        <li>
+          The development hereby permitted shall be carried out in accordance with the approved plans
+        </li>
+      </ul>
     {% endset %}
     {{ govukDetails({
       summaryText: "Standard conditions",
