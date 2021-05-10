@@ -1,0 +1,77 @@
+{% extends "layouts/lpa-questionnaire/v8.html" %}
+
+{% block pageTitle %}
+  Provide information for a householder planning appeal
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "../task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      About the appeal site
+    </span>
+    <h1 class="govuk-heading-l">
+      Would the development affect the setting of a listed building?
+    </h1>
+    
+    <form action="" method="post">
+
+      {% set telluswhyHtml %}
+        {{ govukTextarea({
+          id: "lpaq-"+version+"-aboutappealsite-listedbuilding-telluswhy",
+          name: "lpaq-"+version+"-aboutappealsite-listedbuilding-telluswhy",
+          label: {
+            text: "Add the relevant listing description from the List of Buildings of Special Architectural or Historic Interest"
+          },
+          value: data["lpaq-"+version+"-aboutappealsite-listedbuilding-telluswhy"]
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "lpaq-"+version+"-aboutappealsite-listedbuilding",
+        name: "lpaq-"+version+"-aboutappealsite-listedbuilding",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: checked("lpaq-"+version+"-aboutappealsite-listedbuilding", "Yes"),
+            conditional: {
+              html: telluswhyHtml
+            }
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: checked("lpaq-"+version+"-aboutappealsite-listedbuilding", "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+  </div>
+</div>
+
+{% endblock %}

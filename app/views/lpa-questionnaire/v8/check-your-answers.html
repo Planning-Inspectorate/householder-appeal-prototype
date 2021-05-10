@@ -1,0 +1,323 @@
+{% extends "layouts/lpa-questionnaire/v8.html" %}
+
+{% block pageTitle %}
+ Check your answers for a householder planning appeal
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Check your answers</h1>
+      <p class="govuk-body">
+        Before you submit your evidence, take a moment to make sure you're happy with the answers you've provided.
+      <p>
+
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h2 class="govuk-heading-l">About the appeal</h2>
+
+      <dl class="govuk-summary-list govuk-summary-list-lpaq govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Does the information from the appellant accurately reflect the original planning application?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutappeal-accurate"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> does the information from the appellant accurately reflect the original planning application?</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Do you have any extra conditions?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutappeal-conditions"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> do you have any extra conditions?</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Are there any other appeals adjacent or close to the site still being considered?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutappeal-otherappeals"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> are there any other appeals adjacent or close to the site still being considered?</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Have you notified interested parties about the appeal?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutappeal-interestedparties"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> have you notified interested parties about the appeal?</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-l">About the appeal site</h2>
+
+      <dl class="govuk-summary-list govuk-summary-list-lpaq govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Can the Inspector see the relevant parts of the appeal site from public land?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutappealsite-publicland"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> can the Inspector see the relevant parts of the appeal site from public land?</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Will the Inspector need to enter the appeal site?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutappealsite-entersite"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> will the Inspector need to enter the appeal site?</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Would the Inspector need access to a neighbour's land?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutappealsite-neighboursland"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> would the Inspector need access to a neighbour's land?</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Would the development affect the setting of a listed building?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutappealsite-listedbuilding"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> would the development affect the setting of a listed building?</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Is the appeal site in a green belt?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutappealsite-greenbelt"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> is the appeal site in a green belt?</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Is the appeal site in or near a conservation area?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutappealsite-conservationarea"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> is the appeal site in or near a conservation area?</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-l">About the planning application</h2>
+
+      <dl class="govuk-summary-list govuk-summary-list-lpaq govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Upload the plans used to reach the decision
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutplanningapplication-uploadplans"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> upload the plans used to reach the decision</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Upload the Planning Officer's report
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutplanningapplication-officersreport"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> upload the Planning Officer's report</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Did you publicise the original planning application?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutplanningapplication-sitenotices"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> did you publicise the original planning application?</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Telling interested parties about the application
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutplanningapplication-interestedparties"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> telling interested parties about the application</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Representations from interested parties
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutplanningapplication-representations"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> representations from interested parties</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Planning history
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutplanningapplication-planninghistory"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> planning history</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-l">Policies related to the planning application</h2>
+
+      <dl class="govuk-summary-list govuk-summary-list-lpaq govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Statutory development plan policy
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-relatedpolicies-statutory"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> statutory development plan policy</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Other relevant policies
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-relatedpolicies-relevant"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> statutory development plan policy</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Development Plan Document or Neighbourhood Plan
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-relatedpolicies-developmentplan"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> statutory development plan policy</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukWarningText({
+        text: "By submitting this questionnaire, you confirm that, to the best of your knowledge, the details are correct.",
+        iconFallbackText: "Warning"
+      }) }}
+
+      <form action="/form-handler" method="post" novalidate>
+
+        <input type="hidden" name="answers-checked" value="true">
+
+        <button class="govuk-button" data-module="govuk-button">
+          Submit
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
