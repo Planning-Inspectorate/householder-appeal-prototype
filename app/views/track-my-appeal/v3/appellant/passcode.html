@@ -1,17 +1,17 @@
-{% extends "layouts/lpa-questionnaire/v8.html" %}
+
+{% extends "layout-no-back.html" %}
 
 {% block pageTitle %}
-  Please complete | Appeal a planning decision
+  Passcode
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">Check your email</h1>
-      <p>We've sent an email with a one-time passcode to {{ data['lpa-'+version+'-account-email'] }}.​</p>
+      <p>We've sent an email with a one-time passcode to [email@domain.com].​</p>
 
-
-      <form action="" method="post" novalidate>
+      <!--form action="" method="post" novalidate-->
 
         {{ govukInput({
           label: {
@@ -24,23 +24,24 @@
           name: "one-time-passcode"
         }) }}
 
-
-      <button class="govuk-button" data-module="govuk-button">
-        Continue
-      </button>
-    </form>
+        {{ govukButton({
+          text: "Continue",
+          href: "static"
+        }) }}
+      
+      <!--/form-->
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
       <h4 class="govuk-heading-s">If you're having problems</h4>
       <ul class="govuk-list">
         <li>Check the email hasn't gone into your spam/bulk folder.</li>
-        <li>We can <a href="email">resend the email</a>.</li>
+        <li>We can <a href="passcode-resent">resend the email</a>.</li>
         <li><a class="govuk-link" href="javascript:preventDefault();">Email our customer support team</a> or call them on 0303 44 5000.</li>
       </ul>
 
       <br><br><br><br><br><br>
-      <p><a href="../email/one-time-passcode" target="_blank">(View one-time passcode email)</a></p>
+      <p><a href="email/one-time-passcode" target="_blank">(View one time passcode email)</a></p>
       </div>
 
 

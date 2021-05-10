@@ -1,0 +1,222 @@
+{% extends "layouts/lpa-questionnaire/v8.html" %}
+
+{% block pageTitle %}
+  Provide information for a householder planning appeal
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "../task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      About the appeal
+    </span>
+    <h1 class="govuk-heading-l">
+      Review accuracy of the appellant's submission
+    </h1>
+
+    <p class="govuk-body">
+      The appellant submitted the following information on {{ (appeal.startedDaysAgo + 7) | daysAgo }}.
+    </p>
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Planning application number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          20/500818/FULL
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Site address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          	22 Argyll Street<br>
+            Maidstone
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Appellant name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Manish Sharma
+        </dd>
+      </div>
+    </dl>
+
+    {% set localplanningHtml %}
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <strong>Maidstone Borough Council</strong> is the local planning department
+        </li>
+        <li>
+          The appellant provided the <a href="/public/images/Decision_Notice-sprint18.pdf" target="_blank" class="govuk-link">decision letter</a>
+        </li>
+      </ul>
+    {% endset -%}
+
+    {% set originalapplicationHtml %}
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          The planning application number is <strong>20/500818/FULL</strong>
+        </li>
+        <li>
+          The name on the application is <strong>Manish Sharma</strong>
+        </li>
+        <li>
+          The date of application is <strong>10 June 2020</strong>
+        </li>
+        <li>
+          The appellant provided their <a href="/public/images/application.pdf" target="_blank" class="govuk-link">original planning application</a>
+        </li>
+      </ul>
+    {% endset -%}
+
+    {% set appealsiteHtml %}
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          The Inspector cannot see the whole of the appeal site from public land:
+          {{ govukInsetText({
+            text: "It's restricted as the extension is at the rear, so they'd need to come through the house to view. We have no rear access and are in woodland. I guess they could climb a tree?"
+          }) }}
+        </li>
+        <li>
+          There are health and safety issues:
+          {{ govukInsetText({
+            text: "We have dogs"
+          }) }}
+        </li>
+        <li>
+          The appellant owns the whole appeal site
+        </li>
+      </ul>
+    {% endset -%}
+
+    {% set supportingdocsHtml %}
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          The appellant provided an <a href="/public/images/appeal-statement.pdf" target="_blank" class="govuk-link">appeal statement</a>
+        </li>
+        <li>
+         The appellant provided 11 supporting documents:
+          <ul class="govuk-list">
+            <li><a href="/public/images/blank.pdf" download>file-1.pdf</a></li>
+            <li><a href="/public/images/blank.pdf" download>file-2.pdf</a></li>
+            <li><a href="/public/images/blank.pdf" download>file-3.pdf</a></li>
+            <li><a href="/public/images/blank.pdf" download>file-4.pdf</a></li>
+            <li><a href="/public/images/blank.pdf" download>file-5.pdf</a></li>
+            <li><a href="/public/images/blank.pdf" download>file-6.pdf</a></li>
+            <li><a href="/public/images/blank.pdf" download>file-7.pdf</a></li>
+            <li><a href="/public/images/blank.pdf" download>file-8.pdf</a></li>
+            <li><a href="/public/images/blank.pdf" download>file-9.pdf</a></li>
+            <li><a href="/public/images/blank.pdf" download>file-10.pdf</a></li>
+            <li><a href="/public/images/blank.pdf" download>file-11.pdf</a></li>
+          </ul>
+        </li>
+      </ul>
+    {% endset -%}
+
+    {{ govukAccordion({
+      id: "accordion-default",
+      items: [
+        {
+          heading: {
+            text: "The local planning department"
+          },
+          content: {
+            html: localplanningHtml
+          }
+        },
+        {
+          heading: {
+            text: "The original planning application"
+          },
+          content: {
+            html: originalapplicationHtml
+          }
+        },
+          {
+          heading: {
+            text: "The appeal site"
+          },
+          content: {
+            html: appealsiteHtml
+          }
+        },
+          {
+          heading: {
+            text: "The appeal statement and supporting documents"
+          },
+          content: {
+            html: supportingdocsHtml
+          }
+        }
+      ]
+    }) }}
+    
+    <form action="" method="post">
+
+      {% set whynotHtml %}
+        {{ govukTextarea({
+          id: "lpaq-"+version+"-aboutappeal-accurate-whynot",
+          name: "lpaq-"+version+"-aboutappeal-accurate-whynot",
+          label: {
+            text: "Tell us why not"
+          },
+          value: data["lpaq-"+version+"-aboutappeal-accurate-whynot"]
+        }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "lpaq-"+version+"-aboutappeal-accurate",
+        name: "lpaq-"+version+"-aboutappeal-accurate",
+        fieldset: {
+          legend: {
+            text: "Does the information from the appellant accurately reflect the original planning application?",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: checked("lpaq-"+version+"-aboutappeal-accurate", "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: checked("lpaq-"+version+"-aboutappeal-accurate", "No"),
+            conditional: {
+              html: whynotHtml
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
