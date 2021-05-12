@@ -26,14 +26,9 @@
         Before you submit your evidence, take a moment to make sure you're happy with the answers you've provided.
       <p>
 
-    </div>
-  </div>
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-
       <h2 class="govuk-heading-l">About the appeal</h2>
 
-      <dl class="govuk-summary-list govuk-summary-list-lpaq govuk-!-margin-bottom-9">
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Does the information from the appellant accurately reflect the original planning application?
@@ -68,7 +63,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Are there any other appeals adjacent or close to the site still being considered?
+            Tell us about any appeals in the immediate area
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data["lpaq-"+version+"-aboutappeal-otherappeals"] }}
@@ -78,11 +73,11 @@
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="about-appeal/other-appeals">
-              Change<span class="govuk-visually-hidden"> are there any other appeals adjacent or close to the site still being considered?</span>
+              Change<span class="govuk-visually-hidden"> tell us about any appeals in the immediate area</span>
             </a>
           </dd>
         </div>
-        <div class="govuk-summary-list__row">
+        <!--div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Have you notified interested parties about the appeal?
           </dt>
@@ -94,7 +89,7 @@
               Change<span class="govuk-visually-hidden"> have you notified interested parties about the appeal?</span>
             </a>
           </dd>
-        </div>
+        </div-->
       </dl>
 
       <h2 class="govuk-heading-l">About the appeal site</h2>
@@ -189,49 +184,52 @@
         </div>
       </dl>
 
-      <h2 class="govuk-heading-l">About the planning application</h2>
+      <h2 class="govuk-heading-l">Required documents</h2>
 
       <dl class="govuk-summary-list govuk-summary-list-lpaq govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Upload the plans used to reach the decision
+            Plans used to reach the decision
           </dt>
           <dd class="govuk-summary-list__value">
-            <p>2 files uploaded</p>
             <ul class="govuk-list">
               <li>  
-                <a href="javascript:preventdefault();" download="">Plan_735649.pdf</a> 
+                Plan_735649.pdf
               </li> 
               <li>  
-                <a href="javascript:preventdefault();" download="">Plans_6295766.pdf</a> 
+                Plans_6295766.pdf
               </li>
             </ul>
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="about-planning-application/upload-plans">
-              Change<span class="govuk-visually-hidden"> upload the plans used to reach the decision</span>
+              Change<span class="govuk-visually-hidden"> plans used to reach the decision</span>
             </a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Upload the Planning Officer's report
+            Planning Officer's report
           </dt>
           <dd class="govuk-summary-list__value">
-            <p>1 file uploaded</p>
             <ul class="govuk-list">
               <li>  
-                <a href="javascript:preventdefault();" download="">OffReport_3451.pdf</a> 
+                OffReport_3451.pdf
               </li> 
             </ul>
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="about-planning-application/officers-report">
-              Change<span class="govuk-visually-hidden"> upload the Planning Officer's report</span>
+              Change<span class="govuk-visually-hidden"> Planning Officer's report</span>
             </a>
           </dd>
         </div>
-        <div class="govuk-summary-list__row">
+      </dl>
+
+      <h2 class="govuk-heading-l">Optional supporting documents</h2>
+
+      <dl class="govuk-summary-list govuk-summary-list-lpaq govuk-!-margin-bottom-9">
+        <!--div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Did you publicise the original planning application?
           </dt>
@@ -243,21 +241,21 @@
               Change<span class="govuk-visually-hidden"> did you publicise the original planning application?</span>
             </a>
           </dd>
-        </div>
+        </div-->
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Telling interested parties about the application
           </dt>
           <dd class="govuk-summary-list__value">
-            <p>1 file uploaded</p>
-            <ul class="govuk-list">
+            Not provided
+            <!--ul class="govuk-list">
               <li>  
-                <a href="javascript:preventdefault();" download="">IntPartiesLetter.pdf</a> 
+                IntPartiesLetter.pdf
               </li> 
-            </ul>
+            </ul-->
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="about-planning-application/interested-parties">
+            <a class="govuk-link" href="optional-supporting-documents/interested-parties">
               Change<span class="govuk-visually-hidden"> telling interested parties about the application</span>
             </a>
           </dd>
@@ -267,16 +265,61 @@
             Representations from interested parties
           </dt>
           <dd class="govuk-summary-list__value">
-            <p>1 file uploaded</p>
-            <ul class="govuk-list">
+            Not provided
+            <!--ul class="govuk-list">
               <li>  
-                <a href="javascript:preventdefault();" download="">Represent_121.pdf</a> 
+                Represent_121.pdf
               </li> 
-            </ul>
+            </ul-->
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="about-planning-application/representations">
+            <a class="govuk-link" href="optional-supporting-documents/representations">
               Change<span class="govuk-visually-hidden"> representations from interested parties</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Notifying interested parties of the appeal
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Not provided
+            <!--ul class="govuk-list">
+              <li>  
+                NotifyParties.pdf
+              </li>
+            </ul-->
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="optional-supporting-documents/interested-parties">
+              Change<span class="govuk-visually-hidden"> notifying interested parties of the appeal</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Site notices
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Not provided
+            <!--ul class="govuk-list">
+              <li>  
+                SoteNoticeA1.pdf
+              </li> 
+              <li>  
+                SoteNoticeA2.pdf
+              </li> 
+              <li>  
+                SoteNoticeB.pdf
+              </li> 
+              <li>  
+                SoteNoticeC.pdf
+              </li> 
+            </ul-->
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="optional-supporting-documents/interested-parties">
+              Change<span class="govuk-visually-hidden"> notifying interested parties of the appeal</span>
             </a>
           </dd>
         </div>
@@ -285,46 +328,41 @@
             Planning history
           </dt>
           <dd class="govuk-summary-list__value">
-            <p>4 files uploaded</p>
-            <ul class="govuk-list">
+            Not provided
+            <!--ul class="govuk-list">
               <li>  
-                <a href="javascript:preventdefault();" download="">PlanningHistory_31.pdf</a> 
+                PlanningHistory_31.pdf
               </li> 
               <li>  
-                <a href="javascript:preventdefault();" download="">PlanningHistory_31a.pdf</a> 
+                PlanningHistory_31a.pdf
               </li> 
               <li>  
-                <a href="javascript:preventdefault();" download="">PlanningHistory_31b.pdf</a> 
+                PlanningHistory_31b.pdf
               </li> 
               <li>  
-                <a href="javascript:preventdefault();" download="">PlanningHistory_32.pdf</a> 
+                PlanningHistory_32.pdf
               </li> 
-            </ul>
+            </ul-->
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="about-planning-application/planning-history">
+            <a class="govuk-link" href="optional-supporting-documents/planning-history">
               Change<span class="govuk-visually-hidden"> planning history</span>
             </a>
           </dd>
         </div>
-      </dl>
-
-      <h2 class="govuk-heading-l">Policies related to the planning application</h2>
-
-      <dl class="govuk-summary-list govuk-summary-list-lpaq govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Statutory development plan policy
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data["lpaq-"+version+"-relatedpolicies-statutory"] %}
-              {{ data["lpaq-"+version+"-relatedpolicies-statutory"] }}
+            {% if data["lpaq-"+version+"-optionalsupportingdocs-statutory"] %}
+              {{ data["lpaq-"+version+"-optionalsupportingdocs-statutory"] }}
             {% else %}
               Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="related-policies/statutory">
+            <a class="govuk-link" href="optional-supporting-documents/statutory">
               Change<span class="govuk-visually-hidden"> statutory development plan policy</span>
             </a>
           </dd>
@@ -334,14 +372,14 @@
             Other relevant policies
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data["lpaq-"+version+"-relatedpolicies-relevant"] %}
-              {{ data["lpaq-"+version+"-relatedpolicies-relevant"] }}
+            {% if data["lpaq-"+version+"-optionalsupportingdocs-relevant"] %}
+              {{ data["lpaq-"+version+"-optionalsupportingdocs-relevant"] }}
             {% else %}
               Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="related-policies/relevant">
+            <a class="govuk-link" href="optional-supporting-documents/relevant">
               Change<span class="govuk-visually-hidden"> statutory development plan policy</span>
             </a>
           </dd>
@@ -351,24 +389,19 @@
             Development Plan Document or Neighbourhood Plan
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data["lpaq-"+version+"-relatedpolicies-developmentplan"] %}
-              {{ data["lpaq-"+version+"-relatedpolicies-developmentplan"] }}
+            {% if data["lpaq-"+version+"-optionalsupportingdocs-developmentplan"] %}
+              {{ data["lpaq-"+version+"-optionalsupportingdocs-developmentplan"] }}
             {% else %}
               Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="related-policies/development-plan">
+            <a class="govuk-link" href="optional-supporting-documents/development-plan">
               Change<span class="govuk-visually-hidden"> statutory development plan policy</span>
             </a>
           </dd>
         </div>
       </dl>
-
-    </div>
-  </div>
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
 
       {{ govukWarningText({
         text: "By submitting this questionnaire, you confirm that, to the best of your knowledge, the details are correct.",
@@ -377,7 +410,7 @@
 
       {{ govukButton({
         href: "confirmation",
-        text: "Submit"
+        text: "Accept and send"
       }) }}
       
     </div>

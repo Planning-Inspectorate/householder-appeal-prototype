@@ -23,18 +23,21 @@
   <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-l">
-      Policies related to the planning application
+      About the planning application
     </span>
     <h1 class="govuk-heading-l">
-      Other relevant policies
+      Telling interested parties about the application
     </h1>
+    <p class="govuk-body">
+      If applicable, upload the letter/site notice you used to notify interested parties, and a list of their addresses. If you’ve already uploaded this in a previous question, you do not need to upload it again.
+    <p>
     
     <form action="" method="post">
 
       {% set uploadHtml %}
         {{ govukFileUpload({
-          id: "relevant",
-          name: "relevant",
+          id: "site-notice-ip",
+          name: "site-notice-ip",
           classes: 'moj-multi-file-upload__input',
           label: {
             text: "Upload files",
@@ -53,12 +56,12 @@
       {{ mojMultiFileUpload({
         uploadedFiles: {
           heading: { text: 'Files added' },
-          items: data.uploadedFiles | filesByFieldName("relevant")
+          items: data.uploadedFiles | filesByFieldName("site-notice-ip")
         },
         uploadHtml: uploadHtml
       }) }}
 
-      <input type="hidden" name="lpaq-{{version}}-relatedpolicies-relevant" value="uploaded">
+      <input type="hidden" name="lpaq-{{version}}-optionalsupportingdocs-interestedparties" value="uploaded">
 
       {{ govukButton({
         text: "Save and continue"
@@ -82,7 +85,7 @@
         container: $('.moj-multi-file-upload'),
         uploadUrl: '/ajax-case-file',
         deleteUrl: '/ajax-case-file-delete',
-        fieldName: 'casefile'
+        fieldName: 'site-notice-ip'
         });
     }
   </script>

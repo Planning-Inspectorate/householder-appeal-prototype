@@ -26,15 +26,18 @@
       About the planning application
     </span>
     <h1 class="govuk-heading-l">
-      Upload the plans used to reach the decision
+      Planning Officer’s report
     </h1>
+    <p class="govuk-body">
+      Upload the Planning Officer’s report to committee or delegated report on the application, and any other relevant documents or minutes.
+    <p>
     
     <form action="" method="post">
 
       {% set uploadHtml %}
         {{ govukFileUpload({
-          id: "casefile",
-          name: "casefile",
+          id: "officers-report",
+          name: "officers-report",
           classes: 'moj-multi-file-upload__input',
           label: {
             text: "Upload files",
@@ -53,12 +56,12 @@
       {{ mojMultiFileUpload({
         uploadedFiles: {
           heading: { text: 'Files added' },
-          items: data.uploadedFiles | filesByFieldName("casefile")
+          items: data.uploadedFiles | filesByFieldName("officers-report")
         },
         uploadHtml: uploadHtml
       }) }}
 
-      <input type="hidden" name="lpaq-{{version}}-aboutplanningapplication-uploadplans" value="uploaded">
+      <input type="hidden" name="lpaq-{{version}}-requireddocs-officersreport" value="uploaded">
 
       {{ govukButton({
         text: "Save and continue"

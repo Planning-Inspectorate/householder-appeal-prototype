@@ -23,21 +23,18 @@
   <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-l">
-      About the planning application
+      Policies related to the planning application
     </span>
     <h1 class="govuk-heading-l">
-      Representations from interested parties
+      Other relevant policies
     </h1>
-    <p class="govuk-body">
-      If applicable, upload all representations from interested parties about the application, including comments from internal and external consultees.
-    <p>
     
     <form action="" method="post">
 
       {% set uploadHtml %}
         {{ govukFileUpload({
-          id: "representations",
-          name: "representations",
+          id: "relevant",
+          name: "relevant",
           classes: 'moj-multi-file-upload__input',
           label: {
             text: "Upload files",
@@ -56,12 +53,12 @@
       {{ mojMultiFileUpload({
         uploadedFiles: {
           heading: { text: 'Files added' },
-          items: data.uploadedFiles | filesByFieldName("representations")
+          items: data.uploadedFiles | filesByFieldName("relevant")
         },
         uploadHtml: uploadHtml
       }) }}
 
-      <input type="hidden" name="lpaq-{{version}}-aboutplanningapplication-representations" value="uploaded">
+      <input type="hidden" name="lpaq-{{version}}-optionalsupportingdocs-relevant" value="uploaded">
 
       {{ govukButton({
         text: "Save and continue"
@@ -85,7 +82,7 @@
         container: $('.moj-multi-file-upload'),
         uploadUrl: '/ajax-case-file',
         deleteUrl: '/ajax-case-file-delete',
-        fieldName: 'representations'
+        fieldName: 'casefile'
         });
     }
   </script>

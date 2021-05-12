@@ -18,89 +18,93 @@ module.exports = function (router) {
   // About the appeal
 
     router.post(base+'about-appeal/review-accuracy', function (req, res) {
-      res.redirect(base+'task-list#aboutappeal-accurate');
+      res.redirect(base+'task-list');
     })
 
     router.post(base+'about-appeal/conditions', function (req, res) {
-      res.redirect(base+'task-list#aboutappeal-conditions');
+      res.redirect(base+'task-list');
     })
 
     router.post(base+'about-appeal/other-appeals', function (req, res) {
-      res.redirect(base+'task-list#aboutappeal-otherappeals');
+      res.redirect(base+'task-list');
     })
 
     router.post(base+'about-appeal/interested-parties', function (req, res) {
-      res.redirect(base+'task-list#aboutappeal-interestedparties');
+      res.redirect(base+'task-list');
     })
 
 
   // About the appeal site
   
     router.post(base+'about-appeal-site/public-land', function (req, res) {
-      res.redirect(base+'task-list#aboutappealsite-publicland');
+      res.redirect(base+'task-list');
     })
   
     router.post(base+'about-appeal-site/enter-site', function (req, res) {
-      res.redirect(base+'task-list#aboutappealsite-entersite');
+      res.redirect(base+'task-list');
     })
   
     router.post(base+'about-appeal-site/neighbours-land', function (req, res) {
-      res.redirect(base+'task-list#aboutappealsite-neighboursland');
+      res.redirect(base+'task-list');
     })
   
     router.post(base+'about-appeal-site/listed-building', function (req, res) {
-      res.redirect(base+'task-list#aboutappealsite-listedbuilding');
+      res.redirect(base+'task-list');
     })
   
     router.post(base+'about-appeal-site/green-belt', function (req, res) {
-      res.redirect(base+'task-list#aboutappealsite-greenbelt');
+      res.redirect(base+'task-list');
     })
   
     router.post(base+'about-appeal-site/conservation-area', function (req, res) {
-      res.redirect(base+'task-list#aboutappealsite-conservationarea');
+      res.redirect(base+'task-list');
     })
 
 
-  // About the planning application
+  // Required documents
   
-    router.post(base+'about-planning-application/upload-plans', function (req, res) {
-      res.redirect(base+'task-list#aboutplanningapplication-uploadplans');
-    })
-  
-    router.post(base+'about-planning-application/officers-report', function (req, res) {
-      res.redirect(base+'task-list#aboutplanningapplication-officersreport');
-    })
-  
-    router.post(base+'about-planning-application/site-notices', function (req, res) {
-      res.redirect(base+'task-list#aboutplanningapplication-sitenotices');
-    })
-  
-    router.post(base+'about-planning-application/interested-parties', function (req, res) {
-      res.redirect(base+'task-list#aboutplanningapplication-interestedparties');
-    })
-  
-    router.post(base+'about-planning-application/representations', function (req, res) {
-      res.redirect(base+'task-list#aboutplanningapplication-representations');
-    })
-  
-    router.post(base+'about-planning-application/planning-history', function (req, res) {
-      res.redirect(base+'task-list#aboutplanningapplication-planninghistory');
-    })
-
-
-    // Policies related to the planning application
-    
-      router.post(base+'related-policies/statutory', function (req, res) {
-        res.redirect(base+'task-list#relatedpolicies-statutory');
+      router.post(base+'required-documents/upload-plans', function (req, res) {
+        res.redirect(base+'task-list');
       })
-    
-      router.post(base+'related-policies/relevant', function (req, res) {
-        res.redirect(base+'task-list#relatedpolicies-relevant');
+
+      router.post(base+'required-documents/officers-report', function (req, res) {
+        res.redirect(base+'task-list');
       })
-    
-      router.post(base+'related-policies/development-plan', function (req, res) {
-        res.redirect(base+'task-list#relatedpolicies-developmentplan');
-      })
+
+
+  // Optional supporting documents
+  
+    router.post(base+'optional-supporting-documents/interested-parties', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+  
+    router.post(base+'optional-supporting-documents/publicised', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+  
+    router.post(base+'optional-supporting-documents/site-notices', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+  
+    router.post(base+'optional-supporting-documents/representations', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+  
+    router.post(base+'optional-supporting-documents/planning-history', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+  
+    router.post(base+'optional-supporting-documents/statutory', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+  
+    router.post(base+'optional-supporting-documents/relevant', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+  
+    router.post(base+'optional-supporting-documents/development-plan', function (req, res) {
+      res.redirect(base+'task-list');
+    })
 
     
       // Jump to completed task list
