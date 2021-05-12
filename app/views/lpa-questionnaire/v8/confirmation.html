@@ -1,7 +1,7 @@
 {% extends "layouts/lpa-questionnaire/v8.html" %}
 
 {% block pageTitle %}
- Check your answers for a householder planning appeal
+ Questionnaire submitted
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,9 +18,12 @@
     <div class="govuk-grid-column-two-thirds">
 
       {{ govukPanel({
-        titleText: "Questionnaire submitted",
-        html: "We've sent a confirmation email to:<br><strong>your.email@work.gov.uk</strong>"
+        classes: "govuk-!-margin-bottom-7",
+        titleText: "Questionnaire submitted"
       }) }}
+      <p class="govuk-body">
+        We've sent a confirmation email to <strong>your.email@work.gov.uk</strong>.
+      <p>
 
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 

@@ -26,18 +26,18 @@
       About the planning application
     </span>
     <h1 class="govuk-heading-l">
-      Planning history
+      Representations from interested parties
     </h1>
     <p class="govuk-body">
-      If applicable, upload the planning history (for example, previous planning permissions) and the documents used when considering the application.
+      If applicable, upload all representations from interested parties about the application, including comments from internal and external consultees.
     <p>
     
     <form action="" method="post">
 
       {% set uploadHtml %}
         {{ govukFileUpload({
-          id: "planninghistory",
-          name: "planninghistory",
+          id: "representations",
+          name: "representations",
           classes: 'moj-multi-file-upload__input',
           label: {
             text: "Upload files",
@@ -56,12 +56,12 @@
       {{ mojMultiFileUpload({
         uploadedFiles: {
           heading: { text: 'Files added' },
-          items: data.uploadedFiles | filesByFieldName("planninghistory")
+          items: data.uploadedFiles | filesByFieldName("representations")
         },
         uploadHtml: uploadHtml
       }) }}
 
-      <input type="hidden" name="lpaq-{{version}}-aboutplanningapplication-planninghistory" value="uploaded">
+      <input type="hidden" name="lpaq-{{version}}-optionalsupportingdocs-representations" value="uploaded">
 
       {{ govukButton({
         text: "Save and continue"

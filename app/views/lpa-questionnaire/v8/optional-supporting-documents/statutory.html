@@ -23,21 +23,18 @@
   <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-l">
-      About the planning application
+      Policies related to the planning application
     </span>
     <h1 class="govuk-heading-l">
-      Planning Officer’s report
+      Statutory development plan policy
     </h1>
-    <p class="govuk-body">
-      Upload the Planning Officer’s report to committee or delegated report on the application, and any other relevant documents or minutes.
-    <p>
     
     <form action="" method="post">
 
       {% set uploadHtml %}
         {{ govukFileUpload({
-          id: "officers-report",
-          name: "officers-report",
+          id: "statutory",
+          name: "statutory",
           classes: 'moj-multi-file-upload__input',
           label: {
             text: "Upload files",
@@ -56,12 +53,12 @@
       {{ mojMultiFileUpload({
         uploadedFiles: {
           heading: { text: 'Files added' },
-          items: data.uploadedFiles | filesByFieldName("officers-report")
+          items: data.uploadedFiles | filesByFieldName("statutory")
         },
         uploadHtml: uploadHtml
       }) }}
 
-      <input type="hidden" name="lpaq-{{version}}-aboutplanningapplication-officersreport" value="uploaded">
+      <input type="hidden" name="lpaq-{{version}}-optionalsupportingdocs-statutory" value="uploaded">
 
       {{ govukButton({
         text: "Save and continue"
