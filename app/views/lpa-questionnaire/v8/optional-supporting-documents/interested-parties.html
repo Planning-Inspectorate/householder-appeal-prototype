@@ -23,7 +23,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-l">
-      About the planning application
+      Optional supporting documents
     </span>
     <h1 class="govuk-heading-l">
       Telling interested parties about the application
@@ -36,8 +36,8 @@
 
       {% set uploadHtml %}
         {{ govukFileUpload({
-          id: "site-notice-ip",
-          name: "site-notice-ip",
+          id: "interestedparties",
+          name: "interestedparties",
           classes: 'moj-multi-file-upload__input',
           label: {
             text: "Upload files",
@@ -56,7 +56,7 @@
       {{ mojMultiFileUpload({
         uploadedFiles: {
           heading: { text: 'Files added' },
-          items: data.uploadedFiles | filesByFieldName("site-notice-ip")
+          items: data.uploadedFiles | filesByFieldName("interestedparties")
         },
         uploadHtml: uploadHtml
       }) }}
@@ -85,7 +85,7 @@
         container: $('.moj-multi-file-upload'),
         uploadUrl: '/ajax-case-file',
         deleteUrl: '/ajax-case-file-delete',
-        fieldName: 'site-notice-ip'
+        fieldName: 'interestedparties'
         });
     }
   </script>

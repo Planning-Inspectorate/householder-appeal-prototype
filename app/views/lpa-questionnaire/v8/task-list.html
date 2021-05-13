@@ -321,6 +321,19 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
+                <a href="optional-supporting-documents/conservation-map" class="govuk-link">
+                  Conservation map
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-optionalsupportingdocs-conservationmap"] %}
+                <strong class="govuk-tag app-task-list__tag" id="list-optionalsupportingdocs-conservationmap-status">Completed</strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-optionalsupportingdocs-conservationmap-status">Not started</strong>
+              {% endif %}
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
                 <a href="optional-supporting-documents/site-notices" class="govuk-link">
                   Site notices
                 </a>
