@@ -31,37 +31,6 @@
     
     <form action="" method="post">
 
-      {% set uploadHtml %}
-        {{ govukFileUpload({
-          id: "casefile",
-          name: "casefile",
-          classes: 'moj-multi-file-upload__input',
-          label: {
-            text: "Upload files",
-            classes: 'govuk-label--m'
-          },
-          attributes: { multiple: '' },
-          errorMessage: errorMessage
-        }) }}
-
-        {{govukButton({
-          text: 'Upload file',
-          classes: 'govuk-button--secondary moj-multi-file-upload__button'
-        })}}
-      {% endset %}
-
-      {% set conditionalHtml %}
-
-        {{ mojMultiFileUpload({
-          uploadedFiles: {
-            heading: { text: 'Files added' },
-            items: data.uploadedFiles | filesByFieldName("conservationareamap")
-          },
-          uploadHtml: uploadHtml
-        }) }}
-
-      {% endset %}
-
       {{ govukRadios({
         idPrefix: "lpaq-"+version+"-aboutappealsite-conservationarea",
         name: "lpaq-"+version+"-aboutappealsite-conservationarea",
@@ -69,10 +38,7 @@
           {
             value: "Yes",
             text: "Yes",
-            checked: checked("lpaq-"+version+"-aboutappealsite-conservationarea", "Yes"),
-            conditional: {
-              html: conditionalHtml
-            }
+            checked: checked("lpaq-"+version+"-aboutappealsite-conservationarea", "Yes")
           },
           {
             value: "No",
@@ -94,18 +60,4 @@
   </div>
 </div>
 
-{% endblock %}
-
-{% block pageScripts %}
-  <script>
-    if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
-
-      new MOJFrontend.MultiFileUpload({
-        container: $('.moj-multi-file-upload'),
-        uploadUrl: '/ajax-case-file',
-        deleteUrl: '/ajax-case-file-delete',
-        fieldName: 'conservationareamap'
-        });
-    }
-  </script>
 {% endblock %}

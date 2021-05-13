@@ -130,6 +130,14 @@ module.exports = function (router) {
       }
     })
   
+    router.post(base+'optional-supporting-documents/conservation-map', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-checkyouranswers']){
+        res.redirect(base+'check-your-answers');
+      } else {
+        res.redirect(base+'task-list');
+      }
+    })
+  
     router.post(base+'optional-supporting-documents/site-notices', function (req, res) {
       if (req.session.data['lpaq-'+v+'-checkyouranswers']){
         res.redirect(base+'check-your-answers');

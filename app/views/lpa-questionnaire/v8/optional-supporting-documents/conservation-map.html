@@ -26,18 +26,15 @@
       Optional supporting documents
     </span>
     <h1 class="govuk-heading-l">
-      Site notice and/or local advertisement
+      Upload the Conservation Area map and guidance
     </h1>
-    <p class="govuk-body">
-      If you’ve already uploaded this in a previous question, you do not need to upload it again.
-    <p>
     
     <form action="" method="post">
 
       {% set uploadHtml %}
         {{ govukFileUpload({
-          id: "sitenotices",
-          name: "sitenotices",
+          id: "conservationmap",
+          name: "conservationmap",
           classes: 'moj-multi-file-upload__input',
           label: {
             text: "Upload files",
@@ -56,12 +53,12 @@
       {{ mojMultiFileUpload({
         uploadedFiles: {
           heading: { text: 'Files added' },
-          items: data.uploadedFiles | filesByFieldName("sitenotices")
+          items: data.uploadedFiles | filesByFieldName("conservationmap")
         },
         uploadHtml: uploadHtml
       }) }}
 
-      <input type="hidden" name="lpaq-{{version}}-optionalsupportingdocs-sitenotices" value="uploaded">
+      <input type="hidden" name="lpaq-{{version}}-optionalsupportingdocs-conservationmap" value="uploaded">
 
       {{ govukButton({
         text: "Save and continue"
@@ -85,7 +82,7 @@
         container: $('.moj-multi-file-upload'),
         uploadUrl: '/ajax-case-file',
         deleteUrl: '/ajax-case-file-delete',
-        fieldName: 'sitenotices'
+        fieldName: 'conservationmap'
         });
     }
   </script>
