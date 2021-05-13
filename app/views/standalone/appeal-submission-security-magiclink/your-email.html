@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Your details | Appeal a householder planning decision
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post" novalidate="">
+        <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About you</span>
+
+        {{ govukInput({
+          id: "appealsubsecurity-email",
+          name: "appealsubsecurity-email",
+          label: {
+            classes: "govuk-label--l",
+            isPageHeading: true,
+            text: "Your email"
+          },
+          hint: {
+            text: "We ask for your email address so we can keep your information secure, and contact you about your appeal."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    
+    </div>
+
+    <div class="govuk-grid-column-one-third"></div>
+  
+  </div>
+
+{% endblock %}
