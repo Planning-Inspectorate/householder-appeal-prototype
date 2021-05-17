@@ -1,0 +1,35 @@
+{% extends "layout-notify.html" %}
+
+{% block pageTitle %}
+  Your planning appeal return link email
+{% endblock %}
+
+{% block content %}
+<p><strong>Subject:</strong> Your planning appeal</p>
+<p><strong>From:</strong> info@planninginspectorate.gov.uk</p>
+
+<img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p>Dear [name]</p>
+
+    <h3 class="govuk-heading-m">Continue to your householder planning appeal</h3>
+
+    <p>​This is a link to <a href="javascript:preventDefault();">get back into your householder planning appeal</a>.</p>
+
+    <p>If you did not request a link, you can delete this email.​​</p>
+    <br><br>
+    
+    <p>Thank you,<br>The Planning Inspectorate​</p>
+    
+    <br><hr><br>
+
+    <p>Need help?</p>
+    <p>You can email our customer support team at <a href="mailto:enquiries@planninginspectorate.gov.uk">enquiries@planninginspectorate.gov.uk</a> or call them on 0303 444 5000.</p>
+  
+  </div>
+</div>
+
+{% endblock %}
