@@ -1065,5 +1065,6 @@ require('./routes/lpa-questionnaire/v8.js')(router);
 require('./routes/standalone/as-2078.js')(router);
 require('./routes/standalone/lpa-questionnaire-security.js')(router);
 require('./routes/standalone/appeal-submission-security.js')(router);
+require('./routes/standalone/appeal-submission-security-magiclink.js')(router);
 
 module.exports = router

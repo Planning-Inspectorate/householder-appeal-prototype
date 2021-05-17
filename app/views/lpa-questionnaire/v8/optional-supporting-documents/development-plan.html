@@ -23,7 +23,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-l">
-      Policies related to the planning application
+      Optional supporting documents
     </span>
     <h1 class="govuk-heading-l">
       Development Plan Document or Neighbourhood Plan
@@ -37,23 +37,23 @@
 
       {% set aboutchangesHtml %}
         {{ govukTextarea({
-          id: "lpaq-"+version+"-relatedpolicies-developmentplan-aboutchanges",
-          name: "lpaq-"+version+"-relatedpolicies-developmentplan-aboutchanges",
+          id: "lpaq-"+version+"-optionalsupportingdocs-developmentplan-aboutchanges",
+          name: "lpaq-"+version+"-optionalsupportingdocs-developmentplan-aboutchanges",
           label: {
             text: "Tell us about any substantive changes in the progress of the emerging plan, and their relevance to this appeal (if the plan may not be adopted before the Inspector issues their decision)"
           },
-          value: data["lpaq-"+version+"-relatedpolicies-developmentplan-aboutchanges"]
+          value: data["lpaq-"+version+"-optionalsupportingdocs-developmentplan-aboutchanges"]
         }) }}
       {% endset -%}
 
       {{ govukRadios({
-        idPrefix: "lpaq-"+version+"-relatedpolicies-developmentplan",
-        name: "lpaq-"+version+"-relatedpolicies-developmentplan",
+        idPrefix: "lpaq-"+version+"-optionalsupportingdocs-developmentplan",
+        name: "lpaq-"+version+"-optionalsupportingdocs-developmentplan",
         items: [
           {
             value: "Yes",
             text: "Yes",
-            checked: checked("lpaq-"+version+"-relatedpolicies-developmentplan", "Yes"),
+            checked: checked("lpaq-"+version+"-optionalsupportingdocs-developmentplan", "Yes"),
             conditional: {
               html: aboutchangesHtml
             }
@@ -61,7 +61,7 @@
           {
             value: "No",
             text: "No",
-            checked: checked("lpaq-"+version+"-relatedpolicies-developmentplan", "No")
+            checked: checked("lpaq-"+version+"-optionalsupportingdocs-developmentplan", "No")
           }
         ]
       }) }}

@@ -23,18 +23,18 @@
   <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-l">
-      About the planning application
+      Optional supporting documents
     </span>
     <h1 class="govuk-heading-l">
-      Upload the plans used to reach the decision
+      Statutory development plan policy
     </h1>
     
     <form action="" method="post">
 
       {% set uploadHtml %}
         {{ govukFileUpload({
-          id: "casefile",
-          name: "casefile",
+          id: "statutory",
+          name: "statutory",
           classes: 'moj-multi-file-upload__input',
           label: {
             text: "Upload files",
@@ -53,12 +53,12 @@
       {{ mojMultiFileUpload({
         uploadedFiles: {
           heading: { text: 'Files added' },
-          items: data.uploadedFiles | filesByFieldName("casefile")
+          items: data.uploadedFiles | filesByFieldName("statutory")
         },
         uploadHtml: uploadHtml
       }) }}
 
-      <input type="hidden" name="lpaq-{{version}}-aboutplanningapplication-uploadplans" value="uploaded">
+      <input type="hidden" name="lpaq-{{version}}-optionalsupportingdocs-statutory" value="uploaded">
 
       {{ govukButton({
         text: "Save and continue"
@@ -82,7 +82,7 @@
         container: $('.moj-multi-file-upload'),
         uploadUrl: '/ajax-case-file',
         deleteUrl: '/ajax-case-file-delete',
-        fieldName: 'casefile'
+        fieldName: 'statutory'
         });
     }
   </script>

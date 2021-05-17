@@ -23,21 +23,18 @@
   <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-l">
-      About the planning application
+      Optional supporting documents
     </span>
     <h1 class="govuk-heading-l">
-      Planning Officer’s report
+      Conservation area map and guidance 
     </h1>
-    <p class="govuk-body">
-      Upload the Planning Officer’s report to committee or delegated report on the application, and any other relevant documents or minutes.
-    <p>
     
     <form action="" method="post">
 
       {% set uploadHtml %}
         {{ govukFileUpload({
-          id: "officers-report",
-          name: "officers-report",
+          id: "conservationmap",
+          name: "conservationmap",
           classes: 'moj-multi-file-upload__input',
           label: {
             text: "Upload files",
@@ -56,12 +53,12 @@
       {{ mojMultiFileUpload({
         uploadedFiles: {
           heading: { text: 'Files added' },
-          items: data.uploadedFiles | filesByFieldName("officers-report")
+          items: data.uploadedFiles | filesByFieldName("conservationmap")
         },
         uploadHtml: uploadHtml
       }) }}
 
-      <input type="hidden" name="lpaq-{{version}}-aboutplanningapplication-officersreport" value="uploaded">
+      <input type="hidden" name="lpaq-{{version}}-optionalsupportingdocs-conservationmap" value="uploaded">
 
       {{ govukButton({
         text: "Save and continue"
@@ -85,7 +82,7 @@
         container: $('.moj-multi-file-upload'),
         uploadUrl: '/ajax-case-file',
         deleteUrl: '/ajax-case-file-delete',
-        fieldName: 'casefile'
+        fieldName: 'conservationmap'
         });
     }
   </script>

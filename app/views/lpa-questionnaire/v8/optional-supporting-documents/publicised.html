@@ -23,7 +23,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-l">
-      About the appeal
+      Optional supporting documents
     </span>
     <h1 class="govuk-heading-l">
       Did you publicise the original planning application?
@@ -32,18 +32,18 @@
     <form action="" method="post">
 
       {{ govukRadios({
-        idPrefix: "lpaq-"+version+"-aboutplanningapplication-sitenotices",
-        name: "lpaq-"+version+"-aboutplanningapplication-sitenotices",
+        idPrefix: "lpaq-"+version+"-optionalsupportingdocs-publicised",
+        name: "lpaq-"+version+"-optionalsupportingdocs-publicised",
         items: [
           {
             value: "Yes",
             text: "Yes",
-            checked: checked("lpaq-"+version+"-aboutplanningapplication-sitenotices", "Yes")
+            checked: checked("lpaq-"+version+"-optionalsupportingdocs-publicised", "Yes")
           },
           {
             value: "No",
             text: "No",
-            checked: checked("lpaq-"+version+"-aboutplanningapplication-sitenotices", "No")
+            checked: checked("lpaq-"+version+"-optionalsupportingdocs-publicised", "No")
           }
         ]
       }) }}

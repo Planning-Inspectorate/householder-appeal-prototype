@@ -1,0 +1,42 @@
+{% extends "layouts/lpa-questionnaire/v8.html" %}
+
+{% block pageTitle %}
+ Questionnaire submitted
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        classes: "govuk-!-margin-bottom-7",
+        titleText: "Questionnaire submitted"
+      }) }}
+      <p class="govuk-body">
+        We've sent a confirmation email to <strong>your.email@work.gov.uk</strong>.
+      <p>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          Your evidence has been submitted to the Planning Inspectorate, and a copy sent to the appellant.
+        </li>
+        <li>
+          The Planning Inspectorate will be in touch if we require any further information.
+        </li>
+      </ul>
+
+    </div>
+  </div>
+{% endblock %}
