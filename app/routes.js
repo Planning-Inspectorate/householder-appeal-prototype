@@ -926,7 +926,12 @@ router.post("/lpa-submission/:appealId/supplementary-adopted-post", function(req
 })
 
 
-// Inspector appeals - checks for ARSV to set time slot else ignores time
+
+
+
+
+
+// Inspector appeals 2- checks for ARSV to set time slot else ignores time
 router.post('/inspector-appeals2/visit-type-arsv-check', function (req, res) {
   let owner = req.session.data['site-visit-type']
 //console.log("here");
@@ -941,7 +946,25 @@ res.redirect('visit-date')
 
 router.post('/inspector-appeals2/visit-type-date-check', function (req, res) {
   let owner = req.session.data['site-visit-type']
-//console.log("here");
+//console.log ('here');
+let svDate = moment(req.session.data['passport-issued-month'] + "-" + req.session.data['passport-issued-day'] + "-" + req.session.data['passport-issued-year'], "MM-DD-YYYY")
+
+if (svDate.isValid())
+
+{
+  if (moment().isSameOrAfter(svDate))
+  {
+  res.redirect('visit-date-error')
+  }
+//res.redirect('validdate')
+}
+
+else {
+  res.redirect('visit-date-error')
+}
+
+
+console.log(svDate);
   if (owner === 'ARSV') {
     res.redirect('visit-time')
   } else {
@@ -950,7 +973,51 @@ router.post('/inspector-appeals2/visit-type-date-check', function (req, res) {
 
 })
 
-// Inspector appeals end
+// Inspector appeals2 end
+
+// Inspector appeals 3- checks for ARSV to set time slot else ignores time
+router.post('/inspector-appeals3/visit-type-arsv-check', function (req, res) {
+  let owner = req.session.data['site-visit-type']
+//console.log("here");
+  if (owner === 'ARSV') {
+    req.session.data['ARSV'] = 'ARSV'
+  } else {
+    req.session.data['ARSV'] = 'ASV'
+    req.session.data['site-visit-time'] = 'N/A'
+  }
+res.redirect('visit-date')
+})
+
+router.post('/inspector-appeals3/visit-type-date-check', function (req, res) {
+  let owner = req.session.data['site-visit-type']
+//console.log ('here');
+let svDate = moment(req.session.data['passport-issued-month'] + "-" + req.session.data['passport-issued-day'] + "-" + req.session.data['passport-issued-year'], "MM-DD-YYYY")
+
+if (svDate.isValid())
+
+{
+  if (moment().isSameOrAfter(svDate))
+  {
+  res.redirect('visit-date-error')
+  }
+//res.redirect('validdate')
+}
+
+else {
+  res.redirect('visit-date-error')
+}
+
+
+console.log(svDate);
+  if (owner === 'ARSV') {
+    res.redirect('visit-time')
+  } else {
+    res.redirect('visit-summary')
+  }
+
+})
+
+// Inspector appeals3 end
 
 //lpa login
 

@@ -14,7 +14,12 @@
 </style>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-half">
-  <p></p>
+  <p>  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "visit-date.html"
+  }) }}</p>
   </div>
   <div class="govuk-grid-column-one-half">
     <p align="right"> <b>Inspector: </b>Marie Lightman</p>
