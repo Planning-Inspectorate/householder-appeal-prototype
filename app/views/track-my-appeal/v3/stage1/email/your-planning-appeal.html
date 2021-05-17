@@ -1,0 +1,40 @@
+{% extends "layout-notify.html" %}
+
+{% block pageTitle %}
+  Email - Your planning appeal
+{% endblock %}
+
+{% block content %}
+
+  <p><strong>Subject:</strong> Your planning appeal</p>
+  <p><strong>From:</strong> info@planninginspectorate.gov.uk</p>
+
+  <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+
+  <div class="govuk-grid-row govuk-!-margin-top-5">
+    <div class="govuk-grid-column-two-thirds">
+
+      <p>Dear [name]</p>
+      <p>We've received the following householder planning appeal: </p>
+      
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Appeal site</h2>
+      <p>
+        9617 The Avenue <br>
+        Maidstone <br>
+        XM26 7YS
+      </p>
+
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Local planning department</h2>
+      <p>South Gloucestershire Council</p>
+
+      <h2 class="govuk-heading-m">What happens next?​</h2>
+      <p>Keep this email safe, as you can use this link to view the status of your appeal:</p>
+      <p><a href="../passcode">View your planning appeal</a></p>
+      <p>We'll email you whenever there's an update.</p>
+      <br><br>
+      
+      <p>Thank you,<br>The Planning Inspectorate​</p>
+    </div>
+  </div>
+
+{% endblock %}

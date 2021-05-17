@@ -100,7 +100,7 @@ $govuk-assets-path: '/govuk/assets/';
 
 		&--current { 
 			&:before {
-				border-color: govuk-colour("dark-blue");
+				border-color: govuk-colour("blue");
 			}
 		}
 
@@ -108,8 +108,8 @@ $govuk-assets-path: '/govuk/assets/';
 
 			&:before {
 				color: white;
-				background-color: govuk-colour("dark-blue");
-				border-color: govuk-colour("dark-blue");
+				background-color: govuk-colour("blue");
+				border-color: govuk-colour("blue");
 			}
 
 			
@@ -117,7 +117,7 @@ $govuk-assets-path: '/govuk/assets/';
 
 
 		&--complete:after {
-				background-color: govuk-colour("dark-blue");
+				background-color: govuk-colour("blue");
 			}
 
 		&:last-child:after {
