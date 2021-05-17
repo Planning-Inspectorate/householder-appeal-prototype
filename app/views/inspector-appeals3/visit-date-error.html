@@ -1,0 +1,87 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  Inspector Screens - My Appeals
+{% endblock %}
+
+{% block content %}
+<style>
+
+.govuk-header__container {
+    border-bottom: 10px solid #009999;
+}
+
+</style>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <p>{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "visit-type.html"
+  }) }}</p>
+  </div>
+  <div class="govuk-grid-column-one-half">
+      <p align="right"> <b>Inspector: </b>Marie Lightman</p>
+  </div>
+</div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="visit-type-date-check" method="post" novalidate>
+
+
+            <div class="govuk-form-group--error">
+              <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <h1 class="govuk-fieldset__heading">
+                    What date do you wish to carry out your site visit?
+                  </h1>
+                </legend>
+                <div id="passport-issued-hint" class="govuk-hint">
+                For example, 12 11 2021
+                </div>
+                <span id="passport-issued-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span>  This must be a valid date and in the future
+                </span>
+                <div class="govuk-date-input" id="passport-issued">
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                        Day
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                        Month
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                        Year
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                  </div>
+                </div>
+
+              </fieldset>
+            </div>
+
+<br>
+
+
+              <input type="hidden" name="answers-checked" value="true">
+
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+              </button>
+
+            </form>
+
+    </div>
+  </div>
+{% endblock %}

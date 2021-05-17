@@ -31,7 +31,7 @@
 </div>
 <div class="govuk-grid-column-full-width">
       <h1 class="govuk-heading-xl">
-        131 High Street, Bradford, BD6 1JK
+      131 High Street, Bradford, BD6 1JK
         <span class="govuk-caption-xl">Appeal Reference: APP/2020/56789/01234</span>
       </h1>
 
@@ -44,7 +44,7 @@
 </li>
 
 <li class="moj-sub-navigation__item">
-  <a class="moj-sub-navigation__link" aria-current="page" href="appeal1-visit-arranged">Site visit</a>
+  <a class="moj-sub-navigation__link" aria-current="page" href="appeal1-visit">Site visit</a>
 </li>
 
 <li class="moj-sub-navigation__item">
@@ -55,51 +55,20 @@
 </nav>
 
      <h2 class="govuk-heading-l">Site visit</h2>
-     <p>You have arranged a site visit</p>
 
-     <dl class="govuk-summary-list govuk-summary-list--no-border">
-       <div class="govuk-summary-list__row">
-         <dt class="govuk-summary-list__key">
-           Type of visit
-         </dt>
-         <dd class="govuk-summary-list__value">
-        {{ data['site-visit-type'] }}
-         </dd>
-       </div>
-       <div class="govuk-summary-list__row">
-         <dt class="govuk-summary-list__key">
-           Date
-         </dt>
-         <dd class="govuk-summary-list__value">
-{{ data['passport-issued-day'] }}
-{{ data['passport-issued-month'] | formatMonth }}
-{{ data['passport-issued-year'] }}
-         </dd>
-       </div>
-       <div class="govuk-summary-list__row">
-         <dt class="govuk-summary-list__key">
-          Time
-         </dt>
-         <dd class="govuk-summary-list__value">
-            {{ data['site-visit-time'] }}
-         </dd>
-       </div>
-       <div class="govuk-summary-list__row">
-         <dt class="govuk-summary-list__key">
-           Site visit letter / email
-         </dt>
-         <dd class="govuk-summary-list__value">
-           <a href="#">View letter sent to appellant</a>
-         </dd>
-       </div>
+     <strong class="govuk-tag govuk-tag--green">({{data['site-visit-type'] | default("Provisional W/C") }}) {{ data['passport-issued-day'] }}
+     {{ data['passport-issued-month'] | formatMonth }}
+     {{ data['passport-issued-year'] }}  {{ data['site-visit-time'] }}</strong>
 
-     </dl>
+     <p><br>A week commencing date of {{ data['passport-issued-day'] }}
+     {{ data['passport-issued-month'] | formatMonth }}
+     {{ data['passport-issued-year'] }} is booked in Chart.<br>You have <b>not arranged</b> a site visit</p>
 
      {% from "govuk/components/button/macro.njk" import govukButton %}
 
      {{ govukButton({
-       text: "Re-arrange site visit",
-       href: "visit-summary.html"
+       text: "Arrange site visit",
+       href: "visit-type.html"
      }) }}
 
 
@@ -125,15 +94,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Does appellant own whole site?
-          </dt>
-          <dd class="govuk-summary-list__value">
-          No
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Can inspector see from public road?
+            Can inspector see site from public land?
           </dt>
           <dd class="govuk-summary-list__value">
             Yes
@@ -192,30 +153,6 @@
           </dt>
           <dd class="govuk-summary-list__value">
             Yes - Appellant has agreed to notify the owners
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Does development affect listed building?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            N/A
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-          Is the site in green belt?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            No
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Is site in or near a conservation area?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            No
           </dd>
         </div>
       </dl>
