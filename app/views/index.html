@@ -55,8 +55,7 @@
                       <a href="/standalone/appeal-submission-security-magiclink/who-are-you" title="">Magic link</a>
                     </li>
                   </ul>
-
-                  <!--details class="govuk-details" data-module="govuk-details">
+                  <details class="govuk-details" data-module="govuk-details">
                     <summary class="govuk-details__summary">
                       <span class="govuk-details__summary-text">
                         Jira Tickets (1)
@@ -64,10 +63,10 @@
                     </summary>
                     <div class="govuk-details__text">
                       <ul class="govuk-list govuk-list-bulleted">
-                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2123">AS-2123</a> - LPA Accessing Questionnaire</li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2318">AS-2318</a> - Alternative version of security for appellant</li>
                       </ul>
                     </div>
-                  </details-->
+                  </details>
                 </div>
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
@@ -347,7 +346,7 @@
                   </h3> 
                   <ul class="govuk-list govuk-list--bullet">
                     <li>
-                      <a href="/track-my-appeal/v3/appellant/email/your-planning-appeal" title="">Start journey from 'Your planning appeal' email</a>
+                      <a href="/track-my-appeal/v3/appellant/email/your-planning-appeal" title="">Static 'Stages of your appeal' journey (no links)</a>
                     </li>
                   </ul>
 
@@ -366,26 +365,24 @@
                 </div>
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
+
                   <h3 class="govuk-heading-m">
-                    Version 2 - Sprint 4
-                    {{ govukTag({
-                      classes: "govuk-tag--grey govuk-!-margin-left-1",
-                      text: "Archived"
-                    }) }}
-                  </h3> 
-                  <p class="govuk-body">How a user view updates to their appeal after submission.</p>
-                  <ul class="govuk-list">
-                    <li>
-                      <a href="/manage-appeal" title="">List of prototypes</a>
-                    </li>
-                  </ul>
-                  <details class="govuk-details" data-module="govuk-details">
+                    Version history
+                  </h3>
+
+                  <details class="govuk-details govuk-!-margin-bottom-3" data-module="govuk-details">
                     <summary class="govuk-details__summary">
                       <span class="govuk-details__summary-text">
-                        Last updated: Sprint 4 - not user tested
+                        Version 2 - Sprint 4
                       </span>
                     </summary>
                     <div class="govuk-details__text">
+                      <p class="govuk-body">
+                        How a user view updates to their appeal after submission.
+                      </p>
+                      <p class="govuk-body">
+                        <a href="/manage-appeal" title="">List of prototypes</a>
+                      <p>
                       <ul class="govuk-list govuk-list--bullet">
                         <li>Emails - all links now go to main manage appeal page (timeline)</li>
                         <li>content updates</li>
@@ -395,21 +392,23 @@
                       </ul>
                     </div>
                   </details>
-                </div>
 
-                <div class="govuk-inset-text govuk-!-margin-top-0">
-                  <h3 class="govuk-heading-m">
-                    Version 1 - Sprint 3
-                    {{ govukTag({
-                      classes: "govuk-tag--grey govuk-!-margin-left-1",
-                      text: "Archived"
-                    }) }}
-                  </h3>
-                  <p class="govuk-body">User journey created based on proof of concept for idox integration.</p>
-                  <ul class="govuk-list govuk-list-bullet">
-                    <li><a href="https://has-appeal-alpha.herokuapp.com/manage-appeal-v5" class="govuk-link">View prototype</a></li>
-                    <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/355140178/Sprint+3+Findings+-+MVP+Manage+my+Appeal+Findings">User research findings</a></li>
-                  </ul>
+                  <details class="govuk-details govuk-!-margin-bottom-3" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Version 1 - Sprint 3
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <p class="govuk-body">
+                        User journey created based on proof of concept for idox integration.
+                      </p>
+                      <ul class="govuk-list govuk-list-bullet">
+                        <li><a href="https://has-appeal-alpha.herokuapp.com/manage-appeal-v5" class="govuk-link">View prototype</a></li>
+                        <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/355140178/Sprint+3+Findings+-+MVP+Manage+my+Appeal+Findings">User research findings</a></li>
+                      </ul>
+                    </div>
+                  </details>
                 </div>
 
               </div>
@@ -444,18 +443,13 @@
                       text: "WIP"
                     }) }}
                   </h3>
-                  <!--p class="govuk-body">
-                    This version includes one time passcode security.<br>
-                    Currently you can only get as far as the task list.
-                  <p-->
                   <ul class="govuk-list govuk-list--bullet">
                     <li>
                       <a href="/lpa-questionnaire/v8/email/started" title="">Start journey from 'Householder appeal started' email</a>
                     </li>
                     <li><a href="/lpa-questionnaire/v8/jump/tasks-complete" class="govuk-link">Jump to Check You Answers</a></li>
                   </ul>
-
-                  <!--details class="govuk-details" data-module="govuk-details">
+                  <details class="govuk-details" data-module="govuk-details">
                     <summary class="govuk-details__summary">
                       <span class="govuk-details__summary-text">
                         Jira Tickets (1)
@@ -463,10 +457,11 @@
                     </summary>
                     <div class="govuk-details__text">
                       <ul class="govuk-list govuk-list-bulleted">
-                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2123">AS-2123</a> - LPA Accessing Questionnaire</li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2283">AS-2283</a> - Amendments to bring LPA Questionnaire v8 prototype in line with current dev build</li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2119">AS-2119</a> - LPA Submission - Appeal Site Question iteration</li>
                       </ul>
                     </div>
-                  </details-->
+                  </details>
                 </div>
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
