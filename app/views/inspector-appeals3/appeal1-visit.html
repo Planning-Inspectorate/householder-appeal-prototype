@@ -56,18 +56,18 @@
 
      <h2 class="govuk-heading-l">Site visit</h2>
 
-     <strong class="govuk-tag govuk-tag--green">({{data['site-visit-type'] | default("Provisional W/C") }}) {{ data['passport-issued-day'] }}
+     <strong class="govuk-tag govuk-tag--green">{{data['site-visit-type'] | default("Provisional W/C") }} {{ data['passport-issued-day'] }}
      {{ data['passport-issued-month'] | formatMonth }}
      {{ data['passport-issued-year'] }}  {{ data['site-visit-time'] }}</strong>
 
-     <p><br>A week commencing date of {{ data['passport-issued-day'] }}
+     <p><br>You have booked a provisional site visit for the week commencing  {{ data['passport-issued-day'] }}
      {{ data['passport-issued-month'] | formatMonth }}
-     {{ data['passport-issued-year'] }} is booked in Chart.<br>You have <b>not arranged</b> a site visit</p>
+     {{ data['passport-issued-year'] }} </p>
 
      {% from "govuk/components/button/macro.njk" import govukButton %}
 
      {{ govukButton({
-       text: "Arrange site visit",
+       text: "Confirm site visit details",
        href: "visit-type.html"
      }) }}
 
@@ -94,7 +94,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Can inspector see site from public land?
+            Can Inspector see site from public land?
           </dt>
           <dd class="govuk-summary-list__value">
             Yes
@@ -124,7 +124,7 @@
     <div class="govuk-accordion__section-header">
       <h2 class="govuk-accordion__section-heading">
         <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-          Local Planning Authority's site information
+          LPA's site information
         </span>
       </h2>
     </div>
@@ -136,7 +136,7 @@
             Can site be seen from public land?
           </dt>
           <dd class="govuk-summary-list__value">
-            Yes -  The inspector should be able to see relevant parts of the appeal site from public land.
+            Yes -  The Inspector should be able to see relevant parts of the appeal site from public land.
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -149,10 +149,10 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Does inspector need to access neighbour's land?
+            Does Inspector need to access neighbour's land?
           </dt>
           <dd class="govuk-summary-list__value">
-            Yes - Appellant has agreed to notify the owners
+            Yes - appellant has agreed to notify the owners
           </dd>
         </div>
       </dl>

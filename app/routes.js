@@ -982,7 +982,7 @@ router.post('/inspector-appeals3/visit-type-arsv-check', function (req, res) {
   if (owner === 'ARSV') {
     req.session.data['ARSV'] = 'ARSV'
   } else {
-    req.session.data['ARSV'] = 'ASV'
+    req.session.data['ARSV'] = 'ARSV'
     req.session.data['site-visit-time'] = 'N/A'
   }
 res.redirect('visit-date')
@@ -1009,7 +1009,7 @@ else {
 
 
 console.log(svDate);
-  if (owner === 'ARSV') {
+  if (owner === '(ARSV)') {
     res.redirect('visit-time')
   } else {
     res.redirect('visit-summary')
