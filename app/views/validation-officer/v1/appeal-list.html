@@ -1,0 +1,136 @@
+{% extends "layouts/case-officer/v1.html" %}
+
+{% block pageTitle %}
+  Planning appeals for review
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <!--span class="govuk-caption-l">Bradford City Council</span-->
+
+      <h1 class="govuk-heading-xl">
+        Planning appeals for review
+      </h1>
+
+      <table class="govuk-table">
+        <!--caption class="govuk-table__caption">Householder planning appeals</caption-->
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Planning application number</th>
+            <th scope="col" class="govuk-table__header">Location</th>
+            <th scope="col" class="govuk-table__header">Appeal received</th>
+            <th scope="col" class="govuk-table__header">Action</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              48269/APP/2020/1482
+            </td>
+            <td class="govuk-table__cell">96 The Avenue, Maidstone</td>
+            <td class="govuk-table__cell">16 May 2021</td>
+            <td class="govuk-table__cell">
+              <a href="validate-appeal" class="govuk-link">Review appeal</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              53227/APP/2020/4967	
+            </td>
+            <td class="govuk-table__cell">
+              73 Aberg Point
+            </td>
+            <td class="govuk-table__cell">
+              16 May 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="#" class="govuk-link govuk-link--disabled">Review appeal</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              62584/APP/2020/8494
+            </td>
+            <td class="govuk-table__cell">
+              99 Mitchell Trail
+            </td>
+            <td class="govuk-table__cell">
+              16 May 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="#" class="govuk-link govuk-link--disabled">Review appeal</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              58621/APP/2020/8620		
+            </td>
+            <td class="govuk-table__cell">
+              14 Stuart Plaza
+            </td>
+            <td class="govuk-table__cell">
+              17 May 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="#" class="govuk-link govuk-link--disabled">Review appeal</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              64372/APP/2020/4534	
+            </td>
+            <td class="govuk-table__cell">
+              10 Linden Court
+            </td>
+            <td class="govuk-table__cell">
+              17 May 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="#" class="govuk-link govuk-link--disabled">Review appeal</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              42813/APP/2020/4710	
+            </td>
+            <td class="govuk-table__cell">
+              98 Buena Vista Trail
+            </td>
+            <td class="govuk-table__cell">
+              18 May 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="#" class="govuk-link govuk-link--disabled">Review appeal</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              25992/APP/2020/4826		
+            </td>
+            <td class="govuk-table__cell">
+              26 Waxwing Place
+            </td>
+            <td class="govuk-table__cell">
+              18 May 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="#" class="govuk-link govuk-link--disabled">Review appeal</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+{% endblock %}
