@@ -94,7 +94,7 @@
        </div>
 
      </dl>
-
+     
      {% from "govuk/components/button/macro.njk" import govukButton %}
 
      {{ govukButton({
@@ -108,7 +108,7 @@
          <div class="govuk-accordion__section-header">
            <h2 class="govuk-accordion__section-heading">
              <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-               Appellant information
+               Site details
              </span>
            </h2>
          </div>
@@ -117,15 +117,55 @@
            <dl class="govuk-summary-list govuk-summary-list--no-border">
              <div class="govuk-summary-list__row">
                <dt class="govuk-summary-list__key">
-                 Address of appeal site
+                 Health and safety information
                </dt>
                <dd class="govuk-summary-list__value">
-               131 High Street, Bradford, BD6 1JK
+                  Yes, there are dogs
                </dd>
              </div>
              <div class="govuk-summary-list__row">
                <dt class="govuk-summary-list__key">
-                 Can Inspector see site from public land?
+                   Can site be seen from public land?
+               </dt>
+               <dd class="govuk-summary-list__value"> </dd>
+             </div>
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 <li>information from appellant</li>
+               </dt>
+               <dd class="govuk-summary-list__value">
+                 No
+               </dd>
+             </div>
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 <li>information from LPA</li>
+               </dt>
+               <dd class="govuk-summary-list__value">
+                Yes, the site can be viewed from the road at rear of property
+               </dd>
+             </div>
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 Does the Inspector need to enter site?
+               </dt>
+               <dd class="govuk-summary-list__value">
+                  No
+               </dd>
+             </div>
+
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                   Does the Inspector need to access a neighbours land?
+               </dt>
+               <dd class="govuk-summary-list__value">
+                 Yes. Appellant has agreed to notify neighbours at 133 High Street
+               </dd>
+             </div>
+
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 Does the appellant own the whole appeal site?
                </dt>
                <dd class="govuk-summary-list__value">
                  Yes
@@ -133,57 +173,10 @@
              </div>
              <div class="govuk-summary-list__row">
                <dt class="govuk-summary-list__key">
-                 If no, then why not?
-               </dt>
-               <dd class="govuk-summary-list__value">
-                 N/A
-               </dd>
-             </div>
-             <div class="govuk-summary-list__row">
-               <dt class="govuk-summary-list__key">
-                 Health and safety issues
-               </dt>
-               <dd class="govuk-summary-list__value">
-                  Yes there are dogs
-               </dd>
-             </div>
-           </dl>
-
-         </div>
-       </div>
-       <div class="govuk-accordion__section">
-         <div class="govuk-accordion__section-header">
-           <h2 class="govuk-accordion__section-heading">
-             <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-               LPA's site information
-             </span>
-           </h2>
-         </div>
-         <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
-
-           <dl class="govuk-summary-list govuk-summary-list--no-border">
-             <div class="govuk-summary-list__row">
-               <dt class="govuk-summary-list__key">
-                 Can site be seen from public land?
-               </dt>
-               <dd class="govuk-summary-list__value">
-                 Yes. The Inspector should be able to see relevant parts of the appeal site from public land.
-               </dd>
-             </div>
-             <div class="govuk-summary-list__row">
-               <dt class="govuk-summary-list__key">
-                 Does Inspector need to enter site?
+                 Are there any relevant appeals nearby?
                </dt>
                <dd class="govuk-summary-list__value">
                  Yes
-               </dd>
-             </div>
-             <div class="govuk-summary-list__row">
-               <dt class="govuk-summary-list__key">
-                 Does Inspector need to access neighbour's land?
-               </dt>
-               <dd class="govuk-summary-list__value">
-                 Yes. The appellant has agreed to notify the owners.
                </dd>
              </div>
            </dl>
