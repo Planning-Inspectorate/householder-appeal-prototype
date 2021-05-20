@@ -1,0 +1,263 @@
+{% extends "layouts/case-officer/v1.html" %}
+
+{% block pageTitle %}
+  Planning appeals for review
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Review planning appeal
+      </h1>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key ">
+            Appellant name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Manish Sharma
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appellant email
+          </dt>
+          <dd class="govuk-summary-list__value">
+            manish.sharma@example.com
+          </dd>
+        </div>
+        <!--div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key ">
+            Agent name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Adam Furlong
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Agent email
+          </dt>
+          <dd class="govuk-summary-list__value">
+            adam.furlong@domain.com
+          </dd>
+        </div-->
+        
+        
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Planning application number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">48269/APP/2020/1482</p>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal site
+          </dt>
+          <dd class="govuk-summary-list__value">
+            	96 The Avenue<br>
+              Maidstone<br>
+              XM26 7YS
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border">
+            Local planning department
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
+            {{data.user.location.city}} Borough Council
+          </dd>
+        </div>
+
+      </dl>
+
+
+      {% set planningAppHtml %}
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Planning application form
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ multiFileDisplay({
+                  uploadedFiles: data.user.completeAppeal.uploadedFiles | filesByFieldName("planning-application")
+                }) }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-summary-list__key--no-border">
+              Decision letter
+            </dt>
+            <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
+              {{ multiFileDisplay({
+                  uploadedFiles: data.user.completeAppeal.uploadedFiles | filesByFieldName("decision-letter")
+                }) }}
+            </dd>
+
+          </div>
+        </dl>
+      {% endset %}
+
+      {% set appealHtml %}
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal statement
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ multiFileDisplay({
+                uploadedFiles: data.user.completeAppeal.uploadedFiles | filesByFieldName("appeal-statement")
+              }) }}
+          </dd>
+
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border">
+            Documents to support your appeal
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__key--no-border">
+            {{ multiFileDisplay({
+                uploadedFiles: data.user.completeAppeal.uploadedFiles | filesByFieldName("supporting-docs")
+              }) }}
+
+          </dd>
+
+        </div>
+        <!--div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border">
+            Other relevant appeals
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
+            {% if data.user.completeAppeal['other-appeals'] === 'yes' %}
+              <div class="user-inout-text">{{ data.user.completeAppeal['other-appealss-detail'] }}</div>
+            {% else %}
+            <p>Yes</p>
+            {% endif %}
+          </dd>
+
+        </div-->
+      </dl>
+
+      {% endset %}
+
+
+      {% set appealSiteHtml %}
+
+      <dl class="govuk-summary-list">
+
+         <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Do you own the whole appeal site?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            yes
+          </dd>
+
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Can the Inspector see the whole of the appeal site from a public road?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data.user.completeAppeal['site-access'] === 'no' %}
+              <div class="user-inout-text">{{ data.user.completeAppeal['site-access-more-detail'] }}</div>
+            {% else %}
+            <p>Yes</p>
+            {% endif %}
+          </dd>
+
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border">
+            Any health and safety issues?
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
+            {% if data.user.completeAppeal['safety'] === 'yes' %}
+              <div class="user-inout-text">{{ data.user.completeAppeal['safety-detail'] }}</div>
+            {% else %}
+            <p>No</p>
+            {% endif %}
+          </dd>
+
+        </div>
+      </dl>
+
+      {% endset %}
+      {{ govukAccordion({
+        id: "accordion-default",
+        items: [
+          {
+            heading: {
+              text: "About the original planning application"
+            },
+            content: {
+              html: planningAppHtml
+            }
+          },{
+            heading: {
+              text: "About your appeal"
+            },
+            content: {
+              html: appealHtml
+            }
+          }
+
+        ]
+      }) }}
+
+    <form action="" method="post">
+
+      {{ govukRadios({
+        idPrefix: "vo-v1-status",
+        name: "vo-v1-status",
+        fieldset: {
+          legend: {
+            text: "Outcome of review",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "Valid",
+            text: "Valid"
+          },
+          {
+            value: "Invalid",
+            text: "Invalid"
+          },
+          {
+            value: "Incomplete",
+            text: "Incomplete"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Confirm outcome"
+      }) }}
+
+    </form>
+      
+
+  </div>
+
+{% endblock %}
