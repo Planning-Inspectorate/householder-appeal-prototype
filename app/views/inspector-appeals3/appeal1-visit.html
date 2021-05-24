@@ -62,103 +62,84 @@
 
      <p><br>You have booked a provisional site visit for the week commencing  {{ data['passport-issued-day'] }}
      {{ data['passport-issued-month'] | formatMonth }}
-     {{ data['passport-issued-year'] }} </p>
+     {{ data['passport-issued-year'] }} <br> You have <b>not scheduled</b> the site visit and the appellant has not been notified of the provisional date.</p>
 
      {% from "govuk/components/button/macro.njk" import govukButton %}
 
      {{ govukButton({
-       text: "Confirm site visit details",
+       text: "Schedule the site visit",
        href: "visit-type.html"
      }) }}
 
+     <br><br><br>
+                <table class="govuk-table">
+                  <caption class="govuk-table__caption govuk-table__caption--m">Can site be seen from public land?</caption>
+                  <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                      <th scope="col" class="govuk-table__header"> </th>
+                      <th scope="col" class="govuk-table__header"> </th>
+                    </tr>
+                  </thead>
+                  <tbody class="govuk-table__body">
 
-<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
-  <div class="govuk-accordion__section">
-    <div class="govuk-accordion__section-header">
-      <h2 class="govuk-accordion__section-heading">
-        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-          Appellant information
-        </span>
-      </h2>
-    </div>
-    <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                    <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">Response from appellant</th>
+                      <td class="govuk-table__cell">No</td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">Response from LPA</th>
+                      <td class="govuk-table__cell">	Yes, the site can be viewed from the road at rear of property</td>
+                    </tr>
+                  </tbody>
+                </table>
+          <br>
 
-      <dl class="govuk-summary-list govuk-summary-list--no-border">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Address of appeal site
-          </dt>
-          <dd class="govuk-summary-list__value">
-          131 High Street, Bradford, BD6 1JK
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Can Inspector see site from public land?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Yes
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            If no, then why not?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            N/A
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Health and safety issues
-          </dt>
-          <dd class="govuk-summary-list__value">
-             Yes there are dogs
-          </dd>
-        </div>
-      </dl>
+          <!--  <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+          <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+           <h2 class="govuk-accordion__section-heading">
+             <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+               Site details
+             </span>
+           </h2>
+          </div>
+          <!-- <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1"> -->
 
-    </div>
-  </div>
-  <div class="govuk-accordion__section">
-    <div class="govuk-accordion__section-header">
-      <h2 class="govuk-accordion__section-heading">
-        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-          LPA's site information
-        </span>
-      </h2>
-    </div>
-    <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
-
-      <dl class="govuk-summary-list govuk-summary-list--no-border">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Can site be seen from public land?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Yes -  The Inspector should be able to see relevant parts of the appeal site from public land.
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Does inspector need to enter site?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Yes
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Does Inspector need to access neighbour's land?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Yes - appellant has agreed to notify the owners
-          </dd>
-        </div>
-      </dl>
-
-    </div>
-  </div>
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Site details</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header"> </th>
+                <th scope="col" class="govuk-table__header"> </th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Health and safety information</th>
+                <td class="govuk-table__cell">Yes, there are dogs</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Does the Inspector need to enter site?</th>
+                <td class="govuk-table__cell">No</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Does the Inspector need to access a neighbours land?</th>
+                <td class="govuk-table__cell">Yes. Appellant has agreed to notify neighbours at 133 High Street</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Does the appellant own the whole appeal site?</th>
+                <td class="govuk-table__cell">Yes</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Are there any relevant appeals nearby?</th>
+                <td class="govuk-table__cell">Yes</td>
+              </tr>
+            </tbody>
+          </table>
 
 
-{% endblock %}
+          <!--    </div> -->
+          </div>
+
+
+          {% endblock %}
