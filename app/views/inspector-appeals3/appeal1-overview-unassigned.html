@@ -147,7 +147,7 @@
             Description of development
           </dt>
           <dd class="govuk-summary-list__value">
-          Description here required?
+          Description of development here
           </dd>
         </div>
       </dl>
@@ -192,7 +192,6 @@
       </h2>
     </div>
     <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
-
       <dl class="govuk-summary-list govuk-summary-list--no-border">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -200,6 +199,14 @@
           </dt>
           <dd class="govuk-summary-list__value">
           <a href="#">Plans-uploaded-by-lpa.pdf</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Planning application form
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <a href="#">planning-application.pdf</a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -212,16 +219,6 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Application documents
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ multiFileDisplay({
-                uploadedFiles: data.user.completeAppeal.uploadedFiles | filesByFieldName("planning-application")
-              }) }}
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
             Decision notice
           </dt>
           <dd class="govuk-summary-list__value">
@@ -230,7 +227,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Extra conditions from LPA
+            Extra conditions from the LPA
           </dt>
           <dd class="govuk-summary-list__value">
             No
@@ -238,7 +235,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Planning history
+            Details of planning history
           </dt>
           <dd class="govuk-summary-list__value">
             <a href="#">Document1.pdf</a>
