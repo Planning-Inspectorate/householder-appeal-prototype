@@ -1,0 +1,291 @@
+{% extends "layouts/lpa-questionnaire/v8.html" %}
+
+{% block pageTitle %}
+  Provide information for a householder planning appeal
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="javascript:preventDefault();">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "supplementaryplanning"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Optional supporting documents
+    </span>
+    <h1 class="govuk-heading-l">
+      Supplementary planning documents details
+    </h1>
+
+    <!-- First file uploaded -->
+
+      {% set suppdoc1_adopetedHtml %}
+        {{ govukDateInput({
+          id: "suppdoc1-adopted-date",
+          name: "suppdoc1-adopted-date",
+          fieldset: {
+            legend: {
+              text: "Tell us the date of adoption",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "For example, 27 3 2007"
+          }
+        }) }}
+      {% endset %}
+
+      {% set suppdoc1_notadopetedHtml %}
+        {{ govukInput({
+          id: "suppdoc1-adopted-stage",
+          name: "suppdoc1-adopted-stage",
+          label: {
+            text: "Tell us what stage this has reached"
+          }
+        }) }}
+      {% endset %}
+
+      {% set suppdoc1Html %}
+        {{ govukInput({
+          id: "suppdoc1-name",
+          name: "suppdoc1-name",
+          label: {
+            classes: "govuk-label--m",
+            text: "Document name"
+          }
+        }) }}
+        {{ govukRadios({
+          idPrefix: "suppdoc1-adopted",
+          name: "suppdoc1-adopted",
+          fieldset: {
+            legend: {
+              text: "Was it formally adopted?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: suppdoc1_adopetedHtml
+              }
+            },
+            {
+              value: "No",
+              text: "No",
+              conditional: {
+                html: suppdoc1_notadopetedHtml
+              }
+            }
+          ]
+        }) }}
+      {% endset %}
+
+    <!-- Second file uploaded -->
+
+      {% set suppdoc2_adopetedHtml %}
+        {{ govukDateInput({
+          id: "suppdoc2-adopted-date",
+          name: "suppdoc2-adopted-date",
+          fieldset: {
+            legend: {
+              text: "Tell us the date of adoption",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "For example, 27 3 2007"
+          }
+        }) }}
+      {% endset %}
+
+      {% set suppdoc2_notadopetedHtml %}
+        {{ govukInput({
+          id: "suppdoc2-adopted-stage",
+          name: "suppdoc2-adopted-stage",
+          label: {
+            text: "Tell us what stage this has reached"
+          }
+        }) }}
+      {% endset %}
+
+      {% set suppdoc2Html %}
+        {{ govukInput({
+          id: "suppdoc2-name",
+          name: "suppdoc2-name",
+          label: {
+            classes: "govuk-label--m",
+            text: "Document name"
+          }
+        }) }}
+        {{ govukRadios({
+          idPrefix: "suppdoc2-adopted",
+          name: "suppdoc2-adopted",
+          fieldset: {
+            legend: {
+              text: "Was it formally adopted?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: suppdoc2_adopetedHtml
+              }
+            },
+            {
+              value: "No",
+              text: "No",
+              conditional: {
+                html: suppdoc2_notadopetedHtml
+              }
+            }
+          ]
+        }) }}
+      {% endset %}
+
+    <!-- Second file uploaded -->
+
+      {% set suppdoc3_adopetedHtml %}
+        {{ govukDateInput({
+          id: "suppdoc3-adopted-date",
+          name: "suppdoc3-adopted-date",
+          fieldset: {
+            legend: {
+              text: "Tell us the date of adoption",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "For example, 27 3 2007"
+          }
+        }) }}
+      {% endset %}
+
+      {% set suppdoc3_notadopetedHtml %}
+        {{ govukInput({
+          id: "suppdoc3-adopted-stage",
+          name: "suppdoc3-adopted-stage",
+          label: {
+            text: "Tell us what stage this has reached"
+          }
+        }) }}
+      {% endset %}
+
+      {% set suppdoc3Html %}
+        {{ govukInput({
+          id: "suppdoc3-name",
+          name: "suppdoc3-name",
+          label: {
+            classes: "govuk-label--m",
+            text: "Document name"
+          }
+        }) }}
+        {{ govukRadios({
+          idPrefix: "suppdoc3-adopted",
+          name: "suppdoc3-adopted",
+          fieldset: {
+            legend: {
+              text: "Was it formally adopted?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: suppdoc3_adopetedHtml
+              }
+            },
+            {
+              value: "No",
+              text: "No",
+              conditional: {
+                html: suppdoc3_notadopetedHtml
+              }
+            }
+          ]
+        }) }}
+      {% endset %}
+    
+    <form action="" method="post">
+
+      <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              {{ govukDetails({
+                classes: "govuk-!-margin-bottom-0",
+                summaryText: "FirstUploadedFile.pdf",
+                html: suppdoc1Html
+              }) }}
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a href="javascript:preventDefault();" class="govuk-link">Delete</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              {{ govukDetails({
+                classes: "govuk-!-margin-bottom-0",
+                summaryText: "SecondUploadedFile.pdf",
+                html: suppdoc2Html
+              }) }}
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a href="javascript:preventDefault();" class="govuk-link">Delete</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              {{ govukDetails({
+                classes: "govuk-!-margin-bottom-0",
+                summaryText: "ThirdUploadedFile.pdf",
+                html: suppdoc3Html
+              }) }}
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a href="javascript:preventDefault();" class="govuk-link">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="govuk-body">
+        {{ govukButton({
+          classes: "govuk-button--secondary",
+          href: "supplementaryplanning",
+          text: "Upload another file"
+        }) }}
+      <p>
+
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+  </div>
+</div>
+
+{% endblock %}
