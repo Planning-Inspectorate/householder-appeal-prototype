@@ -1,0 +1,92 @@
+{% extends "layouts/lpa-questionnaire/v8.html" %}
+
+{% block pageTitle %}
+  Provide information for a householder planning appeal
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "../task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Optional supporting documents
+    </span>
+    <h1 class="govuk-heading-l">
+      Supplementary planning documents
+    </h1>
+    <p class="govuk-body">
+      If applicable, upload extracts from any supplementary planning document you feel is relevant. This includes any supplementary planning guidance published under previous provisions and still in place.
+    <p>
+    
+    <form action="" method="post">
+
+      {% set uploadHtml %}
+        {{ govukFileUpload({
+          id: "supplementaryplanning",
+          name: "supplementaryplanning",
+          classes: 'moj-multi-file-upload__input',
+          label: {
+            text: "Upload files",
+            classes: 'govuk-label--m'
+          },
+          attributes: { multiple: '' },
+          errorMessage: errorMessage
+        }) }}
+
+        {{govukButton({
+          text: 'Upload file',
+          classes: 'govuk-button--secondary moj-multi-file-upload__button'
+        })}}
+      {% endset %}
+
+      {{ mojMultiFileUpload({
+        uploadedFiles: {
+          heading: { text: 'Files added' },
+          items: data.uploadedFiles | filesByFieldName("supplementaryplanning")
+        },
+        uploadHtml: uploadHtml
+      }) }}
+
+      <input type="hidden" name="lpaq-{{version}}-optionalsupportingdocs-supplementaryplanning" value="uploaded">
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
+
+      new MOJFrontend.MultiFileUpload({
+        container: $('.moj-multi-file-upload'),
+        uploadUrl: '/ajax-case-file',
+        deleteUrl: '/ajax-case-file-delete',
+        fieldName: 'supplementaryplanning'
+        });
+    }
+  </script>
+{% endblock %}

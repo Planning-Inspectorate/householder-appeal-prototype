@@ -178,6 +178,18 @@ module.exports = function (router) {
       }
     })
   
+    router.post(base+'optional-supporting-documents/supplementaryplanning', function (req, res) {
+      res.redirect(base+'optional-supporting-documents/supplementaryplanning-details');
+    })
+  
+    router.post(base+'optional-supporting-documents/supplementaryplanning-details', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-checkyouranswers']){
+        res.redirect(base+'check-your-answers');
+      } else {
+        res.redirect(base+'task-list');
+      }
+    })
+  
     router.post(base+'optional-supporting-documents/development-plan', function (req, res) {
       if (req.session.data['lpaq-'+v+'-checkyouranswers']){
         res.redirect(base+'check-your-answers');
