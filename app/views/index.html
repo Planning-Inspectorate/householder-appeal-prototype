@@ -268,61 +268,6 @@
           </div>
         </div>
 
-
-        <div class="govuk-accordion__section">
-          <div class="govuk-accordion__section-header">
-            <h2 class="govuk-accordion__section-heading">
-              <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-                User journey for LPA/Idox integration
-              </span>
-            </h2>
-          </div>
-          <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
-
-            <div class="govuk-grid-row">
-              <div class="govuk-grid-column-one-half">
-                <p class="govuk-body">Full user journey for proposed beta, from start page through to appeal submit.</p>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>Select South Gloucestershire Council</li>
-                    <li>P20/12345/F - Refused. Able to appeal</li>
-                    <li>P20/56789/F - Refused. Over deadline.</li>
-                  </ul>
-
-                <a class="govuk-button" href="/eligibility/start-your-appeal">View prototype</a>
-                <p class="govuk-body">Skip to:</p>
-                <ul class="govuk-list">
-                  <li><a href="/submit-appeal/task-list">Task list</a></li>
-                  <li><a href="/complete-appeal-task-list">Completed task list</a></li>
-                </ul>
-              </div>
-              <div class="govuk-grid-column-one-half">
-                <h4 class="govuk-heading-s">Current version</h4>
-                <p class="govuk-body">Last updated: Sprint 3</p>
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>Added questions for information not provided by local planning department's website.</li>
-                  <li>Added task list</li>
-                </ul>
-
-                <details class="govuk-details" data-module="govuk-details">
-                  <summary class="govuk-details__summary">
-                    <span class="govuk-details__summary-text">
-                      Version 1 - Sprint 3
-                    </span>
-                  </summary>
-                  <div class="govuk-details__text">
-                    <p class="govuk-body">User journey created based on proof of concept for idox integration.</p>
-                    <ul class="govuk-list">
-                      <li><a href="https://has-appeal-archive-2.herokuapp.com/eligibility/start-your-appeal" class="govuk-link">View prototype</a></li>
-                      <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/313753678/Sprint+3+UR">User research findings</a></li>
-                    </ul>
-                  </div>
-                </details>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
         <div class="govuk-accordion__section">
           <div class="govuk-accordion__section-header">
             <h2 class="govuk-accordion__section-heading">
@@ -417,6 +362,54 @@
                       </ul>
                     </div>
                   </details>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-validationofficer">
+                Validation Officer
+              </span>
+            </h2>
+          </div>
+          <div id="accordion-default-content-validationofficer" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-validationofficer">
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full">
+
+                <div class="govuk-inset-text govuk-!-margin-top-0">
+                  <h3 class="govuk-heading-m">
+                    Version 1
+                    {{ govukTag({
+                      classes: "govuk-tag--red govuk-!-margin-left-1",
+                      text: "WIP"
+                    }) }}
+                  </h3>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                      <a href="/validation-officer/v1/appeal-list" title="">View list of appeals</a>
+                    </li>
+                  </ul>
+
+                  <!--details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Jira Tickets (1)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <ul class="govuk-list govuk-list-bulleted">
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2129">AS-2129</a> - Security - Accessing Track my Appeal</li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-1355">AS-1355</a> - Appellant's view of appeal status following LPA Questionnaire submission (stage 2)</li>
+                      </ul>
+                    </div>
+                  </details-->
                 </div>
 
               </div>
@@ -651,54 +644,6 @@
           </div>
         </div>
 
-        <div class="govuk-accordion__section">
-          <div class="govuk-accordion__section-header">
-            <h2 class="govuk-accordion__section-heading">
-              <span class="govuk-accordion__section-button" id="accordion-default-heading-validationofficer">
-                Validation Officer
-              </span>
-            </h2>
-          </div>
-          <div id="accordion-default-content-validationofficer" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-validationofficer">
-
-            <div class="govuk-grid-row">
-              <div class="govuk-grid-column-full">
-
-                <div class="govuk-inset-text govuk-!-margin-top-0">
-                  <h3 class="govuk-heading-m">
-                    Version 1
-                    {{ govukTag({
-                      classes: "govuk-tag--red govuk-!-margin-left-1",
-                      text: "WIP"
-                    }) }}
-                  </h3>
-                  <ul class="govuk-list govuk-list--bullet">
-                    <li>
-                      <a href="/validation-officer/v1/appeal-list" title="">View list of appeals</a>
-                    </li>
-                  </ul>
-
-                  <!--details class="govuk-details" data-module="govuk-details">
-                    <summary class="govuk-details__summary">
-                      <span class="govuk-details__summary-text">
-                        Jira Tickets (1)
-                      </span>
-                    </summary>
-                    <div class="govuk-details__text">
-                      <ul class="govuk-list govuk-list-bulleted">
-                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2129">AS-2129</a> - Security - Accessing Track my Appeal</li>
-                        <li><a href="https://pins-ds.atlassian.net/browse/AS-1355">AS-1355</a> - Appellant's view of appeal status following LPA Questionnaire submission (stage 2)</li>
-                      </ul>
-                    </div>
-                  </details-->
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-        </div>
-
 
         <div class="govuk-accordion__section">
           <div class="govuk-accordion__section-header">
@@ -754,6 +699,61 @@
               <li><a class="govuk-link" href="error/unhandled-exception">unhandled exception - 500</a></li>
               <li><a href="error/500-error-service-unavailable" class="govuk-link">500 error - service unavailable (AS-1644)</a>
             </ul>
+
+          </div>
+        </div>
+
+
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                User journey for LPA/Idox integration
+              </span>
+            </h2>
+          </div>
+          <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-one-half">
+                <p class="govuk-body">Full user journey for proposed beta, from start page through to appeal submit.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Select South Gloucestershire Council</li>
+                    <li>P20/12345/F - Refused. Able to appeal</li>
+                    <li>P20/56789/F - Refused. Over deadline.</li>
+                  </ul>
+
+                <a class="govuk-button" href="/eligibility/start-your-appeal">View prototype</a>
+                <p class="govuk-body">Skip to:</p>
+                <ul class="govuk-list">
+                  <li><a href="/submit-appeal/task-list">Task list</a></li>
+                  <li><a href="/complete-appeal-task-list">Completed task list</a></li>
+                </ul>
+              </div>
+              <div class="govuk-grid-column-one-half">
+                <h4 class="govuk-heading-s">Current version</h4>
+                <p class="govuk-body">Last updated: Sprint 3</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>Added questions for information not provided by local planning department's website.</li>
+                  <li>Added task list</li>
+                </ul>
+
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                      Version 1 - Sprint 3
+                    </span>
+                  </summary>
+                  <div class="govuk-details__text">
+                    <p class="govuk-body">User journey created based on proof of concept for idox integration.</p>
+                    <ul class="govuk-list">
+                      <li><a href="https://has-appeal-archive-2.herokuapp.com/eligibility/start-your-appeal" class="govuk-link">View prototype</a></li>
+                      <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/313753678/Sprint+3+UR">User research findings</a></li>
+                    </ul>
+                  </div>
+                </details>
+              </div>
+            </div>
 
           </div>
         </div>
