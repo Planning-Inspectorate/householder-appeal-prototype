@@ -22,13 +22,25 @@
       </h1>
 
       <p class="govuk-body">
-        [content to be decided]
-      <p>
+        Please review the letter that will be sent to [LPA].<p>
+
+      <div class="govuk-inset-text">
+        Dear Maidstone Borough Council<br><Br>
+        The householder planning appeal against the refusal of planning application 20/500818/FULL has been deemed incomplete.<br><br>
+        This is because {{data["vo-v1-status-incomplete"] | lower}}.<br><br>
+        The Planning Inspectorate will take no further action on this appeal.<br><br>
+        Thank you,<bR>
+        The Planning Inspectorate 
+      </div>
+
+      <p class="govuk-body">This notification will be sent to [LPA].</p>
       
       {{ govukButton({
         href: "notify-appellant-incomplete",
         text: "Save and continue"
       }) }}
+
+      <p class="govuk-body">Or you can <a href="">change the reason why this appeal is incomplete</a>.</p>
 
     </div>
   </div>
