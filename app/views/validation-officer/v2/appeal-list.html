@@ -1,0 +1,114 @@
+{% extends "layouts/case-officer/v1.html" %}
+
+{% block pageTitle %}
+  Planning appeals for review
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <!--span class="govuk-caption-l">Bradford City Council</span-->
+
+      <h1 class="govuk-heading-xl">
+        Appeal submissions for review
+      </h1>
+
+      <table class="govuk-table">
+        <!--caption class="govuk-table__caption">Householder planning appeals</caption-->
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Appeal reference</th>
+            <th scope="col" class="govuk-table__header">Received on</th>
+            <th scope="col" class="govuk-table__header">Appeal site</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="validate-appeal" class="govuk-link">20/500818/FULL</a>
+            </td>
+            <td class="govuk-table__cell">16 May 2021</td>
+            <td class="govuk-table__cell">96 The Avenue, Maidstone, Kent, MD21 5XY</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">20/501643/FULL</a>
+            </td>
+            <td class="govuk-table__cell">
+              16 May 2021
+            </td>
+            <td class="govuk-table__cell">
+              55 Butcher Street, Thurnscoe, S63 0RB
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">20/506264/FULL</a>
+            </td>
+            <td class="govuk-table__cell">
+              16 May 2021
+            </td>
+            <td class="govuk-table__cell">
+              8 The Chase, Findon, BN14 0TT
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">20/528734/FULL</a>
+            </td>
+            <td class="govuk-table__cell">
+              17 May 2021
+            </td>
+            <td class="govuk-table__cell">
+              44 Rivervale, Bridport, DT6 5RN
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">20/664758/FULL</a>
+            </td>
+            <td class="govuk-table__cell">
+              17 May 2021
+            </td>
+            <td class="govuk-table__cell">
+              92 Huntsmoor Road, Tadley, RG26 4BX
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">20/098654/FULL</a>
+            </td>
+            <td class="govuk-table__cell">
+              18 May 2021
+            </td>
+            <td class="govuk-table__cell">
+              29 St Marys Gardens, Hilperton Marsh, BA14 7PQ
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">20/739058/FULL</a>
+            </td>
+            <td class="govuk-table__cell">
+              18 May 2021
+            </td>
+            <td class="govuk-table__cell">
+              1 Grove Cottage, Shotesham Road, Woodton, NR35 2ND
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+{% endblock %}

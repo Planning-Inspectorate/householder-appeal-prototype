@@ -1,0 +1,63 @@
+{% extends "layouts/case-officer/v1.html" %}
+
+{% block pageTitle %}
+  What next
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "validate-appeal"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        What you need to do now
+      </h1>
+
+      <ul class="govuk-list govuk-list--number govuk-!-margin-bottom-9">
+        <li>
+          First action to complete
+        </li>
+        <li>
+          Second action
+        </li>
+        <li>
+          Last action to complete review
+        </li>
+      </ul>
+
+      <form action="" method="post">
+
+        {{ govukCheckboxes({
+          idPrefix: "vo-v1-confirm",
+          name: "vo-v1-confirm",
+          items: [
+            {
+              value: "confirm",
+              text: "I confirm that all tasks have been completed"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Complete review"
+        }) }}
+
+      </form>
+      
+    </div>
+  </div>
+
+{% endblock %}

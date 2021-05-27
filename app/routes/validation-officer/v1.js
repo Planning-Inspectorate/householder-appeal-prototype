@@ -5,12 +5,14 @@ module.exports = function (router) {
 
   router.post(base+'validate-appeal', function (req, res) {
     if (req.session.data['vo-'+v+'-status'] == "Valid"){
-      res.redirect(base+'outcome-valid');
-    } else if (req.session.data['vo-'+v+'-status'] == "Invalid") {
-      res.redirect(base+'notify-lpa-invalid');
-    } else if (req.session.data['vo-'+v+'-status'] == "Incomplete") {
-      res.redirect(base+'notify-lpa-incomplete');
+      res.redirect(base+'review-complete');
+    } else {
+      res.redirect(base+'what-next');
     }
+  })
+
+  router.post(base+'what-next', function (req, res) {
+    res.redirect(base+'review-complete');
   })
 
 }
