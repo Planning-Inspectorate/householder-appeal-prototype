@@ -21,14 +21,24 @@
         Notify appellant of invalid appeal
       </h1>
 
-      <p class="govuk-body">
-        [content to be decided]
-      <p>
+      <p class="govuk-body">Please review the letter that will be sent to the appellant.<p>
+
+      <div class="govuk-inset-text">
+        Dear Manish Sharma<br><br>
+        We cannot take your householder planning appeal 20/500818/FULL any further.<br><br>
+        This is because {{data["vo-v1-status-invalid"] | lower}}.<br><br>
+        <strong>What happens next?</strong><br><br>
+        We will not take any further action on this appeal. We have contacted [name of planning department] to let them know.<br><br>
+        Thank you,<bR>
+        The Planning Inspectorate 
+      </div>
       
       {{ govukButton({
         href: "outcome-invalid",
         text: "Save and continue"
       }) }}
+
+      <p class="govuk-body">Or you can <a href="">change the reason why this appeal is invalid</a>.</p>
 
     </div>
   </div>
