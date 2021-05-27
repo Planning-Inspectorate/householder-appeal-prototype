@@ -1,7 +1,7 @@
 {% extends "layouts/case-officer/v1.html" %}
 
 {% block pageTitle %}
-  Review appeal submission
+  Planning appeals for review
 {% endblock %}
 
 {% block beforeContent %}
@@ -49,14 +49,6 @@
           </dt>
           <dd class="govuk-summary-list__value">
             <p class="govuk-body">20/500818/FULL</p>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Received on
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <p class="govuk-body">16 May 2021</p>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -148,76 +140,23 @@
 
       <form action="" method="post">
 
-        {% set validHtml %}
-          {{ govukInput({
-            id: "vo-v1-description",
-            name: "vo-v1-description",
-            label: {
-              classes: "govuk-!-font-weight-bold",
-              text: "Description of development"
-            }
-          }) }}
-        {% endset %}
-
         {% set invalidHtml %}
-          {{ govukCheckboxes({
-            idPrefix: "vo-v1-invalid-reasons",
-            name: "vo-v1-invalid-reasons",
-            fieldset: {
-              legend: {
-                text: "Reasons for appeal being invalid",
-                classes: "govuk-fieldset__legend--s"
-              }
-            },
-            items: [
-              {
-                value: "Reason 1",
-                text: "Reason 1"
-              },
-              {
-                value: "Reason 2",
-                text: "Reason 2"
-              },
-              {
-                value: "Reason 3",
-                text: "Reason 3"
-              }
-            ]
+          {{ govukTextarea({
+            id: "vo-v1-status-invalid",
+            name: "vo-v1-status-invalid",
+            label: {
+              text: "Why is this appeal invalid?"
+            }
           }) }}
         {% endset %}
 
         {% set incompleteHtml %}
-          {{ govukInput({
-            id: "vo-v1-description",
-            name: "vo-v1-description",
+          {{ govukTextarea({
+            id: "vo-v1-status-incomplete",
+            name: "vo-v1-status-incomplete",
             label: {
-              classes: "govuk-!-font-weight-bold",
-              text: "Description of development"
+              text: "Why is this appeal incomplete?"
             }
-          }) }}
-          {{ govukCheckboxes({
-            idPrefix: "vo-v1-incomplete-reasons",
-            name: "vo-v1-incomplete-reasons",
-            fieldset: {
-              legend: {
-                text: "Reasons for appeal being incomplete",
-                classes: "govuk-fieldset__legend--s"
-              }
-            },
-            items: [
-              {
-                value: "Reason 1",
-                text: "Reason 1"
-              },
-              {
-                value: "Reason 2",
-                text: "Reason 2"
-              },
-              {
-                value: "Reason 3",
-                text: "Reason 3"
-              }
-            ]
           }) }}
         {% endset %}
 
@@ -234,10 +173,7 @@
           items: [
             {
               value: "Valid",
-              text: "Valid",
-              conditional: {
-                html: validHtml
-              }
+              text: "Valid"
             },
             {
               value: "Invalid",
