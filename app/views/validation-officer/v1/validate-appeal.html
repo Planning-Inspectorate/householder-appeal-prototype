@@ -61,6 +61,14 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
+            Planning application reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">48269/APP/2020/1482</p>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
             Appeal site
           </dt>
           <dd class="govuk-summary-list__value">
@@ -159,6 +167,26 @@
           }) }}
         {% endset %}
 
+        {% set invalidOtherHtml %}
+          {{ govukInput({
+            id: "vo-v1-invalid-other",
+            name: "vo-v1-invalid-other",
+            label: {
+              text: "List other reasons for appeal being invalid"
+            }
+          }) }}
+        {% endset %}
+
+        {% set incompleteOtherHtml %}
+          {{ govukInput({
+            id: "vo-v1-incomplete-other",
+            name: "vo-v1-incomplete-other",
+            label: {
+              text: "List other reasons for appeal being incomplete"
+            }
+          }) }}
+        {% endset %}
+
         {% set invalidHtml %}
           {{ govukCheckboxes({
             idPrefix: "vo-v1-invalid-reasons",
@@ -171,16 +199,27 @@
             },
             items: [
               {
-                value: "Reason 1",
-                text: "Reason 1"
+                value: "Out of time",
+                text: "Out of time"
               },
               {
-                value: "Reason 2",
-                text: "Reason 2"
+                value: "No right of appeal",
+                text: "No right of appeal"
               },
               {
-                value: "Reason 3",
-                text: "Reason 3"
+                value: "Not appealable",
+                text: "Not appealable"
+              },
+              {
+                value: "Application deemed invalid by LPA",
+                text: "Application deemed invalid by LPA"
+              },
+              {
+                value: "Other",
+                text: "Other",
+                conditional: {
+                  html: invalidOtherHtml
+                }
               }
             ]
           }) }}
@@ -251,7 +290,10 @@
               },
               {
                 value: "Other",
-                text: "Other"
+                text: "Other",
+                conditional: {
+                  html: incompleteOtherHtml
+                }
               }
             ]
           }) }}
