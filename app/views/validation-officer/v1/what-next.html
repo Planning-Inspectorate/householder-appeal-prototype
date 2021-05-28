@@ -27,28 +27,120 @@
       </h1>
 
       {% if data["vo-v1-status"] == "Invalid" %}
+      
+        {% set confirmMessage = "I confirm that both tasks are done" %}
 
         <ul class="govuk-list govuk-list--number govuk-!-margin-bottom-9">
           <li>
-            Notify the appellant using communication C154
+            Notify the appellant using template X123
           <li>
-            Notify the LPA using communication C768
-          </li>
-          <li>
-            Move this appeal to Horizon
+            Notify the LPA using template X456
           </li>
         </ul>
+        <h2 class="govuk-heading-l">
+          Details
+        </h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Appeal reference 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              20/500818/FULL
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Appellant name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Manish Sharma
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Appellant email
+            </dt>
+            <dd class="govuk-summary-list__value">
+              manish.sharma@example.com
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Reason{% if (data["vo-v1-invalid-reasons"] | length) > 1 %}s{% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list">
+                {% for reason in data["vo-v1-invalid-reasons"] %}
+                  <li>
+                    {{ reason }}
+                  </li>
+                {% endfor %}
+              </ul>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Local planning authority
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Maidstone Borough Council
+            </dd>
+          </div>
+        </dl>
 
       {% elseif data["vo-v1-status"] == "Incomplete" %}
+      
+        {% set confirmMessage = "I confirm this task is done" %}
 
         <ul class="govuk-list govuk-list--number govuk-!-margin-bottom-9">
           <li>
-            Notify the appellant using communication C155
-          </li>
-          <li>
-            Move this appeal to Horizon
+            Notify the appellant using template X124
           </li>
         </ul>
+        <h2 class="govuk-heading-l">
+          Details
+        </h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Appeal reference 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              20/500818/FULL
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Appellant name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Manish Sharma
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Appellant email
+            </dt>
+            <dd class="govuk-summary-list__value">
+              manish.sharma@example.com
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Reason{% if (data["vo-v1-incomplete-reasons"] | length) > 1 %}s{% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list">
+                {% for reason in data["vo-v1-incomplete-reasons"] %}
+                  <li>
+                    {{ reason }}
+                  </li>
+                {% endfor %}
+              </ul>
+            </dd>
+          </div>
+        </dl>
 
       {% endif %}
 
@@ -60,13 +152,13 @@
           items: [
             {
               value: "confirm",
-              text: "I confirm that all tasks have been completed"
+              text: confirmMessage
             }
           ]
         }) }}
 
         {{ govukButton({
-          text: "Complete review"
+          text: "Finish review"
         }) }}
 
       </form>
