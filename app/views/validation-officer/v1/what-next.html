@@ -26,17 +26,31 @@
         What you need to do now
       </h1>
 
-      <ul class="govuk-list govuk-list--number govuk-!-margin-bottom-9">
-        <li>
-          First action to complete
-        </li>
-        <li>
-          Second action
-        </li>
-        <li>
-          Last action to complete review
-        </li>
-      </ul>
+      {% if data["vo-v1-status"] == "Invalid" %}
+
+        <ul class="govuk-list govuk-list--number govuk-!-margin-bottom-9">
+          <li>
+            Notify the appellant using communication C154
+          <li>
+            Notify the LPA using communication C768
+          </li>
+          <li>
+            Move this appeal to Horizon
+          </li>
+        </ul>
+
+      {% elseif data["vo-v1-status"] == "Incomplete" %}
+
+        <ul class="govuk-list govuk-list--number govuk-!-margin-bottom-9">
+          <li>
+            Notify the appellant using communication C155
+          </li>
+          <li>
+            Move this appeal to Horizon
+          </li>
+        </ul>
+
+      {% endif %}
 
       <form action="" method="post">
 
