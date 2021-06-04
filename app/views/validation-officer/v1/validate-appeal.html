@@ -172,7 +172,7 @@
             id: "vo-v1-invalid-other",
             name: "vo-v1-invalid-other",
             label: {
-              text: "List other reasons for appeal being invalid"
+              text: "List reasons"
             }
           }) }}
         {% endset %}
@@ -182,7 +182,7 @@
             id: "vo-v1-incomplete-other",
             name: "vo-v1-incomplete-other",
             label: {
-              text: "List other reasons for appeal being incomplete"
+              text: "List reasons"
             }
           }) }}
         {% endset %}
@@ -205,8 +205,8 @@
                 text: "Supporting documents"
               },
               {
-                value: "Evidence for different applicant and appellant names",
-                text: "Evidence for different applicant and appellant names"
+                value: "Evidence for names not matching",
+                text: "Evidence for names not matching"
               }
             ]
           }) }}
@@ -270,19 +270,19 @@
             },
             items: [
               {
-                value: "Documents are missing or wrong",
-                text: "Documents are missing or wrong",
+                value: "Missing or wrong documents",
+                text: "Missing or wrong documents",
                 conditional: {
                   html: incompleteMissingHtml
                 }
               },
               {
-                value: "It contains sensitive information",
-                text: "It contains sensitive information"
+                value: "Sensitive information",
+                text: "Sensitive information"
               },
               {
-                value: "It contains inflammatory comments",
-                text: "It contains inflammatory comments"
+                value: "Inflammatory comments",
+                text: "Inflammatory comments"
               },
               {
                 value: "Other",
@@ -335,7 +335,7 @@
         }) }}
 
         {{ govukWarningText({
-          text: "Confirming an appeal as valid starts the appeal and triggers the LPA questionnaire email",
+          text: "Confirming an appeal as valid starts the appeal and sends the LPA questionnaire email",
           iconFallbackText: "Warning"
         }) }}
 

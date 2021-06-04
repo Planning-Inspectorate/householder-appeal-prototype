@@ -17,11 +17,23 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {{ govukPanel({
-        classes: "govuk-!-margin-bottom-7",
-        titleText: "Appeal validation outcome",
-        html: data["vo-v1-status"] + "<br>20/500818/FULL"
-      }) }}
+      {% if data["vo-v1-status"] == "Escalate" %}
+
+        {{ govukPanel({
+          classes: "govuk-!-margin-bottom-7",
+          titleText: "Review complete",
+          html: data["vo-v1-status"] + " appeal<br>20/500818/FULL"
+        }) }}
+
+      {% else %}
+
+        {{ govukPanel({
+          classes: "govuk-!-margin-bottom-7",
+          titleText: "Review complete",
+          html: "Appeal " + data["vo-v1-status"] | lower + "<br>20/500818/FULL"
+        }) }}
+
+      {% endif %}
 
       {% if (data["vo-v1-status"] == "Invalid") or (data["vo-v1-status"] == "Incomplete") %}
       <h2 class="govuk-heading-l">
@@ -44,7 +56,7 @@
               Details for appeal validation
             </span>
           </summary>
-          <div class="govuk-details__text">        
+          <div class="govuk-details__text">
             <dl class="govuk-summary-list">
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
