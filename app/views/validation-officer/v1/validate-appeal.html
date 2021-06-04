@@ -187,6 +187,16 @@
           }) }}
         {% endset %}
 
+        {% set escalateHtml %}
+          {{ govukInput({
+            id: "vo-v1-escalate",
+            name: "vo-v1-escalate",
+            label: {
+              text: "Reason for escalation"
+            }
+          }) }}
+        {% endset %}
+
         {% set incompleteMissingHtml %}
           {{ govukCheckboxes({
             idPrefix: "vo-v1-incomplete-reasons-missing",
@@ -201,12 +211,12 @@
                 text: "Decision notice"
               },
               {
-                value: "Supporting documents",
-                text: "Supporting documents"
+                value: "Grounds of appeal",
+                text: "Grounds of appeal"
               },
               {
-                value: "Evidence for names not matching",
-                text: "Evidence for names not matching"
+                value: "Supporting documents",
+                text: "Supporting documents"
               }
             ]
           }) }}
@@ -270,15 +280,19 @@
             },
             items: [
               {
+                value: "Names do not match",
+                text: "Names do not match"
+              },
+              {
+                value: "Sensitive information",
+                text: "Sensitive information"
+              },
+              {
                 value: "Missing or wrong documents",
                 text: "Missing or wrong documents",
                 conditional: {
                   html: incompleteMissingHtml
                 }
-              },
-              {
-                value: "Sensitive information",
-                text: "Sensitive information"
               },
               {
                 value: "Inflammatory comments",
@@ -329,7 +343,10 @@
             },
             {
               value: "Escalate",
-              text: "Escalate"
+              text: "Escalate",
+              conditional: {
+                html: escalateHtml
+              }
             }
           ]
         }) }}

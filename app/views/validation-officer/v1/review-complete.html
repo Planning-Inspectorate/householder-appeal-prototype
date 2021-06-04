@@ -35,174 +35,28 @@
 
       {% endif %}
 
-      {% if (data["vo-v1-status"] == "Invalid") or (data["vo-v1-status"] == "Incomplete") %}
-      <h2 class="govuk-heading-l">
-        What you need to do now
-      </h2>
+      {% if data["vo-v1-status"] == "Valid" %}
+        <p class="govuk-body">
+          The appeal has been started and the LPA questionnaire email has been sent.
+        <p>
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
       {% endif %}
 
       {% if data["vo-v1-status"] == "Invalid" %}
+        <p class="govuk-body">
+          The appellant and LPA have been notified.
+        <p>
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      {% endif %}
 
-        <ul class="govuk-list govuk-list--number">
-          <li>
-            Notify the appellant using template X123
-          <li>
-            Notify the LPA using template X456
-          </li>
-        </ul>
-        <details class="govuk-details" data-module="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-              Details for appeal validation
-            </span>
-          </summary>
-          <div class="govuk-details__text">
-            <dl class="govuk-summary-list">
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Review outcome
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  Invalid
-                </dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Appeal reference 
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  20/500818/FULL
-                </dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Appellant name
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  Manish Sharma
-                </dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Appellant email
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  manish.sharma@example.com
-                </dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Reason{% if (data["vo-v1-invalid-reasons"] | length) > 1 %}s{% endif %}
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  <ul class="govuk-list">
-                    {% for reason in data["vo-v1-invalid-reasons"] %}
-                      <li>
-                        {{ reason }}
-                        {% if reason == "Other" %}
-                          - {{ data["vo-v1-invalid-other"] }}
-                        {% endif %}
-                      </li>
-                    {% endfor %}
-                  </ul>
-                </dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Local planning authority
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  Maidstone Borough Council
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </details>
+      {% if data["vo-v1-status"] == "Incomplete" %}
+      {% endif %}
 
-        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-      {% elseif data["vo-v1-status"] == "Incomplete" %}
-
-        <ul class="govuk-list govuk-list--number">
-          <li>
-            Notify the appellant using template X124
-          </li>
-        </ul>
-        <details class="govuk-details" data-module="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-              Details for appeal validation
-            </span>
-          </summary>
-          <div class="govuk-details__text">
-            <dl class="govuk-summary-list">
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Review outcome
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  Incomplete
-                </dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Appeal reference 
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  20/500818/FULL
-                </dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Appellant name
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  Manish Sharma
-                </dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Appellant email
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  manish.sharma@example.com
-                </dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Reason{% if (data["vo-v1-incomplete-reasons"] | length) > 1 %}s{% endif %}
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  <ul class="govuk-list">
-                    {% for reason in data["vo-v1-incomplete-reasons"] %}
-                      <li>
-                        {{ reason }}
-                        {% if reason == "Documents are missing or wrong" %}
-                          <ul class="govuk-list govuk-list--bullet">
-                          {% for missingreason in data["vo-v1-incomplete-reasons-missing"] %}
-                            <li>{{ missingreason }}</li>
-                          {% endfor %}
-                          </ul>
-                        {% endif %}
-                        {% if reason == "Other" %}
-                          - {{ data["vo-v1-incomplete-other"] }}
-                        {% endif %}
-                      </li>
-                    {% endfor %}
-                  </ul>
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </details>
-
-        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
+      {% if data["vo-v1-status"] == "Escalate" %}
       {% endif %}
 
 
-
-      <h2 class="govuk-heading-l">What next?</h2>
+      <h2 class="govuk-heading-m">What next?</h2>
       <ul class="govuk-list">
         <li>
           <a href="appeal-list" class="govuk-link">View list of appeals</a>
