@@ -12,26 +12,31 @@
 
       <h2 class="govuk-heading-l">
         Delete supplementary planning document
-      </h2>          
+      </h2>       
       
-      <dl class="govuk-summary-list">
-        
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__value">
-            {{ data['as2078-files'][data['row']-1]['name'] }}
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% if data['as2078-files'][data['row']-1]['adopted'] == "yes" %}
-              Adopted on {{ data['as2078-files'][data['row']-1]['adopted_day'] }} {{ data['as2078-files'][data['row']-1]['adopted_month'] }} {{ data['as2078-files'][data['row']-1]['adopted_year'] }}
-            {% else %}
-              {{ data['as2078-files'][data['row']-1]['adopted_stage'] }}
-            {% endif %}
-            
-          </dd>
-        </div>
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Document name</th>
+            <th scope="col" class="govuk-table__header">Formally adopted</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">
+                {{ data['as2078-files'][data['row']-1]['name'] }}
+              </th>
+              <td class="govuk-table__cell">{{ data['as2078-files'][data['row']-1]['adopted'] | capitalize }} -
+                {% if data['as2078-files'][data['row']-1]['adopted'] == "yes" %}
+                  Adopted on {{ data['as2078-files'][data['row']-1]['adopted_day'] }} {{ data['as2078-files'][data['row']-1]['adopted_month'] }} {{ data['as2078-files'][data['row']-1]['adopted_year'] }} 
+                {% else %}
+                  {{ data['as2078-files'][data['row']-1]['adopted_stage'] | capitalize }}
+                {% endif %}
+              </td>
+            </tr>
+        </tbody>
+      </table>
       
-      </dl>
-
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">

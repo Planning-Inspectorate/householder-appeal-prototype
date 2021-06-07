@@ -11,7 +11,40 @@
       <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
       <h1 class="govuk-heading-l">Supplementary planning documents</h1>
       
-      <dl class="govuk-summary-list">
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Document name</th>
+            <th scope="col" class="govuk-table__header">Formally adopted</th>
+            <th scope="col" class="govuk-table__header"></th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% set i = 0 %}
+          {% for file in data['as2078-files'] %}
+            {% set i = i + 1 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">{{ file.name }}</th>
+              <td class="govuk-table__cell">{{ file.adopted | capitalize }} -
+                {% if file.adopted == "yes" %}
+                  Adopted on {{file['adopted_day']}} {{file['adopted_month'] }} {{file['adopted_year']}} 
+                {% else %}
+                  {{ file.adopted_stage | capitalize }}
+                {% endif %}
+              </td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                {{ govukButton({
+                  classes: "govuk-button--warning govuk-!-margin-bottom-0",
+                  href: "/standalone/as-2078/delete?row="+i,
+                  text: "Delete"
+                }) }}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      
+      <!--dl class="govuk-summary-list">
         
         {% set i = 0 %}
         {% for file in data['as2078-files'] %}
@@ -38,7 +71,7 @@
 
         {% endfor %}
       
-      </dl>
+      </dl-->
 
       <input type="hidden" name="supplementary-completed" value="govuk-tag app-task-list__task-completed">
       <input type="hidden" name="supplementary-completed-text" value="Completed">

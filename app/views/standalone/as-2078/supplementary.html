@@ -17,17 +17,6 @@
       <p class="govuk-body">
         You can add one supplementary planning document at a time. You will be able to add more later.
       <p>
-          
-
-      {{ govukInput({
-        label: {
-          classes: "govuk-label--m govuk-!-margin-top-8",
-          text: "What is the name of the Supplementary Planning document?"
-        },
-        id: "as2078-supplementary-name",
-        name: "as2078-supplementary-name"
-      }) }}
-
 
       {{ govukFileUpload({
         id: "as2078-supplementary-file",
@@ -40,8 +29,8 @@
           text: "Upload a file"
         }
       }) }}
+
       {{ govukDetails({
-        classes: "govuk-!-margin-bottom-8",
         summaryText: "Accepted file formats",
         html: '
           <ul class="govuk-list govuk-list--bullet">
@@ -52,6 +41,15 @@
             <li>PNG &ndash; <strong>.png</strong></li>
           </ul>
         '
+      }) }}
+          
+      {{ govukInput({
+        label: {
+          classes: "govuk-label--m govuk-!-margin-top-8",
+          text: "Document name"
+        },
+        id: "as2078-supplementary-name",
+        name: "as2078-supplementary-name"
       }) }}
 
 
@@ -78,13 +76,15 @@
           name: "as2078-supplementary-adopted-stage"
         }) }}
       {% endset -%}
+      
       {{ govukRadios({
         classes: "govuk-radios--inline",
         idPrefix: "as2078-supplementary-adopted",
         name: "as2078-supplementary-adopted",
         fieldset: {
+          classes: "govuk-!-margin-top-8",
           legend: {
-            text: "Was it formally adopted?",
+            text: "Is it formally adopted?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m govuk-!-margin-top-8"
           }
