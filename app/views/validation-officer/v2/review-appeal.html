@@ -48,7 +48,7 @@
             Appeal reference
           </dt>
           <dd class="govuk-summary-list__value">
-            <p class="govuk-body">20/500818/FULL</p>
+            <p class="govuk-body">APP/Q9999/D/21/1234567</p>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -322,42 +322,24 @@
           items: [
             {
               value: "Valid",
-              text: "Valid",
-              conditional: {
-                html: validHtml
-              }
+              text: "Valid"
             },
             {
               value: "Invalid",
-              text: "Invalid",
-              conditional: {
-                html: invalidHtml
-              }
+              text: "Invalid"
             },
             {
-              value: "Incomplete",
-              text: "Incomplete",
-              conditional: {
-                html: incompleteHtml
-              }
+              divider: "or"
             },
             {
-              value: "Escalate",
-              text: "Escalate",
-              conditional: {
-                html: escalateHtml
-              }
+              value: "Something is missing or wrong",
+              text: "Something is missing or wrong"
             }
           ]
         }) }}
 
-        {{ govukWarningText({
-          text: "Confirming an appeal as valid starts the appeal and sends the LPA questionnaire email",
-          iconFallbackText: "Warning"
-        }) }}
-
         {{ govukButton({
-          text: "Confirm outcome"
+          text: "Continue"
         }) }}
 
       </form>
