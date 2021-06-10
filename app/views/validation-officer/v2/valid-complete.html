@@ -1,0 +1,39 @@
+{% extends "layouts/case-officer/v2.html" %}
+
+{% block pageTitle %}
+ Review complete
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        classes: "govuk-!-margin-bottom-7",
+        titleText: "Review complete",
+        html: "Appeal valid<br><strong>APP/Q9999/D/21/1234567</strong>"
+      }) }}
+
+      <p class="govuk-body">
+        The appeal has been started and the LPA questionnaire email has been sent.
+      <p>
+
+      <h2 class="govuk-heading-m">What next?</h2>
+      <ul class="govuk-list">
+        <li>
+          <a href="appeal-list" class="govuk-link">Return to task list</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+{% endblock %}
