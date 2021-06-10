@@ -1,0 +1,185 @@
+{% extends "layouts/case-officer/v2.html" %}
+
+{% block pageTitle %}
+  What next
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "validate-appeal"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        What you need to do now
+      </h1>
+
+      {% if data["vo-v2-status"] == "Invalid" %}
+      
+        {% set confirmMessage = "I confirm that both tasks are done" %}
+
+        <ul class="govuk-list govuk-list--number govuk-!-margin-bottom-9">
+          <li>
+            Notify the appellant using template X123
+          <li>
+            Notify the LPA using template X456
+          </li>
+        </ul>
+        <h2 class="govuk-heading-l">
+          Details
+        </h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Review outcome
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Invalid
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Appeal reference 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              20/500818/FULL
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Appellant name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Manish Sharma
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Appellant email
+            </dt>
+            <dd class="govuk-summary-list__value">
+              manish.sharma@example.com
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Reason{% if (data["vo-v2-invalid-reasons"] | length) > 1 %}s{% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list">
+                {% for reason in data["vo-v2-invalid-reasons"] %}
+                  <li>
+                    {{ reason }}
+                  </li>
+                {% endfor %}
+              </ul>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Local planning authority
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Maidstone Borough Council
+            </dd>
+          </div>
+        </dl>
+
+      {% elseif data["vo-v2-status"] == "Incomplete" %}
+      
+        {% set confirmMessage = "I confirm this task is done" %}
+
+        <ul class="govuk-list govuk-list--number govuk-!-margin-bottom-9">
+          <li>
+            Notify the appellant using template X124
+          </li>
+        </ul>
+        <h2 class="govuk-heading-l">
+          Details
+        </h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Review outcome
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Incomplete
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Appeal reference 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              20/500818/FULL
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Appellant name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Manish Sharma
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Appellant email
+            </dt>
+            <dd class="govuk-summary-list__value">
+              manish.sharma@example.com
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Reason{% if (data["vo-v2-incomplete-reasons"] | length) > 1 %}s{% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list">
+                {% for reason in data["vo-v2-incomplete-reasons"] %}
+                  <li>
+                    {{ reason }}
+                  </li>
+                {% endfor %}
+              </ul>
+            </dd>
+          </div>
+        </dl>
+
+      {% endif %}
+
+      <form action="" method="post">
+
+        {{ govukCheckboxes({
+          idPrefix: "vo-v2-confirm",
+          name: "vo-v2-confirm",
+          items: [
+            {
+              value: "confirm",
+              text: confirmMessage
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Finish review"
+        }) }}
+
+      </form>
+      
+    </div>
+  </div>
+
+{% endblock %}
