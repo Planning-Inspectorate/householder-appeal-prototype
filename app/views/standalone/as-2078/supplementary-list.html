@@ -33,11 +33,9 @@
                 {% endif %}
               </td>
               <td class="govuk-table__cell govuk-table__cell--numeric">
-                {{ govukButton({
-                  classes: "govuk-button--warning govuk-!-margin-bottom-0",
-                  href: "/standalone/as-2078/delete?row="+i,
-                  text: "Delete"
-                }) }}
+                <a class="govuk-link" href="/standalone/as-2078/delete?row={{ i }}">
+                  Delete<span class="govuk-visually-hidden"> {{document.name}}</span>
+                </a>
               </td>
             </tr>
           {% endfor %}
@@ -63,9 +61,7 @@
               
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/standalone/as-2078/delete?row={{ i }}">
-                Delete<span class="govuk-visually-hidden"> {{document.name}}</span>
-              </a>
+              
             </dd>
           </div>
 
@@ -75,12 +71,12 @@
 
       <input type="hidden" name="supplementary-completed" value="govuk-tag app-task-list__task-completed">
       <input type="hidden" name="supplementary-completed-text" value="Completed">
-      <a href="supplementary" class="govuk-button govuk-button--secondary">Upload another document</a>
+      <a href="supplementary" class="govuk-button govuk-button--secondary">Add another</a>
 
       
       <div class="govuk-form-group">
         <button class="govuk-button" data-module="govuk-button">
-          Save and Continue
+          Continue
         </button>
       </div>
     </form>
