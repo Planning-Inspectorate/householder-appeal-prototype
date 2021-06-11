@@ -1,0 +1,123 @@
+{% extends "layouts/case-officer/v2.html" %}
+
+{% block pageTitle %}
+  Review appeal submission
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "appeal-list"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        What is missing or wrong? 
+      </h1>
+
+      <p class="govuk-body">
+        Appeal reference: APP/Q9999/D/21/1234567 
+      <p>
+
+      <form action="" method="post">
+
+        {% set incompleteOtherHtml %}
+          {{ govukInput({
+            id: "vo-v2-wrong-other",
+            name: "vo-v2-wrong-other",
+            label: {
+              text: "List reasons"
+            }
+          }) }}
+        {% endset %}
+
+        {% set incompleteMissingHtml %}
+          {{ govukCheckboxes({
+            idPrefix: "vo-v2-wrong-reasons-missing",
+            name: "vo-v2-wrong-reasons-missing",
+            items: [
+              {
+                value: "Application form",
+                text: "Application form"
+              },
+              {
+                value: "Decision notice",
+                text: "Decision notice"
+              },
+              {
+                value: "Grounds of appeal",
+                text: "Grounds of appeal"
+              },
+              {
+                value: "Supporting documents",
+                text: "Supporting documents"
+              }
+            ]
+          }) }}
+        {% endset %}
+
+          {{ govukCheckboxes({
+            idPrefix: "vo-v2-wrong-reasons",
+            name: "vo-v2-wrong-reasons",
+            items: [
+              {
+                value: "Names do not match",
+                text: "Names do not match"
+              },
+              {
+                value: "Sensitive information included",
+                text: "Sensitive information included"
+              },
+              {
+                value: "Missing or wrong documents",
+                text: "Missing or wrong documents",
+                conditional: {
+                  html: incompleteMissingHtml
+                }
+              },
+              {
+                value: "Inflammatory comments made",
+                text: "Inflammatory comments made"
+              },
+              {
+                value: "Opened in error",
+                text: "Opened in error"
+              },
+              {
+                value: "Wrong appeal type used",
+                text: "Wrong appeal type used"
+              },
+              {
+                value: "Other",
+                text: "Other",
+                conditional: {
+                  html: incompleteOtherHtml
+                }
+              }
+            ]
+          }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+          <a class="govuk-link" href="review-appeal">Change outcome</a>
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+{% endblock %}
