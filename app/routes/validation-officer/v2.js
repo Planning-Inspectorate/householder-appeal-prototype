@@ -7,10 +7,17 @@ module.exports = function (router) {
     if (req.session.data['vo-'+v+'-status'] == "Valid"){
       res.redirect(base+'valid-details');
     }
+    if (req.session.data['vo-'+v+'-status'] == "Invalid"){
+      res.redirect(base+'invalid-details');
+    }
   })
 
   router.post(base+'valid-details', function (req, res) {
     res.redirect(base+'valid-review');
+  })
+
+  router.post(base+'invalid-details', function (req, res) {
+    res.redirect(base+'invalid-review');
   })
 
 }

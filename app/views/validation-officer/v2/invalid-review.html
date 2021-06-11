@@ -1,0 +1,125 @@
+{% extends "layouts/case-officer/v2.html" %}
+
+{% block pageTitle %}
+  Review appeal submission
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "appeal-list"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Check and confirm
+      </h1>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Outcome of review 
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Invalid
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appellant name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Manish Sharma
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+            APP/Q9999/D/21/1234567
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal site
+          </dt>
+          <dd class="govuk-summary-list__value">
+            96 The Avenue<br>
+            Maidstone<br>
+            XM26 7YS
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Reason{% if (data["vo-v2-invalid-reasons"] | length) > 1 %}s{% endif %}
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <ul class="govuk-list">
+              {% for reason in data["vo-v2-invalid-reasons"] %}
+                <li>
+                  {{ reason }}
+                  {% if reason == "Other" %}
+                    - {{ data["vo-v2-invalid-other"] }}
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </dd>
+        </div>
+      </dl>
+
+      {{ govukWarningText({
+        text: "Confirming this appeal as invalid turns away the appeal and emails the appellant and LPA.",
+        iconFallbackText: "Warning"
+      }) }}
+        
+      <div class="govuk-button-group">
+        {{ govukButton({
+          href: "invalid-complete",
+          text: "Confirm and turn away appeal"
+        }) }}
+        <a class="govuk-link" href="review-appeal">Change outcome</a>
+      </div>
+
+
+      <!--p class="govuk-body">
+        Appeal reference: APP/Q9999/D/21/1234567 
+      <p>
+
+      <form action="" method="post">
+
+        {{ govukInput({
+          id: "vo-v2-valid-description",
+          name: "vo-v2-valid-description",
+          label: {
+            classes: "govuk-!-font-weight-bold",
+            text: "Description of development"
+          },
+          value: data["vo-v2-valid-description"]
+        }) }}
+        
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+          <a class="govuk-link" href="review-appeal">Change outcome</a>
+        </div>
+
+      </form-->
+      
+    </div>
+  </div>
+
+{% endblock %}
