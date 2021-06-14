@@ -1,3 +1,4 @@
+
 {% extends "layouts/case-officer/v2.html" %}
 
 {% block pageTitle %}
@@ -22,6 +23,17 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [
+          {
+            text: "Select if you have completed all follow-up tasks and emails",
+            href: "#vo-v2-wrong-completed"
+          }
+        ]
+      }) }}
+
       <h1 class="govuk-heading-xl">
         Check and confirm
       </h1>
@@ -88,13 +100,17 @@
           </dd>
         </div>
       </dl>
+      
 
       <form action="" method="post">
       
         {{ govukCheckboxes({
           idPrefix: "vo-v2-wrong-completed",
           name: "vo-v2-wrong-completed",
-          classes: "govuk-!-margin-bottom-9 govuk-!-margin-top-9",
+          classes: "govuk-!-margin-bottom-9",
+          errorMessage: {
+            text: "Select if you have completed all follow-up tasks and emails"
+          },
           items: [
             {
               text: "I have completed all follow-up tasks and emails",

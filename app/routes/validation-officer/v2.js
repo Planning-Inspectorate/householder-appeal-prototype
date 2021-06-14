@@ -27,4 +27,20 @@ module.exports = function (router) {
     res.redirect(base+'wrong-review');
   })
 
+  router.post(base+'wrong-review', function (req, res) {
+    if (req.session.data['vo-'+v+'-wrong-completed'] == "completed"){
+      res.redirect(base+'wrong-complete');
+    } else {
+      res.redirect(base+'wrong-review-error');
+    }
+  })
+
+  router.post(base+'wrong-review-error', function (req, res) {
+    if (req.session.data['vo-'+v+'-wrong-completed'] == "completed"){
+      res.redirect(base+'wrong-complete');
+    } else {
+      res.redirect(base+'wrong-review-error');
+    }
+  })
+  
 }
