@@ -1,0 +1,83 @@
+{% extends "layouts/lpa-questionnaire/v9.html" %}
+
+{% block pageTitle %}
+  Provide information for a householder planning appeal
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "../task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      About the appeal
+    </span>
+    <h1 class="govuk-heading-l">
+      Review accuracy of the appellant's submission
+    </h1>
+    
+    <form action="" method="post">
+
+      {% set whynotHtml %}
+        {{ govukTextarea({
+          id: "lpaq-"+version+"-aboutappeal-accurate-whynot",
+          name: "lpaq-"+version+"-aboutappeal-accurate-whynot",
+          label: {
+            text: "Tell us why not"
+          },
+          value: data["lpaq-"+version+"-aboutappeal-accurate-whynot"]
+        }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "lpaq-"+version+"-aboutappeal-accurate",
+        name: "lpaq-"+version+"-aboutappeal-accurate",
+        fieldset: {
+          legend: {
+            text: "Does the information from the appellant accurately reflect the original planning application?",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: checked("lpaq-"+version+"-aboutappeal-accurate", "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: checked("lpaq-"+version+"-aboutappeal-accurate", "No"),
+            conditional: {
+              html: whynotHtml
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+  </div>
+</div>
+
+{% endblock %}

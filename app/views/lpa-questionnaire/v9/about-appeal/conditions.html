@@ -1,0 +1,98 @@
+{% extends "layouts/lpa-questionnaire/v9.html" %}
+
+{% block pageTitle %}
+  Provide information for a householder planning appeal
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "../task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      About the appeal
+    </span>
+    <h1 class="govuk-heading-l">
+      Do you have any extra conditions?
+    </h1>
+
+    <p class="govuk-body">
+      You do not need to tell us about the standard conditions that will be applied to any successful appeal.
+    </p>
+    {% set conditionsHTML %}
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          The development hereby permitted shall begin not later than 3 years from the date of this decision
+        </li>
+        <li>
+          The materials to be used in the construction of the external surfaces of the development hereby permitted shall match those used in the existing building
+        </li>
+        <li>
+          The development hereby permitted shall be carried out in accordance with the approved plans
+        </li>
+      </ul>
+    {% endset %}
+    {{ govukDetails({
+      summaryText: "Standard conditions",
+      html: conditionsHTML
+    }) }}
+    
+    <form action="" method="post">
+
+      {% set listconditionsHtml %}
+        {{ govukTextarea({
+          id: "lpaq-"+version+"-aboutappeal-conditions-listconditions",
+          name: "lpaq-"+version+"-aboutappeal-conditions-listconditions",
+          label: {
+            text: "Tell us about the extra conditions"
+          },
+          value: data["lpaq-"+version+"-aboutappeal-conditions-listconditions"]
+        }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "lpaq-"+version+"-aboutappeal-conditions",
+        name: "lpaq-"+version+"-aboutappeal-conditions",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: checked("lpaq-"+version+"-aboutappeal-conditions", "Yes"),
+            conditional: {
+              html: listconditionsHtml
+            }
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: checked("lpaq-"+version+"-aboutappeal-conditions", "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+  </div>
+</div>
+
+{% endblock %}
