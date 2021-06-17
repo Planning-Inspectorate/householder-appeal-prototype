@@ -1,0 +1,81 @@
+{% extends "layouts/lpa-questionnaire/v9.html" %}
+
+{% block pageTitle %}
+  Provide information for a householder planning appeal
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "../task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Optional supporting documents
+    </span>
+    <h1 class="govuk-heading-l">
+      Development Plan Document or Neighbourhood Plan
+    </h1>
+
+    <p class="govuk-body">
+      Has any Development Plan Document or Neighbourhood Plan relevant to this appeal been submitted for examination (or in the case of a Neighbourhood Plan, been examined and is awaiting a referendum)?
+    </p>
+    
+    <form action="" method="post">
+
+      {% set aboutchangesHtml %}
+        {{ govukTextarea({
+          id: "lpaq-"+version+"-optionalsupportingdocs-developmentplan-aboutchanges",
+          name: "lpaq-"+version+"-optionalsupportingdocs-developmentplan-aboutchanges",
+          label: {
+            text: "Tell us about any substantive changes in the progress of the emerging plan, and their relevance to this appeal (if the plan may not be adopted before the Inspector issues their decision)"
+          },
+          value: data["lpaq-"+version+"-optionalsupportingdocs-developmentplan-aboutchanges"]
+        }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "lpaq-"+version+"-optionalsupportingdocs-developmentplan",
+        name: "lpaq-"+version+"-optionalsupportingdocs-developmentplan",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: checked("lpaq-"+version+"-optionalsupportingdocs-developmentplan", "Yes"),
+            conditional: {
+              html: aboutchangesHtml
+            }
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: checked("lpaq-"+version+"-optionalsupportingdocs-developmentplan", "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+  </div>
+</div>
+
+{% endblock %}

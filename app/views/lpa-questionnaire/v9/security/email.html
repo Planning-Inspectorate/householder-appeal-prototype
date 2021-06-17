@@ -1,0 +1,45 @@
+{% extends "layouts/lpa-questionnaire/v9.html" %}
+
+{% block pageTitle %}
+  LPA Questionnaire
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Access the householder planning appeal questionnaire
+      </h1>
+
+      <p class="govuk-body">
+        Before you can access this questionnaire, we need to check you work at [name of LPA].
+      <p>
+
+      <form action="" method="post" novalidate>
+
+        {{ govukInput({
+          label: {
+            text: "Your email address",
+            classes: "govuk-label--l"
+          },
+          hint: {
+            text: "Enter your [name of LPA] email address. We'll use this if we have questions or updates about this appeal."
+          },
+          id: "lpa-"+version+"-account-email",
+          name: "lpa-"+version+"-account-email",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false
+        }) }}
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+      
+    </div>
+  </div>
+
+{% endblock %}

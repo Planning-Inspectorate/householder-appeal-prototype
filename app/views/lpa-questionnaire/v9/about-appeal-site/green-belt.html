@@ -1,0 +1,63 @@
+{% extends "layouts/lpa-questionnaire/v9.html" %}
+
+{% block pageTitle %}
+  Provide information for a householder planning appeal
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "../task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      About the appeal site
+    </span>
+    <h1 class="govuk-heading-l">
+      Is the appeal site in a green belt?
+    </h1>
+    
+    <form action="" method="post">
+
+      {{ govukRadios({
+        idPrefix: "lpaq-"+version+"-aboutappealsite-greenbelt",
+        name: "lpaq-"+version+"-aboutappealsite-greenbelt",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: checked("lpaq-"+version+"-aboutappealsite-greenbelt", "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: checked("lpaq-"+version+"-aboutappealsite-greenbelt", "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+  </div>
+</div>
+
+{% endblock %}

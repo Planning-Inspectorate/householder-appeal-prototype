@@ -1,0 +1,42 @@
+{% extends "layout-notify.html" %}
+
+{% block pageTitle %}
+  Email - Confirm your email address
+{% endblock %}
+
+{% block content %}
+
+  <p><strong>Subject:</strong> Confirm your email address - householder planning appeal questionnaire</p>
+  <p><strong>From:</strong> info@planninginspectorate.gov.uk</p>
+
+  <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+
+  <div class="govuk-grid-row govuk-!-margin-top-5">
+    <div class="govuk-grid-column-two-thirds">
+
+      <p><strong>Confirm your email address</strong></p>
+
+      <p>Click this link to confirm your email address and continue to the appeal questionnaire: [<a href="/lpa-questionnaire/v9/task-list">valid link</a> <a href="/lpa-questionnaire/v9/security/expired">expired link</a>]</p>
+
+      <p>This link will expire after X.</p>
+      <p>This questionnaire is for an appeal against the refusal of planning application 20/500818/FULL.​​</p>
+
+      <p>
+        <strong>Appeal site:</strong><br>
+        9617 The Avenue <br>
+        Maidstone<br>
+        XM26 7YS
+      </p>
+      <p>If you did not request this, you can delete this email.​​</p>
+      <br><br>
+      
+      <p>Thank you,<br>The Planning Inspectorate​</p>
+      
+      <br><hr><br>
+
+      <p>Need help?</p>
+      <p>You can email our customer support team at <a href="mailto:enquiries@planninginspectorate.gov.uk">enquiries@planninginspectorate.gov.uk</a> or call them on 0303 444 5000.</p>
+    </div>
+  </div>
+
+{% endblock %}
