@@ -54,9 +54,11 @@
 </ul>
 
 </nav>
+<form action="appeal1-decision-summary" method="post" novalidate>
 
   <h2 class="govuk-heading-m">Decision report</h2>
-          <p>
+
+
   <div class="govuk-form-group">
     <label class="govuk-label" for="file-upload-1">
        A decision has not yet been provided for this appeal. <br><br>  <a href="#">Link to Dart</a> to make the decision.<br><br>
@@ -73,15 +75,21 @@
   <h2 class="govuk-heading-m">Decision outcome</h2>
   <div class="govuk-radios">
     <div class="govuk-radios__item">
-      <input class="govuk-radios__input" id="decision-outcome-1" name="decision-outcome" type="radio" value="upheld">
+      <input class="govuk-radios__input" id="decision-outcome" name="decision-outcome" type="radio" value="Allowed">
       <label class="govuk-label govuk-radios__label" for="decision-outcome">
-        Upheld
+        Allowed
       </label>
     </div>
     <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="decision-outcome-1" name="decision-outcome" type="radio" value="dismissed">
+    <input class="govuk-radios__input" id="decision-outcome" name="decision-outcome" type="radio" value="Dismissed">
       <label class="govuk-label govuk-radios__label" for="decision-outcome">
         Dismissed
+      </label>
+    </div>
+    <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="decision-outcome" name="decision-outcome" type="radio" value="Split decision">
+      <label class="govuk-label govuk-radios__label" for="decision-outcome">
+        Split decision
       </label>
     </div>
 
@@ -93,7 +101,6 @@
           <p></p>
   <div class="govuk-form-group">
 
-    <form action="appeal1-decision-summary" method="post" novalidate>
           <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
 
@@ -135,6 +142,7 @@ Completed  appeals will no longer show in your 'My Appeals' list.</p>   <br>
 
 
     </div>
+    </form>
   </div>
 
 
