@@ -25,4 +25,22 @@ module.exports = function (router) {
       res.redirect(base+'task-list');
     })
 
+
+  // Site visit details
+
+    router.post(base+'site-visit/appeal-site', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+
+
+  // Notices to interested parties
+
+    router.post(base+'notices/original-application', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+    
+    router.post(base+'notices/about-appeal', function (req, res) {
+      res.redirect(base+'task-list');
+    })
+
 }

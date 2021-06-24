@@ -151,7 +151,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" class="govuk-link">
+                <a href="site-visit/appeal-site" class="govuk-link">
                   Reason inspector must enter the appeal site
                 </a>
               </span>
@@ -164,15 +164,9 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" class="govuk-link">
-                  Reason the inspector must view from a neighbour's land
-                </a>
+                Reason the inspector must view from a neighbour's land
               </span>
-              {% if data["lpaqreview-"+version+"-sitevisit-neighbour"] %}
-                <strong class="govuk-tag app-task-list__tag" id="list--sitevisit-neighbour-status">Completed</strong>
-              {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list--sitevisit-neighbour-status">Not started</strong>
-              {% endif %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list--sitevisit-neighbour-status">Not required</strong>
             </li>
 
           </ul>
@@ -186,7 +180,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" class="govuk-link">
+                <a href="notices/original-application" class="govuk-link">
                   About the original application
                 </a>
               </span>
@@ -199,7 +193,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" class="govuk-link">
+                <a href="notices/about-appeal" class="govuk-link">
                   About the appeal
                 </a>
               </span>
@@ -218,6 +212,28 @@
             <span class="app-task-list__section-number">4. </span>Complete review
           </h2>
           <ul class="app-task-list__items">
+            
+            {% if 
+                data["lpaqreview-"+version+"-poreport-conservationarea"] and
+                data["lpaqreview-"+version+"-poreport-listedbuilding"] and
+                data["lpaqreview-"+version+"-poreport-greenbelt"] and
+                data["lpaqreview-"+version+"-poreport-interestedparties"] and
+                data["lpaqreview-"+version+"-poreport-plansused"] and
+                data["lpaqreview-"+version+"-sitevisit-appealsite"] and
+                data["lpaqreview-"+version+"-notices-originalapplication"] and
+                data["lpaqreview-"+version+"-notices-aboutappeal"] 
+            %}
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();" class="govuk-link">
+                  Complete review
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list--completereview-status">Not started</strong>
+            </li>
+
+            {% else %}
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
@@ -225,6 +241,8 @@
               </span>
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list--completereview-status">Cannot start yet</strong>
             </li>
+
+            {% endif %}
 
           </ul>
         </li>
