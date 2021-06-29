@@ -1,0 +1,105 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+    Inspector Screens - My Appeals - Decisions
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+
+.govuk-header__container {
+    border-bottom: 10px solid #009999;
+}
+.moj-sub-navigation__link[aria-current="page"]:before {
+    background-color: #009999;
+}
+
+
+</style>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+  <p><a href="my-index" class="govuk-back-link">All my appeals</a></p>  </div>
+  <div class="govuk-grid-column-one-half">
+    <p align="right"> <b>Inspector: </b>Marie Lightman</p>
+  </div>
+</div>
+
+<div class="govuk-grid-column-full-width">
+      <h1 class="govuk-heading-xl">
+        131 High Street, Bradford, BD6 1JK
+        <span class="govuk-caption-xl">Appeal Reference: APP/2020/56789/01234</span>
+      </h1>
+
+
+<nav class="moj-sub-navigation" aria-label="Sub navigation">
+
+<ul class="moj-sub-navigation__list">
+<li class="moj-sub-navigation__item">
+  <a class="moj-sub-navigation__link" href="appeal1-overview">Overview</a>
+</li>
+
+<li class="moj-sub-navigation__item">
+  <a class="moj-sub-navigation__link" href="appeal1-visit-arranged">Site visit</a>
+</li>
+
+<li class="moj-sub-navigation__item">
+  <a class="moj-sub-navigation__link" aria-current="page" href="appeal1-decision">Decision</a>
+</li>
+</ul>
+
+</nav>
+
+<h2 class="govuk-heading-l">Decision completed</h2>
+
+              <dl class="govuk-summary-list">
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Decision report
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                     {{ data['file-upload-1'] }}<a href="#">decision-document.doc</a>
+                  </dd>
+
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Decision outcome
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                   {{ data['decision-outcome'] }}
+
+                  </dd>
+
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Date of decision
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ data['decision-issued-day'] }}
+                    {{ data['decision-issued-month'] | formatMonth }}
+                    {{ data['decision-issued-year'] }}
+                  </dd>
+
+                </div>
+              </dl>
+<p>A Case Officer will be notified, and will make changes to the published decision as needed. <br>
+                They will notify the appellant and LPA of any relevant changes to the decision.
+
+</p><br><p>
+
+<a href="../inspector-appeals3/my-index">Return to my appeals</a> <br><br>
+
+<a href="../inspector-appeals3/index">Pick another available appeal</a>
+</p>
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,154 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+    Inspector Screens - My Appeals - Decisions
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+
+.govuk-header__container {
+    border-bottom: 10px solid #009999;
+}
+.moj-sub-navigation__link[aria-current="page"]:before {
+    background-color: #009999;
+}
+
+
+</style>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+  <p><a href="my-index" class="govuk-back-link">All my appeals</a></p>  </div>
+  <div class="govuk-grid-column-one-half">
+    <p align="right"> <b>Inspector: </b>Marie Lightman</p>
+  </div>
+</div>
+
+<div class="govuk-grid-column-full-width">
+      <h1 class="govuk-heading-xl">
+        131 High Street, Bradford, BD6 1JK
+        <span class="govuk-caption-xl">Appeal Reference: APP/2020/56789/01234</span>
+      </h1>
+
+
+<nav class="moj-sub-navigation" aria-label="Sub navigation">
+
+<ul class="moj-sub-navigation__list">
+<li class="moj-sub-navigation__item">
+  <a class="moj-sub-navigation__link" href="appeal1-overview">Overview</a>
+</li>
+
+<li class="moj-sub-navigation__item">
+  <a class="moj-sub-navigation__link" href="appeal1-visit-arranged">Site visit</a>
+</li>
+
+<li class="moj-sub-navigation__item">
+  <a class="moj-sub-navigation__link" aria-current="page" href="appeal1-decision">Decision</a>
+</li>
+</ul>
+
+</nav>
+<form action="appeal1-decision-summary" method="post" novalidate>
+
+  <h2 class="govuk-heading-m">Decision report</h2>
+
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="file-upload-1">
+       A decision has not yet been provided for this appeal. <br><br>  <a href="#">Link to Dart</a> to make the decision.<br><br>
+    </label>
+
+
+      <label class="govuk-label" for="file-upload-1">
+        <b>Upload files</b>
+      </label>
+      <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+    </div>
+
+ <br>
+  <h2 class="govuk-heading-m">Decision outcome</h2>
+  <div class="govuk-radios">
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="decision-outcome" name="decision-outcome" type="radio" value="Allowed">
+      <label class="govuk-label govuk-radios__label" for="decision-outcome">
+        Allowed
+      </label>
+    </div>
+    <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="decision-outcome" name="decision-outcome" type="radio" value="Dismissed">
+      <label class="govuk-label govuk-radios__label" for="decision-outcome">
+        Dismissed
+      </label>
+    </div>
+    <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="decision-outcome" name="decision-outcome" type="radio" value="Split decision">
+      <label class="govuk-label govuk-radios__label" for="decision-outcome">
+        Split decision
+      </label>
+    </div>
+<br>
+ <br>
+
+  <h2 class="govuk-heading-m">Decision date</h2>
+          <p></p>
+  <div class="govuk-form-group">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="decision-issued-hint">
+
+              <div id="decision-issued-hint" class="govuk-hint">
+              Enter the date of decision, for example 12 11 2021
+              </div>
+              <div class="govuk-date-input" id="decision">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="decision-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="decision-issued-day" name="decision-issued-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="decision-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="decision-issued-month" name="decision-issued-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="decision-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="decision-issued-year" name="decision-issued-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+    <br> <p>When you select Complete appeal a Case Officer will be notified to publish the decision, and notify the appellant and LPA it is ready to view.
+<br><br>
+Completed  appeals will no longer show in your 'My Appeals' list.</p>   <br>
+    <div class="govuk-button-group">
+      {{ govukButton({
+        text: "Complete appeal"
+      }) }}
+
+
+    </div>
+    </form>
+  </div>
+
+
+
+
+
+
+
+
+
+{% endblock %}
