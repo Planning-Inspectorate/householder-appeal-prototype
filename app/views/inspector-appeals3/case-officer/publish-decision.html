@@ -1,0 +1,164 @@
+{% extends "layout-no-back.html" %}
+
+{% block pageTitle %}
+  Case Officer Screen - Appeal decision for publishing
+{% endblock %}
+
+{% block content %}
+<style>
+
+.govuk-header__container {
+    border-bottom: 10px solid #009999;
+}
+
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <!--<p><!--<a href="index" class="govuk-back-link">All my appeals</a></p>-->
+  </div>
+<!--  <div class="govuk-grid-column-one-half">
+  <p align="right"> <b>Inspector: </b>Marie Lightman</p>
+  </div> -->
+</div>
+<h1 class="govuk-heading-xl">
+    Appeal decision for publishing
+  </h1>
+
+  <dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key ">
+        Appellant name
+      </dt>
+      <dd class="govuk-summary-list__value">
+        Manish Sharma
+      </dd>
+    </div>
+    <!--div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Appellant email
+      </dt>
+      <dd class="govuk-summary-list__value">
+        manish.sharma@example.com
+      </dd>
+    </div-->
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Appeal reference
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <p class="govuk-body">APP/Q9999/D/21/1234567</p>
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Received on
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <p class="govuk-body">16 May 2021</p>
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Appeal site
+      </dt>
+      <dd class="govuk-summary-list__value">
+          96 The Avenue, Maidstone, XM26 7YS
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Local planning department
+      </dt>
+      <dd class="govuk-summary-list__value">
+        Maidstone Borough Council
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Planning application reference
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <p class="govuk-body">48269/APP/2020/1482</p>
+      </dd>
+    </div>
+  </dl>
+
+
+  <h2 class="govuk-heading-l govuk-!-margin-top-9">
+    Appeal decision
+  </h2>
+  <dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Decision outcome
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <ul class="govuk-list">
+          <li>
+                        {{ data['decision-outcome'] }}
+          </li>
+        </ul>
+      </dd>
+    </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Decision letter
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>
+              <a href="/public/images/appeal%20statement.pdf" class="govuk-link">APP/Q9999/D/21/1234567 - decision letter.pdf</a>
+            </li>
+          </ul>
+        </dd>
+      </div>
+      </dl>
+
+<form action="index2" method="post" novalidate>
+
+      <h2 class="govuk-heading-l govuk-!-margin-top-9">
+        Appeal decision date
+      </h2>
+
+      <div class="govuk-date-input" id="decision-date">
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="decision-issued-day">
+              Day
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="decision-issued-day" name="decision-issued-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="decision-issued-month">
+              Month
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="decision-issued-month" name="decision-issued-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="decision-issued-year">
+              Year
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="decision-issued-year" name="decision-issued-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+        </div>
+      </div>
+
+
+      <p>Publishing the decision will close the case. You will need to inform the appellant and the LPA of the decision.</p>
+
+      <input type="hidden" name="answers-checked" value="true">
+
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Publish decision
+      </button>
+
+
+       <br>
+
+
+
+</div>
+
+{% endblock %}
