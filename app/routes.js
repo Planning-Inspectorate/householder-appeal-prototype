@@ -1067,6 +1067,7 @@ require('./routes/validation-officer/v1.js')(router);
 require('./routes/validation-officer/v2.js')(router);
 
 require('./routes/case-officer-lpaq-review/v1.js')(router);
+require('./routes/case-officer-lpaq-review/v2.js')(router);
 
 require('./routes/standalone/as-2078.js')(router);
 require('./routes/standalone/lpa-questionnaire-security.js')(router);
