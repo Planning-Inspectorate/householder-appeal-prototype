@@ -134,11 +134,12 @@
         </div>
       </dl>
 
-      {{ govukWarningText({
-        text: "Confirming the LPA questionnaire as complete makes the appeal available to inspectors.",
-        iconFallbackText: "warning"
-      }) }}
-
+      {% if data["lpaqreview-"+version+"-review"] == "Complete" %}
+        {{ govukWarningText({
+          text: "Confirming the LPA questionnaire as complete makes the appeal available to inspectors.",
+          iconFallbackText: "warning"
+        }) }}
+      {% endif %}
     
       <div class="govuk-button-group">
         {{ govukButton({
