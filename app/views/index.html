@@ -721,15 +721,49 @@
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
                   <h3 class="govuk-heading-m">
-                    Review LPA questionnaire version 1
+                    Review LPA questionnaire v2
                     {{ govukTag({
                       classes: "govuk-tag--red govuk-!-margin-left-1",
                       text: "WIP"
                     }) }}
                   </h3>
+                  <p class="govuk-body">
+                    This review process shows all questionnaire data on one screen, followed by a journey for detailing why it is incomplete if required.
+                  <p>
                   <ul class="govuk-list govuk-list--bullet">
                     <li>
-                      <a href="/case-officer-lpaq-review/v1/list-questionnaires" title="">LPA questionnaires for review</a>
+                      <a href="/case-officer-lpaq-review/v2/list-questionnaires" title="">List of  questionnaires for review</a>
+                    </li>
+                  </ul>
+
+                  <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Jira Tickets (1)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <ul class="govuk-list govuk-list-bulleted">
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2401">AS-2401 Case Officer - Review LPA Submission</a></li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="govuk-inset-text govuk-!-margin-top-0">
+                  <h3 class="govuk-heading-m">
+                    Review LPA questionnaire v1
+                    {{ govukTag({
+                      classes: "govuk-tag--blue govuk-!-margin-left-1",
+                      text: "Ready for UR"
+                    }) }}
+                  </h3>
+                  <p class="govuk-body">
+                    This review process displays each task on a separate screen, each with their own yes/no answer.
+                  <p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                      <a href="/case-officer-lpaq-review/v1/list-questionnaires" title="">List of  questionnaires for review</a>
                     </li>
                   </ul>
 
