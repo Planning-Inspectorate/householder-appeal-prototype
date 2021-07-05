@@ -721,6 +721,37 @@
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
                   <h3 class="govuk-heading-m">
+                    Review LPA questionnaire v3
+                    {{ govukTag({
+                      classes: "govuk-tag--red govuk-!-margin-left-1",
+                      text: "WIP"
+                    }) }}
+                  </h3>
+                  <p class="govuk-body">
+                    This review process shows all questionnaire data on one screen, with inline checkboxes to highlight incomplete information
+                  <p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                      <a href="/case-officer-lpaq-review/v3/list-questionnaires" title="">List of  questionnaires for review</a>
+                    </li>
+                  </ul>
+
+                  <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Jira Tickets (1)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <ul class="govuk-list govuk-list-bulleted">
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2401">AS-2401 Case Officer - Review LPA Submission</a></li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="govuk-inset-text govuk-!-margin-top-0">
+                  <h3 class="govuk-heading-m">
                     Review LPA questionnaire v2
                     {{ govukTag({
                       classes: "govuk-tag--red govuk-!-margin-left-1",
@@ -728,7 +759,7 @@
                     }) }}
                   </h3>
                   <p class="govuk-body">
-                    This review process shows all questionnaire data on one screen, followed by a journey for detailing why it is incomplete if required.
+                    This review process shows all questionnaire data on one screen, with the options to select the outcome and reasons at the bottom of the screen
                   <p>
                   <ul class="govuk-list govuk-list--bullet">
                     <li>
