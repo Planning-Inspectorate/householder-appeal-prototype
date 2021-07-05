@@ -62,59 +62,95 @@
             Reason(s)
           </dt>
           <dd class="govuk-summary-list__value">
-            <ul class="govuk-list govuk-list--bullet">
 
+            {% if data["lpaqreview-"+version+"-about-entersite"] or 
+                  data["lpaqreview-"+version+"-about-neighboursland"] %}
+              <p class="govuk-body">
+                Not enough detail
+              <p>
+              <ul class="govuk-list govuk-list--bullet">
               {% if data["lpaqreview-"+version+"-about-entersite"] %}
                 <li>{{ data["lpaqreview-"+version+"-about-entersite"] }}</li>
               {% endif %}
               {% if data["lpaqreview-"+version+"-about-neighboursland"] %}
                 <li>{{ data["lpaqreview-"+version+"-about-neighboursland"] }}</li>
               {% endif %}
-              {% if data["lpaqreview-"+version+"-about-listedbuilding"] %}
-                <li>{{ data["lpaqreview-"+version+"-about-listedbuilding"] }}</li>
-              {% endif %}
-              {% if data["lpaqreview-"+version+"-about-greenbelt"] %}
-                <li>{{ data["lpaqreview-"+version+"-about-greenbelt"] }}</li>
-              {% endif %}
-              {% if data["lpaqreview-"+version+"-about-conservationarea"] %}
-                <li>{{ data["lpaqreview-"+version+"-about-conservationarea"] }}</li>
-              {% endif %}
-              {% if data["lpaqreview-"+version+"-docs-plansused"] %}
-                <li>{{ data["lpaqreview-"+version+"-docs-plansused"] }}</li>
-              {% endif %}
-              {% if data["lpaqreview-"+version+"-docs-poreport"] %}
-                <li>{{ data["lpaqreview-"+version+"-docs-poreport"] }}</li>
-              {% endif %}
-              {% if data["lpaqreview-"+version+"-docs-telling"] %}
-                <li>{{ data["lpaqreview-"+version+"-docs-telling"] }}</li>
-              {% endif %}
-              {% if data["lpaqreview-"+version+"-docs-representations"] %}
-                <li>{{ data["lpaqreview-"+version+"-docs-representations"] }}</li>
-              {% endif %}
-              {% if data["lpaqreview-"+version+"-docs-notifying"] %}
-                <li>{{ data["lpaqreview-"+version+"-docs-notifying"] }}</li>
-              {% endif %}
-              {% if data["lpaqreview-"+version+"-docs-publicised"] %}
-                <li>{{ data["lpaqreview-"+version+"-docs-publicised"] }}</li>
-              {% endif %}
-              {% if data["lpaqreview-"+version+"-docs-conservationarea"] %}
-                <li>{{ data["lpaqreview-"+version+"-docs-conservationarea"] }}</li>
-              {% endif %}
-              {% if data["lpaqreview-"+version+"-docs-sitenotices"] %}
-                <li>{{ data["lpaqreview-"+version+"-docs-sitenotices"] }}</li>
-              {% endif %}
-              {% if data["lpaqreview-"+version+"-docs-statutory"] %}
-                <li>{{ data["lpaqreview-"+version+"-docs-statutory"] }}</li>
-              {% endif %}
-              {% if data["lpaqreview-"+version+"-docs-otherrelevant"] %}
-                <li>{{ data["lpaqreview-"+version+"-docs-otherrelevant"] }}</li>
-              {% endif %}
-              {% if data["lpaqreview-"+version+"-docs-supplementary"] %}
-                <li>{{ data["lpaqreview-"+version+"-docs-supplementary"] }}</li>
-              {% endif %}
-              {% if data["lpaqreview-"+version+"-docs-developmentplan"] %}
-                <li>{{ data["lpaqreview-"+version+"-docs-developmentplan"] }}</li>
-              {% endif %}
+              </ul>
+            {% endif %}
+
+            {% if data["lpaqreview-"+version+"-about-listedbuilding"] or 
+                  data["lpaqreview-"+version+"-about-greenbelt"] or 
+                  data["lpaqreview-"+version+"-about-conservationarea"] %}
+              <p class="govuk-body">
+                Incorrect answer(s)
+              <p>
+              <ul class="govuk-list govuk-list--bullet">
+                {% if data["lpaqreview-"+version+"-about-listedbuilding"] %}
+                  <li>{{ data["lpaqreview-"+version+"-about-listedbuilding"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-about-greenbelt"] %}
+                  <li>{{ data["lpaqreview-"+version+"-about-greenbelt"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-about-conservationarea"] %}
+                  <li>{{ data["lpaqreview-"+version+"-about-conservationarea"] }}</li>
+                {% endif %}
+              </ul>
+            {% endif %}
+
+            {% if data["lpaqreview-"+version+"-docs-plansused"] or 
+                  data["lpaqreview-"+version+"-docs-poreport"] or 
+                  data["lpaqreview-"+version+"-docs-telling"] or 
+                  data["lpaqreview-"+version+"-docs-representations"] or 
+                  data["lpaqreview-"+version+"-docs-notifying"] or 
+                  data["lpaqreview-"+version+"-docs-publicised"] or 
+                  data["lpaqreview-"+version+"-docs-conservationarea"] or 
+                  data["lpaqreview-"+version+"-docs-sitenotices"] or 
+                  data["lpaqreview-"+version+"-docs-statutory"] or 
+                  data["lpaqreview-"+version+"-docs-otherrelevant"] or 
+                  data["lpaqreview-"+version+"-docs-supplementary"] or 
+                  data["lpaqreview-"+version+"-docs-developmentplan"] %}
+              <p class="govuk-body">
+                Missing or incorrect document(s)
+              <p>
+              <ul class="govuk-list govuk-list--bullet">
+                {% if data["lpaqreview-"+version+"-docs-plansused"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-plansused"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-poreport"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-poreport"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-telling"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-telling"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-representations"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-representations"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-notifying"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-notifying"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-publicised"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-publicised"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-conservationarea"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-conservationarea"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-sitenotices"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-sitenotices"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-statutory"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-statutory"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-otherrelevant"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-otherrelevant"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-supplementary"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-supplementary"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-developmentplan"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-developmentplan"] }}</li>
+                {% endif %}
+              </ul>
+            {% endif %}
 
             </ul>
           </dd>
