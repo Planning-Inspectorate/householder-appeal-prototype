@@ -24,15 +24,17 @@
         html: "Questionnaire " + data["lpaqreview-"+version+"-outcome"] + "<br>APP/B3030/D/21/3272772"
       }) }}
 
+      {% if data["lpaqreview-"+version+"-outcome"] == "complete" %}
       <p class="govuk-body">
         The appeal is now available to inspectors.
       <p>
+      {% endif %}
 
       <h2 class="govuk-heading-m">What next?</h2>
       <ul class="govuk-list">
-        <li>
+        <!--li>
           <a href="javascript:preventDefault();" class="govuk-link">Return to dashboard</a>
-        </li>
+        </li-->
         <li>
           <a href="list-questionnaires" class="govuk-link">Return to questionnaires for review</a>
         </li>
