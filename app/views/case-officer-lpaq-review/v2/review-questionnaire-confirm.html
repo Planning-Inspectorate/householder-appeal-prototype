@@ -21,7 +21,7 @@
       {{ govukPanel({
         classes: "govuk-!-margin-bottom-7",
         titleText: "Outcome confirmed",
-        html: "Questionnaire " + data["lpaqreview-"+version+"-review"] + "<br>APP/B3030/D/21/3272772"
+        html: "Questionnaire " + data["lpaqreview-"+version+"-review"] | lower + "<br>APP/B3030/D/21/3272772"
       }) }}
 
       {% if data["lpaqreview-"+version+"-review"] == "Complete" %}
