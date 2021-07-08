@@ -12,9 +12,11 @@
         Householder planning appeal questionnaire
       </h1>
 
-      <p class="govuk-body">
-        Before you can access this questionnaire, we need to check you work at [name of LPA].
-      <p>
+      {{ govukNotificationBanner({
+        type: "null",
+        titleText: "Your session has timed out",
+        text: "To return to the questionnaire you need to enter your [name of LPA] mail address."
+      }) }}
 
       <form action="" method="post" novalidate>
 
