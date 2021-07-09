@@ -12,11 +12,19 @@
         Householder planning appeal questionnaire
       </h1>
 
-      {{ govukNotificationBanner({
-        type: "null",
-        titleText: "Your session has timed out",
-        text: "To return to the questionnaire you need to enter your [name of LPA] email address."
-      }) }}
+      <div class="govuk-notification-banner" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Session expired
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <h3 class="govuk-notification-banner__heading">
+            Your session has timed out
+          </h3>
+          <p class="govuk-body">To return to the questionnaire, you need to enter your [name of LPA] email address.</p>
+        </div>
+      </div>
 
       <form action="" method="post" novalidate>
 

@@ -11,9 +11,9 @@
       <h1 class="govuk-heading-xl">
         Householder planning appeal questionnaire
       </h1>
-      <h2 class="govuk-heading-l">Check your email</h2>
+      <h2 class="govuk-heading-l">Confirm your email address</h2>
       <p class="govuk-body">
-        We've sent an email to {{ data['lpa-'+version+'-account-email'] }} with a link to the questionnaire.
+        We've sent an email to {{ data['lpa-'+version+'-account-email'] }}. You need to click the link in the email to confirm your email address.
       </p>
       <p class="govuk-body">
         The link will expire after [amount of time].
@@ -26,11 +26,24 @@
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-top-9">
 
       <h4 class="govuk-heading-s">If you're having problems</h4>
-      <ul class="govuk-list">
+      <p class="govuk-body">
+        Check the email hasn't gone into your spam/bulk folder.
+      <p>
+      <p class="govuk-body">
+        We can <a href="email">resend the email</a>.
+      <p>
+      <p class="govuk-body">
+        If you're still having problems, you can contact our customer support team:
+      <p>
+      <p class="govuk-body">
+        Email: <a href="">enquiries@planninginspectorate.gov.uk</a><br>
+        Telephone: 0303 444 5000
+      <p>
+      <!--ul class="govuk-list">
         <li>Check the email hasn't gone into your spam/bulk folder.</li>
         <li>We can <a href="email">resend the email</a>.</li>
         <li><a class="govuk-link" href="javascript:preventDefault();">Email our customer support team</a> or call them on 0303 44 5000.</li>
-      </ul>
+      </ul-->
 
       <br><br><br><br><br><br>
       <p><a href="../email/magic-link">(View confirmation email)</a></p>
