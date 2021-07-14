@@ -1,0 +1,142 @@
+{% extends "layouts/lpa-questionnaire/v9.html" %}
+
+{% block pageTitle %}
+  Provide information for a householder planning appeal
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "../task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds"> 
+    <form action="" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
+
+      <h2 class="govuk-heading-l">
+        Supplementary planning document
+      </h2>
+      <p class="govuk-body">
+        You can add one supplementary planning document at a time. You will be able to add more later.
+      <p>
+
+      {{ govukFileUpload({
+        id: "lpaq-"+version+"-supplementary-file",
+        name: "lpaq-"+version+"-supplementary-file",
+        formGroup: {
+          classes: "govuk-!-margin-bottom-3"
+        },
+        label: {
+          classes: "govuk-label--m govuk-!-margin-top-8",
+          text: "Upload a file"
+        }
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "Accepted file formats",
+        html: '
+          <ul class="govuk-list govuk-list--bullet">
+            <li>PDF &ndash; <strong>.pdf</strong></li>
+            <li>Microsfot Word &ndash; <strong>.doc</strong> or <strong>.docx</strong></li>
+            <li>TIF &ndash; <strong>.tif</strong> or <strong>.tiff</strong></li>
+            <li>JPEG &ndash; <strong>.jpg</strong> or <strong>.jpeg</strong></li>
+            <li>PNG &ndash; <strong>.png</strong></li>
+          </ul>
+        '
+      }) }}
+          
+      {{ govukInput({
+        label: {
+          classes: "govuk-label--m govuk-!-margin-top-8",
+          text: "Document name"
+        },
+        id: "lpaq-"+version+"-supplementary-name",
+        name: "lpaq-"+version+"-supplementary-name"
+      }) }}
+
+
+      {% set dateHtml %}
+        {{ govukDateInput({
+          id: "lpaq-"+version+"-supplementary-adopted-date",
+          namePrefix: "lpaq-"+version+"-supplementary-adopted-date",
+          fieldset: {
+            legend: {
+              text: "Tell us the date of adoption"
+            }
+          },
+          hint: {
+            text: "For example, 27 3 2007"
+          }
+        }) }}
+      {% endset -%}
+      {% set stageHtml %}
+        {{ govukInput({
+          label: {
+            text: "Tell us what stage this has reached"
+          },
+          id: "lpaq-"+version+"-supplementary-adopted-stage",
+          name: "lpaq-"+version+"-supplementary-adopted-stage"
+        }) }}
+      {% endset -%}
+      
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "lpaq-"+version+"-supplementary-adopted",
+        name: "lpaq-"+version+"-supplementary-adopted",
+        fieldset: {
+          classes: "govuk-!-margin-top-8",
+          legend: {
+            text: "Is it formally adopted?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m govuk-!-margin-top-8"
+          }
+        },  
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            conditional: {
+              html: dateHtml
+            }
+          },
+          {
+            value: "no",
+            text: "No",
+            conditional: {
+              html: stageHtml
+            }
+          }
+        ]
+      }) }}
+      
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          href: "supplementary-cancel",
+          text: "Cancel",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
+
+    </form>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %}
+  </div>
+  
+</div>
+{% endblock %}

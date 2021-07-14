@@ -36,8 +36,8 @@
 
       {% set uploadHtml %}
         {{ govukFileUpload({
-          id: "supplementaryplanning",
-          name: "supplementaryplanning",
+          id: "supplementary",
+          name: "supplementary",
           classes: 'moj-multi-file-upload__input',
           label: {
             text: "Upload files",
@@ -56,12 +56,12 @@
       {{ mojMultiFileUpload({
         uploadedFiles: {
           heading: { text: 'Files added' },
-          items: data.uploadedFiles | filesByFieldName("supplementaryplanning")
+          items: data.uploadedFiles | filesByFieldName("supplementary")
         },
         uploadHtml: uploadHtml
       }) }}
 
-      <input type="hidden" name="lpaq-{{version}}-optionalsupportingdocs-supplementaryplanning" value="uploaded">
+      <input type="hidden" name="lpaq-{{version}}-optionalsupportingdocs-supplementary" value="uploaded">
 
       {{ govukButton({
         text: "Save and continue"
@@ -85,7 +85,7 @@
         container: $('.moj-multi-file-upload'),
         uploadUrl: '/ajax-case-file',
         deleteUrl: '/ajax-case-file-delete',
-        fieldName: 'supplementaryplanning'
+        fieldName: 'supplementary'
         });
     }
   </script>
