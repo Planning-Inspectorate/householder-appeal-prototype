@@ -1,0 +1,78 @@
+{% extends "layouts/lpa-questionnaire/v9.html" %}
+
+{% block pageTitle %}
+  Provide information for a householder planning appeal
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "../task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds"> 
+    <form action="" method="post" novalidate>
+      <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Optional supporting documents</span>
+      <h1 class="govuk-heading-l">Supplementary planning documents</h1>
+      
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Document name</th>
+            <th scope="col" class="govuk-table__header">Formally adopted</th>
+            <th scope="col" class="govuk-table__header"></th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% set i = 0 %}
+          {% for file in data['lpaq-'+version+'supplementary-files'] %}
+            {% set i = i + 1 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">{{ file.name }}</th>
+              <td class="govuk-table__cell">{{ file.adopted | capitalize }} -
+                {% if file.adopted == "yes" %}
+                  Adopted on {{file['adopted_day']}} {{file['adopted_month'] }} {{file['adopted_year']}} 
+                {% else %}
+                  {{ file.adopted_stage | capitalize }}
+                {% endif %}
+              </td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="supplementary-delete?row={{ i }}">
+                  Delete<span class="govuk-visually-hidden"> {{document.name}}</span>
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <input type="hidden" name="supplementary-completed" value="govuk-tag app-task-list__task-completed">
+      <input type="hidden" name="supplementary-completed-text" value="Completed">
+      <a href="supplementary" class="govuk-button govuk-button--secondary">Add another</a>
+      
+
+      <input type="hidden" name="lpaq-{{version}}-optionalsupportingdocs-supplementary" value="uploaded">
+
+      <div class="govuk-form-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %}
+  </div>
+  
+</div>
+{% endblock %}

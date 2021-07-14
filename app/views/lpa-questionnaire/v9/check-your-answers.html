@@ -398,10 +398,27 @@
             Supplementary planning documents
           </dt>
           <dd class="govuk-summary-list__value">
-            No files uploaded
+            {% if data['lpaq-'+version+'supplementary-files'] %}
+              <ul class="govuk-list govuk-list--bullet">
+                {% set i = 0 %}
+                {% for file in data['lpaq-'+version+'supplementary-files'] %}
+                  {% set i = i + 1 %}
+                  <li>
+                    {{ file.name }}<br>
+                    {% if file.adopted == "yes" %}
+                      (Adopted on {{file['adopted_day']}} {{file['adopted_month'] | truncate(3, true, "") }} {{file['adopted_year']}})
+                    {% else %}
+                      (Not adopted - {{ file.adopted_stage | capitalize }})
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              No files uploaded
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="optional-supporting-documents/conservation-map">
+            <a class="govuk-link" href="optional-supporting-documents/supplementary-redirect">
               Change<span class="govuk-visually-hidden"> supplementary planning documents</span>
             </a>
           </dd>
