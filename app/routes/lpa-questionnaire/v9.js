@@ -88,6 +88,14 @@ module.exports = function (router) {
       }
     })
   
+    router.post(base+'about-appeal-site/health-safety', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-checkyouranswers']){
+        res.redirect(base+'check-your-answers');
+      } else {
+        res.redirect(base+'task-list');
+      }
+    })
+  
     router.post(base+'about-appeal-site/listed-building', function (req, res) {
       if (req.session.data['lpaq-'+v+'-checkyouranswers']){
         res.redirect(base+'check-your-answers');
@@ -338,6 +346,8 @@ module.exports = function (router) {
       req.session.data['lpaq-'+v+'-aboutappealsite-entersite-telluswhy'] = "There's a 60ft wall that you can't peek over"
       req.session.data['lpaq-'+v+'-aboutappealsite-neighboursland'] = "Yes"
       req.session.data['lpaq-'+v+'-aboutappealsite-neighboursland-telluswhy'] = "22 Argyll Street. Maidstone. This is a reason why you think a visit is required."
+      req.session.data['lpaq-'+v+'-aboutappealsite-healthsafety'] = "Yes"
+      req.session.data['lpaq-'+v+'-aboutappealsite-healthsafety-telluswhy'] = "PPE needed and there is livestock."
       req.session.data['lpaq-'+v+'-aboutappealsite-listedbuilding'] = "Yes"
       req.session.data['lpaq-'+v+'-aboutappealsite-listedbuilding-telluswhy'] = "This is the relevant listing description from the List of Buildings of Special Architectural or Historic Interest"
       req.session.data['lpaq-'+v+'-aboutappealsite-greenbelt'] = "No"
