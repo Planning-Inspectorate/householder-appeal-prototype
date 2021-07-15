@@ -143,6 +143,22 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
+            Are there any health and safety issues on the appeal site?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-aboutappealsite-healthsafety"] }}
+            {% if data["lpaq-"+version+"-aboutappealsite-healthsafety"] == "Yes" %}
+              <br>{{ data["lpaq-"+version+"-aboutappealsite-healthsafety-telluswhy"] }}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="about-appeal-site/health-safety">
+              Change<span class="govuk-visually-hidden"> are there any health and safety issues on the appeal site?</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
             Would the development affect the setting of a listed building?
           </dt>
           <dd class="govuk-summary-list__value">
