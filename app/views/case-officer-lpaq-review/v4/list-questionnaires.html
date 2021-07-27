@@ -1,0 +1,170 @@
+{% extends "layouts/case-officer-lpaq-review/v4.html" %}
+
+{% block pageTitle %}
+  Questionnaires for review
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Dashboard",
+        href: "#"
+      },
+      {
+        text: "Questionnaires for review"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Questionnaires for review
+      </h1>
+
+      <table class="govuk-table">
+        <!--caption class="govuk-table__caption">Householder planning appeals</caption-->
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Appeal reference</th>
+            <th scope="col" class="govuk-table__header">Date due</th>
+            <th scope="col" class="govuk-table__header">Appeal site</th>
+            <th scope="col" class="govuk-table__header">Status</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="review-questionnaire" class="govuk-link">APP/B3030/D/21/3272772</a>
+            </td>
+            <td class="govuk-table__cell">23 Jun 2021</td>
+            <td class="govuk-table__cell">Jaleno, Church Lane, Eakring, NEWARK, NG22 0DH</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              {{ govukTag({
+                classes: "govuk-tag--green",
+                text: "Recieved"
+              }) }}
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">APP/Q9999/D/21/5463281</a>
+            </td>
+            <td class="govuk-table__cell">
+              23 Jun 2021
+            </td>
+            <td class="govuk-table__cell">
+              55 Butcher Street, Thurnscoe, S63 0RB
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              {{ govukTag({
+                classes: "govuk-tag--green",
+                text: "Recieved"
+              }) }}
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">APP/Q9999/D/21/1203521</a>
+            </td>
+            <td class="govuk-table__cell">
+              24 Jun 2021
+            </td>
+            <td class="govuk-table__cell">
+              8 The Chase, Findon, BN14 0TT
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              {{ govukTag({
+                classes: "govuk-tag--red",
+                text: "Overdue"
+              }) }}
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">APP/Q9999/D/21/1154923</a>
+            </td>
+            <td class="govuk-table__cell">
+              25 Jun 2021
+            </td>
+            <td class="govuk-table__cell">
+              44 Rivervale, Bridport, DT6 5RN
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              {{ govukTag({
+                classes: "govuk-tag--green",
+                text: "Received"
+              }) }}
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">APP/Q9999/D/21/1087562</a>
+            </td>
+            <td class="govuk-table__cell">
+              25 Jun 2021
+            </td>
+            <td class="govuk-table__cell">
+              92 Huntsmoor Road, Tadley, RG26 4BX
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              {{ govukTag({
+                classes: "govuk-tag--blue",
+                text: "Awaiting"
+              }) }}
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">APP/Q9999/D/21/1365524</a>
+            </td>
+            <td class="govuk-table__cell">
+              26 Jun 2021
+            </td>
+            <td class="govuk-table__cell">
+              29 St Marys Gardens, Hilperton Marsh, BA14 7PQ
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              {{ govukTag({
+                classes: "govuk-tag--blue",
+                text: "Awaiting"
+              }) }}
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">APP/Q9999/D/21/1224115</a>
+            </td>
+            <td class="govuk-table__cell">
+              28 Jun 2021
+            </td>
+            <td class="govuk-table__cell">
+              1 Grove Cottage, Shotesham Road, Woodton, NR35 2ND
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              {{ govukTag({
+                classes: "govuk-tag--blue",
+                text: "Awaiting"
+              }) }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+{% endblock %}
