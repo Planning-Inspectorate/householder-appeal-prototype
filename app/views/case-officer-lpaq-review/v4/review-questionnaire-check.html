@@ -118,18 +118,6 @@
                     {{ data["lpaqreview-"+version+"-docs-plans-detail"] }}
                   </li>
                 {% endif %}
-                {% if data["lpaqreview-"+version+"-docs-developmentplan"] %}
-                  <li class="govuk-!-margin-bottom-3">
-                    {{ data["lpaqreview-"+version+"-docs-developmentplan"] }}:<br>
-                    {{ data["lpaqreview-"+version+"-docs-developmentplan-detail"] }}
-                  </li>
-                {% endif %}
-                {% if data["lpaqreview-"+version+"-docs-supplementary"] %}
-                  <li class="govuk-!-margin-bottom-3">
-                    {{ data["lpaqreview-"+version+"-docs-supplementary"] }}:<br>
-                    {{ data["lpaqreview-"+version+"-docs-supplementary-detail"] }}
-                  </li>
-                {% endif %}
                 {% if data["lpaqreview-"+version+"-docs-statutory"] %}
                   <li class="govuk-!-margin-bottom-3">
                     {{ data["lpaqreview-"+version+"-docs-statutory"] }}:<br>
@@ -142,6 +130,20 @@
                     {{ data["lpaqreview-"+version+"-docs-policies-detail"] }}
                   </li>
                 {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-supplementary"] %}
+                  <li class="govuk-!-margin-bottom-3">
+                    {{ data["lpaqreview-"+version+"-docs-supplementary"] }}:<br>
+                    {{ data["lpaqreview-"+version+"-docs-supplementary-detail"] }}
+                  </li>
+                {% endif %}
+                <!--
+                {% if data["lpaqreview-"+version+"-docs-developmentplan"] %}
+                  <li class="govuk-!-margin-bottom-3">
+                    {{ data["lpaqreview-"+version+"-docs-developmentplan"] }}:<br>
+                    {{ data["lpaqreview-"+version+"-docs-developmentplan-detail"] }}
+                  </li>
+                {% endif %}
+                -->
                 {% if data["lpaqreview-"+version+"-docs-conservationarea"] %}
                   <li class="govuk-!-margin-bottom-3">
                     {{ data["lpaqreview-"+version+"-docs-conservationarea"] }}:<br>

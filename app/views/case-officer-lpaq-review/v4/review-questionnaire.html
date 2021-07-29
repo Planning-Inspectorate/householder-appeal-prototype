@@ -171,34 +171,92 @@
         <table class="govuk-table govuk-table__lpareview">
           <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">Development plan document or neighbourhood plan</th>
-              <td class="govuk-table__cell">No files uploaded</td>
+              <th scope="row" class="govuk-table__header">Statutory development plan policies</th>
               <td class="govuk-table__cell">
-                {% set developmentplanHtml %}
+                <ul class="govuk-list">
+                  <li>
+                    <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - DM5.pdf">POLICY AND SUPPORTING TEXT - 672932 - DM5.pdf</a>
+                  </li>
+                  <li>
+                    <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - DM6.pdf">POLICY AND SUPPORTING TEXT - 672932 - DM6.pdf</a>
+                  </li>
+                  <li>
+                    <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - DM12.pdf">POLICY AND SUPPORTING TEXT - 672932 - DM12.pdf</a>
+                  </li>
+                </ul></td>
+              <td class="govuk-table__cell">
+                {% set statutoryHtml %}
                   {{ govukTextarea({
-                    id: "lpaqreview-"+version+"-docs-developmentplan-detail",
-                    name: "lpaqreview-"+version+"-docs-developmentplan-detail",
+                    id: "lpaqreview-"+version+"-docs-statutory-detail",
+                    name: "lpaqreview-"+version+"-docs-statutory-detail",
                     label: {
-                      text: "Which plans are missing?"
+                      text: "Which policies are missing?"
                     },
                     rows: 3,
-                    value: data["lpaqreview-"+version+"-docs-developmentplan-detail"]
+                    value: data["lpaqreview-"+version+"-docs-statutory-detail"]
                   }) }}
                 {% endset -%}
                 {{ govukCheckboxes({
-                  idPrefix: "lpaqreview-"+version+"-docs-developmentplan",
-                  name: "lpaqreview-"+version+"-docs-developmentplan",
+                  idPrefix: "lpaqreview-"+version+"-docs-statutory",
+                  name: "lpaqreview-"+version+"-docs-statutory",
                   classes: "govuk-checkboxes--small",
                   formGroup: {
                     classes: "govuk-!-margin-bottom-0"
                   },
                   items: [
                     {
-                      value: "Development plan document or neighbourhood plan",
+                      value: "Statutory development plan policies",
                       text: "Missing or incorrect",
-                      checked: checked("lpaqreview-"+version+"-docs-developmentplan", "Development plan document or neighbourhood plan"),
+                      checked: checked("lpaqreview-"+version+"-docs-statutory", "Statutory development plan policies"),
                       conditional: {
-                        html: developmentplanHtml
+                        html: statutoryHtml
+                      }
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Other relevant policies</th>
+              <td class="govuk-table__cell">
+                <ul class="govuk-list">
+                  <li>
+                    <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - CP9 - Sustainable Design Adopted March 2019.pdf">POLICY AND SUPPORTING TEXT - 672932 - CP9 - Sustainable Design Adopted March 2019.pdf</a>
+                  </li>
+                  <li>
+                    <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - CP10 & 10A - Climate Change Adopted March 2019.pdf">POLICY AND SUPPORTING TEXT - 672932 - CP10 & 10A - Climate Change Adopted March 2019.pdf</a>
+                  </li>
+                  <li>
+                    <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - CP14 - Historic Environment Adopted March 2019.pdf">POLICY AND SUPPORTING TEXT - 672932 - CP14 - Historic Environment Adopted March 2019.pdf</a>
+                  </li>
+                </ul>
+              </td>
+              <td class="govuk-table__cell">
+                {% set policiesHtml %}
+                  {{ govukTextarea({
+                    id: "lpaqreview-"+version+"-docs-policies-detail",
+                    name: "lpaqreview-"+version+"-docs-policies-detail",
+                    label: {
+                      text: "Which policies are missing?"
+                    },
+                    rows: 3,
+                    value: data["lpaqreview-"+version+"-docs-policies-detail"]
+                  }) }}
+                {% endset -%}
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-docs-policies",
+                  name: "lpaqreview-"+version+"-docs-policies",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Other relevant policies",
+                      text: "Missing or incorrect",
+                      checked: checked("lpaqreview-"+version+"-docs-policies", "Other relevant policies"),
+                      conditional: {
+                        html: policiesHtml
                       }
                     }
                   ]
@@ -240,97 +298,41 @@
                 }) }}
               </td>
             </tr>
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">Statutory development plan policy</th>
-              <td class="govuk-table__cell">No files uploaded</td>
+            <!--tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Development plan document or neighbourhood plan</th>
+              <td class="govuk-table__cell">No</td>
               <td class="govuk-table__cell">
-                {% set statutoryHtml %}
+                {% set developmentplanHtml %}
                   {{ govukTextarea({
-                    id: "lpaqreview-"+version+"-docs-statutory-detail",
-                    name: "lpaqreview-"+version+"-docs-statutory-detail",
+                    id: "lpaqreview-"+version+"-docs-developmentplan-detail",
+                    name: "lpaqreview-"+version+"-docs-developmentplan-detail",
                     label: {
-                      text: "Which policies are missing?"
+                      text: "Which plans are missing?"
                     },
                     rows: 3,
-                    value: data["lpaqreview-"+version+"-docs-statutory-detail"]
+                    value: data["lpaqreview-"+version+"-docs-developmentplan-detail"]
                   }) }}
                 {% endset -%}
                 {{ govukCheckboxes({
-                  idPrefix: "lpaqreview-"+version+"-docs-statutory",
-                  name: "lpaqreview-"+version+"-docs-statutory",
+                  idPrefix: "lpaqreview-"+version+"-docs-developmentplan",
+                  name: "lpaqreview-"+version+"-docs-developmentplan",
                   classes: "govuk-checkboxes--small",
                   formGroup: {
                     classes: "govuk-!-margin-bottom-0"
                   },
                   items: [
                     {
-                      value: "Statutory development plan policy",
+                      value: "Development plan document or neighbourhood plan",
                       text: "Missing or incorrect",
-                      checked: checked("lpaqreview-"+version+"-docs-statutory", "Statutory development plan policy"),
+                      checked: checked("lpaqreview-"+version+"-docs-developmentplan", "Development plan document or neighbourhood plan"),
                       conditional: {
-                        html: statutoryHtml
+                        html: developmentplanHtml
                       }
                     }
                   ]
                 }) }}
               </td>
-            </tr>
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">Other relevant policies</th>
-              <td class="govuk-table__cell">
-                <ul class="govuk-list">
-                  <li>
-                    <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - CP9 - Sustainable Design Adopted March 2019.pdf">POLICY AND SUPPORTING TEXT - 672932 - CP9 - Sustainable Design Adopted March 2019.pdf</a>
-                  </li>
-                  <li>
-                    <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - CP10 & 10A - Climate Change Adopted March 2019.pdf">POLICY AND SUPPORTING TEXT - 672932 - CP10 & 10A - Climate Change Adopted March 2019.pdf</a>
-                  </li>
-                  <li>
-                    <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - CP14 - Historic Environment Adopted March 2019.pdf">POLICY AND SUPPORTING TEXT - 672932 - CP14 - Historic Environment Adopted March 2019.pdf</a>
-                  </li>
-                  <li>
-                    <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - DM5.pdf">POLICY AND SUPPORTING TEXT - 672932 - DM5.pdf</a>
-                  </li>
-                  <li>
-                    <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - DM6.pdf">POLICY AND SUPPORTING TEXT - 672932 - DM6.pdf</a>
-                  </li>
-                  <li>
-                    <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - DM12.pdf">POLICY AND SUPPORTING TEXT - 672932 - DM12.pdf</a>
-                  </li>
-                </ul>
-              </td>
-              <td class="govuk-table__cell">
-                {% set policiesHtml %}
-                  {{ govukTextarea({
-                    id: "lpaqreview-"+version+"-docs-policies-detail",
-                    name: "lpaqreview-"+version+"-docs-policies-detail",
-                    label: {
-                      text: "Which policies are missing?"
-                    },
-                    rows: 3,
-                    value: data["lpaqreview-"+version+"-docs-policies-detail"]
-                  }) }}
-                {% endset -%}
-                {{ govukCheckboxes({
-                  idPrefix: "lpaqreview-"+version+"-docs-policies",
-                  name: "lpaqreview-"+version+"-docs-policies",
-                  classes: "govuk-checkboxes--small",
-                  formGroup: {
-                    classes: "govuk-!-margin-bottom-0"
-                  },
-                  items: [
-                    {
-                      value: "Other relevant policies",
-                      text: "Missing or incorrect",
-                      checked: checked("lpaqreview-"+version+"-docs-policies", "Other relevant policies"),
-                      conditional: {
-                        html: policiesHtml
-                      }
-                    }
-                  ]
-                }) }}
-              </td>
-            </tr>
+            </tr-->
           </tbody>
         </table>
 
