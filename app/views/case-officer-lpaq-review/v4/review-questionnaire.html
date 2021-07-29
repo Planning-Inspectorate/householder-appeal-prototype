@@ -171,77 +171,7 @@
         <table class="govuk-table govuk-table__lpareview">
           <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">Development plan document or neighbourhood plan</th>
-              <td class="govuk-table__cell">No files uploaded</td>
-              <td class="govuk-table__cell">
-                {% set developmentplanHtml %}
-                  {{ govukTextarea({
-                    id: "lpaqreview-"+version+"-docs-developmentplan-detail",
-                    name: "lpaqreview-"+version+"-docs-developmentplan-detail",
-                    label: {
-                      text: "Which plans are missing?"
-                    },
-                    rows: 3,
-                    value: data["lpaqreview-"+version+"-docs-developmentplan-detail"]
-                  }) }}
-                {% endset -%}
-                {{ govukCheckboxes({
-                  idPrefix: "lpaqreview-"+version+"-docs-developmentplan",
-                  name: "lpaqreview-"+version+"-docs-developmentplan",
-                  classes: "govuk-checkboxes--small",
-                  formGroup: {
-                    classes: "govuk-!-margin-bottom-0"
-                  },
-                  items: [
-                    {
-                      value: "Development plan document or neighbourhood plan",
-                      text: "Missing or incorrect",
-                      checked: checked("lpaqreview-"+version+"-docs-developmentplan", "Development plan document or neighbourhood plan"),
-                      conditional: {
-                        html: developmentplanHtml
-                      }
-                    }
-                  ]
-                }) }}
-              </td>
-            </tr>
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">Supplementary planning documents</th>
-              <td class="govuk-table__cell">No files uploaded</td>
-              <td class="govuk-table__cell">
-                {% set supplementaryHtml %}
-                  {{ govukTextarea({
-                    id: "lpaqreview-"+version+"-docs-supplementary-detail",
-                    name: "lpaqreview-"+version+"-docs-supplementary-detail",
-                    label: {
-                      text: "Which documents are missing?"
-                    },
-                    rows: 3,
-                    value: data["lpaqreview-"+version+"-docs-supplementary-detail"]
-                  }) }}
-                {% endset -%}
-                {{ govukCheckboxes({
-                  idPrefix: "lpaqreview-"+version+"-docs-supplementary",
-                  name: "lpaqreview-"+version+"-docs-supplementary",
-                  classes: "govuk-checkboxes--small",
-                  formGroup: {
-                    classes: "govuk-!-margin-bottom-0"
-                  },
-                  items: [
-                    {
-                      value: "Supplementary planning documents",
-                      text: "Missing or incorrect",
-                      checked: checked("lpaqreview-"+version+"-docs-supplementary", "Supplementary planning documents"),
-                      conditional: {
-                        html: supplementaryHtml
-                      }
-                    }
-                  ]
-                }) }}
-              </td>
-            </tr>
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">Statutory development plan policy</th>
+              <th scope="row" class="govuk-table__header">Statutory development plan policies</th>
               <td class="govuk-table__cell">No files uploaded</td>
               <td class="govuk-table__cell">
                 {% set statutoryHtml %}
@@ -264,9 +194,9 @@
                   },
                   items: [
                     {
-                      value: "Statutory development plan policy",
+                      value: "Statutory development plan policies",
                       text: "Missing or incorrect",
-                      checked: checked("lpaqreview-"+version+"-docs-statutory", "Statutory development plan policy"),
+                      checked: checked("lpaqreview-"+version+"-docs-statutory", "Statutory development plan policies"),
                       conditional: {
                         html: statutoryHtml
                       }
@@ -331,6 +261,76 @@
                 }) }}
               </td>
             </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Supplementary planning documents</th>
+              <td class="govuk-table__cell">No files uploaded</td>
+              <td class="govuk-table__cell">
+                {% set supplementaryHtml %}
+                  {{ govukTextarea({
+                    id: "lpaqreview-"+version+"-docs-supplementary-detail",
+                    name: "lpaqreview-"+version+"-docs-supplementary-detail",
+                    label: {
+                      text: "Which documents are missing?"
+                    },
+                    rows: 3,
+                    value: data["lpaqreview-"+version+"-docs-supplementary-detail"]
+                  }) }}
+                {% endset -%}
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-docs-supplementary",
+                  name: "lpaqreview-"+version+"-docs-supplementary",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Supplementary planning documents",
+                      text: "Missing or incorrect",
+                      checked: checked("lpaqreview-"+version+"-docs-supplementary", "Supplementary planning documents"),
+                      conditional: {
+                        html: supplementaryHtml
+                      }
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <!--tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Development plan document or neighbourhood plan</th>
+              <td class="govuk-table__cell">No</td>
+              <td class="govuk-table__cell">
+                {% set developmentplanHtml %}
+                  {{ govukTextarea({
+                    id: "lpaqreview-"+version+"-docs-developmentplan-detail",
+                    name: "lpaqreview-"+version+"-docs-developmentplan-detail",
+                    label: {
+                      text: "Which plans are missing?"
+                    },
+                    rows: 3,
+                    value: data["lpaqreview-"+version+"-docs-developmentplan-detail"]
+                  }) }}
+                {% endset -%}
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-docs-developmentplan",
+                  name: "lpaqreview-"+version+"-docs-developmentplan",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Development plan document or neighbourhood plan",
+                      text: "Missing or incorrect",
+                      checked: checked("lpaqreview-"+version+"-docs-developmentplan", "Development plan document or neighbourhood plan"),
+                      conditional: {
+                        html: developmentplanHtml
+                      }
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr-->
           </tbody>
         </table>
 
