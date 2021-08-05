@@ -1,0 +1,154 @@
+{% extends "layouts/case-officer/v2.html" %}
+
+{% block pageTitle %}
+  Questionnaires for review
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Dashboard",
+        href: "#"
+      },
+      {
+        text: "Questionnaires for review",
+        href: "/case-officer/"+version+"/list-questionnaires"
+      },
+      {
+        text: "APP/B3030/D/21/3272772",
+        href: "/case-officer/"+version+"/review-questionnaire"
+      },
+      {
+        text: "Check and confirm"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Review questionnaire
+      </h1>
+
+      <h2 class="govuk-heading-l">
+        Check and confirm
+      </h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Outcome
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaqreview-"+version+"-review"] }}
+          </dd>
+        </div>
+
+        {% if data["lpaqreview-"+version+"-review"] == "Incomplete" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Reason
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <ul class="govuk-list">
+              {% for reason in data["lpaqreview-"+version+"-review-reasons"] %}
+                <li>
+                  {{ reason }}
+
+                  {% if reason == "Missing document(s)" %}
+                    <ul class="govuk-list govuk-list--bullet">
+                      {% for reasonmissing in data["lpaqreview-"+version+"-review-reasons-missing"] %}
+                        <li>
+                          {{ reasonmissing }}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+
+                  {% if reason == "Not enough detail for the inspector" %}
+                    <ul class="govuk-list govuk-list--bullet">
+                      {% for reasondetail in data["lpaqreview-"+version+"-review-reasons-detail"] %}
+                        <li>
+                          {{ reasondetail }}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+
+                  {% if reason == "Incorrect answer(s)" %}
+                    <ul class="govuk-list govuk-list--bullet">
+                      {% for reasonincorrect in data["lpaqreview-"+version+"-review-reasons-incorrect"] %}
+                        <li>
+                          {{ reasonincorrect }}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+
+                </li>
+             {% endfor %}
+            </ul>
+          </dd>
+        </div>
+        {% endif %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+            APP/B3030/D/21/3272772
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal site
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Jaleno<br>
+            Church Lane<br>
+            Eakring<br>
+            NEWARK<br>
+            NG22 0DH
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Local planning department
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Newark and Sherwood District Council
+          </dd>
+        </div>
+      </dl>
+
+      {% if data["lpaqreview-"+version+"-review"] == "Complete" %}
+        {{ govukWarningText({
+          text: "Confirming the questionnaire as complete makes the appeal available to inspectors.",
+          iconFallbackText: "warning"
+        }) }}
+      {% endif %}
+    
+      <div class="govuk-button-group">
+        {{ govukButton({
+          href: "review-questionnaire-confirm",
+          text: "Confirm outcome"
+        }) }}
+        <a class="govuk-link" href="review-questionnaire">Change outcome</a>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends "layouts/case-officer/v1.html" %}
+
+{% block pageTitle %}
+  LPA questionnaires for review
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Dashboard",
+        href: "#"
+      },
+      {
+        text: "LPA questionnaires for review",
+        href: "../list-questionnaires"
+      },
+      {
+        text: "APP/Q9999/D/21/1234567",
+        href: "../task-list"
+      },
+      {
+        text: "Is the site in or near a conservation area?"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">
+        Cross-check answers against the PO report
+      </span>
+      <h1 class="govuk-heading-l">
+        Is the site in or near a conservation area?
+      </h1>
+
+      <p class="govuk-body">
+        <a href="javascript:preventDefault();" class="govuk-link">Download the planning officer's report</a>
+      <p>
+      
+      <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Is the appeal site in or near a conservation area?</th>
+            <td class="govuk-table__cell">Yes</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Conservation area map and guidance</th>
+            <td class="govuk-table__cell"><a href="javascript:preventDefault();" class="govuk-link">Map.pdf</a></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Evidence of publicising the original planning application</th>
+            <td class="govuk-table__cell"><a href="javascript:preventDefault();" class="govuk-link">Evidence.pdf</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form action="" method="post">
+
+        <h2 class="govuk-heading-m">
+          Is everything correct?
+        </h2>
+
+        {% set incorrectHtml %}
+          {{ govukTextarea({
+            id: "lpaqreview-"+version+"-poreport-conservationarea-why",
+            name: "lpaqreview-"+version+"-poreport-conservationarea-why",
+            label: {
+              text: "Tell us why"
+            },
+            value: data["lpaqreview-"+version+"-poreport-conservationarea-why"]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "lpaqreview-"+version+"-poreport-conservationarea",
+          name: "lpaqreview-"+version+"-poreport-conservationarea",
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("lpaqreview-"+version+"-poreport-conservationarea", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("lpaqreview-"+version+"-poreport-conservationarea", "No"),
+              conditional: {
+                html: incorrectHtml
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends "layouts/case-officer/v1.html" %}
+
+{% block pageTitle %}
+  LPA questionnaires for review
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Dashboard",
+        href: "#"
+      },
+      {
+        text: "LPA questionnaires for review",
+        href: "../list-questionnaires"
+      },
+      {
+        text: "APP/Q9999/D/21/1234567",
+        href: "../task-list"
+      },
+      {
+        text: "About the original application"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">
+        Notices to interested parties
+      </span>
+      <h1 class="govuk-heading-l">
+        About the original application
+      </h1>
+      
+      <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Notices about the original application</th>
+            <td class="govuk-table__cell">
+              <ul class="govuk-list govuk-!-margin-bottom-0">
+                <li>
+                  <a href="javascript:preventDefault();" class="govuk-link">Notice1.pdf</a>
+                </li>
+                <li>
+                  <a href="javascript:preventDefault();" class="govuk-link">Notice2.pdf</a>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form action="" method="post">
+
+        <h2 class="govuk-heading-m">
+          Is everything correct?
+        </h2>
+
+        {% set incorrectHtml %}
+          {{ govukTextarea({
+            id: "lpaqreview-"+version+"-notices-originalapplication-why",
+            name: "lpaqreview-"+version+"-notices-originalapplication-why",
+            label: {
+              text: "Tell us why"
+            },
+            value: data["lpaqreview-"+version+"-notices-originalapplication-why"]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "lpaqreview-"+version+"-notices-originalapplication",
+          name: "lpaqreview-"+version+"-notices-originalapplication",
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("lpaqreview-"+version+"-notices-originalapplication", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("lpaqreview-"+version+"-notices-originalapplication", "No"),
+              conditional: {
+                html: incorrectHtml
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

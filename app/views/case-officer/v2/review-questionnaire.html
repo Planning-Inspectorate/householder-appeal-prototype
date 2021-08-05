@@ -1,0 +1,377 @@
+{% extends "layouts/case-officer/v2.html" %}
+
+{% block pageTitle %}
+  Questionnaires for review
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Dashboard",
+        href: "#"
+      },
+      {
+        text: "Questionnaires for review",
+        href: "/case-officer/"+version+"/list-questionnaires"
+      },
+      {
+        text: "APP/B3030/D/21/3272772"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Review questionnaire
+      </h1>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+            APP/B3030/D/21/3272772
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal site
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Jaleno<br>
+            Church Lane<br>
+            Eakring<br>
+            NEWARK<br>
+            NG22 0DH
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Local planning department
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Newark and Sherwood District Council
+          </dd>
+        </div>
+      </dl>
+
+    <!--/div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full"-->
+
+      <h2 class="govuk-heading-l">About the appeal site</h2>
+
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Question</th>
+            <th scope="col" class="govuk-table__header">Answer</th>
+            <!--th scope="col" class="govuk-table__header">Reason</th-->
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <!--tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Can the Inspector see the relevant parts of the appeal site from public land?</th>
+            <td class="govuk-table__cell">No</td>
+          </tr-->
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Does the inspector needs to enter the appeal site?</th>
+            <td class="govuk-table__cell">Yes<br>To view the rear of the property</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Does the inspector needs to access a neighbour's land?</th>
+            <td class="govuk-table__cell">No</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Would the development affect the setting of a listed building?</th>
+            <td class="govuk-table__cell">No</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Is the appeal site in a green belt?</th>
+            <td class="govuk-table__cell">Yes</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Is the appeal site in or near a conservation area?</th>
+            <td class="govuk-table__cell">Yes</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <h2 class="govuk-heading-l">Documents</h2>
+
+      <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Plans used to reach the decision</th>
+            <td class="govuk-table__cell">
+              <!--p class="govuk-body">
+                <a href="/public/files/PLAN LIST - 672932 - DRAWING LIST.pdf">PLAN LIST - 672932 - DRAWING LIST.pdf</a>
+              <p-->
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                <a href="/public/files/PLANS SUBMITTED WITH APPLICATION - 672932 - 1150631-JCL-PD-02A - Existing Elevations.pdf">PLANS SUBMITTED WITH APPLICATION - 672932 - 1150631-JCL-PD-02A - Existing Elevations.pdf</a>
+              </p>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Planning Officer's report</th>
+            <td class="govuk-table__cell">
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                <a href="/public/files/01 PLANNING OFFICER_S REPORT  - 672932 - Delegated Report.pdf">01 PLANNING OFFICER_S REPORT  - 672932 - Delegated Report.pdf</a>
+              </p>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Telling interested parties about the application</th>
+            <td class="govuk-table__cell">No files uploaded</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Representations from interested parties</th>
+            <td class="govuk-table__cell">No files uploaded</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Notifying interested parties of the appeal</th>
+            <td class="govuk-table__cell">No files uploaded</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Original planning application publicised</th>
+            <td class="govuk-table__cell">
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                <a href="/public/files/PRESS ADVERT - 672932 - Press Notice.pdf" class="govuk-link">PRESS ADVERT - 672932 - Press Notice.pdf</a>
+              </p>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Conservation area map and guidance</th>
+            <td class="govuk-table__cell">No files uploaded</td>
+            <!--td class="govuk-table__cell">
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                <a href="/public/files/CONSERVATION AREA PLAN - 672932 - CA Map.pdf" class="govuk-link">CONSERVATION AREA PLAN - 672932 - CA Map.pdf</a>
+              </p>
+            </td-->
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Site notices</th>
+            <td class="govuk-table__cell">No files uploaded</td>
+          </tr>
+          <!--tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Planning history</th>
+            <td class="govuk-table__cell">No files uploaded</td>
+          </tr-->
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Statutory development plan policy</th>
+            <td class="govuk-table__cell">No files uploaded</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Other relevant policies</th>
+            <td class="govuk-table__cell">No files uploaded</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Supplementary planning documents</th>
+            <td class="govuk-table__cell">No files uploaded</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Development Plan Document or Neighbourhood Plan</th>
+            <td class="govuk-table__cell">No</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form action="" method="post">
+
+        {% set missingHtml %}
+          {{ govukCheckboxes({
+            idPrefix: "lpaqreview-"+version+"-review-reasons-missing",
+            name: "lpaqreview-"+version+"-review-reasons-missing",
+            items: [
+              {
+                value: "Planning Officers report",
+                text: "Planning Officers report",
+                checked: checked("lpaqreview-"+version+"-review-reasons-missing", "Planning Officers report")
+              },
+              {
+                value: "Plans used to reach the decision",
+                text: "Plans used to reach the decision",
+                checked: checked("lpaqreview-"+version+"-review-reasons-missing", "Plans used to reach the decision")
+              },
+              {
+                value: "Telling interested parties about the application",
+                text: "Telling interested parties about the application",
+                checked: checked("lpaqreview-"+version+"-review-reasons-missing", "Telling interested parties about the application")
+              },
+              {
+                value: "Representations from interested parties",
+                text: "Representations from interested parties",
+                checked: checked("lpaqreview-"+version+"-review-reasons-missing", "Representations from interested parties")
+              },
+              {
+                value: "Notifying interested parties of the appeal",
+                text: "Notifying interested parties of the appeal",
+                checked: checked("lpaqreview-"+version+"-review-reasons-missing", "Notifying interested parties of the appeal")
+              },
+              {
+                value: "Original planning application publicised",
+                text: "Original planning application publicised",
+                checked: checked("lpaqreview-"+version+"-review-reasons-missing", "Original planning application publicised")
+              },
+              {
+                value: "Conservation area map and guidance",
+                text: "Conservation area map and guidance",
+                checked: checked("lpaqreview-"+version+"-review-reasons-missing", "Conservation area map and guidance")
+              },
+              {
+                value: "Site notices",
+                text: "Site notices",
+                checked: checked("lpaqreview-"+version+"-review-reasons-missing", "Site notices")
+              },
+              {
+                value: "Statutory development plan policy",
+                text: "Statutory development plan policy",
+                checked: checked("lpaqreview-"+version+"-review-reasons-missing", "Statutory development plan policy")
+              },
+              {
+                value: "Other relevant policies",
+                text: "Other relevant policies",
+                checked: checked("lpaqreview-"+version+"-review-reasons-missing", "Other relevant policies")
+              },
+              {
+                value: "Supplementary planning documents",
+                text: "Supplementary planning documents",
+                checked: checked("lpaqreview-"+version+"-review-reasons-missing", "Supplementary planning documents")
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+        {% set detailHtml %}
+          {{ govukCheckboxes({
+            idPrefix: "lpaqreview-"+version+"-review-reasons-detail",
+            name: "lpaqreview-"+version+"-review-reasons-detail",
+            items: [
+              {
+                value: "Reason to enter the appeal site",
+                text: "Reason to enter the appeal site",
+                checked: checked("lpaqreview-"+version+"-review-reasons-detail", "Reason to enter the appeal site")
+              },
+              {
+                value: "Reason to access a neighbour's land",
+                text: "Reason to access a neighbour's land",
+                checked: checked("lpaqreview-"+version+"-review-reasons-detail", "Reason to access a neighbour's land")
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+        {% set incorrectHtml %}
+          {{ govukCheckboxes({
+            idPrefix: "lpaqreview-"+version+"-review-reasons-incorrect",
+            name: "lpaqreview-"+version+"-review-reasons-incorrect",
+            items: [
+              {
+                value: "Conservation area question",
+                text: "Conservation area question",
+                checked: checked("lpaqreview-"+version+"-review-reasons-incorrect", "Conservation area question")
+              },
+              {
+                value: "Green belt question",
+                text: "Green belt question",
+                checked: checked("lpaqreview-"+version+"-review-reasons-incorrect", "Green belt question")
+              },
+              {
+                value: "Listed buildings question",
+                text: "Listed buildings question",
+                checked: checked("lpaqreview-"+version+"-review-reasons-incorrect", "Listed buildings question")
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+        {% set reasonsHtml %}
+          {{ govukCheckboxes({
+            idPrefix: "lpaqreview-"+version+"-review-reasons",
+            name: "lpaqreview-"+version+"-review-reasons",
+            fieldset: {
+              legend: {
+                classes: "govuk-fieldset__legend--m",
+                text: "What is wrong?"
+              }
+            },
+            items: [
+              {
+                value: "Missing document(s)",
+                text: "Missing document(s)",
+                checked: checked("lpaqreview-"+version+"-review-reasons", "Missing document(s)"),
+                conditional: {
+                  html: missingHtml
+                }
+              },
+              {
+                value: "Not enough detail for the inspector",
+                text: "Not enough detail for the inspector",
+                checked: checked("lpaqreview-"+version+"-review-reasons", "Not enough detail for the inspector"),
+                conditional: {
+                  html: detailHtml
+                }
+              },
+              {
+                value: "Incorrect answer(s)",
+                text: "Incorrect answer(s)",
+                checked: checked("lpaqreview-"+version+"-review-reasons", "Incorrect answer(s)"),
+                conditional: {
+                  html: incorrectHtml
+                }
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "lpaqreview-"+version+"-review",
+          name: "lpaqreview-"+version+"-review",
+          fieldset: {
+            legend: {
+              text: "Outcome of review",
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Complete",
+              text: "Complete",
+              checked: checked("lpaqreview-"+version+"-review", "Complete")
+            },
+            {
+              value: "Incomplete",
+              text: "Incomplete",
+              checked: checked("lpaqreview-"+version+"-review", "Incomplete"),
+              conditional: {
+                html: reasonsHtml
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

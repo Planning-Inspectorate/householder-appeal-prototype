@@ -1,0 +1,119 @@
+{% extends "layouts/case-officer/v1.html" %}
+
+{% block pageTitle %}
+  LPA questionnaires for review
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Dashboard",
+        href: "#"
+      },
+      {
+        text: "LPA questionnaires for review",
+        href: "../list-questionnaires"
+      },
+      {
+        text: "APP/Q9999/D/21/1234567",
+        href: "../task-list"
+      },
+      {
+        text: "Does the site affect the setting of a listed building?"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">
+        Cross-check answers against the PO report
+      </span>
+      <h1 class="govuk-heading-l">
+        Does the site affect the setting of a listed building?
+      </h1>
+
+      <p class="govuk-body">
+        <a href="javascript:preventDefault();" class="govuk-link">Download the planning officer's report</a>
+      <p>
+      
+      <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Does the appeal site affect the setting of a listed building?</th>
+            <td class="govuk-table__cell">Yes</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Listing(s)</th>
+            <td class="govuk-table__cell">
+              <ul class="govuk-list govuk-!-margin-bottom-0">
+                <li>
+                  <a href="javascript:preventDefault();" class="govuk-link">Listing1.pdf</a>
+                </li>
+                <li>
+                  <a href="javascript:preventDefault();" class="govuk-link">Listing2.pdf</a>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form action="" method="post">
+
+        <h2 class="govuk-heading-m">
+          Is everything correct?
+        </h2>
+
+        {% set incorrectHtml %}
+          {{ govukTextarea({
+            id: "lpaqreview-"+version+"-poreport-listedbuilding-why",
+            name: "lpaqreview-"+version+"-poreport-listedbuilding-why",
+            label: {
+              text: "Tell us why"
+            },
+            value: data["lpaqreview-"+version+"-poreport-listedbuilding-why"]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "lpaqreview-"+version+"-poreport-listedbuilding",
+          name: "lpaqreview-"+version+"-poreport-listedbuilding",
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("lpaqreview-"+version+"-poreport-listedbuilding", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("lpaqreview-"+version+"-poreport-listedbuilding", "No"),
+              conditional: {
+                html: incorrectHtml
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
