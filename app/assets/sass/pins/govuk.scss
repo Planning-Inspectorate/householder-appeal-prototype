@@ -211,14 +211,6 @@ figure {
 
 
 // Dashboard cards
-.pins-dashboard-row {
-  display: flex;
-}
-
-.pins-dashboard-column {
-  align-items: stretch;
-  display: flex;
-}
 
 .pins-card {
   background-color: #ffffff;
@@ -265,9 +257,6 @@ figure {
 
 
 @media(max-width: 768px) {
-  .pins-card {
-    padding: 20px;
-  }
 
   .pins-card-content {
     padding: 20px 20px 10px 20px;
@@ -277,16 +266,4 @@ figure {
     padding: 20px;
   }
   
-  .pins-dashboard-row {
-    display: flex;
-
-    .pins-dashboard-column {
-      align-items: stretch;
-      display: flex;
-    }
-    .pins-card {
-      align-items: stretch;
-      width: 100%;
-    }
-  }
 }
