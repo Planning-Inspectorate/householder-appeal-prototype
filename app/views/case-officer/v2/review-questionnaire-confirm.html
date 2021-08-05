@@ -1,0 +1,46 @@
+{% extends "layouts/case-officer/v2.html" %}
+
+{% block pageTitle %}
+  Questionnaires for review
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        classes: "govuk-!-margin-bottom-7",
+        titleText: "Outcome confirmed",
+        html: "Questionnaire " + data["lpaqreview-"+version+"-review"] | lower + "<br>APP/B3030/D/21/3272772"
+      }) }}
+
+      {% if data["lpaqreview-"+version+"-review"] == "Complete" %}
+      <p class="govuk-body">
+        The appeal is now available to inspectors.
+      <p>
+      {% endif %}
+
+      <h2 class="govuk-heading-m">What next?</h2>
+      <ul class="govuk-list">
+        <!--li>
+          <a href="javascript:preventDefault();" class="govuk-link">Return to dashboard</a>
+        </li-->
+        <li>
+          <a href="list-questionnaires" class="govuk-link">Return to questionnaires for review</a>
+        </li>
+      </ul>
+
+
+    </div>
+  </div>
+{% endblock %}

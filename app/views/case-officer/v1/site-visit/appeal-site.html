@@ -1,0 +1,104 @@
+{% extends "layouts/case-officer/v1.html" %}
+
+{% block pageTitle %}
+  LPA questionnaires for review
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Dashboard",
+        href: "#"
+      },
+      {
+        text: "LPA questionnaires for review",
+        href: "../list-questionnaires"
+      },
+      {
+        text: "APP/Q9999/D/21/1234567",
+        href: "../task-list"
+      },
+      {
+        text: "Reason why inspector needs to enter appeal site"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">
+        Site visit details
+      </span>
+      <h1 class="govuk-heading-l">
+        Reason why inspector needs to enter appeal site
+      </h1>
+
+      <p class="govuk-body">The LPA said the inspector needs to enter the appeal site.<p>
+      
+      <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Reason</th>
+            <td class="govuk-table__cell">This is the reason given by the LPA when prompted to provide an explanation. It should have enough detail for the inspector to make an informed decision.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form action="" method="post">
+
+        <h2 class="govuk-heading-m">
+          Does the reason have enough detail for the inspector?
+        </h2>
+
+        {% set incorrectHtml %}
+          {{ govukTextarea({
+            id: "lpaqreview-"+version+"-sitevisit-appealsite-why",
+            name: "lpaqreview-"+version+"-sitevisit-appealsite-why",
+            label: {
+              text: "Tell us why"
+            },
+            value: data["lpaqreview-"+version+"-sitevisit-appealsite-why"]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "lpaqreview-"+version+"-sitevisit-appealsite",
+          name: "lpaqreview-"+version+"-sitevisit-appealsite",
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("lpaqreview-"+version+"-sitevisit-appealsite", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("lpaqreview-"+version+"-sitevisit-appealsite", "No"),
+              conditional: {
+                html: incorrectHtml
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

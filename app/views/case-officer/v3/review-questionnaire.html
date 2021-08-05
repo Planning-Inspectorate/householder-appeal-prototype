@@ -1,0 +1,497 @@
+{% extends "layouts/case-officer/v3.html" %}
+
+{% block pageTitle %}
+  Questionnaires for review
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Dashboard",
+        href: "#"
+      },
+      {
+        text: "Questionnaires for review",
+        href: "/case-officer/"+version+"/list-questionnaires"
+      },
+      {
+        text: "APP/B3030/D/21/3272772"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Review questionnaire
+      </h1>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+            APP/B3030/D/21/3272772
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal site
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Jaleno<br>
+            Church Lane<br>
+            Eakring<br>
+            NEWARK<br>
+            NG22 0DH
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Local planning department
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Newark and Sherwood District Council
+          </dd>
+        </div>
+      </dl>
+
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="" method="post">
+
+        <h2 class="govuk-heading-l govuk-!-margin-top-5">About the appeal site</h2>
+
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Question</th>
+              <th scope="col" class="govuk-table__header">Answer</th>
+              <th scope="col" class="govuk-table__header"></th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <!--tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Can the Inspector see the relevant parts of the appeal site from public land?</th>
+              <td class="govuk-table__cell">No</td>
+            </tr-->
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Does the inspector needs to enter the appeal site?</th>
+              <td class="govuk-table__cell">Yes<br>To view the rear of the property</td>
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-about-entersite",
+                  name: "lpaqreview-"+version+"-about-entersite",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Reason the inspector needs to enter the appeal site",
+                      text: "Not enough detail",
+                      checked: checked("lpaqreview-"+version+"-about-entersite", "Reason the inspector needs to enter the appeal site")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Does the inspector needs to access a neighbour's land?</th>
+              <td class="govuk-table__cell">No</td>
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-about-neighboursland",
+                  name: "lpaqreview-"+version+"-about-neighboursland",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Reason the inspector needs to access a neighbour's land",
+                      text: "Not enough detail",
+                      checked: checked("lpaqreview-"+version+"-about-neighboursland", "Reason the inspector needs to access a neighbour's land")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Would the development affect the setting of a listed building?</th>
+              <td class="govuk-table__cell">No</td>
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-about-listedbuilding",
+                  name: "lpaqreview-"+version+"-about-listedbuilding",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Listed building question",
+                      text: "Incorrect answer",
+                      checked: checked("lpaqreview-"+version+"-about-listedbuilding", "Listed building question")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Is the appeal site in a green belt?</th>
+              <td class="govuk-table__cell">Yes</td>
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-about-greenbelt",
+                  name: "lpaqreview-"+version+"-about-greenbelt",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Green belt question",
+                      text: "Incorrect answer",
+                      checked: checked("lpaqreview-"+version+"-about-greenbelt", "Green belt question")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Is the appeal site in or near a conservation area?</th>
+              <td class="govuk-table__cell">Yes</td>
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-about-conservationarea",
+                  name: "lpaqreview-"+version+"-about-conservationarea",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Conservation area question",
+                      text: "Incorrect answer",
+                      checked: checked("lpaqreview-"+version+"-about-conservationarea", "Conservation area question")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        <h2 class="govuk-heading-l govuk-!-margin-top-9">Documents</h2>
+
+        <table class="govuk-table">
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Plans used to reach the decision</th>
+              <td class="govuk-table__cell">
+                <!--p class="govuk-body">
+                  <a href="/public/files/PLAN LIST - 672932 - DRAWING LIST.pdf">PLAN LIST - 672932 - DRAWING LIST.pdf</a>
+                <p-->
+                <p class="govuk-body govuk-!-margin-bottom-0">
+                  <a href="/public/files/PLANS SUBMITTED WITH APPLICATION - 672932 - 1150631-JCL-PD-02A - Existing Elevations.pdf">PLANS SUBMITTED WITH APPLICATION - 672932 - 1150631-JCL-PD-02A - Existing Elevations.pdf</a>
+                </p>
+              </td>
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-docs-plansused",
+                  name: "lpaqreview-"+version+"-docs-plansused",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Plans used to reach the decision",
+                      text: "Missing or incorrect",
+                      checked: checked("lpaqreview-"+version+"-docs-plansused", "Plans used to reach the decision")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Planning Officer's report</th>
+              <td class="govuk-table__cell">
+                <p class="govuk-body govuk-!-margin-bottom-0">
+                  <a href="/public/files/01 PLANNING OFFICER_S REPORT  - 672932 - Delegated Report.pdf">01 PLANNING OFFICER_S REPORT  - 672932 - Delegated Report.pdf</a>
+                </p>
+              </td>
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-docs-poreport",
+                  name: "lpaqreview-"+version+"-docs-poreport",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Planning Officer's report",
+                      text: "Missing or incorrect",
+                      checked: checked("lpaqreview-"+version+"-docs-poreport", "Planning Officer's report")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Telling interested parties about the application</th>
+              <td class="govuk-table__cell">No files uploaded</td>
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-docs-telling",
+                  name: "lpaqreview-"+version+"-docs-telling",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Telling interested parties about the application",
+                      text: "Missing or incorrect",
+                      checked: checked("lpaqreview-"+version+"-docs-telling", "Telling interested parties about the application")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Representations from interested parties</th>
+              <td class="govuk-table__cell">No files uploaded</td>
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-docs-representations",
+                  name: "lpaqreview-"+version+"-docs-representations",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Representations from interested parties",
+                      text: "Missing or incorrect",
+                      checked: checked("lpaqreview-"+version+"-docs-representations", "Representations from interested parties")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Notifying interested parties of the appeal</th>
+              <td class="govuk-table__cell">No files uploaded</td>
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-docs-notifying",
+                  name: "lpaqreview-"+version+"-docs-notifying",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Notifying interested parties of the appeal",
+                      text: "Missing or incorrect",
+                      checked: checked("lpaqreview-"+version+"-docs-notifying", "Notifying interested parties of the appeal")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Original planning application publicised</th>
+              <td class="govuk-table__cell">
+                <p class="govuk-body govuk-!-margin-bottom-0">
+                  <a href="/public/files/PRESS ADVERT - 672932 - Press Notice.pdf" class="govuk-link">PRESS ADVERT - 672932 - Press Notice.pdf</a>
+                </p>
+              </td>
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-docs-publicised",
+                  name: "lpaqreview-"+version+"-docs-publicised",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Original planning application publicised",
+                      text: "Missing or incorrect",
+                      checked: checked("lpaqreview-"+version+"-docs-publicised", "Original planning application publicised")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Conservation area map and guidance</th>
+              <td class="govuk-table__cell">No files uploaded</td>
+              <!--td class="govuk-table__cell">
+                <p class="govuk-body govuk-!-margin-bottom-0">
+                  <a href="/public/files/CONSERVATION AREA PLAN - 672932 - CA Map.pdf" class="govuk-link">CONSERVATION AREA PLAN - 672932 - CA Map.pdf</a>
+                </p>
+              </td-->
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-docs-conservationarea",
+                  name: "lpaqreview-"+version+"-docs-conservationarea",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Conservation area map and guidance",
+                      text: "Missing or incorrect",
+                      checked: checked("lpaqreview-"+version+"-docs-conservationarea", "Conservation area map and guidance")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Site notices</th>
+              <td class="govuk-table__cell">No files uploaded</td>
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-docs-sitenotices",
+                  name: "lpaqreview-"+version+"-docs-sitenotices",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Site notices",
+                      text: "Missing or incorrect",
+                      checked: checked("lpaqreview-"+version+"-docs-sitenotices", "Site notices")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <!--tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Planning history</th>
+              <td class="govuk-table__cell">No files uploaded</td>
+            </tr-->
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Statutory development plan policy</th>
+              <td class="govuk-table__cell">No files uploaded</td>
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-docs-statutory",
+                  name: "lpaqreview-"+version+"-docs-statutory",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Statutory development plan policy",
+                      text: "Missing or incorrect",
+                      checked: checked("lpaqreview-"+version+"-docs-statutory", "Statutory development plan policy")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Other relevant policies</th>
+              <td class="govuk-table__cell">No files uploaded</td>
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-docs-otherrelevant",
+                  name: "lpaqreview-"+version+"-docs-otherrelevant",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Other relevant policies",
+                      text: "Missing or incorrect",
+                      checked: checked("lpaqreview-"+version+"-docs-otherrelevant", "Other relevant policies")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Supplementary planning documents</th>
+              <td class="govuk-table__cell">No files uploaded</td>
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-docs-supplementary",
+                  name: "lpaqreview-"+version+"-docs-supplementary",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Supplementary planning documents",
+                      text: "Missing or incorrect",
+                      checked: checked("lpaqreview-"+version+"-docs-supplementary", "Supplementary planning documents")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Development Plan Document or Neighbourhood Plan</th>
+              <td class="govuk-table__cell">No</td>
+              <td class="govuk-table__cell">
+                {{ govukCheckboxes({
+                  idPrefix: "lpaqreview-"+version+"-docs-developmentplan",
+                  name: "lpaqreview-"+version+"-docs-developmentplan",
+                  classes: "govuk-checkboxes--small",
+                  formGroup: {
+                    classes: "govuk-!-margin-bottom-0"
+                  },
+                  items: [
+                    {
+                      value: "Development Plan Document or Neighbourhood Plan",
+                      text: "Missing or incorrect",
+                      checked: checked("lpaqreview-"+version+"-docs-developmentplan", "Development Plan Document or Neighbourhood Plan")
+                    }
+                  ]
+                }) }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        <h2 class="govuk-heading-l govuk-!-margin-top-9">Finished your review?</h2>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

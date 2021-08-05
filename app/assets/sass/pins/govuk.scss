@@ -208,3 +208,85 @@ figure {
     width: 35%;
   }
 }
+
+
+// Dashboard cards
+.pins-dashboard-row {
+  display: flex;
+}
+
+.pins-dashboard-column {
+  align-items: stretch;
+  display: flex;
+}
+
+.pins-card {
+  background-color: #ffffff;
+  border: 1px solid #dee0e2;
+  //border-left: 3px solid $govuk-brand-colour;
+  //padding: 20px;
+  margin-bottom: 30px;
+}
+
+.pins-card-number {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.pins-card-content {
+  background-color: #f8f8f8;
+  padding: 30px 30px 10px 30px;
+  * {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.pins-card-action {
+  background: white;
+  padding: 30px;
+  border-top: 1px solid #dee0e2;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.pins-card > ul {
+  margin-bottom: 0;
+}
+
+.pins-card-action > ul {
+  margin-bottom: 0;
+}
+
+.pins-card-number {
+  font-size: 3rem;
+}
+
+
+@media(max-width: 768px) {
+  .pins-card {
+    padding: 20px;
+  }
+
+  .pins-card-content {
+    padding: 20px 20px 10px 20px;
+  }
+
+  .pins-card-action {
+    padding: 20px;
+  }
+  
+  .pins-dashboard-row {
+    display: flex;
+
+    .pins-dashboard-column {
+      align-items: stretch;
+      display: flex;
+    }
+    .pins-card {
+      align-items: stretch;
+      width: 100%;
+    }
+  }
+}

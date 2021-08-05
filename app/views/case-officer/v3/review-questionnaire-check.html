@@ -1,0 +1,207 @@
+{% extends "layouts/case-officer/v3.html" %}
+
+{% block pageTitle %}
+  Questionnaires for review
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Dashboard",
+        href: "#"
+      },
+      {
+        text: "Questionnaires for review",
+        href: "/case-officer/"+version+"/list-questionnaires"
+      },
+      {
+        text: "APP/B3030/D/21/3272772",
+        href: "/case-officer/"+version+"/review-questionnaire"
+      },
+      {
+        text: "Check and confirm"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Review questionnaire
+      </h1>
+
+      <h2 class="govuk-heading-l">
+        Check and confirm
+      </h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Outcome
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaqreview-"+version+"-outcome"] | capitalize }}
+          </dd>
+        </div>
+
+        {% if data["lpaqreview-"+version+"-outcome"] == "incomplete" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Reason(s)
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+            {% if data["lpaqreview-"+version+"-about-entersite"] or 
+                  data["lpaqreview-"+version+"-about-neighboursland"] %}
+              <p class="govuk-body">
+                Not enough detail
+              <p>
+              <ul class="govuk-list govuk-list--bullet">
+              {% if data["lpaqreview-"+version+"-about-entersite"] %}
+                <li>{{ data["lpaqreview-"+version+"-about-entersite"] }}</li>
+              {% endif %}
+              {% if data["lpaqreview-"+version+"-about-neighboursland"] %}
+                <li>{{ data["lpaqreview-"+version+"-about-neighboursland"] }}</li>
+              {% endif %}
+              </ul>
+            {% endif %}
+
+            {% if data["lpaqreview-"+version+"-about-listedbuilding"] or 
+                  data["lpaqreview-"+version+"-about-greenbelt"] or 
+                  data["lpaqreview-"+version+"-about-conservationarea"] %}
+              <p class="govuk-body">
+                Incorrect answer(s)
+              <p>
+              <ul class="govuk-list govuk-list--bullet">
+                {% if data["lpaqreview-"+version+"-about-listedbuilding"] %}
+                  <li>{{ data["lpaqreview-"+version+"-about-listedbuilding"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-about-greenbelt"] %}
+                  <li>{{ data["lpaqreview-"+version+"-about-greenbelt"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-about-conservationarea"] %}
+                  <li>{{ data["lpaqreview-"+version+"-about-conservationarea"] }}</li>
+                {% endif %}
+              </ul>
+            {% endif %}
+
+            {% if data["lpaqreview-"+version+"-docs-plansused"] or 
+                  data["lpaqreview-"+version+"-docs-poreport"] or 
+                  data["lpaqreview-"+version+"-docs-telling"] or 
+                  data["lpaqreview-"+version+"-docs-representations"] or 
+                  data["lpaqreview-"+version+"-docs-notifying"] or 
+                  data["lpaqreview-"+version+"-docs-publicised"] or 
+                  data["lpaqreview-"+version+"-docs-conservationarea"] or 
+                  data["lpaqreview-"+version+"-docs-sitenotices"] or 
+                  data["lpaqreview-"+version+"-docs-statutory"] or 
+                  data["lpaqreview-"+version+"-docs-otherrelevant"] or 
+                  data["lpaqreview-"+version+"-docs-supplementary"] or 
+                  data["lpaqreview-"+version+"-docs-developmentplan"] %}
+              <p class="govuk-body">
+                Missing or incorrect document(s)
+              <p>
+              <ul class="govuk-list govuk-list--bullet">
+                {% if data["lpaqreview-"+version+"-docs-plansused"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-plansused"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-poreport"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-poreport"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-telling"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-telling"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-representations"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-representations"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-notifying"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-notifying"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-publicised"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-publicised"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-conservationarea"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-conservationarea"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-sitenotices"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-sitenotices"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-statutory"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-statutory"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-otherrelevant"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-otherrelevant"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-supplementary"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-supplementary"] }}</li>
+                {% endif %}
+                {% if data["lpaqreview-"+version+"-docs-developmentplan"] %}
+                  <li>{{ data["lpaqreview-"+version+"-docs-developmentplan"] }}</li>
+                {% endif %}
+              </ul>
+            {% endif %}
+
+            </ul>
+          </dd>
+        </div>
+        {% endif %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+            APP/B3030/D/21/3272772
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal site
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Jaleno<br>
+            Church Lane<br>
+            Eakring<br>
+            NEWARK<br>
+            NG22 0DH
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Local planning department
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Newark and Sherwood District Council
+          </dd>
+        </div>
+      </dl>
+
+      {% if data["lpaqreview-"+version+"-outcome"] == "complete" %}
+        {{ govukWarningText({
+          text: "Confirming the questionnaire as complete makes the appeal available to inspectors.",
+          iconFallbackText: "warning"
+        }) }}
+      {% endif %}
+    
+      <div class="govuk-button-group">
+        {{ govukButton({
+          href: "review-questionnaire-confirm",
+          text: "Confirm outcome"
+        }) }}
+        <a class="govuk-link" href="review-questionnaire">Change outcome</a>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

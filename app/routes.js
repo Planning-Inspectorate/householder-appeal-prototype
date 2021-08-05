@@ -1066,10 +1066,11 @@ require('./routes/lpa-questionnaire/v9.js')(router);
 require('./routes/validation-officer/v1.js')(router);
 require('./routes/validation-officer/v2.js')(router);
 
-require('./routes/case-officer-lpaq-review/v1.js')(router);
-require('./routes/case-officer-lpaq-review/v2.js')(router);
-require('./routes/case-officer-lpaq-review/v3.js')(router);
-require('./routes/case-officer-lpaq-review/v4.js')(router);
+require('./routes/case-officer/v1.js')(router);
+require('./routes/case-officer/v2.js')(router);
+require('./routes/case-officer/v3.js')(router);
+require('./routes/case-officer/v4.js')(router);
+require('./routes/case-officer/v5.js')(router);
 
 require('./routes/standalone/as-2078.js')(router);
 require('./routes/standalone/lpa-questionnaire-security.js')(router);
