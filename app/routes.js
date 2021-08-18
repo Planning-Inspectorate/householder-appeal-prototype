@@ -1058,6 +1058,8 @@ router.post("/lpa-account/login/email-sent-post", function(req, res, next){
   res.redirect(url);
 })
 
+require('./routes/eligibility/v8.js')(router);
+
 require('./routes/appeal-submission.js')(router);
 
 require('./routes/lpa-questionnaire/v8.js')(router);
