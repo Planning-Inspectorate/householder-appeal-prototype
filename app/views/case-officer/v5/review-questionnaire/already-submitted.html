@@ -1,0 +1,55 @@
+{% extends "layouts/case-officer/v5.html" %}
+
+{% block pageTitle %}
+  Questionnaire already submitted
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Case officer dashboard",
+        href: "/case-officer/"+version+"/"
+      },
+      {
+        text: "Questionnaires for review",
+        href: "/case-officer/"+version+"/list-questionnaires"
+      },
+      {
+        text: "Questionnaire already submitted"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Questionnaire already submitted
+      </h1>
+
+      <p class="govuk-body">
+        The questionnaire for appeal [reference] was submitted on [date of submission]. You can no longer access it or update the information provided.
+      <p>
+      <p class="govuk-body">
+        If you think the questionnaire has been submitted in error or you have missed information, you can contact our customer support team:
+      <p>
+      <p class="govuk-body">
+        Email: <a href="mailto:enquiries@planninginspectorate.gov.uk">enquiries@planninginspectorate.gov.uk</a><br>
+        Telephone: 0303 444 5000
+      <p>
+      
+    </div>
+  </div>
+
+{% endblock %}
