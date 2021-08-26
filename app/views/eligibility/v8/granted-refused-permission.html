@@ -1,0 +1,56 @@
+{% extends "layouts/eligibility/v8.html" %}
+
+{% block pageTitle %}
+  Was your planning permission granted or refused? - Eligibility - Appeal a householder planning decision - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post" novalidate>
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "eligibility-"+version+"-grantedrefused",
+          name: "eligibility-"+version+"-grantedrefused",
+          fieldset: {
+            legend: {
+              text: "Was your planning permission granted or refused?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Granted",
+              text: "Granted"
+            },
+            {
+              value: "Refused",
+              text: "Refused"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "I have not received a decision",
+              text: "I have not received a decision"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

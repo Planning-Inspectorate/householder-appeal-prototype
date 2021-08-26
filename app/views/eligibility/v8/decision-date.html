@@ -27,12 +27,29 @@
           },
           hint: {
             text: "For example, 20 04 2020"
-          }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["eligibility-"+version+"-decisiondate-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["eligibility-"+version+"-decisiondate-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["eligibility-"+version+"-decisiondate-year"]
+            }
+          ]
         }) }}
           
-        <p class="govuk-form-group govuk-!-padding-bottom-2">
+        <!--p class="govuk-form-group govuk-!-padding-bottom-2">
           <a href="householder-planning-permission-out">I have not received a decision from the local planning department​</a>
-        </p>
+        </p-->
 
         {{ govukButton({
           text: "Continue"

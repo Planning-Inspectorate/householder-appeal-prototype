@@ -1,0 +1,49 @@
+{% extends "layouts/eligibility/v8.html" %}
+
+{% block pageTitle %}
+  Is your appeal about a listed building? - Eligibility - Appeal a householder planning decision - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post" novalidate>
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "eligibility-"+version+"-listedbuilding",
+          name: "eligibility-"+version+"-listedbuilding",
+          fieldset: {
+            legend: {
+              text: "Is your appeal about a listed building?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layouts/eligibility/v8.html" %}
+
+{% block pageTitle %}
+  Are you claiming for costs as part of your appeal? - Eligibility - Appeal a householder planning decision - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post" novalidate>
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "eligibility-"+version+"-claimingcosts",
+          name: "eligibility-"+version+"-claimingcosts",
+          fieldset: {
+            legend: {
+              text: "Are you claiming for costs as part of your appeal?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
