@@ -1,0 +1,52 @@
+{% extends "layouts/eligibility/v8.html" %}
+
+{% block pageTitle %}
+  Have you received an enforcement notice? - Eligibility - Appeal a householder planning decision - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post" novalidate>
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "eligibility-"+version+"-enforcement",
+          name: "eligibility-"+version+"-enforcement",
+          fieldset: {
+            legend: {
+              text: "Have you received an enforcement notice?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "An enforcement notice is issued if your local planning department thinks you have carried out building work without the correct planning permission."
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

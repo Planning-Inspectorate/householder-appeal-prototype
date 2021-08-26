@@ -1,0 +1,70 @@
+{% extends "layouts/eligibility/v8.html" %}
+
+{% block pageTitle %}
+  Did you apply for 'householder planning permission'? - Eligibility - Appeal a householder planning decision - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post" novalidate>
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "eligibility-"+version+"-didyouapply",
+          name: "eligibility-"+version+"-didyouapply",
+          fieldset: {
+            legend: {
+              text: "Did you apply for 'householder planning permission'?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "'Householder planning permission' is a specific type of planning permission. You can check what you applied for on your original planning application form."
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              What is householder planning permission?
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <p>'Householder planning permission' covers projects for altering or enlarging a single house. These include:​</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>conservatories​</li>
+              <li>dormer windows​</li>
+              <li>extensions​</li>
+              <li>garages, car ports and outbuildings​</li>
+              <li>loft conversions</li>
+            </ul>
+          </div>
+        </details>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

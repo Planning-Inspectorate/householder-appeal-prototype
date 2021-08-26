@@ -1,0 +1,63 @@
+{% extends "layouts/eligibility/v8.html" %}
+
+{% block pageTitle %}
+  What's the decision date on the letter from the local planning department? - Eligibility - Appeal a householder planning decision - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post" novalidate>
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+
+        {{ govukDateInput({
+          id: "eligibility-"+version+"-decisiondate",
+          namePrefix: "eligibility-"+version+"-decisiondate",
+          fieldset: {
+            legend: {
+              text: "What's the decision date on the letter from the local planning department?​",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "For example, 20 04 2020"
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["eligibility-"+version+"-decisiondate-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["eligibility-"+version+"-decisiondate-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["eligibility-"+version+"-decisiondate-year"]
+            }
+          ]
+        }) }}
+          
+        <!--p class="govuk-form-group govuk-!-padding-bottom-2">
+          <a href="householder-planning-permission-out">I have not received a decision from the local planning department​</a>
+        </p-->
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
