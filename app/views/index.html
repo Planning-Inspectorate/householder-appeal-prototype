@@ -999,31 +999,63 @@
           <div class="govuk-accordion__section-header">
             <h2 class="govuk-accordion__section-heading">
               <span class="govuk-accordion__section-button" id="accordion-default-heading-5">
-                Inspector Appeals
+                Inspector
               </span>
             </h2>
           </div>
           <div id="accordion-default-content-5" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-5">
 
-            <div class="govuk-grid-row">
-              <div class="govuk-grid-column-one-half">
-                  <p class="govuk-body"> <a href="inspector-appeals3/appeal1-decision">Short cut to Inspector - Provide Decision MVP</a><br></p>
-                  <p class="govuk-body"> <a href="inspector-appeals3/case-officer/index">Short cut to Case Officer  - Publish Decision MVP</a><br></p>
-                <p class="govuk-body">How the inspector views the appeals</p>
-                <a class="govuk-button" href="inspector-appeals3/index" target="new">Pull Appeal HTML</a><br>
+            <div class="govuk-inset-text govuk-!-margin-top-0">
+              <h3 class="govuk-heading-m">
+                Inspector journeys v3
+                {{ govukTag({
+                  classes: "govuk-tag--grey govuk-!-margin-left-1",
+                  text: "Archived"
+                }) }}
+              </h3>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  <a href="inspector-appeals3/appeal1-decision">Short cut to Inspector - Provide Decision MVP</a>
+                </li>
+                <li>
+                  <a href="inspector-appeals3/case-officer/index">Short cut to Case Officer  - Publish Decision MVP</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="inspector-appeals3/index">Pull Appeal HTML</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="inspector-appealsMVP/my-index">MVP HTML</a>
+                </li>
+              </ul>
 
-                <a class="govuk-button" href="inspector-appealsMVP/my-index" target="_blank">MVP HTML</a>
-              </div>
-              <div class="govuk-grid-column-one-half">
-                <h4 class="govuk-heading-s">Current version (v3)</h4>
-                <p class="govuk-body">Card sort results. Site visit details passed through screens.  <br><a href="https://miro.com/app/board/o9J_lHyEePA=/"> Pull Appeal Miro Board</a> for complete journey and unhappy path. </p>
-                <h4 class="govuk-heading-s">Version History</h4>
-                <ul class="govuk-list govuk-list--bullet">
-                  <!-- <li><a href="inspector-appeals2/index" target="_blank">(v2) Content before card sort results</a></li>-->
-                <li><a href="inspector-appeals/" target="_blank">Version 1 HTML</a></li>
+              <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    User research
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <ul class="govuk-list govuk-list-bulleted">
+                    <li>Card sort results. Site visit details passed through screens. <a href="https://miro.com/app/board/o9J_lHyEePA=/"></li>
+                    <li>Pull Appeal Miro Board</a> for complete journey and unhappy path.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
 
-                </ul>
-              </div>
+            <div class="govuk-inset-text govuk-!-margin-top-0">
+              <h3 class="govuk-heading-m">
+                Inspector journeys v1
+                {{ govukTag({
+                  classes: "govuk-tag--grey govuk-!-margin-left-1",
+                  text: "Archived"
+                }) }}
+              </h3>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  <a href="inspector-appeals/" target="_blank">Version 1 HTML</a>
+                </li>
+              </ul>
             </div>
 
           </div>
