@@ -1,0 +1,266 @@
+{% extends "layouts/inspector/v4.html" %}
+
+{% block pageTitle %}
+  Schedule site visit - My planning appeals
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/inspector/"+version+"/appeal-unscheduled"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        Schedule site visit
+      </h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Site address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            55 Butcher Street, Thurnscoe, S63 0RB
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+            APP/2020/56789/01237
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Target date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ 13 | daysInFuture }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Local planning department
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Bradford Council
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h2 class="govuk-heading-l">
+        Can site be seen from public land?
+      </h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Response from appellant
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Response from LPA
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Yes, the site can be viewed from the road at rear of property
+          </dd>
+        </div>
+      </dl>
+      
+      <h2 class="govuk-heading-l">
+        Site details
+      </h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-8">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Health and safety information
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Yes, there are dogs
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Does the Inspector need to enter site?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Does the Inspector need to access a neighbours land?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Yes. Appellant has agreed to notify neighbours at 133 High Street
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Does the appellant own the whole appeal site?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Yes
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Are there any relevant appeals nearby?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Yes
+          </dd>
+        </div>
+      </dl>
+
+      <form action="" method="post">
+
+        {{ govukRadios({
+          idPrefix: "inspector-"+version+"-schedule-type",
+          name: "inspector-"+version+"-schedule-type",
+          classes: "govuk-!-margin-bottom-5",
+          fieldset: {
+            legend: {
+              text: "What type of site visit are you arranging?",
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Access required site visit (ARSV)",
+              text: "Access required site visit (ARSV)"
+            },
+            {
+              value: "Uncaccompanied site visit (USV)",
+              text: "Uncaccompanied site visit (USV)"
+            },
+            {
+              value: "Accompanied site visit (ASV)",
+              text: "Accompanied site visit (ASV)"
+            }
+          ]
+        }) }}
+
+        {{ govukDateInput({
+          id: "inspector-"+version+"-schedule-date",
+          name: "inspector-"+version+"-schedule-date",
+          classes: "govuk-!-margin-bottom-5",
+          fieldset: {
+            legend: {
+              text: "What date do you want to carry out your site visit?",
+              classes: "govuk-fieldset__legend--l"
+            }
+          }
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "inspector-"+version+"-schedule-time",
+          name: "inspector-"+version+"-schedule-time",
+          classes: "govuk-!-margin-bottom-5",
+          fieldset: {
+            legend: {
+              text: "What time do you want to carry out your site visit?",
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "8am to 10am",
+              text: "8am to 10am"
+            },
+            {
+              value: "9am to 11am",
+              text: "9am to 11am"
+            },
+            {
+              value: "10am to midday",
+              text: "10am to midday"
+            },
+            {
+              value: "11am to 1pm",
+              text: "11am to 1pm"
+            },
+            {
+              value: "midday to 2pm",
+              text: "midday to 2pm"
+            },
+            {
+              value: "1pm to 3pm",
+              text: "1pm to 3pm"
+            },
+            {
+              value: "2pm to 4pm",
+              text: "2pm to 4pm"
+            },
+            {
+              value: "3pm to 5pm",
+              text: "3pm to 5pm"
+            },
+            {
+              value: "4pm to 6pm",
+              text: "4pm to 6pm"
+            },
+            {
+              value: "5pm to 7pm",
+              text: "5pm to 7pm"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <!--div class="govuk-related-items">
+        <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+          Site visit
+        </h3>
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
+          Recommended type
+        </h4>
+        <p class="govuk-body govuk-!-margin-bottom-1">
+          USV  
+        </p>
+        {{ govukButton({
+          text: "Schedule site visit",
+          classes: "govuk-!-margin-top-3 govuk-!-margin-bottom-0"
+        }) }}
+      </div-->
+
+    </div>
+  </div>
+  
+</div>
+
+
+{% endblock %}

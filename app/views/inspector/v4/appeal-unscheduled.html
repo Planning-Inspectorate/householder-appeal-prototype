@@ -21,9 +21,6 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      <!--span class="govuk-caption-xl">
-        APP/2020/56789/01234
-      </span-->
       <h1 class="govuk-heading-xl">
         55 Butcher Street, Thurnscoe, S63 0RB
       </h1>
@@ -32,10 +29,6 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
-      <!--h2 class="govuk-heading-l">
-        Appeal information  
-      </h2-->
 
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
@@ -63,11 +56,6 @@
           </dd>
         </div>
       </dl>
-
-
-      <!--h2 class="govuk-heading-l">
-        Documents and information  
-      </h2-->
 
       {{ govukAccordion({
         id: "inspector-"+v+"-details",
@@ -196,7 +184,7 @@
                       Extra conditions from the LPA
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      <a href="#">No</a>
+                      No
                     </dd>
                   </div>
                   <div class="govuk-summary-list__row">
@@ -390,20 +378,11 @@
           USV  
         </p>
         {{ govukButton({
+          href: "schedule-visit",
           text: "Schedule site visit",
           classes: "govuk-!-margin-top-3 govuk-!-margin-bottom-0"
         }) }}
       </div>
-
-      <!--h3 class="govuk-heading-m govuk-!-margin-bottom-2">Contact Details</h3>
-      <div class="govuk-related-items">
-        <p class="gov-body">
-          <b>Case officer</b><br>
-          Tom Smith<br>
-          <a href="#">tom.smith@gmail.com</a><br>
-          01234 567890
-        </p>
-      </div-->
 
     </div>
   </div>
