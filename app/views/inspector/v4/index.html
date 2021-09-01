@@ -1,7 +1,7 @@
-{% extends "layouts/case-officer/v5.html" %}
+{% extends "layouts/inspector/v4.html" %}
 
 {% block pageTitle %}
-  My householder planning appeals
+  My planning appeals
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,7 +19,7 @@
     <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-xl">
-        My householder planning appeals
+        My planning appeals
       </h1>
 
       <table class="govuk-table">
@@ -28,101 +28,94 @@
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Appeal site</th>
             <th scope="col" class="govuk-table__header">Target date</th>
+            <th scope="col" class="govuk-table__header">Appeal type</th>
             <th scope="col" class="govuk-table__header">LPA</th>
-            <th scope="col" class="govuk-table__header">Site visit details</th>
+            <th scope="col" class="govuk-table__header">Site visit</th>
             <!--th scope="col" class="govuk-table__header">Appeal reference</th-->
           </tr>
         </thead>
         <tbody class="govuk-table__body">
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              <a href="review" class="govuk-link">Jaleno, Church Lane, Eakring, NEWARK, NG22 0DH</a>
+              <a href="/inspector/{{version}}/appeal-decision" class="govuk-link">8 The Chase, Findon, BN14 0TT</a>
             </td>
-            <td class="govuk-table__cell">23 Jun 2021</td>
+            <td class="govuk-table__cell">{{ 12 | daysInFutureShortMonth }}</td>
+            <td class="govuk-table__cell">HAS</td>
             <td class="govuk-table__cell">Bradford</td>
-            <td class="govuk-table__cell"></td>
+            <td class="govuk-table__cell">
+              {{ 2 | daysAgoShortMonth }}
+              <!--{{ 1 | daysInFutureShortMonth }}-->
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              <a href="/inspector/{{version}}/appeal-scheduled" class="govuk-link">131 High Street, Bradford, BD6 1JK</a>
+            </td>
+            <td class="govuk-table__cell">{{ 12 | daysInFutureShortMonth }}</td>
+            <td class="govuk-table__cell">HAS</td>
+            <td class="govuk-table__cell">Bradford</td>
+            <td class="govuk-table__cell">
+              {{ 7 | daysInFutureShortMonth }}
+            </td>
             <!--td scope="row" class="govuk-table__cell">
               <a href="review" class="govuk-link">APP/B3030/D/21/3272772</a>
             </td-->
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              55 Butcher Street, Thurnscoe, S63 0RB
+              <a href="/inspector/{{version}}/appeal-unscheduled" class="govuk-link">55 Butcher Street, Thurnscoe, S63 0RB</a>
             </td>
-            <td class="govuk-table__cell">
-              23 Jun 2021
-            </td>
+            <td class="govuk-table__cell">{{ 13 | daysInFutureShortMonth }}</td>
+            <td class="govuk-table__cell">HAS</td>
             <td class="govuk-table__cell">Bradford</td>
-            <td class="govuk-table__cell"></td>
-            <!--td scope="row" class="govuk-table__cell">
-              <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">APP/Q9999/D/21/5463281</a>
-            </td-->
-          </tr>
-          <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              8 The Chase, Findon, BN14 0TT
+              Not scheduled
             </td>
-            <!--td scope="row" class="govuk-table__cell">
-              APP/Q9999/D/21/1203521
-            </td-->
-            <td class="govuk-table__cell">
-              24 Jun 2021
-            </td>
-            <td class="govuk-table__cell">Bradford</td>
-            <td class="govuk-table__cell"></td>
           </tr>
-          <tr class="govuk-table__row">
+          <!--tr class="govuk-table__row">
             <td class="govuk-table__cell">
               44 Rivervale, Bridport, DT6 5RN
             </td>
-            <!--td scope="row" class="govuk-table__cell">
-              <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">APP/Q9999/D/21/1154923</a>
-            </td-->
-            <td class="govuk-table__cell">
-              25 Jun 2021
-            </td>
+            <td class="govuk-table__cell">{{ 16 | daysInFutureShortMonth }}</td>
+            <td class="govuk-table__cell">HAS</td>
             <td class="govuk-table__cell">Bradford</td>
-            <td class="govuk-table__cell"></td>
+            <td class="govuk-table__cell">
+              Not scheduled
+            </td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
               92 Huntsmoor Road, Tadley, RG26 4BX
             </td>
-            <!--td scope="row" class="govuk-table__cell">
-              APP/Q9999/D/21/1087562
-            </td-->
-            <td class="govuk-table__cell">
-              25 Jun 2021
-            </td>
+            <td class="govuk-table__cell">{{ 22 | daysInFutureShortMonth }}</td>
+            <td class="govuk-table__cell">HAS</td>
             <td class="govuk-table__cell">Bradford</td>
-            <td class="govuk-table__cell"></td>
+            <td class="govuk-table__cell">
+              Not scheduled
+            </td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
               29 St Marys Gardens, Hilperton Marsh, BA14 7PQ
             </td>
-            <!--td scope="row" class="govuk-table__cell">
-              APP/Q9999/D/21/1365524
-            </td-->
-            <td class="govuk-table__cell">
-              26 Jun 2021
-            </td>
+            <td class="govuk-table__cell">{{ 24 | daysInFutureShortMonth }}</td>
+            <td class="govuk-table__cell">HAS</td>
             <td class="govuk-table__cell">Bradford</td>
-            <td class="govuk-table__cell"></td>
+            <td class="govuk-table__cell">
+              Not scheduled
+            </td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
               1 Grove Cottage, Shotesham Road, Woodton, NR35 2ND
             </td>
-            <!--td scope="row" class="govuk-table__cell">
-              APP/Q9999/D/21/1224115
-            </td-->
-            <td class="govuk-table__cell">
-              28 Jun 2021
-            </td>
+            <td class="govuk-table__cell">{{ 26 | daysInFutureShortMonth }}</td>
+            <td class="govuk-table__cell">HAS</td>
             <td class="govuk-table__cell">Bradford</td>
-            <td class="govuk-table__cell"></td>
-          </tr>
+            <td class="govuk-table__cell">
+              Not scheduled
+            </td>
+          </tr-->
         </tbody>
       </table>
 

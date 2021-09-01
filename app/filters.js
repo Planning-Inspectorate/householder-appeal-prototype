@@ -60,16 +60,28 @@ module.exports = function (env) {
 
 
   filters.daysAgo = function(num) {
-      var d = moment().subtract(num,"days").format("D MMMM YYYY")
-      if (d !== 'Invalid date') return d
-      else return ''
-  }
+    var d = moment().subtract(num,"days").format("D MMMM YYYY")
+    if (d !== 'Invalid date') return d
+    else return ''
+}
 
-  filters.daysInFuture = function(num) {
-      var d = moment().add(num,"days").format("D MMMM YYYY")
-      if (d !== 'Invalid date') return d
-      else return ''
-  }
+filters.daysAgoShortMonth = function(num) {
+    var d = moment().subtract(num,"days").format("D MMM YYYY")
+    if (d !== 'Invalid date') return d
+    else return ''
+}
+
+filters.daysInFuture = function(num) {
+    var d = moment().add(num,"days").format("D MMMM YYYY")
+    if (d !== 'Invalid date') return d
+    else return ''
+}
+
+filters.daysInFutureShortMonth = function(num) {
+    var d = moment().add(num,"days").format("D MMM YYYY")
+    if (d !== 'Invalid date') return d
+    else return ''
+}
 
 
   filters.filesByFieldName = function(files, fieldname){
