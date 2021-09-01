@@ -202,3 +202,18 @@ $govuk-assets-path: '/govuk/assets/';
 .govuk-summary-list-appealdetails .govuk-summary-list__value {
 	width: 55%;
 }
+
+// remove bottom border of summary list when in an accordion
+.govuk-accordion__section-content .govuk-summary-list__row:last-child .govuk-summary-list__key,
+.govuk-accordion__section-content .govuk-summary-list__row:last-child .govuk-summary-list__value,
+.govuk-accordion__section-content .govuk-summary-list__row:last-child .govuk-summary-list__actions {
+	border-bottom: 0;
+}
+
+.govuk-related-items {
+	border: 1px solid $govuk-border-colour;
+	border-top: 4px solid $govuk-link-colour;
+	margin-bottom: 30px;
+	padding: 20px;
+	//background-color: #f8f8f8;
+}

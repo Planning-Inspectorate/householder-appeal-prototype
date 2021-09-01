@@ -1074,6 +1074,8 @@ require('./routes/case-officer/v3.js')(router);
 require('./routes/case-officer/v4.js')(router);
 require('./routes/case-officer/v5.js')(router);
 
+require('./routes/inspector/v4.js')(router);
+
 require('./routes/standalone/as-2078.js')(router);
 require('./routes/standalone/lpa-questionnaire-security.js')(router);
 require('./routes/standalone/appeal-submission-security.js')(router);
