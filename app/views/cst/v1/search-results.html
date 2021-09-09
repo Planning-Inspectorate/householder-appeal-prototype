@@ -1,0 +1,100 @@
+{% extends "layouts/cst/v1.html" %}
+
+{% block pageTitle %}
+  Search results
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+<!--
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Dashboard"
+      }
+    ]
+  }) }}
+-->
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        Search results
+      </h1>
+
+      <p class="govuk-body">
+        You searched for '{{ data['search'] }}'
+        <div id="numofresults">Number of results in address: </div>
+      <p>
+
+      <table class="govuk-table" id="results">
+
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Reference</th>
+            <th scope="col" class="govuk-table__header">Site Address</th>
+          </tr>
+        </thead>
+
+        <tbody class="govuk-table__body">
+          
+          {% for item in data['cstSearch'] %}
+            <tr
+              data-ref="{{ item.ref }}"
+              data-address="{{ item.address | lower }}"
+              data-postcode="{{ item.postcode | lower }}"
+              class="govuk-table__row">
+                <td class="govuk-table__cell">{{ item.ref }}</td>
+                <td class="govuk-table__cell">{{ item.address }}, {{ item.postcode }}</td>
+            </tr>
+          {% endfor %}
+          
+          <tr id="noresults" style="display:none">
+            <td colspan="2" style="padding: 20px;">
+              <h3 style="font-size: 18px; color: #D12D4A;">Sorry, we couldn’t find any matching accounts</h3>
+              <!--p>Please revise your search.</p>-->
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+  <script>
+    var term = "{{data['search']}}";
+    //window.alert("{{data['search']}}");
+    if (term != ''){
+      $('#results tbody tr').hide();
+    }
+    var refItems = $('tr[data-ref*="' + term + '"]').length;
+    var addressItems = $('tr[data-address*="' + term.toLowerCase() + '"]').length;
+    var postcodeItems = $('tr[data-postcode*="' + term.toLowerCase() + '"]').length;
+    $('#numofresults').append(addressItems);
+    var numItems = refItems + addressItems + postcodeItems;
+      //$("#searchcount").html(numItems);
+      //$("#searchterm").html(term);
+    if (numItems == 0){
+      $('#noresults').show();
+    } else {
+      $('tr[data-ref*="' + term + '"]').show();
+      $('tr[data-address*="' + term.toLowerCase() + '"]').show();
+      $('tr[data-postcode*="' + term.toLowerCase() + '"]').show();
+    }
+  </script>
+{% endblock %}
