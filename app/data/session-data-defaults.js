@@ -718,6 +718,19 @@ let data = {
     }
   ],
 
+  cstNotes: [
+    {
+      "note": "Adv that the appeal was submitted in time and that the appeal is waiting for an Inspector to become available before it can start. Adv that their LPA will send a notification letter within 5 days of the start date and explained the appeal will not show on ACP until its started.",
+      "datetime": "16 Jun 2021 11:14am",
+      "username": "Mark Jones"
+    },
+    {
+      "note": "Advised appellant of average appeal timescales.",
+      "datetime": "07 Jun 2021 15:32pm",
+      "username": "David Smith"
+    }
+  ],
+
   saveReturnUrl: "/verify-email-post",
 
   cases: [],

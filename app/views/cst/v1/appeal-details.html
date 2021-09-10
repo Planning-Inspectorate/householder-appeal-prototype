@@ -19,7 +19,6 @@
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-xl">
         8 The Chase, Findon, BN14 0TT
-        {{ request.url }}
       </h1>
     </div>
   </div>
@@ -55,7 +54,7 @@
       </dl>
 
       {{ govukAccordion({
-        id: "inspector-"+v+"-details",
+        id: "cst-"+v+"-casedetails",
         items: [
           {
             heading: {
@@ -362,49 +361,93 @@
       }) }}
 
     </div>
-    <div class="govuk-grid-column-one-third">
+    <!--div class="govuk-grid-column-two-thirds">
+      <ul class="govuk-list">
+        <li>
+          <a href="#">View notes</a>
+        </li>
+      </ul>
+    </div-->
+  </div>
 
-      <div class="govuk-related-items">
-        <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-          Decision
-        </h3>
-        <p class="govuk-body govuk-!-margin-bottom-1">
-          Due in 12 days
-        </p>
-        {{ govukButton({
-          text: "Issue decision",
-          classes: "govuk-!-margin-top-3 govuk-!-margin-bottom-0"
-        }) }}
-      </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
 
-      <div class="govuk-related-items">
-        <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-          Site visit
-        </h3>
-        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
-          Date
-        </h4>
-        <p class="govuk-body govuk-!-margin-bottom-1">
-          {{ 2 | daysAgoShortMonth }}
-        </p>
-        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
-          Time
-        </h4>
-        <p class="govuk-body govuk-!-margin-bottom-1">
-          9am to 10am
-        </p>
-        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
-          Type
-        </h4>
-        <p class="govuk-body govuk-!-margin-bottom-1">
-          USV
-        </p>
-      </div>
+      <h2 class="govuk-heading-m">
+        Appeal notes
+      </h2>
 
+      <table class="govuk-table" id="notes">
+
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Date and time</th>
+            <th scope="col" class="govuk-table__header">User</th>
+            <th scope="col" class="govuk-table__header">Note</th>
+          </tr>
+        </thead>
+
+        <tbody class="govuk-table__body">
+          <!-- loop through the cstNotes data to display as results -->
+          {% for note in data['cstNotes'] %}
+            <!-- data- attributes set to help show/hide rows to mimic search funcitonality -->
+            <tr
+              data-ref="{{ note.datetime }}"
+              data-address="{{ note.username }}"
+              data-postcode="{{ note.note }}"
+              class="govuk-table__row">
+                <td class="govuk-table__cell" nowrap>{{ note.datetime }}</td>
+                <td class="govuk-table__cell" nowrap>{{ note.username }}</td>
+                <td class="govuk-table__cell">{{ note.note }}</td>
+            </tr>
+          {% endfor %}
+          
+          <tr id="noresults" style="display:none">
+            <td>
+              We couldn’t find any accounts matching your search.
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
     </div>
   </div>
-  
-</div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+        {{ govukTextarea({
+          id: "cst-"+v+"-appealnotes",
+          name: "cst-"+v+"-appealnotes",
+          label: {
+            classes: "govuk-label--m",
+            text: "Make a note"
+          }
+        }) }}
+        {{ govukButton({
+          text: "Save note"
+        }) }}
+<!--
+      {% set addnotesHtml %}
+        {{ govukTextarea({
+          id: "cst-"+v+"-appealnotes",
+          name: "cst-"+v+"-appealnotes",
+          label: {
+            text: "Notes"
+          }
+        }) }}
+        {{ govukButton({
+          text: "Save note"
+        }) }}
+      {% endset -%}
+
+      {{ govukDetails({
+        summaryText: "Add a note",
+        html: addnotesHtml
+      }) }}
+-->
+    </div>
+  </div>
 
 
 {% endblock %}

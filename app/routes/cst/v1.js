@@ -8,6 +8,6 @@ module.exports = function (router) {
     router.post(base, function (req, res) {
       res.redirect(base+'search-results');
     })
-  
+
 
 }

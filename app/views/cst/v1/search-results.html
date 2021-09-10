@@ -45,15 +45,16 @@
         </thead>
 
         <tbody class="govuk-table__body">
-          
+          <!-- loop through the cstSearch data to display as results -->
           {% for item in data['cstSearch'] %}
+            <!-- data- attributes set to help show/hide rows to mimic search funcitonality -->
             <tr
               data-ref="{{ item.ref }}"
               data-address="{{ item.address | lower }}"
               data-postcode="{{ item.postcode | lower }}"
               class="govuk-table__row">
                 <td class="govuk-table__cell">
-                  <a href="appeal/{{ item.ref }}/details/" class="govuk-link">APP/Q999/D/21/{{ item.ref }}</a>
+                  <a href="appeal-details" class="govuk-link">APP/Q999/D/21/{{ item.ref }}</a>
                 </td>
                 <td class="govuk-table__cell">{{ item.address }}, {{ item.postcode }}</td>
             </tr>
