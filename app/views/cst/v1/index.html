@@ -1,0 +1,96 @@
+{% extends "layouts/cst/v1.html" %}
+
+{% block pageTitle %}
+  Dashboard
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+<!--
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Dashboard"
+      }
+    ]
+  }) }}
+-->
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        Dashboard
+      </h1>
+      <!--p class="govuk-body">
+        Your view is restricted to [name of LPA]
+      <p-->
+      
+      <form method="post" action="">
+
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--m" for="search">
+              Search appeals
+            </label>
+          </h2>
+          <div id="search-hint" class="govuk-hint">
+            Enter reference, site address, appellant or agent name
+          </div>
+          <input class="govuk-input govuk-!-width-one-half" id="search" name="search" type="text" aria-describedby="search-hint">
+
+          <button class="govuk-button" data-module="govuk-button">
+            Search
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+
+  <!--div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-third">
+      <div class="pins-card">
+        <div class="pins-card-content">
+          <h2 class="govuk-heading-s">Decisions to publish</h2>
+          <p class="pins-card-number">1</p>
+        </div>
+        <div class="pins-card-action">
+          <p class="govuk-body">
+            <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">View list of appeal decisions</a>
+          <p>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <div class="pins-card">
+        <div class="pins-card-content">
+          <h2 class="govuk-heading-s">Questionnaires for review</h2>
+          <p class="pins-card-number">3</p>
+        </div>
+        <div class="pins-card-action">
+          <p class="govuk-body">
+            <a href="/case-officer/{{version}}/review-questionnaire/list" class="govuk-link">View list of questionnaires for review</a>
+          <p>
+        </div>
+      </div>
+    </div>
+
+  </div-->
+
+  </div>
+</div>
+
+{% endblock %}
