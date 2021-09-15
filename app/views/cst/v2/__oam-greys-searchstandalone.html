@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% if redirectTime %}
+    <meta http-equiv="refresh" content="{{ redirectTime }}; url={{ redirectURL }}">
+  {% endif %}
+  <title>{% block page_title %}{% endblock %}British Gas Business</title>
+  <link href="/public/{% block version %}{% endblock %}/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="/public/dev-images/favicon.ico" type="image/x-icon" />
+</head>
+
+<body class="{% block body_classes %}{% endblock %}">
+
+<div class="wrapper full light-grey">
+  <div class="wrapper-inner-xwide top-bar">
+    <ul class="site-switcher">
+      {% if site == "home" %}
+      <li>
+        <a href="{{ homelink }}" class="cur">My Home</a>
+      </li>
+      <li>
+        <a href="{{ businesslink }}">My Business</a>
+      </li>
+      {% else %}
+      <li>
+        <a href="{{ homelink }}">My Home</a>
+      </li>
+      <li>
+        <a href="{{ businesslink }}" class="cur">My Business</a>
+      </li>
+      {% endif %}
+    </ul>
+    <div class="top-nav-right">
+      <ul>
+        <li><a href="login-business">Log out</a></li>
+      </ul>
+    </div>
+  </div><!-- /wrapper-inner -->
+</div><!-- /wrapper -->
+
+<div class="wrapper full white header">
+  <div class="wrapper-inner-xwide">
+
+    <div class="logo"><a href="#">British Gas</a></div>
+
+    <div class="mega-nav">
+      <ul>
+        <li class="cur"><a href="#">My account</a></li>
+        <li><a href="">Smarter working</a></li>
+        <li><a href="">Energy services</a></li>
+        <li><a href="">Gas &amp; electricity</a></li>
+      </ul>
+    </div><!-- /mega-menu -->
+
+  </div><!-- /wrapper-inner -->
+</div><!-- /wrapper -->
+
+<div class="wrapper full dark-blue account-nav">
+  <div class="wrapper-inner-xwide">
+
+    <h1 class="account-nav-title-large">
+      <a href="#">My accounts</a> &nbsp;&gt;&nbsp; 
+    </h1>
+    <div id="org_container" style="float: left; background: #074891; background-image: url('/public/v1/images/icons/arrows/outline/down-white.svg'); background-position: right 15px top 18px; background-repeat: no-repeat; display: block; margin-left: 5px; border-radius: 5px; width: 250px; font-weight: bold; font-size: 18px; position: relative;">
+      <div id="org_dropdown" style=" padding: 10px;">
+        Grey's Food Limited
+      </div>
+      <ul id="org_dropdown_options" style="background: #074891; border-top: 1px solid #386CA7; position: absolute; top: 40px; left: 0; z-index: 99; border-radius: 0 0 5px 5px; width: 250px; display: none;">
+        <li style=" padding: 10px;"><a href="#" style="color: white;">Smith's News</a></li>
+      </ul>
+    </div>
+
+
+    <h1 class="account-nav-title">
+      {% block mobile_header_title %}<a href="#">Grey’s Food Limited</a>{% endblock %}
+    </h1>
+
+    {% block desktop_org_switcher %}{% endblock %}
+
+
+    {% block user_message %}{% endblock %}
+
+
+  </div><!-- /wrapper-inner -->
+</div><!-- /wrapper -->
+
+{% block mobile_account_switcher %}{% endblock %}
+
+<div class="wrapper full light-grey account-main">
+
+  <div class="wrapper-inner-xwide">
+   
+  {% block secnav %}
+    <div class="account-nav-secondary">
+    </div><!-- /account-nav-secondary -->
+  {% endblock %}
+
+  {% block content %}
+    <div class="account-content">
+    </div><!-- /account-content -->
+  {% endblock %}
+
+    <div class="clear"></div>
+
+  </div><!-- /wrapper-inner -->
+</div><!-- /wrapper -->
+
+<div class="wrapper full dark-blue">
+  <div class="wrapper-inner-xwide footer">
+
+    {% include "includes/oamfooter.html" %}
+      
+  </div><!-- /footer -->
+</div><!-- /wrapper -->
+
+
+{% block body_end %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
+
+
+<script>
+
+  $("#searchbutton").on("click", function( e ){
+    e.preventDefault();
+    if(!$('#searchbutton').hasClass("disabled")){
+      dosearch();
+    }
+  });
+
+  $('#search').on('keyup', function (e) {
+      if (e.keyCode == 13 && !$('#searchbutton').hasClass("disabled")) {
+        dosearch();
+        return false;    //<---- Add this line
+      } else {
+      }
+    if ($('#search').val()){
+      $('#searchbutton').removeClass("disabled");
+    } else {
+      $('#searchbutton').addClass("disabled");
+    }
+  });
+
+  function dosearch(){
+
+    if($("#results").filter(':hidden')){ 
+      $("#results").hide();
+      $("#searching").show();
+      setTimeout(function() { 
+        $("#searching").hide();
+        $("#results").show();
+      }, 1000);
+      //$("#results").delay(2500).show();
+    }
+
+    $('#results tr').hide();
+    var term = $("#search").val();
+    var accountItems = $('tr[data-account*="' + term + '"]').length;
+    var addressItems = $('tr[data-address*="' + term.toLowerCase() + '"]').length;
+    var numItems = accountItems + addressItems;
+      $("#searchcount").html(numItems);
+      $("#searchterm").html(term);
+    if (numItems == 0){
+      $('#noresults').show();
+    } else {
+      $('tr[data-account*="' + term + '"]').show();
+      $('tr[data-address*="' + term.toLowerCase() + '"]').show();
+    }
+  }
+
+</script>
+
+</body>
+</html>
