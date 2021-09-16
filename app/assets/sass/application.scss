@@ -210,10 +210,26 @@ $govuk-assets-path: '/govuk/assets/';
 	border-bottom: 0;
 }
 
-.govuk-related-items {
+.govuk-related-items,
+.pins-card {
 	border: 1px solid $govuk-border-colour;
 	border-top: 4px solid $govuk-link-colour;
 	margin-bottom: 30px;
 	padding: 20px;
 	//background-color: #f8f8f8;
+}
+
+.pins-align-right {
+	text-align: right;
+}
+
+.pins-checkbox-cell {
+	padding-top: 2px;
+	.govuk-checkboxes__input {
+		margin: 0 auto;
+	}
+}
+
+.pins-width-container {
+	@include govuk-width-container(1200px);
 }

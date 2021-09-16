@@ -16,11 +16,25 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-three-quarters">
 
       <h1 class="govuk-heading-xl">
-        My planning appeals
+        My appeals
       </h1>
+
+    </div>
+    <div class="govuk-grid-column-one-quarter pins-align-right">
+
+      {{ govukButton({
+        href: "get-appeals/",
+        text: "Get more appeals"
+      }) }}
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
 
       <table class="govuk-table">
         <!--caption class="govuk-table__caption">Householder planning appeals</caption-->
@@ -29,7 +43,7 @@
             <th scope="col" class="govuk-table__header">Appeal site</th>
             <th scope="col" class="govuk-table__header">Target date</th>
             <th scope="col" class="govuk-table__header">Appeal type</th>
-            <th scope="col" class="govuk-table__header">LPA</th>
+            <th scope="col" class="govuk-table__header">Local planning department</th>
             <th scope="col" class="govuk-table__header">Site visit</th>
             <!--th scope="col" class="govuk-table__header">Appeal reference</th-->
           </tr>
@@ -39,7 +53,7 @@
             <td class="govuk-table__cell">
               <a href="/inspector/{{version}}/appeal-decision" class="govuk-link">8 The Chase, Findon, BN14 0TT</a>
             </td>
-            <td class="govuk-table__cell">{{ 12 | daysInFutureShortMonth }}</td>
+            <td class="govuk-table__cell" nowrap>{{ 12 | daysInFutureShortMonth }}</td>
             <td class="govuk-table__cell">HAS</td>
             <td class="govuk-table__cell">Bradford</td>
             <td class="govuk-table__cell">

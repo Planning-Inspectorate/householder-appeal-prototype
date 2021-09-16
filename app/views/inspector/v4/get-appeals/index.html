@@ -1,0 +1,80 @@
+{% extends "layouts/inspector/v4.html" %}
+
+{% block pageTitle %}
+  Available appeals
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to my appeals",
+    href: "../"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Available appeals
+      </h1>
+
+      <table class="govuk-table">
+        <!--caption class="govuk-table__caption">Householder planning appeals</caption-->
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Postcode</th>
+            <th scope="col" class="govuk-table__header">Target date</th>
+            <th scope="col" class="govuk-table__header">Appeal type</th>
+            <th scope="col" class="govuk-table__header">Development type</th>
+            <th scope="col" class="govuk-table__header">Specialism</th>
+            <th scope="col" class="govuk-table__header">Select</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+
+          {% for item in data['pullAppeals'] %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">{{ item.postcode }}</td>
+              <td class="govuk-table__cell">{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
+              <td class="govuk-table__cell">HAS</td>
+              <td class="govuk-table__cell">{{ item.developmentType }}</td>
+              <td class="govuk-table__cell">{{ item.specialism }}</td>
+              <td class="govuk-table__cell pins-checkbox-cell">                
+                <div class="govuk-checkboxes govuk-checkboxes--small">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="pullappealref" name="pullappealref" type="checkbox" value="{{ item.ref }}">
+                    <label class="govuk-label govuk-checkboxes__label" for="pullappealref">
+                      <span class="govuk-visually-hidden">{{ item.ref }}</span>
+                    </label>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+<!--
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              <a href="/inspector/{{version}}/appeal-decision" class="govuk-link">8 The Chase, Findon, BN14 0TT</a>
+            </td>
+            <td class="govuk-table__cell">{{ 12 | daysInFutureShortMonth }}</td>
+            <td class="govuk-table__cell">HAS</td>
+            <td class="govuk-table__cell">Bradford</td>
+            <td class="govuk-table__cell">
+              {{ 2 | daysAgoShortMonth }}
+            </td>
+          </tr>
+-->
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+{% endblock %}
