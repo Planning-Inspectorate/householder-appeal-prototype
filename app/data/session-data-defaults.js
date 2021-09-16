@@ -17,6 +17,8 @@ Example usage:
 
 */
 
+let pullAppeals = require('./pullappeals.json')
+
 let data = {
 
   cookieBanner: "on",
@@ -1079,9 +1081,10 @@ let data = {
     "dpd-completed-text": "Not started",
     "check-answers": "govuk-tag govuk-tag--grey app-task-list__tag",
     "check-answers-link": "Check your answers",
-    "check-answers-text": "Cannot start yet"
+    "check-answers-text": "Cannot start yet",
+  
+    pullAppeals
 
-    }
-
+  }
 
 module.exports = data;
