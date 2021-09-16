@@ -53,10 +53,11 @@
     homepageUrl: "/",
     serviceName: serviceName,
     serviceUrl: "/",
-    containerClasses: "govuk-width-container"
+    containerClasses: "pins-width-container"
   }) }}
 {% endblock %}
 
+{% set containerClasses = 'pins-width-container' %}
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
 {% if useAutoStoreData %}
