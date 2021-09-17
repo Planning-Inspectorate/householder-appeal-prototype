@@ -35,13 +35,13 @@
           <!--caption class="govuk-table__caption">Householder planning appeals</caption-->
           <thead class="govuk-table__head">
             <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Select</th>
               <th scope="col" class="govuk-table__header">Postcode</th>
               <th scope="col" class="govuk-table__header">Target date</th>
               <th scope="col" class="govuk-table__header">Appeal type</th>
               <th scope="col" class="govuk-table__header">Development type</th>
               <th scope="col" class="govuk-table__header">Case level</th>
               <th scope="col" class="govuk-table__header">Specialism</th>
-              <th scope="col" class="govuk-table__header">Select</th>
             </tr>
           </thead>
           <tbody class="govuk-table__body">
@@ -49,22 +49,25 @@
             {% for item in data['availableAppeals'] %}
               {% set i = i + 1 %}
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell">{{ item.postcode }}</td>
-                <td class="govuk-table__cell">{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
-                <td class="govuk-table__cell">HAS</td>
-                <td class="govuk-table__cell">{{ item.developmentType }}</td>
-                <td class="govuk-table__cell">???</td>
-                <td class="govuk-table__cell">{{ item.specialism }}</td>
                 <td class="govuk-table__cell pins-checkbox-cell">                
                   <div class="govuk-checkboxes govuk-checkboxes--small">
                     <div class="govuk-checkboxes__item">
-                      <input class="govuk-checkboxes__input" id="inspector-{{version}}-pullappealref{% if i > 1 %}-{{i}}{% endif %}" name="inspector-{{version}}-pullappealref" type="checkbox" value="{{ item.ref }}">
+                      <input class="govuk-checkboxes__input" id="inspector-{{version}}-pullappealref{% if i > 1 %}-{{i}}{% endif %}" name="inspector-{{version}}-pullappealref" type="checkbox" value="{{ item.ref }}"
+                      {% for appealref in data['inspector-'+version+'-pullappealref'] %}
+                        {% if item.ref == appealref %} checked{% endif %}
+                      {%endfor%}>
                       <label class="govuk-label govuk-checkboxes__label" for="inspector-{{version}}-pullappealref{% if i > 1 %}-{{i}}{% endif %}">
                         <span class="govuk-visually-hidden">{{ item.ref }}</span>
                       </label>
                     </div>
                   </div>
                 </td>
+                <td class="govuk-table__cell" nowrap>{{ item.postcode }}</td>
+                <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
+                <td class="govuk-table__cell">HAS</td>
+                <td class="govuk-table__cell">{{ item.developmentType }}</td>
+                <td class="govuk-table__cell">???</td>
+                <td class="govuk-table__cell">{{ item.specialism }}</td>
               </tr>
             {% endfor %}
   <!--

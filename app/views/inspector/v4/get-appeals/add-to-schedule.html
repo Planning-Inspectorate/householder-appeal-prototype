@@ -13,7 +13,7 @@
   }) }}
   {{ govukBackLink({
     text: "Back to available appeals",
-    href: "/inspector/"+version+"/get-appeals"
+    href: "/inspector/"+version+"/get-appeals/"
   }) }}
 {% endblock %}
 
@@ -45,6 +45,7 @@
               <th scope="col" class="govuk-table__header">Target date</th>
               <th scope="col" class="govuk-table__header">Appeal type</th>
               <th scope="col" class="govuk-table__header">Development type</th>
+              <th scope="col" class="govuk-table__header">Case level</th>
               <th scope="col" class="govuk-table__header">Specialism</th>
             </tr>
           </thead>
@@ -54,31 +55,17 @@
               {% for item in data['availableAppeals'] %}
                 {% if item.ref == appealref %}
                   <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">{{ item.postcode }}</td>
-                    <td class="govuk-table__cell">{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
+                    <td class="govuk-table__cell" nowrap>{{ item.postcode }}</td>
+                    <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
                     <td class="govuk-table__cell">HAS</td>
                     <td class="govuk-table__cell">{{ item.developmentType }}</td>
+                    <td class="govuk-table__cell">???</td>
                     <td class="govuk-table__cell">{{ item.specialism }}</td>
                   </tr>
                 {% endif %}
               {% endfor %}
             {% endfor %}
 
-
-
-  <!--
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">
-                <a href="/inspector/{{version}}/appeal-decision" class="govuk-link">8 The Chase, Findon, BN14 0TT</a>
-              </td>
-              <td class="govuk-table__cell">{{ 12 | daysInFutureShortMonth }}</td>
-              <td class="govuk-table__cell">HAS</td>
-              <td class="govuk-table__cell">Bradford</td>
-              <td class="govuk-table__cell">
-                {{ 2 | daysAgoShortMonth }}
-              </td>
-            </tr>
-  -->
           </tbody>
         </table>
                 

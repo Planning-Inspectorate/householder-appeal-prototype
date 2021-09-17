@@ -9,4 +9,8 @@ module.exports = function (router) {
       res.redirect(base+'get-appeals/add-to-schedule');
     })
 
+    router.post(base+'get-appeals/add-to-schedule', function (req, res) {
+      res.redirect(base+'get-appeals/appeals-assigned');
+    })
+
 }
