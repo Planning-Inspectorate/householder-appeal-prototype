@@ -17,7 +17,7 @@ Example usage:
 
 */
 
-let pullAppeals = require('./pullappeals.json')
+let availableAppeals = require('./availableAppeals.json')
 
 let data = {
 
@@ -1083,7 +1083,7 @@ let data = {
     "check-answers-link": "Check your answers",
     "check-answers-text": "Cannot start yet",
   
-    pullAppeals
+    availableAppeals
 
   }
 

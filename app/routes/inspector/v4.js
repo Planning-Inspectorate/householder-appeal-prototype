@@ -4,9 +4,9 @@ module.exports = function (router) {
   var base = "/inspector/"+v+"/";
 
   // 
-/*
-    router.post(base+'review-questionnaire/review', function (req, res) {
-      res.redirect(base+'review-questionnaire/check');
+
+    router.post(base+'get-appeals', function (req, res) {
+      res.redirect(base+'get-appeals/add-to-schedule');
     })
-*/
+
 }
