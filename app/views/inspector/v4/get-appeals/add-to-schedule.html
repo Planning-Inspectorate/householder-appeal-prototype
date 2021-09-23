@@ -50,11 +50,11 @@
             </tr>
           </thead>
           <tbody class="govuk-table__body">
-
+            {% set i = 0 %}
             {% for appealref in data['inspector-'+version+'-pullappealref'] %}
               {% for item in data['availableAppeals'] %}
                 {% if item.ref == appealref %}
-                  <tr class="govuk-table__row">
+                  <tr class="govuk-table__row" data-appealref="{{appealref}}">
                     <td class="govuk-table__cell" nowrap>{{ item.postcode }}</td>
                     <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
                     <td class="govuk-table__cell">HAS</td>
@@ -62,6 +62,7 @@
                     <td class="govuk-table__cell">???</td>
                     <td class="govuk-table__cell">{{ item.specialism }}</td>
                   </tr>
+                  {% set i = i + 1 %}
                 {% endif %}
               {% endfor %}
             {% endfor %}

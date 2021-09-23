@@ -48,7 +48,7 @@
             {% set i = 0 %}
             {% for item in data['availableAppeals'] %}
               {% set i = i + 1 %}
-              <tr class="govuk-table__row">
+              <tr class="govuk-table__row" data-appealref="{{item.ref}}">
                 <td class="govuk-table__cell pins-checkbox-cell">                
                   <div class="govuk-checkboxes govuk-checkboxes--small">
                     <div class="govuk-checkboxes__item">

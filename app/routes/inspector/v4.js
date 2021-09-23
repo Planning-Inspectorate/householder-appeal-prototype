@@ -10,6 +10,12 @@ module.exports = function (router) {
     })
 
     router.post(base+'get-appeals/add-to-schedule', function (req, res) {
+
+      // Take the selected appeals and store them to display in my appeals,
+      // and remove them from available appeals
+        //data["inspector-"+v+"-myappeals"].push(data["inspector-"+v+"-pullappealref"])
+      //
+
       res.redirect(base+'get-appeals/appeals-assigned');
     })
 
