@@ -6,7 +6,13 @@ module.exports = function (router) {
   // 
 
     router.post(base+'get-appeals', function (req, res) {
-      res.redirect(base+'get-appeals/add-to-schedule');
+
+      if ( req.session.data["inspector-"+v+"-pullappealref"].includes("APP/2020/56789/5551277") ){
+        req.session.data["inspector-"+v+"-appealunavailable"] = "true";
+        res.redirect(base+'get-appeals/appeals-unavailable');
+      } else {
+        res.redirect(base+'get-appeals/add-to-schedule');
+      }
     })
 
     router.post(base+'get-appeals/add-to-schedule', function (req, res) {
@@ -17,6 +23,7 @@ module.exports = function (router) {
       //
 
       res.redirect(base+'get-appeals/appeals-assigned');
+
     })
 
 }
