@@ -65,7 +65,7 @@
             <td class="govuk-table__cell">
               <a href="/inspector/{{version}}/appeal-scheduled" class="govuk-link">131 High Street, Bradford, BD6 1JK</a>
             </td>
-            <td class="govuk-table__cell">{{ 12 | daysInFutureShortMonth }}</td>
+            <td class="govuk-table__cell" nowrap>{{ 12 | daysInFutureShortMonth }}</td>
             <td class="govuk-table__cell">HAS</td>
             <td class="govuk-table__cell">Bradford</td>
             <td class="govuk-table__cell">
@@ -83,7 +83,7 @@
                   <td class="govuk-table__cell">
                     <a href="/inspector/{{version}}/appeal-unscheduled" class="govuk-link">{{item.address}}, {{item.postcode}}</a>
                   </td>
-                  <td class="govuk-table__cell">{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
+                  <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
                   <td class="govuk-table__cell">{{item.appealType}}</td>
                   <td class="govuk-table__cell">{{item.lpa}}</td>
                   <td class="govuk-table__cell">

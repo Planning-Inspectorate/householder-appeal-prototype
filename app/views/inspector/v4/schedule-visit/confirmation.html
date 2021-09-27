@@ -25,16 +25,14 @@
     
         {% set panelHtml %}
           
-          8 The Chase, Findon BN14&nbsp;0TT<br>
-          {{ data["inspector-"+version+"-schedule-type"]}}<br>
+          8 The Chase, Findon BN14&nbsp;0TT<br><br>
           {{ data["inspector-"+version+"-schedule-date-day"] }}
-            {{ data["inspector-"+version+"-schedule-date-month"] | formatMonth }}
-            {{ data["inspector-"+version+"-schedule-date-year"] }}<br>
-            {{ data["inspector-"+version+"-schedule-time"] | capitalize }}
+          {{ data["inspector-"+version+"-schedule-date-month"] | formatMonth }} {{ data["inspector-"+version+"-schedule-date-year"] }}<br>
+          {{ data["inspector-"+version+"-schedule-time"] | capitalize }}
         {% endset -%}
 
       {{ govukPanel({
-        titleText: "Site visit scheduled",
+        titleText: data["inspector-"+version+"-schedule-type"] +" site visit scheduled",
         html: panelHtml
       }) }}
 
