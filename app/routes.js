@@ -1078,6 +1078,7 @@ require('./routes/inspector/v4.js')(router);
 
 require('./routes/cst/v1.js')(router);
 require('./routes/cst/v2.js')(router);
+require('./routes/cst/v3.js')(router);
 
 require('./routes/standalone/as-2078.js')(router);
 require('./routes/standalone/lpa-questionnaire-security.js')(router);
