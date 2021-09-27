@@ -10,7 +10,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/3755470",
@@ -23,7 +24,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/4909983",
@@ -36,7 +38,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/4788894",
@@ -49,7 +52,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/4612726",
@@ -62,7 +66,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "Appearance Design",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/4899402",
@@ -75,7 +80,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/4293472",
@@ -88,7 +94,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/4162708",
@@ -101,7 +108,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/5261405",
@@ -114,7 +122,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/4376041",
@@ -127,7 +136,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/4307663",
@@ -140,7 +150,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/3801537",
@@ -153,7 +164,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/3852552",
@@ -166,7 +178,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/5172826",
@@ -179,7 +192,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/4553926",
@@ -192,7 +206,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/5182990",
@@ -205,7 +220,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/4598682",
@@ -218,7 +234,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/4175968",
@@ -231,7 +248,8 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   },
   {
     "ref": "APP/2020/56789/4081024",
@@ -244,6 +262,7 @@
     "appealType": "HAS",
     "developmentType": "Dwellings",
     "specialism": "None",
-    "proposedVisitType": "USV"
+    "proposedVisitType": "USV",
+    "provisionalSiteVisit": ""
   }
 ]
