@@ -26,4 +26,9 @@ module.exports = function (router) {
 
     })
 
+    router.post(base+'schedule-visit', function (req, res) {
+
+      res.redirect(base+'schedule-visit/check-confirm');
+
+    })
 }

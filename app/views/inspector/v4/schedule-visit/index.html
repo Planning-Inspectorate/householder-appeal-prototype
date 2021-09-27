@@ -30,7 +30,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <dl class="govuk-summary-list">
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Site address
@@ -63,132 +63,141 @@
             Bradford Council
           </dd>
         </div>
-      </dl>
-    </div>
-  </div>
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-
-      <h2 class="govuk-heading-l">
-        Can site be seen from public land?
-      </h2>
-      <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Response from appellant
-          </dt>
-          <dd class="govuk-summary-list__value">
-            No
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Response from LPA
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Yes, the site can be viewed from the road at rear of property
-          </dd>
-        </div>
-      </dl>
-      
-      <h2 class="govuk-heading-l">
-        Site details
-      </h2>
-      <dl class="govuk-summary-list govuk-!-margin-bottom-8">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Health and safety information
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Yes, there are dogs
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Does the Inspector need to enter site?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            No
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Does the Inspector need to access a neighbours land?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Yes. Appellant has agreed to notify neighbours at 133 High Street
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Does the appellant own the whole appeal site?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Yes
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Are there any relevant appeals nearby?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Yes
-          </dd>
-        </div>
-      </dl>
+      </dl> 
 
       <form action="" method="post">
 
         {{ govukRadios({
           idPrefix: "inspector-"+version+"-schedule-type",
           name: "inspector-"+version+"-schedule-type",
-          classes: "govuk-!-margin-bottom-5",
           fieldset: {
             legend: {
-              text: "What type of site visit are you arranging?",
+              text: "Site visit type",
               classes: "govuk-fieldset__legend--l"
             }
           },
           items: [
             {
-              value: "Access required site visit (ARSV)",
-              text: "Access required site visit (ARSV)"
+              value: "Access required (ARSV)",
+              text: "Access required (ARSV)"
             },
             {
-              value: "Uncaccompanied site visit (USV)",
-              text: "Uncaccompanied site visit (USV)"
+              value: "Accompanied (ASV)",
+              text: "Accompanied (ASV)"
             },
             {
-              value: "Accompanied site visit (ASV)",
-              text: "Accompanied site visit (ASV)"
+              value: "Uncaccompanied (USV)",
+              html: 'Uncaccompanied (USV) <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-3">Provisional type</strong>',
+              checked: "checked"
             }
           ]
         }) }}
 
-        {{ govukDateInput({
-          id: "inspector-"+version+"-schedule-date",
-          name: "inspector-"+version+"-schedule-date",
-          classes: "govuk-!-margin-bottom-5",
-          fieldset: {
-            legend: {
-              text: "What date do you want to carry out your site visit?",
-              classes: "govuk-fieldset__legend--l"
-            }
-          }
+        
+        {% set detailsHtml %}
+          <h2 class="govuk-heading-l">
+            Can site be seen from public land?
+          </h2>
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Response from appellant
+              </dt>
+              <dd class="govuk-summary-list__value">
+                No
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Response from LPA
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Yes, the site can be viewed from the road at rear of property
+              </dd>
+            </div>
+          </dl>
+          
+          <h2 class="govuk-heading-l">
+            Site details
+          </h2>
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Health and safety information
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Yes, there are dogs
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Does the Inspector need to enter site?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                No
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Does the Inspector need to access a neighbours land?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Yes. Appellant has agreed to notify neighbours at 133 High Street
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Does the appellant own the whole appeal site?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Yes
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Are there any relevant appeals nearby?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Yes
+              </dd>
+            </div>
+          </dl>
+        {% endset -%}
+
+        {{ govukDetails({
+          classes: "govuk-!-margin-bottom-9",
+          summaryText: "Site visit details",
+          html: detailsHtml
         }) }}
 
-        {{ govukRadios({
-          idPrefix: "inspector-"+version+"-schedule-time",
-          name: "inspector-"+version+"-schedule-time",
+        {{ govukDateInput({
+          id: "inspector-"+version+"-schedule-date",
+          namePrefix: "inspector-"+version+"-schedule-date",
           classes: "govuk-!-margin-bottom-5",
           fieldset: {
             legend: {
-              text: "What time do you want to carry out your site visit?",
+              text: "Date",
               classes: "govuk-fieldset__legend--l"
             }
           },
+          hint: {
+            text: "Provisional site visit set as week of "+data["inspector-"+version+"-provisionalweek"]
+          }
+        }) }}
+
+        {{ govukSelect({
+          id: "inspector-"+version+"-schedule-time",
+          name: "inspector-"+version+"-schedule-time",
+          classes: "govuk-!-margin-bottom-5",
+          label: {
+            text: "Time slot",
+            classes: "govuk-label--l"
+          },
           items: [
+            {
+              value: "",
+              text: "Please select"
+            },
             {
               value: "8am to 10am",
               text: "8am to 10am"
