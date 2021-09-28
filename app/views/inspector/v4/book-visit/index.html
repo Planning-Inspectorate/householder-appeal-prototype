@@ -22,7 +22,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-xl">
-        Schedule site visit
+        Book site visit
       </h1>
     </div>
   </div>
@@ -33,18 +33,18 @@
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Site address
-          </dt>
-          <dd class="govuk-summary-list__value">
-            55 Butcher Street, Thurnscoe, S63 0RB
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
             Appeal reference
           </dt>
           <dd class="govuk-summary-list__value">
             APP/2020/56789/01237
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Site address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            55 Butcher Street, Thurnscoe, S63 0RB
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -72,7 +72,7 @@
           name: "inspector-"+version+"-schedule-type",
           fieldset: {
             legend: {
-              text: "Site visit type",
+              text: "Type",
               classes: "govuk-fieldset__legend--l"
             }
           },
@@ -181,7 +181,7 @@
             }
           },
           hint: {
-            text: "Provisional site visit set as week of "+data["inspector-"+version+"-provisionalweek"]
+            text: "You provisionally scheduled this for the week of "+data["inspector-"+version+"-provisionalweek"]
           }
         }) }}
 

@@ -76,43 +76,26 @@
       <h2 class="govuk-heading-l">
         Decision details
       </h2>
-      
-      <form action="" method="post">
 
-        {{ govukDateInput({
-          id: "inspector-"+version+"-issuedecision-date",
-          namePrefix: "inspector-"+version+"-issuedecision-date",
-          fieldset: {
-            legend: {
-              text: "Date of decision",
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          items: [
-            {
-              name: "day",
-              classes: "govuk-input--width-2",
-              value: date | formatDate ("D")
-            },
-            {
-              name: "month",
-              classes: "govuk-input--width-2",
-              value: date | formatDate ("M")
-            },
-            {
-              name: "year",
-              classes: "govuk-input--width-4",
-              value: date | formatDate ("YYYY")
-            }
-          ]
-        }) }}
+      <form action="" method="post">
+      
+        <h3 class="govuk-heading-m">
+          Date
+        </h3>
+        <p class="govuk-body ">
+          Today, {{ date | formatDate ("D MMMM YYYY") }}
+        <p>
+
+        <input type="hidden" id="inspector-{{version}}-issuedecision-date-day" name="inspector-{{version}}-issuedecision-date-day" value="{{ date | formatDate ("D") }}">
+        <input type="hidden" id="inspector-{{version}}-issuedecision-date-month" name="inspector-{{version}}-issuedecision-date-month" value="{{ date | formatDate ("M") }}">
+        <input type="hidden" id="inspector-{{version}}-issuedecision-date-year" name="inspector-{{version}}-issuedecision-date-year" value="{{ date | formatDate ("YYYY") }}">
 
         {{ govukRadios({
           idPrefix: "inspector-"+version+"-issuedecision-outcome",
           name: "inspector-"+version+"-issuedecision-outcome",
           fieldset: {
             legend: {
-              text: "Decision outcome",
+              text: "Outcome",
               classes: "govuk-fieldset__legend--m"
             }
           },
@@ -140,7 +123,7 @@
           name: "inspector-"+version+"-issuedecision-report",
           label: {
             classes: "govuk-label--m",
-            text: "Upload decision report"
+            text: "Upload report"
           }
         }) }}
 
