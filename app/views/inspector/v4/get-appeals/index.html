@@ -45,7 +45,7 @@
             {% set i = 0 %}
             {% for item in data['availableAppeals'] %}
               {% set i = i + 1 %}
-              {% if item.ref == "APP/2020/56789/5551277" and data['inspector-'+version+'-appealunavailable'] %}
+              {% if item.ref in data['inspector-'+version+'-pullappealref'] %}
                 
               {% else %}
                 <tr class="govuk-table__row" data-appealref="{{item.ref}}">
