@@ -41,7 +41,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Sie Address
+            Site address
           </dt>
           <dd class="govuk-summary-list__value">
             8 The Chase, Findon, BN14 0TT
@@ -383,6 +383,7 @@
           Due in 12 days
         </p>
         {{ govukButton({
+          href: "/inspector/"+version+"/issue-decision",
           text: "Issue decision",
           classes: "govuk-!-margin-top-3 govuk-!-margin-bottom-0"
         }) }}
@@ -408,7 +409,7 @@
           Type
         </h4>
         <p class="govuk-body govuk-!-margin-bottom-1">
-          USV
+          Unaccompanied
         </p>
       </div>
 

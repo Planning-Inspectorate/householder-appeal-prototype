@@ -1,0 +1,132 @@
+{% extends "layouts/inspector/v4.html" %}
+
+{% block pageTitle %}
+  Check and confirm issue a decision - My planning appeals
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/inspector/"+version+"/issue-decision"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        Check and confirm
+      </h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal outcome
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["inspector-"+version+"-issuedecision-outcome"] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Decision report
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <a href="javascript:preventDefault();" class="govuk-link">DecisionReport.pdf</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of decision
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["inspector-"+version+"-issuedecision-date-day"] }}
+            {{ data["inspector-"+version+"-issuedecision-date-month"] | formatMonth }}
+            {{ data["inspector-"+version+"-issuedecision-date-year"] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appellant name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Maria Sharma
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+            APP/2020/56789/01237
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Site address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            55 Butcher Street, Thurnscoe, S63 0RB
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Local planning department
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Bradford Council
+          </dd>
+        </div>
+      </dl> 
+
+      {{ govukWarningText({
+        text: "Confirming the decision details issues the decision to the appellant and local planning department",
+        iconFallbackText: "Warning"
+      }) }}
+      
+      <div class="govuk-button-group">
+        {{ govukButton({
+          href: "confirmation",
+          text: "Confirm and issue decision"
+        }) }}
+        <a href="/inspector/{{version}}/issue-decision" class="govuk-link">Change decision details</a>
+      </div>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <!--div class="govuk-related-items">
+        <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+          Site visit
+        </h3>
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
+          Recommended type
+        </h4>
+        <p class="govuk-body govuk-!-margin-bottom-1">
+          USV  
+        </p>
+        {{ govukButton({
+          text: "Schedule site visit",
+          classes: "govuk-!-margin-top-3 govuk-!-margin-bottom-0"
+        }) }}
+      </div-->
+
+    </div>
+  </div>
+  
+</div>
+
+
+{% endblock %}

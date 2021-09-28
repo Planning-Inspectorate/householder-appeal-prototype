@@ -1,7 +1,7 @@
 {% extends "layouts/inspector/v4.html" %}
 
 {% block pageTitle %}
-  Site visit confirmed - My planning appeals
+  Decision issued - My planning appeals
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,9 +26,13 @@
         {% endset -%}
 
       {{ govukPanel({
-        titleText: data["inspector-"+version+"-schedule-type"] +" site visit scheduled",
-        html: panelHtml
+        titleText: "Decision issued",
+        html: data["inspector-"+version+"-issuedecision-outcome"] + "<br>APP/2020/56789/01234"
       }) }}
+
+      <p class="govuk-body">
+        The decision has been issued to the appellant and local planning department.
+      <p>
 
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
