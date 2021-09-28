@@ -21,10 +21,8 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
     
         {% set panelHtml %}
-          
           8 The Chase, Findon BN14&nbsp;0TT<br><br>
           {{ data["inspector-"+version+"-schedule-date-day"] }}
           {{ data["inspector-"+version+"-schedule-date-month"] | formatMonth }} {{ data["inspector-"+version+"-schedule-date-year"] }}<br>
@@ -45,26 +43,8 @@
         </li>
       </ul>
 
-
-
     </div>
     <div class="govuk-grid-column-one-third">
-
-      <!--div class="govuk-related-items">
-        <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-          Site visit
-        </h3>
-        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
-          Recommended type
-        </h4>
-        <p class="govuk-body govuk-!-margin-bottom-1">
-          USV  
-        </p>
-        {{ govukButton({
-          text: "Schedule site visit",
-          classes: "govuk-!-margin-top-3 govuk-!-margin-bottom-0"
-        }) }}
-      </div-->
 
     </div>
   </div>
