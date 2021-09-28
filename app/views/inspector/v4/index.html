@@ -37,7 +37,6 @@
     <div class="govuk-grid-column-full">
 
       <table class="govuk-table">
-        <!--caption class="govuk-table__caption">Householder planning appeals</caption-->
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Appeal site</th>
@@ -45,10 +44,12 @@
             <th scope="col" class="govuk-table__header">Appeal type</th>
             <th scope="col" class="govuk-table__header">Local planning department</th>
             <th scope="col" class="govuk-table__header">Site visit</th>
-            <!--th scope="col" class="govuk-table__header">Appeal reference</th-->
           </tr>
         </thead>
         <tbody class="govuk-table__body">
+
+          <!-- hide this appeal if decision has been issued in session -->
+          {% if not data["inspector-"+version+"-issuedecision-outcome"] %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
               <a href="/inspector/{{version}}/appeal-decision" class="govuk-link">8 The Chase, Findon, BN14 0TT</a>
@@ -58,9 +59,10 @@
             <td class="govuk-table__cell">Bradford</td>
             <td class="govuk-table__cell">
               {{ 2 | daysAgoShortMonth }}
-              <!--{{ 1 | daysInFutureShortMonth }}-->
             </td>
           </tr>
+          {% endif %}
+
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
               <a href="/inspector/{{version}}/appeal-scheduled" class="govuk-link">131 High Street, Bradford, BD6 1JK</a>
@@ -71,13 +73,13 @@
             <td class="govuk-table__cell">
               {{ 7 | daysInFutureShortMonth }}
             </td>
-            <!--td scope="row" class="govuk-table__cell">
-              <a href="review" class="govuk-link">APP/B3030/D/21/3272772</a>
-            </td-->
           </tr>
 
+          <!-- loop through appeals selected in pull appeal journey -->
           {% for pulledappeal in data['inspector-'+version+'-pullappealref'] %}
+            <!-- loop through the example appeal data in /data/availableAppeals -->
             {% for item in data['availableAppeals'] %}
+              <!-- if the ref in the example data matches one of the selected appeals, show the row -->
               {% if item.ref == pulledappeal %}
                 <tr class="govuk-table__row">
                   <td class="govuk-table__cell">
@@ -94,62 +96,6 @@
             {% endfor %}
           {% endfor %}
 
-
-          <!--tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-              <a href="/inspector/{{version}}/appeal-unscheduled" class="govuk-link">55 Butcher Street, Thurnscoe, S63 0RB</a>
-            </td>
-            <td class="govuk-table__cell">{{ 13 | daysInFutureShortMonth }}</td>
-            <td class="govuk-table__cell">HAS</td>
-            <td class="govuk-table__cell">Bradford</td>
-            <td class="govuk-table__cell">
-              Not scheduled
-            </td>
-          </tr-->
-          <!--tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-              44 Rivervale, Bridport, DT6 5RN
-            </td>
-            <td class="govuk-table__cell">{{ 16 | daysInFutureShortMonth }}</td>
-            <td class="govuk-table__cell">HAS</td>
-            <td class="govuk-table__cell">Bradford</td>
-            <td class="govuk-table__cell">
-              Not scheduled
-            </td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-              92 Huntsmoor Road, Tadley, RG26 4BX
-            </td>
-            <td class="govuk-table__cell">{{ 22 | daysInFutureShortMonth }}</td>
-            <td class="govuk-table__cell">HAS</td>
-            <td class="govuk-table__cell">Bradford</td>
-            <td class="govuk-table__cell">
-              Not scheduled
-            </td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-              29 St Marys Gardens, Hilperton Marsh, BA14 7PQ
-            </td>
-            <td class="govuk-table__cell">{{ 24 | daysInFutureShortMonth }}</td>
-            <td class="govuk-table__cell">HAS</td>
-            <td class="govuk-table__cell">Bradford</td>
-            <td class="govuk-table__cell">
-              Not scheduled
-            </td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-              1 Grove Cottage, Shotesham Road, Woodton, NR35 2ND
-            </td>
-            <td class="govuk-table__cell">{{ 26 | daysInFutureShortMonth }}</td>
-            <td class="govuk-table__cell">HAS</td>
-            <td class="govuk-table__cell">Bradford</td>
-            <td class="govuk-table__cell">
-              Not scheduled
-            </td>
-          </tr-->
         </tbody>
       </table>
 
