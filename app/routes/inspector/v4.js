@@ -26,8 +26,8 @@ module.exports = function (router) {
 
     })
 
-    router.post(base+'schedule-visit', function (req, res) {
-      res.redirect(base+'schedule-visit/check-confirm');
+    router.post(base+'book-visit', function (req, res) {
+      res.redirect(base+'book-visit/check-confirm');
     })
 
     router.post(base+'issue-decision', function (req, res) {

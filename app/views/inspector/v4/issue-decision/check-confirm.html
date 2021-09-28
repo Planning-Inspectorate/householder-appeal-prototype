@@ -30,33 +30,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      <h2 class="govuk-heading-l">
+        Appeal details
+      </h2>
+
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Appeal outcome
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data["inspector-"+version+"-issuedecision-outcome"] }}
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Decision report
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <a href="javascript:preventDefault();" class="govuk-link">DecisionReport.pdf</a>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Date of decision
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data["inspector-"+version+"-issuedecision-date-day"] }}
-            {{ data["inspector-"+version+"-issuedecision-date-month"] | formatMonth }}
-            {{ data["inspector-"+version+"-issuedecision-date-year"] }}
-          </dd>
-        </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Appellant name
@@ -90,6 +68,40 @@
           </dd>
         </div>
       </dl> 
+      
+
+      <h2 class="govuk-heading-l">
+        Decision details
+      </h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Outcome
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["inspector-"+version+"-issuedecision-outcome"] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Report
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <a href="javascript:preventDefault();" class="govuk-link">DecisionReport.pdf</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["inspector-"+version+"-issuedecision-date-day"] }}
+            {{ data["inspector-"+version+"-issuedecision-date-month"] | formatMonth }}
+            {{ data["inspector-"+version+"-issuedecision-date-year"] }}
+          </dd>
+        </div>
+      </dl>
 
       {{ govukWarningText({
         text: "Confirming the decision details issues the decision to the appellant and local planning department",
