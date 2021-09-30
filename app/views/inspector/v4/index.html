@@ -60,11 +60,11 @@
                 <a href="/inspector/{{version}}/appeal-decision" class="govuk-link">APP/2020/56789/3266594</a>
               </td>
               <td class="govuk-table__cell">8 The Chase, Findon, BN14 0TT</td>
-              <td class="govuk-table__cell" nowrap>{{ 12 | daysInFuture }}</td>
+              <td class="govuk-table__cell" nowrap>{{ 12 | daysInFutureShortMonth }}</td>
               <td class="govuk-table__cell">HAS</td>
               <td class="govuk-table__cell">Unaccompanied</td>
               <td class="govuk-table__cell">
-                {{ 2 | daysAgo }}
+                {{ 2 | daysAgoShortMonth }}
               </td>
             </tr>
           {% endif %}
@@ -95,11 +95,11 @@
               <a href="/inspector/{{version}}/appeal-scheduled" class="govuk-link">	APP/2020/56789/3556481</a>
             </td>
             <td class="govuk-table__cell">131 High Street, Bradford, BD6 1JK</td>
-            <td class="govuk-table__cell" nowrap>{{ 12 | daysInFuture }}</td>
+            <td class="govuk-table__cell" nowrap>{{ 12 | daysInFutureShortMonth }}</td>
             <td class="govuk-table__cell">HAS</td>
             <td class="govuk-table__cell">Unaccompanied</td>
             <td class="govuk-table__cell">
-              {{ 7 | daysInFuture }}
+              {{ 7 | daysInFutureShortMonth }}
             </td>
           </tr>
 
@@ -114,12 +114,12 @@
                     <a href="/inspector/{{version}}/appeal-unscheduled" class="govuk-link">APP/2021/56789/{{item.ref}}</a>
                   </td>
                   <td class="govuk-table__cell">{{item.address}}, {{item.postcode}}</td>
-                  <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFuture }}</td>
+                  <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
                   <td class="govuk-table__cell">{{item.appealType}}</td>
                   <td class="govuk-table__cell">{{ data["inspector-"+version+"-schedule-type"] }}</td>
                   <td class="govuk-table__cell">
                     {{ data["inspector-"+version+"-schedule-date-day"] }}
-                    {{ data["inspector-"+version+"-schedule-date-month"] | formatMonth }}
+                    {{ data["inspector-"+version+"-schedule-date-month"] | formatShortMonth }}
                     {{ data["inspector-"+version+"-schedule-date-year"] }}
                   </td>
                 </tr>
@@ -146,7 +146,7 @@
             <th scope="col" class="govuk-table__header">Target date</th>
             <th scope="col" class="govuk-table__header">Appeal type</th>
             <th scope="col" class="govuk-table__header">Provisional site visit type</th>
-            <th scope="col" class="govuk-table__header">Provisional site visit date</th>
+            <th scope="col" class="govuk-table__header">Provisional site visit week</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
@@ -165,11 +165,11 @@
                     <a href="/inspector/{{version}}/goto-appeal-unscheduled/{{item.ref}}" class="govuk-link">APP/2021/56789/{{item.ref}}</a>
                   </td>
                   <td class="govuk-table__cell">{{item.address}}, {{item.postcode}}</td>
-                  <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFuture }}</td>
+                  <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
                   <td class="govuk-table__cell">{{item.appealType}}</td>
                   <td class="govuk-table__cell">Unaccompanied</td>
                   <td class="govuk-table__cell">
-                    Week of {{ data["inspector-"+version+"-provisionalweek"]}}
+                    {{ data["inspector-"+version+"-provisionalweek"]}}
                   </td>
                 </tr>
               {% endif %}
@@ -181,7 +181,7 @@
 
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-!-padding-9" colspan="6" style="text-align: center; background-color: #f3f2f1;">
-                No appeals available
+                No site visits to book
               </td>
             </tr>
 

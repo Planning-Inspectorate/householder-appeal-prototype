@@ -51,6 +51,14 @@ module.exports = function (env) {
       return ""
     }
   }
+  filters.formatShortMonth = function(number){
+    if(number){
+      var date = moment().month(number -1)
+      return date.format('MMM')
+    } else {
+      return ""
+    }
+  }
 
   filters.formatDate = function(str,format) {
       var d = moment(str).format(format);
