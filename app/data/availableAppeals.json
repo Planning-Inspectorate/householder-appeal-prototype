@@ -1,6 +1,6 @@
 [
   {
-    "ref": "APP/2020/56789/5551277",
+    "ref": "5551277",
     "address": "19 Beauchamp Road, Bristol",
     "postcode": "BS7 8LQ",
     "lat": 51.478820,
@@ -14,7 +14,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/3755470",
+    "ref": "3755470",
     "address": "Copthalls, Clevedon Road, West Hill",
     "postcode": "BS48 1PN",
     "lat": 51.450800,
@@ -28,7 +28,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/4909983",
+    "ref": "4909983",
     "address": "66 Grove Road, Fishponds",
     "postcode": "BS16 2BP",
     "lat": 51.478630,
@@ -42,7 +42,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/4788894",
+    "ref": "4788894",
     "address": "9 Savernake Road, Weston-Super-Mare",
     "postcode": "BS22 9HQ",
     "lat": 51.365342,
@@ -56,7 +56,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/4612726",
+    "ref": "4612726",
     "address": "5 Monks Hill, Weston-Super-Mare",
     "postcode": "BS22 9RG",
     "lat": 51.362226,
@@ -70,7 +70,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/4899402",
+    "ref": "4899402",
     "address": "29 St Michaels Park, Bristol",
     "postcode": "BS2 8BW",
     "lat": 51.459631,
@@ -84,7 +84,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/4293472",
+    "ref": "4293472",
     "address": "180 Bloomfield Road, Bristol",
     "postcode": "BS4 3QX",
     "lat": 51,
@@ -98,7 +98,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/4162708",
+    "ref": "4162708",
     "address": "183 Hillside Road, Bristol",
     "postcode": "BS5 7PP",
     "lat": 51,
@@ -112,7 +112,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/5261405",
+    "ref": "5261405",
     "address": "Flat 13, Greenbank View, Orchard Road, Kingswood",
     "postcode": "BS15 9QU",
     "lat": 51,
@@ -126,7 +126,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/4376041",
+    "ref": "4376041",
     "address": "15 Ravenswood Road, Bristol",
     "postcode": "BS6 6BN",
     "lat": 51,
@@ -140,7 +140,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/4307663",
+    "ref": "4307663",
     "address": "6 Dunmore Street, Bristol",
     "postcode": "BS4 2BQ",
     "lat": 51,
@@ -154,7 +154,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/3801537",
+    "ref": "3801537",
     "address": "Flat 14, Fountain Court, Abbotswood, Yate",
     "postcode": "BS37 4NL",
     "lat": 51,
@@ -168,7 +168,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/3852552",
+    "ref": "3852552",
     "address": "87 Hengrove Lane, Bristol",
     "postcode": "BS14 9DH",
     "lat": 51,
@@ -182,7 +182,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/5172826",
+    "ref": "5172826",
     "address": "Cherry Orchards, Canford Lane, Bristol",
     "postcode": "BS9 3PE",
     "lat": 51,
@@ -196,7 +196,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/4553926",
+    "ref": "4553926",
     "address": "9 Charnhill Ridge, Mangotsfield",
     "postcode": "BS16 9JP",
     "lat": 51,
@@ -210,7 +210,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/5182990",
+    "ref": "5182990",
     "address": "Hazeldene, Hazel Lane, Rudgeway",
     "postcode": "BS35 3QW",
     "lat": 51,
@@ -224,7 +224,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/4598682",
+    "ref": "4598682",
     "address": "136 Charlton Road, Keynsham",
     "postcode": "BS31 2JZ",
     "lat": 51,
@@ -238,7 +238,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/4175968",
+    "ref": "4175968",
     "address": "17 Wilson Gardens, West Wick",
     "postcode": "BS24 7GL",
     "lat": 51,
@@ -252,7 +252,7 @@
     "provisionalSiteVisit": ""
   },
   {
-    "ref": "APP/2020/56789/4081024",
+    "ref": "4081024",
     "address": "Flat 6, Redfield House, Redfield Road, Patchway",
     "postcode": "BS34 6BR",
     "lat": 51,

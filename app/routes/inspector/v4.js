@@ -26,6 +26,14 @@ module.exports = function (router) {
 
     })
 
+    router.get(base+'goto-appeal-unscheduled/:ref', function (req, res, next) {
+      // Store the selected ref in a session variable 
+      req.session.data["inspector-"+v+"-schedule-ref"] = req.params.ref;
+      // ideally update this to store multiple, so the interaction of scheduling site visits can handle more than one
+      
+      res.redirect(base+'appeal-unscheduled');
+    })
+
     router.post(base+'book-visit', function (req, res) {
       res.redirect(base+'book-visit/check-confirm');
     })
@@ -35,3 +43,11 @@ module.exports = function (router) {
     })
 
 }
+/*
+router.post("/lpa-submission/:appealId/supplementary-adopted-post", function(req, res, next){
+
+  saveSupplementaryDetails(req);
+  res.redirect(`/lpa-submission/${req.params.appealId}/supplementary-file-list`);
+
+})
+*/
