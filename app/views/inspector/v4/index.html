@@ -24,80 +24,176 @@
 
     </div>
     <div class="govuk-grid-column-one-quarter pins-align-right">
-
+<!--
       {{ govukButton({
         href: "get-appeals/",
         text: "Get more appeals"
       }) }}
-
+-->
     </div>
   </div>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <table class="govuk-table">
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-3">
+        Decisions due
+      </h2>
+
+      <table class="govuk-table govuk-!-margin-bottom-9">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Appeal reference</th>
             <th scope="col" class="govuk-table__header">Appeal site</th>
             <th scope="col" class="govuk-table__header">Target date</th>
             <th scope="col" class="govuk-table__header">Appeal type</th>
-            <th scope="col" class="govuk-table__header">Local planning department</th>
-            <th scope="col" class="govuk-table__header">Site visit</th>
+            <th scope="col" class="govuk-table__header">Site visit type</th>
+            <th scope="col" class="govuk-table__header">Site visit date</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
 
           <!-- hide this appeal if decision has been issued in session -->
           {% if not data["inspector-"+version+"-issuedecision-outcome"] %}
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-              <a href="/inspector/{{version}}/appeal-decision" class="govuk-link">8 The Chase, Findon, BN14 0TT</a>
-            </td>
-            <td class="govuk-table__cell" nowrap>{{ 12 | daysInFutureShortMonth }}</td>
-            <td class="govuk-table__cell">HAS</td>
-            <td class="govuk-table__cell">Bradford Council</td>
-            <td class="govuk-table__cell">
-              {{ 2 | daysAgoShortMonth }}
-            </td>
-          </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <a href="/inspector/{{version}}/appeal-decision" class="govuk-link">APP/2020/56789/3266594</a>
+              </td>
+              <td class="govuk-table__cell">8 The Chase, Findon, BN14 0TT</td>
+              <td class="govuk-table__cell" nowrap>{{ 12 | daysInFuture }}</td>
+              <td class="govuk-table__cell">HAS</td>
+              <td class="govuk-table__cell">Unaccompanied</td>
+              <td class="govuk-table__cell">
+                {{ 2 | daysAgo }}
+              </td>
+            </tr>
           {% endif %}
+        
+        </tbody>
+      </table>
+
+      
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-3">
+        Site visits booked
+      </h2>
+
+      <table class="govuk-table govuk-!-margin-bottom-9">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Appeal reference</th>
+            <th scope="col" class="govuk-table__header">Appeal site</th>
+            <th scope="col" class="govuk-table__header">Target date</th>
+            <th scope="col" class="govuk-table__header">Appeal type</th>
+            <th scope="col" class="govuk-table__header">Site visit type</th>
+            <th scope="col" class="govuk-table__header">Site visit date</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
 
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              <a href="/inspector/{{version}}/appeal-scheduled" class="govuk-link">131 High Street, Bradford, BD6 1JK</a>
+              <a href="/inspector/{{version}}/appeal-scheduled" class="govuk-link">	APP/2020/56789/3556481</a>
             </td>
-            <td class="govuk-table__cell" nowrap>{{ 12 | daysInFutureShortMonth }}</td>
+            <td class="govuk-table__cell">131 High Street, Bradford, BD6 1JK</td>
+            <td class="govuk-table__cell" nowrap>{{ 12 | daysInFuture }}</td>
             <td class="govuk-table__cell">HAS</td>
-            <td class="govuk-table__cell">Bradford Council</td>
+            <td class="govuk-table__cell">Unaccompanied</td>
             <td class="govuk-table__cell">
-              {{ 7 | daysInFutureShortMonth }}
+              {{ 7 | daysInFuture }}
             </td>
           </tr>
+
+          {% for pulledappeal in data['inspector-'+version+'-pullappealref'] %}
+
+            {% if pulledappeal == data['inspector-'+version+'-schedule-ref'] %}
+
+            {% for item in data['availableAppeals'] %}
+              {% if item.ref == pulledappeal %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">
+                    <a href="/inspector/{{version}}/appeal-unscheduled" class="govuk-link">APP/2021/56789/{{item.ref}}</a>
+                  </td>
+                  <td class="govuk-table__cell">{{item.address}}, {{item.postcode}}</td>
+                  <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFuture }}</td>
+                  <td class="govuk-table__cell">{{item.appealType}}</td>
+                  <td class="govuk-table__cell">{{ data["inspector-"+version+"-schedule-type"] }}</td>
+                  <td class="govuk-table__cell">
+                    {{ data["inspector-"+version+"-schedule-date-day"] }}
+                    {{ data["inspector-"+version+"-schedule-date-month"] | formatMonth }}
+                    {{ data["inspector-"+version+"-schedule-date-year"] }}
+                  </td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+
+            {% endif %}
+            
+          {% endfor %}
+
+        </tbody>
+      </table>
+
+      
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-3">
+        Site visits not yet booked
+      </h2>
+
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Appeal reference</th>
+            <th scope="col" class="govuk-table__header">Appeal site</th>
+            <th scope="col" class="govuk-table__header">Target date</th>
+            <th scope="col" class="govuk-table__header">Appeal type</th>
+            <th scope="col" class="govuk-table__header">Provisional site visit type</th>
+            <th scope="col" class="govuk-table__header">Provisional site visit date</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+
+          {% if data['inspector-'+version+'-pullappealref'] %}
 
           <!-- loop through appeals selected in pull appeal journey -->
           {% for pulledappeal in data['inspector-'+version+'-pullappealref'] %}
+            {% if pulledappeal != data['inspector-'+version+'-schedule-ref'] %}
             <!-- loop through the example appeal data in /data/availableAppeals -->
             {% for item in data['availableAppeals'] %}
               <!-- if the ref in the example data matches one of the selected appeals, show the row -->
               {% if item.ref == pulledappeal %}
                 <tr class="govuk-table__row">
                   <td class="govuk-table__cell">
-                    <a href="/inspector/{{version}}/appeal-unscheduled" class="govuk-link">{{item.address}}, {{item.postcode}}</a>
+                    <a href="/inspector/{{version}}/goto-appeal-unscheduled/{{item.ref}}" class="govuk-link">APP/2021/56789/{{item.ref}}</a>
                   </td>
-                  <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
+                  <td class="govuk-table__cell">{{item.address}}, {{item.postcode}}</td>
+                  <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFuture }}</td>
                   <td class="govuk-table__cell">{{item.appealType}}</td>
-                  <td class="govuk-table__cell">{{item.lpa}}</td>
+                  <td class="govuk-table__cell">Unaccompanied</td>
                   <td class="govuk-table__cell">
                     Week of {{ data["inspector-"+version+"-provisionalweek"]}}
                   </td>
                 </tr>
               {% endif %}
             {% endfor %}
+            {% endif %}
           {% endfor %}
+
+          {% else %}
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-!-padding-9" colspan="6" style="text-align: center; background-color: #f3f2f1;">
+                No appeals available
+              </td>
+            </tr>
+
+          {% endif %}
 
         </tbody>
       </table>
+
+      {{ govukButton({
+        href: "get-appeals/",
+        text: "Get more appeals"
+      }) }}
 
     </div>
   </div>
