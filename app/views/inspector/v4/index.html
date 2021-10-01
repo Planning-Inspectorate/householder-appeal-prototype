@@ -54,7 +54,15 @@
         <tbody class="govuk-table__body">
 
           <!-- hide this appeal if decision has been issued in session -->
-          {% if not data["inspector-"+version+"-issuedecision-outcome"] %}
+          {% if data["inspector-"+version+"-issuedecision-outcome"] and (data["inspector-"+version+"-issuedecision-outcome"] != "") %}
+            
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-!-padding-9" colspan="6" style="text-align: center; background-color: #f3f2f1;">
+                No decisions due
+              </td>
+            </tr>
+
+          {% else %}
             <tr class="govuk-table__row">
               <td class="govuk-table__cell">
                 <a href="/inspector/{{version}}/appeal-decision" class="govuk-link">APP/2020/56789/3266594</a>
@@ -151,39 +159,39 @@
         </thead>
         <tbody class="govuk-table__body">
 
-          {% if data['inspector-'+version+'-pullappealref'] %}
-
-          <!-- loop through appeals selected in pull appeal journey -->
-          {% for pulledappeal in data['inspector-'+version+'-pullappealref'] %}
-            {% if pulledappeal != data['inspector-'+version+'-schedule-ref'] %}
-            <!-- loop through the example appeal data in /data/availableAppeals -->
-            {% for item in data['availableAppeals'] %}
-              <!-- if the ref in the example data matches one of the selected appeals, show the row -->
-              {% if item.ref == pulledappeal %}
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">
-                    <a href="/inspector/{{version}}/goto-appeal-unscheduled/{{item.ref}}" class="govuk-link">APP/2021/56789/{{item.ref}}</a>
-                  </td>
-                  <td class="govuk-table__cell">{{item.address}}, {{item.postcode}}</td>
-                  <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
-                  <td class="govuk-table__cell">{{item.appealType}}</td>
-                  <td class="govuk-table__cell">Unaccompanied</td>
-                  <td class="govuk-table__cell">
-                    {{ data["inspector-"+version+"-provisionalweek"]}}
-                  </td>
-                </tr>
-              {% endif %}
-            {% endfor %}
-            {% endif %}
-          {% endfor %}
-
-          {% else %}
+          {% if not data['inspector-'+version+'-pullappealref'] or (data['inspector-'+version+'-pullappealref'] == data['inspector-'+version+'-schedule-ref']) %}
 
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-!-padding-9" colspan="6" style="text-align: center; background-color: #f3f2f1;">
                 No site visits to book
               </td>
             </tr>
+
+          {% else %}
+
+            <!-- loop through appeals selected in pull appeal journey -->
+            {% for pulledappeal in data['inspector-'+version+'-pullappealref'] %}
+              {% if pulledappeal != data['inspector-'+version+'-schedule-ref'] %}
+              <!-- loop through the example appeal data in /data/availableAppeals -->
+              {% for item in data['availableAppeals'] %}
+                <!-- if the ref in the example data matches one of the selected appeals, show the row -->
+                {% if item.ref == pulledappeal %}
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">
+                      <a href="/inspector/{{version}}/goto-appeal-unscheduled/{{item.ref}}" class="govuk-link">APP/2021/56789/{{item.ref}}</a>
+                    </td>
+                    <td class="govuk-table__cell">{{item.address}}, {{item.postcode}}</td>
+                    <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
+                    <td class="govuk-table__cell">{{item.appealType}}</td>
+                    <td class="govuk-table__cell">Unaccompanied</td>
+                    <td class="govuk-table__cell">
+                      {{ data["inspector-"+version+"-provisionalweek"]}}
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endfor %}
+              {% endif %}
+            {% endfor %}
 
           {% endif %}
 
