@@ -28,45 +28,49 @@
   </div>
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
 
-      <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Appeal reference
-          </dt>
-          <dd class="govuk-summary-list__value">
-            APP/2020/56789/3266594
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Site address
-          </dt>
-          <dd class="govuk-summary-list__value">
-            8 The Chase, Findon, BN14 0TT
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Target date
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ 12 | daysInFuture }}
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Local planning department
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Bradford Council
-          </dd>
-        </div>
-      </dl>
+    <div class="govuk-grid-column-one-quarter content-list__sticky">
 
+      <aside class="govuk-!-margin-bottom-8">
+        <h3 class="govuk-heading-m govuk-!-margin-bottom-4">
+          Summary
+        </h3>
+        <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+          Appeal reference
+        </h4>
+        <p class="govuk-body-s govuk-!-margin-bottom-3">
+          APP/2020/56789/3266594
+        </p>
+        <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+          Site address
+        </h4>
+        <p class="govuk-body-s govuk-!-margin-bottom-3">
+          8 The Chase, Findon, BN14 0TT
+        </p>
+        <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+          Target date
+        </h4>
+        <p class="govuk-body-s govuk-!-margin-bottom-3">
+          13 October 2021
+        </p>
+        <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+          Local planning department
+        </h4>
+        <p class="govuk-body-s govuk-!-margin-bottom-3">
+          Bradford Council
+        </p>
+      </aside>
+
+    </div>
+
+    <div class="govuk-grid-column-one-half">
+
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-4">
+        Evidence
+      </h2>
+      
       {{ govukAccordion({
-        id: "inspector-"+v+"-details",
+        id: "inspector-"+version+"-evidence",
         items: [
           {
             heading: {
@@ -82,28 +86,26 @@
                     <dd class="govuk-summary-list__value">
                       Maria Sharma
                     </dd>
-                  </div>
+                  </div>  
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Agent name
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      No agent for this appeal
+                    </dd>
+                  </div> 
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Contact email address
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      <a class="govuk-link" href="#">maria.sharma@gmail.com</a>
+                    </dd>
+                  </div>                            
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
                       Date appeal received
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      <ul class="govuk-list">
-                        <li>
-                          <a href="#">Supportingdocument1.pdf</a>
-                        </li>
-                        <li>
-                          <a href="#">Supportingdocument2.pdf</a>
-                        </li>
-                        <li>
-                          <a href="#">Supportingdocument3.pdf</a>
-                        </li>
-                      </ul>
-                    </dd>
-                  </div>
-                  <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                      Other supporting documents
                     </dt>
                     <dd class="govuk-summary-list__value">
                       12 December 2020
@@ -150,7 +152,7 @@
           },
           {
             heading: {
-              text: "LPA documents"
+              text: "Local planning department documents"
             },
             content: {
               html: '
@@ -189,7 +191,7 @@
                   </div>
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                      Extra conditions from the LPA
+                      Extra conditions
                     </dt>
                     <dd class="govuk-summary-list__value">
                       No
@@ -201,6 +203,24 @@
                     </dt>
                     <dd class="govuk-summary-list__value">
                       <a href="#">Document1.pdf</a>
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Supporting documents
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      <ul class="govuk-list">
+                        <li>
+                          <a href="#">Supportingdocument1.pdf</a>
+                        </li>
+                        <li>
+                          <a href="#">Supportingdocument2.pdf</a>
+                        </li>
+                        <li>
+                          <a href="#">Supportingdocument3.pdf</a>
+                        </li>
+                      </ul>
                     </dd>
                   </div>
                 </dl>
@@ -216,15 +236,7 @@
                 <dl class="govuk-summary-list govuk-!-margin-bottom-5">
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                      Does development affect listed building?	
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      N/A
-                    </dd>
-                  </div>
-                  <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                      Is the site in green belt?
+                      Affects listed building	
                     </dt>
                     <dd class="govuk-summary-list__value">
                       No
@@ -232,7 +244,15 @@
                   </div>
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                      Is site in or near a conservation area?
+                      In green belt
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      No
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      In or near a conservation area
                     </dt>
                     <dd class="govuk-summary-list__value">
                       No
@@ -251,29 +271,6 @@
                 <dl class="govuk-summary-list govuk-!-margin-bottom-5">
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                      Supplementary planning documents
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      <ul class="govuk-list">
-                        <li>
-                          <a href="#">Extract1.pdf</a>
-                        </li>
-                        <li>
-                          <a href="#">Extract2.pdf</a>
-                        </li>
-                      </ul>
-                    </dd>
-                  </div>
-                  <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                      Development plan or neighbourhood plan submitted?	
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      Yes
-                    </dd>
-                  </div>
-                  <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
                       Statutory development plan policy	
                     </dt>
                     <dd class="govuk-summary-list__value">
@@ -282,18 +279,36 @@
                   </div>
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                      Adoption details for supplementary planning documents provided
+                      Other relevant policies
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      <a href="#">adoption-detail.pdf</a>
+                      <a href="#">Policy2.pdf</a>
                     </dd>
                   </div>
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                      Other relevant policies
+                      Supplementary planning documents
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      <a href="#">policy2.pdf</a>
+                      <ul class="govuk-list">
+                        <li>
+                          <a href="#">County Council Rights of Way.pdf</a>
+                          <p class="govuk-body govuk-!-margin-bottom-3">Adopted on 21 Oct 2007</p>
+                        </li>
+                        <li>
+                          <a href="#">County Council Highways</a>
+                          <p class="govuk-body govuk-!-margin-bottom-0">Not adopted - Final draft</p>
+                        </li>
+                      </ul>
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Emerging development plan or neighbourhood plan	
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      <p class="govuk-body govuk-!-margin-bottom-3">Yes</p>
+                      <p>This is text confirms any substantive changes in the progress of the emerging plan, and their relevance to this appeal (if the plan may not be adopted before the Inspector issues their decision).</p>
                     </dd>
                   </div>
                 </dl>
@@ -302,7 +317,7 @@
           },
           {
             heading: {
-              text: "Interested party representations"
+              text: "Representations"
             },
             content: {
               html: '
@@ -313,14 +328,6 @@
                     </dt>
                     <dd class="govuk-summary-list__value">
                       <a href="#">Representations.pdf</a>
-                    </dd>
-                  </div>
-                  <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                      Statatory consultee representations
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      None
                     </dd>
                   </div>
                 </dl>
@@ -336,7 +343,7 @@
                 <dl class="govuk-summary-list">
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                      Telling interested parties
+                      Application notification
                     </dt>
                     <dd class="govuk-summary-list__value">
                       <ul class="govuk-list">
@@ -351,29 +358,79 @@
                   </div>
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                      Notifying interested parties
+                      Application publicity
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      <a href="#">Example.pdf</a>
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Appeal notification
                     </dt>
                     <dd class="govuk-summary-list__value">
                       <a href="#">Notificationletter.pdf</a>
                     </dd>
                   </div>
-                  <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                      Original planning application publicised?
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      Yes
-                    </dd>
-                  </div>
                 </dl>
+              '
+            }
+          },
+          {
+            heading: {
+              text: "Site access"
+            },
+            content: {
+              html: '
+                <table class="govuk-table">
+                  <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                      <th scope="col" class="govuk-table__header app-custom-class"></th>
+                      <th scope="col" class="govuk-table__header app-custom-class">Local planning department&apos;s answer</th>
+                      <th scope="col" class="govuk-table__header app-custom-class">Appellant&apos;s answer</th>
+                    </tr>
+                  </thead>
+                  <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">Can the site been seen from public land?</th>
+                      <td class="govuk-table__cell">No<br>The extension is to the rear of the property, and the garden has high hedges.</td>
+                      <td class="govuk-table__cell">No<br>I&apos;ve got big hedges.</td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">Does the inspector need to enter the site?</th>
+                      <td class="govuk-table__cell">Yes<br>The proposed development can only be viewed from the appellant&apos;s garden.</td>
+                      <td class="govuk-table__cell">(not asked)</td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">Does the inspector need to access aneighbour&apos;s land?</th>
+                      <td class="govuk-table__cell">Yes<br>54 Butcher Street</td>
+                      <td class="govuk-table__cell">(not asked)</td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">Does the appellant own the whole site?</th>
+                      <td class="govuk-table__cell">(not asked)</td>
+                      <td class="govuk-table__cell">Yes</td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">Are there any health and safety issues?</th>
+                      <td class="govuk-table__cell">Yes<br>A defensive dog</td>
+                      <td class="govuk-table__cell">No</td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header remove-bottom-border">Appeals in the immediate area still being considered</th>
+                      <td class="govuk-table__cell remove-bottom-border">893482, 372839</td>
+                      <td class="govuk-table__cell remove-bottom-border">(not asked)</td>
+                    </tr>
+                  </tbody>
+                </table>
               '
             }
           }
         ]
-      }) }}
+      }) }} 
 
     </div>
-    <div class="govuk-grid-column-one-third">
+    <div class="govuk-grid-column-one-quarter">
 
       <div class="govuk-related-items">
         <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
