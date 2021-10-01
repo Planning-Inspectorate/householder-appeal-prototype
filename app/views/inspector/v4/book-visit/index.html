@@ -28,9 +28,43 @@
   </div>
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
 
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <div class="govuk-grid-column-one-quarter content-list__sticky">
+
+      <aside class="govuk-!-margin-bottom-8">
+        <h3 class="govuk-heading-m govuk-!-margin-bottom-4">
+          Summary
+        </h3>
+        <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+          Appeal reference
+        </h4>
+        <p class="govuk-body-s govuk-!-margin-bottom-3">
+          APP/2021/56789/{{ data["inspector-"+version+"-schedule-ref"] }}
+        </p>
+        <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+          Site address
+        </h4>
+        <p class="govuk-body-s govuk-!-margin-bottom-3">
+          55 Butcher Street, Thurnscoe, S63 0RB
+        </p>
+        <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+          Target date
+        </h4>
+        <p class="govuk-body-s govuk-!-margin-bottom-3">
+          {{ 13 | daysInFuture }}
+        </p>
+        <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+          Local planning department
+        </h4>
+        <p class="govuk-body-s govuk-!-margin-bottom-3">
+          Bradford Council
+        </p>
+      </aside>
+
+    </div>
+    <div class="govuk-grid-column-one-half">
+
+      <!--dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Appeal reference
@@ -63,7 +97,7 @@
             Bradford Council
           </dd>
         </div>
-      </dl> 
+      </dl--> 
 
       <form action="" method="post">
 
@@ -72,8 +106,8 @@
           name: "inspector-"+version+"-schedule-type",
           fieldset: {
             legend: {
-              text: "Type",
-              classes: "govuk-fieldset__legend--l"
+              text: "Type of site visit",
+              classes: "govuk-fieldset__legend--m"
             }
           },
           items: [
@@ -93,105 +127,26 @@
           ]
         }) }}
 
-        
-        {% set detailsHtml %}
-          <h3 class="govuk-heading-m">
-            Can site be seen from public land?
-          </h3>
-          <dl class="govuk-summary-list">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Response from appellant
-              </dt>
-              <dd class="govuk-summary-list__value">
-                No
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Response from LPA
-              </dt>
-              <dd class="govuk-summary-list__value">
-                Yes, the site can be viewed from the road at rear of property
-              </dd>
-            </div>
-          </dl>
-          
-          <h3 class="govuk-heading-m">
-            Site details
-          </h3>
-          <dl class="govuk-summary-list">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Health and safety information
-              </dt>
-              <dd class="govuk-summary-list__value">
-                Yes, there are dogs
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Does the Inspector need to enter site?
-              </dt>
-              <dd class="govuk-summary-list__value">
-                No
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Does the Inspector need to access a neighbours land?
-              </dt>
-              <dd class="govuk-summary-list__value">
-                Yes. Appellant has agreed to notify neighbours at 133 High Street
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Does the appellant own the whole appeal site?
-              </dt>
-              <dd class="govuk-summary-list__value">
-                Yes
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Are there any relevant appeals nearby?
-              </dt>
-              <dd class="govuk-summary-list__value">
-                Yes
-              </dd>
-            </div>
-          </dl>
-        {% endset -%}
-
-        {{ govukDetails({
-          classes: "govuk-!-margin-bottom-9",
-          summaryText: "Site visit details",
-          html: detailsHtml
-        }) }}
-
         {{ govukDateInput({
           id: "inspector-"+version+"-schedule-date",
           namePrefix: "inspector-"+version+"-schedule-date",
-          classes: "govuk-!-margin-bottom-5",
           fieldset: {
             legend: {
-              text: "Date",
-              classes: "govuk-fieldset__legend--l"
+              text: "Date of site visit",
+              classes: "govuk-fieldset__legend--m"
             }
           },
           hint: {
-            text: "You provisionally scheduled this for the week of "+data["inspector-"+version+"-provisionalweek"]
+            text: "Provisionally scheduled for the week of "+data["inspector-"+version+"-provisionalweek"]
           }
         }) }}
 
         {{ govukSelect({
           id: "inspector-"+version+"-schedule-time",
           name: "inspector-"+version+"-schedule-time",
-          classes: "govuk-!-margin-bottom-5",
           label: {
             text: "Time slot",
-            classes: "govuk-label--l"
+            classes: "govuk-label--m"
           },
           items: [
             {
@@ -241,30 +196,62 @@
           ]
         }) }}
 
+        
+        {% set detailsHtml %}
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header app-custom-class"></th>
+                <th scope="col" class="govuk-table__header app-custom-class">Local planning department&apos;s answer</th>
+                <th scope="col" class="govuk-table__header app-custom-class">Appellant&apos;s answer</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Can the site been seen from public land?</th>
+                <td class="govuk-table__cell">No<br>The extension is to the rear of the property, and the garden has high hedges.</td>
+                <td class="govuk-table__cell">No<br>I&apos;ve got big hedges.</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Does the inspector need to enter the site?</th>
+                <td class="govuk-table__cell">Yes<br>The proposed development can only be viewed from the appellant&apos;s garden.</td>
+                <td class="govuk-table__cell">(not asked)</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Does the inspector need to access aneighbour&apos;s land?</th>
+                <td class="govuk-table__cell">Yes<br>54 Butcher Street</td>
+                <td class="govuk-table__cell">(not asked)</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Does the appellant own the whole site?</th>
+                <td class="govuk-table__cell">(not asked)</td>
+                <td class="govuk-table__cell">Yes</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Are there any health and safety issues?</th>
+                <td class="govuk-table__cell">Yes<br>A defensive dog</td>
+                <td class="govuk-table__cell">No</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header remove-bottom-border">Appeals in the immediate area still being considered</th>
+                <td class="govuk-table__cell remove-bottom-border">893482, 372839</td>
+                <td class="govuk-table__cell remove-bottom-border">(not asked)</td>
+              </tr>
+            </tbody>
+          </table>
+        {% endset -%}
+
+        {{ govukDetails({
+          classes: "govuk-!-margin-bottom-5",
+          summaryText: "Site visit details",
+          html: detailsHtml
+        }) }}
+
         {{ govukButton({
           text: "Continue"
         }) }}
 
       </form>
-
-    </div>
-    <div class="govuk-grid-column-one-third">
-
-      <!--div class="govuk-related-items">
-        <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-          Site visit
-        </h3>
-        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
-          Recommended type
-        </h4>
-        <p class="govuk-body govuk-!-margin-bottom-1">
-          USV  
-        </p>
-        {{ govukButton({
-          text: "Schedule site visit",
-          classes: "govuk-!-margin-top-3 govuk-!-margin-bottom-0"
-        }) }}
-      </div-->
 
     </div>
   </div>

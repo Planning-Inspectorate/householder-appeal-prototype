@@ -7,7 +7,7 @@ module.exports = function (router) {
 
     router.post(base+'get-appeals', function (req, res) {
 
-      if ( req.session.data["inspector-"+v+"-pullappealref"].includes("APP/2020/56789/5551277") ){
+      if ( req.session.data["inspector-"+v+"-pullappealref"].includes("5551277") ){
         req.session.data["inspector-"+v+"-appealunavailable"] = "true";
         res.redirect(base+'get-appeals/appeals-unavailable');
       } else {
