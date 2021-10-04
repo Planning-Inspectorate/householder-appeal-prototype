@@ -44,19 +44,17 @@
           <tbody class="govuk-table__body">
             {% set i = 0 %}
             {% for item in data['availableAppeals'] %}
-              {% set i = i + 1 %}
-              {% if item.ref in data['inspector-'+version+'-pullappealref'] %}
-                
-              {% else %}
+              {% if not item.ref in data['inspector-'+version+'-myapps-notyetbooked'] %}
+                {% set i = i + 1 %}
                 <tr class="govuk-table__row" data-appealref="{{item.ref}}">
                   <td class="govuk-table__cell pins-checkbox-cell">                
                     <div class="govuk-checkboxes govuk-checkboxes--small">
                       <div class="govuk-checkboxes__item">
-                        <input class="govuk-checkboxes__input" id="inspector-{{version}}-pullappealref{% if i > 1 %}-{{i}}{% endif %}" name="inspector-{{version}}-pullappealref" type="checkbox" value="{{ item.ref }}"
-                        {% for appealref in data['inspector-'+version+'-pullappealref'] %}
+                        <input class="govuk-checkboxes__input" id="inspector-{{version}}-myapps-notyetbooked-temp{% if i > 1 %}-{{i}}{% endif %}" name="inspector-{{version}}-myapps-notyetbooked-temp" type="checkbox" value="{{ item.ref }}"
+                        {% for appealref in data['inspector-'+version+'-myapps-notyetbooked'] %}
                           {% if item.ref == appealref %} checked{% endif %}
                         {%endfor%}>
-                        <label class="govuk-label govuk-checkboxes__label" for="inspector-{{version}}-pullappealref{% if i > 1 %}-{{i}}{% endif %}">
+                        <label class="govuk-label govuk-checkboxes__label" for="inspector-{{version}}-myapps-notyetbooked{% if i > 1 %}-{{i}}{% endif %}">
                           <span class="govuk-visually-hidden">{{ item.ref }}</span>
                         </label>
                       </div>

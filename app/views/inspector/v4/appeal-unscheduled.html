@@ -104,21 +104,27 @@
         <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
           Site address
         </h4>
-        <p class="govuk-body-s govuk-!-margin-bottom-3">
-          55 Butcher Street, Thurnscoe, S63 0RB
-        </p>
-        <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
-          Target date
-        </h4>
-        <p class="govuk-body-s govuk-!-margin-bottom-3">
-          {{ 13 | daysInFuture }}
-        </p>
-        <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
-          Local planning department
-        </h4>
-        <p class="govuk-body-s govuk-!-margin-bottom-3">
-          Bradford Council
-        </p>
+        <!-- loop through data from availableAppeals.json -->
+        {% for item in data['availableAppeals'] %}
+          <!-- match selected appeal by ref in data and show -->
+          {% if item.ref == data["inspector-"+version+"-schedule-ref"] %}
+            <p class="govuk-body-s govuk-!-margin-bottom-3">
+              {{ item.address}}, {{ item.postcode }}
+            </p>
+            <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+              Target date
+            </h4>
+            <p class="govuk-body-s govuk-!-margin-bottom-3">
+              {{ item.targetDateDaysInFuture | daysInFuture }}
+            </p>
+            <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+              Local planning department
+            </h4>
+            <p class="govuk-body-s govuk-!-margin-bottom-3">
+              {{ item.lpa }}
+            </p>
+          {% endif %}
+        {% endfor %}
       </aside>
 
     </div>
@@ -492,28 +498,33 @@
     </div>
     <div class="govuk-grid-column-one-quarter">
 
-      <div class="govuk-related-items">
-        <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-          Site visit
-        </h3>
-        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
-          Recommended type
-        </h4>
-        <p class="govuk-body govuk-!-margin-bottom-1">
-          Unaccompanied  
-        </p>
-        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
-          Provisional site visit date
-        </h4>
-        <p class="govuk-body govuk-!-margin-bottom-1">
-          Week of {{ data["inspector-"+version+"-provisionalweek"]}}
-        </p>
-        {{ govukButton({
-          href: "book-visit",
-          text: "Book site visit",
-          classes: "govuk-!-margin-top-3 govuk-!-margin-bottom-0"
-        }) }}
-      </div>
+        {% for item in data['availableAppeals'] %}
+          <!-- match selected appeal by ref in data and show -->
+          {% if item.ref == data["inspector-"+version+"-schedule-ref"] %}
+            <div class="govuk-related-items">
+              <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                Site visit
+              </h3>
+              <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
+                Recommended type
+              </h4>
+              <p class="govuk-body govuk-!-margin-bottom-1">
+                {{ item.proposedVisitType }}
+              </p>
+              <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
+                Provisional site visit date
+              </h4>
+              <p class="govuk-body govuk-!-margin-bottom-1">
+                Week of {{ item.provisionalSiteVisit }}
+              </p>
+              {{ govukButton({
+                href: "book-visit",
+                text: "Book site visit",
+                classes: "govuk-!-margin-top-3 govuk-!-margin-bottom-0"
+              }) }}
+            </div>
+          {% endif %}
+        {% endfor %}
 
     </div>
   </div>

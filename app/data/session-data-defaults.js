@@ -1184,7 +1184,14 @@ let data = {
   
     availableAppeals,
 
-    "inspector-v4-pullappealref":  ""
+    "inspector-v4-viewed": [
+      "3755470"
+    ],
+
+    "inspector-v4-myapps-notyetbooked": [
+      "3755470",
+      "4909983"
+    ]
 
   }
 

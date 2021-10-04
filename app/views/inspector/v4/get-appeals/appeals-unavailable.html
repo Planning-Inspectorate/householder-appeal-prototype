@@ -43,7 +43,7 @@
           </thead>
           <tbody class="govuk-table__body">
             {% set i = 0 %}
-            {% for appealref in data['inspector-'+version+'-pullappealref'] %}
+            {% for appealref in data['inspector-'+version+'-myapps-notyetbooked'] %}
               {% for item in data['availableAppeals'] %}
                 {% if i == 0 %}
                   <tr class="govuk-table__row" data-appealref="{{appealref}}">

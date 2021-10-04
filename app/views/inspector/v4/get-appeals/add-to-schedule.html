@@ -40,15 +40,20 @@
           </thead>
           <tbody class="govuk-table__body">
             {% set i = 0 %}
-            {% for appealref in data['inspector-'+version+'-pullappealref'] %}
+            {% for appealref in data['inspector-'+version+'-myapps-notyetbooked-temp'] %}
+              {% set i = i + 1 %}
               {% for item in data['availableAppeals'] %}
                 {% if item.ref == appealref %}
-                  <tr class="govuk-table__row" data-appealref="{{appealref}}">
+                  <tr class="govuk-table__row" data-appealref="{{appealref}}"{% if item.ref in data['inspector-'+version+'-myapps-notyetbooked'] %} style="display:none"
+              {% endif %}>
                     <td class="govuk-table__cell" nowrap>{{ item.postcode }}</td>
                     <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
                     <td class="govuk-table__cell">HAS</td>
                     <td class="govuk-table__cell">{{ item.specialism }}</td>
-                    <td class="govuk-table__cell">{{ item.proposedVisitType }}</td>
+                    <td class="govuk-table__cell">
+                      {{ item.proposedVisitType }}
+                      <input type="hidden" id="inspector-{{version}}-myapps-notyetbooked{% if i > 1 %}-{{i}}{% endif %}" name="inspector-{{version}}-myapps-notyetbooked" value="{{ item.ref }}"
+                    </td>
                   </tr>
                   {% set i = i + 1 %}
                 {% endif %}
@@ -63,13 +68,13 @@
             Provisional week for site visits
           </label>
           <select class="govuk-select" id="inspector-{{version}}-provisionalweek" name="inspector-{{version}}-provisionalweek">
-            <option value="18 Oct 2021">18 October 2021</option>
-            <option value="25 Oct 2021">25 October 2021</option>
             <option value="1 Nov 2021">1 November 2021</option>
             <option value="8 Nov 2021">8 November 2021</option>
             <option value="15 Nov 2021">15 November 2021</option>
             <option value="21 Nov 2021">21 November 2021</option>
             <option value="29 Nov 2021">29 November 2021</option>
+            <option value="6 Dec 2021">6 December 2021</option>
+            <option value="13 Dec 2021">13 December 2021</option>
           </select>
         </div>
 

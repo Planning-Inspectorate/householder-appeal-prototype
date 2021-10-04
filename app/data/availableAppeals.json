@@ -1,5 +1,24 @@
 [
   {
+    "ref": "3266594",
+    "address": "8 The Chase, Findon",
+    "postcode": "BN14 0TT",
+    "lat": 50.862475,
+    "lon": -0.404970,
+    "targetDateDaysInFuture": 6,
+    "lpa": "Worthing Borough Council",
+    "appealType": "HAS",
+    "developmentType": "Dwellings",
+    "specialism": "General",
+    "proposedVisitType": "Unaccompanied",
+    "provisionalSiteVisit": "",
+    "status": "decisiondue",
+    "viewed": "yes",
+    "siteVisitDate": "2 Oct 2021",
+    "siteVisitType": "Unaccompanied",
+    "siteVisitTime": "9am to 11am"
+  },
+  {
     "ref": "5551277",
     "address": "19 Beauchamp Road, Bristol",
     "postcode": "BS7 8LQ",
@@ -11,7 +30,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "taken",
+    "viewed": "yes",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "3755470",
@@ -25,7 +49,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "25 Oct 2021",
+    "status": "notyetbooked",
+    "viewed": "yes",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "4909983",
@@ -39,7 +68,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "25 Oct 2021",
+    "status": "notyetbooked",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "4788894",
@@ -53,7 +87,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "available",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "4612726",
@@ -67,7 +106,12 @@
     "developmentType": "Dwellings",
     "specialism": "Appearance design",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "available",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "4899402",
@@ -81,7 +125,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "available",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "4293472",
@@ -95,7 +144,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "available",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "4162708",
@@ -109,7 +163,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "available",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "5261405",
@@ -123,7 +182,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "available",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "4376041",
@@ -137,7 +201,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "available",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "4307663",
@@ -151,7 +220,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "available",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "3801537",
@@ -165,7 +239,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "available",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "3852552",
@@ -179,7 +258,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "available",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "5172826",
@@ -193,7 +277,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "available",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "4553926",
@@ -207,7 +296,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "available",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "5182990",
@@ -221,7 +315,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "available",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "4598682",
@@ -235,7 +334,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "available",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "4175968",
@@ -249,7 +353,12 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "available",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   },
   {
     "ref": "4081024",
@@ -263,6 +372,11 @@
     "developmentType": "Dwellings",
     "specialism": "General",
     "proposedVisitType": "Unaccompanied",
-    "provisionalSiteVisit": ""
+    "provisionalSiteVisit": "",
+    "status": "available",
+    "viewed": "no",
+    "siteVisitDate": "",
+    "siteVisitType": "",
+    "siteVisitTime": ""
   }
 ]

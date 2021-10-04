@@ -111,9 +111,7 @@
             </td>
           </tr>
 
-          {% for pulledappeal in data['inspector-'+version+'-pullappealref'] %}
-
-            {% if pulledappeal == data['inspector-'+version+'-schedule-ref'] %}
+          {% for pulledappeal in data['inspector-'+version+'-myapps-booked'] %}
 
             {% for item in data['availableAppeals'] %}
               {% if item.ref == pulledappeal %}
@@ -133,8 +131,6 @@
                 </tr>
               {% endif %}
             {% endfor %}
-
-            {% endif %}
             
           {% endfor %}
 
@@ -150,6 +146,7 @@
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Appeal reference</th>
+            <th scope="col" class="govuk-table__header"></th>
             <th scope="col" class="govuk-table__header">Appeal site</th>
             <th scope="col" class="govuk-table__header">Target date</th>
             <th scope="col" class="govuk-table__header">Appeal type</th>
@@ -159,10 +156,10 @@
         </thead>
         <tbody class="govuk-table__body">
 
-          {% if not data['inspector-'+version+'-pullappealref'] or (data['inspector-'+version+'-pullappealref'] == data['inspector-'+version+'-schedule-ref']) %}
+          {% if not data['inspector-'+version+'-myapps-notyetbooked'] or (data['inspector-'+version+'-myapps-notyetbooked'] == data['inspector-'+version+'-schedule-ref']) %}
 
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-!-padding-9" colspan="6" style="text-align: center; background-color: #f3f2f1;">
+              <td class="govuk-table__cell govuk-!-padding-9" colspan="7" style="text-align: center; background-color: #f3f2f1;">
                 No site visits to book
               </td>
             </tr>
@@ -170,27 +167,32 @@
           {% else %}
 
             <!-- loop through appeals selected in pull appeal journey -->
-            {% for pulledappeal in data['inspector-'+version+'-pullappealref'] %}
-              {% if pulledappeal != data['inspector-'+version+'-schedule-ref'] %}
+            {% for pulledappeal in data['inspector-'+version+'-myapps-notyetbooked'] %}
               <!-- loop through the example appeal data in /data/availableAppeals -->
               {% for item in data['availableAppeals'] %}
                 <!-- if the ref in the example data matches one of the selected appeals, show the row -->
                 {% if item.ref == pulledappeal %}
                   <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">
+                    <td class="govuk-table__cell" nowrap>
                       <a href="/inspector/{{version}}/goto-appeal-unscheduled/{{item.ref}}" class="govuk-link">APP/2021/56789/{{item.ref}}</a>
+                    </td>
+                    <td class="govuk-table__cell">
+                        {% if item.ref in data['inspector-'+version+'-viewed'] %}
+                        {% else %}
+                          {{ govukTag({
+                            classes: "govuk-tag--green",
+                            text: "New"
+                          }) }}
+                        {% endif %}
                     </td>
                     <td class="govuk-table__cell">{{item.address}}, {{item.postcode}}</td>
                     <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
                     <td class="govuk-table__cell">{{item.appealType}}</td>
-                    <td class="govuk-table__cell">Unaccompanied</td>
-                    <td class="govuk-table__cell">
-                      {{ data["inspector-"+version+"-provisionalweek"]}}
-                    </td>
+                    <td class="govuk-table__cell">{{item.proposedVisitType}}</td>
+                    <td class="govuk-table__cell">{{item.provisionalSiteVisit}}</td>
                   </tr>
                 {% endif %}
               {% endfor %}
-              {% endif %}
             {% endfor %}
 
           {% endif %}
