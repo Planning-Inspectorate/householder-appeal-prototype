@@ -53,26 +53,28 @@
         </thead>
         <tbody class="govuk-table__body">
 
-          <!-- hide this appeal if decision has been issued in session -->
-          {% if data["inspector-"+version+"-issuedecision-outcome"] and (data["inspector-"+version+"-issuedecision-outcome"] != "") %}
-            
+          {% set decisiondue = 0 %}
+          {% for item in data['availableAppeals'] %}
+            {% if item.status == "decisiondue" %}
+              {% set decisiondue = decisiondue + 1 %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                  <a href="/inspector/{{version}}/goto-appeal-decision/{{item.ref}}" class="govuk-link">APP/2020/56789/{{ item.ref }}</a>
+                </td>
+                <td class="govuk-table__cell">{{ item.address }}, {{ item.postcode }}</td>
+                <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
+                <td class="govuk-table__cell">{{ item.appealType }}</td>
+                <td class="govuk-table__cell">{{ item.proposedVisitType }}</td>
+                <td class="govuk-table__cell">
+                  {{ item.siteVisitDate | daysAgoShortMonth }}
+                </td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+          {% if decisiondue == 0 %}
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-!-padding-9" colspan="6" style="text-align: center; background-color: #f3f2f1;">
-                No decisions due
-              </td>
-            </tr>
-
-          {% else %}
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">
-                <a href="/inspector/{{version}}/appeal-decision" class="govuk-link">APP/2020/56789/3266594</a>
-              </td>
-              <td class="govuk-table__cell">8 The Chase, Findon, BN14 0TT</td>
-              <td class="govuk-table__cell" nowrap>{{ 12 | daysInFutureShortMonth }}</td>
-              <td class="govuk-table__cell">HAS</td>
-              <td class="govuk-table__cell">Unaccompanied</td>
-              <td class="govuk-table__cell">
-                {{ 2 | daysAgoShortMonth }}
+              <td class="govuk-table__cell govuk-!-padding-9" colspan="7" style="text-align: center; background-color: #f3f2f1;">
+                No decision due
               </td>
             </tr>
           {% endif %}
@@ -98,8 +100,35 @@
         </thead>
         <tbody class="govuk-table__body">
 
+          {% set booked = 0 %}
+          {% for item in data['availableAppeals'] %}
+            {% if item.status == "booked" %}
+              {% set booked = booked + 1 %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                  <a href="/inspector/{{version}}/goto-appeal-scheduled/{{item.ref}}" class="govuk-link">APP/2020/56789/{{ item.ref }}</a>
+                </td>
+                <td class="govuk-table__cell">{{ item.address }}, {{ item.postcode }}</td>
+                <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
+                <td class="govuk-table__cell">{{ item.appealType }}</td>
+                <td class="govuk-table__cell">{{ item.proposedVisitType }}</td>
+                <td class="govuk-table__cell">
+                  {{ item.siteVisitDate }}
+                </td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+          {% if booked == 0 %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-!-padding-9" colspan="7" style="text-align: center; background-color: #f3f2f1;">
+                No upcoming site visits
+              </td>
+            </tr>
+          {% endif %}
+<!--
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
+              <a href="/inspector/{{version}}/goto-appeal-scheduled/{{item.ref}}" class="govuk-link">APP/2020/56789/{{ item.ref }}</a>
               <a href="/inspector/{{version}}/appeal-scheduled" class="govuk-link">	APP/2020/56789/3556481</a>
             </td>
             <td class="govuk-table__cell">131 High Street, Bradford, BD6 1JK</td>
@@ -110,7 +139,7 @@
               {{ 7 | daysInFutureShortMonth }}
             </td>
           </tr>
-
+-->
           {% for pulledappeal in data['inspector-'+version+'-myapps-booked'] %}
 
             {% for item in data['availableAppeals'] %}
@@ -156,45 +185,36 @@
         </thead>
         <tbody class="govuk-table__body">
 
-          {% if not data['inspector-'+version+'-myapps-notyetbooked'] or (data['inspector-'+version+'-myapps-notyetbooked'] == data['inspector-'+version+'-schedule-ref']) %}
-
+          {% set notyetbooked = 0 %}
+          {% for item in data['availableAppeals'] %}
+            {% if item.status == "notyetbooked" %}
+              {% set notyetbooked = notyetbooked + 1 %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell" nowrap>
+                    <a href="/inspector/{{version}}/goto-appeal-unscheduled/{{item.ref}}" class="govuk-link">APP/2021/56789/{{item.ref}}</a>
+                  </td>
+                  <td class="govuk-table__cell">
+                      {% if item.viewed == "no" %}
+                        {{ govukTag({
+                          classes: "govuk-tag--green",
+                          text: "New"
+                        }) }}
+                      {% endif %}
+                  </td>
+                  <td class="govuk-table__cell">{{item.address}}, {{item.postcode}}</td>
+                  <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
+                  <td class="govuk-table__cell">{{item.appealType}}</td>
+                  <td class="govuk-table__cell">{{item.proposedVisitType}}</td>
+                  <td class="govuk-table__cell">{{item.provisionalSiteVisit}}</td>
+                </tr>
+            {% endif %}
+          {% endfor %}
+          {% if notyetbooked == 0 %}
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-!-padding-9" colspan="7" style="text-align: center; background-color: #f3f2f1;">
                 No site visits to book
               </td>
             </tr>
-
-          {% else %}
-
-            <!-- loop through appeals selected in pull appeal journey -->
-            {% for pulledappeal in data['inspector-'+version+'-myapps-notyetbooked'] %}
-              <!-- loop through the example appeal data in /data/availableAppeals -->
-              {% for item in data['availableAppeals'] %}
-                <!-- if the ref in the example data matches one of the selected appeals, show the row -->
-                {% if item.ref == pulledappeal %}
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell" nowrap>
-                      <a href="/inspector/{{version}}/goto-appeal-unscheduled/{{item.ref}}" class="govuk-link">APP/2021/56789/{{item.ref}}</a>
-                    </td>
-                    <td class="govuk-table__cell">
-                        {% if item.ref in data['inspector-'+version+'-viewed'] %}
-                        {% else %}
-                          {{ govukTag({
-                            classes: "govuk-tag--green",
-                            text: "New"
-                          }) }}
-                        {% endif %}
-                    </td>
-                    <td class="govuk-table__cell">{{item.address}}, {{item.postcode}}</td>
-                    <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
-                    <td class="govuk-table__cell">{{item.appealType}}</td>
-                    <td class="govuk-table__cell">{{item.proposedVisitType}}</td>
-                    <td class="govuk-table__cell">{{item.provisionalSiteVisit}}</td>
-                  </tr>
-                {% endif %}
-              {% endfor %}
-            {% endfor %}
-
           {% endif %}
 
         </tbody>

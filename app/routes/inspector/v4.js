@@ -35,27 +35,58 @@ module.exports = function (router) {
 
     })
 
+
     router.get(base+'goto-appeal-unscheduled/:ref', function (req, res, next) {
+
+      // find matching ref in availableAppeals
+      objIndex = req.session.data["availableAppeals"].findIndex((obj => obj.ref == req.params.ref));
+
+      // mark appeal as viewed
+      req.session.data["availableAppeals"][objIndex].viewed = "yes"
+
       // Store the selected ref in a session variable 
-      req.session.data["inspector-"+v+"-schedule-ref"] = req.params.ref;
-      
-
-      if (!req.session.data["inspector-"+v+"-viewed"].includes(req.params.ref)) {
-        req.session.data["inspector-"+v+"-viewed"].push(req.params.ref);
-      }
-
-      // ideally update this to store multiple, so the interaction of scheduling site visits can handle more than one
+      req.session.data["inspector-"+v+"-currentappeal"] = req.params.ref;
       
       res.redirect(base+'appeal-unscheduled');
+
     })
+
+
+    router.get(base+'goto-appeal-scheduled/:ref', function (req, res, next) {
+
+      // find matching ref in availableAppeals
+      objIndex = req.session.data["availableAppeals"].findIndex((obj => obj.ref == req.params.ref));
+
+      // Store the selected ref in a session variable 
+      req.session.data["inspector-"+v+"-currentappeal"] = req.params.ref;
+      
+      res.redirect(base+'appeal-scheduled');
+
+    })
+
 
     router.post(base+'book-visit', function (req, res) {
       res.redirect(base+'book-visit/check-confirm');
     })
 
+
+    router.get(base+'goto-appeal-decision/:ref', function (req, res, next) {
+
+      // find matching ref in availableAppeals
+      objIndex = req.session.data["availableAppeals"].findIndex((obj => obj.ref == req.params.ref));
+
+      // Store the selected ref in a session variable 
+      req.session.data["inspector-"+v+"-currentappeal"] = req.params.ref;
+      
+      res.redirect(base+'appeal-decision');
+
+    })
+
+
     router.post(base+'issue-decision', function (req, res) {
       res.redirect(base+'issue-decision/check-confirm');
     })
+
 
 }
 /*

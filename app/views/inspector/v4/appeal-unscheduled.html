@@ -90,43 +90,9 @@
   <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-one-quarter content-list__sticky">
-
       <aside class="govuk-!-margin-bottom-8">
-        <h3 class="govuk-heading-m govuk-!-margin-bottom-4">
-          Summary
-        </h3>
-        <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
-          Appeal reference
-        </h4>
-        <p class="govuk-body-s govuk-!-margin-bottom-3">
-          APP/2021/56789/{{ data["inspector-"+version+"-schedule-ref"] }}
-        </p>
-        <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
-          Site address
-        </h4>
-        <!-- loop through data from availableAppeals.json -->
-        {% for item in data['availableAppeals'] %}
-          <!-- match selected appeal by ref in data and show -->
-          {% if item.ref == data["inspector-"+version+"-schedule-ref"] %}
-            <p class="govuk-body-s govuk-!-margin-bottom-3">
-              {{ item.address}}, {{ item.postcode }}
-            </p>
-            <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
-              Target date
-            </h4>
-            <p class="govuk-body-s govuk-!-margin-bottom-3">
-              {{ item.targetDateDaysInFuture | daysInFuture }}
-            </p>
-            <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
-              Local planning department
-            </h4>
-            <p class="govuk-body-s govuk-!-margin-bottom-3">
-              {{ item.lpa }}
-            </p>
-          {% endif %}
-        {% endfor %}
+        {% include "includes/inspector/"+version+"/_appeal-summary.html" %}
       </aside>
-
     </div>
 
     <div class="govuk-grid-column-one-half">
@@ -497,34 +463,9 @@
 
     </div>
     <div class="govuk-grid-column-one-quarter">
-
-        {% for item in data['availableAppeals'] %}
-          <!-- match selected appeal by ref in data and show -->
-          {% if item.ref == data["inspector-"+version+"-schedule-ref"] %}
-            <div class="govuk-related-items">
-              <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-                Site visit
-              </h3>
-              <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
-                Recommended type
-              </h4>
-              <p class="govuk-body govuk-!-margin-bottom-1">
-                {{ item.proposedVisitType }}
-              </p>
-              <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
-                Provisional site visit date
-              </h4>
-              <p class="govuk-body govuk-!-margin-bottom-1">
-                Week of {{ item.provisionalSiteVisit }}
-              </p>
-              {{ govukButton({
-                href: "book-visit",
-                text: "Book site visit",
-                classes: "govuk-!-margin-top-3 govuk-!-margin-bottom-0"
-              }) }}
-            </div>
-          {% endif %}
-        {% endfor %}
+      
+      <!-- display data driven site visit details -->
+      {% include "includes/inspector/"+version+"/_site-visit.html" %}
 
     </div>
   </div>
