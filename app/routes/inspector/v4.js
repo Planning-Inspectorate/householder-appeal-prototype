@@ -6,8 +6,12 @@ module.exports = function (router) {
   // 
 
     router.post(base+'get-appeals', function (req, res) {
+      
+      /********************************************************/
+      /* TODO: This needs to work based on the 'taken' status */
+      /********************************************************/
 
-      if ( req.session.data["inspector-"+v+"-myapps-notyetbooked"].includes("5551277") ){
+      if ( req.session.data["inspector-"+v+"-myapps-notyetbooked-temp"].includes("5551277") ){
         req.session.data["inspector-"+v+"-appealunavailable"] = "true";
         res.redirect(base+'get-appeals/appeals-unavailable');
       } else {
@@ -95,7 +99,6 @@ module.exports = function (router) {
 
     })
 
-
     router.post(base+'issue-decision', function (req, res) {
       res.redirect(base+'issue-decision/check-confirm');
     })
@@ -107,11 +110,24 @@ module.exports = function (router) {
 
       // update session with site visit data
       req.session.data["availableAppeals"][objIndex].status = "booked";
-      req.session.data["availableAppeals"][objIndex].siteVisitDate = (req.session.data["inspector-"+v+"-schedule-date-day"] + " " + req.session.data["inspector-"+v+"-schedule-date-month"]  + " " + req.session.data["inspector-"+v+"-schedule-date-year"] );
+      req.session.data["availableAppeals"][objIndex].siteVisitDateDay = req.session.data["inspector-"+v+"-schedule-date-day"];
+      req.session.data["availableAppeals"][objIndex].siteVisitDateMonth = req.session.data["inspector-"+v+"-schedule-date-month"];
+      req.session.data["availableAppeals"][objIndex].siteVisitDateYear = req.session.data["inspector-"+v+"-schedule-date-year"];
       req.session.data["availableAppeals"][objIndex].siteVisitType = req.session.data["inspector-"+v+"-schedule-type"];
       req.session.data["availableAppeals"][objIndex].siteVisitTime = req.session.data["inspector-"+v+"-schedule-time"];
 
       res.redirect(base+'book-visit/confirmation');
+    })
+
+    router.post(base+'issue-decision/check-confirm', function (req, res) {
+
+      // find matching ref in availableAppeals
+      objIndex = req.session.data["availableAppeals"].findIndex((obj => obj.ref == req.session.data["inspector-"+v+"-currentappeal"]));
+
+      // update session with site visit data
+      req.session.data["availableAppeals"][objIndex].status = "decisionissued";
+
+      res.redirect(base+'issue-decision/confirmation');
     })
 
 

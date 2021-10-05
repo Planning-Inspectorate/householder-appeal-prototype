@@ -45,7 +45,7 @@
           Appeal reference
         </h4>
         <p class="govuk-body-s govuk-!-margin-bottom-3">
-          APP/2020/56789/3266594
+          APP/2021/56789/3266594
         </p>
         <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
           Site address
@@ -82,7 +82,7 @@
             Appeal reference
           </dt>
           <dd class="govuk-summary-list__value">
-            APP/2020/56789/3266594
+            APP/2021/56789/3266594
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -142,13 +142,14 @@
         iconFallbackText: "Warning"
       }) }}
       
-      <div class="govuk-button-group">
-        {{ govukButton({
-          href: "confirmation",
-          text: "Confirm and issue decision"
-        }) }}
-        <a href="/inspector/{{version}}/issue-decision" class="govuk-link">Change decision details</a>
-      </div>
+      <form action="" method="post">
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Confirm and issue decision"
+          }) }}
+          <a href="/inspector/{{version}}/issue-decision" class="govuk-link">Change decision details</a>
+        </div>
+      </form>
 
     </div>
     <div class="govuk-grid-column-one-third">

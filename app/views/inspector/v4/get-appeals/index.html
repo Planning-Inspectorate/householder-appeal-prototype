@@ -44,7 +44,7 @@
           <tbody class="govuk-table__body">
             {% set i = 0 %}
             {% for item in data['availableAppeals'] %}
-              {% if not item.ref in data['inspector-'+version+'-myapps-notyetbooked'] %}
+              {% if item.status == "available" or item.status == "taken" %}
                 {% set i = i + 1 %}
                 <tr class="govuk-table__row" data-appealref="{{item.ref}}">
                   <td class="govuk-table__cell pins-checkbox-cell">                
@@ -62,7 +62,7 @@
                   </td>
                   <td class="govuk-table__cell" nowrap>{{ item.postcode }}</td>
                   <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
-                  <td class="govuk-table__cell">HAS</td>
+                  <td class="govuk-table__cell">{{ item.appealType }}</td>
                   <td class="govuk-table__cell">{{ item.specialism }}</td>
                   <td class="govuk-table__cell">{{ item.proposedVisitType }}</td>
                 </tr>

@@ -30,7 +30,9 @@
           Date
         </h4>
         <p class="govuk-body govuk-!-margin-bottom-1">
-          {{ item.siteVisitDate }}
+          {{ item.siteVisitDateDay }}
+          {{ item.siteVisitDateMonth | formatShortMonth }}
+          {{ item.siteVisitDateYear }}
         </p>
         <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
           Time

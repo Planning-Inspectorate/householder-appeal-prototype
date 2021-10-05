@@ -59,7 +59,7 @@
               {% set decisiondue = decisiondue + 1 %}
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
-                  <a href="/inspector/{{version}}/goto-appeal-decision/{{item.ref}}" class="govuk-link">APP/2020/56789/{{ item.ref }}</a>
+                  <a href="/inspector/{{version}}/goto-appeal-decision/{{item.ref}}" class="govuk-link">APP/2021/56789/{{ item.ref }}</a>
                 </td>
                 <td class="govuk-table__cell">{{ item.address }}, {{ item.postcode }}</td>
                 <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
@@ -106,14 +106,16 @@
               {% set booked = booked + 1 %}
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
-                  <a href="/inspector/{{version}}/goto-appeal-scheduled/{{item.ref}}" class="govuk-link">APP/2020/56789/{{ item.ref }}</a>
+                  <a href="/inspector/{{version}}/goto-appeal-scheduled/{{item.ref}}" class="govuk-link">APP/2021/56789/{{ item.ref }}</a>
                 </td>
                 <td class="govuk-table__cell">{{ item.address }}, {{ item.postcode }}</td>
                 <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
                 <td class="govuk-table__cell">{{ item.appealType }}</td>
                 <td class="govuk-table__cell" nowrap>{{ item.siteVisitType }}</td>
                 <td class="govuk-table__cell">
-                  {{ item.siteVisitDate }}
+                  {{ item.siteVisitDateDay }}
+                  {{ item.siteVisitDateMonth | formatShortMonth }}
+                  {{ item.siteVisitDateYear }}
                 </td>
               </tr>
             {% endif %}
@@ -128,8 +130,8 @@
 <!--
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              <a href="/inspector/{{version}}/goto-appeal-scheduled/{{item.ref}}" class="govuk-link">APP/2020/56789/{{ item.ref }}</a>
-              <a href="/inspector/{{version}}/appeal-scheduled" class="govuk-link">	APP/2020/56789/3556481</a>
+              <a href="/inspector/{{version}}/goto-appeal-scheduled/{{item.ref}}" class="govuk-link">APP/2021/56789/{{ item.ref }}</a>
+              <a href="/inspector/{{version}}/appeal-scheduled" class="govuk-link">	APP/2021/56789/3556481</a>
             </td>
             <td class="govuk-table__cell">131 High Street, Bradford, BD6 1JK</td>
             <td class="govuk-table__cell" nowrap>{{ 12 | daysInFutureShortMonth }}</td>

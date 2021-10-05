@@ -42,6 +42,11 @@
             </tr>
           </thead>
           <tbody class="govuk-table__body">
+<!--      
+      /********************************************************/
+      /* TODO: This needs to work based on the 'taken' status */
+      /********************************************************/
+-->
             {% set i = 0 %}
             {% for appealref in data['inspector-'+version+'-myapps-notyetbooked'] %}
               {% for item in data['availableAppeals'] %}
