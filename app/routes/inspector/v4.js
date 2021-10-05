@@ -65,6 +65,19 @@ module.exports = function (router) {
     })
 
 
+    router.get(base+'goto-book-visit/:ref', function (req, res, next) {
+
+      // find matching ref in availableAppeals
+      objIndex = req.session.data["availableAppeals"].findIndex((obj => obj.ref == req.params.ref));
+
+      // Store the selected ref in a session variable 
+      req.session.data["inspector-"+v+"-currentappeal"] = req.params.ref;
+      
+      res.redirect(base+'book-visit');
+
+    })
+
+
     router.post(base+'book-visit', function (req, res) {
       res.redirect(base+'book-visit/check-confirm');
     })
@@ -85,6 +98,20 @@ module.exports = function (router) {
 
     router.post(base+'issue-decision', function (req, res) {
       res.redirect(base+'issue-decision/check-confirm');
+    })
+
+    router.post(base+'book-visit/check-confirm', function (req, res) {
+
+      // find matching ref in availableAppeals
+      objIndex = req.session.data["availableAppeals"].findIndex((obj => obj.ref == req.session.data["inspector-"+v+"-currentappeal"]));
+
+      // update session with site visit data
+      req.session.data["availableAppeals"][objIndex].status = "booked";
+      req.session.data["availableAppeals"][objIndex].siteVisitDate = (req.session.data["inspector-"+v+"-schedule-date-day"] + " " + req.session.data["inspector-"+v+"-schedule-date-month"]  + " " + req.session.data["inspector-"+v+"-schedule-date-year"] );
+      req.session.data["availableAppeals"][objIndex].siteVisitType = req.session.data["inspector-"+v+"-schedule-type"];
+      req.session.data["availableAppeals"][objIndex].siteVisitTime = req.session.data["inspector-"+v+"-schedule-time"];
+
+      res.redirect(base+'book-visit/confirmation');
     })
 
 
