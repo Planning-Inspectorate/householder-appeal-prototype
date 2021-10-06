@@ -13,7 +13,7 @@
   }) }}
   {{ govukBackLink({
     text: "Back to my appeals",
-    href: "../"
+    href: "/inspector/" + version + "/"
   }) }}
 {% endblock %}
 
@@ -29,14 +29,12 @@
       <form action="" method="post">
 
         <table class="govuk-table">
-          <!--caption class="govuk-table__caption">Householder planning appeals</caption-->
           <thead class="govuk-table__head">
             <tr class="govuk-table__row">
               <th scope="col" class="govuk-table__header">Select</th>
               <th scope="col" class="govuk-table__header">Postcode</th>
               <th scope="col" class="govuk-table__header">Target date</th>
               <th scope="col" class="govuk-table__header">Appeal type</th>
-              <!--th scope="col" class="govuk-table__header">Development type</th-->
               <th scope="col" class="govuk-table__header">Specialism</th>
               <th scope="col" class="govuk-table__header">Recommended site visit</th>
             </tr>
@@ -50,11 +48,11 @@
                   <td class="govuk-table__cell pins-checkbox-cell">                
                     <div class="govuk-checkboxes govuk-checkboxes--small">
                       <div class="govuk-checkboxes__item">
-                        <input class="govuk-checkboxes__input" id="inspector-{{version}}-myapps-notyetbooked-temp{% if i > 1 %}-{{i}}{% endif %}" name="inspector-{{version}}-myapps-notyetbooked-temp" type="checkbox" value="{{ item.ref }}"
-                        {% for appealref in data['inspector-'+version+'-myapps-notyetbooked'] %}
+                        <input class="govuk-checkboxes__input" id="inspector-{{version}}-myappeals-selected{% if i > 1 %}-{{i}}{% endif %}" name="inspector-{{version}}-myappeals-selected" type="checkbox" value="{{ item.ref }}"
+                        {% for appealref in data['inspector-'+version+'-myappeals-selected'] %}
                           {% if item.ref == appealref %} checked{% endif %}
                         {%endfor%}>
-                        <label class="govuk-label govuk-checkboxes__label" for="inspector-{{version}}-myapps-notyetbooked{% if i > 1 %}-{{i}}{% endif %}">
+                        <label class="govuk-label govuk-checkboxes__label" for="inspector-{{version}}-myappeals-selected{% if i > 1 %}-{{i}}{% endif %}">
                           <span class="govuk-visually-hidden">{{ item.ref }}</span>
                         </label>
                       </div>

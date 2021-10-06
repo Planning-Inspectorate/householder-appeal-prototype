@@ -42,24 +42,20 @@
             </tr>
           </thead>
           <tbody class="govuk-table__body">
-<!--      
-      /********************************************************/
-      /* TODO: This needs to work based on the 'taken' status */
-      /********************************************************/
--->
-            {% set i = 0 %}
-            {% for appealref in data['inspector-'+version+'-myapps-notyetbooked'] %}
+          
+            {% for appealref in data['inspector-'+version+'-myappeals-selected'] %}
               {% for item in data['availableAppeals'] %}
-                {% if i == 0 %}
-                  <tr class="govuk-table__row" data-appealref="{{appealref}}">
-                    <td class="govuk-table__cell" nowrap>{{ item.postcode }}</td>
-                    <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
-                    <td class="govuk-table__cell">HAS</td>
-                    <td class="govuk-table__cell">{{ item.specialism }}</td>
-                    <td class="govuk-table__cell">{{ item.proposedVisitType }}</td>
-                    <td class="govuk-table__cell">John Smith</td>
-                  </tr>
-                  {% set i = i + 1 %}
+                {% if item.ref == appealref %}
+                  {% if item.status == "removed" %}
+                    <tr class="govuk-table__row" data-appealref="{{appealref}}">
+                      <td class="govuk-table__cell" nowrap>{{ item.postcode }}</td>
+                      <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
+                      <td class="govuk-table__cell">HAS</td>
+                      <td class="govuk-table__cell">{{ item.specialism }}</td>
+                      <td class="govuk-table__cell">{{ item.proposedVisitType }}</td>
+                      <td class="govuk-table__cell">John Smith</td>
+                    </tr>
+                  {% endif %}
                 {% endif %}
               {% endfor %}
             {% endfor %}

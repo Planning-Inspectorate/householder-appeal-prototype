@@ -40,19 +40,17 @@
           </thead>
           <tbody class="govuk-table__body">
             {% set i = 0 %}
-            {% for appealref in data['inspector-'+version+'-myapps-notyetbooked-temp'] %}
+            {% for appealref in data['inspector-'+version+'-myappeals-selected'] %}
               {% set i = i + 1 %}
               {% for item in data['availableAppeals'] %}
                 {% if item.ref == appealref %}
-                  <tr class="govuk-table__row" data-appealref="{{appealref}}"{% if item.ref in data['inspector-'+version+'-myapps-notyetbooked'] %} style="display:none"
-              {% endif %}>
+                  <tr class="govuk-table__row">
                     <td class="govuk-table__cell" nowrap>{{ item.postcode }}</td>
                     <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
                     <td class="govuk-table__cell">HAS</td>
                     <td class="govuk-table__cell">{{ item.specialism }}</td>
                     <td class="govuk-table__cell">
                       {{ item.proposedVisitType }}
-                      <input type="hidden" id="inspector-{{version}}-myapps-notyetbooked{% if i > 1 %}-{{i}}{% endif %}" name="inspector-{{version}}-myapps-notyetbooked" value="{{ item.ref }}"
                     </td>
                   </tr>
                   {% set i = i + 1 %}

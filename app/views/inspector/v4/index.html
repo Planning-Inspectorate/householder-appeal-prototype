@@ -196,12 +196,12 @@
                     <a href="/inspector/{{version}}/goto-appeal-unscheduled/{{item.ref}}" class="govuk-link">APP/2021/56789/{{item.ref}}</a>
                   </td>
                   <td class="govuk-table__cell">
-                      {% if item.viewed == "no" %}
-                        {{ govukTag({
-                          classes: "govuk-tag--green",
-                          text: "New"
-                        }) }}
-                      {% endif %}
+                    {% if item.viewed == "no" %}
+                      {{ govukTag({
+                        classes: "govuk-tag--green",
+                        text: "New"
+                      }) }}
+                    {% endif %}
                   </td>
                   <td class="govuk-table__cell">{{item.address}}, {{item.postcode}}</td>
                   <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>

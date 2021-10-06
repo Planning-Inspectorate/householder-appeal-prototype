@@ -11,18 +11,48 @@ module.exports = function (router) {
       /* TODO: This needs to work based on the 'taken' status */
       /********************************************************/
 
-      if ( req.session.data["inspector-"+v+"-myapps-notyetbooked-temp"].includes("5551277") ){
+      /*
+        if inspector-v4-myappeals-selected contains a row with status of "taken"
+          update all rows with status "taken" to status "removed"
+          redirect to appeals-unavailable
+        else
+          redirect to add-to-schedule
+      */
+      
+      // loop through selected appeals
+      for (let val of req.session.data["inspector-"+v+"-myappeals-selected"]) {
+        // find index of matching ref in availableAppeals
+        objIndex = req.session.data["availableAppeals"].findIndex((obj => obj.ref == val));
+        // if this item has a status of taken
+        if (req.session.data["availableAppeals"][objIndex].status == "taken"){
+          // change status to removed
+          req.session.data["availableAppeals"][objIndex].status = "removed";
+          // set variable to redirect to appeal unavailable page
+          req.session.data["inspector-"+v+"-myappeals-redirect"] = "unavailable";
+        }
+      }
+
+      // redirect user to relevant page
+      if (req.session.data["inspector-"+v+"-myappeals-redirect"] == "unavailable"){
+        delete req.session.data["inspector-"+v+"-myappeals-redirect"];
+        res.redirect(base+'get-appeals/appeals-unavailable');
+      } else  {
+        res.redirect(base+'get-appeals/add-to-schedule');
+      }
+
+      /*
+      if ( req.session.data["inspector-"+v+"-myappeals-selected"].includes("5551277") ){
         req.session.data["inspector-"+v+"-appealunavailable"] = "true";
         res.redirect(base+'get-appeals/appeals-unavailable');
       } else {
         res.redirect(base+'get-appeals/add-to-schedule');
-      }
+      }*/
     })
 
     router.post(base+'get-appeals/add-to-schedule', function (req, res) {
 
 
-      for (let val of req.session.data["inspector-"+v+"-myapps-notyetbooked-temp"]) {
+      for (let val of req.session.data["inspector-"+v+"-myappeals-selected"]) {
         
         // find matching ref in availableAppeals
         objIndex = req.session.data["availableAppeals"].findIndex((obj => obj.ref == val));
@@ -33,7 +63,7 @@ module.exports = function (router) {
 
       }
       
-      req.session.data["inspector-"+v+"-myapps-notyetbooked-temp"] = "";
+      req.session.data["inspector-"+v+"-myappeals-selected"] = "";
 
       res.redirect(base+'get-appeals/appeals-assigned');
 
