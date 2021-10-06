@@ -1182,9 +1182,7 @@ let data = {
     "check-answers-link": "Check your answers",
     "check-answers-text": "Cannot start yet",
   
-    availableAppeals,
-
-    "inspector-v4-pullappealref":  ""
+    availableAppeals
 
   }
 

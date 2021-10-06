@@ -17,18 +17,25 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-    
-        {% set panelHtml %}
-          8 The Chase, Findon BN14&nbsp;0TT<br><br>
-          {{ data["inspector-"+version+"-schedule-date-day"] }}
-          {{ data["inspector-"+version+"-schedule-date-month"] | formatMonth }} {{ data["inspector-"+version+"-schedule-date-year"] }}<br>
-          {{ data["inspector-"+version+"-schedule-time"] | capitalize }}
-        {% endset -%}
 
-      {{ govukPanel({
-        titleText: data["inspector-"+version+"-schedule-type"] +" site visit booked",
-        html: panelHtml
-      }) }}
+      <!-- loop through data from availableAppeals.json -->
+      {% for item in data['availableAppeals'] %}
+        <!-- match selected appeal by ref in data and show -->
+        {% if item.ref == data["inspector-"+version+"-currentappeal"] %}
+
+          {% set panelHtml %}
+            {{ item.address }}, {{ item.postcode }}<br><br>
+            {{ item.siteVisitDateDay }} {{ item.siteVisitDateMonth | formatShortMonth }} {{ item.siteVisitDateYear }}<br>
+            {{ item.siteVisitTime | capitalize }}
+          {% endset -%}
+    
+          {{ govukPanel({
+            titleText: data["inspector-"+version+"-schedule-type"] +" site visit booked",
+            html: panelHtml
+          }) }}
+
+        {% endif %}
+      {% endfor %}
 
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 

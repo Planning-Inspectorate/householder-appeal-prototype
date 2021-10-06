@@ -30,74 +30,12 @@
   <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-one-quarter content-list__sticky">
-
       <aside class="govuk-!-margin-bottom-8">
-        <h3 class="govuk-heading-m govuk-!-margin-bottom-4">
-          Summary
-        </h3>
-        <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
-          Appeal reference
-        </h4>
-        <p class="govuk-body-s govuk-!-margin-bottom-3">
-          APP/2021/56789/{{ data["inspector-"+version+"-schedule-ref"] }}
-        </p>
-        <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
-          Site address
-        </h4>
-        <p class="govuk-body-s govuk-!-margin-bottom-3">
-          55 Butcher Street, Thurnscoe, S63 0RB
-        </p>
-        <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
-          Target date
-        </h4>
-        <p class="govuk-body-s govuk-!-margin-bottom-3">
-          {{ 13 | daysInFuture }}
-        </p>
-        <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
-          Local planning department
-        </h4>
-        <p class="govuk-body-s govuk-!-margin-bottom-3">
-          Bradford Council
-        </p>
+        {% include "includes/inspector/"+version+"/_appeal-summary.html" %}
       </aside>
-
     </div>
-    <div class="govuk-grid-column-one-half">
 
-      <!--dl class="govuk-summary-list govuk-!-margin-bottom-9">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Appeal reference
-          </dt>
-          <dd class="govuk-summary-list__value">
-            APP/2021/56789/{{ data["inspector-"+version+"-schedule-ref"] }}
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Site address
-          </dt>
-          <dd class="govuk-summary-list__value">
-            55 Butcher Street, Thurnscoe, S63 0RB
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Target date
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ 13 | daysInFuture }}
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Local planning department
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Bradford Council
-          </dd>
-        </div>
-      </dl--> 
+    <div class="govuk-grid-column-one-half">
 
       <form action="" method="post">
 
@@ -195,7 +133,6 @@
             }
           ]
         }) }}
-
         
         {% set detailsHtml %}
           <table class="govuk-table">
