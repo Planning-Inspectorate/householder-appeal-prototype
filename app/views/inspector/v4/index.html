@@ -54,7 +54,7 @@
         <tbody class="govuk-table__body">
 
           {% set decisiondue = 0 %}
-          {% for item in data['availableAppeals'] %}
+          {% for item in data['availableAppeals']|sort(false,true,'targetDateDaysInFuture') %}
             {% if item.status == "decisiondue" %}
               {% set decisiondue = decisiondue + 1 %}
               <tr class="govuk-table__row">
@@ -64,9 +64,11 @@
                 <td class="govuk-table__cell">{{ item.address }}, {{ item.postcode }}</td>
                 <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
                 <td class="govuk-table__cell">{{ item.appealType }}</td>
-                <td class="govuk-table__cell">{{ item.proposedVisitType }}</td>
+                <td class="govuk-table__cell">{{ item.siteVisitType }}</td>
                 <td class="govuk-table__cell">
-                  {{ item.siteVisitDate | daysAgoShortMonth }}
+                  {{ item.siteVisitDateDay }}
+                  {{ item.siteVisitDateMonth | formatShortMonth }}
+                  {{ item.siteVisitDateYear }}
                 </td>
               </tr>
             {% endif %}
@@ -101,7 +103,7 @@
         <tbody class="govuk-table__body">
 
           {% set booked = 0 %}
-          {% for item in data['availableAppeals'] %}
+          {% for item in data['availableAppeals']|sort(false,true,'targetDateDaysInFuture') %}
             {% if item.status == "booked" %}
               {% set booked = booked + 1 %}
               <tr class="govuk-table__row">
@@ -127,43 +129,6 @@
               </td>
             </tr>
           {% endif %}
-<!--
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-              <a href="/inspector/{{version}}/goto-appeal-scheduled/{{item.ref}}" class="govuk-link">APP/2021/56789/{{ item.ref }}</a>
-              <a href="/inspector/{{version}}/appeal-scheduled" class="govuk-link">	APP/2021/56789/3556481</a>
-            </td>
-            <td class="govuk-table__cell">131 High Street, Bradford, BD6 1JK</td>
-            <td class="govuk-table__cell" nowrap>{{ 12 | daysInFutureShortMonth }}</td>
-            <td class="govuk-table__cell">HAS</td>
-            <td class="govuk-table__cell">Unaccompanied</td>
-            <td class="govuk-table__cell">
-              {{ 7 | daysInFutureShortMonth }}
-            </td>
-          </tr>
--->
-          {% for pulledappeal in data['inspector-'+version+'-myapps-booked'] %}
-
-            {% for item in data['availableAppeals'] %}
-              {% if item.ref == pulledappeal %}
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">
-                    <a href="/inspector/{{version}}/appeal-unscheduled" class="govuk-link">APP/2021/56789/{{item.ref}}</a>
-                  </td>
-                  <td class="govuk-table__cell">{{item.address}}, {{item.postcode}}</td>
-                  <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
-                  <td class="govuk-table__cell">{{item.appealType}}</td>
-                  <td class="govuk-table__cell">{{ data["inspector-"+version+"-schedule-type"] }}</td>
-                  <td class="govuk-table__cell">
-                    {{ data["inspector-"+version+"-schedule-date-day"] }}
-                    {{ data["inspector-"+version+"-schedule-date-month"] | formatShortMonth }}
-                    {{ data["inspector-"+version+"-schedule-date-year"] }}
-                  </td>
-                </tr>
-              {% endif %}
-            {% endfor %}
-            
-          {% endfor %}
 
         </tbody>
       </table>
@@ -173,7 +138,7 @@
         Site visits not yet booked
       </h2>
 
-      <table class="govuk-table">
+      <table class="govuk-table" data-module="moj-sortable-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Appeal reference</th>
@@ -188,7 +153,7 @@
         <tbody class="govuk-table__body">
 
           {% set notyetbooked = 0 %}
-          {% for item in data['availableAppeals'] %}
+          {% for item in data['availableAppeals']|sort(false,true,'targetDateDaysInFuture') %}
             {% if item.status == "notyetbooked" %}
               {% set notyetbooked = notyetbooked + 1 %}
                 <tr class="govuk-table__row">
