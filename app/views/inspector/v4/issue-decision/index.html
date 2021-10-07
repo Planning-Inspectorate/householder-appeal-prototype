@@ -13,7 +13,7 @@
   }) }}
   {{ govukBackLink({
     text: "Back",
-    href: "/inspector/"+version+"/"
+    href: "/inspector/" + version + "/appeal-decision"
   }) }}
 {% endblock %}
 
@@ -159,11 +159,11 @@
         }) }}
 
         {{ govukFileUpload({
-          id: "inspector-"+version+"-issuedecision-report",
-          name: "inspector-"+version+"-issuedecision-report",
+          id: "inspector-"+version+"-issuedecision-decisionletter",
+          name: "inspector-"+version+"-issuedecision-decisionletter",
           label: {
             classes: "govuk-label--m",
-            text: "Upload report"
+            text: "Upload decision letter"
           }
         }) }}
 

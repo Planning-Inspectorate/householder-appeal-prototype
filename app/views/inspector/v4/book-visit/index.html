@@ -38,32 +38,52 @@
     <div class="govuk-grid-column-one-half">
 
       <form action="" method="post">
+   
+        <!-- loop through data from availableAppeals.json -->
+        {% for item in data['availableAppeals'] %}
+          <!-- match selected appeal by ref in data and show -->
+          {% if item.ref == data["inspector-"+version+"-currentappeal"] %}
 
-        {{ govukRadios({
-          idPrefix: "inspector-"+version+"-schedule-type",
-          name: "inspector-"+version+"-schedule-type",
-          fieldset: {
-            legend: {
-              text: "Type of site visit",
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          items: [
-            {
-              value: "Access required",
-              text: "Access required"
-            },
-            {
-              value: "Accompanied",
-              text: "Accompanied"
-            },
-            {
-              value: "Unaccompanied",
-              html: 'Unaccompanied <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-3">Provisional type</strong>',
-              checked: "checked"
-            }
-          ]
-        }) }}
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  Type of site visit
+                </legend>
+                <div class="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="inspector-{{version}}-schedule-type" name="inspector-{{version}}-schedule-type" type="radio" value="Access required"{% if item.proposedVisitType == "Access required" %} checked{% endif %}>
+                    <label class="govuk-label govuk-radios__label" for="inspector-{{version}}-schedule-type">
+                      Access required
+                      {% if item.proposedVisitType == "Access required" %}
+                        <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-3">Provisional type</strong>
+                      {% endif %}
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="inspector-{{version}}-schedule-type-2" name="inspector-{{version}}-schedule-type" type="radio" value="Accompanied"{% if item.proposedVisitType == "Accompanied" %} checked{% endif %}>
+                    <label class="govuk-label govuk-radios__label" for="inspector-{{version}}-schedule-type-2">
+                      Accompanied
+                      {% if item.proposedVisitType == "Accompanied" %}
+                        <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-3">Provisional type</strong>
+                      {% endif %}
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="inspector-{{version}}-schedule-type-3" name="inspector-{{version}}-schedule-type" type="radio" value="Unaccompanied"{% if item.proposedVisitType == "Unaccompanied" %} checked{% endif %}>
+                    <label class="govuk-label govuk-radios__label" for="inspector-{{version}}-schedule-type-3">
+                      Unaccompanied
+                      {% if item.proposedVisitType == "Unaccompanied" %}
+                        <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-3">Provisional type</strong>
+                      {% endif %}
+                    </label>
+                  </div>
+                </div>
+
+              </fieldset>
+            </div>
+
+          {% endif %}
+        {% endfor %}
 
         {{ govukDateInput({
           id: "inspector-"+version+"-schedule-date",
