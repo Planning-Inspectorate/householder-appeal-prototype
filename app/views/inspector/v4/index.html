@@ -45,7 +45,7 @@
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Appeal reference</th>
             <th scope="col" class="govuk-table__header">Appeal site</th>
-            <th scope="col" class="govuk-table__header">Target date</th>
+            <th scope="col" class="govuk-table__header">Appeal age</th>
             <th scope="col" class="govuk-table__header">Appeal type</th>
             <th scope="col" class="govuk-table__header">Site visit type</th>
             <th scope="col" class="govuk-table__header">Site visit date</th>
@@ -54,7 +54,7 @@
         <tbody class="govuk-table__body">
 
           {% set decisiondue = 0 %}
-          {% for item in data['availableAppeals']|sort(false,true,'targetDateDaysInFuture') %}
+          {% for item in data['availableAppeals']|sort(true,true,'daysOld') %}
             {% if item.status == "decisiondue" %}
               {% set decisiondue = decisiondue + 1 %}
               <tr class="govuk-table__row">
@@ -62,7 +62,7 @@
                   <a href="/inspector/{{version}}/goto-appeal-decision/{{item.ref}}" class="govuk-link">APP/2021/56789/{{ item.ref }}</a>
                 </td>
                 <td class="govuk-table__cell">{{ item.address }}, {{ item.postcode }}</td>
-                <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
+                <td class="govuk-table__cell" nowrap>{{ item.daysOld }} days</td>
                 <td class="govuk-table__cell">{{ item.appealType }}</td>
                 <td class="govuk-table__cell">{{ item.siteVisitType }}</td>
                 <td class="govuk-table__cell">
@@ -94,7 +94,7 @@
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Appeal reference</th>
             <th scope="col" class="govuk-table__header">Appeal site</th>
-            <th scope="col" class="govuk-table__header">Target date</th>
+            <th scope="col" class="govuk-table__header">Appeal age</th>
             <th scope="col" class="govuk-table__header">Appeal type</th>
             <th scope="col" class="govuk-table__header">Site visit type</th>
             <th scope="col" class="govuk-table__header">Site visit date</th>
@@ -104,7 +104,7 @@
         <tbody class="govuk-table__body">
 
           {% set booked = 0 %}
-          {% for item in data['availableAppeals']|sort(false,true,'targetDateDaysInFuture') %}
+          {% for item in data['availableAppeals']|sort(true,true,'daysOld') %}
             {% if item.status == "booked" %}
               {% set booked = booked + 1 %}
               <tr class="govuk-table__row">
@@ -112,7 +112,7 @@
                   <a href="/inspector/{{version}}/goto-appeal-scheduled/{{item.ref}}" class="govuk-link">APP/2021/56789/{{ item.ref }}</a>
                 </td>
                 <td class="govuk-table__cell">{{ item.address }}, {{ item.postcode }}</td>
-                <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
+                <td class="govuk-table__cell" nowrap>{{ item.daysOld }} days</td>
                 <td class="govuk-table__cell">{{ item.appealType }}</td>
                 <td class="govuk-table__cell" nowrap>{{ item.siteVisitType }}</td>
                 <td class="govuk-table__cell" nowrap>
@@ -146,7 +146,7 @@
             <th scope="col" class="govuk-table__header">Appeal reference</th>
             <th scope="col" class="govuk-table__header"></th>
             <th scope="col" class="govuk-table__header">Appeal site</th>
-            <th scope="col" class="govuk-table__header">Target date</th>
+            <th scope="col" class="govuk-table__header">Appeal age</th>
             <th scope="col" class="govuk-table__header">Appeal type</th>
             <th scope="col" class="govuk-table__header">Provisional site visit type</th>
             <!--th scope="col" class="govuk-table__header">Provisional site visit week</th-->
@@ -155,7 +155,7 @@
         <tbody class="govuk-table__body">
 
           {% set notyetbooked = 0 %}
-          {% for item in data['availableAppeals']|sort(false,true,'targetDateDaysInFuture') %}
+          {% for item in data['availableAppeals']|sort(true,true,'daysOld') %}
             {% if item.status == "notyetbooked" %}
               {% set notyetbooked = notyetbooked + 1 %}
                 <tr class="govuk-table__row">
@@ -171,7 +171,7 @@
                     {% endif %}
                   </td>
                   <td class="govuk-table__cell">{{item.address}}, {{item.postcode}}</td>
-                  <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
+                  <td class="govuk-table__cell" nowrap>{{ item.daysOld }} days</td>
                   <td class="govuk-table__cell">{{item.appealType}}</td>
                   <td class="govuk-table__cell">{{item.proposedVisitType}}</td>
                   <!--td class="govuk-table__cell">{{item.provisionalSiteVisit}}</td-->
