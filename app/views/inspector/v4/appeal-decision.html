@@ -109,22 +109,13 @@
     <div class="govuk-grid-column-one-quarter">
 
       <div class="govuk-related-items">
-        <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+        <h3 class="govuk-heading-m">
           Decision
         </h3>
-        <p class="govuk-body govuk-!-margin-bottom-1">
-          <!-- loop through data from availableAppeals.json -->
-          {% for item in data['availableAppeals'] %}
-            <!-- match selected appeal by ref in data and show -->
-            {% if item.ref == data["inspector-"+version+"-currentappeal"] %}
-              Due in {{ item. targetDateDaysInFuture }} days 
-            {% endif %}
-          {% endfor %}
-        </p>
         {{ govukButton({
           href: "/inspector/"+version+"/issue-decision",
           text: "Issue decision",
-          classes: "govuk-!-margin-top-3 govuk-!-margin-bottom-0"
+          classes: "govuk-!-margin-bottom-0"
         }) }}
       </div>
       

@@ -5,3 +5,17 @@ ol.lpaq {
     max-width: 450px;
   }
 }
+
+@media (min-width: 40.0625em){
+
+	.govuk-summary-list-lpaq .govuk-summary-list__key {
+		width: 50%;
+	}
+	.govuk-summary-list-lpaq .govuk-summary-list__value {
+		width: 40%;
+	}
+	.govuk-summary-list-lpaq .govuk-summary-list__actions {
+		width: 10%;
+	}
+
+}
