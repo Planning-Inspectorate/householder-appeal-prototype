@@ -37,6 +37,10 @@
 
     <div class="govuk-grid-column-one-half">
 
+      <h2 class="govuk-heading-l">
+        Site visit details
+      </h2>
+
       <form action="" method="post">
    
         <!-- loop through data from availableAppeals.json -->
@@ -93,9 +97,6 @@
               text: "Date of site visit",
               classes: "govuk-fieldset__legend--m"
             }
-          },
-          hint: {
-            text: "Provisionally scheduled for the week of "+data["inspector-"+version+"-provisionalweek"]
           }
         }) }}
 
