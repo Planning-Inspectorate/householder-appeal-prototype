@@ -32,7 +32,7 @@
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Appeal reference</th>
             <th scope="col" class="govuk-table__header">Postcode</th>
-            <th scope="col" class="govuk-table__header">Target date</th>
+            <th scope="col" class="govuk-table__header">Appeal age</th>
             <th scope="col" class="govuk-table__header">Appeal type</th>
             <th scope="col" class="govuk-table__header">Specialism</th>
             <th scope="col" class="govuk-table__header">Recommended site visit</th>
@@ -47,7 +47,7 @@
                 <tr class="govuk-table__row">
                   <td class="govuk-table__cell" nowrap>APP/2021/56789/{{ item.ref }}</td>
                   <td class="govuk-table__cell" nowrap>{{ item.postcode }}</td>
-                  <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
+                  <td class="govuk-table__cell" nowrap>{{ item.daysOld }} days</td>
                   <td class="govuk-table__cell">HAS</td>
                   <td class="govuk-table__cell">{{ item.specialism }}</td>
                   <td class="govuk-table__cell">
