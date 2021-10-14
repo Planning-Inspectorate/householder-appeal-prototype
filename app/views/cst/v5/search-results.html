@@ -1,0 +1,110 @@
+{% extends "layouts/cst/v5.html" %}
+
+{% block pageTitle %}
+  Search results
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+<!--
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Dashboard"
+      }
+    ]
+  }) }}
+-->
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        Search results
+      </h1>
+
+      <p class="govuk-body">
+        You searched for '{{ data['search'] }}'.
+      <p>
+
+      <table class="govuk-table" id="results">
+
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Reference</th>
+            <th scope="col" class="govuk-table__header">Apellant name</th>
+            <th scope="col" class="govuk-table__header">Site address</th>
+          </tr>
+        </thead>
+
+        <tbody class="govuk-table__body">
+          <!-- loop through the cstSearch data to display as results -->
+          {% for item in data['cstSearch'] %}
+            <!-- data- attributes set to help show/hide rows to mimic search funcitonality -->
+            <tr
+              data-ref="{{ item.ref }}"
+              data-name="{{ item.name | lower }}"
+              data-address="{{ item.address | lower }}"
+              data-postcode="{{ item.postcode | lower }}"
+              class="govuk-table__row">
+                <td class="govuk-table__cell" style="width: 30%;">
+                  <a href="appeal-details" class="govuk-link">APP/Q999/D/21/{{ item.ref }}</a>
+                </td>
+                <td class="govuk-table__cell" style="width: 25%;">{{ item.name }}</td>
+                <td class="govuk-table__cell" style="width: 45%;">{{ item.address }}, {{ item.postcode }}</td>
+            </tr>
+          {% endfor %}
+          
+          <tr id="noresults" style="display:none;">
+            <td colspan="3">
+              We couldn't find any appeals matching your search.
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+
+      <p class="govuk-body">
+        <a href="/cst/v5/" class="govuk-link">Back to search</a>
+      <p>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+  <script>
+    var term = "{{data['search']}}";
+    //window.alert("{{data['search']}}");
+    if (term != ''){
+      $('#results tbody tr').hide();
+    }
+    var refItems = $('tr[data-ref*="' + term + '"]').length;
+    var nameItems = $('tr[data-name*="' + term.toLowerCase() + '"]').length;
+    var addressItems = $('tr[data-address*="' + term.toLowerCase() + '"]').length;
+    var postcodeItems = $('tr[data-postcode*="' + term.toLowerCase() + '"]').length;
+    var numMatches = refItems + nameItems + addressItems + postcodeItems;
+      //$("#searchcount").html(numMatches);
+      //$("#searchterm").html(term);
+    if (numMatches == 0){
+      $('#results .govuk-table__head').hide();
+      $('#noresults').show();
+    } else {
+      $('tr[data-ref*="' + term + '"]').show();
+      $('tr[data-name*="' + term.toLowerCase() + '"]').show();
+      $('tr[data-address*="' + term.toLowerCase() + '"]').show();
+      $('tr[data-postcode*="' + term.toLowerCase() + '"]').show();
+    }
+  </script>
+  
+{% endblock %}
