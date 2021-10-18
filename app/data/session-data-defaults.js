@@ -18,6 +18,7 @@ Example usage:
 */
 
 let availableAppeals = require('./availableAppeals.json')
+let lpas = require('./local-authority-eng.json')
 
 let data = {
 
@@ -1181,7 +1182,8 @@ let data = {
     "check-answers": "govuk-tag govuk-tag--grey app-task-list__tag",
     "check-answers-link": "Check your answers",
     "check-answers-text": "Cannot start yet",
-  
+
+    lpas,  
     availableAppeals
 
   }

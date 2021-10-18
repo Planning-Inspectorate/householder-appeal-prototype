@@ -1,0 +1,70 @@
+{% extends "layouts/eligibility/v9.html" %}
+
+{% block pageTitle %}
+  What type of planning decision are you appealing? - Eligibility - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "eligibility-"+version+"-whatareyouappealing",
+          name: "eligibility-"+version+"-whatareyouappealing",
+          fieldset: {
+            legend: {
+              text: "What type of planning decision are you appealing?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "You can check what you applied for on your original planning application form."
+          },
+          items: [
+            {
+              value: "Full planning",
+              text: "Full planning"
+            },
+            {
+              value: "Householder planning",
+              text: "Householder planning"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "Something else",
+              text: "Something else"
+            }
+          ]
+        }) }}
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Help with this quesiton
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            
+          </div>
+        </details>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

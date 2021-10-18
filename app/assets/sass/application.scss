@@ -22,6 +22,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "pins/file-list";
 @import "pins/timeline";
 @import "pins/backoffice";
+@import "pins/accessible-autocomplete";
 
 
 .autocomplete__option {

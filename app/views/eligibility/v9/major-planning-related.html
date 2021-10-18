@@ -1,0 +1,79 @@
+{% extends "layouts/eligibility/v9.html" %}
+
+{% block pageTitle %}
+  Does your original application relate to any of the following?
+ - Eligibility - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+
+        {{ govukCheckboxes({
+          idPrefix: "eligibility-"+version+"-majorplanningrelated",
+          name: "eligibility-"+version+"-majorplanningrelated",
+          fieldset: {
+            legend: {
+              text: "Does your original application relate to any of the following?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Select any that apply"
+          },
+          items: [
+            {
+              value: "Major dwelling",
+              text: "Major dwelling"
+            },
+            {
+              value: "Major general industry/storage/warehousing",
+              text: "Major general industry/storage/warehousing"
+            },
+            {
+              value: "Major retail and services",
+              text: "Major retail and services"
+            },
+            {
+              value: "Major travelling and caravan pitches",
+              text: "Major travelling and caravan pitches"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "None of the above",
+              text: "None of the above"
+            }
+          ]
+        }) }}
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Help with this quesiton
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            
+          </div>
+        </details>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
