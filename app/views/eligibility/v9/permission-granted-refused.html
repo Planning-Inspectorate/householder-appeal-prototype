@@ -1,7 +1,7 @@
 {% extends "layouts/eligibility/v9.html" %}
 
 {% block pageTitle %}
-  Are you agreeable to the appeal following the written representations? - Eligibility - {{serviceName}} - GOV.UK
+  Was your planning permission granted or refused? - Before you start - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block content %}
@@ -16,23 +16,33 @@
         </span>
 
         {{ govukRadios({
-          idPrefix: "eligibility-"+version+"-writtenrepresentations",
-          name: "eligibility-"+version+"-writtenrepresentations",
+          idPrefix: "eligibility-"+version+"-permissiongrantedrefused",
+          name: "eligibility-"+version+"-permissiongrantedrefused",
           fieldset: {
             legend: {
-              text: "Are you agreeable to the appeal following the written representations?",
+              text: "Was your planning permission granted or refused?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
+          hint: {
+            text: ""
+          },
           items: [
             {
-              value: "Yes",
-              text: "Yes"
+              value: "Granted",
+              text: "Granted"
             },
             {
-              value: "No",
-              text: "No"
+              value: "Refused",
+              text: "Refused"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "I have not received a decision",
+              text: "I have not received a decision"
             }
           ]
         }) }}

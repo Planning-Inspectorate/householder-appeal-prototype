@@ -1,8 +1,7 @@
 {% extends "layouts/eligibility/v9.html" %}
 
 {% block pageTitle %}
-  Does your original application relate to any of the following?
- - Eligibility - {{serviceName}} - GOV.UK
+  What date was your decision due? - Before you start - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block content %}
@@ -16,45 +15,41 @@
           Before you start
         </span>
 
-        {{ govukCheckboxes({
-          idPrefix: "eligibility-"+version+"-majorplanningrelated",
-          name: "eligibility-"+version+"-majorplanningrelated",
+        {{ govukDateInput({
+          id: "eligibility-"+version+"-decisiondatedue",
+          namePrefix: "eligibility-"+version+"-decisiondatedue",
           fieldset: {
             legend: {
-              text: "Does your original application relate to any of the following?",
+              text: "What date was your decision due?​",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            text: "Select any that apply"
+            text: "For example, 20 04 2021"
           },
           items: [
             {
-              value: "Major dwelling",
-              text: "Major dwelling"
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["eligibility-"+version+"-decisiondatedue-day"]
             },
             {
-              value: "Major general industry/storage/warehousing",
-              text: "Major general industry/storage/warehousing"
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["eligibility-"+version+"-decisiondatedue-month"]
             },
             {
-              value: "Major retail and services",
-              text: "Major retail and services"
-            },
-            {
-              value: "Major travelling and caravan pitches",
-              text: "Major travelling and caravan pitches"
-            },
-            {
-              divider: "or"
-            },
-            {
-              value: "None of the above",
-              text: "None of the above"
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["eligibility-"+version+"-decisiondatedue-year"]
             }
           ]
         }) }}
+          
+        <!--p class="govuk-form-group govuk-!-padding-bottom-2">
+          <a href="householder-planning-permission-out">I have not received a decision from the local planning department​</a>
+        </p-->
 
         <details class="govuk-details" data-module="govuk-details">
           <summary class="govuk-details__summary">

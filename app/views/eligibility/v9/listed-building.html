@@ -1,0 +1,60 @@
+{% extends "layouts/eligibility/v9.html" %}
+
+{% block pageTitle %}
+  Is your appeal about a listed building? - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "eligibility-"+version+"-listedbuilding",
+          name: "eligibility-"+version+"-listedbuilding",
+          fieldset: {
+            legend: {
+              text: "Is your appeal about a listed building?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Help with this quesiton
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            
+          </div>
+        </details>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

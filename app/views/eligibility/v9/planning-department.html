@@ -1,8 +1,8 @@
 {% extends "layouts/eligibility/v9.html" %}
 
 {% block pageTitle %}
-  What is the name of your local planning department?
- - Eligibility - {{serviceName}} - GOV.UK
+  Which local planning department dealt with your planning application?
+ - Before you start - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block content %}
@@ -18,10 +18,10 @@
         
         <div class="govuk-form-group">
           <label class="govuk-label govuk-label--l" for="postcode">
-            What is the name of your local planning department?
+            Which local planning department dealt with your planning application?
           </label>
 
-          <p class="govuk-hint">Enter the name of the local planning department (sometimes called a Local Planning Authority or LPA) that dealt with your original planning application.</p>
+          <p class="govuk-hint">This is the same thing as your 'local planning authority' or 'LPA'.</p>
           <select class="govuk-select govuk-input--width-20" id="eligibility-{{version}}-planningdepartment" name="eligibility-{{version}}-planningdepartment">
             <option value=""></option>
             {% for lpa in data['lpas'] %}
