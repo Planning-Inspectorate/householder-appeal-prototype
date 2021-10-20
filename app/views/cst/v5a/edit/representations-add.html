@@ -1,0 +1,74 @@
+{% extends "layouts/cst/v5a.html" %}
+
+{% block pageTitle %}
+  Appeal details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "../"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Add a representation document
+      </h1>
+
+      <form action="" method="post">
+
+        {{ govukFileUpload({
+          id: "cst-"+version+"-supplementary-file",
+          name: "cst-"+version+"-supplementary-file",
+          formGroup: {
+            classes: "govuk-!-margin-bottom-3"
+          },
+          label: {
+            classes: "govuk-label--m govuk-!-margin-top-8",
+            text: "Upload a file"
+          }
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Accepted file formats",
+          html: '
+            <ul class="govuk-list govuk-list--bullet">
+              <li>PDF &ndash; <strong>.pdf</strong></li>
+              <li>Microsfot Word &ndash; <strong>.doc</strong> or <strong>.docx</strong></li>
+              <li>TIF &ndash; <strong>.tif</strong> or <strong>.tiff</strong></li>
+              <li>JPEG &ndash; <strong>.jpg</strong> or <strong>.jpeg</strong></li>
+              <li>PNG &ndash; <strong>.png</strong></li>
+            </ul>
+          '
+        }) }}
+        
+        <div class="govuk-button-group govuk-!-margin-top-8">
+          {{ govukButton({
+            href: "representations",
+            text: "Save and continue"
+          }) }}
+
+          {{ govukButton({
+            href: "representations",
+            text: "Cancel",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
