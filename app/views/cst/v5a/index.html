@@ -1,4 +1,4 @@
-{% extends "layouts/cst/v5.html" %}
+{% extends "layouts/cst/v5a.html" %}
 
 {% block pageTitle %}
   Appeal details
@@ -13,7 +13,7 @@
   }) }}
   {{ govukBackLink({
     text: "Back",
-    href: "/cst/"+version+"/"
+    href: "#"
   }) }}
 {% endblock %}
 
@@ -165,6 +165,8 @@
           <dd class="govuk-summary-list__value">
             APP/2020/56789/01234
           </dd>
+          <dd class="govuk-summary-list__actions">
+          </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -172,6 +174,11 @@
           </dt>
           <dd class="govuk-summary-list__value">
             Maria Sharma
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="edit/appellant">
+              Change<span class="govuk-visually-hidden"> appellant name</span>
+            </a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -181,6 +188,11 @@
           <dd class="govuk-summary-list__value">
             8 The Chase, Findon, BN14 0TT
           </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="edit/site-address">
+              Change<span class="govuk-visually-hidden"> site address</span>
+            </a>
+          </dd>
         </div>      
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -189,13 +201,20 @@
           <dd class="govuk-summary-list__value">
             {{ 49 | daysInFuture }}
           </dd>
+          <dd class="govuk-summary-list__actions">
+          </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Local planning department
           </dt>
           <dd class="govuk-summary-list__value">
-            Bradford Council
+            City of Bradford Metropolitan District Council
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="edit/lpa">
+              Change<span class="govuk-visually-hidden"> local planning department</span>
+            </a>
           </dd>
         </div>
       </dl>
@@ -214,6 +233,11 @@
             <dd class="govuk-summary-list__value">
               {{ 49 | daysAgo }}
             </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="edit/decision-date">
+                Change<span class="govuk-visually-hidden"> application decision date</span>
+              </a>
+            </dd>
           </div> 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -223,6 +247,8 @@
               <!--{{ 7 | daysInFuture }}-->
               {{ 7 | daysAgo }}
             </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -230,6 +256,8 @@
             </dt>
             <dd class="govuk-summary-list__value">
               {{ 0 | daysAgo }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
             </dd>
           </div>                            
           <div class="govuk-summary-list__row">
@@ -239,92 +267,12 @@
             <dd class="govuk-summary-list__value">
               {{ 49 | daysInFuture }}
             </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
           </div>                            
         </dl>
 
       </div>
-
-      <!--<div id="contact-details">
-
-        <h3 class="govuk-heading-m">Contact details</h3>
-
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Agent name
-            </dt>
-            <dd class="govuk-summary-list__value">
-              The Building Consultancy
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Agent email address
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <a class="govuk-link" href="#">enquiries@buildingconsultancy.co.uk</a>
-            </dd>
-          </div>
-        </dl>
-
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Validation officer
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Alan Shearer
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Validation officer email address
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <a class="govuk-link" href="#">alan.shearer@planninginspectorate.gov.uk</a>
-            </dd>
-          </div>
-        </dl>
-
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Case officer
-            </dt>
-            <dd class="govuk-summary-list__value">
-              David Ginola
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Case officer email address
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <a class="govuk-link" href="#">david.ginola@planninginspectorate.gov.uk</a>
-            </dd>
-          </div>
-        </dl>
-
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Inspector
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Paul Gascoigne
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Inspector email address
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <a class="govuk-link" href="#">paul.gascoigne@planninginspectorate.gov.uk</a>
-            </dd>
-          </div>
-        </dl>
-
-      </div>-->
 
       <div id="contact-details">
 
@@ -338,14 +286,25 @@
             <dd class="govuk-summary-list__value">
               Maria Sharma
             </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="edit/appellant">
+                Change<span class="govuk-visually-hidden"> appellant name</span>
+              </a>
+            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Agent
             </dt>
             <dd class="govuk-summary-list__value">
-              <p class="govuk-body">The Building Consultancy</p>
-              <p class="govuk-body"><a class="govuk-link" href="#">enquiries@buildingconsultancy.co.uk</a></p>
+              No agent for this appeal
+              <!--p class="govuk-body">The Building Consultancy</p>
+              <p class="govuk-body"><a class="govuk-link" href="#">enquiries@buildingconsultancy.co.uk</a></p-->
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="edit/agent">
+                Change<span class="govuk-visually-hidden"> agent</span>
+              </a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -356,6 +315,8 @@
               <p class="govuk-body">Alan Shearer</p>
               <p class="govuk-body"><a class="govuk-link" href="#">alan.shearer@planninginspectorate.gov.uk</a></p>
             </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -365,6 +326,8 @@
               <p class="govuk-body">David Ginola</p>
               <p class="govuk-body"><a class="govuk-link" href="#">david.ginola@planninginspectorate.gov.uk</a></p>
             </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -373,6 +336,8 @@
             <dd class="govuk-summary-list__value">
               <p class="govuk-body">Paul Gascoigne</p>
               <p class="govuk-body"><a class="govuk-link" href="#">paul.gascoigne@planninginspectorate.gov.uk</a></p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
             </dd>
           </div>
         </dl>
@@ -400,6 +365,11 @@
                       <dd class="govuk-summary-list__value">
                         Maria Sharma
                       </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="edit/appellant">
+                          Change<span class="govuk-visually-hidden"> appellant name</span>
+                        </a>
+                      </dd>
                     </div>  
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
@@ -407,6 +377,11 @@
                       </dt>
                       <dd class="govuk-summary-list__value">
                         No agent for this appeal
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="edit/agent">
+                          Change<span class="govuk-visually-hidden"> agent</span>
+                        </a>
                       </dd>
                     </div> 
                     <div class="govuk-summary-list__row">
@@ -416,6 +391,11 @@
                       <dd class="govuk-summary-list__value">
                         <a class="govuk-link" href="#">maria.sharma@gmail.com</a>
                       </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="edit/appellant">
+                          Change<span class="govuk-visually-hidden"> appellant email</span>
+                        </a>
+                      </dd>
                     </div>                            
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
@@ -424,6 +404,8 @@
                       <dd class="govuk-summary-list__value">
                         12 December 2020
                       </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
@@ -431,6 +413,11 @@
                       </dt>
                       <dd class="govuk-summary-list__value">
                         Description of development here
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <!--a class="govuk-link" href="edit/description-of-development">
+                          Change<span class="govuk-visually-hidden"> description of development</span>
+                        </a-->
                       </dd>
                     </div>
                   </dl>
@@ -451,6 +438,11 @@
                       <dd class="govuk-summary-list__value">
                         <a href="#">Appealstatement.doc</a>
                       </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <!--a class="govuk-link" href="edit/appeal-statement">
+                          Change<span class="govuk-visually-hidden">appeal statement</span>
+                        </a-->
+                      </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
@@ -458,6 +450,11 @@
                       </dt>
                       <dd class="govuk-summary-list__value">
                         <a href="#">appellant-photos.png</a>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <!--a class="govuk-link" href="edit/supporting-documents">
+                          Change<span class="govuk-visually-hidden">supporting documents </span>
+                        </a-->
                       </dd>
                     </div>
                   </dl>
@@ -478,6 +475,8 @@
                       <dd class="govuk-summary-list__value">
                         <a href="#">Plans-uploaded-by-lpa.pdf</a>
                       </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
@@ -485,6 +484,8 @@
                       </dt>
                       <dd class="govuk-summary-list__value">
                         <a href="#">planning-application.pdf</a>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
                       </dd>
                     </div>
                     <div class="govuk-summary-list__row">
@@ -494,6 +495,8 @@
                       <dd class="govuk-summary-list__value">
                         <a href="#">Planning-officers-report.pdf</a>
                       </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
@@ -501,6 +504,8 @@
                       </dt>
                       <dd class="govuk-summary-list__value">
                         <a href="#">Decisionletter.pdf</a>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
                       </dd>
                     </div>
                     <div class="govuk-summary-list__row">
@@ -510,6 +515,8 @@
                       <dd class="govuk-summary-list__value">
                         No
                       </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
@@ -517,6 +524,8 @@
                       </dt>
                       <dd class="govuk-summary-list__value">
                         <a href="#">Document1.pdf</a>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
                       </dd>
                     </div>
                     <div class="govuk-summary-list__row">
@@ -535,6 +544,8 @@
                             <a href="#">Supportingdocument3.pdf</a>
                           </li>
                         </ul>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
                       </dd>
                     </div>
                   </dl>
@@ -555,6 +566,8 @@
                       <dd class="govuk-summary-list__value">
                         No
                       </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
@@ -563,6 +576,8 @@
                       <dd class="govuk-summary-list__value">
                         No
                       </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
@@ -570,6 +585,8 @@
                       </dt>
                       <dd class="govuk-summary-list__value">
                         No
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
                       </dd>
                     </div>
                   </dl>
@@ -590,6 +607,8 @@
                       <dd class="govuk-summary-list__value">
                         <a href="#">Policy1.pdf</a>
                       </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
@@ -597,6 +616,8 @@
                       </dt>
                       <dd class="govuk-summary-list__value">
                         <a href="#">Policy2.pdf</a>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
                       </dd>
                     </div>
                     <div class="govuk-summary-list__row">
@@ -615,6 +636,8 @@
                           </li>
                         </ul>
                       </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
@@ -623,6 +646,8 @@
                       <dd class="govuk-summary-list__value">
                         <p class="govuk-body govuk-!-margin-bottom-3">Yes</p>
                         <p>This is text confirms any substantive changes in the progress of the emerging plan, and their relevance to this appeal (if the plan may not be adopted before the Inspector issues their decision).</p>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
                       </dd>
                     </div>
                   </dl>
@@ -642,6 +667,8 @@
                       </dt>
                       <dd class="govuk-summary-list__value">
                         <a href="#">Representations.pdf</a>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
                       </dd>
                     </div>
                   </dl>
@@ -669,6 +696,8 @@
                           </li>
                         </ul>
                       </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
@@ -677,6 +706,8 @@
                       <dd class="govuk-summary-list__value">
                         <a href="#">Example.pdf</a>
                       </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
@@ -684,6 +715,8 @@
                       </dt>
                       <dd class="govuk-summary-list__value">
                         <a href="#">Notificationletter.pdf</a>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
                       </dd>
                     </div>
                   </dl>
@@ -707,6 +740,8 @@
             <dd class="govuk-summary-list__value">
               Confirmed site visit types as USV and confirmed provisional date.
             </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -714,6 +749,8 @@
             </dt>
             <dd class="govuk-summary-list__value">
               Appellant telephoned CST and queried progress of the appeal. Confirmed waiting on LPA questionnaire and expected by 25 October.
+            </dd>
+            <dd class="govuk-summary-list__actions">
             </dd>
           </div>
         </dl>
@@ -734,6 +771,8 @@
             <dd class="govuk-summary-list__value">
               Valid
             </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -742,6 +781,8 @@
             <dd class="govuk-summary-list__value">
               {{ 21 | daysInFuture }}
             </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
           </div>      
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -749,6 +790,8 @@
             </dt>
             <dd class="govuk-summary-list__value">
               Alan Shearer
+            </dd>
+            <dd class="govuk-summary-list__actions">
             </dd>
           </div>       
         </dl>
@@ -766,6 +809,8 @@
             <dd class="govuk-summary-list__value">
               Valid
             </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -774,6 +819,8 @@
             <dd class="govuk-summary-list__value">
               {{ 21 | daysInFuture }}
             </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
           </div>      
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -781,6 +828,8 @@
             </dt>
             <dd class="govuk-summary-list__value">
               David Ginola
+            </dd>
+            <dd class="govuk-summary-list__actions">
             </dd>
           </div>       
         </dl>
@@ -799,6 +848,8 @@
             <dd class="govuk-summary-list__value">
               Complete
             </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
           </div>  
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -806,6 +857,8 @@
             </dt>
             <dd class="govuk-summary-list__value">
               Complete
+            </dd>
+            <dd class="govuk-summary-list__actions">
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -815,6 +868,8 @@
             <dd class="govuk-summary-list__value">
               {{ 28 | daysInFuture }}
             </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -822,6 +877,8 @@
             </dt>
             <dd class="govuk-summary-list__value">
               David Ginola
+            </dd>
+            <dd class="govuk-summary-list__actions">
             </dd>
           </div>
         </dl>
@@ -840,6 +897,8 @@
             <dd class="govuk-summary-list__value">
               Unaccompanied
             </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -847,6 +906,8 @@
             </dt>
             <dd class="govuk-summary-list__value">
               Unaccompanied
+            </dd>
+            <dd class="govuk-summary-list__actions">
             </dd>
           </div> 
           <div class="govuk-summary-list__row">
@@ -856,6 +917,8 @@
             <dd class="govuk-summary-list__value">
               {{ 44 | daysInFuture }}
             </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
           </div>  
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -863,6 +926,8 @@
             </dt>
             <dd class="govuk-summary-list__value">
               15:30 to 17:30
+            </dd>
+            <dd class="govuk-summary-list__actions">
             </dd>
           </div>            
         </dl>
@@ -881,6 +946,8 @@
             <dd class="govuk-summary-list__value">
               Not available yet
             </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -888,6 +955,8 @@
             </dt>
             <dd class="govuk-summary-list__value">
               Not available yet
+            </dd>
+            <dd class="govuk-summary-list__actions">
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -897,6 +966,8 @@
             <dd class="govuk-summary-list__value">
               Not available yet
             </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -904,6 +975,8 @@
             </dt>
             <dd class="govuk-summary-list__value">
               Open
+            </dd>
+            <dd class="govuk-summary-list__actions">
             </dd>
           </div>           
         </dl>
