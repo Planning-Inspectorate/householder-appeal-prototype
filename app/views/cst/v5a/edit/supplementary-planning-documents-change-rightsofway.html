@@ -1,0 +1,155 @@
+{% extends "layouts/cst/v5a.html" %}
+
+{% block pageTitle %}
+  Appeal details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "../"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Change supplementary planning document
+      </h1>
+
+      <form action="" method="post">
+
+        {{ govukFileUpload({
+          id: "cst-"+version+"-supplementary-file",
+          name: "cst-"+version+"-supplementary-file",
+          formGroup: {
+            classes: "govuk-!-margin-bottom-3"
+          },
+          label: {
+            classes: "govuk-label--m govuk-!-margin-top-8",
+            text: "Upload a file",
+            value: "County Council Rights of Way.pdf"
+          }
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Accepted file formats",
+          html: '
+            <ul class="govuk-list govuk-list--bullet">
+              <li>PDF &ndash; <strong>.pdf</strong></li>
+              <li>Microsfot Word &ndash; <strong>.doc</strong> or <strong>.docx</strong></li>
+              <li>TIF &ndash; <strong>.tif</strong> or <strong>.tiff</strong></li>
+              <li>JPEG &ndash; <strong>.jpg</strong> or <strong>.jpeg</strong></li>
+              <li>PNG &ndash; <strong>.png</strong></li>
+            </ul>
+          '
+        }) }}
+            
+        {{ govukInput({
+          id: "cst-"+version+"-supplementary-name",
+          name: "cst-"+version+"-supplementary-name",
+          label: {
+            classes: "govuk-label--m govuk-!-margin-top-8",
+            text: "Document name"
+          },
+          value: "County Council Rights of Way"
+        }) }}
+        
+        {% set dateHtml %}
+          {{ govukDateInput({
+            id: "cst-"+version+"-supplementary-adopted-date",
+            namePrefix: "cst-"+version+"-supplementary-adopted-date",
+            fieldset: {
+              legend: {
+                text: "Tell us the date of adoption"
+              }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: 21
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: 10
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: 2007
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+        {% set stageHtml %}
+          {{ govukInput({
+            label: {
+              text: "Tell us what stage this has reached"
+            },
+            id: "cst-"+version+"-supplementary-adopted-stage",
+            name: "cst-"+version+"-supplementary-adopted-stage"
+          }) }}
+        {% endset -%}
+        
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "cst-"+version+"-supplementary-adopted",
+          name: "cst-"+version+"-supplementary-adopted",
+          fieldset: {
+            classes: "govuk-!-margin-top-8",
+            legend: {
+              text: "Is it formally adopted?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m govuk-!-margin-top-8"
+            }
+          },  
+          items: [
+            {
+              value: "yes",
+              text: "Yes",
+              conditional: {
+                html: dateHtml
+              },
+              checked: true
+            },
+            {
+              value: "no",
+              text: "No",
+              conditional: {
+                html: stageHtml
+              }
+            }
+          ]
+        }) }}
+        
+        <div class="govuk-button-group">
+          {{ govukButton({
+            href: "supplementary-planning-documents",
+            text: "Save and continue"
+          }) }}
+
+          {{ govukButton({
+            href: "supplementary-planning-documents",
+            text: "Cancel",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
