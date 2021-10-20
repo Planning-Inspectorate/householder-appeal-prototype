@@ -1,0 +1,51 @@
+{% extends "layouts/cst/v5a.html" %}
+
+{% block pageTitle %}
+  Appeal details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "../"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Change description of development
+      </h1>
+
+      <form action="" method="post">
+        
+        {{ govukTextarea({
+          id: "cst-"+version+"-descriptionofdevelopment",
+          name: "cst-"+version+"-descriptionofdevelopment",
+          label: {
+            text: "Description of development",
+            classes: "govuk-label--m"
+          },
+          value: "Single storey extension to rear"
+        }) }}
+
+        {{ govukButton({
+          href: "../",
+          text: "Save changes"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
