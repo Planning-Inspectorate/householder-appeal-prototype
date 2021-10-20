@@ -1,0 +1,76 @@
+{% extends "layouts/cst/v5a.html" %}
+
+{% block pageTitle %}
+  Appeal details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "../"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+       <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Change address of the appeal site
+          </h1>
+        </legend>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="cst-"+version+"-siteaddress-line-1">
+            Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
+          </label>
+          <input class="govuk-input" id="cst-"+version+"-siteaddress-line-1" name="cst-"+version+"-siteaddress-line-1" type="text" autocomplete="cst-"+version+"-siteaddress-line1" value="8 The Chase"></div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="cst-"+version+"-siteaddress-line-2">
+            <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+          </label>
+          <input class="govuk-input" id="cst-"+version+"-siteaddress-line-2" name="cst-"+version+"-siteaddress-line-2" type="text" autocomplete="cst-"+version+"-siteaddress-line2"></div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="cst-"+version+"-siteaddress-town">
+            Town or city
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="cst-"+version+"-siteaddress-town" name="cst-"+version+"-siteaddress-town" type="text" autocomplete="cst-"+version+"-siteaddress-level2" value="Findon"></div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="cst-"+version+"-siteaddress-county">
+            County
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="cst-"+version+"-siteaddress-county" name="cst-"+version+"-siteaddress-county" type="text"></div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="cst-"+version+"-siteaddress-postcode">
+            Postcode
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="cst-"+version+"-siteaddress-postcode" name="cst-"+version+"-siteaddress-postcode" type="text" autocomplete="postal-code" value="BN14 0TT"></div>
+
+      </fieldset>
+
+        {{ govukButton({
+          href: "../",
+          text: "Save changes"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
