@@ -4,6 +4,19 @@
   What type of planning application did you make? - Before you start - {{serviceName}} - GOV.UK
 {% endblock %}
 
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -26,7 +39,7 @@
             }
           },
           hint: {
-            text: "You can check what you applied for on your original planning application form."
+            text: "You can check this on your planning application form."
           },
           items: [
             {
