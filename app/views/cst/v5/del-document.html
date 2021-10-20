@@ -1,0 +1,117 @@
+{% extends "layouts/cst/v5.html" %}
+
+{% block pageTitle %}
+  Edit appeal detail
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/cst/"+version+"/appeal-details"
+  }) }}
+<!--
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Dashboard"
+      }
+    ]
+  }) }}
+-->
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+    <!--  <h1 class="govuk-heading-xl">
+        Edit appeal detail
+      </h1>
+      <!--p class="govuk-body">
+        Your view is restricted to [name of LPA]
+      <p-->
+
+      <form method="post" action="appeal-details-doc-removed">
+
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+
+
+            <h1 id="summary" class="govuk-heading-l section-heading">Are you sure you want to Remove this file</h1>
+
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+
+                </dt>
+                <dd class="govuk-summary-list__value">
+
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  <label class="govuk-label govuk-label--s" for="field-edit">  {{ data['fieldName'] }}</label>
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{ data['fieldValue'] }}
+                </dd>
+
+              </div>
+
+        </div>
+
+        <div class="govuk-button-group">
+          <button class="govuk-button" data-module="govuk-button">
+            Remove file
+          </button>
+
+          <a class="govuk-link" href="appeal-details">Cancel</a>
+        </div>
+
+      </form>
+
+
+
+  <!--div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-third">
+      <div class="pins-card">
+        <div class="pins-card-content">
+          <h2 class="govuk-heading-s">Decisions to publish</h2>
+          <p class="pins-card-number">1</p>
+        </div>
+        <div class="pins-card-action">
+          <p class="govuk-body">
+            <a href="javascript:preventDefault();" class="govuk-link govuk-link--disabled">View list of appeal decisions</a>
+          <p>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <div class="pins-card">
+        <div class="pins-card-content">
+          <h2 class="govuk-heading-s">Questionnaires for review</h2>
+          <p class="pins-card-number">3</p>
+        </div>
+        <div class="pins-card-action">
+          <p class="govuk-body">
+            <a href="/case-officer/{{version}}/review-questionnaire/list" class="govuk-link">View list of questionnaires for review</a>
+          <p>
+        </div>
+      </div>
+    </div>
+
+  </div-->
+
+  </div>
+</div>
+
+{% endblock %}
