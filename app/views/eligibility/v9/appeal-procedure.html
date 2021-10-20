@@ -1,0 +1,53 @@
+ {% extends "layouts/eligibility/v9.html" %}
+
+{% block pageTitle %}
+  How would you like us to decide your appeal? - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+        
+        {{ govukRadios({
+          idPrefix: "eligibility-"+version+"-appealprocedure",
+          name: "eligibility-"+version+"-appealprocedure",
+          fieldset: {
+            legend: {
+              text: "How would you like us to decide your appeal?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Written representations",
+              text: "Written representations"
+            },
+            {
+              value: "Hearing",
+              text: "Hearing"
+            },
+            {
+              value: "Inquiry",
+              text: "Inquiry"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

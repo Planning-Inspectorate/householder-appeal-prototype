@@ -46,14 +46,10 @@
 {% endblock %}
 
 {% block header %}
-  {% if not alwaysHideCookieBanner %}
-    {% include "includes/cookie-banner.html" %}
-  {% endif %}
   {# Set serviceName in config.js. #}
   {{ govukHeader({
     homepageUrl: "/",
     serviceName: serviceName,
-    serviceUrl: "task-list",
     containerClasses: "govuk-width-container"
   }) }}
 {% endblock %}

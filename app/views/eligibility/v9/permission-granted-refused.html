@@ -1,0 +1,59 @@
+{% extends "layouts/eligibility/v9.html" %}
+
+{% block pageTitle %}
+  Was your planning application granted or refused? - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "eligibility-"+version+"-permissiongrantedrefused",
+          name: "eligibility-"+version+"-permissiongrantedrefused",
+          fieldset: {
+            legend: {
+              text: "Was your planning application granted or refused?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "Granted",
+              text: "Granted"
+            },
+            {
+              value: "Refused",
+              text: "Refused"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "I have not received a decision",
+              text: "I have not received a decision"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

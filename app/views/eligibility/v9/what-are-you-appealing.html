@@ -1,0 +1,79 @@
+{% extends "layouts/eligibility/v9.html" %}
+
+{% block pageTitle %}
+  What type of planning application did you make? - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "eligibility-"+version+"-whatareyouappealing",
+          name: "eligibility-"+version+"-whatareyouappealing",
+          fieldset: {
+            legend: {
+              text: "What type of planning application did you make?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "You can check what you applied for on your original planning application form."
+          },
+          items: [
+            {
+              value: "Full planning",
+              text: "Full planning"
+            },
+            {
+              value: "Householder planning",
+              text: "Householder planning"
+            },
+            {
+              value: "Outline planning",
+              text: "Outline planning"
+            },
+            {
+              value: "Prior approval",
+              text: "Prior approval"
+            },
+            {
+              value: "Reserved matters",
+              text: "Reserved matters"
+            },
+            {
+              value: "Removal or variation of conditions",
+              text: "Removal or variation of conditions"
+            },
+            {
+              value: "Something else",
+              text: "Something else"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "I have not made a planning application",
+              text: "I have not made a planning application"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

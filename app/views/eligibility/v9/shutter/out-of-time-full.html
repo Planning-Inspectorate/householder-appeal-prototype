@@ -1,0 +1,28 @@
+{% extends "layouts/eligibility/v9.html" %}
+
+{% block pageTitle %}
+  You cannot appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        You cannot appeal
+      </h1>
+
+      <p class="govuk-body">
+        Your deadline to appeal has passed.
+      <p>
+
+      <p class="govuk-body">
+        Your deadline was {{ data['eligibility-'+version+'-deadline-day'] }} {{ data['eligibility-'+version+'-deadline-month'] | formatMonth }} {{ data['eligibility-'+version+'-deadline-year'] }}. This is 6 months from the decision date.
+
+      <p>
+
+    </div>
+  </div>
+
+{% endblock %}
