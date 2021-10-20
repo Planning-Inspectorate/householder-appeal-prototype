@@ -115,7 +115,7 @@ module.exports = function (router) {
       if (req.session.data['eligibility-'+v+'-whatareyouappealing'] == "Full planning"){
         res.redirect(base+'appeal-procedure');
       } else if (req.session.data['eligibility-'+v+'-whatareyouappealing'] == "Householder planning") {
-        if (req.session.data['eligibility-'+v+'-permissiongrantedrefused'] == "Granted"){
+        if (req.session.data['eligibility-'+v+'-permissiongrantedrefused'] != "Refused"){
           res.redirect(base+'appeal-procedure');
         } else {
           res.redirect(base+'task-list');
