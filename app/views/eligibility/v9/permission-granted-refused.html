@@ -1,7 +1,7 @@
 {% extends "layouts/eligibility/v9.html" %}
 
 {% block pageTitle %}
-  Was your planning permission granted or refused? - Before you start - {{serviceName}} - GOV.UK
+  Was your planning application granted or refused? - Before you start - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,7 @@
           name: "eligibility-"+version+"-permissiongrantedrefused",
           fieldset: {
             legend: {
-              text: "Was your planning permission granted or refused?",
+              text: "Was your planning application granted or refused?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
@@ -46,17 +46,6 @@
             }
           ]
         }) }}
-
-        <details class="govuk-details" data-module="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-              Help with this quesiton
-            </span>
-          </summary>
-          <div class="govuk-details__text">
-            
-          </div>
-        </details>
 
         {{ govukButton({
           text: "Continue"

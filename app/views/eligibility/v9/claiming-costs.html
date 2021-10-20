@@ -1,7 +1,7 @@
 {% extends "layouts/eligibility/v9.html" %}
 
 {% block pageTitle %}
-  Are you claiming for costs as part of your appeal? - Before you start - {{serviceName}} - GOV.UK
+  Are you claiming costs as part of your appeal?- Before you start - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,7 @@
           name: "eligibility-"+version+"-claimingcosts",
           fieldset: {
             legend: {
-              text: "Are you claiming for costs as part of your appeal?",
+              text: "Are you claiming costs as part of your appeal?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
@@ -36,17 +36,6 @@
             }
           ]
         }) }}
-
-        <details class="govuk-details" data-module="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-              Help with this quesiton
-            </span>
-          </summary>
-          <div class="govuk-details__text">
-            
-          </div>
-        </details>
 
         {{ govukButton({
           text: "Continue"

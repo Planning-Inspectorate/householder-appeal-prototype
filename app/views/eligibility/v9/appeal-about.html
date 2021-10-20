@@ -1,0 +1,71 @@
+{% extends "layouts/eligibility/v9.html" %}
+
+{% block pageTitle %}
+  Is your appeal about any of the following? - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+
+        {{ govukCheckboxes({
+          idPrefix: "eligibility-"+version+"-appealabout",
+          name: "eligibility-"+version+"-appealabout",
+          fieldset: {
+            legend: {
+              text: "Is your appeal about any of the following?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Select all that apply."
+          },
+          items: [
+            {
+              value: "A listed building",
+              text: "A listed building"
+            },
+            {
+              value: "Major dwellings",
+              text: "Major dwellings"
+            },
+            {
+              value: "Major general industry, storage or warehousing",
+              text: "Major general industry, storage or warehousing"
+            },
+            {
+              value: "Major retail and services",
+              text: "Major retail and services"
+            },
+            {
+              value: "Major travelling and caravan pitches",
+              text: "Major travelling and caravan pitches"
+            },
+            {
+              divider: "Or"
+            },
+            {
+              value: "None of these",
+              text: "None of these"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

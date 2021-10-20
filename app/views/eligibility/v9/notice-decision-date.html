@@ -16,8 +16,8 @@
         </span>
 
         {{ govukDateInput({
-          id: "eligibility-"+version+"-decisiondatehouseholder",
-          namePrefix: "eligibility-"+version+"-decisiondatehouseholder",
+          id: "eligibility-"+version+"-decisiondate",
+          namePrefix: "eligibility-"+version+"-decisiondate",
           fieldset: {
             legend: {
               text: "What's the decision date on the letter from the local planning department?​​",
@@ -32,17 +32,17 @@
             {
               name: "day",
               classes: "govuk-input--width-2",
-              value: data["eligibility-"+version+"-decisiondatehouseholder-day"]
+              value: data["eligibility-"+version+"-decisiondate-day"]
             },
             {
               name: "month",
               classes: "govuk-input--width-2",
-              value: data["eligibility-"+version+"-decisiondatehouseholder-month"]
+              value: data["eligibility-"+version+"-decisiondate-month"]
             },
             {
               name: "year",
               classes: "govuk-input--width-4",
-              value: data["eligibility-"+version+"-decisiondatehouseholder-year"]
+              value: data["eligibility-"+version+"-decisiondate-year"]
             }
           ]
         }) }}
@@ -50,17 +50,6 @@
         <!--p class="govuk-form-group govuk-!-padding-bottom-2">
           <a href="householder-planning-permission-out">I have not received a decision from the local planning department​</a>
         </p-->
-
-        <details class="govuk-details" data-module="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-              Help with this quesiton
-            </span>
-          </summary>
-          <div class="govuk-details__text">
-            
-          </div>
-        </details>
 
         {{ govukButton({
           text: "Continue"

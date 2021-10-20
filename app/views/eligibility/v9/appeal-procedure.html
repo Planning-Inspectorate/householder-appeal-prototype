@@ -1,7 +1,7 @@
-{% extends "layouts/eligibility/v9.html" %}
+ {% extends "layouts/eligibility/v9.html" %}
 
 {% block pageTitle %}
-  Have you received an enforcement notice? - Before you start - {{serviceName}} - GOV.UK
+  How would you like us to decide your appeal? - Before you start - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block content %}
@@ -14,25 +14,29 @@
         <span class="govuk-caption-l">
           Before you start
         </span>
-
+        
         {{ govukRadios({
-          idPrefix: "eligibility-"+version+"-enforcementnotice",
-          name: "eligibility-"+version+"-enforcementnotice",
+          idPrefix: "eligibility-"+version+"-appealprocedure",
+          name: "eligibility-"+version+"-appealprocedure",
           fieldset: {
             legend: {
-              text: "Have you received an enforcement notice?",
+              text: "How would you like us to decide your appeal?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           items: [
             {
-              value: "Yes",
-              text: "Yes"
+              value: "Written representations",
+              text: "Written representations"
             },
             {
-              value: "No",
-              text: "No"
+              value: "Hearing",
+              text: "Hearing"
+            },
+            {
+              value: "Inquiry",
+              text: "Inquiry"
             }
           ]
         }) }}
