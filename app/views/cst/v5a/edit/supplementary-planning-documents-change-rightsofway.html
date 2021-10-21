@@ -28,37 +28,18 @@
 
       <form action="" method="post">
 
-        {{ govukFileUpload({
-          id: "cst-"+version+"-supplementary-file",
-          name: "cst-"+version+"-supplementary-file",
-          formGroup: {
-            classes: "govuk-!-margin-bottom-3"
-          },
-          label: {
-            classes: "govuk-label--m govuk-!-margin-top-8",
-            text: "Upload a file",
-            value: "County Council Rights of Way.pdf"
-          }
-        }) }}
+        <h2 class="govuk-heading-m">
+          Uploaded file
+        </h2>
+        <p class="govuk-body">
+          <a class="govuk-link" href="#">County Council Rights of Way.pdf</a>
+        <p>
 
-        {{ govukDetails({
-          summaryText: "Accepted file formats",
-          html: '
-            <ul class="govuk-list govuk-list--bullet">
-              <li>PDF &ndash; <strong>.pdf</strong></li>
-              <li>Microsfot Word &ndash; <strong>.doc</strong> or <strong>.docx</strong></li>
-              <li>TIF &ndash; <strong>.tif</strong> or <strong>.tiff</strong></li>
-              <li>JPEG &ndash; <strong>.jpg</strong> or <strong>.jpeg</strong></li>
-              <li>PNG &ndash; <strong>.png</strong></li>
-            </ul>
-          '
-        }) }}
-            
         {{ govukInput({
           id: "cst-"+version+"-supplementary-name",
           name: "cst-"+version+"-supplementary-name",
           label: {
-            classes: "govuk-label--m govuk-!-margin-top-8",
+            classes: "govuk-label--m govuk-!-margin-top-7",
             text: "Document name"
           },
           value: "County Council Rights of Way"

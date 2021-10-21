@@ -1,0 +1,97 @@
+{% extends "layouts/cst/v5a.html" %}
+
+{% block pageTitle %}
+  Appeal details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "../"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Withdraw representation file
+      </h1>
+
+      <form action="" method="post">
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Document name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <a class="govuk-link" href="#">Representations.pdf</a>
+            </dd>
+          </div>
+        </dl>
+      
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                Are you sure?
+              </h2>
+            </legend>
+            <div class="govuk-checkboxes govuk-checkboxes--small">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="areyousure" name="areyousure" type="checkbox" value="delete">
+                <label class="govuk-label govuk-checkboxes__label" for="areyousure">
+                  Yes, I want to withdraw this representation file
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          {{ govukButton({
+            text: "Withdraw",
+            href: "representations",
+            disabled: true,
+            classes: "govuk-!-margin-right-5"
+          }) }}
+
+          {{ govukButton({
+            href: "representations",
+            text: "Cancel",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+	<script>
+    $( "#areyousure" ).on( "change", function() {
+      var $this = $(".govuk-button");
+      if ($this.hasClass('govuk-button--disabled')) {
+        $this.removeAttr('disabled');
+        $this.removeClass('govuk-button--disabled');
+      } else {
+        $this.attr('disabled', 'disabled');
+        $this.addClass('govuk-button--disabled');
+      }
+    });
+  </script>
+
+{% endblock %}
