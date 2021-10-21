@@ -44,18 +44,21 @@
           items: [
             {
               value: "Granted",
-              text: "Granted"
+              text: "Granted",
+              checked: checked("eligibility-"+version+"-permissiongrantedrefused", "Granted")
             },
             {
               value: "Refused",
-              text: "Refused"
+              text: "Refused",
+              checked: checked("eligibility-"+version+"-permissiongrantedrefused", "Refused")
             },
             {
               divider: "or"
             },
             {
               value: "I have not received a decision",
-              text: "I have not received a decision"
+              text: "I have not received a decision",
+              checked: checked("eligibility-"+version+"-permissiongrantedrefused", "I have not received a decision")
             }
           ]
         }) }}

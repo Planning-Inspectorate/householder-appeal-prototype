@@ -34,7 +34,7 @@
           <select class="govuk-select govuk-input--width-20" id="eligibility-{{version}}-planningdepartment" name="eligibility-{{version}}-planningdepartment">
             <option value=""></option>
             {% for lpa in data['lpas'] %}
-              <option value="{{lpa.key}}" {{ checked('lpa', lpa.key) }}>{{lpa['official-name']}}</option>
+              <option value="{{lpa.key}}"{% if lpa.key == data["eligibility-"+version+"-planningdepartment"] %} selected{% endif %}>{{lpa['official-name']}}</option>
             {% endfor %}
           </select>
         </div>
