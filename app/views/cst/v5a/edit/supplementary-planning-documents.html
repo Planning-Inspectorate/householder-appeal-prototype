@@ -40,39 +40,38 @@
             {% set i = 0 %}
             {% for file in data['cst-'+version+'-files-supplementary'] %}
               {% set i = i + 1 %}
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">
-                    <a class="govuk-link" href="#">{{ file.name }}</a>
-                  </td>
-                  <td class="govuk-table__cell">
-                    {{ file.adopted | capitalize }} -
-                    {% if file.adopted == "yes" %}
-                      Adopted on {{file['adopted_day']}} {{file['adopted_month'] | formatMonth }} {{file['adopted_year']}} 
-                    {% else %}
-                      {{ file.adopted_stage | capitalize }}
-                    {% endif %}
-                  </td>
-                  <td class="govuk-table__cell govuk-table__cell--numeric">
-                    <a class="govuk-link" href="supplementary-planning-documents-change?row={{ i }}">
-                      Change<span class="govuk-visually-hidden"> {{ file.file }}</span>
-                    </a>
-                  </td>
-                </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                  <a class="govuk-link" href="#">{{ file.name }}</a>
+                </td>
+                <td class="govuk-table__cell">
+                  {{ file.adopted | capitalize }} -
+                  {% if file.adopted == "yes" %}
+                    Adopted on {{file['adopted_day']}} {{file['adopted_month'] | formatMonth }} {{file['adopted_year']}} 
+                  {% else %}
+                    {{ file.adopted_stage | capitalize }}
+                  {% endif %}
+                </td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="supplementary-planning-documents-change?row={{ i }}">
+                    Change<span class="govuk-visually-hidden"> {{ file.file }}</span>
+                  </a>
+                </td>
+              </tr>
             {% endfor %}
 
           </tbody>
         </table>
-
-        <div class="govuk-form-group">
+        
+        <div class="govuk-button-group">
           {{ govukButton({
-            classes: "govuk-button--secondary",
             href: "supplementary-planning-documents-add",
             text: "Add a document"
           }) }}
-          <br>
           {{ govukButton({
+            classes: "govuk-button--secondary",
             href: "../",
-            text: "Save changes"
+            text: "Cancel"
           }) }}
         </div>
 

@@ -2,24 +2,6 @@ module.exports = function (router) {
 
   var v = "v5a";
   var base = "/cst/"+v+"/";
-    
-  var months = [
-    'Jan', 'Feb', 'Mar', 'Apr', 'May',
-    'Jun', 'Jul', 'Aug', 'Sep',
-    'Oct', 'Nov', 'Dec'
-    ];
-  var fullmonths = [
-    'January', 'February', 'March', 'April', 'May',
-    'June', 'July', 'August', 'September',
-    'October', 'November', 'December'
-    ];
-
-  function monthNumToName(monthnum) {
-    return months[monthnum - 1] || '';
-  }
-  function monthNumToFullName(monthnum) {
-    return fullmonths[monthnum - 1] || '';
-  }
   
   router.post(base+'edit/appellant', function (req, res) {
     res.redirect(base);
