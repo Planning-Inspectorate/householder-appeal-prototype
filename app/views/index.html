@@ -12,22 +12,22 @@
       <!--span class="govuk-caption-xl">Appeal a householder planning decision</span-->
 
       <h1 class="govuk-heading-xl">
-        PINS Prototypes
+        {{serviceName}} prototypes
       </h1>
 
-      <h2 class="govuk-heading-l">Introduction to Appeal a householder planning decision</h2>
+      <h2 class="govuk-heading-l">Introduction to Appeal a planning decision</h2>
       <p class="govuk-body">
-        The Householder Appeal Service enables a householder to have their home improvement application reconsidered. Applications are made to the Local Planning Authority (LPA), which is usually their local council and, if refused, legislation provides homeowners with a right of appeal.
+        The service will unify the appeal process for Householder and Full planning appeals. Applications are made to the Local Planning Authority (LPA), which is usually their local council and, if refused, legislation provides a right of appeal.
       </p>
       <p class="govuk-body">
-        These prototypes cover different journeys for the 'Appeal a householder planning decision' for users such as the appellant, agents acting on behalf of the appellant, local planning authorities, and inspectors.
+        These prototypes cover different journeys for the '{{serviceName}}' for users such as the appellant, agents acting on behalf of the appellant, local planning authorities, case officers, and inspectors.
       </p>
 
       <h2 class="govuk-heading-l">Private Beta Prototypes</h2>
 
       <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
       
-        <div class="govuk-accordion__section">
+        <!--div class="govuk-accordion__section">
           <div class="govuk-accordion__section-header">
             <h2 class="govuk-accordion__section-heading">
               <span class="govuk-accordion__section-button" id="accordion-default-heading-eligibility">
@@ -39,35 +39,6 @@
 
             <div class="govuk-grid-row">
               <div class="govuk-grid-column-full">
-
-                <div class="govuk-inset-text govuk-!-margin-top-0">
-                  <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-                    Version 9 - Full and HAS appeals eligibility
-                    {{ govukTag({
-                      classes: "govuk-tag--green govuk-!-margin-left-1",
-                      text: "Ready for UR"
-                    }) }}
-                  </h3>
-                  <ul class="govuk-list govuk-list--bullet">
-                    <li>
-                      <a href="/eligibility/v9/planning-department">Start journey from first question</a>
-                    </li>
-                  </ul>
-                  <!--details class="govuk-details" data-module="govuk-details">
-                    <summary class="govuk-details__summary">
-                      <span class="govuk-details__summary-text">
-                        JIRA Tickets (X)
-                      </span>
-                    </summary>
-                    <div class="govuk-details__text">
-                      <ul class="govuk-list govuk-list--bullet">
-                        <li>
-                          <a href="https://pins-ds.atlassian.net/browse/AS-3154" target="_blank">AS-3154</a> - Additional question to HAS Eligibility Checker
-                        </li>
-                      </ul>
-                    </div>
-                  </details-->
-                </div>
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
                   <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
@@ -102,7 +73,7 @@
 
             </div>
           </div>
-        </div>
+        </div-->
 
         <div class="govuk-accordion__section">
           <div class="govuk-accordion__section-header">
@@ -115,15 +86,56 @@
           <div id="accordion-default-content-appellant" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-appellant">
 
             <div class="govuk-grid-row">
-              <div class="govuk-grid-column-full">
+              <div class="govuk-grid-column-two-thirds">
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
+                  {{ govukTag({
+                    classes: "govuk-tag--green govuk-!-margin-bottom-3",
+                    text: "Ready for UR"
+                  }) }}
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    Version 9 - Before you start
+                  </h3>
+                  <p class="govuk-body govuk-body-s">
+                    Previously referred to as the 'Eligibility checker', the 'Before you start' section is part of the appellant submission process to check the service is suitable to deal with their appeal.
+                  <p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                      <a href="/eligibility/v9/planning-department">Start journey from first question</a>
+                    </li>
+                  </ul>
+
+                  <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Jira Tickets (0)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <p class="govuk-body">
+                        Jira tickets need adding/updating to reflect the work
+                      <p>
+                      <!--ul class="govuk-list govuk-list-bulleted">
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-3388">AS-3388 View available appeals</a></li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-3390">AS-3390 View my appeals</a></li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-3389">AS-3389 Select multiple appeals to schedule</a></li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-3391">AS-3391 Provisionally schedule site visits</a></li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-3393">AS-3393 Handling appeals already assigned to another inspector</a></li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-3327">AS-3327 Booking a site visit</a></li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2542">AS-2542 Pull appeal improvements - Add more available time slots for ARSV</a></li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2517">AS-2517 Pull appeal improvements - Ability to change SV type when on the SV screen</a></li>
+                      </ul-->
+                    </div>
+                  </details>
+                </div>
+
+                <div class="govuk-inset-text govuk-!-margin-top-0">
+                  {{ govukTag({
+                    classes: "govuk-tag--blue govuk-!-margin-bottom-3",
+                      text: "Done"
+                  }) }}
                   <h3 class="govuk-heading-m">
                     Standalone appeal submission security journeys
-                    {{ govukTag({
-                      classes: "govuk-tag--blue govuk-!-margin-left-1",
-                      text: "Done"
-                    }) }}
                   </h3>
                   <ul class="govuk-list govuk-list--bullet">
                     <li>
@@ -148,12 +160,12 @@
                 </div>
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
+                  {{ govukTag({
+                    classes: "govuk-tag--blue govuk-!-margin-bottom-3",
+                    text: "Done"
+                  }) }}
                   <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
                     Version 7 - End to end appellant submission journey
-                    {{ govukTag({
-                      classes: "govuk-tag--blue govuk-!-margin-left-1",
-                      text: "Done"
-                    }) }}
                   </h3>
                   <ul class="govuk-list govuk-list--bullet">
                     <li>
@@ -215,12 +227,12 @@
                 </div>
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
+                  {{ govukTag({
+                    classes: "govuk-tag--grey govuk-!-margin-bottom-3",
+                    text: "Archived"
+                  }) }}
                   <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
                     Version 6 - 25 February 2021
-                    {{ govukTag({
-                      classes: "govuk-tag--grey govuk-!-margin-left-1",
-                      text: "Archived"
-                    }) }}
                   </h3>
                   <p class="govuk-body">Git tag: "v6"</p>
                   <ul class="govuk-list govuk-list--bullet">
@@ -366,8 +378,8 @@
                   <h3 class="govuk-heading-m">
                     Version 3 - Track my appeal with security
                     {{ govukTag({
-                      classes: "govuk-tag--red govuk-!-margin-left-1",
-                      text: "WIP"
+                      classes: "govuk-tag--grey govuk-!-margin-left-1",
+                      text: "Archived"
                     }) }}
                   </h3>
                   <ul class="govuk-list govuk-list--bullet">
@@ -465,12 +477,12 @@
               <div class="govuk-grid-column-full">
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
+                  {{ govukTag({
+                    classes: "govuk-tag--blue govuk-!-margin-bottom-3",
+                    text: "Done"
+                  }) }}
                   <h3 class="govuk-heading-m">
                     Version 2
-                    {{ govukTag({
-                      classes: "govuk-tag--green govuk-!-margin-left-1",
-                      text: "Ready for UR"
-                    }) }}
                   </h3>
                   <ul class="govuk-list govuk-list--bullet">
                     <li>
@@ -499,12 +511,12 @@
                 </div>
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
+                  {{ govukTag({
+                    classes: "govuk-tag--grey govuk-!-margin-bottom-3",
+                    text: "Archived"
+                  }) }}
                   <h3 class="govuk-heading-m">
                     Version 1
-                    {{ govukTag({
-                      classes: "govuk-tag--grey govuk-!-margin-left-1",
-                      text: "Archived"
-                    }) }}
                   </h3>
                   <ul class="govuk-list govuk-list--bullet">
                     <li>
@@ -550,12 +562,12 @@
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
 
+                  {{ govukTag({
+                    classes: "govuk-tag--blue govuk-!-margin-bottom-3",
+                    text: "Done"
+                  }) }}
                   <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
                     Version 9 - LPA Questionnaire journey
-                    {{ govukTag({
-                      classes: "govuk-tag--red govuk-!-margin-left-1",
-                      text: "WIP"
-                    }) }}
                   </h3>
                   <ul class="govuk-list govuk-list--bullet">
                     <li>
@@ -592,12 +604,12 @@
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
 
+                  {{ govukTag({
+                    classes: "govuk-tag--grey govuk-!-margin-bottom-3",
+                    text: "Archived"
+                  }) }}
                   <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
                     Version 8 - LPA Questionnaire journey
-                    {{ govukTag({
-                      classes: "govuk-tag--grey govuk-!-margin-left-1",
-                      text: "Archived"
-                    }) }}
                   </h3>
                   <ul class="govuk-list govuk-list--bullet">
                     <li>
@@ -621,12 +633,12 @@
                 </div>
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
+                  {{ govukTag({
+                    classes: "govuk-tag--grey govuk-!-margin-bottom-3",
+                    text: "Archived"
+                  }) }}
                   <h3 class="govuk-heading-m">
                     LPA Questionnaire security journey
-                    {{ govukTag({
-                      classes: "govuk-tag--grey govuk-!-margin-left-1",
-                      text: "Archived"
-                    }) }}
                   </h3>
                   <ul class="govuk-list govuk-list--bullet">
                     <li>
@@ -648,12 +660,12 @@
                 </div>
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
+                  {{ govukTag({
+                    classes: "govuk-tag--grey govuk-!-margin-bottom-3",
+                    text: "Archived"
+                  }) }}
                   <h3 class="govuk-heading-m">
                     Upload supporting documents journey
-                    {{ govukTag({
-                      classes: "govuk-tag--grey govuk-!-margin-left-1",
-                      text: "Archived"
-                    }) }}
                   </h3>
                   <ul class="govuk-list govuk-list--bullet">
                     <li>
@@ -675,12 +687,12 @@
                 </div>
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
+                  {{ govukTag({
+                    classes: "govuk-tag--purple govuk-!-margin-bottom-3",
+                    text: "UR done"
+                  }) }}
                   <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
                     Version 7
-                    {{ govukTag({
-                      classes: "govuk-tag--purple govuk-!-margin-left-1",
-                      text: "UR done"
-                    }) }}
                   </h3>
                   <ul class="govuk-list govuk-list--bullet">
                     <li>
@@ -714,12 +726,12 @@
                 </div>
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
+                  {{ govukTag({
+                    classes: "govuk-tag--grey govuk-!-margin-bottom-3",
+                    text: "Archived"
+                  }) }}
                   <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
                     Version/Archive 6 - 25 February 2021
-                    {{ govukTag({
-                      classes: "govuk-tag--grey govuk-!-margin-left-1",
-                      text: "Archived"
-                    }) }}
                   </h3>
 
                   <ul class="govuk-list govuk-list--bullet">
@@ -746,12 +758,12 @@
                 </div>
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
+                  {{ govukTag({
+                    classes: "govuk-tag--grey govuk-!-margin-bottom-3",
+                    text: "Archived"
+                  }) }}
                   <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
                     Version/Archive 5 - Sprint 4
-                    {{ govukTag({
-                      classes: "govuk-tag--grey govuk-!-margin-left-1",
-                      text: "Archived"
-                    }) }}
                   </h3>
 
                   <ul class="govuk-list govuk-list--bullet">
@@ -777,12 +789,12 @@
                 </div>
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
+                  {{ govukTag({
+                    classes: "govuk-tag--grey govuk-!-margin-bottom-3",
+                    text: "Archived"
+                  }) }}
                   <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
                     Version 1 - Alpha sprint 20
-                    {{ govukTag({
-                      classes: "govuk-tag--grey govuk-!-margin-left-1",
-                      text: "Archived"
-                    }) }}
                   </h3>
                   <p class="govuk-body">
                     First version of questionnaire based on <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/154337658/Revised+LPA+Questionnaire+for+beta+service+feedback">Picasso service questions</a>
