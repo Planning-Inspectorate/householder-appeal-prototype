@@ -239,7 +239,11 @@
             Local planning department
           </dt>
           <dd class="govuk-summary-list__value">
-            City of Bradford Metropolitan District Council
+            {% for lpa in data['lpas'] %}
+              {% if (lpa.key == data["cst-"+version+"-planningdepartment"]) %} 
+                {{lpa['official-name']}}
+              {% endif %}
+            {% endfor %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="edit/lpa">

@@ -30,16 +30,15 @@
           </label>
 
           <p class="govuk-hint">This is the same thing as your 'local planning authority' or 'LPA'.</p>
-          <select class="govuk-select govuk-input--width-20" id="eligibility-{{version}}-planningdepartment" name="eligibility-{{version}}-planningdepartment">
+          <select class="govuk-select govuk-input--width-20" id="cst-{{version}}-planningdepartment" name="cst-{{version}}-planningdepartment">
             <option value="" selected></option>
             {% for lpa in data['lpas'] %}
-              <option value="{{lpa.key}}"{% if lpa.key == "BRD"%} selected{% endif %}>{{lpa['official-name']}}</option>
+              <option value="{{lpa.key}}"{% if lpa.key == data["cst-"+version+"-planningdepartment"] %} selected{% endif %}>{{lpa['official-name']}}</option>
             {% endfor %}
           </select>
         </div>
 
         {{ govukButton({
-          href: "../",
           text: "Save changes"
         }) }}
 
@@ -54,7 +53,7 @@
   <script type="text/javascript" src="assets/javascripts/accessible-autocomplete.min.js"></script>
   <script>
     accessibleAutocomplete.enhanceSelectElement({
-      selectElement: document.querySelector('#eligibility-{{version}}-planningdepartment')
+      selectElement: document.querySelector('#cst-{{version}}-planningdepartment')
     })
   </script>
 {% endblock %}
