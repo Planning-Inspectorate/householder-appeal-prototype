@@ -20,5 +20,8 @@ module.exports = function (router) {
   router.post(base+'edit/decision-date', function (req, res) {
     res.redirect(base);
   })
+  router.post(base+'edit/description-of-development', function (req, res) {
+    res.redirect(base);
+  })
 
 }
