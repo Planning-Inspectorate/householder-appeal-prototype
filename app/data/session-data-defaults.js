@@ -1184,7 +1184,17 @@ let data = {
     "check-answers-text": "Cannot start yet",
 
     lpas,  
-    availableAppeals
+    availableAppeals,
+
+    "cst-v5a-appellantname": "Maria Sharma",
+    "cst-v5a-appellantemail": "maria.sharma@gmail.com",
+    "cst-v5a-agentname": "",
+    "cst-v5a-agentemail": "",
+    "cst-v5a-siteaddress-line-1": "8 The Chase",
+    "cst-v5a-siteaddress-line-2": "",
+    "cst-v5a-siteaddress-town": "Findon",
+    "cst-v5a-siteaddress-county": "",
+    "cst-v5a-siteaddress-postcode": "BN14 0TT"
 
   }
 

@@ -9,7 +9,7 @@
     tag: {
       text: "Beta"
     },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    html: 'This is a new service – your <a class="govuk-link" href="javascript:preventDefault();">feedback</a> will help us to improve it.'
   }) }}
   {{ govukBackLink({
     text: "Back",
@@ -173,7 +173,7 @@
             Appellant
           </dt>
           <dd class="govuk-summary-list__value">
-            Maria Sharma
+            {{ data["cst-"+version+"-appellantname"] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="edit/appellant">
@@ -186,7 +186,37 @@
             Site address
           </dt>
           <dd class="govuk-summary-list__value">
-            8 The Chase, Findon, BN14 0TT
+            {{ data["cst-v5a-siteaddress-line-1"] }}{%
+              if (data["cst-v5a-siteaddress-line-1"] != "")
+              and (
+                (data["cst-v5a-siteaddress-line-2"] != "") or
+                (data["cst-v5a-siteaddress-town"] != "") or
+                (data["cst-v5a-siteaddress-county"] != "") or
+                (data["cst-v5a-siteaddress-postcoe"] != "") 
+              )
+            %},{% endif %}
+            {{ data["cst-v5a-siteaddress-line-2"] }}{%
+              if (data["cst-v5a-siteaddress-line-2"] != "")
+              and (
+                (data["cst-v5a-siteaddress-town"] != "") or
+                (data["cst-v5a-siteaddress-county"] != "") or
+                (data["cst-v5a-siteaddress-postcoe"] != "") 
+              )
+            %},{% endif %}
+            {{ data["cst-v5a-siteaddress-town"] }}{%
+              if (data["cst-v5a-siteaddress-town"] != "")
+              and (
+                (data["cst-v5a-siteaddress-county"] != "") or
+                (data["cst-v5a-siteaddress-postcoe"] != "") 
+              )
+            %},{% endif %}
+            {{ data["cst-v5a-siteaddress-county"] }}{%
+              if (data["cst-v5a-siteaddress-county"] != "")
+              and (
+                (data["cst-v5a-siteaddress-postcoe"] != "") 
+              )
+            %},{% endif %}
+            {{ data["cst-v5a-siteaddress-postcode"] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="edit/site-address">
@@ -284,7 +314,7 @@
               Appellant
             </dt>
             <dd class="govuk-summary-list__value">
-              Maria Sharma
+              {{ data["cst-"+version+"-appellantname"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="edit/appellant">
@@ -299,7 +329,7 @@
             <dd class="govuk-summary-list__value">
               No agent for this appeal
               <!--p class="govuk-body">The Building Consultancy</p>
-              <p class="govuk-body"><a class="govuk-link" href="#">enquiries@buildingconsultancy.co.uk</a></p-->
+              <p class="govuk-body"><a class="govuk-link" href="javascript:preventDefault();">enquiries@buildingconsultancy.co.uk</a></p-->
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="edit/agent">
@@ -313,7 +343,7 @@
             </dt>
             <dd class="govuk-summary-list__value">
               <p class="govuk-body">Alan Shearer</p>
-              <p class="govuk-body"><a class="govuk-link" href="#">alan.shearer@planninginspectorate.gov.uk</a></p>
+              <p class="govuk-body"><a class="govuk-link" href="javascript:preventDefault();">alan.shearer@planninginspectorate.gov.uk</a></p>
             </dd>
             <dd class="govuk-summary-list__actions">
             </dd>
@@ -324,7 +354,7 @@
             </dt>
             <dd class="govuk-summary-list__value">
               <p class="govuk-body">David Ginola</p>
-              <p class="govuk-body"><a class="govuk-link" href="#">david.ginola@planninginspectorate.gov.uk</a></p>
+              <p class="govuk-body"><a class="govuk-link" href="javascript:preventDefault();">david.ginola@planninginspectorate.gov.uk</a></p>
             </dd>
             <dd class="govuk-summary-list__actions">
             </dd>
@@ -335,7 +365,7 @@
             </dt>
             <dd class="govuk-summary-list__value">
               <p class="govuk-body">Paul Gascoigne</p>
-              <p class="govuk-body"><a class="govuk-link" href="#">paul.gascoigne@planninginspectorate.gov.uk</a></p>
+              <p class="govuk-body"><a class="govuk-link" href="javascript:preventDefault();">paul.gascoigne@planninginspectorate.gov.uk</a></p>
             </dd>
             <dd class="govuk-summary-list__actions">
             </dd>
@@ -363,7 +393,7 @@
                         Appellant name
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        Maria Sharma
+                        ' + data["cst-"+version+"-appellantname"] + '
                       </dd>
                       <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="edit/appellant">
@@ -389,7 +419,7 @@
                         Contact email address
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        <a class="govuk-link" href="#">maria.sharma@gmail.com</a>
+                        <a class="govuk-link" href="javascript:preventDefault();">'+data["cst-"+version+"-appellantemail"]+'</a>
                       </dd>
                       <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="edit/appellant">
@@ -436,7 +466,7 @@
                         Appeal statement
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        <a href="#">Appealstatement.doc</a>
+                        <a href="javascript:preventDefault();">Appealstatement.doc</a>
                       </dd>
                       <dd class="govuk-summary-list__actions">
                         <!--a class="govuk-link" href="edit/appeal-statement">
@@ -449,7 +479,7 @@
                         Supporting documents
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        <a href="#">appellant-photos.png</a>
+                        <a href="javascript:preventDefault();">appellant-photos.png</a>
                       </dd>
                       <dd class="govuk-summary-list__actions">
                         <!--a class="govuk-link" href="edit/supporting-documents">
@@ -473,7 +503,7 @@
                         Plans used to reach decision
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        <a href="#">Plans-uploaded-by-lpa.pdf</a>
+                        <a href="javascript:preventDefault();">Plans-uploaded-by-lpa.pdf</a>
                       </dd>
                       <dd class="govuk-summary-list__actions">
                       </dd>
@@ -483,7 +513,7 @@
                         Planning application form	
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        <a href="#">planning-application.pdf</a>
+                        <a href="javascript:preventDefault();">planning-application.pdf</a>
                       </dd>
                       <dd class="govuk-summary-list__actions">
                       </dd>
@@ -493,7 +523,7 @@
                         Planning Officers report	
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        <a href="#">Planning-officers-report.pdf</a>
+                        <a href="javascript:preventDefault();">Planning-officers-report.pdf</a>
                       </dd>
                       <dd class="govuk-summary-list__actions">
                       </dd>
@@ -503,7 +533,7 @@
                         Decision notice	
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        <a href="#">Decisionletter.pdf</a>
+                        <a href="javascript:preventDefault();">Decisionletter.pdf</a>
                       </dd>
                       <dd class="govuk-summary-list__actions">
                       </dd>
@@ -523,7 +553,7 @@
                         Details of planning history	
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        <a href="#">Document1.pdf</a>
+                        <a href="javascript:preventDefault();">Document1.pdf</a>
                       </dd>
                       <dd class="govuk-summary-list__actions">
                       </dd>
@@ -535,13 +565,13 @@
                       <dd class="govuk-summary-list__value">
                         <ul class="govuk-list">
                           <li>
-                            <a href="#">Supportingdocument1.pdf</a>
+                            <a href="javascript:preventDefault();">Supportingdocument1.pdf</a>
                           </li>
                           <li>
-                            <a href="#">Supportingdocument2.pdf</a>
+                            <a href="javascript:preventDefault();">Supportingdocument2.pdf</a>
                           </li>
                           <li>
-                            <a href="#">Supportingdocument3.pdf</a>
+                            <a href="javascript:preventDefault();">Supportingdocument3.pdf</a>
                           </li>
                         </ul>
                       </dd>
@@ -605,7 +635,7 @@
                         Statutory development plan policy	
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        <a href="#">Policy1.pdf</a>
+                        <a href="javascript:preventDefault();">Policy1.pdf</a>
                       </dd>
                       <dd class="govuk-summary-list__actions">
                       </dd>
@@ -615,7 +645,7 @@
                         Other relevant policies
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        <a href="#">Policy2.pdf</a>
+                        <a href="javascript:preventDefault();">Policy2.pdf</a>
                       </dd>
                       <dd class="govuk-summary-list__actions">
                       </dd>
@@ -627,11 +657,11 @@
                       <dd class="govuk-summary-list__value">
                         <ul class="govuk-list">
                           <li>
-                            <a href="#">County Council Rights of Way.pdf</a>
+                            <a href="javascript:preventDefault();">County Council Rights of Way.pdf</a>
                             <p class="govuk-body govuk-!-margin-bottom-3">Adopted on 21 Oct 2007</p>
                           </li>
                           <li>
-                            <a href="#">County Council Highways</a>
+                            <a href="javascript:preventDefault();">County Council Highways</a>
                             <p class="govuk-body govuk-!-margin-bottom-0">Not adopted - Final draft</p>
                           </li>
                         </ul>
@@ -669,7 +699,7 @@
                         Representations
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        <a href="#">Representations.pdf</a>
+                        <a href="javascript:preventDefault();">Representations.pdf</a>
                       </dd>
                       <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="edit/representations">
@@ -695,10 +725,10 @@
                       <dd class="govuk-summary-list__value">
                         <ul class="govuk-list">
                           <li>
-                            <a href="#">Letter1.pdf</a>
+                            <a href="javascript:preventDefault();">Letter1.pdf</a>
                           </li>
                           <li>
-                            <a href="#">Letter2.pdf</a>
+                            <a href="javascript:preventDefault();">Letter2.pdf</a>
                           </li>
                         </ul>
                       </dd>
@@ -710,7 +740,7 @@
                         Application publicity
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        <a href="#">Example.pdf</a>
+                        <a href="javascript:preventDefault();">Example.pdf</a>
                       </dd>
                       <dd class="govuk-summary-list__actions">
                       </dd>
@@ -720,7 +750,7 @@
                         Appeal notification
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        <a href="#">Notificationletter.pdf</a>
+                        <a href="javascript:preventDefault();">Notificationletter.pdf</a>
                       </dd>
                       <dd class="govuk-summary-list__actions">
                       </dd>
