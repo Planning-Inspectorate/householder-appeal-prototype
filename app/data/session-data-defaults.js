@@ -1194,7 +1194,8 @@ let data = {
     "cst-v5a-siteaddress-line-2": "",
     "cst-v5a-siteaddress-town": "Findon",
     "cst-v5a-siteaddress-county": "",
-    "cst-v5a-siteaddress-postcode": "BN14 0TT"
+    "cst-v5a-siteaddress-postcode": "BN14 0TT",
+    "cst-v5a-planningdepartment": "BRD"
 
   }
 
