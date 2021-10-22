@@ -36,28 +36,30 @@
             </tr>
           </thead>
           <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">
-                <a class="govuk-link" href="#">County Council Rights of Way.pdf</a>
-              </td>
-              <td class="govuk-table__cell">Adopted on 21 Oct 2007</td>
-              <td class="govuk-table__cell govuk-table__cell--numeric">
-                <a class="govuk-link" href="supplementary-planning-documents-change-rightsofway">
-                  Change<span class="govuk-visually-hidden"> County Council Rights of Way.pdf</span>
-                </a>
-              </td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">
-                <a class="govuk-link" href="#">County Council Highways.pdf</a>
-              </td>
-              <td class="govuk-table__cell">Not adopted - Final draft</td>
-              <td class="govuk-table__cell govuk-table__cell--numeric">
-                <a class="govuk-link" href="supplementary-planning-documents-change-highways">
-                  Change<span class="govuk-visually-hidden"> County Council Highways.pdf</span>
-                </a>
-              </td>
-            </tr>
+
+            {% set i = 0 %}
+            {% for file in data['cst-'+version+'-files-supplementary'] %}
+              {% set i = i + 1 %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">
+                    <a class="govuk-link" href="#">{{ file.name }}</a>
+                  </td>
+                  <td class="govuk-table__cell">
+                    {{ file.adopted | capitalize }} -
+                    {% if file.adopted == "yes" %}
+                      Adopted on {{file['adopted_day']}} {{file['adopted_month'] | formatMonth }} {{file['adopted_year']}} 
+                    {% else %}
+                      {{ file.adopted_stage | capitalize }}
+                    {% endif %}
+                  </td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">
+                    <a class="govuk-link" href="supplementary-planning-documents-change?row={{ i }}">
+                      Change<span class="govuk-visually-hidden"> {{ file.file }}</span>
+                    </a>
+                  </td>
+                </tr>
+            {% endfor %}
+
           </tbody>
         </table>
 

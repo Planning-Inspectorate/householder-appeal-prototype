@@ -26,13 +26,27 @@
         Change supplementary planning document
       </h1>
 
+<!--
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">
+                {{ data['as2078-files'][data['row']-1]['name'] }}
+              </th>
+              <td class="govuk-table__cell">{{ data['as2078-files'][data['row']-1]['adopted'] | capitalize }} -
+                {% if data['as2078-files'][data['row']-1]['adopted'] == "yes" %}
+                  Adopted on {{ data['as2078-files'][data['row']-1]['adopted_day'] }} {{ data['as2078-files'][data['row']-1]['adopted_month'] }} {{ data['as2078-files'][data['row']-1]['adopted_year'] }} 
+                {% else %}
+                  {{ data['as2078-files'][data['row']-1]['adopted_stage'] | capitalize }}
+                {% endif %}
+              </td>
+            </tr>
+-->
       <form action="" method="post">
 
         <h2 class="govuk-heading-m">
           Uploaded file
         </h2>
         <p class="govuk-body">
-          <a class="govuk-link" href="#">County Council Highways.pdf</a>
+          <a class="govuk-link" href="#">{{ data['cst-'+version+'-files-supplementary'][data['row']-1]['file'] }}</a>
         <p>
             
         {{ govukInput({
@@ -42,8 +56,20 @@
             classes: "govuk-label--m govuk-!-margin-top-7",
             text: "Document name"
           },
-          value: "County Council Highways"
+          value: data['cst-'+version+'-files-supplementary'][data['row']-1]['name']
         }) }}
+
+        {% if data['cst-'+version+'-files-supplementary'][data['row']-1]['adopted'] == "yes" %}
+          {% set adoptedHtml = true %}
+        {% else %}
+          {% set adoptedHtml = false %}
+        {% endif %}
+
+        {% if data['cst-'+version+'-files-supplementary'][data['row']-1]['adopted'] == "no" %}
+          {% set notadoptedHtml = true %}
+        {% else %}
+          {% set notadoptedHtml = false %}
+        {% endif %}
         
         {% set dateHtml %}
           {{ govukDateInput({
@@ -57,15 +83,18 @@
             items: [
               {
                 name: "day",
-                classes: "govuk-input--width-2"
+                classes: "govuk-input--width-2",
+                value: data['cst-'+version+'-files-supplementary'][data['row']-1]['adopted_day']
               },
               {
                 name: "month",
-                classes: "govuk-input--width-2"
+                classes: "govuk-input--width-2",
+                value: data['cst-'+version+'-files-supplementary'][data['row']-1]['adopted_month']
               },
               {
                 name: "year",
-                classes: "govuk-input--width-4"
+                classes: "govuk-input--width-4",
+                value: data['cst-'+version+'-files-supplementary'][data['row']-1]['adopted_year']
               }
             ]
           }) }}
@@ -78,10 +107,10 @@
             },
             id: "cst-"+version+"-supplementary-adopted-stage",
             name: "cst-"+version+"-supplementary-adopted-stage",
-            value: "Final draft"
+                value: data['cst-'+version+'-files-supplementary'][data['row']-1]['adopted_stage']
           }) }}
         {% endset -%}
-        
+
         {{ govukRadios({
           classes: "govuk-radios--inline",
           idPrefix: "cst-"+version+"-supplementary-adopted",
@@ -100,7 +129,8 @@
               text: "Yes",
               conditional: {
                 html: dateHtml
-              }
+              },
+              checked: adoptedHtml
             },
             {
               value: "no",
@@ -108,14 +138,13 @@
               conditional: {
                 html: stageHtml
               },
-              checked: true
+              checked: notadoptedHtml
             }
           ]
         }) }}
         
         <div class="govuk-button-group">
           {{ govukButton({
-            href: "supplementary-planning-documents",
             text: "Save and continue"
           }) }}
 
