@@ -34,7 +34,9 @@
               Document name
             </dt>
             <dd class="govuk-summary-list__value">
-              <a class="govuk-link" href="#">Representations.pdf</a>
+              <a class="govuk-link" href="javascript:preventDefault();">
+                {{ data['cst-'+version+'-files-representations'][data['row']-1]['file']}}
+              </a>
             </dd>
           </div>
         </dl>
@@ -57,14 +59,11 @@
           </fieldset>
         </div>
 
-        <div class="govuk-form-group">
+        <div class="govuk-button-group">
           {{ govukButton({
             text: "Withdraw",
-            href: "representations",
-            disabled: true,
-            classes: "govuk-!-margin-right-5"
+            disabled: true
           }) }}
-
           {{ govukButton({
             href: "representations",
             text: "Cancel",

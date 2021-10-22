@@ -491,6 +491,18 @@
           {% endfor %}
         {% endset -%}
 
+        {% set representationsHtml %}
+          {% set i = 0 %}
+          <ul class="govuk-list">
+            {% for file in data['cst-'+version+'-files-representations'] %}
+              {% set i = i + 1 %}
+              <li>
+                <a href="javascript:preventDefault();">{{ file.file }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endset -%}
+
         {{ govukAccordion({
           id: "cst-"+v+"-casedetails",
           items: [
@@ -738,7 +750,7 @@
                         Representations
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        <a href="javascript:preventDefault();">Representations.pdf</a>
+                        ' + representationsHtml + '
                       </dd>
                       <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="edit/representations">

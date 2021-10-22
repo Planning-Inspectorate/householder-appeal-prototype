@@ -35,7 +35,31 @@
             </tr>
           </thead>
           <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
+
+            {% set i = 0 %}
+            {% for file in data['cst-'+version+'-files-representations'] %}
+              {% set i = i + 1 %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                  <a class="govuk-link" href="#">{{ file.file }}</a>
+                  {% if file.withdrawn == true %}
+                    {{ govukTag({
+                      classes: "govuk-!-margin-left-3 govuk-tag--grey",
+                      text: "withdrawn"
+                    }) }}
+                  {% endif %}
+                </td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  {% if file.withdrawn == false %}
+                  <a class="govuk-link" href="representations-withdraw?row={{i}}">
+                    Withdraw<span class="govuk-visually-hidden"> {{ file.file }}</span>
+                  </a>
+                  {% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+
+            <!--tr class="govuk-table__row">
               <td class="govuk-table__cell">
                 <a class="govuk-link" href="#">	Representations.pdf</a>
               </td>
@@ -44,20 +68,21 @@
                   Withdraw<span class="govuk-visually-hidden"> Representations.pdf</span>
                 </a>
               </td>
-            </tr>
+            </tr-->
+
           </tbody>
         </table>
 
-        <div class="govuk-form-group">
+        <div class="govuk-button-group">
           {{ govukButton({
-            classes: "govuk-button--secondary",
             href: "representations-add",
             text: "Add a document"
           }) }}
           <br>
           {{ govukButton({
+            classes: "govuk-button--secondary",
             href: "../",
-            text: "Save changes"
+            text: "Cancel"
           }) }}
         </div>
 
