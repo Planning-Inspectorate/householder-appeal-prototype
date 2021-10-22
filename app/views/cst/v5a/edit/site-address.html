@@ -32,39 +32,43 @@
         </legend>
 
         <div class="govuk-form-group">
-          <label class="govuk-label" for="cst-"+version+"-siteaddress-line-1">
+          <label class="govuk-label" for="cst-{{version}}-siteaddress-line-1">
             Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
           </label>
-          <input class="govuk-input" id="cst-"+version+"-siteaddress-line-1" name="cst-"+version+"-siteaddress-line-1" type="text" autocomplete="cst-"+version+"-siteaddress-line1" value="8 The Chase"></div>
+          <input class="govuk-input" id="cst-{{version}}-siteaddress-line-1" name="cst-{{version}}-siteaddress-line-1" type="text" autocomplete="cst-{{version}}-siteaddress-line1" value="{{ data['cst-'+version+'-siteaddress-line-1'] }}">
+        </div>
 
         <div class="govuk-form-group">
-          <label class="govuk-label" for="cst-"+version+"-siteaddress-line-2">
+          <label class="govuk-label" for="cst-{{version}}-siteaddress-line-2">
             <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
           </label>
-          <input class="govuk-input" id="cst-"+version+"-siteaddress-line-2" name="cst-"+version+"-siteaddress-line-2" type="text" autocomplete="cst-"+version+"-siteaddress-line2"></div>
+          <input class="govuk-input" id="cst-{{version}}-siteaddress-line-2" name="cst-{{version}}-siteaddress-line-2" type="text" autocomplete="cst-{{version}}-siteaddress-line2" value="{{ data['cst-'+version+'-siteaddress-line-2'] }}">
+        </div>
 
         <div class="govuk-form-group">
-          <label class="govuk-label" for="cst-"+version+"-siteaddress-town">
+          <label class="govuk-label" for="cst-{{version}}-siteaddress-town">
             Town or city
           </label>
-          <input class="govuk-input govuk-!-width-two-thirds" id="cst-"+version+"-siteaddress-town" name="cst-"+version+"-siteaddress-town" type="text" autocomplete="cst-"+version+"-siteaddress-level2" value="Findon"></div>
+          <input class="govuk-input govuk-!-width-two-thirds" id="cst-{{version}}-siteaddress-town" name="cst-{{version}}-siteaddress-town" type="text" autocomplete="cst-{{version}}-siteaddress-level2" value="{{ data['cst-'+version+'-siteaddress-town'] }}">
+        </div>
 
         <div class="govuk-form-group">
-          <label class="govuk-label" for="cst-"+version+"-siteaddress-county">
+          <label class="govuk-label" for="cst-{{version}}-siteaddress-county">
             County
           </label>
-          <input class="govuk-input govuk-!-width-two-thirds" id="cst-"+version+"-siteaddress-county" name="cst-"+version+"-siteaddress-county" type="text"></div>
+          <input class="govuk-input govuk-!-width-two-thirds" id="cst-{{version}}-siteaddress-county" name="cst-{{version}}-siteaddress-county" type="text" value="{{ data['cst-'+version+'-siteaddress-county'] }}">
+        </div>
 
         <div class="govuk-form-group">
-          <label class="govuk-label" for="cst-"+version+"-siteaddress-postcode">
+          <label class="govuk-label" for="cst-{{version}}-siteaddress-postcode">
             Postcode
           </label>
-          <input class="govuk-input govuk-input--width-10" id="cst-"+version+"-siteaddress-postcode" name="cst-"+version+"-siteaddress-postcode" type="text" autocomplete="postal-code" value="BN14 0TT"></div>
+          <input class="govuk-input govuk-input--width-10" id="cst-{{version}}-siteaddress-postcode" name="cst-{{version}}-siteaddress-postcode" type="text" autocomplete="postal-code" value="{{ data['cst-'+version+'-siteaddress-postcode'] }}">
+        </div>
 
       </fieldset>
 
         {{ govukButton({
-          href: "../",
           text: "Save changes"
         }) }}
 
