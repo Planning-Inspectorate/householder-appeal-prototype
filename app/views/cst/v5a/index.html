@@ -265,7 +265,9 @@
               Application decision date
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ 49 | daysAgo }}
+              {{ data["cst-"+version+"-decisiondate-day"] }}
+              {{ data["cst-"+version+"-decisiondate-month"] | formatMonth }}
+              {{ data["cst-"+version+"-decisiondate-year"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="edit/decision-date">
@@ -278,8 +280,7 @@
               Appeal submission date
             </dt>
             <dd class="govuk-summary-list__value">
-              <!--{{ 7 | daysInFuture }}-->
-              {{ 7 | daysAgo }}
+              15 October 2021
             </dd>
             <dd class="govuk-summary-list__actions">
             </dd>
@@ -289,7 +290,7 @@
               Validation date
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ 0 | daysAgo }}
+              22 October 2021
             </dd>
             <dd class="govuk-summary-list__actions">
             </dd>
@@ -299,7 +300,7 @@
               Target date
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ 49 | daysInFuture }}
+              10 December 2021
             </dd>
             <dd class="govuk-summary-list__actions">
             </dd>
@@ -319,6 +320,12 @@
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data["cst-"+version+"-appellantname"] }}
+              {% if
+                (data["cst-"+version+"-agentname"] == "") and
+                (data["cst-"+version+"-agentemail"] == "")
+              %}
+                <br><a class="govuk-link" href="javascript:preventDefault();">{{ data["cst-"+version+"-appellantemail"] }}</a>
+              {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="edit/appellant">
@@ -331,9 +338,15 @@
               Agent
             </dt>
             <dd class="govuk-summary-list__value">
-              No agent for this appeal
-              <!--p class="govuk-body">The Building Consultancy</p>
-              <p class="govuk-body"><a class="govuk-link" href="javascript:preventDefault();">enquiries@buildingconsultancy.co.uk</a></p-->
+              {% if 
+                  (data["cst-"+version+"-agentname"] == "") and
+                  (data["cst-"+version+"-agentemail"] == "")
+              %}
+                No agent for this appeal
+              {% else %}
+                {{ data["cst-"+version+"-agentname"] }}<br>
+                <a class="govuk-link" href="javascript:preventDefault();">{{ data["cst-"+version+"-agentemail"] }}</a>
+              {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="edit/agent">
@@ -382,6 +395,83 @@
 
         <h3 class="govuk-heading-m">Evidence</h3>
 
+        {% set caseDetailsHtml %}
+          <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Appellant name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["cst-"+version+"-appellantname"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="edit/appellant">
+                  Change<span class="govuk-visually-hidden"> appellant name</span>
+                </a>
+              </dd>
+            </div>  
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Agent name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data["cst-"+version+"-agentname"] == "" %}
+                  No agent for this appeal
+                {% else %}
+                  {{ data["cst-"+version+"-agentname"] }}
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="edit/agent">
+                  Change<span class="govuk-visually-hidden"> agent</span>
+                </a>
+              </dd>
+            </div> 
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Contact email address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  {% if data["cst-"+version+"-agentemail"] != "" %}
+                    {{ data["cst-"+version+"-agentemail"] }}
+                  {% else %}
+                    {{ data["cst-"+version+"-appellantemail"] }}
+                  {% endif %}
+                </a>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="edit/appellant">
+                  Change<span class="govuk-visually-hidden"> appellant email</span>
+                </a>
+              </dd>
+            </div>                            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Date appeal received
+              </dt>
+              <dd class="govuk-summary-list__value">
+                12 December 2020
+              </dd>
+              <dd class="govuk-summary-list__actions">
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Description of development
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["cst-"+version+"-descriptionofdevelopment"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="edit/description-of-development">
+                  Change<span class="govuk-visually-hidden"> description of development</span>
+                </a>
+              </dd>
+            </div>
+          </dl>
+        {% endset -%}
+
         {{ govukAccordion({
           id: "cst-"+v+"-casedetails",
           items: [
@@ -390,72 +480,7 @@
                 text: "Case details"
               },
               content: {
-                html: '
-                  <dl class="govuk-summary-list govuk-!-margin-bottom-5">
-                    <div class="govuk-summary-list__row">
-                      <dt class="govuk-summary-list__key">
-                        Appellant name
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                        ' + data["cst-"+version+"-appellantname"] + '
-                      </dd>
-                      <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href="edit/appellant">
-                          Change<span class="govuk-visually-hidden"> appellant name</span>
-                        </a>
-                      </dd>
-                    </div>  
-                    <div class="govuk-summary-list__row">
-                      <dt class="govuk-summary-list__key">
-                        Agent name
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                        No agent for this appeal
-                      </dd>
-                      <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href="edit/agent">
-                          Change<span class="govuk-visually-hidden"> agent</span>
-                        </a>
-                      </dd>
-                    </div> 
-                    <div class="govuk-summary-list__row">
-                      <dt class="govuk-summary-list__key">
-                        Contact email address
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                        <a class="govuk-link" href="javascript:preventDefault();">'+data["cst-"+version+"-appellantemail"]+'</a>
-                      </dd>
-                      <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href="edit/appellant">
-                          Change<span class="govuk-visually-hidden"> appellant email</span>
-                        </a>
-                      </dd>
-                    </div>                            
-                    <div class="govuk-summary-list__row">
-                      <dt class="govuk-summary-list__key">
-                        Date appeal received
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                        12 December 2020
-                      </dd>
-                      <dd class="govuk-summary-list__actions">
-                      </dd>
-                    </div>
-                    <div class="govuk-summary-list__row">
-                      <dt class="govuk-summary-list__key">
-                        Description of development
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                        Single storey extension to rear
-                      </dd>
-                      <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href="edit/description-of-development">
-                          Change<span class="govuk-visually-hidden"> description of development</span>
-                        </a>
-                      </dd>
-                    </div>
-                  </dl>
-                '
+                html: caseDetailsHtml
               }
             },
             {

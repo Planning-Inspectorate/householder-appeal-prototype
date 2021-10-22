@@ -41,23 +41,22 @@
             {
               name: "day",
               classes: "govuk-input--width-2",
-              value: 1
+              value: data["cst-"+version+"-decisiondate-day"]
             },
             {
               name: "month",
               classes: "govuk-input--width-2",
-              value: 9
+              value: data["cst-"+version+"-decisiondate-month"]
             },
             {
               name: "year",
               classes: "govuk-input--width-4",
-              value: 2021
+              value: data["cst-"+version+"-decisiondate-year"]
             }
           ]
         }) }}
 
         {{ govukButton({
-          href: "../",
           text: "Save changes"
         }) }}
 

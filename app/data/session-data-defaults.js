@@ -1195,7 +1195,11 @@ let data = {
     "cst-v5a-siteaddress-town": "Findon",
     "cst-v5a-siteaddress-county": "",
     "cst-v5a-siteaddress-postcode": "BN14 0TT",
-    "cst-v5a-planningdepartment": "BRD"
+    "cst-v5a-planningdepartment": "BRD",
+    "cst-v5a-decisiondate-day": 3,
+    "cst-v5a-decisiondate-month": 9,
+    "cst-v5a-decisiondate-year": 2021,
+    "cst-v5a-descriptionofdevelopment": "Single storey extension to rear"
 
   }
 
