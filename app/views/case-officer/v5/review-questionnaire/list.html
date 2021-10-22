@@ -12,19 +12,6 @@
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
 
-  {{ govukBreadcrumbs({
-    collapseOnMobile: true,
-    items: [
-      {
-        text: "Case officer dashboard",
-        href: "/case-officer/"+version+"/"
-      },
-      {
-        text: "Questionnaires for review"
-      }
-    ]
-  }) }}
-
 {% endblock %}
 
 {% block content %}
