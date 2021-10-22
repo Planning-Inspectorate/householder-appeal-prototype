@@ -472,6 +472,25 @@
           </dl>
         {% endset -%}
 
+        {% set supplementaryHtml %}
+          {% set i = 0 %}
+          {% for file in data['cst-'+version+'-files-supplementary'] %}
+            {% set i = i + 1 %}
+            <ul class="govuk-list">
+              <li>
+                <a href="javascript:preventDefault();">{{ file.name }}</a>
+                <p class="govuk-body govuk-!-margin-bottom-3">{{ file.adopted | capitalize }} -
+                  {% if file.adopted == "yes" %}
+                    Adopted on {{file['adopted_day']}} {{file['adopted_month'] }} {{file['adopted_year']}} 
+                  {% else %}
+                    {{ file.adopted_stage | capitalize }}
+                  {% endif %}
+                </p>
+              </li>
+            </ul>
+          {% endfor %}
+        {% endset -%}
+
         {{ govukAccordion({
           id: "cst-"+v+"-casedetails",
           items: [
@@ -684,16 +703,7 @@
                         Supplementary planning documents
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        <ul class="govuk-list">
-                          <li>
-                            <a href="javascript:preventDefault();">County Council Rights of Way.pdf</a>
-                            <p class="govuk-body govuk-!-margin-bottom-3">Adopted on 21 Oct 2007</p>
-                          </li>
-                          <li>
-                            <a href="javascript:preventDefault();">County Council Highways</a>
-                            <p class="govuk-body govuk-!-margin-bottom-0">Not adopted - Final draft</p>
-                          </li>
-                        </ul>
+                        '+supplementaryHtml+'
                       </dd>
                       <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="edit/supplementary-planning-documents">

@@ -1199,7 +1199,27 @@ let data = {
     "cst-v5a-decisiondate-day": 3,
     "cst-v5a-decisiondate-month": 9,
     "cst-v5a-decisiondate-year": 2021,
-    "cst-v5a-descriptionofdevelopment": "Single storey extension to rear"
+    "cst-v5a-descriptionofdevelopment": "Single storey extension to rear",
+    "cst-v5a-files-supplementary": [
+      {
+        "name": "County Council Rights of Way",
+        "file": "County Council Rights of Way.pdf",
+        "adopted": "yes",
+        "adopted_day": "21",
+        "adopted_month": "10",
+        "adopted_year": "2007",
+        "adopted_stage": ""
+      },
+      {
+        "name": "County Council Highways",
+        "file": "County Council Highways.pdf",
+        "adopted": "no",
+        "adopted_day": "",
+        "adopted_month": "",
+        "adopted_year": "",
+        "adopted_stage": "Final draft"
+      }
+    ]
 
   }
 
