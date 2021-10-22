@@ -1219,6 +1219,16 @@ let data = {
         "adopted_year": "",
         "adopted_stage": "Final draft"
       }
+    ],
+    "cst-v5a-files-representations": [
+      {
+        "file": "JohnSmith.pdf",
+        "withdrawn": false
+      },
+      {
+        "file": "JaneDoe.pdf",
+        "withdrawn": true
+      }
     ]
 
   }
