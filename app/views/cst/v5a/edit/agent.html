@@ -34,7 +34,7 @@
           },
           id: "cst-"+version+"-agentname",
           name: "cst-"+version+"-agentname",
-          value: ""
+          value: data["cst-"+version+"-agentname"]
         }) }}
 
         {{ govukInput({
@@ -46,11 +46,10 @@
           type: "email",
           autocomplete: "email",
           spellcheck: false,
-          value: ""
+          value: data["cst-"+version+"-agentemail"]
         }) }}
 
         {{ govukButton({
-          href: "../",
           text: "Save changes"
         }) }}
 

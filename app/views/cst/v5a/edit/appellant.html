@@ -34,7 +34,7 @@
           },
           id: "cst-"+version+"-appellantname",
           name: "cst-"+version+"-appellantname",
-          value: "Maria Sharma"
+          value: data["cst-"+version+"-appellantname"]
         }) }}
 
         {{ govukInput({
@@ -46,11 +46,10 @@
           type: "email",
           autocomplete: "email",
           spellcheck: false,
-          value: "maria.sharma@gmail.com"
+          value: data["cst-"+version+"-appellantemail"]
         }) }}
 
         {{ govukButton({
-          href: "../",
           text: "Save changes"
         }) }}
 
