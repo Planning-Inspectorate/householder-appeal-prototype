@@ -8,15 +8,22 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        Appeal a planning decision
-      </h1>
-      <!--p>A householder appeal must be received by the Planning Inspectorate within 12 weeks of the decision date.</p>
-      <p>If you do not submit it in time, you will lose your right to appeal.</p-->
+    
+      {% if data["appealsub-"+version+"-route"] == "householder"%}
+        <h1 class="govuk-heading-xl">
+          Appeal a householder planning decision
+        </h1>
+        <p>A householder appeal must be received by the Planning Inspectorate within 12 weeks of the decision date.</p>
+        <p>If you do not submit it in time, you will lose your right to appeal.</p>
+      {% else %}
+        <h1 class="govuk-heading-xl">
+          Appeal a planning decision
+        </h1>
+      {% endif %}
       <!--h2 class="govuk-heading-s govuk-!-margin-bottom-2">{{data['sections-completed-text']}}</h2-->
       <!--p class="govuk-body govuk-!-margin-bottom-7">You have completed {{data['sections-completed']}} of 5 sections.</p-->
 
-      <ol class="app-task-list">
+      <ol class="app-task-list govuk-!-margin-top-7">
         <li>
           <h2 class="app-task-list__section">
             <span class="app-task-list__section-number">1. </span> About you
