@@ -1,0 +1,60 @@
+{% extends "layouts/appellant-submission/v10.html" %}
+
+{% block pageTitle %}
+  Which local planning department dealt with your planning application?
+ - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+        
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--l" for="postcode">
+            Which local planning department dealt with your planning application?
+          </label>
+
+          <p class="govuk-hint">This is the same thing as your 'local planning authority' or 'LPA'.</p>
+          <select class="govuk-select govuk-input--width-20" id="appealsub-{{version}}-beforeyoustart-planningdepartment" name="appealsub-{{version}}-beforeyoustart-planningdepartment">
+            <option value=""></option>
+            {% for lpa in data['lpas'] %}
+              <option value="{{lpa.key}}"{% if lpa.key == data["appealsub-"+version+"-beforeyoustart-planningdepartment"] %} selected{% endif %}>{{lpa['official-name']}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="assets/javascripts/accessible-autocomplete.min.js"></script>
+  <script>
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#appealsub-{{version}}-beforeyoustart-planningdepartment')
+    })
+  </script>
+{% endblock %}

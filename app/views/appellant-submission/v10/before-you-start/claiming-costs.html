@@ -1,0 +1,64 @@
+{% extends "layouts/appellant-submission/v10.html" %}
+
+{% block pageTitle %}
+  Are you claiming costs as part of your appeal?- Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-beforeyoustart-claimingcosts",
+          name: "appealsub-"+version+"-beforeyoustart-claimingcosts",
+          fieldset: {
+            legend: {
+              text: "Are you claiming costs as part of your appeal?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("appealsub-"+version+"-beforeyoustart-claimingcosts", "HeYesaring")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("appealsub-"+version+"-beforeyoustart-claimingcosts", "No")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
