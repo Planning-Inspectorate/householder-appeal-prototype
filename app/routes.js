@@ -1060,6 +1060,7 @@ router.post("/lpa-account/login/email-sent-post", function(req, res, next){
 
 require('./routes/eligibility/v8.js')(router);
 require('./routes/eligibility/v9.js')(router);
+require('./routes/appellant-submission/v10.js')(router);
 
 require('./routes/appeal-submission.js')(router);
 
