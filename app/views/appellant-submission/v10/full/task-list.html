@@ -1,0 +1,74 @@
+{% extends "layouts/appellant-submission/v10.html" %}
+
+{% block pageTitle %}
+  Appeal submission task list - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <h1 class="govuk-heading-xl">
+        Appeal a planning decision
+      </h1>
+      <!--h2 class="govuk-heading-s govuk-!-margin-bottom-2">{{data['sections-completed-text']}}</h2-->
+      <!--p class="govuk-body govuk-!-margin-bottom-7">You have completed {{data['sections-completed']}} of 5 sections.</p-->
+
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed 0 of 5 tasks.</p>
+
+      {{ govukWarningText({
+        text: "You must submit your appeal by 11.59pm on [day] [date] [month] [year]. If you miss this deadline, you lose your right to appeal.",
+        iconFallbackText: "Fallback text"
+      }) }}
+
+      <div class="app-task-list app-task-list--fullappeal">
+        <ul class="app-task-list__items">
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="contact-details/who-are-you">
+                Provide your contact details
+              </a>
+            </span>
+            <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="planning-application-documents/application-upload">
+                Upload documents from your planning application
+              </a>
+            </span>
+            <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="appeal-documents/appeal-statement">
+                Upload documents for your appeal
+              </a>
+            </span>
+            <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-appeal-site/site-address">
+                Tell us about the appeal site
+              </a>
+            </span>
+            <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="check-your-answers">
+                Check answers and submit appeal
+              </a>
+            </span>
+            <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Cannot start yet</strong>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "layouts/appellant-submission/v10.html" %}
+
+{% block pageTitle %}
+  Is your appeal about any of the following? - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          About the original planning application
+        </span>
+        
+        {{ govukInput({
+          id: "appealsub-"+version+"-aboutapplication-applicantname",
+          name: "appealsub-"+version+"-aboutapplication-applicantname",
+          classes: "govuk-!-width-one-half",
+          label: {
+            text: "What is your original planning application number?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "You can find this on the decision letter from your local planning department"
+          },
+          value: data["appealsub-"+version+"-aboutapplication-applicantname"]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
