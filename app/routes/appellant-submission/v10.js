@@ -247,6 +247,16 @@ module.exports = function (router) {
     res.redirect(base+'full/task-list');
   })
 
+  
+/************************
+ *** APPEAL DOCUMENTS ***
+  ************************/
+  
+    router.post(base+'full/appeal-documents/appeal-statement', function (req, res) {
+      req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "In progress";
+      res.redirect(base+'full/appeal-documents/sensitive-information');
+    })
+
 
 
 }

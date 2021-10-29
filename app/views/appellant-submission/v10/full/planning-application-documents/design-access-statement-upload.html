@@ -28,28 +28,13 @@
           About the original planning application
         </span>
 
-        {{ govukRadios({
-          idPrefix: "appealsub-"+version+"-aboutapplication-designaccess",
-          name: "appealsub-"+version+"-aboutapplication-designaccess",
-          fieldset: {
-            legend: {
-              text: "Do you have a design and access statement?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          items: [
-            {
-              value: "Yes",
-              text: "Yes",
-              checked: checked("appealsub-"+version+"-aboutapplication-designaccess", "Yes")
-            },
-            {
-              value: "No",
-              text: "No",
-              checked: checked("appealsub-"+version+"-aboutapplication-designaccess", "No")
-            }
-          ]
+        {{ govukFileUpload({
+          id: "appealsub-"+version+"-aboutapplication-designaccess-file",
+          name: "appealsub-"+version+"-aboutapplication-designaccess-file",
+          label: {
+            classes: "govuk-label--l",
+            text: "Upload design and access statement"
+          }
         }) }}
 
 
