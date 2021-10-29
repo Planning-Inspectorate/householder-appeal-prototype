@@ -1,7 +1,7 @@
 {% extends "layouts/appellant-submission/v10.html" %}
 
 {% block pageTitle %}
-  Appeal submission task list - {{serviceName}} - GOV.UK
+  Task list - Appeal a planning decision - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block content %}
@@ -15,13 +15,31 @@
       <!--h2 class="govuk-heading-s govuk-!-margin-bottom-2">{{data['sections-completed-text']}}</h2-->
       <!--p class="govuk-body govuk-!-margin-bottom-7">You have completed {{data['sections-completed']}} of 5 sections.</p-->
 
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
-      <p class="govuk-body govuk-!-margin-bottom-7">You have completed 0 of 5 tasks.</p>
+      <!-- Count completed tasks -->
+      {% set taskcount = 0 %}
+      {% if data["appealsub-"+version+"-taskliststatus-contactdetails"] == "Complete" %}
+        {% set taskcount = taskcount + 1 %}
+      {% endif %}
+      {% if data["appealsub-"+version+"-taskliststatus-planningapplicationdocuments"] == "Complete" %}
+        {% set taskcount = taskcount + 1 %}
+      {% endif %}
+      {% if data["appealsub-"+version+"-taskliststatus-appealdocuments"] == "Complete" %}
+        {% set taskcount = taskcount + 1 %}
+      {% endif %}
+      {% if data["appealsub-"+version+"-taskliststatus-aboutappealsite"] == "Complete" %}
+        {% set taskcount = taskcount + 1 %}
+      {% endif %}
 
-      {{ govukWarningText({
-        text: "You must submit your appeal by 11.59pm on [day] [date] [month] [year]. If you miss this deadline, you lose your right to appeal.",
-        iconFallbackText: "Fallback text"
-      }) }}
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{taskcount}} of 5 tasks.</p>
+      
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">Warning</span>
+          You must submit your appeal by 11.59pm on {{ data["appealsub-"+version+"-beforeyoustart-deadline-day"] }} {{ data["appealsub-"+version+"-beforeyoustart-deadline-month"] | formatMonth }} {{ data["appealsub-"+version+"-beforeyoustart-deadline-year"] }}. If you miss this deadline, you lose your right to appeal.
+        </strong>
+      </div>
 
       <div class="app-task-list app-task-list--fullappeal">
         <ul class="app-task-list__items">
@@ -31,7 +49,13 @@
                 Provide your contact details
               </a>
             </span>
-            <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+            {% if data["appealsub-"+version+"-taskliststatus-contactdetails"] == "Complete" %}
+              <strong class="app-task-list__tag govuk-tag">Complete</strong>
+            {% elseif data["appealsub-"+version+"-taskliststatus-contactdetails"] == "In progress" %}
+              <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+            {% else %}
+              <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+            {% endif %}
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
@@ -39,7 +63,13 @@
                 Upload documents from your planning application
               </a>
             </span>
-            <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+            {% if data["appealsub-"+version+"-taskliststatus-planningapplicationdocuments"] == "Complete" %}
+              <strong class="app-task-list__tag govuk-tag">Complete</strong>
+            {% elseif data["appealsub-"+version+"-taskliststatus-planningapplicationdocuments"] == "In progress" %}
+              <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+            {% else %}
+              <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+            {% endif %}
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">

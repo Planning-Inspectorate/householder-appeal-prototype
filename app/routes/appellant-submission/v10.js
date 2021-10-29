@@ -4,6 +4,31 @@ module.exports = function (router) {
   var base = "/appellant-submission/"+v+"/";
 
 
+/******************
+ *** SKIP LINKS ***
+ ******************/
+
+  router.get(base+'skip/full-task-list', function (req, res) {
+    req.session.data["appealsub-"+v+"-beforeyoustart-planningdepartment"] = "BRD";
+    req.session.data["appealsub-"+v+"-beforeyoustart-whatareyouappealing"] = "Full planning";
+    req.session.data["appealsub-"+v+"-beforeyoustart-appealabout"] = [
+      "None of these"
+    ],
+    req.session.data["appealsub-"+v+"-beforeyoustart-enforcementnotice"] = "No";
+    req.session.data["appealsub-"+v+"-beforeyoustart-permissiongrantedrefused"] = "Refused";
+    req.session.data["appealsub-"+v+"-beforeyoustart-decisiondate-day"] = "10";
+    req.session.data["appealsub-"+v+"-beforeyoustart-decisiondate-month"] = "10";
+    req.session.data["appealsub-"+v+"-beforeyoustart-decisiondate-year"] = "2021";
+    req.session.data["appealsub-"+v+"-beforeyoustart-deadline-day"] = 10,
+    req.session.data["appealsub-"+v+"-beforeyoustart-deadline-month"] = 4,
+    req.session.data["appealsub-"+v+"-beforeyoustart-deadline-year"] = 2022,
+    req.session.data["appealsub-"+v+"-beforeyoustart-claimingcosts"] = "No";
+    req.session.data["appealsub-"+v+"-beforeyoustart-appealprocedure"] = "Written representations";
+    req.session.data["appealsub-"+v+"-route"] = "full";
+    res.redirect(base+'full/task-list');
+  })
+
+
 /************************
  *** BEFORE YOU START ***
  ************************/
@@ -124,7 +149,7 @@ module.exports = function (router) {
           res.redirect(base+'before-you-start/appeal-procedure');
         } else {
           req.session.data['appealsub-'+v+'-route'] = "householder"
-          res.redirect(base+'task-list');
+          res.redirect(base+'householder/task-list');
         }
       }
     } else {
@@ -169,7 +194,7 @@ module.exports = function (router) {
   router.post(base+'before-you-start/appeal-procedure', function (req, res) {
     if (req.session.data["appealsub-"+v+"-beforeyoustart-appealprocedure"] == "Written representations"){
       req.session.data['appealsub-'+v+'-route'] = "full"
-      res.redirect(base+'task-list');
+      res.redirect(base+'full/task-list');
     } else {
       res.redirect(base+'before-you-start/shutter/appeal-procedure');
     }
@@ -179,6 +204,48 @@ module.exports = function (router) {
 /*****************
  *** ABOUT YOU ***
  *****************/
+
+  router.post(base+'full/contact-details/who-are-you', function (req, res) {
+    req.session.data["appealsub-"+v+"-taskliststatus-contactdetails"] = "In progress";
+    res.redirect(base+'full/contact-details/your-details');
+  })
+
+  router.post(base+'full/contact-details/your-details', function (req, res) {
+    if (req.session.data["appealsub-"+v+"-aboutyou-applicationinyourname"] == "No"){
+      res.redirect(base+'full/contact-details/applicant-name');
+    } else {
+      req.session.data["appealsub-"+v+"-taskliststatus-contactdetails"] = "Complete";
+      res.redirect(base+'full/task-list');
+    }
+  })
+
+  router.post(base+'full/contact-details/applicant-name', function (req, res) {
+    req.session.data["appealsub-"+v+"-taskliststatus-contactdetails"] = "Complete";
+    res.redirect(base+'full/task-list');
+  })
+
+  
+/**************************************
+ *** PLANNING APPLICATION DOCUMENTS ***
+ **************************************/
+
+  router.post(base+'full/planning-application-documents/application-upload', function (req, res) {
+    req.session.data["appealsub-"+v+"-taskliststatus-planningapplicationdocuments"] = "In progress";
+    res.redirect(base+'full/planning-application-documents/application-number');
+  })
+
+  router.post(base+'full/planning-application-documents/application-number', function (req, res) {
+    res.redirect(base+'full/planning-application-documents/design-access-statement');
+  })
+
+  router.post(base+'full/planning-application-documents/design-access-statement', function (req, res) {
+    res.redirect(base+'full/planning-application-documents/decision-letter');
+  })
+
+  router.post(base+'full/planning-application-documents/decision-letter', function (req, res) {
+    req.session.data["appealsub-"+v+"-taskliststatus-planningapplicationdocuments"] = "Complete";
+    res.redirect(base+'full/task-list');
+  })
 
 
 
