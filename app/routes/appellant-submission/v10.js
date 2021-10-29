@@ -239,6 +239,14 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/planning-application-documents/design-access-statement', function (req, res) {
+    if (req.session.data["appealsub-"+v+"-aboutapplication-designaccess"] == "Yes"){
+      res.redirect(base+'full/planning-application-documents/design-access-statement-upload');
+    } else {
+      res.redirect(base+'full/planning-application-documents/decision-letter');
+    }
+  })
+
+  router.post(base+'full/planning-application-documents/design-access-statement-upload', function (req, res) {
     res.redirect(base+'full/planning-application-documents/decision-letter');
   })
 
@@ -250,12 +258,56 @@ module.exports = function (router) {
   
 /************************
  *** APPEAL DOCUMENTS ***
-  ************************/
+ ************************/
   
     router.post(base+'full/appeal-documents/appeal-statement', function (req, res) {
       req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "In progress";
       res.redirect(base+'full/appeal-documents/sensitive-information');
     })
+  
+    router.post(base+'full/appeal-documents/sensitive-information', function (req, res) {
+      res.redirect(base+'full/appeal-documents/supporting-documents');
+    })
+  
+    router.post(base+'full/appeal-documents/supporting-documents', function (req, res) {
+      req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "Complete";
+      res.redirect(base+'full/task-list');
+    })
+
+
+/*******************
+ *** APPEAL SITE ***
+ *******************/
+  
+  router.post(base+'full/appeal-site/site-address', function (req, res) {
+    req.session.data["appealsub-"+v+"-taskliststatus-appealsite"] = "In progress";
+    res.redirect(base+'full/appeal-site/owns-site');
+  })
+
+  router.post(base+'full/appeal-site/owns-site', function (req, res) {
+    if (req.session.data["appealsub-"+v+"-appealsite-siterelationship"] == "Appellant owns the whole site"){
+      res.redirect(base+'full/appeal-site/site-visible');
+    } else {
+      if (req.session.data["appealsub-"+v+"-appealsite-otherowners"] == "No, the appellant does not know any of the other owners"){
+        res.redirect(base+'full/appeal-site/site-visible');
+      } else {
+        res.redirect(base+'full/appeal-site/other-owners');
+      }
+    }
+  })
+
+  router.post(base+'full/appeal-site/other-owners', function (req, res) {
+    res.redirect(base+'full/appeal-site/site-visible');
+  })
+
+  router.post(base+'full/appeal-site/site-visible', function (req, res) {
+    res.redirect(base+'full/appeal-site/health-safety');
+  })
+
+  router.post(base+'full/appeal-site/health-safety', function (req, res) {
+    req.session.data["appealsub-"+v+"-taskliststatus-appealsite"] = "Complete";
+    res.redirect(base+'full/task-list');
+  })
 
 
 

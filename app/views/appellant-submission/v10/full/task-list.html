@@ -77,15 +77,27 @@
                 Upload documents for your appeal
               </a>
             </span>
-            <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+            {% if data["appealsub-"+version+"-taskliststatus-appealdocuments"] == "Complete" %}
+              <strong class="app-task-list__tag govuk-tag">Complete</strong>
+            {% elseif data["appealsub-"+version+"-taskliststatus-appealdocuments"] == "In progress" %}
+              <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+            {% else %}
+              <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+            {% endif %}
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="about-appeal-site/site-address">
+              <a href="appeal-site/site-address">
                 Tell us about the appeal site
               </a>
             </span>
-            <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+            {% if data["appealsub-"+version+"-taskliststatus-appealsite"] == "Complete" %}
+              <strong class="app-task-list__tag govuk-tag">Complete</strong>
+            {% elseif data["appealsub-"+version+"-taskliststatus-appealsite"] == "In progress" %}
+              <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+            {% else %}
+              <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+            {% endif %}
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">

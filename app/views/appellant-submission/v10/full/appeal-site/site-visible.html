@@ -25,34 +25,43 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          About you
+          Tell us about the appeal site
         </span>
+        
+        {% set infoHtml %}
+          {{ govukTextarea({
+            id: "appealsub-"+version+"-appealsite-visible-info",
+            name: "appealsub-"+version+"-appealsite-visible-info",
+            label: {
+              text: "How is visibility restricted?"
+            },
+            value: data["appealsub-"+version+"-appealsite-visible-info"]
+          }) }}
+        {% endset -%}
 
         {{ govukRadios({
-          idPrefix: "appealsub-"+version+"-aboutyou-applicationinyourname",
-          name: "appealsub-"+version+"-aboutyou-applicationinyourname",
+          idPrefix: "appealsub-"+version+"-appealsite-visible",
+          name: "appealsub-"+version+"-appealsite-visible",
           fieldset: {
             legend: {
-              text: "Was the original planning application made in your name?",
+              text: "Is the site visible from a public road?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
-          hint: {
-            html: "<p class='govuk-body'>Your appeal must be in the same name as the original planning application.</p>
-            <p class='govuk-body'>If you are an agent you must have the applicant's permission to submit an appeal on their behalf, in the same name as the original planning application.</p>
-            <p class='govuk-body'>If an appeal is in a different name to the original planning application we will not be able to accept it.</p>"
-          },
           items: [
             {
               value: "Yes",
-              text: "Yes, the original application was made in my name",
-              checked: checked("appealsub-"+version+"-aboutyou-applicationinyourname", "Yes")
+              text: "Yes",
+              checked: checked("appealsub-"+version+"-appealsite-visible", "Yes")
             },
             {
               value: "No",
-              text: "No, I'm an agent acting on behalf of the applicant",
-              checked: checked("appealsub-"+version+"-aboutyou-applicationinyourname", "No")
+              text: "No",
+              checked: checked("appealsub-"+version+"-appealsite-visible", "No"),
+              conditional: {
+                html: infoHtml
+              }
             }
           ]
         }) }}
