@@ -25,19 +25,18 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          About you
+          About the original planning application
         </span>
-        
-        {{ govukInput({
-          id: "appealsub-"+version+"-aboutyou-applicantname",
-          name: "appealsub-"+version+"-aboutyou-applicantname",
+
+        {{ govukFileUpload({
+          id: "appealsub-"+version+"-aboutapplication-designaccess-file",
+          name: "appealsub-"+version+"-aboutapplication-designaccess-file",
           label: {
-            text: "Who are you appealing on behalf of?",
             classes: "govuk-label--l",
-            isPageHeading: true
-          },
-          value: data["appealsub-"+version+"-aboutyou-applicantname"]
+            text: "Upload design and access statement"
+          }
         }) }}
+
 
         {{ govukButton({
           text: "Save and continue"

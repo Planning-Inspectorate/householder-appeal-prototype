@@ -12,8 +12,8 @@
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
   {{ govukBackLink({
-    text: "Back",
-    href: "javascript:history.go(-1);"
+    text: "Back to task list",
+    href: "/appellant-submission/"+version+"/full/task-list"
   }) }}
 {% endblock %}
 
@@ -29,8 +29,8 @@
         </span>
         
         {{ govukInput({
-          id: "appealsub-"+version+"-aboutapplication-applicantname",
-          name: "appealsub-"+version+"-aboutapplication-applicantname",
+          id: "appealsub-"+version+"-aboutapplication-applicationnumber",
+          name: "appealsub-"+version+"-aboutapplication-applicationnumber",
           classes: "govuk-!-width-one-half",
           label: {
             text: "What is your original planning application number?",
@@ -40,7 +40,7 @@
           hint: {
             text: "You can find this on the decision letter from your local planning department"
           },
-          value: data["appealsub-"+version+"-aboutapplication-applicantname"]
+          value: data["appealsub-"+version+"-aboutapplication-applicationnumber"]
         }) }}
 
         {{ govukButton({

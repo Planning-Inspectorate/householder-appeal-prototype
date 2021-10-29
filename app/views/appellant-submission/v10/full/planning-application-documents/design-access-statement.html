@@ -25,19 +25,33 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          About you
+          About the original planning application
         </span>
-        
-        {{ govukInput({
-          id: "appealsub-"+version+"-aboutyou-applicantname",
-          name: "appealsub-"+version+"-aboutyou-applicantname",
-          label: {
-            text: "Who are you appealing on behalf of?",
-            classes: "govuk-label--l",
-            isPageHeading: true
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-aboutapplication-designaccess",
+          name: "appealsub-"+version+"-aboutapplication-designaccess",
+          fieldset: {
+            legend: {
+              text: "Do you have a design and access statement?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
           },
-          value: data["appealsub-"+version+"-aboutyou-applicantname"]
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("appealsub-"+version+"-aboutapplication-designaccess", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("appealsub-"+version+"-aboutapplication-designaccess", "No")
+            }
+          ]
         }) }}
+
 
         {{ govukButton({
           text: "Save and continue"
