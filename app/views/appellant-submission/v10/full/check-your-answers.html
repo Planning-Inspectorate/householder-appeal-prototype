@@ -155,19 +155,6 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Sensitive information declaration
-            </dt>
-            <dd class="govuk-summary-list__value">
-              
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> sensitive information declaration</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
               Supporting documents for your appeal
             </dt>
             <dd class="govuk-summary-list__value">
@@ -215,38 +202,42 @@
               </a>
             </dd>
           </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Names and addresses of the other site owners
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% for siteowner in data["appealsub-"+version+"-appealsite-otherownerslist"] %}
-                <p class="govuk-body">
-                  {{ siteowner.name }}{% if siteowner.line1 %},<br>{% endif %}{{ siteowner.line1 }}{% if siteowner.line2 %},<br>{% endif %}{{ siteowner.line2 }}{% if siteowner.town %},<br>{% endif %}{{ siteowner.town }}{% if siteowner.county %},<br>{% endif %}{{ siteowner.county }}{% if siteowner.postcode %},<br>{% endif %}{{ siteowner.postcode }}
-                </p>
-              {% endfor %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> names and addresses of the other site owners</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What date was notice served?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data["appealsub-"+version+"-appealsite-noticeserved-day"] }}
-              {{ data["appealsub-"+version+"-appealsite-noticeserved-month"] | formatMonth }}
-              {{ data["appealsub-"+version+"-appealsite-noticeserved-year"] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> what date was notice served?</span>
-              </a>
-            </dd>
-          </div>
+          {% if data["appealsub-"+version+"-appealsite-otherownerslist"] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Names and addresses of the other site owners
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% for siteowner in data["appealsub-"+version+"-appealsite-otherownerslist"] %}
+                  <p class="govuk-body">
+                    {{ siteowner.name }}{% if siteowner.line1 %},<br>{% endif %}{{ siteowner.line1 }}{% if siteowner.line2 %},<br>{% endif %}{{ siteowner.line2 }}{% if siteowner.town %},<br>{% endif %}{{ siteowner.town }}{% if siteowner.county %},<br>{% endif %}{{ siteowner.county }}{% if siteowner.postcode %},<br>{% endif %}{{ siteowner.postcode }}
+                  </p>
+                {% endfor %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> names and addresses of the other site owners</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+          {% if data["appealsub-"+version+"-appealsite-noticeserved-day"] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What date was notice served?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["appealsub-"+version+"-appealsite-noticeserved-day"] }}
+                {{ data["appealsub-"+version+"-appealsite-noticeserved-month"] | formatMonth }}
+                {{ data["appealsub-"+version+"-appealsite-noticeserved-year"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> what date was notice served?</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
           {% if data["appealsub-"+version+"-appealsite-advertofnotice"] %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
