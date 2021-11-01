@@ -50,6 +50,58 @@ module.exports = function (router) {
    res.redirect(base+'full/task-list');
  })
 
+  router.get(base+'skip/full-check-answers', function (req, res) {
+    req.session.data["appealsub-"+v+"-beforeyoustart-planningdepartment"] = "BRD";
+    req.session.data["appealsub-"+v+"-beforeyoustart-whatareyouappealing"] = "Full planning";
+    req.session.data["appealsub-"+v+"-beforeyoustart-appealabout"] = [
+      "None of these"
+    ],
+    req.session.data["appealsub-"+v+"-beforeyoustart-enforcementnotice"] = "No";
+    req.session.data["appealsub-"+v+"-beforeyoustart-permissiongrantedrefused"] = "Refused";
+    req.session.data["appealsub-"+v+"-beforeyoustart-decisiondate-day"] = "10";
+    req.session.data["appealsub-"+v+"-beforeyoustart-decisiondate-month"] = "10";
+    req.session.data["appealsub-"+v+"-beforeyoustart-decisiondate-year"] = "2021";
+    req.session.data["appealsub-"+v+"-beforeyoustart-deadline-day"] = 10,
+    req.session.data["appealsub-"+v+"-beforeyoustart-deadline-month"] = 4,
+    req.session.data["appealsub-"+v+"-beforeyoustart-deadline-year"] = 2022,
+    req.session.data["appealsub-"+v+"-beforeyoustart-claimingcosts"] = "No";
+    req.session.data["appealsub-"+v+"-beforeyoustart-appealprocedure"] = "Written representations";
+    req.session.data["appealsub-"+v+"-route"] = "full";
+
+    
+    req.session.data["appealsub-v10-aboutyou-applicationinyourname"] = "No"
+    req.session.data["appealsub-v10-taskliststatus-contactdetails"] = "Complete"
+
+    req.session.data["appealsub-v10-aboutyou-applicantname"] = "John Smith"
+    req.session.data["appealsub-v10-aboutyou-yourname"] = "David Jones"
+    req.session.data["appealsub-v10-aboutyou-company"] = "DJ Planning Ltd"
+    req.session.data["appealsub-v10-aboutyou-youremail"] = "djones@djplanning.co.uk"
+    req.session.data["appealsub-v10-aboutyou-telephone"] = "01234567890"
+
+    req.session.data["appealsub-v10-aboutapplication-applicationform"] = "planning_application_form.pdf"
+    req.session.data["appealsub-v10-taskliststatus-planningapplicationdocuments"] = "Complete"
+    req.session.data["appealsub-v10-aboutapplication-applicationnumber"] = "987654321"
+    req.session.data["appealsub-v10-aboutapplication-designaccess"] = "Yes"
+    req.session.data["appealsub-v10-aboutapplication-designaccess-file"] = "design_access_statement.pdf"
+    req.session.data["appealsub-v10-aboutapplication-decisionletter"] = "decision_letter.pdf"
+    req.session.data["appealsub-v10-appealdocuments-appealstatement"] = "appeal_statement.pdf"
+    req.session.data["appealsub-v10-taskliststatus-appealdocuments"] = "Complete"
+    req.session.data["appealsub-v10-appealdocuments-supportinglist"] = [
+     "supporting_document_one.pdf",
+     "supporting_document_three.pdf",
+     "supporting_document_two.pdf"
+   ]
+    req.session.data["appealsub-v10-appealsite-address-line-1"] = "123 Main Road"
+    req.session.data["appealsub-v10-appealsite-address-town"] = "London"
+    req.session.data["appealsub-v10-appealsite-address-postcode"] = "N1 1NN"
+    req.session.data["appealsub-v10-taskliststatus-appealsite"] = "Complete"
+    req.session.data["appealsub-v10-appealsite-siterelationship"] = "Appellant owns the whole site"
+    req.session.data["appealsub-v10-appealsite-visible"] = "Yes"
+    req.session.data["appealsub-v10-appealsite-healthsafety"] = "No"
+
+   res.redirect(base+'full/task-list');
+ })
+
 
 /************************
  *** BEFORE YOU START ***
