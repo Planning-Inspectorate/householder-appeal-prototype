@@ -30,16 +30,16 @@
         {% set taskcount = taskcount + 1 %}
       {% endif %}
 
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Appeal incomplete</h2>
       <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{taskcount}} of 5 tasks.</p>
       
-      <div class="govuk-warning-text">
+      <!--div class="govuk-warning-text">
         <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
         <strong class="govuk-warning-text__text">
           <span class="govuk-warning-text__assistive">Warning</span>
           You must submit your appeal by 11.59pm on {{ data["appealsub-"+version+"-beforeyoustart-deadline-day"] }} {{ data["appealsub-"+version+"-beforeyoustart-deadline-month"] | formatMonth }} {{ data["appealsub-"+version+"-beforeyoustart-deadline-year"] }}. If you miss this deadline, you lose your right to appeal.
         </strong>
-      </div>
+      </div-->
 
       <div class="app-task-list app-task-list--fullappeal">
         <ul class="app-task-list__items">
@@ -102,7 +102,7 @@
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="check-your-answers">
-                Check answers and submit appeal
+                Check your answers and submit appeal
               </a>
             </span>
             <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Cannot start yet</strong>

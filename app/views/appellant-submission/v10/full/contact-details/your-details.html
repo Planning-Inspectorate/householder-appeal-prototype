@@ -25,20 +25,31 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          About you
+          Provide your contact details
         </span>
         <h1 class="govuk-heading-l">
-          Your details
+          Contact details 
         </h1>
-        <p class="govuk-body">
+        <!--p class="govuk-body">
           We ask for your name and email address so we can contact you about your appeal.
-        <p>
+        <p-->
+
+        {% if data["appealsub-"+version+"-aboutyou-applicationinyourname"] == "Yes" %}
+          {% set hintHtml %}
+            <p class="govuk-body">
+              Enter your name as it's written on your planning application form.
+            <p>
+          {% endset -%}
+        {% endif %}        
         
         {{ govukInput({
           id: "appealsub-"+version+"-aboutyou-yourname",
           name: "appealsub-"+version+"-aboutyou-yourname",
           label: {
             text: "Your name"
+          },
+          hint: {
+            html: hintHtml
           },
           value: data["appealsub-"+version+"-aboutyou-yourname"]
         }) }}
@@ -53,6 +64,27 @@
             text: "Your email"
           },
           value: data["appealsub-"+version+"-aboutyou-youremail"]
+        }) }}
+        
+        {{ govukInput({
+          id: "appealsub-"+version+"-aboutyou-company",
+          name: "appealsub-"+version+"-aboutyou-company",
+          label: {
+            text: "Company name (optional)"
+          },
+          value: data["appealsub-"+version+"-aboutyou-company"]
+        }) }}
+        
+        {{ govukInput({
+          label: {
+            text: "Telephone number"
+          },
+          id: "appealsub-"+version+"-aboutyou-telephone",
+          name: "appealsub-"+version+"-aboutyou-telephone",
+          type: "tel",
+          autocomplete: "tel",
+          classes: "govuk-input--width-20",
+          value: data["appealsub-"+version+"-aboutyou-telephone"]
         }) }}
         
 
