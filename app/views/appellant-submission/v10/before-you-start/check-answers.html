@@ -67,7 +67,13 @@
               What you're appealing
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data["appealsub-"+version+"-beforeyoustart-permissiongrantedrefused"] }}
+              {% if (data["appealsub-"+version+"-beforeyoustart-permissiongrantedrefused"] == "Refused") %}
+                Reasons for refusal
+              {% elseif (data["appealsub-"+version+"-beforeyoustart-permissiongrantedrefused"] == "Granted") %}
+                Conditions for a granted application
+              {% else %}
+                Non-determination
+              {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="permission-granted-refused">
@@ -78,7 +84,7 @@
           {% if (data["appealsub-"+version+"-beforeyoustart-permissiongrantedrefused"] == "I have not received a decision") %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Decision date due
+              Date decision due
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data["appealsub-"+version+"-beforeyoustart-decisiondatedue-day"] }}
@@ -88,7 +94,7 @@
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="decision-date-due">
-                Change<span class="govuk-visually-hidden"> date of decision</span>
+                Change<span class="govuk-visually-hidden"> date decision due</span>
               </a>
             </dd>
           </div>
