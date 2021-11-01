@@ -25,16 +25,19 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          About you
+          Provide your contact details
         </span>
         
         {{ govukInput({
           id: "appealsub-"+version+"-aboutyou-applicantname",
           name: "appealsub-"+version+"-aboutyou-applicantname",
           label: {
-            text: "Who are you appealing on behalf of?",
+            text: "What is the applicant's name?",
             classes: "govuk-label--l",
             isPageHeading: true
+          },
+          hint: {
+            text: "Enter their name as it's written on the planning application form."
           },
           value: data["appealsub-"+version+"-aboutyou-applicantname"]
         }) }}

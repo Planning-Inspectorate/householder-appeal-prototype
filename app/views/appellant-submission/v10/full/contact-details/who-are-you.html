@@ -25,7 +25,7 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          About you
+          Provide your contact details
         </span>
 
         {{ govukRadios({
@@ -33,25 +33,23 @@
           name: "appealsub-"+version+"-aboutyou-applicationinyourname",
           fieldset: {
             legend: {
-              text: "Was the original planning application made in your name?",
+              text: "Was the planning application made in your name?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            html: "<p class='govuk-body'>Your appeal must be in the same name as the original planning application.</p>
-            <p class='govuk-body'>If you are an agent you must have the applicant's permission to submit an appeal on their behalf, in the same name as the original planning application.</p>
-            <p class='govuk-body'>If an appeal is in a different name to the original planning application we will not be able to accept it.</p>"
+            text: "If you are not the applicant, you must have their permission to submit an appeal on their behalf."
           },
           items: [
             {
               value: "Yes",
-              text: "Yes, the original application was made in my name",
+              text: "Yes, the planning application was made in my name",
               checked: checked("appealsub-"+version+"-aboutyou-applicationinyourname", "Yes")
             },
             {
               value: "No",
-              text: "No, I'm an agent acting on behalf of the applicant",
+              text: "No, I'm acting on behalf of the applicant",
               checked: checked("appealsub-"+version+"-aboutyou-applicationinyourname", "No")
             }
           ]

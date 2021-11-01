@@ -8,25 +8,45 @@ module.exports = function (router) {
  *** SKIP LINKS ***
  ******************/
 
-  router.get(base+'skip/full-task-list', function (req, res) {
-    req.session.data["appealsub-"+v+"-beforeyoustart-planningdepartment"] = "BRD";
-    req.session.data["appealsub-"+v+"-beforeyoustart-whatareyouappealing"] = "Full planning";
-    req.session.data["appealsub-"+v+"-beforeyoustart-appealabout"] = [
-      "None of these"
-    ],
-    req.session.data["appealsub-"+v+"-beforeyoustart-enforcementnotice"] = "No";
-    req.session.data["appealsub-"+v+"-beforeyoustart-permissiongrantedrefused"] = "Refused";
-    req.session.data["appealsub-"+v+"-beforeyoustart-decisiondate-day"] = "10";
-    req.session.data["appealsub-"+v+"-beforeyoustart-decisiondate-month"] = "10";
-    req.session.data["appealsub-"+v+"-beforeyoustart-decisiondate-year"] = "2021";
-    req.session.data["appealsub-"+v+"-beforeyoustart-deadline-day"] = 10,
-    req.session.data["appealsub-"+v+"-beforeyoustart-deadline-month"] = 4,
-    req.session.data["appealsub-"+v+"-beforeyoustart-deadline-year"] = 2022,
-    req.session.data["appealsub-"+v+"-beforeyoustart-claimingcosts"] = "No";
-    req.session.data["appealsub-"+v+"-beforeyoustart-appealprocedure"] = "Written representations";
-    req.session.data["appealsub-"+v+"-route"] = "full";
-    res.redirect(base+'full/task-list');
-  })
+  router.get(base+'skip/full-bys-cya', function (req, res) {
+   req.session.data["appealsub-"+v+"-beforeyoustart-planningdepartment"] = "BRD";
+   req.session.data["appealsub-"+v+"-beforeyoustart-whatareyouappealing"] = "Full planning";
+   req.session.data["appealsub-"+v+"-beforeyoustart-appealabout"] = [
+     "None of these"
+   ],
+   req.session.data["appealsub-"+v+"-beforeyoustart-enforcementnotice"] = "No";
+   req.session.data["appealsub-"+v+"-beforeyoustart-permissiongrantedrefused"] = "Refused";
+   req.session.data["appealsub-"+v+"-beforeyoustart-decisiondate-day"] = "10";
+   req.session.data["appealsub-"+v+"-beforeyoustart-decisiondate-month"] = "10";
+   req.session.data["appealsub-"+v+"-beforeyoustart-decisiondate-year"] = "2021";
+   req.session.data["appealsub-"+v+"-beforeyoustart-deadline-day"] = 10,
+   req.session.data["appealsub-"+v+"-beforeyoustart-deadline-month"] = 4,
+   req.session.data["appealsub-"+v+"-beforeyoustart-deadline-year"] = 2022,
+   req.session.data["appealsub-"+v+"-beforeyoustart-claimingcosts"] = "No";
+   req.session.data["appealsub-"+v+"-beforeyoustart-appealprocedure"] = "Written representations";
+   req.session.data["appealsub-"+v+"-route"] = "full";
+   res.redirect(base+'before-you-start/check-answers');
+ })
+
+ router.get(base+'skip/full-task-list', function (req, res) {
+   req.session.data["appealsub-"+v+"-beforeyoustart-planningdepartment"] = "BRD";
+   req.session.data["appealsub-"+v+"-beforeyoustart-whatareyouappealing"] = "Full planning";
+   req.session.data["appealsub-"+v+"-beforeyoustart-appealabout"] = [
+     "None of these"
+   ],
+   req.session.data["appealsub-"+v+"-beforeyoustart-enforcementnotice"] = "No";
+   req.session.data["appealsub-"+v+"-beforeyoustart-permissiongrantedrefused"] = "Refused";
+   req.session.data["appealsub-"+v+"-beforeyoustart-decisiondate-day"] = "10";
+   req.session.data["appealsub-"+v+"-beforeyoustart-decisiondate-month"] = "10";
+   req.session.data["appealsub-"+v+"-beforeyoustart-decisiondate-year"] = "2021";
+   req.session.data["appealsub-"+v+"-beforeyoustart-deadline-day"] = 10,
+   req.session.data["appealsub-"+v+"-beforeyoustart-deadline-month"] = 4,
+   req.session.data["appealsub-"+v+"-beforeyoustart-deadline-year"] = 2022,
+   req.session.data["appealsub-"+v+"-beforeyoustart-claimingcosts"] = "No";
+   req.session.data["appealsub-"+v+"-beforeyoustart-appealprocedure"] = "Written representations";
+   req.session.data["appealsub-"+v+"-route"] = "full";
+   res.redirect(base+'full/task-list');
+ })
 
 
 /************************
@@ -149,7 +169,7 @@ module.exports = function (router) {
           res.redirect(base+'before-you-start/appeal-procedure');
         } else {
           req.session.data['appealsub-'+v+'-route'] = "householder"
-          res.redirect(base+'householder/task-list');
+          res.redirect(base+'before-you-start/check-answers');
         }
       }
     } else {
@@ -194,32 +214,39 @@ module.exports = function (router) {
   router.post(base+'before-you-start/appeal-procedure', function (req, res) {
     if (req.session.data["appealsub-"+v+"-beforeyoustart-appealprocedure"] == "Written representations"){
       req.session.data['appealsub-'+v+'-route'] = "full"
-      res.redirect(base+'full/task-list');
+      res.redirect(base+'before-you-start/check-answers');
     } else {
       res.redirect(base+'before-you-start/shutter/appeal-procedure');
     }
   })
+  
+  router.post(base+'before-you-start/check-answers', function (req, res) {
+    if (req.session.data['appealsub-'+v+'-route'] == "full"){
+      res.redirect(base+'full/task-list');
+    } else {
+      res.redirect(base+'householder/task-list');
+    }
+})
 
   
-/*****************
- *** ABOUT YOU ***
- *****************/
+/************************************
+ *** Provide your contact details ***
+ ************************************/
 
   router.post(base+'full/contact-details/who-are-you', function (req, res) {
     req.session.data["appealsub-"+v+"-taskliststatus-contactdetails"] = "In progress";
-    res.redirect(base+'full/contact-details/your-details');
-  })
-
-  router.post(base+'full/contact-details/your-details', function (req, res) {
     if (req.session.data["appealsub-"+v+"-aboutyou-applicationinyourname"] == "No"){
       res.redirect(base+'full/contact-details/applicant-name');
     } else {
-      req.session.data["appealsub-"+v+"-taskliststatus-contactdetails"] = "Complete";
-      res.redirect(base+'full/task-list');
+      res.redirect(base+'full/contact-details/your-details');
     }
   })
 
   router.post(base+'full/contact-details/applicant-name', function (req, res) {
+    res.redirect(base+'full/contact-details/your-details');
+  })
+
+  router.post(base+'full/contact-details/your-details', function (req, res) {
     req.session.data["appealsub-"+v+"-taskliststatus-contactdetails"] = "Complete";
     res.redirect(base+'full/task-list');
   })
@@ -266,10 +293,34 @@ module.exports = function (router) {
     })
   
     router.post(base+'full/appeal-documents/sensitive-information', function (req, res) {
-      res.redirect(base+'full/appeal-documents/supporting-documents');
+      if (req.session.data["appealsub-"+v+"-appealdocuments-supportinglist"]){
+        res.redirect(base+'full/appeal-documents/supporting-documents-list');
+      } else {
+        res.redirect(base+'full/appeal-documents/supporting-documents');
+      }
     })
   
     router.post(base+'full/appeal-documents/supporting-documents', function (req, res) {
+      
+      var newSupportingDocs = req.session.data["appealsub-"+v+"-appealdocuments-supporting"];
+      req.session.data["appealsub-"+v+"-appealdocuments-supporting"] = null;
+
+      if (!req.session.data['appealsub-'+v+'-appealdocuments-supportinglist']) {
+        req.session.data['appealsub-'+v+'-appealdocuments-supportinglist'] = []
+      }
+
+      if (Array.isArray(newSupportingDocs)){
+        newSupportingDocs.forEach( item => {
+          req.session.data['appealsub-'+v+'-appealdocuments-supportinglist'].push(item);
+        });
+      } else {
+        req.session.data['appealsub-'+v+'-appealdocuments-supportinglist'].push(newSupportingDocs);
+      }
+
+      res.redirect(base+'full/appeal-documents/supporting-documents-list');
+    })
+  
+    router.post(base+'full/appeal-documents/supporting-documents-list', function (req, res) {
       req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "Complete";
       res.redirect(base+'full/task-list');
     })
@@ -297,6 +348,55 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/appeal-site/other-owners', function (req, res) {
+    
+    var newOwner = {
+      'name': req.session.data['appealsub-'+v+'-appealsite-otherowner-name'],
+      'line1': req.session.data['appealsub-'+v+'-appealsite-otherowner-address-line-1'],
+      'line2': req.session.data['appealsub-'+v+'-appealsite-otherowner-address-line-2'],
+      'town': req.session.data['appealsub-'+v+'-appealsite-otherowner-address-town'],
+      'county': req.session.data['appealsub-'+v+'-appealsite-otherowner-address-county'],
+      'postcode': req.session.data['appealsub-'+v+'-appealsite-otherowner-address-postcode']
+    }
+
+    // delete form data so revisiting the upload page doesn't show stored info from last upload
+    req.session.data['appealsub-'+v+'-appealsite-otherowner-name'] = null
+    req.session.data['appealsub-'+v+'-appealsite-otherowner-address-line-1'] = null
+    req.session.data['appealsub-'+v+'-appealsite-otherowner-address-line-2'] = null
+    req.session.data['appealsub-'+v+'-appealsite-otherowner-address-town'] = null
+    req.session.data['appealsub-'+v+'-appealsite-otherowner-address-county'] = null
+    req.session.data['appealsub-'+v+'-appealsite-otherowner-address-postcode'] = null
+
+    // if array doesn't exist, create it
+    if (!req.session.data['appealsub-'+v+'-appealsite-otherownerslist']) {
+      req.session.data['appealsub-'+v+'-appealsite-otherownerslist'] = []
+    }
+
+    // Add uploaded file info to array
+    req.session.data['appealsub-'+v+'-appealsite-otherownerslist'].push(newOwner)
+
+    res.redirect(base+'full/appeal-site/other-owners-list');
+  })
+
+  /**
+   * 
+  router.post(base+'delete', function (req, res) {
+
+    // remove item from array
+    req.session.data['as2078-files'].splice(req.session.data['deleterow'],1);
+
+    // if all files removed, mark task list as not started
+    if (req.session.data['as2078-files'].length === 0) {
+      req.session.data['supplementary-completed'] = "govuk-tag govuk-tag--grey app-task-list__tag"
+      req.session.data['supplementary-completed-text'] = "Not started"
+    }
+    
+    // redirect the user to the relevant page
+    res.redirect(base+'supplementary-redirect');
+    
+  })
+   */
+
+  router.post(base+'full/appeal-site/other-owners-list', function (req, res) {
     res.redirect(base+'full/appeal-site/site-visible');
   })
 

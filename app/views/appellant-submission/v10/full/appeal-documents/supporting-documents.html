@@ -30,16 +30,16 @@
         <h1 class="govuk-heading-l">
           Supporting documents for your appeal
         </h1>
-
-        {{ govukFileUpload({
-          id: "appealsub-"+version+"-appealdocuments-supporting",
-          name: "appealsub-"+version+"-appealdocuments-supporting",
-          label: {
-            classes: "govuk-label--m",
-            text: "Upload a file"
-          }
-        }) }}
-
+        
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-appealdocuments-supporting">
+            Upload files
+          </label>
+          <p class="govuk-body">
+            Drag and drop files or click "Choose files"
+          <p>
+          <input class="govuk-file-upload pins-file-upload-multiple" id="appealsub-{{version}}-appealdocuments-supporting" name="appealsub-{{version}}-appealdocuments-supporting" type="file" multiple>
+        </div>
 
         {{ govukButton({
           text: "Save and continue"
