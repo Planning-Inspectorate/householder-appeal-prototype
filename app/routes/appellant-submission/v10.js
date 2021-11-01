@@ -291,7 +291,11 @@ module.exports = function (router) {
   
     router.post(base+'full/appeal-documents/appeal-statement', function (req, res) {
       req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "In progress";
-      res.redirect(base+'full/appeal-documents/sensitive-information');
+      if (req.session.data["appealsub-"+v+"-appealdocuments-supportinglist"]){
+        res.redirect(base+'full/appeal-documents/supporting-documents-list');
+      } else {
+        res.redirect(base+'full/appeal-documents/supporting-documents');
+      }
     })
   
     router.post(base+'full/appeal-documents/sensitive-information', function (req, res) {
