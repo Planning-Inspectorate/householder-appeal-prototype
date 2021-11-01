@@ -26,7 +26,7 @@
       {% if data["appealsub-"+version+"-taskliststatus-appealdocuments"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
-      {% if data["appealsub-"+version+"-taskliststatus-aboutappealsite"] == "Complete" %}
+      {% if data["appealsub-"+version+"-taskliststatus-appealsite"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
 
@@ -100,12 +100,19 @@
             {% endif %}
           </li>
           <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="check-your-answers">
+            {% if taskcount == 4 %}
+              <span class="app-task-list__task-name">
+                <a href="check-your-answers">
+                  Check your answers and submit appeal
+                </a>
+              </span>
+              <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+            {% else %}
+              <span class="app-task-list__task-name">
                 Check your answers and submit appeal
-              </a>
-            </span>
-            <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Cannot start yet</strong>
+              </span>
+              <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Cannot start yet</strong>
+            {% endif %}
           </li>
         </ul>
       </div>
