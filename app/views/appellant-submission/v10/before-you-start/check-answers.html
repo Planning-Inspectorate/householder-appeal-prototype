@@ -44,7 +44,7 @@
               {% endfor %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
+              <a class="govuk-link" href="planning-department">
                 Change<span class="govuk-visually-hidden"> local planning department</span>
               </a>
             </dd>
@@ -57,7 +57,7 @@
               {{ data["appealsub-"+version+"-beforeyoustart-whatareyouappealing"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
+              <a class="govuk-link" href="what-are-you-appealing">
                 Change<span class="govuk-visually-hidden"> type of application</span>
               </a>
             </dd>
@@ -70,11 +70,29 @@
               {{ data["appealsub-"+version+"-beforeyoustart-permissiongrantedrefused"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
+              <a class="govuk-link" href="permission-granted-refused">
                 Change<span class="govuk-visually-hidden"> what you're appealing</span>
               </a>
             </dd>
           </div>
+          {% if (data["appealsub-"+version+"-beforeyoustart-permissiongrantedrefused"] == "I have not received a decision") %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Decision date due
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["appealsub-"+version+"-beforeyoustart-decisiondatedue-day"] }}
+              {{ data["appealsub-"+version+"-beforeyoustart-decisiondatedue-month"] | formatMonth }}
+              {{ data["appealsub-"+version+"-beforeyoustart-decisiondatedue-year"] }}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="decision-date-due">
+                Change<span class="govuk-visually-hidden"> date of decision</span>
+              </a>
+            </dd>
+          </div>
+          {% else %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Date of decision
@@ -83,14 +101,14 @@
               {{ data["appealsub-"+version+"-beforeyoustart-decisiondate-day"] }}
               {{ data["appealsub-"+version+"-beforeyoustart-decisiondate-month"] | formatMonth }}
               {{ data["appealsub-"+version+"-beforeyoustart-decisiondate-year"] }}
-
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
+              <a class="govuk-link" href="notice-decision-date">
                 Change<span class="govuk-visually-hidden"> date of decision</span>
               </a>
             </dd>
           </div>
+          {% endif %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Appeal to be decided by
@@ -99,7 +117,7 @@
               {{ data["appealsub-"+version+"-beforeyoustart-appealprocedure"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
+              <a class="govuk-link" href="appeal-procedure">
                 Change<span class="govuk-visually-hidden"> appeal to be decided by</span>
               </a>
             </dd>
