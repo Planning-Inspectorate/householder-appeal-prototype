@@ -1,0 +1,74 @@
+{% extends "layouts/appellant-submission/v10.html" %}
+
+{% block pageTitle %}
+  Is your appeal about any of the following? - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to task list",
+    href: "/appellant-submission/"+version+"/full/task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+        <h1 class="govuk-heading-l">
+          Upload a copy of advertisement of notice of appeal
+        </h1>
+        {{ govukInsetText({
+          text: "File size should be no more than 15MB"
+        }) }}
+
+        {{ govukFileUpload({
+          id: "appealsub-"+version+"-appealsite-advertofnotice",
+          name: "appealsub-"+version+"-appealsite-advertofnotice",
+          label: {
+            classes: "govuk-label--m",
+            text: "Upload a file"
+          }
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with file formats",
+          html: '
+            <p class="govuk-body">
+              Upload your statement in one of the following formats:
+            <p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>PDF</li>
+              <li>DOC</li>
+              <li>DOCX</li>
+              <li>TIF</li>
+              <li>TIFF</li>
+              <li>JPG</li>
+              <li>JPEG</li>
+              <li>PNG</li>
+            </ul>
+          '
+        }) }}     
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
