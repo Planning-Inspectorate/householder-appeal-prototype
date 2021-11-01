@@ -1,3 +1,5 @@
+const { visible } = require("ansi-colors");
+
 module.exports = function (router) {
 
   var v = "v10";
@@ -338,12 +340,18 @@ module.exports = function (router) {
   router.post(base+'full/appeal-site/owns-site', function (req, res) {
     if (req.session.data["appealsub-"+v+"-appealsite-siterelationship"] == "Appellant owns the whole site"){
       res.redirect(base+'full/appeal-site/site-visible');
+    } else if (req.session.data["appealsub-"+v+"-appealsite-siterelationship"] == "Appellant owns none of the site"){
+      res.redirect(base+'full/appeal-site/owns-site-none');
     } else {
-      if (req.session.data["appealsub-"+v+"-appealsite-otherowners"] == "No, the appellant does not know any of the other owners"){
-        res.redirect(base+'full/appeal-site/site-visible');
-      } else {
-        res.redirect(base+'full/appeal-site/other-owners');
-      }
+      res.redirect(base+'full/appeal-site/other-owners');
+    }
+  })
+
+  router.post(base+'full/appeal-site/owns-site-none', function (req, res) {
+    if (req.session.data["appealsub-"+v+"-appealsite-knowotherowners"] == "Yes, they know some of the other owners"){
+      res.redirect(base+'full/appeal-site/other-owners');
+    } else {
+      res.redirect(base+'full/appeal-site/advert-notice');
     }
   })
 
@@ -397,6 +405,18 @@ module.exports = function (router) {
    */
 
   router.post(base+'full/appeal-site/other-owners-list', function (req, res) {
+    res.redirect(base+'full/appeal-site/notice-served');
+  })
+
+  router.post(base+'full/appeal-site/notice-served', function (req, res) {
+    if (req.session.data["appealsub-"+v+"-appealsite-knowotherowners"] == "Yes, they know some of the other owners"){
+      res.redirect(base+'full/appeal-site/site-visible');
+    } else {
+      res.redirect(base+'full/appeal-site/advert-notice');
+    }
+  })
+
+  router.post(base+'full/appeal-site/advert-notice', function (req, res) {
     res.redirect(base+'full/appeal-site/site-visible');
   })
 
