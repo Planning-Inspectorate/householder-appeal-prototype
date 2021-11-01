@@ -385,25 +385,6 @@ module.exports = function (router) {
     res.redirect(base+'full/appeal-site/other-owners-list');
   })
 
-  /**
-   * 
-  router.post(base+'delete', function (req, res) {
-
-    // remove item from array
-    req.session.data['as2078-files'].splice(req.session.data['deleterow'],1);
-
-    // if all files removed, mark task list as not started
-    if (req.session.data['as2078-files'].length === 0) {
-      req.session.data['supplementary-completed'] = "govuk-tag govuk-tag--grey app-task-list__tag"
-      req.session.data['supplementary-completed-text'] = "Not started"
-    }
-    
-    // redirect the user to the relevant page
-    res.redirect(base+'supplementary-redirect');
-    
-  })
-   */
-
   router.post(base+'full/appeal-site/other-owners-list', function (req, res) {
     res.redirect(base+'full/appeal-site/notice-served');
   })
