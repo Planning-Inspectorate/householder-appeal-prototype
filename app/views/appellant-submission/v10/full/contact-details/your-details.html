@@ -55,6 +55,15 @@
         }) }}
         
         {{ govukInput({
+          id: "appealsub-"+version+"-aboutyou-company",
+          name: "appealsub-"+version+"-aboutyou-company",
+          label: {
+            text: "Company name (optional)"
+          },
+          value: data["appealsub-"+version+"-aboutyou-company"]
+        }) }}
+        
+        {{ govukInput({
           id: "appealsub-"+version+"-aboutyou-youremail",
           name: "appealsub-"+version+"-aboutyou-youremail",
           type: "email",
@@ -64,15 +73,6 @@
             text: "Your email"
           },
           value: data["appealsub-"+version+"-aboutyou-youremail"]
-        }) }}
-        
-        {{ govukInput({
-          id: "appealsub-"+version+"-aboutyou-company",
-          name: "appealsub-"+version+"-aboutyou-company",
-          label: {
-            text: "Company name (optional)"
-          },
-          value: data["appealsub-"+version+"-aboutyou-company"]
         }) }}
         
         {{ govukInput({

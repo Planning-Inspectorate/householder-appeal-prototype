@@ -1,0 +1,56 @@
+{% extends "layouts/appellant-submission/v10.html" %}
+
+{% block pageTitle %}
+  Confirmation - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleText: "Appeal submitted"
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <p class="govuk-body">
+        Your appeal has been submitted to the Planning Inspectorate.
+      </p>
+      <p class="govuk-body">
+        We’ll send you a confirmation email.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        What happens next?
+      </h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Your local planning department will submit their case file from the original planning application.</li>
+        <li>An Inspector may need to make a site visit.</li>
+        <li>The Inspector will then consider all the evidence to make their decision.</li>
+      </ul>
+
+      <p class="govuk-body">
+        You can expect a decision on your appeal within 8 weeks.
+      </p>
+      <p class="govuk-body">
+        If you need to contact us include the reference number from your original planning application.
+      </p>
+      <p class="govuk-body">
+        <a href="javawscript:preventDefault();">What did you think of this service?</a> (takes 2 minutes)
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}
