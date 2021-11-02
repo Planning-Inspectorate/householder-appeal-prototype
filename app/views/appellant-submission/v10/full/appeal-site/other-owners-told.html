@@ -1,7 +1,7 @@
 {% extends "layouts/appellant-submission/v10.html" %}
 
 {% block pageTitle %}
-  Is your appeal about any of the following? - Before you start - {{serviceName}} - GOV.UK
+   - Before you start - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -25,36 +25,42 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          Provide your contact details
+          Tell us about the appeal site
         </span>
 
+        {% if (data["appealsub-"+version+"-appealsite-siterelationship"] == "I own part of the appeal site") %}
+          {% set headingHtml %}
+            Have you told all the other owners about your appeal?
+          {% endset -%}
+        {% else %}
+          {% set headingHtml %}
+            Have you told all the owners you know about your appeal?
+          {% endset -%}
+        {% endif %}
+
         {{ govukRadios({
-          idPrefix: "appealsub-"+version+"-aboutyou-applicationinyourname",
-          name: "appealsub-"+version+"-aboutyou-applicationinyourname",
+          idPrefix: "appealsub-"+version+"-appealsite-otherownerstold",
+          name: "appealsub-"+version+"-appealsite-otherownerstold",
           fieldset: {
             legend: {
-              text: "Was the planning application made in your name?",
+              text: headingHtml,
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
-          hint: {
-            text: "If you are not the applicant, you must have their permission to submit an appeal on their behalf."
-          },
           items: [
             {
-              value: "Yes, the planning application was made in my name",
-              text: "Yes, the planning application was made in my name",
-              checked: checked("appealsub-"+version+"-aboutyou-applicationinyourname", "Yes, the planning application was made in my name")
+              value: "Yes",
+              text: "Yes",
+              checked: checked("appealsub-"+version+"-appealsite-otherownerstold", "Yes")
             },
             {
-              value: "No, I'm acting on behalf of the applicant",
-              text: "No, I'm acting on behalf of the applicant",
-              checked: checked("appealsub-"+version+"-aboutyou-applicationinyourname", "No, I'm acting on behalf of the applicant")
+              value: "No",
+              text: "No",
+              checked: checked("appealsub-"+version+"-appealsite-otherownerstold", "No")
             }
           ]
         }) }}
-
 
         {{ govukButton({
           text: "Save and continue"

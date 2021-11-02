@@ -28,14 +28,18 @@
           Tell us about the appeal site
         </span>
         <h1 class="govuk-heading-l">
-          Names and addresses of the other site owners
+          {% if data["appealsub-"+version+"-appealsite-siterelationship"] == "I do not own any of the appeal site" %}
+            Site owner details
+          {% else %}
+            Other site owner details
+          {% endif %} 
         </h1>
 
         <table class="govuk-table">
           <thead class="govuk-table__head">
             <tr class="govuk-table__row">
-              <th scope="col" class="govuk-table__header">Owner's name</th>
-              <th scope="col" class="govuk-table__header">Owner's address</th>
+              <th scope="col" class="govuk-table__header">Name</th>
+              <th scope="col" class="govuk-table__header">Address</th>
               <th scope="col" class="govuk-table__header"></th>
             </tr>
           </thead>
@@ -43,24 +47,26 @@
             {% set i = 0 %}
             {% for item in data['appealsub-'+version+'-appealsite-otherownerslist'] %}
               {% set i = i + 1 %}
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">
-                  {{ item.name }}
-                </td>
-                <td class="govuk-table__cell">
-                  {{ item.line1 }}{% if item.line2 != "" %}, {% endif %}{{ item.line2 }}{% if item.town != "" %}, {% endif %}{{ item.town }}{% if item.county != "" %}, {% endif %}{{ item.county }}{% if item.postcode != "" %}, {% endif %}{{ item.postcode }}
-                </td>
-                <!--td class="govuk-table__cell govuk-table__cell--numeric">
-                  <a class="govuk-link" href="other-owners-delete?row={{ i }}">
-                    Delete<span class="govuk-visually-hidden"> {{document.name}}</span>
-                  </a>
-                </td-->
-                <td class="govuk-table__cell govuk-table__cell--numeric">
-                  <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-                    Delete
-                  </a>
-                </td>
-              </tr>
+              {% if item.name != "" %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">
+                    {{ item.name }}
+                  </td>
+                  <td class="govuk-table__cell">
+                    {{ item.line1 }}{% if item.line2 != "" %}, {% endif %}{{ item.line2 }}{% if item.town != "" %}, {% endif %}{{ item.town }}{% if item.county != "" %}, {% endif %}{{ item.county }}{% if item.postcode != "" %}, {% endif %}{{ item.postcode }}
+                  </td>
+                  <!--td class="govuk-table__cell govuk-table__cell--numeric">
+                    <a class="govuk-link" href="other-owners-delete?row={{ i }}">
+                      Delete<span class="govuk-visually-hidden"> {{document.name}}</span>
+                    </a>
+                  </td-->
+                  <td class="govuk-table__cell govuk-table__cell--numeric">
+                    <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+              {% endif %}
             {% endfor %}
           </tbody>
         </table>

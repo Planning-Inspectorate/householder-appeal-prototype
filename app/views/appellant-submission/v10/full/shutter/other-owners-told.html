@@ -1,0 +1,36 @@
+{% extends "layouts/appellant-submission/v10.html" %}
+
+{% block pageTitle %}
+  You ... - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/appellant-submission/"+version+"/full/appeal-site/other-owners-told"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        XXX
+      </h1>
+
+      <p class="govuk-body">
+        xxx
+      <p>
+
+    </div>
+  </div>
+
+{% endblock %}
