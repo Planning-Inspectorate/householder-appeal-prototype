@@ -28,18 +28,45 @@
           Upload documents for your appeal
         </span>
         <h1 class="govuk-heading-l">
-          Supporting documents for your appeal
+          Supporting documents
         </h1>
+
+        <p class="govuk-body">
+          You do not need to provide any plans, drawings or documents that were part of your planning application. We'll get these from the local planning department.
+        <p>
         
         <div class="govuk-form-group">
           <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-appealdocuments-supporting">
             Upload files
           </label>
           <p class="govuk-body">
-            Drag and drop files or click "Choose files"
+            Drag and drop files or select "choose files"
           <p>
           <input class="govuk-file-upload pins-file-upload-multiple" id="appealsub-{{version}}-appealdocuments-supporting" name="appealsub-{{version}}-appealdocuments-supporting" type="file" multiple>
         </div>
+
+        {{ govukInsetText({
+          text: "File size should be no more than 15MB"
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with file formats",
+          html: '
+            <p class="govuk-body">
+              Upload your statement in one of the following formats:
+            <p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>PDF</li>
+              <li>DOC</li>
+              <li>DOCX</li>
+              <li>TIF</li>
+              <li>TIFF</li>
+              <li>JPG</li>
+              <li>JPEG</li>
+              <li>PNG</li>
+            </ul>
+          '
+        }) }} 
 
         {{ govukButton({
           text: "Save and continue"

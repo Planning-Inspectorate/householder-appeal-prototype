@@ -25,33 +25,36 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          Upload documents from your planning application
+          Upload documents for your appeal
         </span>
+        <h1 class="govuk-heading-l">
+          Do you have any additional documents to support your appeal?
+        </h1>
+
+        <p class="govuk-body">
+          For example, if you mentioned any documents in your appeal statement that you have not uploaded already.
+        <p>
+
+        {{ govukInsetText({
+          text: "You do not need to provide the original plans from your planning application. We'll get these from the local planning department."
+        }) }}
 
         {{ govukRadios({
-          idPrefix: "appealsub-"+version+"-aboutapplication-designaccess",
-          name: "appealsub-"+version+"-aboutapplication-designaccess",
-          fieldset: {
-            legend: {
-              text: "Did you submit a design and access statement with your application?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
+          idPrefix: "appealsub-"+version+"-aboutapplication-additionaldocs",
+          name: "appealsub-"+version+"-aboutapplication-additionaldocs",
           items: [
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("appealsub-"+version+"-aboutapplication-designaccess", "Yes")
+              checked: checked("appealsub-"+version+"-aboutapplication-additionaldocs", "Yes")
             },
             {
               value: "No",
               text: "No",
-              checked: checked("appealsub-"+version+"-aboutapplication-designaccess", "No")
+              checked: checked("appealsub-"+version+"-aboutapplication-additionaldocs", "No")
             }
           ]
         }) }}
-
 
         {{ govukButton({
           text: "Save and continue"

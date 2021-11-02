@@ -337,16 +337,25 @@ module.exports = function (router) {
   })
 
   
-/************************
- *** APPEAL DOCUMENTS ***
- ************************/
+/****************************************
+ *** Upload documents for your appeal ***
+ ****************************************/
   
     router.post(base+'full/appeal-documents/appeal-statement', function (req, res) {
       req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "In progress";
-      if (req.session.data["appealsub-"+v+"-appealdocuments-supportinglist"]){
-        res.redirect(base+'full/appeal-documents/supporting-documents-list');
+      res.redirect(base+'full/appeal-documents/additional-documents');
+    })
+  
+    router.post(base+'full/appeal-documents/additional-documents', function (req, res) {
+      if (req.session.data["appealsub-"+v+"-aboutapplication-additionaldocs"] == "Yes"){
+        if (req.session.data["appealsub-"+v+"-appealdocuments-supportinglist"]){
+          res.redirect(base+'full/appeal-documents/supporting-documents-list');
+        } else {
+          res.redirect(base+'full/appeal-documents/supporting-documents');
+        }
       } else {
-        res.redirect(base+'full/appeal-documents/supporting-documents');
+        req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "Complete";
+        res.redirect(base+'full/task-list');
       }
     })
   
