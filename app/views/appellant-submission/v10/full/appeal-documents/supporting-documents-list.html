@@ -42,21 +42,23 @@
             {% set i = 0 %}
             {% for file in data['appealsub-'+version+'-appealdocuments-supportinglist'] %}
               {% set i = i + 1 %}
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">
-                  {{ file }}
-                </td>
-                <!--td class="govuk-table__cell govuk-table__cell--numeric">
-                  <a class="govuk-link" href="other-owners-delete?row={{ i }}">
-                    Delete<span class="govuk-visually-hidden"> {{ file }}</span>
-                  </a>
-                </td-->
-                <td class="govuk-table__cell govuk-table__cell--numeric">
-                  <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-                    Delete
-                  </a>
-                </td>
-              </tr>
+              {% if file != "" %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">
+                    {{ file }}
+                  </td>
+                  <!--td class="govuk-table__cell govuk-table__cell--numeric">
+                    <a class="govuk-link" href="other-owners-delete?row={{ i }}">
+                      Delete<span class="govuk-visually-hidden"> {{ file }}</span>
+                    </a>
+                  </td-->
+                  <td class="govuk-table__cell govuk-table__cell--numeric">
+                    <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+              {% endif %}
             {% endfor %}
           </tbody>
         </table>

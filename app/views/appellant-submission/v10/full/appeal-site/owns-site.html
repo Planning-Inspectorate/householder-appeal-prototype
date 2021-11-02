@@ -27,62 +27,32 @@
         <span class="govuk-caption-l">
           Tell us about the appeal site
         </span>
-        
-        {% set othersHtml %}
-          {{ govukRadios({
-            idPrefix: "appealsub-"+version+"-appealsite-otherowners",
-            name: "appealsub-"+version+"-appealsite-otherowners",
-            fieldset: {
-              legend: {
-                text: "Does the appellant know all of the other owners of the site?",
-                classes: "govuk-fieldset__legend--m"
-              }
-            },
-            items: [
-              {
-                value: "Yes, they know all of the other owners",
-                text: "Yes, they know all of the other owners",
-                checked: checked("appealsub-"+version+"-appealsite-otherowners", "Yes, they know all of the other owners")
-              },
-              {
-                value: "No, the appellant only knows some of the other owners",
-                text: "No, the appellant only knows some of the other owners",
-                checked: checked("appealsub-"+version+"-appealsite-otherowners", "No, the appellant only knows some of the other owners")
-              },
-              {
-                value: "No, the appellant does not know any of the other owners",
-                text: "No, the appellant does not know any of the other owners",
-                checked: checked("appealsub-"+version+"-appealsite-otherowners", "No, the appellant does not know any of the other owners")
-              }
-            ]
-          }) }}
-        {% endset -%}
 
         {{ govukRadios({
           idPrefix: "appealsub-"+version+"-appealsite-siterelationship",
           name: "appealsub-"+version+"-appealsite-siterelationship",
           fieldset: {
             legend: {
-              text: "What is the appellant's relationship to the appeal site?",
+              text: "What is your relationship to the appeal site?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           items: [
             {
-              value: "Appellant owns the whole site",
-              text: "Appellant owns the whole site",
-              checked: checked("appealsub-"+version+"-appealsite-siterelationship", "Appellant owns the whole site")
+              value: "I own the whole appeal site",
+              text: "I own the whole appeal site",
+              checked: checked("appealsub-"+version+"-appealsite-siterelationship", "I own the whole appeal site")
             },
             {
-              value: "Appellant owns part of the appeal site with others",
-              text: "Appellant owns part of the appeal site with others",
-              checked: checked("appealsub-"+version+"-appealsite-siterelationship", "Appellant owns part of the appeal site with others")
+              value: "I own part of the appeal site",
+              text: "I own part of the appeal site",
+              checked: checked("appealsub-"+version+"-appealsite-siterelationship", "I own part of the appeal site")
             },
             {
-              value: "Appellant owns none of the site",
-              text: "Appellant owns none of the site",
-              checked: checked("appealsub-"+version+"-appealsite-siterelationship", "Appellant owns none of the site")
+              value: "I do not own any of the appeal site",
+              text: "I do not own any of the appeal site",
+              checked: checked("appealsub-"+version+"-appealsite-siterelationship", "I do not own any of the appeal site")
             }
           ]
         }) }}

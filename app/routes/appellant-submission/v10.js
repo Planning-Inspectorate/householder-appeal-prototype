@@ -69,7 +69,7 @@ module.exports = function (router) {
     req.session.data["appealsub-"+v+"-route"] = "full";
 
     
-    req.session.data["appealsub-v10-aboutyou-applicationinyourname"] = "No"
+    req.session.data["appealsub-v10-aboutyou-applicationinyourname"] = "No, I'm acting on behalf of the applicant"
     req.session.data["appealsub-v10-taskliststatus-contactdetails"] = "Complete"
 
     req.session.data["appealsub-v10-aboutyou-applicantname"] = "John Smith"
@@ -289,7 +289,7 @@ module.exports = function (router) {
 
   router.post(base+'full/contact-details/who-are-you', function (req, res) {
     req.session.data["appealsub-"+v+"-taskliststatus-contactdetails"] = "In progress";
-    if (req.session.data["appealsub-"+v+"-aboutyou-applicationinyourname"] == "No"){
+    if (req.session.data["appealsub-"+v+"-aboutyou-applicationinyourname"] == "No, I'm acting on behalf of the applicant"){
       res.redirect(base+'full/contact-details/applicant-name');
     } else {
       res.redirect(base+'full/contact-details/your-details');
@@ -403,9 +403,9 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/appeal-site/owns-site', function (req, res) {
-    if (req.session.data["appealsub-"+v+"-appealsite-siterelationship"] == "Appellant owns the whole site"){
+    if (req.session.data["appealsub-"+v+"-appealsite-siterelationship"] == "I own the whole appeal site"){
       res.redirect(base+'full/appeal-site/site-visible');
-    } else if (req.session.data["appealsub-"+v+"-appealsite-siterelationship"] == "Appellant owns none of the site"){
+    } else if (req.session.data["appealsub-"+v+"-appealsite-siterelationship"] == "I do not own any of the appeal site"){
       res.redirect(base+'full/appeal-site/owns-site-none');
     } else {
       res.redirect(base+'full/appeal-site/other-owners');
@@ -413,10 +413,10 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/appeal-site/owns-site-none', function (req, res) {
-    if (req.session.data["appealsub-"+v+"-appealsite-knowotherowners"] == "Yes, they know some of the other owners"){
+    if (req.session.data["appealsub-"+v+"-appealsite-knowotherowners"] == "Yes, I know some of the owners"){
       res.redirect(base+'full/appeal-site/other-owners');
     } else {
-      res.redirect(base+'full/appeal-site/advert-notice');
+      res.redirect(base+'full/appeal-site/advertised-appeal');
     }
   })
 
@@ -451,14 +451,33 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/appeal-site/other-owners-list', function (req, res) {
-    res.redirect(base+'full/appeal-site/notice-served');
+    res.redirect(base+'full/appeal-site/other-owners-told');
+  })
+
+  router.post(base+'full/appeal-site/other-owners-told', function (req, res) {
+    if (req.session.data["appealsub-"+v+"-appealsite-otherownerstold"] == "Yes"){
+      res.redirect(base+'full/appeal-site/notice-served');
+    } else {
+      res.redirect(base+'full/shutter/other-owners-told');
+    }
   })
 
   router.post(base+'full/appeal-site/notice-served', function (req, res) {
-    if (req.session.data["appealsub-"+v+"-appealsite-knowotherowners"] == "Yes, they know some of the other owners"){
+    if (
+        req.session.data["appealsub-"+v+"-appealsite-knowotherowners"] == "Yes, they know some of the other owners" ||
+        req.session.data["appealsub-"+v+"-appealsite-siterelationship"] == "I own part of the appeal site"
+      ){
       res.redirect(base+'full/appeal-site/site-visible');
     } else {
+      res.redirect(base+'full/appeal-site/advertised-appeal');
+    }
+  })
+
+  router.post(base+'full/appeal-site/advertised-appeal', function (req, res) {
+    if (req.session.data["appealsub-"+v+"-appealsite-advertisedappeal"] == "Yes"){
       res.redirect(base+'full/appeal-site/advert-notice');
+    } else {
+      res.redirect(base+'full/shutter/advertised-appeal');
     }
   })
 

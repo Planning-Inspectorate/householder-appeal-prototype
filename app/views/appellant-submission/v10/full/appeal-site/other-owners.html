@@ -28,18 +28,28 @@
           Tell us about the appeal site
         </span>
         <h1 class="govuk-heading-l">
-          Names and addresses of the other site owners
+          {% if data["appealsub-"+version+"-appealsite-siterelationship"] == "I do not own any of the appeal site" %}
+            Site owner details
+          {% else %}
+            Other site owner details
+          {% endif %}          
         </h1>
 
-        <p class="govuk-body">
-          You'll be able to add more owner details if there is more than one
-        <p>
+        {% if data["appealsub-"+version+"-appealsite-siterelationship"] == "I do not own any of the appeal site" %}
+          <p class="govuk-body">
+            Enter the names and addresses of all known site owners. If there is more than one known site owner, you can add them in the next step.
+          <p>
+        {% else %}
+          <p class="govuk-body">
+            Enter the names and addresses of all the other site owners. If there is more than one other site owner, you can add them in the next step.
+          <p>
+        {% endif %} 
         
         {{ govukInput({
           id: "appealsub-"+version+"-appealsite-otherowner-name",
           name: "appealsub-"+version+"-appealsite-otherowner-name",
           label: {
-            text: "Name of other owner",
+            text: "Name",
             classes: "govuk-label--m"
           },
           value: data["appealsub-"+version+"-appealsite-otherowner-name"]
@@ -47,7 +57,7 @@
 
         {% call govukFieldset({
           legend: {
-            text: "Address of other owner",
+            text: "Address",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
