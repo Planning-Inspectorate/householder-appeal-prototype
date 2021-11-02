@@ -69,35 +69,37 @@ module.exports = function (router) {
     req.session.data["appealsub-"+v+"-route"] = "full";
 
     
-    req.session.data["appealsub-v10-aboutyou-applicationinyourname"] = "No, I'm acting on behalf of the applicant"
-    req.session.data["appealsub-v10-taskliststatus-contactdetails"] = "Complete"
+    req.session.data["appealsub-"+v+"-aboutyou-applicationinyourname"] = "No, I'm acting on behalf of the applicant"
+    req.session.data["appealsub-"+v+"-taskliststatus-contactdetails"] = "Complete"
 
-    req.session.data["appealsub-v10-aboutyou-applicantname"] = "John Smith"
-    req.session.data["appealsub-v10-aboutyou-yourname"] = "David Jones"
-    req.session.data["appealsub-v10-aboutyou-company"] = "DJ Planning Ltd"
-    req.session.data["appealsub-v10-aboutyou-youremail"] = "djones@djplanning.co.uk"
-    req.session.data["appealsub-v10-aboutyou-telephone"] = "01234567890"
+    req.session.data["appealsub-"+v+"-aboutyou-applicantname"] = "John Smith"
+    req.session.data["appealsub-"+v+"-aboutyou-yourname"] = "David Jones"
+    req.session.data["appealsub-"+v+"-aboutyou-company"] = "DJ Planning Ltd"
+    req.session.data["appealsub-"+v+"-aboutyou-youremail"] = "djones@djplanning.co.uk"
+    req.session.data["appealsub-"+v+"-aboutyou-telephone"] = "01234567890"
 
-    req.session.data["appealsub-v10-aboutapplication-applicationform"] = "planning_application_form.pdf"
-    req.session.data["appealsub-v10-taskliststatus-planningapplicationdocuments"] = "Complete"
-    req.session.data["appealsub-v10-aboutapplication-applicationnumber"] = "987654321"
-    req.session.data["appealsub-v10-aboutapplication-designaccess"] = "Yes"
-    req.session.data["appealsub-v10-aboutapplication-designaccess-file"] = "design_access_statement.pdf"
-    req.session.data["appealsub-v10-aboutapplication-decisionletter"] = "decision_letter.pdf"
-    req.session.data["appealsub-v10-appealdocuments-appealstatement"] = "appeal_statement.pdf"
-    req.session.data["appealsub-v10-taskliststatus-appealdocuments"] = "Complete"
-    req.session.data["appealsub-v10-appealdocuments-supportinglist"] = [
+    req.session.data["appealsub-"+v+"-aboutapplication-applicationform"] = "planning_application_form.pdf"
+    req.session.data["appealsub-"+v+"-taskliststatus-planningapplicationdocuments"] = "Complete"
+    req.session.data["appealsub-"+v+"-aboutapplication-applicationnumber"] = "987654321"
+    req.session.data["appealsub-"+v+"-aboutapplication-designaccess"] = "Yes"
+    req.session.data["appealsub-"+v+"-aboutapplication-designaccess-file"] = "design_access_statement.pdf"
+    req.session.data["appealsub-"+v+"-aboutapplication-decisionletter"] = "decision_letter.pdf"
+
+    req.session.data["appealsub-"+v+"-appealdocuments-appealstatement"] = "appeal_statement.pdf"
+    req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "Complete"
+    req.session.data["appealsub-"+v+"-aboutapplication-additionaldocs"] = "Yes"
+    req.session.data["appealsub-"+v+"-appealdocuments-supportinglist"] = [
      "supporting_document_one.pdf",
      "supporting_document_three.pdf",
      "supporting_document_two.pdf"
    ]
-    req.session.data["appealsub-v10-appealsite-address-line-1"] = "123 Main Road"
-    req.session.data["appealsub-v10-appealsite-address-town"] = "London"
-    req.session.data["appealsub-v10-appealsite-address-postcode"] = "N1 1NN"
-    req.session.data["appealsub-v10-taskliststatus-appealsite"] = "Complete"
-    req.session.data["appealsub-v10-appealsite-siterelationship"] = "I own the whole appeal site"
-    req.session.data["appealsub-v10-appealsite-visible"] = "Yes"
-    req.session.data["appealsub-v10-appealsite-healthsafety"] = "No"
+    req.session.data["appealsub-"+v+"-appealsite-address-line-1"] = "123 Main Road"
+    req.session.data["appealsub-"+v+"-appealsite-address-town"] = "London"
+    req.session.data["appealsub-"+v+"-appealsite-address-postcode"] = "N1 1NN"
+    req.session.data["appealsub-"+v+"-taskliststatus-appealsite"] = "Complete"
+    req.session.data["appealsub-"+v+"-appealsite-siterelationship"] = "I own the whole appeal site"
+    req.session.data["appealsub-"+v+"-appealsite-visible"] = "Yes"
+    req.session.data["appealsub-"+v+"-appealsite-healthsafety"] = "No"
 
    res.redirect(base+'full/task-list');
  })
