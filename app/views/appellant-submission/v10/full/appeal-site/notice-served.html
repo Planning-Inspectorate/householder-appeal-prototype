@@ -28,12 +28,24 @@
           Tell us about the appeal site
         </span>
 
+        {% if (data["appealsub-"+version+"-appealsite-siterelationship"] == "I own part of the appeal site") %}
+          <!-- Certificate B -->
+          {% set headingHtml %}
+            What date did you tell the other owners about the appeal?
+          {% endset -%}
+        {% else %}
+          <!-- Certificate C -->
+          {% set headingHtml %}
+            What date did you tell the owners you know about the appeal?
+          {% endset -%}
+        {% endif %}
+
         {{ govukDateInput({
           id: "appealsub-"+version+"-appealsite-noticeserved",
           namePrefix: "appealsub-"+version+"-appealsite-noticeserved",
           fieldset: {
             legend: {
-              text: "What date did you tell the owners?​",
+              text: headingHtml,
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
