@@ -28,14 +28,11 @@
           Upload documents from your planning application
         </span>
         <h1 class="govuk-heading-l">
-          Upload the decision letter
+          Decision letter
         </h1>
         <p class="govuk-body">
           This is the letter from the local planning department telling you about the decision on your planning application.
         <p>
-        {{ govukInsetText({
-          text: "File size should be no more than 15MB"
-        }) }}
 
         {{ govukFileUpload({
           id: "appealsub-"+version+"-aboutapplication-decisionletter",
@@ -46,28 +43,25 @@
           }
         }) }}
 
+        {{ govukInsetText({
+          text: "File size should be no more than 15MB"
+        }) }}
+
         {{ govukDetails({
           summaryText: "Help with file formats",
           html: '
             <p class="govuk-body">
-              Please upload your statement in one of the following formats:
+              Upload your statement in one of the following formats:
             <p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>
-                PDF – .pdf
-              </li>
-              <li>
-                Microsoft Word – .doc or .docx
-              </li>
-              <li>
-                TIF – .tif or .tiff
-              </li>
-              <li>
-                JPEG – .jpg or .jpeg
-              </li>
-              <li>
-                PNG – .png
-              </li>
+              <li>PDF</li>
+              <li>DOC</li>
+              <li>DOCX</li>
+              <li>TIF</li>
+              <li>TIFF</li>
+              <li>JPG</li>
+              <li>JPEG</li>
+              <li>PNG</li>
             </ul>
           '
         }) }}     
