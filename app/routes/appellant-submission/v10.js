@@ -95,7 +95,7 @@ module.exports = function (router) {
     req.session.data["appealsub-v10-appealsite-address-town"] = "London"
     req.session.data["appealsub-v10-appealsite-address-postcode"] = "N1 1NN"
     req.session.data["appealsub-v10-taskliststatus-appealsite"] = "Complete"
-    req.session.data["appealsub-v10-appealsite-siterelationship"] = "Appellant owns the whole site"
+    req.session.data["appealsub-v10-appealsite-siterelationship"] = "I own the whole appeal site"
     req.session.data["appealsub-v10-appealsite-visible"] = "Yes"
     req.session.data["appealsub-v10-appealsite-healthsafety"] = "No"
 
