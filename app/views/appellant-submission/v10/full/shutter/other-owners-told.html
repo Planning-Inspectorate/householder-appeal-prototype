@@ -23,12 +23,40 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        XXX
+        You cannot appeal yet
       </h1>
 
-      <p class="govuk-body">
-        xxx
-      <p>
+      {% if (data["appealsub-"+version+"-appealsite-siterelationship"] == "I own part of the appeal site") %}
+
+        <p class="govuk-body">
+          Before you can appeal, you must tell all the other site owners about your appeal.
+        </p>
+        <h2 class="govuk-heading-m">What next?</h2>
+        <ul class="govuk-list govuk-list--number">
+          <li>Tell all the other site owners about your appeal.</li>
+          <li>When you're ready, you'll need to restart your appeal. The progress you made today will not be saved.</li>
+          <li>We'll ask you what date you told the other site owners.</li>
+        </ul>
+        <p class="govuk-body">
+          Based on what you've told us, your deadline to submit your appeal is 11.59pm on Monday {{ data["appealsub-"+version+"-beforeyoustart-deadline-day"] }} {{ data["appealsub-"+version+"-beforeyoustart-deadline-month"] | formatMonth }} {{ data["appealsub-"+version+"-beforeyoustart-deadline-year"] }}.
+        </p>
+
+      {% else %}
+
+        <p class="govuk-body">
+          Before you can appeal, you must tell all the site owners you know about your appeal.
+        </p>
+        <h2 class="govuk-heading-m">What next?</h2>
+        <ul class="govuk-list govuk-list--number">
+          <li>Tell all the site owners you know about your appeal.</li>
+          <li>When you're ready, you'll need to restart your appeal. The progress you made today will not be saved.</li>
+          <li>We'll ask you what date you told the other site owners.</li>
+        </ul>
+        <p class="govuk-body">
+          Based on what you've told us, your deadline to submit your appeal is 11.59pm on Monday {{ data["appealsub-"+version+"-beforeyoustart-deadline-day"] }} {{ data["appealsub-"+version+"-beforeyoustart-deadline-month"] | formatMonth }} {{ data["appealsub-"+version+"-beforeyoustart-deadline-year"] }}.
+        </p>
+
+      {% endif %}
 
     </div>
   </div>
