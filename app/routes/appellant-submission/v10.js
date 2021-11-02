@@ -158,6 +158,14 @@ module.exports = function (router) {
     if (req.session.data["appealsub-"+v+"-beforeyoustart-enforcementnotice"] == "No"){
       res.redirect(base+'before-you-start/permission-granted-refused');
     } else {
+      res.redirect(base+'before-you-start/enforcement-notice-about');
+    }
+  })
+
+  router.post(base+'before-you-start/enforcement-notice-about', function (req, res) {
+    if (req.session.data["appealsub-"+v+"-beforeyoustart-enforcementnoticeabout"] == "A different development to my appeal"){
+      res.redirect(base+'before-you-start/permission-granted-refused');
+    } else {
       res.redirect(base+'before-you-start/shutter/enforcement-notice');
     }
   })
