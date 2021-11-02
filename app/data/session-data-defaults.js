@@ -19,6 +19,7 @@ Example usage:
 
 let availableAppeals = require('./availableAppeals.json')
 let lpas = require('./local-authority-eng.json')
+let validationAppeals = require('./validationAppeals.json')
 
 let data = {
 
@@ -1185,6 +1186,7 @@ let data = {
 
     lpas,  
     availableAppeals,
+    validationAppeals,
 
     "cst-v5a-appellantname": "Maria Sharma",
     "cst-v5a-appellantemail": "maria.sharma@gmail.com",

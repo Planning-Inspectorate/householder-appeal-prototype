@@ -1,0 +1,85 @@
+{% extends "layouts/validation-officer/v3.html" %}
+
+{% block pageTitle %}
+  Appeal submissions for review
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <!--span class="govuk-caption-l">Bradford City Council</span-->
+
+      <h1 class="govuk-heading-xl">
+        Appeal submissions for review
+      </h1>
+
+      {% set validationappealsnew = 0 %}
+      {% for item in data['validationAppeals'] %}
+        {% if item.status == "New" %}
+          {% set validationappealsnew = validationappealsnew + 1 %}
+        {% endif %}
+      {% endfor %}
+
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-3">
+        New appeals
+      </h2>
+      <table class="govuk-table">
+        {% if validationappealsnew > 0 %}
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Appeal reference</th>
+              <th scope="col" class="govuk-table__header">Received</th>
+              <th scope="col" class="govuk-table__header">Appeal site</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            {% for item in data['validationAppeals']|sort(true,true,'receivedDaysAgo') %}
+              {% if item.status == "New" %}
+                {% set validationappealsnew = validationappealsnew + 1 %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">
+                    <a href="/validation-officer/{{version}}/goto-appeal/{{item.ref}}" class="govuk-link">APP/Q9999/D/21/{{ item.ref }}</a>
+                  </td>
+                  <td class="govuk-table__cell" nowrap>{{ item.receivedDaysAgo }} days ago</td>
+                  <td class="govuk-table__cell">{{ item.addressLine1 }} {{ item.addressLine2 }} {{ item.addressTown }} {{ item.addressCounty }} {{ item.postcode }}</td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        {% else %}
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header"></th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-!-padding-9" style="text-align: center; background-color: #f3f2f1;">
+                No new appeals
+              </td>
+            </tr>
+        </tbody>
+        {% endif %}
+          <!--tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="review-appeal" class="govuk-link">APP/Q9999/D/21/1234567</a>
+            </td>
+            <td class="govuk-table__cell">16 May 2021</td>
+            <td class="govuk-table__cell">96 The Avenue, Maidstone, Kent, MD21 5XY</td>
+          </tr-->
+          
+      </table>
+
+    </div>
+  </div>
+{% endblock %}
