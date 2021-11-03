@@ -1,0 +1,105 @@
+{% extends "layouts/validation-officer/v3.html" %}
+
+{% block pageTitle %}
+  Change appeal site - Review appeal - Validation officer - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <!-- loop through data from validationAppeals.json -->
+        {% for item in data['validationAppeals'] %}
+          <!-- match selected appeal by ref in data and show -->
+          {% if item.ref == data["validation-"+version+"-currentappeal"] %}
+
+            {% call govukFieldset({
+              legend: {
+                text: "Change appeal site",
+                classes: "govuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            }) %}
+
+              {{ govukInput({
+                label: {
+                  html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+                },
+                id: "validation-"+version+"-change-address-line1",
+                name: "validation-"+version+"-change-address-line1",
+                value: item.addressLine1
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+                },
+                id: "validation-"+version+"-change-address-line2",
+                name: "validation-"+version+"-change-address-line2",
+                value: item.addressLine2
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: "Town or city"
+                },
+                classes: "govuk-!-width-two-thirds",
+                id: "validation-"+version+"-change-address-town",
+                name: "validation-"+version+"-change-address-town",
+                value: item.addressTown
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: "County"
+                },
+                classes: "govuk-!-width-two-thirds",
+                id: "validation-"+version+"-change-address-county",
+                name: "validation-"+version+"-change-address-county",
+                value: item.addressCounty
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: "Postcode"
+                },
+                classes: "govuk-input--width-10",
+                id: "validation-"+version+"-change-address-postcode",
+                name: "validation-"+version+"-change-address-postcode",
+                value: item.postcode
+              }) }}
+
+            {% endcall %}
+
+          {% endif %}
+        {% endfor %}
+        
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save changes"
+          }) }}
+          <a class="govuk-link" href="javascript:history.go(-1);">Cancel</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

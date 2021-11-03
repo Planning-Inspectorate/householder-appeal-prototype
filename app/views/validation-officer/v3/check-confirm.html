@@ -74,22 +74,42 @@
                     {{ data["validation-"+version+"-descriptionofdevelopment"] }}
                   </dd>
                 </div>
-              {% endif %}
-              {% if data["validation-"+version+"-outcome"] == "Invalid" %}
+              {% else %}
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
                     Reasons
                   </dt>
                   <dd class="govuk-summary-list__value">
                     <ul class="govuk-list">
-                      {% for reason in data["validation-"+version+"-invalid-reasons"] %}
-                        <li>
-                          {{ reason }}
-                          {% if reason == "Other" %}
-                            - {{ data["validation-"+version+"-invalid-other"] }}
-                          {% endif %}
-                        </li>
-                      {% endfor %}
+                      {% if data["validation-"+version+"-outcome"] == "Invalid" %}
+                        {% for reason in data["validation-"+version+"-invalid-reasons"] %}
+                          <li>
+                            {{ reason }}
+                            {% if reason == "Other" %}
+                              - {{ data["validation-"+version+"-invalid-other"] }}
+                            {% endif %}
+                          </li>
+                        {% endfor %}
+                      {% endif %}
+                      {% if data["validation-"+version+"-outcome"] == "Something is missing or wrong" %}
+                        {% for reason in data["validation-"+version+"-wrong-reasons"] %}
+                          <li>
+                            {{ reason }}
+                            {% if reason == "Missing or wrong documents" %}
+                              <ul class="govuk-list govuk-list--bullet">
+                                {% for wrongreasons in data["validation-"+version+"-wrong-reasons-missing"] %}
+                                  <li>
+                                    {{ wrongreasons }}
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                            {% endif %}
+                            {% if reason == "Other" %}
+                              - {{ data["validation-"+version+"-wrong-other"] }}
+                            {% endif %}
+                          </li>
+                        {% endfor %}
+                      {% endif %}
                     </ul>
                   </dd>
                 </div>
@@ -97,19 +117,32 @@
             </dl>
           {% endif %}
         {% endfor %}
-        
-        <div class="govuk-warning-text">
-          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-          <strong class="govuk-warning-text__text">
-            <span class="govuk-warning-text__assistive">Warning</span>
-            {% if data["validation-"+version+"-outcome"] == "Valid" %}
-              Confirming this appeal as valid starts the appeal and sends the LPA questionnaire email.
-            {% endif %}
-            {% if data["validation-"+version+"-outcome"] == "Invalid" %}
-              Confirming this appeal as invalid turns away the appeal and emails the appellant and LPA.
-            {% endif %}
-          </strong>
-        </div>
+
+        {% if data["validation-"+version+"-outcome"] == "Valid" %}
+          {{ govukWarningText({
+            text: "Confirming this appeal as valid starts the appeal and sends the LPA questionnaire email.",
+            iconFallbackText: "Warning"
+          }) }}
+        {% endif %}
+        {% if data["validation-"+version+"-outcome"] == "Invalid" %}
+          {{ govukWarningText({
+            text: "Confirming this appeal as invalid turns away the appeal and emails the appellant and LPA.",
+            iconFallbackText: "Warning"
+          }) }}
+        {% endif %}
+        {% if data["validation-"+version+"-outcome"] == "Something is missing or wrong" %}
+          {{ govukCheckboxes({
+            idPrefix: "validation-"+version+"-wrong-completed",
+            name: "validation-"+version+"-wrong-completed",
+            classes: "govuk-!-margin-bottom-9 govuk-!-margin-top-9",
+            items: [
+              {
+                text: "I have completed all follow-up tasks and emails",
+                value: "completed"
+              }
+            ]
+          }) }}
+        {% endif %}
           
         <div class="govuk-button-group">
           <button class="govuk-button" data-module="govuk-button">
@@ -118,6 +151,9 @@
             {% endif %}
             {% if data["validation-"+version+"-outcome"] == "Invalid" %}
               Confirm and turn away appeal
+            {% endif %}
+            {% if data["validation-"+version+"-outcome"] == "Something is missing or wrong" %}
+              Confirm and finish review
             {% endif %}
           </button>
           <a class="govuk-link" href="appeal-review">Change outcome</a>

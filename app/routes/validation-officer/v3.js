@@ -41,6 +41,9 @@ module.exports = function (router) {
   router.post(base+'outcome-invalid', function (req, res) {
     res.redirect(base+'check-confirm');
   })
+  router.post(base+'outcome-incomplete', function (req, res) {
+    res.redirect(base+'check-confirm');
+  })
 
 
   router.post(base+'check-confirm', function (req, res) {
@@ -56,6 +59,34 @@ module.exports = function (router) {
 
   })
 
+  
+  router.post(base+'change/appellant-name', function (req, res) {
+    objIndex = req.session.data["validationAppeals"].findIndex((obj => obj.ref == req.session.data["validation-"+v+"-currentappeal"]));
+    req.session.data["validationAppeals"][objIndex].appellantName = req.session.data["validation-"+v+"-change-appellantname"];
+    res.redirect(base+'appeal-review');
+  })
+
+  router.post(base+'change/appeal-site', function (req, res) {
+    objIndex = req.session.data["validationAppeals"].findIndex((obj => obj.ref == req.session.data["validation-"+v+"-currentappeal"]));
+    req.session.data["validationAppeals"][objIndex].addressLine1 = req.session.data["validation-"+v+"-change-address-line1"];
+    req.session.data["validationAppeals"][objIndex].addressLine2 = req.session.data["validation-"+v+"-change-address-line2"];
+    req.session.data["validationAppeals"][objIndex].addressTown = req.session.data["validation-"+v+"-change-address-town"];
+    req.session.data["validationAppeals"][objIndex].addressCounty = req.session.data["validation-"+v+"-change-address-county"];
+    req.session.data["validationAppeals"][objIndex].postcode = req.session.data["validation-"+v+"-change-address-postcode"];
+    res.redirect(base+'appeal-review');
+  })
+
+  router.post(base+'change/lpa', function (req, res) {
+    objIndex = req.session.data["validationAppeals"].findIndex((obj => obj.ref == req.session.data["validation-"+v+"-currentappeal"]));
+    req.session.data["validationAppeals"][objIndex].lpa = req.session.data["validation-"+v+"-change-lpa"];
+    res.redirect(base+'appeal-review');
+  })
+
+  router.post(base+'change/planning-application-ref', function (req, res) {
+    objIndex = req.session.data["validationAppeals"].findIndex((obj => obj.ref == req.session.data["validation-"+v+"-currentappeal"]));
+    req.session.data["validationAppeals"][objIndex].planningApplicationRef = req.session.data["validation-"+v+"-change-planningapplicationref"];
+    res.redirect(base+'appeal-review');
+  })
 
 
 /*

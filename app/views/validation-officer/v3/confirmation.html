@@ -27,7 +27,13 @@
               Review complete
             </h1>
             <div class="govuk-panel__body">
-              Appeal {{ item.status | lower }}<br><strong>APP/Q9999/D/21/{{ item.ref }}</strong>
+              {% if item.status == "Something is missing or wrong" %}
+                {{ item.status }}
+              {% else %}
+              Appeal {{ item.status | lower }}
+              {% endif %}
+              <br>
+              <strong>APP/Q9999/D/21/{{ item.ref }}</strong>
             </div>
           </div>
 
