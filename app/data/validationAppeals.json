@@ -18,7 +18,10 @@
       "other-documents-1.pdf",
       "other-documents-2.pdf",
       "other-documents-3.pdf"
-    ]
+    ],
+    "reasonsIncomplete" : [],
+    "reasonsIncompleteMissing" : [],
+    "reasonsIncompleteOther" : ""
   },
   {
     "ref": "5463281",
@@ -39,7 +42,10 @@
       "other-documents-1.pdf",
       "other-documents-2.pdf",
       "other-documents-3.pdf"
-    ]
+    ],
+    "reasonsIncomplete" : [],
+    "reasonsIncompleteMissing" : [],
+    "reasonsIncompleteOther" : ""
   },
   {
     "ref": "1203521",
@@ -60,7 +66,10 @@
       "other-documents-1.pdf",
       "other-documents-2.pdf",
       "other-documents-3.pdf"
-    ]
+    ],
+    "reasonsIncomplete" : [],
+    "reasonsIncompleteMissing" : [],
+    "reasonsIncompleteOther" : ""
   },
   {
     "ref": "1154923",
@@ -81,7 +90,10 @@
       "other-documents-1.pdf",
       "other-documents-2.pdf",
       "other-documents-3.pdf"
-    ]
+    ],
+    "reasonsIncomplete" : [],
+    "reasonsIncompleteMissing" : [],
+    "reasonsIncompleteOther" : ""
   },
   {
     "ref": "1087562",
@@ -102,7 +114,10 @@
       "other-documents-1.pdf",
       "other-documents-2.pdf",
       "other-documents-3.pdf"
-    ]
+    ],
+    "reasonsIncomplete" : [],
+    "reasonsIncompleteMissing" : [],
+    "reasonsIncompleteOther" : ""
   },
   {
     "ref": "1365524",
@@ -123,7 +138,10 @@
       "other-documents-1.pdf",
       "other-documents-2.pdf",
       "other-documents-3.pdf"
-    ]
+    ],
+    "reasonsIncomplete" : [],
+    "reasonsIncompleteMissing" : [],
+    "reasonsIncompleteOther" : ""
   },
   {
     "ref": "1224115",
@@ -144,6 +162,9 @@
       "other-documents-1.pdf",
       "other-documents-2.pdf",
       "other-documents-3.pdf"
+    ],
+    "reasonsIncomplete" : [
+      "Sensitive information included"
     ]
   }
 ]
