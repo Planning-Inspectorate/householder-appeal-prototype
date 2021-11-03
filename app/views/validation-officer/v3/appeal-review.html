@@ -126,13 +126,13 @@
               <dd class="govuk-summary-list__value">
                 <ul class="govuk-list">
                   <li>
-                    <a href="public/images/planning%20application.pdf" class="govuk-link" target="_blank">planning application.pdf</a>
+                    <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ item.planningApplicationForm }}</a>
                   </li>
                 </ul>
               </dd>
               {% if item.status == "Something is missing or wrong" %}
                 <dd class="govuk-summary-list__actions">
-                  <a class="govuk-link" href="javascript:preventDefault();">
+                <a class="govuk-link" href="change/planning-application">
                     Change<span class="govuk-visually-hidden"> planning application</span>
                   </a>
                 </dd>
@@ -145,13 +145,13 @@
               <dd class="govuk-summary-list__value">
                 <ul class="govuk-list">
                   <li>
-                    <a href="/public/images/decision%20letter.pdf" class="govuk-link" target="_blank">decision letter.pdf</a>
+                    <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ item.decisionLetter }}</a>
                   </li>
                 </ul>
               </dd>
               {% if item.status == "Something is missing or wrong" %}
                 <dd class="govuk-summary-list__actions">
-                  <a class="govuk-link" href="javascript:preventDefault();">
+                <a class="govuk-link" href="change/decision-letter">
                     Change<span class="govuk-visually-hidden"> decision letter</span>
                   </a>
                 </dd>
@@ -170,13 +170,13 @@
               <dd class="govuk-summary-list__value">
                 <ul class="govuk-list">
                   <li>
-                    <a href="/public/images/appeal%20statement.pdf" class="govuk-link" target="_blank">appeal statement.pdf</a>
+                    <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ item.appealStatement }}</a>
                   </li>
                 </ul>
               </dd>
               {% if item.status == "Something is missing or wrong" %}
                 <dd class="govuk-summary-list__actions">
-                  <a class="govuk-link" href="javascript:preventDefault();">
+                <a class="govuk-link" href="change/appeal-statement">
                     Change<span class="govuk-visually-hidden"> appeal statement</span>
                   </a>
                 </dd>
@@ -188,15 +188,11 @@
               </dt>
               <dd class="govuk-summary-list__value">
                 <ul class="govuk-list">
-                  <li>
-                    <a href="/public/images/other%20documents%201.pdf" class="govuk-link" target="_blank">other documents 1.pdf</a>
-                  </li>
-                  <li>
-                    <a href="/public/images/other%20documents%202.pdf" class="govuk-link" target="_blank">other documents 2.pdf</a>
-                  </li>
-                  <li>
-                    <a href="/public/images/other%20documents%203.pdf" class="govuk-link" target="_blank">other documents 3.pdf</a>
-                  </li>
+                  {% for file in item.supportingDocuments %}
+                    <li>
+                      <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ file }}</a>
+                    </li>
+                  {% endfor %}
                 </ul>
               </dd>
               {% if item.status == "Something is missing or wrong" %}
@@ -255,73 +251,6 @@
 
         {% endif %}
       {% endfor %}
-
-      <!--h2 class="govuk-heading-l govuk-!-margin-top-9">
-        Planning application documents
-      </h2>
-      <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Planning application form
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <ul class="govuk-list">
-              <li>
-                <a href="public/images/planning%20application.pdf" class="govuk-link" target="_blank">planning application.pdf</a>
-              </li>
-            </ul>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Decision letter
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <ul class="govuk-list">
-              <li>
-                <a href="/public/images/decision%20letter.pdf" class="govuk-link" target="_blank">decision letter.pdf</a>
-              </li>
-            </ul>
-          </dd>
-
-        </div>
-      </dl>
-
-      <h2 class="govuk-heading-l govuk-!-margin-top-9">
-        Appeal documents
-      </h2>
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Appeal statement
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <ul class="govuk-list">
-              <li>
-                <a href="/public/images/appeal%20statement.pdf" class="govuk-link" target="_blank">appeal statement.pdf</a>
-              </li>
-            </ul>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Supporting documents
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <ul class="govuk-list">
-              <li>
-                <a href="/public/images/other%20documents%201.pdf" class="govuk-link" target="_blank">other documents 1.pdf</a>
-              </li>
-              <li>
-                <a href="/public/images/other%20documents%202.pdf" class="govuk-link" target="_blank">other documents 2.pdf</a>
-              </li>
-              <li>
-                <a href="/public/images/other%20documents%203.pdf" class="govuk-link" target="_blank">other documents 3.pdf</a>
-              </li>
-            </ul>
-          </dd>
-        </div>
-      </dl-->
       
     </div>
   </div>

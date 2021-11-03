@@ -88,6 +88,24 @@ module.exports = function (router) {
     res.redirect(base+'appeal-review');
   })
 
+  router.post(base+'change/planning-application', function (req, res) {
+    objIndex = req.session.data["validationAppeals"].findIndex((obj => obj.ref == req.session.data["validation-"+v+"-currentappeal"]));
+    req.session.data["validationAppeals"][objIndex].planningApplicationForm = req.session.data["validation-"+v+"-change-planningapplication"];
+    res.redirect(base+'appeal-review');
+  })
+
+  router.post(base+'change/decision-letter', function (req, res) {
+    objIndex = req.session.data["validationAppeals"].findIndex((obj => obj.ref == req.session.data["validation-"+v+"-currentappeal"]));
+    req.session.data["validationAppeals"][objIndex].decisionLetter = req.session.data["validation-"+v+"-change-decisionletter"];
+    res.redirect(base+'appeal-review');
+  })
+
+  router.post(base+'change/appeal-statement', function (req, res) {
+    objIndex = req.session.data["validationAppeals"].findIndex((obj => obj.ref == req.session.data["validation-"+v+"-currentappeal"]));
+    req.session.data["validationAppeals"][objIndex].appealStatement = req.session.data["validation-"+v+"-change-appealstatement"];
+    res.redirect(base+'appeal-review');
+  })
+
 
 /*
   router.post(base+'review-appeal', function (req, res) {
