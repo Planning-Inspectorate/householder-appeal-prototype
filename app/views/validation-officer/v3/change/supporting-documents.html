@@ -1,7 +1,7 @@
 {% extends "layouts/validation-officer/v3.html" %}
 
 {% block pageTitle %}
-  Change planning application form - Review appeal - Validation officer - {{ serviceName }}
+  Change decision letter - Review appeal - Validation officer - {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,7 +23,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Change planning application form
+        Change decision letter
       </h1>
 
       <form action="" method="post">
@@ -35,27 +35,30 @@
             <dl class="govuk-summary-list">
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  Current file
+                  Current files
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ item.planningApplicationForm }}</a>
+                  <ul class="govuk-list">
+                    {% for file in item.supportingDocuments %}
+                      <li><a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ file }}</a></li>
+                    {% endfor %}
+                  </ul>
                 </dd>
               </div>
             </dl>
           {% endif %}
         {% endfor %}
-
-        {{ govukFileUpload({
-          id: "validation-"+version+"-change-planningapplication",
-          name: "validation-"+version+"-change-planningapplication",
-          label: {
-            text: "Upload a new file",
-            classes: "govuk-label--m"
-          },
-          hint: {
-            text: "The uploaded file will replace the existing planning application form"
-          }
-        }) }}
+        
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="validation-{{version}}-change-supportingdocuments">
+            Upload files
+          </label>
+          <p class="govuk-hint">
+            Drag and drop files or select "choose files".<br>
+            The uploaded files will be added to the list of current supporting documents.
+          <p>
+          <input class="govuk-file-upload pins-file-upload-multiple" id="validation-{{version}}-change-supportingdocuments" name="validation-{{version}}-change-supportingdocuments" type="file" multiple>
+        </div>
 
         {{ govukInsetText({
           text: "File size should be no more than 15MB"

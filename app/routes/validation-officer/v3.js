@@ -106,6 +106,23 @@ module.exports = function (router) {
     res.redirect(base+'appeal-review');
   })
 
+  router.post(base+'change/supporting-documents', function (req, res) {
+
+    objIndex = req.session.data["validationAppeals"].findIndex((obj => obj.ref == req.session.data["validation-"+v+"-currentappeal"]));
+
+    newSupportingDocs = req.session.data["validation-"+v+"-change-supportingdocuments"];
+
+    if (Array.isArray(newSupportingDocs)){
+      newSupportingDocs.forEach( item => {
+        req.session.data["validationAppeals"][objIndex].supportingDocuments.push(item);
+      });
+    } else {
+      req.session.data["validationAppeals"][objIndex].supportingDocuments.push(newSupportingDocs);
+    }
+
+    res.redirect(base+'appeal-review');
+  })
+
 
 /*
   router.post(base+'review-appeal', function (req, res) {
