@@ -1,0 +1,95 @@
+{% extends "layouts/validation-officer/v3.html" %}
+
+{% block pageTitle %}
+  Outcome of appeal - Validation officer - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "appeal-review"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Invalid appeal details
+      </h1>
+
+      <p class="govuk-body">
+        Appeal reference: APP/Q9999/D/21/{{ data["validation-"+version+"-currentappeal"] }} 
+      <p>
+
+      <form action="" method="post">
+
+        {% set invalidOtherHtml %}
+          {{ govukInput({
+            id: "validation-"+version+"-invalid-other",
+            name: "validation-"+version+"-invalid-other",
+            hint: {
+              text: "This will be sent to the appellant and LPA"
+            },
+            label: {
+              text: "List reasons"
+            }
+          }) }}
+        {% endset %}
+      
+        {{ govukCheckboxes({
+          idPrefix: "validation-"+version+"-invalid-reasons",
+          name: "validation-"+version+"-invalid-reasons",
+          fieldset: {
+            legend: {
+              text: "Reasons the appeal is invalid",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Out of time",
+              text: "Out of time"
+            },
+            {
+              value: "No right of appeal",
+              text: "No right of appeal"
+            },
+            {
+              value: "Not appealable",
+              text: "Not appealable"
+            },
+            {
+              value: "LPA deemed application as invalid",
+              text: "LPA deemed application as invalid"
+            },
+            {
+              value: "Other",
+              text: "Other",
+              conditional: {
+                html: invalidOtherHtml
+              }
+            }
+          ]
+        }) }}
+        
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+          <a class="govuk-link" href="appeal-review">Change outcome</a>
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+
+{% endblock %}

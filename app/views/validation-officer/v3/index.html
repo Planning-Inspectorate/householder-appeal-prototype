@@ -1,7 +1,7 @@
 {% extends "layouts/validation-officer/v3.html" %}
 
 {% block pageTitle %}
-  Appeal submissions for review
+  Appeal submissions for review - Validation officer - {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -50,8 +50,8 @@
                   <td class="govuk-table__cell">
                     <a href="/validation-officer/{{version}}/goto-appeal/{{item.ref}}" class="govuk-link">APP/Q9999/D/21/{{ item.ref }}</a>
                   </td>
-                  <td class="govuk-table__cell" nowrap>{{ item.receivedDaysAgo }} days ago</td>
-                  <td class="govuk-table__cell">{{ item.addressLine1 }} {{ item.addressLine2 }} {{ item.addressTown }} {{ item.addressCounty }} {{ item.postcode }}</td>
+                  <td class="govuk-table__cell" nowrap>{{ item.receivedDaysAgo | daysAgoShortMonth }}</td>
+                  <td class="govuk-table__cell">{{ item.addressLine1 }}{% if item.addressLine2 %}, {% endif %}{{ item.addressLine2 }}{% if item.addressTown %}, {% endif %}{{ item.addressTown }}{% if item.addressCounty %}, {% endif %}{{ item.addressCounty }}{% if item.postcode %}, {% endif %}{{ item.postcode }}</td>
                 </tr>
               {% endif %}
             {% endfor %}
@@ -70,13 +70,6 @@
             </tr>
         </tbody>
         {% endif %}
-          <!--tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">
-              <a href="review-appeal" class="govuk-link">APP/Q9999/D/21/1234567</a>
-            </td>
-            <td class="govuk-table__cell">16 May 2021</td>
-            <td class="govuk-table__cell">96 The Avenue, Maidstone, Kent, MD21 5XY</td>
-          </tr-->
           
       </table>
 

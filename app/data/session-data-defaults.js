@@ -1186,7 +1186,6 @@ let data = {
 
     lpas,  
     availableAppeals,
-    validationAppeals,
 
     "cst-v5a-appellantname": "Maria Sharma",
     "cst-v5a-appellantemail": "maria.sharma@gmail.com",
@@ -1231,7 +1230,9 @@ let data = {
         "file": "JaneDoe.pdf",
         "withdrawn": true
       }
-    ]
+    ],
+    
+    validationAppeals
 
   }
 
