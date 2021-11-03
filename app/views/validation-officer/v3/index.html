@@ -1,0 +1,123 @@
+{% extends "layouts/validation-officer/v3.html" %}
+
+{% block pageTitle %}
+  Appeal submissions for review - Validation officer - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <!--span class="govuk-caption-l">Bradford City Council</span-->
+
+      <h1 class="govuk-heading-xl">
+        Appeal submissions for review
+      </h1>
+
+      {% set validationappealsnew = 0 %}
+      {% for item in data['validationAppeals'] %}
+        {% if item.status == "New" %}
+          {% set validationappealsnew = validationappealsnew + 1 %}
+        {% endif %}
+      {% endfor %}
+      {% set validationappealsincomplete = 0 %}
+      {% for item in data['validationAppeals'] %}
+        {% if item.status == "Something is missing or wrong" %}
+          {% set validationappealsincomplete = validationappealsincomplete + 1 %}
+        {% endif %}
+      {% endfor %}
+
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-1">
+        New appeals
+      </h2>
+      <table class="govuk-table">
+        {% if validationappealsnew > 0 %}
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Appeal reference</th>
+              <th scope="col" class="govuk-table__header">Received</th>
+              <th scope="col" class="govuk-table__header">Appeal site</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            {% for item in data['validationAppeals']|sort(true,true,'receivedDaysAgo') %}
+              {% if item.status == "New" %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">
+                    <a href="/validation-officer/{{version}}/goto-appeal/{{item.ref}}" class="govuk-link">APP/Q9999/D/21/{{ item.ref }}</a>
+                  </td>
+                  <td class="govuk-table__cell" nowrap>{{ item.receivedDaysAgo | daysAgoShortMonth }}</td>
+                  <td class="govuk-table__cell">{{ item.addressLine1 }}{% if item.addressLine2 %}, {% endif %}{{ item.addressLine2 }}{% if item.addressTown %}, {% endif %}{{ item.addressTown }}{% if item.addressCounty %}, {% endif %}{{ item.addressCounty }}{% if item.postcode %}, {% endif %}{{ item.postcode }}</td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        {% else %}
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header"></th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-!-padding-9" style="text-align: center; background-color: #f3f2f1;">
+                No new appeals
+              </td>
+            </tr>
+        </tbody>
+        {% endif %}
+      </table>
+
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-1 govuk-!-margin-top-7">
+        Incomplete appeals
+      </h2>
+      <table class="govuk-table">
+        {% if validationappealsincomplete > 0 %}
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Appeal reference</th>
+              <th scope="col" class="govuk-table__header">Received</th>
+              <th scope="col" class="govuk-table__header">Appeal site</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            {% for item in data['validationAppeals']|sort(true,true,'receivedDaysAgo') %}
+              {% if item.status == "Something is missing or wrong" %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">
+                    <a href="/validation-officer/{{version}}/goto-appeal/{{item.ref}}" class="govuk-link">APP/Q9999/D/21/{{ item.ref }}</a>
+                  </td>
+                  <td class="govuk-table__cell" nowrap>{{ item.receivedDaysAgo | daysAgoShortMonth }}</td>
+                  <td class="govuk-table__cell">{{ item.addressLine1 }}{% if item.addressLine2 %}, {% endif %}{{ item.addressLine2 }}{% if item.addressTown %}, {% endif %}{{ item.addressTown }}{% if item.addressCounty %}, {% endif %}{{ item.addressCounty }}{% if item.postcode %}, {% endif %}{{ item.postcode }}</td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        {% else %}
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header"></th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-!-padding-9" style="text-align: center; background-color: #f3f2f1;">
+                No incomplete appeals
+              </td>
+            </tr>
+        </tbody>
+        {% endif %}
+      </table>
+
+    </div>
+  </div>
+{% endblock %}

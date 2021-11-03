@@ -1069,6 +1069,7 @@ require('./routes/lpa-questionnaire/v9.js')(router);
 
 require('./routes/validation-officer/v1.js')(router);
 require('./routes/validation-officer/v2.js')(router);
+require('./routes/validation-officer/v3.js')(router);
 
 require('./routes/case-officer/v1.js')(router);
 require('./routes/case-officer/v2.js')(router);

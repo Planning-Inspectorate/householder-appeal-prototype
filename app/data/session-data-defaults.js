@@ -19,6 +19,7 @@ Example usage:
 
 let availableAppeals = require('./availableAppeals.json')
 let lpas = require('./local-authority-eng.json')
+let validationAppeals = require('./validationAppeals.json')
 
 let data = {
 
@@ -1229,7 +1230,9 @@ let data = {
         "file": "JaneDoe.pdf",
         "withdrawn": true
       }
-    ]
+    ],
+    
+    validationAppeals
 
   }
 

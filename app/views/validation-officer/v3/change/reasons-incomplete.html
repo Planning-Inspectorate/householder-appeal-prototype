@@ -1,0 +1,154 @@
+{% extends "layouts/validation-officer/v3.html" %}
+
+{% block pageTitle %}
+  Change appellant name - Review appeal - Validation officer - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Change reasons why appeal is incomplete
+      </h1>
+
+      <form action="" method="post">
+
+        <!-- loop through data from validationAppeals.json -->
+        {% for item in data['validationAppeals'] %}
+          <!-- match selected appeal by ref in data and show -->
+          {% if item.ref == data["validation-"+version+"-currentappeal"] %}
+
+            <div class="govuk-form-group">
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="validation-{{version}}-wrong-reasons" name="validation-{{version}}-wrong-reasons" type="checkbox" value="Names do not match"{% if "Names do not match" in item.reasonsIncomplete %} checked{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label"  for="validation-{{version}}-wrong-reasons">
+                    Names do not match
+                  </label>
+                </div>
+          
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="validation-{{version}}-wrong-reasons-2" name="validation-{{version}}-wrong-reasons" type="checkbox" value="Sensitive information included"{% if "Sensitive information included" in item.reasonsIncomplete %} checked{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="validation-{{version}}-wrong-reasons-2">
+                    Sensitive information included
+                  </label>
+                </div>
+            
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="validation-{{version}}-wrong-reasons-3" name="validation-{{version}}-wrong-reasons" type="checkbox" value="Missing or wrong documents" aria-controls="conditional-validation-{{version}}-wrong-reasons-3" aria-expanded="false"{% if "Missing or wrong documents" in item.reasonsIncomplete %} checked{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="validation-{{version}}-wrong-reasons-3">
+                    Missing or wrong documents
+                  </label>
+                </div>
+            
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-validation-{{version}}-wrong-reasons-3">
+                
+                  <div class="govuk-form-group">
+                    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="validation-{{version}}-wrong-reasons-missing" name="validation-{{version}}-wrong-reasons-missing" type="checkbox" value="Application form"{% if "Application form" in item.reasonsIncompleteMissing %} checked{% endif %}>
+                        <label class="govuk-label govuk-checkboxes__label" for="validation-{{version}}-wrong-reasons-missing">
+                          Application form
+                        </label>
+                      </div>
+                      
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="validation-{{version}}-wrong-reasons-missing-2" name="validation-{{version}}-wrong-reasons-missing" type="checkbox" value="Decision notice"{% if "Decision notice" in item.reasonsIncompleteMissing %} checked{% endif %}>
+                        <label class="govuk-label govuk-checkboxes__label" for="validation-{{version}}-wrong-reasons-missing-2">
+                          Decision notice
+                        </label>
+                      </div>
+
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="validation-{{version}}-wrong-reasons-missing-3" name="validation-{{version}}-wrong-reasons-missing" type="checkbox" value="Grounds of appeal"{% if "Grounds of appeal" in item.reasonsIncompleteMissing %} checked{% endif %}>
+                        <label class="govuk-label govuk-checkboxes__label" for="validation-{{version}}-wrong-reasons-missing-3">
+                          Grounds of appeal
+                        </label>
+                      </div>
+                      
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="validation-{{version}}-wrong-reasons-missing-4" name="validation-{{version}}-wrong-reasons-missing" type="checkbox" value="Supporting documents"{% if "Supporting documents" in item.reasonsIncompleteMissing %} checked{% endif %}>
+                        <label class="govuk-label govuk-checkboxes__label" for="validation-{{version}}-wrong-reasons-missing-4">
+                          Supporting documents
+                        </label>
+                      </div>
+                    
+                    </div>
+                  </div>
+
+                </div>
+                
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="validation-{{version}}-wrong-reasons-4" name="validation-{{version}}-wrong-reasons" type="checkbox" value="Inflammatory comments made"{% if "Inflammatory comments made" in item.reasonsIncomplete %} checked{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="validation-{{version}}-wrong-reasons-4">
+                    Inflammatory comments made
+                  </label>
+                </div>
+              
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="validation-{{version}}-wrong-reasons-5" name="validation-{{version}}-wrong-reasons" type="checkbox" value="Opened in error"{% if "Opened in error" in item.reasonsIncomplete %} checked{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="validation-{{version}}-wrong-reasons-5">
+                    Opened in error
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="validation-{{version}}-wrong-reasons-6" name="validation-{{version}}-wrong-reasons" type="checkbox" value="Wrong appeal type used"{% if "Wrong appeal type used" in item.reasonsIncomplete %} checked{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="validation-{{version}}-wrong-reasons-6">
+                    Wrong appeal type used
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="validation-{{version}}-wrong-reasons-7" name="validation-{{version}}-wrong-reasons" type="checkbox" value="Other" aria-controls="conditional-validation-{{version}}-wrong-reasons-7" aria-expanded="false"{% if "Other" in item.reasonsIncomplete %} checked{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="validation-{{version}}-wrong-reasons-7">
+                    Other
+                  </label>
+                </div>
+              
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-validation-{{version}}-wrong-reasons-7">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="validation-{{version}}-wrong-other">
+                      List reasons
+                    </label>
+                    <input class="govuk-input" id="validation-{{version}}-wrong-other" name="validation-{{version}}-wrong-other" type="text" value="{{ item.reasonsIncompleteOther }}">
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          {% endif %}
+        {% endfor %}
+        
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save changes"
+          }) }}
+          <a class="govuk-link" href="javascript:history.go(-1);">Cancel</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "layouts/validation-officer/v3.html" %}
+
+{% block pageTitle %}
+  Validation review complete - Validation officer - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- loop through data from validationAppeals.json -->
+      {% for item in data['validationAppeals'] %}
+        <!-- match selected appeal by ref in data and show -->
+        {% if item.ref == data["validation-"+version+"-currentappeal"] %}
+
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+              Review complete
+            </h1>
+            <div class="govuk-panel__body">
+              {% if item.status == "Something is missing or wrong" %}
+                {{ item.status }}
+              {% else %}
+              Appeal {{ item.status | lower }}
+              {% endif %}
+              <br>
+              <strong>APP/Q9999/D/21/{{ item.ref }}</strong>
+            </div>
+          </div>
+
+          <p class="govuk-body">
+            {% if item.status == "Valid" %}
+              The appeal has been started and the LPA questionnaire email has been sent.
+            {% endif %}
+            {% if item.status == "Invalid" %}
+              The appeal has been turned away, and emails have been sent to the appellant and LPA.
+            {% endif %}
+          <p>
+
+        {% endif %}
+      {% endfor %}
+
+      <h2 class="govuk-heading-m">What next?</h2>
+      <ul class="govuk-list">
+        <li>
+          <a href="/validation-officer/{{ version }}/" class="govuk-link">Return to task list</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+{% endblock %}

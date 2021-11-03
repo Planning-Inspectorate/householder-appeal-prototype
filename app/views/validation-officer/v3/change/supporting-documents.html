@@ -1,0 +1,98 @@
+{% extends "layouts/validation-officer/v3.html" %}
+
+{% block pageTitle %}
+  Change decision letter - Review appeal - Validation officer - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Change decision letter
+      </h1>
+
+      <form action="" method="post">
+
+        <!-- loop through data from validationAppeals.json -->
+        {% for item in data['validationAppeals'] %}
+          <!-- match selected appeal by ref in data and show -->
+          {% if item.ref == data["validation-"+version+"-currentappeal"] %}
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Current files
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <ul class="govuk-list">
+                    {% for file in item.supportingDocuments %}
+                      <li><a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ file }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </dd>
+              </div>
+            </dl>
+          {% endif %}
+        {% endfor %}
+        
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="validation-{{version}}-change-supportingdocuments">
+            Upload files
+          </label>
+          <p class="govuk-hint">
+            Drag and drop files or select "choose files".<br>
+            The uploaded files will be added to the list of current supporting documents.
+          <p>
+          <input class="govuk-file-upload pins-file-upload-multiple" id="validation-{{version}}-change-supportingdocuments" name="validation-{{version}}-change-supportingdocuments" type="file" multiple>
+        </div>
+
+        {{ govukInsetText({
+          text: "File size should be no more than 15MB"
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with file formats",
+          html: '
+            <p class="govuk-body">
+              Your file must be in one of the following formats:
+            <p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>pdf</li>
+              <li>doc</li>
+              <li>docx</li>
+              <li>tif</li>
+              <li>tiff</li>
+              <li>jpg</li>
+              <li>jpeg</li>
+              <li>png</li>
+            </ul>
+          '
+        }) }}     
+        
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save changes"
+          }) }}
+          <a class="govuk-link" href="javascript:history.go(-1);">Cancel</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

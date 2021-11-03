@@ -81,11 +81,6 @@
           html: sensitiveHtml
         }) }}
 
-
-        {{ govukInsetText({
-          text: "File size should be no more than 15MB"
-        }) }}
-
         {{ govukFileUpload({
           id: "appealsub-"+version+"-appealdocuments-appealstatement",
           name: "appealsub-"+version+"-appealdocuments-appealstatement",
@@ -93,6 +88,10 @@
             classes: "govuk-label--m",
             text: "Upload a file"
           }
+        }) }}
+
+        {{ govukInsetText({
+          text: "File size should be no more than 15MB"
         }) }}
 
         {{ govukDetails({
