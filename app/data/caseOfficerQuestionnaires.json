@@ -1,0 +1,296 @@
+[
+  {
+    "ref": "1345264",
+    "dueInDays": -4,
+    "received": true,
+    "status": "New",
+    "outcome": "",
+    "addressLine1": "96 The Avenue",
+    "addressLine2": "",
+    "addressTown": "Maidstone",
+    "addressCounty": "Kent",
+    "postcode": "MD21 5XY",
+    "lpa": "MAI",
+    "planningApplicationRef": "48269/APP/2021/1482",
+    "appellantName": "Lee Thornton",
+    "decisionNotice": "04 LPA DECISION NOTICE.pdf",
+    "planningOfficerReport": "01 PLANNING OFFICER_S REPORT - 672932 - Delegated Report.pdf",
+    "plansUsed": [
+      "PLANS SUBMITTED WITH APPLICATION - 672932 - 1150631-JCL-PD-02A - Existing Elevations.pdf"
+    ],
+    "statutoryPolicies": [
+      "POLICY AND SUPPORTING TEXT - 672932 - DM5.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - DM6.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - DM12.pdf"
+    ],
+    "otherPolicies": [
+      "POLICY AND SUPPORTING TEXT - 672932 - CP9 - Sustainable Design Adopted March 2019.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - CP10 & 10A - Climate Change Adopted March 2019.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - CP14 - Historic Environment Adopted March 2019.pdf"
+    ],
+    "supplementaryPlanningDocs": [],
+    "conservationArea": "Yes",
+    "conservationAreaFiles": [
+      "CONSERVATION AREA PLAN - 672932 - CA Map.pdf"
+    ],
+    "listedBuilding": "No",
+    "listedBuildingInfo": "",
+    "applicationNotification" : [],
+    "applicationPublicity" : [],
+    "representations" : [],
+    "appealNotification" : [],
+    "reasons" : []
+  },
+  {
+    "ref": "5463281",
+    "dueInDays": -3,
+    "received": true,
+    "status": "New",
+    "outcome": "",
+    "addressLine1": "55 Butcher Street",
+    "addressLine2": "",
+    "addressTown": "Thurnscoe",
+    "addressCounty": "",
+    "postcode": "S63 0RB",
+    "lpa": "BNS",
+    "planningApplicationRef": "32569/APP/2021/2102",
+    "appellantName": "Haley Eland",
+    "decisionNotice": "04 LPA DECISION NOTICE.pdf",
+    "planningOfficerReport": "01 PLANNING OFFICER_S REPORT - 672932 - Delegated Report.pdf",
+    "plansUsed": [
+      "PLANS SUBMITTED WITH APPLICATION - 672932 - 1150631-JCL-PD-02A - Existing Elevations.pdf"
+    ],
+    "statutoryPolicies": [
+      "POLICY AND SUPPORTING TEXT - 672932 - DM5.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - DM6.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - DM12.pdf"
+    ],
+    "otherPolicies": [
+      "POLICY AND SUPPORTING TEXT - 672932 - CP9 - Sustainable Design Adopted March 2019.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - CP10 & 10A - Climate Change Adopted March 2019.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - CP14 - Historic Environment Adopted March 2019.pdf"
+    ],
+    "supplementaryPlanningDocs": [],
+    "conservationArea": "Yes",
+    "conservationAreaFiles": [
+      "CONSERVATION AREA PLAN - 672932 - CA Map.pdf"
+    ],
+    "listedBuilding": "No",
+    "listedBuildingInfo": "",
+    "applicationNotification" : [],
+    "applicationPublicity" : [],
+    "representations" : [],
+    "appealNotification" : [],
+    "reasons" : []
+  },
+  {
+    "ref": "1203521",
+    "dueInDays": -2,
+    "received": false,
+    "status": "New",
+    "outcome": "",
+    "addressLine1": "8 The Chase",
+    "addressLine2": "",
+    "addressTown": "Findon",
+    "addressCounty": "",
+    "postcode": "BN14 0TT",
+    "lpa": "WOT",
+    "planningApplicationRef": "25468/APP/2021/1185",
+    "appellantName": "Roger Simmons",
+    "decisionNotice": "04 LPA DECISION NOTICE.pdf",
+    "planningOfficerReport": "01 PLANNING OFFICER_S REPORT - 672932 - Delegated Report.pdf",
+    "plansUsed": [
+      "PLANS SUBMITTED WITH APPLICATION - 672932 - 1150631-JCL-PD-02A - Existing Elevations.pdf"
+    ],
+    "statutoryPolicies": [
+      "POLICY AND SUPPORTING TEXT - 672932 - DM5.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - DM6.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - DM12.pdf"
+    ],
+    "otherPolicies": [
+      "POLICY AND SUPPORTING TEXT - 672932 - CP9 - Sustainable Design Adopted March 2019.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - CP10 & 10A - Climate Change Adopted March 2019.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - CP14 - Historic Environment Adopted March 2019.pdf"
+    ],
+    "supplementaryPlanningDocs": [],
+    "conservationArea": "Yes",
+    "conservationAreaFiles": [
+      "CONSERVATION AREA PLAN - 672932 - CA Map.pdf"
+    ],
+    "listedBuilding": "No",
+    "listedBuildingInfo": "",
+    "applicationNotification" : [],
+    "applicationPublicity" : [],
+    "representations" : [],
+    "appealNotification" : [],
+    "reasons" : []
+  },
+  {
+    "ref": "1154923",
+    "dueInDays": 0,
+    "received": true,
+    "status": "New",
+    "outcome": "",
+    "addressLine1": "44 Rivervale",
+    "addressLine2": "",
+    "addressTown": "Bridport",
+    "addressCounty": "",
+    "postcode": "DT6 5RN",
+    "lpa": "DST",
+    "planningApplicationRef": "19457/APP/2021/5421",
+    "appellantName": "Sophie Skinner",
+    "decisionNotice": "04 LPA DECISION NOTICE.pdf",
+    "planningOfficerReport": "01 PLANNING OFFICER_S REPORT - 672932 - Delegated Report.pdf",
+    "plansUsed": [
+      "PLANS SUBMITTED WITH APPLICATION - 672932 - 1150631-JCL-PD-02A - Existing Elevations.pdf"
+    ],
+    "statutoryPolicies": [
+      "POLICY AND SUPPORTING TEXT - 672932 - DM5.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - DM6.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - DM12.pdf"
+    ],
+    "otherPolicies": [
+      "POLICY AND SUPPORTING TEXT - 672932 - CP9 - Sustainable Design Adopted March 2019.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - CP10 & 10A - Climate Change Adopted March 2019.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - CP14 - Historic Environment Adopted March 2019.pdf"
+    ],
+    "supplementaryPlanningDocs": [],
+    "conservationArea": "Yes",
+    "conservationAreaFiles": [
+      "CONSERVATION AREA PLAN - 672932 - CA Map.pdf"
+    ],
+    "listedBuilding": "No",
+    "listedBuildingInfo": "",
+    "applicationNotification" : [],
+    "applicationPublicity" : [],
+    "representations" : [],
+    "appealNotification" : [],
+    "reasons" : []
+  },
+  {
+    "ref": "1087562",
+    "dueInDays": 4,
+    "received": false,
+    "status": "New",
+    "outcome": "",
+    "addressLine1": "92 Huntsmoor Road",
+    "addressLine2": "",
+    "addressTown": "Tadley",
+    "addressCounty": "",
+    "postcode": "RG26 4BX",
+    "lpa": "BAN",
+    "planningApplicationRef": "10016/APP/2021/960",
+    "appellantName": "Ryan Marshall",
+    "decisionNotice": "04 LPA DECISION NOTICE.pdf",
+    "planningOfficerReport": "01 PLANNING OFFICER_S REPORT - 672932 - Delegated Report.pdf",
+    "plansUsed": [
+      "PLANS SUBMITTED WITH APPLICATION - 672932 - 1150631-JCL-PD-02A - Existing Elevations.pdf"
+    ],
+    "statutoryPolicies": [
+      "POLICY AND SUPPORTING TEXT - 672932 - DM5.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - DM6.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - DM12.pdf"
+    ],
+    "otherPolicies": [
+      "POLICY AND SUPPORTING TEXT - 672932 - CP9 - Sustainable Design Adopted March 2019.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - CP10 & 10A - Climate Change Adopted March 2019.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - CP14 - Historic Environment Adopted March 2019.pdf"
+    ],
+    "supplementaryPlanningDocs": [],
+    "conservationArea": "Yes",
+    "conservationAreaFiles": [
+      "CONSERVATION AREA PLAN - 672932 - CA Map.pdf"
+    ],
+    "listedBuilding": "No",
+    "listedBuildingInfo": "",
+    "applicationNotification" : [],
+    "applicationPublicity" : [],
+    "representations" : [],
+    "appealNotification" : [],
+    "reasons" : []
+  },
+  {
+    "ref": "1365524",
+    "dueInDays": 3,
+    "received": false,
+    "status": "New",
+    "outcome": "",
+    "addressLine1": "29 St Marys Gardens",
+    "addressLine2": "",
+    "addressTown": "Hilperton Marsh",
+    "addressCounty": "",
+    "postcode": "BA14 7PQ",
+    "lpa": "WIL",
+    "planningApplicationRef": "9423/APP/2021/1223",
+    "appellantName": "Fiona Burgess",
+    "decisionNotice": "04 LPA DECISION NOTICE.pdf",
+    "planningOfficerReport": "01 PLANNING OFFICER_S REPORT - 672932 - Delegated Report.pdf",
+    "plansUsed": [
+      "PLANS SUBMITTED WITH APPLICATION - 672932 - 1150631-JCL-PD-02A - Existing Elevations.pdf"
+    ],
+    "statutoryPolicies": [
+      "POLICY AND SUPPORTING TEXT - 672932 - DM5.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - DM6.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - DM12.pdf"
+    ],
+    "otherPolicies": [
+      "POLICY AND SUPPORTING TEXT - 672932 - CP9 - Sustainable Design Adopted March 2019.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - CP10 & 10A - Climate Change Adopted March 2019.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - CP14 - Historic Environment Adopted March 2019.pdf"
+    ],
+    "supplementaryPlanningDocs": [],
+    "conservationArea": "Yes",
+    "conservationAreaFiles": [
+      "CONSERVATION AREA PLAN - 672932 - CA Map.pdf"
+    ],
+    "listedBuilding": "No",
+    "listedBuildingInfo": "",
+    "applicationNotification" : [],
+    "applicationPublicity" : [],
+    "representations" : [],
+    "appealNotification" : [],
+    "reasons" : []
+  },
+  {
+    "ref": "1224115",
+    "dueInDays": 3,
+    "received": false,
+    "status": "New",
+    "outcome": "",
+    "addressLine1": "1 Grove Cottage",
+    "addressLine2": "Shotesham Road",
+    "addressTown": "Woodton",
+    "addressCounty": "",
+    "postcode": "NR35 2ND",
+    "lpa": "WAV",
+    "planningApplicationRef": "18543/APP/2021/6627",
+    "appellantName": "Kevin Fowler",
+    "decisionNotice": "04 LPA DECISION NOTICE.pdf",
+    "planningOfficerReport": "01 PLANNING OFFICER_S REPORT - 672932 - Delegated Report.pdf",
+    "plansUsed": [
+      "PLANS SUBMITTED WITH APPLICATION - 672932 - 1150631-JCL-PD-02A - Existing Elevations.pdf"
+    ],
+    "statutoryPolicies": [
+      "POLICY AND SUPPORTING TEXT - 672932 - DM5.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - DM6.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - DM12.pdf"
+    ],
+    "otherPolicies": [
+      "POLICY AND SUPPORTING TEXT - 672932 - CP9 - Sustainable Design Adopted March 2019.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - CP10 & 10A - Climate Change Adopted March 2019.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - CP14 - Historic Environment Adopted March 2019.pdf"
+    ],
+    "supplementaryPlanningDocs": [],
+    "conservationArea": "Yes",
+    "conservationAreaFiles": [
+      "CONSERVATION AREA PLAN - 672932 - CA Map.pdf"
+    ],
+    "listedBuilding": "No",
+    "listedBuildingInfo": "",
+    "applicationNotification" : [],
+    "applicationPublicity" : [],
+    "representations" : [],
+    "appealNotification" : [],
+    "reasons" : []
+  }
+]
