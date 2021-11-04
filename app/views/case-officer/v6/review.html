@@ -1,0 +1,467 @@
+{% extends "layouts/case-officer/v6.html" %}
+
+{% block pageTitle %}
+  Review questionnaire - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Questionnaires for review",
+        href: "/case-officer/"+version+"/list-questionnaires"
+      },
+      {
+        text: "APP/Q9999/D/21/"+data["caseofficer-"+version+"-currentappeal"]
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <!-- loop through data from caseOfficerQuestionnaires.json -->
+  {% for item in data['caseOfficerQuestionnaires'] %}
+    <!-- match selected appeal by ref in data and show -->
+    {% if item.ref == data["caseofficer-"+version+"-currentappeal"] %}
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-xl">
+            Review questionnaire
+          </h1>
+
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Appeal reference
+              </dt>
+              <dd class="govuk-summary-list__value">
+                APP/Q9999/D/21/{{ item.ref }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Appeal site
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ item.addressLine1 }}{% if item.addressLine2 %}<br>{% endif %}{{ item.addressLine2 }}{% if item.addressTown %}<br>{% endif %}{{ item.addressTown }}{% if item.addressCounty %}<br>{% endif %}{{ item.addressCounty }}{% if item.postcode %}<br>{% endif %}{{ item.postcode }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Local planning department
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% for lpa in data['lpas'] %}
+                  {% if lpa.key == item.lpa %}
+                    {{lpa['official-name']}}
+                  {% endif %}
+                {% endfor %}
+              </dd>
+            </div>
+          </dl>
+
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <form action="" method="post">
+
+            <h2 class="govuk-heading-l govuk-!-margin-top-6">The planning application</h2>
+
+            <table class="govuk-table govuk-table__lpareview">
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Planning application reference</th>
+                  <td class="govuk-table__cell">{{ item.planningApplicationRef }}</td>
+                  <td class="govuk-table__cell"></td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">
+                    Decision notice
+                  </th>
+                  <td class="govuk-table__cell">
+                    <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ item.decisionNotice }}</a>
+                  </td>
+                  <td class="govuk-table__cell">
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Planning Officer's report</th>
+                  <td class="govuk-table__cell">
+                    <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ item.planningOfficerReport }}</a>
+                  </td>
+                  <td class="govuk-table__cell">
+
+                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect" name="caseofficer-{{version}}-missingincorrect" type="checkbox" value="Planning Officer's report">
+                        <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect">
+                        Missing or incorrect
+                        </label>
+                      </div>
+                    </div>
+                    
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Plans used to reach decision</th>
+                  <td class="govuk-table__cell">
+                    <ul class="govuk-list">
+                      {% for file in item.plansUsed %}
+                        <li>
+                          <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ file }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </td>
+                  <td class="govuk-table__cell">
+                  
+                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect-2" name="caseofficer-{{version}}-missingincorrect" type="checkbox" value="Plans used to reach decision" aria-controls="conditional-caseofficer-{{version}}-missingincorrect-2" aria-expanded="false">
+                        <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect-2">
+                        Missing or incorrect
+                        </label>
+                      </div>
+                      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-caseofficer-{{version}}-missingincorrect-2">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="caseofficer-{{version}}-missingincorrect-plansused">
+                            Which plans are missing?
+                            </label>
+                            <textarea class="govuk-textarea" id="caseofficer-{{version}}-missingincorrect-plansused" name="caseofficer-{{version}}-missingincorrect-plansused" rows="3"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+
+            <h2 class="govuk-heading-l govuk-!-margin-top-9">Local plans and policies</h2>
+
+            <table class="govuk-table govuk-table__lpareview">
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Statutory development plan policies</th>
+                  <td class="govuk-table__cell">
+                    <ul class="govuk-list">
+                      <li>
+                        <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - DM5.pdf">POLICY AND SUPPORTING TEXT - 672932 - DM5.pdf</a>
+                      </li>
+                      <li>
+                        <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - DM6.pdf">POLICY AND SUPPORTING TEXT - 672932 - DM6.pdf</a>
+                      </li>
+                      <li>
+                        <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - DM12.pdf">POLICY AND SUPPORTING TEXT - 672932 - DM12.pdf</a>
+                      </li>
+                    </ul></td>
+                  <td class="govuk-table__cell">
+          
+                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect-3" name="caseofficer-{{version}}-missingincorrect" type="checkbox" value="Statutory development plan policies" aria-controls="conditional-caseofficer-{{version}}-missingincorrect-3" aria-expanded="false">
+                        <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect-3">
+                        Missing or incorrect
+                        </label>
+                      </div>
+                      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-caseofficer-{{version}}-missingincorrect-3">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="caseofficer-{{version}}-missingincorrect-statutorypolicies">
+                            Which policies are missing?
+                            </label>
+                            <textarea class="govuk-textarea" id="caseofficer-{{version}}-missingincorrect-statutorypolicies" name="caseofficer-{{version}}-missingincorrect-statutorypolicies" rows="3"></textarea>
+                        </div>
+                      </div>
+                    </div>
+
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Other relevant policies</th>
+                  <td class="govuk-table__cell">
+                    <ul class="govuk-list">
+                      <li>
+                        <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - CP9 - Sustainable Design Adopted March 2019.pdf">POLICY AND SUPPORTING TEXT - 672932 - CP9 - Sustainable Design Adopted March 2019.pdf</a>
+                      </li>
+                      <li>
+                        <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - CP10 & 10A - Climate Change Adopted March 2019.pdf">POLICY AND SUPPORTING TEXT - 672932 - CP10 & 10A - Climate Change Adopted March 2019.pdf</a>
+                      </li>
+                      <li>
+                        <a href="/public/files/POLICY AND SUPPORTING TEXT - 672932 - CP14 - Historic Environment Adopted March 2019.pdf">POLICY AND SUPPORTING TEXT - 672932 - CP14 - Historic Environment Adopted March 2019.pdf</a>
+                      </li>
+                    </ul>
+                  </td>
+                  <td class="govuk-table__cell">
+          
+                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect-4" name="caseofficer-{{version}}-missingincorrect" type="checkbox" value="Other relevant policies" aria-controls="conditional-caseofficer-{{version}}-missingincorrect-4" aria-expanded="false">
+                        <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect-4">
+                        Missing or incorrect
+                        </label>
+                      </div>
+                      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-caseofficer-{{version}}-missingincorrect-4">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="caseofficer-{{version}}-missingincorrect-otherpolicies">
+                            Which policies are missing?
+                            </label>
+                            <textarea class="govuk-textarea" id="caseofficer-{{version}}-missingincorrect-otherpolicies" name="caseofficer-{{version}}-missingincorrect-otherpolicies" rows="3"></textarea>
+                        </div>
+                      </div>
+                    </div>
+
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Supplementary planning documents</th>
+                  <td class="govuk-table__cell">No files uploaded</td>
+                  <td class="govuk-table__cell">
+
+                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect-5" name="caseofficer-{{version}}-missingincorrect" type="checkbox" value="Supplementary planning documents" aria-controls="conditional-caseofficer-{{version}}-missingincorrect-5" aria-expanded="false">
+                        <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect-5">
+                        Missing or incorrect
+                        </label>
+                      </div>
+                      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-caseofficer-{{version}}-missingincorrect-5">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="caseofficer-{{version}}-missingincorrect-supplementaryplanningdocs">
+                            Which documents are missing?
+                            </label>
+                            <textarea class="govuk-textarea" id="caseofficer-{{version}}-missingincorrect-supplementaryplanningdocs" name="caseofficer-{{version}}-missingincorrect-supplementaryplanningdocs" rows="3"></textarea>
+                        </div>
+                      </div>
+                    </div>
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+
+            <h2 class="govuk-heading-l govuk-!-margin-top-9">About the appeal site</h2>
+
+            <table class="govuk-table govuk-table__lpareview">
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">
+                    Is the appeal site in or near a conservation area?
+                  </th>
+                  <td class="govuk-table__cell">
+                    Yes
+                  </td>
+                  <td class="govuk-table__cell">
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">
+                    Conservation area map and guidance
+                  </th>
+                  <td class="govuk-table__cell">
+                    <a href="/public/files/CONSERVATION AREA PLAN - 672932 - CA Map.pdf">CONSERVATION AREA PLAN - 672932 - CA Map.pdf</a>
+                  </td>
+                  <td class="govuk-table__cell">
+
+                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect-6" name="caseofficer-{{version}}-missingincorrect" type="checkbox" value="Conservation area map and guidance" aria-controls="conditional-caseofficer-{{version}}-missingincorrect-6" aria-expanded="false">
+                        <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect-6">
+                        Missing or incorrect
+                        </label>
+                      </div>
+                      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-caseofficer-{{version}}-missingincorrect-6">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="caseofficer-{{version}}-missingincorrect-conservationarea">
+                            What is missing or incorrect?
+                            </label>
+                            <textarea class="govuk-textarea" id="caseofficer-{{version}}-missingincorrect-conservationarea" name="caseofficer-{{version}}-missingincorrect-conservationarea" rows="3"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">
+                    Would the development affect the setting of a listed building?
+                  </th>
+                  <td class="govuk-table__cell">
+                    No
+                  </td>
+                  <td class="govuk-table__cell">
+                  </td>
+                </tr>
+                <!--
+                  NEED ROW FOR WHEN LISTED BUILDING = YES
+
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect-7" name="caseofficer-{{version}}-missingincorrect" type="checkbox" value="Listed building description" aria-controls="conditional-caseofficer-{{version}}-missingincorrect-7" aria-expanded="false">
+                      <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect-7">
+                      Listed building description
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-caseofficer-{{version}}-missingincorrect-7">
+                      <div class="govuk-form-group">
+                          <label class="govuk-label" for="caseofficer-{{version}}-missingincorrect-listedbuilding">
+                          What is missing or incorrect?
+                          </label>
+                          <textarea class="govuk-textarea" id="caseofficer-{{version}}-missingincorrect-listedbuilding" name="caseofficer-{{version}}-missingincorrect-listedbuilding" rows="3"></textarea>
+                      </div>
+                    </div>
+
+                -->
+              </tbody>
+            </table>
+
+            <h2 class="govuk-heading-l govuk-!-margin-top-9">Interested parties</h2>
+
+            <table class="govuk-table govuk-table__lpareview">
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Application notification</th>
+                  <td class="govuk-table__cell">No files uploaded</td>
+                  <td class="govuk-table__cell">
+
+                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect-8" name="caseofficer-{{version}}-missingincorrect" type="checkbox" value="Application notification" aria-controls="conditional-caseofficer-{{version}}-missingincorrect-8" aria-expanded="false">
+                        <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect-8">
+                        Missing or incorrect
+                        </label>
+                      </div>
+                      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-caseofficer-{{version}}-missingincorrect-8">
+                        <div class="govuk-form-group">
+                            <fieldset class="govuk-fieldset">
+                              <legend class="govuk-fieldset__legend">
+                                  What is missing or incorrect?
+                              </legend>
+                              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                                  <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect-applicationnotification" name="caseofficer-{{version}}-missingincorrect-applicationnotification" type="checkbox" value="List of addresses">
+                                    <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect-applicationnotification">
+                                    List of addresses
+                                    </label>
+                                  </div>
+                                  <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect-applicationnotification-2" name="caseofficer-{{version}}-missingincorrect-applicationnotification" type="checkbox" value="Copy of letter or site notice">
+                                    <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect-applicationnotification-2">
+                                    Copy of letter or site notice
+                                    </label>
+                                  </div>
+                              </div>
+                            </fieldset>
+                        </div>
+                      </div>
+                    </div>
+
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Application publicity</th>
+                  <td class="govuk-table__cell">No files uploaded</td>
+                  <td class="govuk-table__cell">
+
+                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect-9" name="caseofficer-{{version}}-missingincorrect" type="checkbox" value="Application publicity">
+                        <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect-9">
+                        Missing or incorrect
+                        </label>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Representations</th>
+                  <td class="govuk-table__cell">No files uploaded</td>
+                  <td class="govuk-table__cell">
+
+                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect-10" name="caseofficer-{{version}}-missingincorrect" type="checkbox" value="Representations" aria-controls="conditional-caseofficer-{{version}}-missingincorrect-10" aria-expanded="false">
+                        <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect-10">
+                        Missing or incorrect
+                        </label>
+                      </div>
+                      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-caseofficer-{{version}}-missingincorrect-10">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="caseofficer-{{version}}-missingincorrect-representations">
+                            Which representations are missing or incorrect?
+                            </label>
+                            <textarea class="govuk-textarea" id="caseofficer-{{version}}-missingincorrect-representations" name="caseofficer-{{version}}-missingincorrect-representations" rows="3"></textarea>
+                        </div>
+                      </div>
+                    </div>
+
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Appeal notification</th>
+                  <td class="govuk-table__cell">No files uploaded</td>
+                  <td class="govuk-table__cell">
+
+                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">                  
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect-11" name="caseofficer-{{version}}-missingincorrect" type="checkbox" value="Appeal notification" aria-controls="conditional-caseofficer-{{version}}-missingincorrect-11" aria-expanded="false">
+                        <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect-11">
+                        Missing or incorrect
+                        </label>
+                      </div>
+                      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-caseofficer-{{version}}-missingincorrect-11">
+                        <div class="govuk-form-group">
+                            <fieldset class="govuk-fieldset">
+                              <legend class="govuk-fieldset__legend">
+                                  What is missing or incorrect?
+                              </legend>
+                              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                                  <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect-appealnotification" name="caseofficer-{{version}}-missingincorrect-appealnotification" type="checkbox" value="List of addresses">
+                                    <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect-appealnotification">
+                                    List of addresses
+                                    </label>
+                                  </div>
+                                  <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect-appealnotification-2" name="caseofficer-{{version}}-missingincorrect-appealnotification" type="checkbox" value="Copy of letter or site notice">
+                                    <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect-appealnotification-2">
+                                    Copy of letter or site notice
+                                    </label>
+                                  </div>
+                              </div>
+                            </fieldset>
+                        </div>
+                      </div>
+                    </div>
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h2 class="govuk-heading-l govuk-!-margin-top-9">Finished your review?</h2>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+
+        </div>
+      </div>
+
+    {% endif %}
+  {% endfor %}
+
+{% endblock %}

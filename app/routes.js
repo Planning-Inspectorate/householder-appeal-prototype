@@ -1076,6 +1076,7 @@ require('./routes/case-officer/v2.js')(router);
 require('./routes/case-officer/v3.js')(router);
 require('./routes/case-officer/v4.js')(router);
 require('./routes/case-officer/v5.js')(router);
+require('./routes/case-officer/v6.js')(router);
 
 require('./routes/inspector/v4.js')(router);
 

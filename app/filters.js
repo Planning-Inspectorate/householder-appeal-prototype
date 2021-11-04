@@ -91,6 +91,16 @@ filters.daysInFutureShortMonth = function(num) {
     else return ''
 }
 
+filters.dateDue = function(num) {
+    if (num < 0){
+      var d = moment().subtract(Math.abs(num),"days").format("D MMM YYYY")
+    } else {
+      var d = moment().add(num,"days").format("D MMM YYYY")
+    }
+    if (d !== 'Invalid date') return d
+    else return ''
+}
+
 
   filters.filesByFieldName = function(files, fieldname){
     if(!files || !fieldname){

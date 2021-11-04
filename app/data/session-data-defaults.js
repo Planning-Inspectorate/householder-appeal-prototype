@@ -20,6 +20,7 @@ Example usage:
 let availableAppeals = require('./availableAppeals.json')
 let lpas = require('./local-authority-eng.json')
 let validationAppeals = require('./validationAppeals.json')
+let caseOfficerQuestionnaires = require('./caseOfficerQuestionnaires.json')
 
 let data = {
 
@@ -1232,7 +1233,8 @@ let data = {
       }
     ],
     
-    validationAppeals
+    validationAppeals,    
+    caseOfficerQuestionnaires
 
   }
 

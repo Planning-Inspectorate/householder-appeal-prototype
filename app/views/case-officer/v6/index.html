@@ -1,0 +1,158 @@
+{% extends "layouts/case-officer/v6.html" %}
+
+{% block pageTitle %}
+  Questionnaires for review - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Questionnaires for review
+      </h1>
+
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-1">
+        Incoming questionnaires
+      </h2>
+
+      {% set questionnairesincomplete = 0 %}
+      {% for item in data['caseOfficerQuestionnaires'] %}
+        {% if item.outcome == "Incomplete" %}
+          {% set questionnairesincomplete = questionnairesincomplete + 1 %}
+        {% endif %}
+      {% endfor %}
+
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Appeal reference</th>
+            <th scope="col" class="govuk-table__header">Date due</th>
+            <th scope="col" class="govuk-table__header">Appeal site</th>
+            <th scope="col" class="govuk-table__header">Status</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <!--tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="review" class="govuk-link">APP/B3030/D/21/3272772</a>
+            </td>
+            <td class="govuk-table__cell">23 Jun 2021</td>
+            <td class="govuk-table__cell">Jaleno, Church Lane, Eakring, NEWARK, NG22 0DH</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              {{ govukTag({
+                classes: "govuk-tag--green",
+                text: "Received"
+              }) }}
+            </td>
+          </tr-->
+
+            {% for item in data['caseOfficerQuestionnaires']|sort(false,true,'dueInDays') %}
+              {% if item.status == "New" and item.outcome == "" %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">
+                    
+                    {% if item.received %}
+                      <a href="/case-officer/{{version}}/goto-questionnaire/{{item.ref}}" class="govuk-link">APP/Q9999/D/21/{{ item.ref }}</a>
+                    {% else %}
+                      APP/Q9999/D/21/{{ item.ref }}
+                    {% endif %}
+                  </td> 
+                  <td class="govuk-table__cell" nowrap>
+                    {{ item.dueInDays | dateDue }}
+                  </td>
+                  <td class="govuk-table__cell">
+                    {{ item.addressLine1 }}{% if item.addressLine2 %}, {% endif %}{{ item.addressLine2 }}{% if item.addressTown %}, {% endif %}{{ item.addressTown }}{% if item.addressCounty %}, {% endif %}{{ item.addressCounty }}{% if item.postcode %}, {% endif %}{{ item.postcode }}
+                  </td>
+                  <td class="govuk-table__cell">
+                    {% if item.received %}
+                      {{ govukTag({
+                        classes: "govuk-tag--green",
+                        text: "Received"
+                      }) }}
+                    {% else %}
+                      {% if item.dueInDays < 0 %}
+                        {{ govukTag({
+                          classes: "govuk-tag--red",
+                          text: "Overdue"
+                        }) }}
+                      {% else %}
+                        {{ govukTag({
+                          classes: "govuk-tag--blue",
+                          text: "awaiting"
+                        }) }}
+                      {% endif %}
+                    {% endif %}
+                  </td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+
+        </tbody>
+      </table>
+
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-1 govuk-!-margin-top-7">
+        Incomplete questionnaires
+      </h2>
+
+      <table class="govuk-table">
+        {% if questionnairesincomplete > 0 %}
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Appeal reference</th>
+              <th scope="col" class="govuk-table__header">Date due</th>
+              <th scope="col" class="govuk-table__header">Appeal site</th>
+              <th scope="col" class="govuk-table__header">Status</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+
+              {% for item in data['caseOfficerQuestionnaires']|sort(false,true,'dueInDays') %}
+                {% if item.status == "New" and item.outcome == "Incomplete" %}
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">
+                      <a href="/case-officer/{{version}}/goto-incomplete-questionnaire/{{item.ref}}" class="govuk-link">APP/Q9999/D/21/{{ item.ref }}</a>
+                    </td>
+                    <td class="govuk-table__cell" nowrap>{{ item.dueInDays | dateDue }}</td>
+                    <td class="govuk-table__cell">{{ item.addressLine1 }}{% if item.addressLine2 %}, {% endif %}{{ item.addressLine2 }}{% if item.addressTown %}, {% endif %}{{ item.addressTown }}{% if item.addressCounty %}, {% endif %}{{ item.addressCounty }}{% if item.postcode %}, {% endif %}{{ item.postcode }}</td>
+                    <td class="govuk-table__cell">
+                      {{ govukTag({
+                        classes: "govuk-tag--yellow",
+                        text: "Incomplete"
+                      }) }}
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endfor %}
+
+          </tbody>
+        {% else %}
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header"></th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-!-padding-9" style="text-align: center; background-color: #f3f2f1;">
+                No incomplete questionnaires
+              </td>
+            </tr>
+          </tbody>
+        {% endif %}
+      </table>
+
+    </div>
+  </div>
+{% endblock %}

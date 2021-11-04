@@ -1,0 +1,90 @@
+{% extends "layouts/case-officer/v6.html" %}
+
+{% block pageTitle %}
+  Review questionnaire - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Questionnaires for review",
+        href: "/case-officer/"+version+"/list-questionnaires"
+      },
+      {
+        text: "APP/Q9999/D/21/"+data["caseofficer-"+version+"-currentappeal"]
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <!-- loop through data from caseOfficerQuestionnaires.json -->
+  {% for item in data['caseOfficerQuestionnaires'] %}
+    <!-- match selected appeal by ref in data and show -->
+    {% if item.ref == data["caseofficer-"+version+"-currentappeal"] %}
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-xl">
+            Review questionnaire
+          </h1>
+
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Appeal reference
+              </dt>
+              <dd class="govuk-summary-list__value">
+                APP/Q9999/D/21/{{ item.ref }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Appeal site
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ item.addressLine1 }}{% if item.addressLine2 %}<br>{% endif %}{{ item.addressLine2 }}{% if item.addressTown %}<br>{% endif %}{{ item.addressTown }}{% if item.addressCounty %}<br>{% endif %}{{ item.addressCounty }}{% if item.postcode %}<br>{% endif %}{{ item.postcode }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Local planning department
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% for lpa in data['lpas'] %}
+                  {% if lpa.key == item.lpa %}
+                    {{lpa['official-name']}}
+                  {% endif %}
+                {% endfor %}
+              </dd>
+            </div>
+          </dl>
+
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <form action="" method="post">
+
+            
+
+          </form>
+
+        </div>
+      </div>
+
+    {% endif %}
+  {% endfor %}
+
+{% endblock %}

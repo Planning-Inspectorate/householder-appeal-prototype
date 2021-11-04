@@ -1,0 +1,50 @@
+{% extends "layouts/case-officer/v6.html" %}
+
+{% block pageTitle %}
+  Confirmation - Review questionnaire - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- loop through data from caseOfficerQuestionnaires.json -->
+      {% for item in data['caseOfficerQuestionnaires'] %}
+        <!-- match selected appeal by ref in data and show -->
+        {% if item.ref == data["caseofficer-"+version+"-currentappeal"] %}
+
+          {{ govukPanel({
+            classes: "govuk-!-margin-bottom-7",
+            titleText: "Outcome confirmed",
+            html: "Questionnaire " + item.outcome + "<br>APP/Q9999/D/21/" + item.ref
+          }) }}
+
+          {% if data["lpaqreview-"+version+"-outcome"] == "complete" %}
+          <p class="govuk-body">
+            The appeal is now available to inspectors.
+          <p>
+          {% endif %}
+
+          <h2 class="govuk-heading-m">What next?</h2>
+          <ul class="govuk-list">
+            <li>
+              <a href="/case-officer/{{version}}/" class="govuk-link">Return to questionnaires for review</a>
+            </li>
+          </ul>
+
+        {% endif %}
+      {% endfor %}
+
+    </div>
+  </div>
+{% endblock %}
