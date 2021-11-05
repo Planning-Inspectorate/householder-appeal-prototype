@@ -28,7 +28,7 @@ module.exports = function (router) {
     if (req.session.data["caseofficer-"+v+"-outcome"] == "Incomplete") {
       req.session.data["caseOfficerQuestionnaires"][objIndex].reasons = req.session.data["caseofficer-"+v+"-missingincorrect"];
       req.session.data["caseOfficerQuestionnaires"][objIndex].reasonsPlansUsed = req.session.data["caseofficer-"+v+"-missingincorrect-plansused"];
-      req.session.data["caseOfficerQuestionnaires"][objIndex].reasonsStatutoryPolcies = req.session.data["caseofficer-"+v+"-missingincorrect-statutorypolicies"];
+      req.session.data["caseOfficerQuestionnaires"][objIndex].reasonsStatutoryPolicies = req.session.data["caseofficer-"+v+"-missingincorrect-statutorypolicies"];
       req.session.data["caseOfficerQuestionnaires"][objIndex].reasonsOtherPolicies = req.session.data["caseofficer-"+v+"-missingincorrect-otherpolicies"];
       req.session.data["caseOfficerQuestionnaires"][objIndex].reasonsSupplementaryPlanningDocs = req.session.data["caseofficer-"+v+"-missingincorrect-supplementaryplanningdocs"];
       req.session.data["caseOfficerQuestionnaires"][objIndex].reasonsConservationArea = req.session.data["caseofficer-"+v+"-missingincorrect-conservationarea"];
@@ -45,6 +45,35 @@ module.exports = function (router) {
   router.get(base+'goto-incomplete-questionnaire/:ref', function (req, res, next) {
     req.session.data["caseofficer-"+v+"-currentappeal"] = req.params.ref;
     res.redirect(base+'review-incomplete');
+  })
+
+
+  router.post(base+'update/plans-used', function (req, res) {
+
+    objIndex = req.session.data["caseOfficerQuestionnaires"].findIndex((obj => obj.ref == req.session.data["caseofficer-"+v+"-currentappeal"]));
+
+    newPlansUsed = req.session.data["caseofficer-"+v+"-update-plansused"];
+
+    if (Array.isArray(newPlansUsed)){
+      newPlansUsed.forEach( item => {
+        req.session.data["caseOfficerQuestionnaires"][objIndex].plansUsed.push(item);
+      });
+    } else {
+      req.session.data["caseOfficerQuestionnaires"][objIndex].plansUsed.push(newPlansUsed);
+    }
+
+    res.redirect(base+'review-incomplete');
+
+  })
+
+  router.post(base+'review-incomplete', function (req, res) {
+
+    objIndex = req.session.data["caseOfficerQuestionnaires"].findIndex((obj => obj.ref == req.session.data["caseofficer-"+v+"-currentappeal"]));
+    
+    req.session.data["caseOfficerQuestionnaires"][objIndex].otucome = req.session.data["caseofficer-"+v+"-outcome"];
+
+    res.redirect(base+'check-confirm');
+    
   })
 
 }
