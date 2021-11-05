@@ -1,0 +1,75 @@
+{% extends "layouts/inspector/v5.html" %}
+
+{% block pageTitle %}
+  Appeals assigned
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      {{ govukPanel({
+        classes: "govuk-!-margin-bottom-7",
+        titleText: "Appeals assigned"
+      }) }}
+
+      <p class="govuk-body">
+        You need to add these appeals to your Outlook schedule.
+      <p>
+
+      <table class="govuk-table govuk-!-margin-bottom-9">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Appeal reference</th>
+            <th scope="col" class="govuk-table__header">Postcode</th>
+            <th scope="col" class="govuk-table__header">Appeal age</th>
+            <th scope="col" class="govuk-table__header">Appeal type</th>
+            <th scope="col" class="govuk-table__header">Specialism</th>
+            <th scope="col" class="govuk-table__header">Recommended site visit</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% set i = 0 %}
+          {% for appealref in data['inspector-'+version+'-myappeals-selected'] %}
+            {% set i = i + 1 %}
+            {% for item in data['availableAppeals'] %}
+              {% if item.ref == appealref %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell" nowrap>APP/2021/56789/{{ item.ref }}</td>
+                  <td class="govuk-table__cell" nowrap>{{ item.postcode }}</td>
+                  <td class="govuk-table__cell" nowrap>{{ item.daysOld }} days</td>
+                  <td class="govuk-table__cell">HAS</td>
+                  <td class="govuk-table__cell">{{ item.specialism }}</td>
+                  <td class="govuk-table__cell">
+                    {{ item.proposedVisitType }}
+                  </td>
+                </tr>
+                {% set i = i + 1 %}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+
+        </tbody>
+      </table>
+      
+      <!--hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"-->
+
+      <h2 class="govuk-heading-m">What next?</h2>
+      <ul class="govuk-list">
+        <li>
+          <a href="/inspector/{{version}}/" class="govuk-link">Return to your appeals</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

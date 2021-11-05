@@ -1,0 +1,55 @@
+{% extends "layouts/inspector/v5.html" %}
+
+{% block pageTitle %}
+  Decision issued - My planning appeals
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+        {% set panelHtml %}
+          8 The Chase, Findon BN14&nbsp;0TT<br><br>
+          {{ data["inspector-"+version+"-schedule-date-day"] }}
+          {{ data["inspector-"+version+"-schedule-date-month"] | formatMonth }} {{ data["inspector-"+version+"-schedule-date-year"] }}<br>
+          {{ data["inspector-"+version+"-schedule-time"] | capitalize }}
+        {% endset -%}
+
+      {{ govukPanel({
+        titleText: "Decision issued",
+        html: data["inspector-"+version+"-issuedecision-outcome"] + "<br>APP/2021/56789/3266594"
+      }) }}
+
+      <p class="govuk-body">
+        The decision has been issued to the appellant and local planning department.
+      <p>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m">What next?</h2>
+      <ul class="govuk-list">
+        <li>
+          <a href="/inspector/{{version}}/" class="govuk-link">Return to your appeals</a>
+        </li>
+      </ul>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+    </div>
+  </div>
+  
+</div>
+
+
+{% endblock %}

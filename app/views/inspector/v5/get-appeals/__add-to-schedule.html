@@ -1,0 +1,98 @@
+{% extends "layouts/inspector/v5.html" %}
+
+{% block pageTitle %}
+  Available appeals
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to available appeals",
+    href: "/inspector/"+version+"/get-appeals/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Add appeals to your schedule
+      </h1>
+
+      <form action="" method="post">
+
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Postcode</th>
+              <th scope="col" class="govuk-table__header">Target date</th>
+              <th scope="col" class="govuk-table__header">Appeal type</th>
+              <th scope="col" class="govuk-table__header">Specialism</th>
+              <th scope="col" class="govuk-table__header">Recommended site visit</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            {% set i = 0 %}
+            {% for appealref in data['inspector-'+version+'-myappeals-selected'] %}
+              {% set i = i + 1 %}
+              {% for item in data['availableAppeals'] %}
+                {% if item.ref == appealref %}
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell" nowrap>{{ item.postcode }}</td>
+                    <td class="govuk-table__cell" nowrap>{{ item.targetDateDaysInFuture | daysInFutureShortMonth }}</td>
+                    <td class="govuk-table__cell">HAS</td>
+                    <td class="govuk-table__cell">{{ item.specialism }}</td>
+                    <td class="govuk-table__cell">
+                      {{ item.proposedVisitType }}
+                    </td>
+                  </tr>
+                  {% set i = i + 1 %}
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+
+          </tbody>
+        </table>
+                
+        <!--div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="inspector-{{version}}-provisionalweek">
+            Provisional week for site visits
+          </label>
+          <select class="govuk-select" id="inspector-{{version}}-provisionalweek" name="inspector-{{version}}-provisionalweek">
+            <option value="1 Nov 2021">1 November 2021</option>
+            <option value="8 Nov 2021">8 November 2021</option>
+            <option value="15 Nov 2021">15 November 2021</option>
+            <option value="21 Nov 2021">21 November 2021</option>
+            <option value="29 Nov 2021">29 November 2021</option>
+            <option value="6 Dec 2021">6 December 2021</option>
+            <option value="13 Dec 2021">13 December 2021</option>
+          </select>
+        </div-->
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Confirm and assign appeals to me"
+          }) }}
+          <a href="/inspector/{{version}}/get-appeals" class="govuk-link">Change appeal selection</a>
+        </div>
+
+      </form>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <!--iframe
+        width="100%"
+        height="500"
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/MAP_MODE?key=AIzaSyDy_9cI-oZbUWq_jq8dKYMY2725qiZULSU&q=BS78LQ" allowfullscreen>
+      </iframe-->
+    </div>
+  </div>
+{% endblock %}

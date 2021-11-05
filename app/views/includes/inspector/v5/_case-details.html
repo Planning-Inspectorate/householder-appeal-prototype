@@ -1,0 +1,359 @@
+{{ govukAccordion({
+  id: "inspector-"+version+"-evidence",
+  items: [
+    {
+      heading: {
+        text: "Case details"
+      },
+      content: {
+        html: '
+          <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Appellant name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Maria Sharma
+              </dd>
+            </div>  
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Agent name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                No agent for this appeal
+              </dd>
+            </div> 
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Contact email address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a class="govuk-link" href="#">maria.sharma@gmail.com</a>
+              </dd>
+            </div>                            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Date appeal received
+              </dt>
+              <dd class="govuk-summary-list__value">
+                12 December 2020
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Description of development
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Description of development here
+              </dd>
+            </div>
+          </dl>
+        '
+      }
+    },
+    {
+      heading: {
+        text: "Appellant case"
+      },
+      content: {
+        html: '
+          <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Appeal statement
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="#">Appealstatement.doc</a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Supporting documents
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="#">appellant-photos.png</a>
+              </dd>
+            </div>
+          </dl>
+        '
+      }
+    },
+    {
+      heading: {
+        text: "Local planning department documents"
+      },
+      content: {
+        html: '
+          <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Plans used to reach decision
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="#">Plans-uploaded-by-lpa.pdf</a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Planning application form	
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="#">planning-application.pdf</a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Planning Officers report	
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="#">Planning-officers-report.pdf</a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Decision notice	
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="#">Decisionletter.pdf</a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Extra conditions
+              </dt>
+              <dd class="govuk-summary-list__value">
+                No
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Details of planning history	
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="#">Document1.pdf</a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Supporting documents
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <ul class="govuk-list">
+                  <li>
+                    <a href="#">Supportingdocument1.pdf</a>
+                  </li>
+                  <li>
+                    <a href="#">Supportingdocument2.pdf</a>
+                  </li>
+                  <li>
+                    <a href="#">Supportingdocument3.pdf</a>
+                  </li>
+                </ul>
+              </dd>
+            </div>
+          </dl>
+        '
+      }
+    },
+    {
+      heading: {
+        text: "Constraints"
+      },
+      content: {
+        html: '
+          <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Affects listed building	
+              </dt>
+              <dd class="govuk-summary-list__value">
+                No
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                In green belt
+              </dt>
+              <dd class="govuk-summary-list__value">
+                No
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                In or near a conservation area
+              </dt>
+              <dd class="govuk-summary-list__value">
+                No
+              </dd>
+            </div>
+          </dl>
+        '
+      }
+    },
+    {
+      heading: {
+        text: "Policies"
+      },
+      content: {
+        html: '
+          <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Statutory development plan policy	
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="#">Policy1.pdf</a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Other relevant policies
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="#">Policy2.pdf</a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Supplementary planning documents
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <ul class="govuk-list">
+                  <li>
+                    <a href="#">County Council Rights of Way.pdf</a>
+                    <p class="govuk-body govuk-!-margin-bottom-3">Adopted on 21 Oct 2007</p>
+                  </li>
+                  <li>
+                    <a href="#">County Council Highways</a>
+                    <p class="govuk-body govuk-!-margin-bottom-0">Not adopted - Final draft</p>
+                  </li>
+                </ul>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Emerging development plan or neighbourhood plan	
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <p class="govuk-body govuk-!-margin-bottom-3">Yes</p>
+                <p>This is text confirms any substantive changes in the progress of the emerging plan, and their relevance to this appeal (if the plan may not be adopted before the Inspector issues their decision).</p>
+              </dd>
+            </div>
+          </dl>
+        '
+      }
+    },
+    {
+      heading: {
+        text: "Representations"
+      },
+      content: {
+        html: '
+          <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Representations
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="#">Representations.pdf</a>
+              </dd>
+            </div>
+          </dl>
+        '
+      }
+    },
+    {
+      heading: {
+        text: "Correspondence"
+      },
+      content: {
+        html: '
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Application notification
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <ul class="govuk-list">
+                  <li>
+                    <a href="#">Letter1.pdf</a>
+                  </li>
+                  <li>
+                    <a href="#">Letter2.pdf</a>
+                  </li>
+                </ul>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Application publicity
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="#">Example.pdf</a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Appeal notification
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="#">Notificationletter.pdf</a>
+              </dd>
+            </div>
+          </dl>
+        '
+      }
+    },
+    {
+      heading: {
+        text: "Site access"
+      },
+      content: {
+        html: '
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header app-custom-class"></th>
+                <th scope="col" class="govuk-table__header app-custom-class">Local planning department&apos;s answer</th>
+                <th scope="col" class="govuk-table__header app-custom-class">Appellant&apos;s answer</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Can the site been seen from public land?</th>
+                <td class="govuk-table__cell">No<br>The extension is to the rear of the property, and the garden has high hedges.</td>
+                <td class="govuk-table__cell">No<br>I&apos;ve got big hedges.</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Does the inspector need to enter the site?</th>
+                <td class="govuk-table__cell">Yes<br>The proposed development can only be viewed from the appellant&apos;s garden.</td>
+                <td class="govuk-table__cell">(not asked)</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Does the inspector need to access aneighbour&apos;s land?</th>
+                <td class="govuk-table__cell">Yes<br>54 Butcher Street</td>
+                <td class="govuk-table__cell">(not asked)</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Does the appellant own the whole site?</th>
+                <td class="govuk-table__cell">(not asked)</td>
+                <td class="govuk-table__cell">Yes</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Are there any health and safety issues?</th>
+                <td class="govuk-table__cell">Yes<br>A defensive dog</td>
+                <td class="govuk-table__cell">No</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header remove-bottom-border">Appeals in the immediate area still being considered</th>
+                <td class="govuk-table__cell remove-bottom-border">893482, 372839</td>
+                <td class="govuk-table__cell remove-bottom-border">(not asked)</td>
+              </tr>
+            </tbody>
+          </table>
+        '
+      }
+    }
+  ]
+}) }} 

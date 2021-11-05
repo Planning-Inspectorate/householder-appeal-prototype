@@ -1,0 +1,74 @@
+{% extends "layouts/inspector/v5.html" %}
+
+{% block pageTitle %}
+  Appeal unavailable
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to available appeals",
+    href: "/inspector/"+version+"/get-appeals/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Appeal unavailable
+      </h1>
+
+      <p class="govuk-body">
+        An appeal you selected has been assigned to another inspector.
+      <p>
+
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Appeal reference</th>
+              <th scope="col" class="govuk-table__header">Postcode</th>
+              <th scope="col" class="govuk-table__header">Appeal age</th>
+              <th scope="col" class="govuk-table__header">Appeal type</th>
+              <th scope="col" class="govuk-table__header">Specialism</th>
+              <th scope="col" class="govuk-table__header">Recommended site visit</th>
+              <th scope="col" class="govuk-table__header">Assigned to</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+          
+            {% for appealref in data['inspector-'+version+'-myappeals-selected'] %}
+              {% for item in data['availableAppeals'] %}
+                {% if item.ref == appealref %}
+                  {% if item.status == "removed" %}
+                    <tr class="govuk-table__row" data-appealref="{{appealref}}">
+                      <td class="govuk-table__cell" nowrap>APP/2021/56789/{{ appealref }}</td>
+                      <td class="govuk-table__cell" nowrap>{{ item.postcode }}</td>
+                      <td class="govuk-table__cell" nowrap>{{ item.daysOld }} days</td>
+                      <td class="govuk-table__cell">HAS</td>
+                      <td class="govuk-table__cell">{{ item.specialism }}</td>
+                      <td class="govuk-table__cell">{{ item.proposedVisitType }}</td>
+                      <td class="govuk-table__cell">John Smith</td>
+                    </tr>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+
+          </tbody>
+        </table>
+
+        <p class="govuk-body">
+          <a href="/inspector/{{version}}/get-appeals" class="govuk-link">Return to available appeals</a>          
+        <p>
+
+    </div>
+  </div>
+{% endblock %}

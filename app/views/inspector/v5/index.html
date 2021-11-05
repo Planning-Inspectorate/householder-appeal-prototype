@@ -1,0 +1,199 @@
+{% extends "layouts/inspector/v5.html" %}
+
+{% block pageTitle %}
+  My planning appeals
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-xl">
+        My appeals
+      </h1>
+
+    </div>
+    <div class="govuk-grid-column-one-quarter pins-align-right">
+<!--
+      {{ govukButton({
+        href: "get-appeals/",
+        text: "Get more appeals"
+      }) }}
+-->
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-3">
+        Decisions due
+      </h2>
+
+      <table class="govuk-table govuk-!-margin-bottom-9">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Appeal reference</th>
+            <th scope="col" class="govuk-table__header">Appeal site</th>
+            <th scope="col" class="govuk-table__header">Appeal age</th>
+            <th scope="col" class="govuk-table__header">Appeal type</th>
+            <th scope="col" class="govuk-table__header">Site visit type</th>
+            <th scope="col" class="govuk-table__header">Site visit date</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+
+          {% set decisiondue = 0 %}
+          {% for item in data['availableAppeals']|sort(true,true,'daysOld') %}
+            {% if item.status == "decisiondue" %}
+              {% set decisiondue = decisiondue + 1 %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                  <a href="/inspector/{{version}}/goto-appeal-decision/{{item.ref}}" class="govuk-link">APP/2021/56789/{{ item.ref }}</a>
+                </td>
+                <td class="govuk-table__cell">{{ item.address }}, {{ item.postcode }}</td>
+                <td class="govuk-table__cell" nowrap>{{ item.daysOld }} days</td>
+                <td class="govuk-table__cell">{{ item.appealType }}</td>
+                <td class="govuk-table__cell">{{ item.siteVisitType }}</td>
+                <td class="govuk-table__cell">
+                  {{ item.siteVisitDateDay }}
+                  {{ item.siteVisitDateMonth | formatShortMonth }}
+                  {{ item.siteVisitDateYear }}
+                </td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+          {% if decisiondue == 0 %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-!-padding-9" colspan="7" style="text-align: center; background-color: #f3f2f1;">
+                No decision due
+              </td>
+            </tr>
+          {% endif %}
+        
+        </tbody>
+      </table>
+
+      
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-3">
+        Site visits booked
+      </h2>
+
+      <table class="govuk-table govuk-!-margin-bottom-9">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Appeal reference</th>
+            <th scope="col" class="govuk-table__header">Appeal site</th>
+            <th scope="col" class="govuk-table__header">Appeal age</th>
+            <th scope="col" class="govuk-table__header">Appeal type</th>
+            <th scope="col" class="govuk-table__header">Site visit type</th>
+            <th scope="col" class="govuk-table__header">Site visit date</th>
+            <th scope="col" class="govuk-table__header">Site visit time</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+
+          {% set booked = 0 %}
+          {% for item in data['availableAppeals']|sort(true,true,'daysOld') %}
+            {% if item.status == "booked" %}
+              {% set booked = booked + 1 %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                  <a href="/inspector/{{version}}/goto-appeal-scheduled/{{item.ref}}" class="govuk-link">APP/2021/56789/{{ item.ref }}</a>
+                </td>
+                <td class="govuk-table__cell">{{ item.address }}, {{ item.postcode }}</td>
+                <td class="govuk-table__cell" nowrap>{{ item.daysOld }} days</td>
+                <td class="govuk-table__cell">{{ item.appealType }}</td>
+                <td class="govuk-table__cell" nowrap>{{ item.siteVisitType }}</td>
+                <td class="govuk-table__cell" nowrap>
+                  {{ item.siteVisitDateDay }}
+                  {{ item.siteVisitDateMonth | formatShortMonth }}
+                  {{ item.siteVisitDateYear }}
+                </td>
+                <td class="govuk-table__cell" nowrap>{{ item.siteVisitTime }}</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+          {% if booked == 0 %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-!-padding-9" colspan="7" style="text-align: center; background-color: #f3f2f1;">
+                No upcoming site visits
+              </td>
+            </tr>
+          {% endif %}
+
+        </tbody>
+      </table>
+
+      
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-3">
+        Site visits not yet booked
+      </h2>
+
+      <table class="govuk-table" data-module="moj-sortable-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Appeal reference</th>
+            <th scope="col" class="govuk-table__header"></th>
+            <th scope="col" class="govuk-table__header">Appeal site</th>
+            <th scope="col" class="govuk-table__header">Appeal age</th>
+            <th scope="col" class="govuk-table__header">Appeal type</th>
+            <th scope="col" class="govuk-table__header">Provisional site visit type</th>
+            <!--th scope="col" class="govuk-table__header">Provisional site visit week</th-->
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+
+          {% set notyetbooked = 0 %}
+          {% for item in data['availableAppeals']|sort(true,true,'daysOld') %}
+            {% if item.status == "notyetbooked" %}
+              {% set notyetbooked = notyetbooked + 1 %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell" nowrap>
+                    <a href="/inspector/{{version}}/goto-appeal-unscheduled/{{item.ref}}" class="govuk-link">APP/2021/56789/{{item.ref}}</a>
+                  </td>
+                  <td class="govuk-table__cell">
+                    {% if item.viewed == "no" %}
+                      {{ govukTag({
+                        classes: "govuk-tag--green",
+                        text: "New"
+                      }) }}
+                    {% endif %}
+                  </td>
+                  <td class="govuk-table__cell">{{item.address}}, {{item.postcode}}</td>
+                  <td class="govuk-table__cell" nowrap>{{ item.daysOld }} days</td>
+                  <td class="govuk-table__cell">{{item.appealType}}</td>
+                  <td class="govuk-table__cell">{{item.proposedVisitType}}</td>
+                  <!--td class="govuk-table__cell">{{item.provisionalSiteVisit}}</td-->
+                </tr>
+            {% endif %}
+          {% endfor %}
+          {% if notyetbooked == 0 %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-!-padding-9" colspan="7" style="text-align: center; background-color: #f3f2f1;">
+                No site visits to book
+              </td>
+            </tr>
+          {% endif %}
+
+        </tbody>
+      </table>
+
+      {{ govukButton({
+        href: "get-appeals/",
+        text: "Get more appeals"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
