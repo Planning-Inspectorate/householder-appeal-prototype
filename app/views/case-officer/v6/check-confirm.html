@@ -57,134 +57,49 @@
               </dd>
             </div>
 
-            {% if data["lpaqreview-"+version+"-outcome"] == "Incomplete" %}
+            {% if data["caseofficer-"+version+"-outcome"] == "Incomplete" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Missing or incorrect documents
               </dt>
               <dd class="govuk-summary-list__value">
 
-                {% if data["lpaqreview-"+version+"-about-entersite"] or 
-                      data["lpaqreview-"+version+"-about-neighboursland"] %}
-                  <p class="govuk-body">
-                    Not enough detail
-                  <p>
-                  <ul class="govuk-list govuk-list--bullet">
-                  {% if data["lpaqreview-"+version+"-about-entersite"] %}
-                    <li class="govuk-!-margin-bottom-3">{{ data["lpaqreview-"+version+"-about-entersite"] }}</li>
-                  {% endif %}
-                  {% if data["lpaqreview-"+version+"-about-neighboursland"] %}
-                    <li class="govuk-!-margin-bottom-3">{{ data["lpaqreview-"+version+"-about-neighboursland"] }}</li>
-                  {% endif %}
-                  </ul>
-                {% endif %}
-
-                {% if data["lpaqreview-"+version+"-about-listedbuilding"] or 
-                      data["lpaqreview-"+version+"-about-greenbelt"] or 
-                      data["lpaqreview-"+version+"-about-conservationarea"] %}
-                  <p class="govuk-body">
-                    Incorrect answer(s)
-                  <p>
-                  <ul class="govuk-list govuk-list--bullet">
-                    {% if data["lpaqreview-"+version+"-about-listedbuilding"] %}
-                      <li class="govuk-!-margin-bottom-3">{{ data["lpaqreview-"+version+"-about-listedbuilding"] }}</li>
-                    {% endif %}
-                    {% if data["lpaqreview-"+version+"-about-greenbelt"] %}
-                      <li class="govuk-!-margin-bottom-3">{{ data["lpaqreview-"+version+"-about-greenbelt"] }}</li>
-                    {% endif %}
-                    {% if data["lpaqreview-"+version+"-about-conservationarea"] %}
-                      <li class="govuk-!-margin-bottom-3">{{ data["lpaqreview-"+version+"-about-conservationarea"] }}</li>
-                    {% endif %}
-                  </ul>
-                {% endif %}
-
-                {% if data["lpaqreview-"+version+"-docs-poreport"] or
-                      data["lpaqreview-"+version+"-docs-plans"] or                   
-                      data["lpaqreview-"+version+"-docs-developmentplan"] or 
-                      data["lpaqreview-"+version+"-docs-supplementary"] or 
-                      data["lpaqreview-"+version+"-docs-statutory"] or 
-                      data["lpaqreview-"+version+"-docs-policies"] or 
-                      data["lpaqreview-"+version+"-docs-conservationarea"] or 
-                      data["lpaqreview-"+version+"-docs-notifying"] or 
-                      data["lpaqreview-"+version+"-docs-publicising"] or 
-                      data["lpaqreview-"+version+"-docs-representations"] or 
-                      data["lpaqreview-"+version+"-docs-notifyingappeal"] %}
+                {% if data["caseofficer-"+version+"-missingincorrect"] %}
                   <ul class="govuk-list">
-                    {% if data["lpaqreview-"+version+"-docs-poreport"] %}
-                      <li class="govuk-!-margin-bottom-3">{{ data["lpaqreview-"+version+"-docs-poreport"] }}</li>
-                    {% endif %}
-                    {% if data["lpaqreview-"+version+"-docs-plans"] %}
-                      <li class="govuk-!-margin-bottom-3">
-                        {{ data["lpaqreview-"+version+"-docs-plans"] }}:<br>
-                        {{ data["lpaqreview-"+version+"-docs-plans-detail"] }}
+                    {% for reason in data["caseofficer-"+version+"-missingincorrect"] %}
+                      <li>
+                        {{ reason }}{% if reason == "Plans used to reach decision" %}:<br>
+                          {{ data["caseofficer-"+version+"-missingincorrect-plansused"] }}
+                        {% endif %}{% if reason == "Statutory development plan policies" %}:<br>
+                          {{ data["caseofficer-"+version+"-missingincorrect-statutorypolicies"] }}
+                        {% endif %}{% if reason == "Other relevant policies" %}:<br>
+                          {{ data["caseofficer-"+version+"-missingincorrect-otherpolicies"] }}
+                        {% endif %}{% if reason == "Supplementary planning documents" %}:<br>
+                          {{ data["caseofficer-"+version+"-missingincorrect-supplementaryplanningdocs"] }}
+                        {% endif %}{% if reason == "Conservation area map and guidance" %}:<br>
+                          {{ data["caseofficer-"+version+"-missingincorrect-conservationarea"] }}
+                        {% endif %}{% if reason == "Listed building description" %}:<br>
+                          {{ data["caseofficer-"+version+"-missingincorrect-listedbuilding"] }}
+                        {% endif %}{% if reason == "Application notification" %}:<br>
+                          <ul class="govuk-list--bullet govuk-!-margin-top-0">
+                            {% for application in data["caseofficer-"+version+"-missingincorrect-applicationnotification"] %}
+                              <li class="govuk-!-margin-bottom-0">{{ application }}</li>
+                            {% endfor %}
+                          </ul>
+                        {% endif %}{% if reason == "Representations" %}:<br>
+                          {{ data["caseofficer-"+version+"-missingincorrect-representations"] }}
+                        {% endif %}{% if reason == "Appeal notification" %}:<br>
+                          <ul class="govuk-list--bullet govuk-!-margin-top-0">
+                            {% for appeal in data["caseofficer-"+version+"-missingincorrect-appealnotification"] %}
+                              <li class="govuk-!-margin-bottom-0">{{ appeal }}</li>
+                            {% endfor %}
+                          </ul>
+                        {% endif %}
                       </li>
-                    {% endif %}
-                    {% if data["lpaqreview-"+version+"-docs-statutory"] %}
-                      <li class="govuk-!-margin-bottom-3">
-                        {{ data["lpaqreview-"+version+"-docs-statutory"] }}:<br>
-                        {{ data["lpaqreview-"+version+"-docs-statutory-detail"] }}
-                      </li>
-                    {% endif %}
-                    {% if data["lpaqreview-"+version+"-docs-policies"] %}
-                      <li class="govuk-!-margin-bottom-3">
-                        {{ data["lpaqreview-"+version+"-docs-policies"] }}:<br>
-                        {{ data["lpaqreview-"+version+"-docs-policies-detail"] }}
-                      </li>
-                    {% endif %}
-                    {% if data["lpaqreview-"+version+"-docs-supplementary"] %}
-                      <li class="govuk-!-margin-bottom-3">
-                        {{ data["lpaqreview-"+version+"-docs-supplementary"] }}:<br>
-                        {{ data["lpaqreview-"+version+"-docs-supplementary-detail"] }}
-                      </li>
-                    {% endif %}
-                    <!--
-                    {% if data["lpaqreview-"+version+"-docs-developmentplan"] %}
-                      <li class="govuk-!-margin-bottom-3">
-                        {{ data["lpaqreview-"+version+"-docs-developmentplan"] }}:<br>
-                        {{ data["lpaqreview-"+version+"-docs-developmentplan-detail"] }}
-                      </li>
-                    {% endif %}
-                    -->
-                    {% if data["lpaqreview-"+version+"-docs-conservationarea"] %}
-                      <li class="govuk-!-margin-bottom-3">
-                        {{ data["lpaqreview-"+version+"-docs-conservationarea"] }}:<br>
-                        {{ data["lpaqreview-"+version+"-docs-conservationarea-detail"] }}
-                      </li>
-                    {% endif %}
-                    {% if data["lpaqreview-"+version+"-docs-notifying"] %}
-                      <li class="govuk-!-margin-bottom-3">{{ data["lpaqreview-"+version+"-docs-notifying"] }}:<br>
-                        {% set i = 0 %}
-                        {% for reason in data["lpaqreview-"+version+"-docs-notifying-detail"] %}
-                          {% if i > 0 %}<br>{% endif %}
-                          {% set i = i + 1 %}
-                          {{ reason }}
-                        {% endfor %}
-                      </li>
-                    {% endif %}
-                    {% if data["lpaqreview-"+version+"-docs-publicising"] %}
-                      <li class="govuk-!-margin-bottom-3">{{ data["lpaqreview-"+version+"-docs-publicising"] }}</li>
-                    {% endif %}
-                    {% if data["lpaqreview-"+version+"-docs-representations"] %}
-                      <li class="govuk-!-margin-bottom-3">
-                        {{ data["lpaqreview-"+version+"-docs-representations"] }}:<br>
-                        {{ data["lpaqreview-"+version+"-docs-representations-detail"] }}
-                      </li>
-                    {% endif %}
-                    {% if data["lpaqreview-"+version+"-docs-notifyingappeal"] %}
-                      <li class="govuk-!-margin-bottom-3">
-                        {{ data["lpaqreview-"+version+"-docs-notifyingappeal"] }}:<br>
-                        {% set i = 0 %}
-                        {% for reason in data["lpaqreview-"+version+"-docs-notifyingappeal-detail"] %}
-                          {% if i > 0 %}<br>{% endif %}
-                          {% set i = i + 1 %}
-                          {{ reason }}
-                        {% endfor %}
-                      </li>
-                    {% endif %}
+                    {% endfor %}
                   </ul>
                 {% endif %}
 
-                </ul>
               </dd>
             </div>
             {% endif %}
@@ -217,7 +132,7 @@
                 {% endfor %}
               </dd>
             </div>
-            <!-- TODO: Replay reasons why appeal is incomplete -->
+
           </dl>
         {% endif %}
       {% endfor %}

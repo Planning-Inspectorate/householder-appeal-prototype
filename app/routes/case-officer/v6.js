@@ -19,33 +19,24 @@ module.exports = function (router) {
 
   router.post(base+'check-confirm', function (req, res) {
     
+    // get the relevant questionnaire data from the session
     objIndex = req.session.data["caseOfficerQuestionnaires"].findIndex((obj => obj.ref == req.session.data["caseofficer-"+v+"-currentappeal"]));
 
+    // store outcome against questionnaire data
     req.session.data["caseOfficerQuestionnaires"][objIndex].outcome = req.session.data["caseofficer-"+v+"-outcome"];
-
-    if (req.session.data["caseofficer-"+v+"-missingincorrect"]) {
-      /* 
-        store form data in session
-        loop through caseofficer-v6-missingincorrect
-          store info against item in caseOfficerQuestionnaires.reasons
-        loop through caseofficer-v6-missingincorrect-applicationnotification
-          store info against item in caseOfficerQuestionnaires.reasonsApplicationNotification
-        loop through caseofficer-v6-missingincorrect-appealnotification
-          store info against item in caseOfficerQuestionnaires.reasonsAppealNotification
-        save caseofficer-v6-missingincorrect-plansused
-          in caseOfficerQuestionnaires.reasonsPlansUsed
-        save caseofficer-v6-missingincorrect-statutorypolicies
-          in caseOfficerQuestionnaires.reasonsStatutoryPolicies
-        save caseofficer-v6-missingincorrect-otherpolicies
-          in caseOfficerQuestionnaires.reasonsOtherPolicies
-        save caseofficer-v6-missingincorrect-supplementaryplanningdocs
-          in caseOfficerQuestionnaires.reasonsSupplementaryPlanningDocs
-        save caseofficer-v6-missingincorrect-conservationarea
-          in caseOfficerQuestionnaires.reasonsConservationArea
-        save caseofficer-v6-missingincorrect-representations
-          in caseOfficerQuestionnaires.reasonsRepresentations
-      */
-    }  
+    
+    if (req.session.data["caseofficer-"+v+"-outcome"] == "Incomplete") {
+      req.session.data["caseOfficerQuestionnaires"][objIndex].reasons = req.session.data["caseofficer-"+v+"-missingincorrect"];
+      req.session.data["caseOfficerQuestionnaires"][objIndex].reasonsPlansUsed = req.session.data["caseofficer-"+v+"-missingincorrect-plansused"];
+      req.session.data["caseOfficerQuestionnaires"][objIndex].reasonsStatutoryPolcies = req.session.data["caseofficer-"+v+"-missingincorrect-statutorypolicies"];
+      req.session.data["caseOfficerQuestionnaires"][objIndex].reasonsOtherPolicies = req.session.data["caseofficer-"+v+"-missingincorrect-otherpolicies"];
+      req.session.data["caseOfficerQuestionnaires"][objIndex].reasonsSupplementaryPlanningDocs = req.session.data["caseofficer-"+v+"-missingincorrect-supplementaryplanningdocs"];
+      req.session.data["caseOfficerQuestionnaires"][objIndex].reasonsConservationArea = req.session.data["caseofficer-"+v+"-missingincorrect-conservationarea"];
+      req.session.data["caseOfficerQuestionnaires"][objIndex].reasonsListedBuilding = req.session.data["caseofficer-"+v+"-missingincorrect-listedbuilding"];
+      req.session.data["caseOfficerQuestionnaires"][objIndex].reasonsApplicationNotification = req.session.data["caseofficer-"+v+"-missingincorrect-applicationnotification"];
+      req.session.data["caseOfficerQuestionnaires"][objIndex].reasonsRepresentations = req.session.data["caseofficer-"+v+"-missingincorrect-representations"];
+      req.session.data["caseOfficerQuestionnaires"][objIndex].reasonsAppealNotification = req.session.data["caseofficer-"+v+"-missingincorrect-appealnotification"];
+    }
 
     res.redirect(base+'confirmation');
   })
@@ -55,6 +46,5 @@ module.exports = function (router) {
     req.session.data["caseofficer-"+v+"-currentappeal"] = req.params.ref;
     res.redirect(base+'review-incomplete');
   })
-
 
 }
