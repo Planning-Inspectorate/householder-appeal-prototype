@@ -1,7 +1,7 @@
 {% extends "layouts/case-officer/v6.html" %}
 
 {% block pageTitle %}
-  Review questionnaire - {{ serviceName }}
+  Review incomplete questionnaire - {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -9,7 +9,7 @@
     tag: {
       text: "Beta"
     },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    html: 'This is a new service – your <a class="govuk-link" href="javascript:preventDefault();">feedback</a> will help us to improve it.'
   }) }}
 
   {{ govukBreadcrumbs({
@@ -17,7 +17,7 @@
     items: [
       {
         text: "Questionnaires for review",
-        href: "/case-officer/"+version+"/list-questionnaires"
+        href: "/case-officer/"+version+""
       },
       {
         text: "APP/Q9999/D/21/"+data["caseofficer-"+version+"-currentappeal"]
@@ -36,10 +36,10 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <h1 class="govuk-heading-xl">
-            Review questionnaire
+            Review incomplete questionnaire
           </h1>
 
-          <dl class="govuk-summary-list">
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Appeal reference
@@ -75,9 +75,334 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
 
+          <h2 class="govuk-heading-l">
+            Information marked as missing or incorrect
+          </h2>
+
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            {% for reason in item.reasons %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  {{ reason }}
+                </dt>
+                <dd class="govuk-summary-list__value">
+
+                  {% if reason == "Planning Officer's report" %}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">Files:</h3>
+                    {% if item.planningOfficerReport|length > 0 %}
+                      <ul class="govuk-list">
+                        {% for file in item.planningOfficerReport %}
+                          <li>
+                            <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ file }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="govuk-body">
+                        No files uploaded
+                      </p>
+                    {% endif %}
+                  {% endif %}
+                  
+                  {% if reason == "Plans used to reach decision" %}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">Files:</h3>
+                    {% if item.plansUsed|length > 0 %}
+                      <ul class="govuk-list">
+                        {% for file in item.plansUsed %}
+                          <li>
+                            <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ file }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="govuk-body">
+                        No files uploaded
+                      </p>
+                    {% endif %}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">What is missing or incorrect?</h3>
+                    <p class="govuk-body">
+                      {{ item.reasonsPlansUsed }}
+                    </p>
+                  {% endif %}
+                  
+                  {% if reason == "Statutory development plan policies" %}
+                  
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">Files:</h3>
+                    {% if item.statutoryPolicies|length > 0 %}
+                      <ul class="govuk-list">
+                        {% for file in item.statutoryPolicies %}
+                          <li>
+                            <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ file }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="govuk-body">
+                        No files uploaded
+                      </p>
+                    {% endif %}
+
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">What is missing or incorrect?</h3>
+                    <p class="govuk-body">
+                      {{ item.reasonsStatutoryPolicies }}
+                    </p>
+
+                  {% endif %}
+                  
+                  {% if reason == "Other relevant policies" %}
+
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">Files:</h3>
+                    {% if item.otherPolicies|length > 0 %}
+                      <ul class="govuk-list">
+                        {% for file in item.otherPolicies %}
+                          <li>
+                            <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ file }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="govuk-body">
+                        No files uploaded
+                      </p>
+                    {% endif %}
+
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">What is missing or incorrect?</h3>
+                    <p class="govuk-body">
+                      {{ item.reasonsOtherPolicies }}
+                    </p>
+
+                  {% endif %}
+                  
+                  {% if reason == "Supplementary planning documents" %}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">Files:</h3>
+                    {% if item.supplementaryPlanningDocs|length > 0 %}
+                      <ul class="govuk-list">
+                        {% for file in item.supplementaryPlanningDocs %}
+                          <li>
+                            <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ file }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="govuk-body">
+                        No files uploaded
+                      </p>
+                    {% endif %}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">What is missing or incorrect?</h3>
+                    <p class="govuk-body">
+                      {{ item.reasonsSupplementaryPlanningDocs }}
+                    </p>
+                  {% endif %}
+                  
+                  {% if reason == "Conservation area map and guidance" %}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">Files:</h3>
+                    {% if item.conservationAreaFiles|length > 0 %}
+                      <ul class="govuk-list">
+                        {% for file in item.conservationAreaFiles %}
+                          <li>
+                            <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ file }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="govuk-body">
+                        No files uploaded
+                      </p>
+                    {% endif %}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">What is missing or incorrect?</h3>
+                    <p class="govuk-body">
+                      {{ item.reasonsConservationArea }}
+                    </p>
+                  {% endif %}
+                  
+                  {% if reason == "Listed building description" %}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">Description:</h3>
+                    <p class="govuk-body">
+                      {{ item.listedBuildingInfo }}
+                    </p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">What is missing or incorrect?</h3>
+                    <p class="govuk-body">
+                      {{ item.reasonsListedBuilding }}
+                    </p>
+                    {% if item.listedBuildingNotes|length > 0 %}
+                      <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">Case officer notes:</h3>
+                      <ul class="govuk-list">
+                        {% for note in item.listedBuildingNotes %}
+                          <li>{{ note }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  {% endif %}
+                  
+                  {% if reason == "Application notification" %}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">Files:</h3>
+                    {% if item.applicationNotification|length > 0 %}
+                      <ul class="govuk-list">
+                        {% for file in item.applicationNotification %}
+                          <li>
+                            <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ file }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="govuk-body">
+                        No files uploaded
+                      </p>
+                    {% endif %}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">What is missing or incorrect?</h3>
+                    <ul class="govuk-list--bullet govuk-!-margin-top-0">
+                      {% for application in item.reasonsApplicationNotification %}
+                        <li class="govuk-!-margin-bottom-0">{{ application }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                  
+                  {% if reason == "Application publicity" %}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">Files:</h3>
+                    {% if item.applicationPublicity|length > 0 %}
+                      <ul class="govuk-list">
+                        {% for file in item.applicationPublicity %}
+                          <li>
+                            <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ file }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="govuk-body">
+                        No files uploaded
+                      </p>
+                    {% endif %}
+                  {% endif %}
+                  
+                  {% if reason == "Representations" %}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">Files:</h3>
+                    {% if item.representations|length > 0 %}
+                      <ul class="govuk-list">
+                        {% for file in item.representations %}
+                          <li>
+                            <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ file }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="govuk-body">
+                        No files uploaded
+                      </p>
+                    {% endif %}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">What is missing or incorrect?</h3>
+                    <p class="govuk-body">{{ item.reasonsRepresentations }}</p>
+                  {% endif %}
+                  
+                  {% if reason == "Appeal notification" %}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">Files:</h3>
+                    {% if item.appealNotification|length > 0 %}
+                      <ul class="govuk-list">
+                        {% for file in item.appealNotification %}
+                          <li>
+                            <a href="/public/files/blank.pdf" class="govuk-link" target="_blank">{{ file }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="govuk-body">
+                        No files uploaded
+                      </p>
+                    {% endif %}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-padding-top-0">What is missing or incorrect?</h3>
+                    <ul class="govuk-list--bullet govuk-!-margin-top-0">
+                      {% for appeal in item.reasonsAppealNotification %}
+                        <li class="govuk-!-margin-bottom-0">{{ appeal }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  {% if reason == "Planning Officer's report" %}
+                    <a class="govuk-link" href="update/planning-officer-report">
+                      Update<span class="govuk-visually-hidden"> {{ reason | lower }}</span>
+                    </a>
+                  {% endif %}
+                  {% if reason == "Plans used to reach decision" %}
+                    <a class="govuk-link" href="update/plans-used">
+                      Update<span class="govuk-visually-hidden"> {{ reason | lower }}</span>
+                    </a>
+                  {% endif %}
+                  {% if reason == "Statutory development plan policies" %}
+                    <a class="govuk-link" href="update/statutory-policies">
+                      Update<span class="govuk-visually-hidden"> {{ reason | lower }}</span>
+                    </a>
+                  {% endif %}
+                  {% if reason == "Other relevant policies" %}
+                    <a class="govuk-link" href="update/other-policies">
+                      Update<span class="govuk-visually-hidden"> {{ reason | lower }}</span>
+                    </a>
+                  {% endif %}
+                  {% if reason == "Supplementary planning documents" %}
+                    <a class="govuk-link" href="update/supplementary-planning-documents">
+                      Update<span class="govuk-visually-hidden"> {{ reason | lower }}</span>
+                    </a>
+                  {% endif %}
+                  {% if reason == "Conservation area map and guidance" %}
+                    <a class="govuk-link" href="update/conservation-area">
+                      Update<span class="govuk-visually-hidden"> {{ reason | lower }}</span>
+                    </a>
+                  {% endif %}
+                  {% if reason == "Listed building description" %}
+                    <a class="govuk-link" href="update/listed-building">
+                      Update<span class="govuk-visually-hidden"> {{ reason | lower }}</span>
+                    </a>
+                  {% endif %}
+                  {% if reason == "Application notification" %}
+                    <a class="govuk-link" href="update/application-notification">
+                      Update<span class="govuk-visually-hidden"> {{ reason | lower }}</span>
+                    </a>
+                  {% endif %}
+                  {% if reason == "Application publicity" %}
+                    <a class="govuk-link" href="update/application-publicity">
+                      Update<span class="govuk-visually-hidden"> {{ reason | lower }}</span>
+                    </a>
+                  {% endif %}
+                  {% if reason == "Representations" %}
+                    <a class="govuk-link" href="update/representations">
+                      Update<span class="govuk-visually-hidden"> {{ reason | lower }}</span>
+                    </a>
+                  {% endif %}
+                  {% if reason == "Appeal notification" %}
+                    <a class="govuk-link" href="update/appeal-notification">
+                      Update<span class="govuk-visually-hidden"> {{ reason | lower }}</span>
+                    </a>
+                  {% endif %}
+                </dd>
+              </div>
+            {% endfor %}
+          </dl>
+
           <form action="" method="post">
 
-            
+              {{ govukRadios({
+                idPrefix: "caseofficer-"+version+"-outcome",
+                name: "caseofficer-"+version+"-outcome",
+                fieldset: {
+                  legend: {
+                    text: "Mark questionnaire as complete?",
+                    classes: "govuk-fieldset__legend--l"
+                  }
+                },
+                items: [
+                  {
+                    value: "Complete",
+                    text: "Yes"
+                  },
+                  {
+                    value: "Incomplete",
+                    text: "No"
+                  }
+                ]
+              }) }}
+
+              {{ govukButton({
+                text: "Save and continue"
+              }) }}
 
           </form>
 

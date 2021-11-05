@@ -376,5 +376,75 @@
     "reasonsApplicationNotification" : [],
     "reasonsRepresentations": "",
     "reasonsAppealNotification" : []
+  },
+  {
+    "ref": "9876543",
+    "dueInDays": -4,
+    "received": true,
+    "status": "New",
+    "outcome": "Incomplete",
+    "addressLine1": "92 Boroughbridge Road",
+    "addressLine2": "",
+    "addressTown": "Birmingham",
+    "addressCounty": "",
+    "postcode": "B4 9GF",
+    "lpa": "BIR",
+    "planningApplicationRef": "22287/APP/2021/10665",
+    "appellantName": "Mary Lester",
+    "decisionNotice": "04 LPA DECISION NOTICE.pdf",
+    "planningOfficerReport": [
+      "01 PLANNING OFFICER_S REPORT - 672932 - Delegated Report.pdf"
+    ],
+    "plansUsed": [
+      "PLANS SUBMITTED WITH APPLICATION - 672932 - 1150631-JCL-PD-02A - Existing Elevations.pdf"
+    ],
+    "statutoryPolicies": [
+      "POLICY AND SUPPORTING TEXT - 672932 - DM5.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - DM12.pdf"
+    ],
+    "otherPolicies": [
+      "POLICY AND SUPPORTING TEXT - 672932 - CP9 - Sustainable Design Adopted March 2019.pdf",
+      "POLICY AND SUPPORTING TEXT - 672932 - CP14 - Historic Environment Adopted March 2019.pdf"
+    ],
+    "supplementaryPlanningDocs": [],
+    "conservationArea": "Yes",
+    "conservationAreaFiles": [
+      "CONSERVATION AREA PLAN - 672932 - CA Map.pdf"
+    ],
+    "listedBuilding": "Yes",
+    "listedBuildingInfo": "There is a grade 2 listed building next door.",
+    "listedBuildingNotes": [],
+    "applicationNotification": [],
+    "applicationPublicity": [],
+    "representations": [],
+    "appealNotification": [],
+    "reasons": [
+      "Planning Officer's report",
+      "Plans used to reach decision",
+      "Statutory development plan policies",
+      "Other relevant policies",
+      "Supplementary planning documents",
+      "Conservation area map and guidance",
+      "Listed building description",
+      "Application notification",
+      "Application publicity",
+      "Representations",
+      "Appeal notification"
+    ],
+    "reasonsPlansUsed": "Proposed elevations",
+    "reasonsStatutoryPolicies": "DM10",
+    "reasonsOtherPolicies": "CP12",
+    "reasonsSupplementaryPlanningDocs": "Other supplementary planning documents",
+    "reasonsConservationArea": "Wrong conservation area map",
+    "reasonsListedBuilding": "Listed building is on the appeal site",
+    "reasonsApplicationNotification": [
+      "List of addresses",
+      "Copy of letter or site notice"
+    ],
+    "reasonsRepresentations": "Representation from the owner of the listed builing",
+    "reasonsAppealNotification": [
+      "List of addresses",
+      "Copy of letter or site notice"
+    ]
   }
 ]

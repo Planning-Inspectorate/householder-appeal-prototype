@@ -1,0 +1,90 @@
+{% extends "layouts/case-officer/v6.html" %}
+
+{% block pageTitle %}
+  Update application publicity - Review incomplete questionnaire - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Questionnaires for review",
+        href: "/case-officer/"+version+"/"
+      },
+      {
+        text: "APP/Q9999/D/21/"+data["caseofficer-"+version+"-currentappeal"],
+        href: "/case-officer/"+version+"/goto-incomplete-questionnaire/"+data["caseofficer-"+version+"-currentappeal"]
+      },
+      {
+        text: "Update application publicity"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Update application publicity
+      </h1>
+
+      <form action="" method="post">
+        
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="caseofficer-{{version}}-update-applicationpublicity">
+            Upload files
+          </label>
+          <p class="govuk-hint">
+            Drag and drop files or select "choose files".<br>
+            The uploaded files will be added to the questionnaire.
+          <p>
+          <input class="govuk-file-upload pins-file-upload-multiple" id="caseofficer-{{version}}-update-applicationpublicity" name="caseofficer-{{version}}-update-applicationpublicity" type="file" multiple>
+        </div>
+
+        {{ govukInsetText({
+          text: "File size should be no more than 15MB"
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with file formats",
+          html: '
+            <p class="govuk-body">
+              Your file must be in one of the following formats:
+            <p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>pdf</li>
+              <li>doc</li>
+              <li>docx</li>
+              <li>tif</li>
+              <li>tiff</li>
+              <li>jpg</li>
+              <li>jpeg</li>
+              <li>png</li>
+            </ul>
+          '
+        }) }}     
+        
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+          <a class="govuk-link" href="javascript:history.go(-1);">Cancel</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
