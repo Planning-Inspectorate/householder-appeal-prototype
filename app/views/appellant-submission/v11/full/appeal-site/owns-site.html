@@ -1,0 +1,70 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% block pageTitle %}
+  Is your appeal about any of the following? - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to task list",
+    href: "/appellant-submission/"+version+"/full/task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-appealsite-siterelationship",
+          name: "appealsub-"+version+"-appealsite-siterelationship",
+          fieldset: {
+            legend: {
+              text: "What is your relationship to the appeal site?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "I own the whole appeal site",
+              text: "I own the whole appeal site",
+              checked: checked("appealsub-"+version+"-appealsite-siterelationship", "I own the whole appeal site")
+            },
+            {
+              value: "I own part of the appeal site",
+              text: "I own part of the appeal site",
+              checked: checked("appealsub-"+version+"-appealsite-siterelationship", "I own part of the appeal site")
+            },
+            {
+              value: "I do not own any of the appeal site",
+              text: "I do not own any of the appeal site",
+              checked: checked("appealsub-"+version+"-appealsite-siterelationship", "I do not own any of the appeal site")
+            }
+          ]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

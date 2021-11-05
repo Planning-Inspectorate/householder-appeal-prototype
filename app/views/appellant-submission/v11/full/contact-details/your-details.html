@@ -1,0 +1,100 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% block pageTitle %}
+  Is your appeal about any of the following? - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to task list",
+    href: "/appellant-submission/"+version+"/full/task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Provide your contact details
+        </span>
+        <h1 class="govuk-heading-l">
+          Contact details 
+        </h1>
+        <!--p class="govuk-body">
+          We ask for your name and email address so we can contact you about your appeal.
+        <p-->
+
+        {% if data["appealsub-"+version+"-aboutyou-applicationinyourname"] == "Yes" %}
+          {% set hintHtml %}
+            <p class="govuk-body">
+              Enter your name as it's written on your planning application form.
+            <p>
+          {% endset -%}
+        {% endif %}        
+        
+        {{ govukInput({
+          id: "appealsub-"+version+"-aboutyou-yourname",
+          name: "appealsub-"+version+"-aboutyou-yourname",
+          label: {
+            text: "Your name"
+          },
+          hint: {
+            html: hintHtml
+          },
+          value: data["appealsub-"+version+"-aboutyou-yourname"]
+        }) }}
+        
+        {{ govukInput({
+          id: "appealsub-"+version+"-aboutyou-company",
+          name: "appealsub-"+version+"-aboutyou-company",
+          label: {
+            text: "Company name (optional)"
+          },
+          value: data["appealsub-"+version+"-aboutyou-company"]
+        }) }}
+        
+        {{ govukInput({
+          id: "appealsub-"+version+"-aboutyou-youremail",
+          name: "appealsub-"+version+"-aboutyou-youremail",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false,
+          label: {
+            text: "Your email"
+          },
+          value: data["appealsub-"+version+"-aboutyou-youremail"]
+        }) }}
+        
+        {{ govukInput({
+          label: {
+            text: "Telephone number"
+          },
+          id: "appealsub-"+version+"-aboutyou-telephone",
+          name: "appealsub-"+version+"-aboutyou-telephone",
+          type: "tel",
+          autocomplete: "tel",
+          classes: "govuk-input--width-20",
+          value: data["appealsub-"+version+"-aboutyou-telephone"]
+        }) }}
+        
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

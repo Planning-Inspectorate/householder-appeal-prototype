@@ -1,0 +1,100 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% block pageTitle %}
+  What type of planning application did you make? - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-beforeyoustart-whatareyouappealing",
+          name: "appealsub-"+version+"-beforeyoustart-whatareyouappealing",
+          fieldset: {
+            legend: {
+              text: "What type of planning application did you make?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "You can check this on your planning application form."
+          },
+          items: [
+            {
+              value: "Full planning",
+              text: "Full planning",
+              checked: checked("appealsub-"+version+"-beforeyoustart-whatareyouappealing", "Full planning")
+            },
+            {
+              value: "Householder planning",
+              text: "Householder planning",
+              checked: checked("appealsub-"+version+"-beforeyoustart-whatareyouappealing", "Householder planning")
+            },
+            {
+              value: "Outline planning",
+              text: "Outline planning",
+              checked: checked("appealsub-"+version+"-beforeyoustart-whatareyouappealing", "Outline planning")
+            },
+            {
+              value: "Prior approval",
+              text: "Prior approval",
+              checked: checked("appealsub-"+version+"-beforeyoustart-whatareyouappealing", "Prior approval")
+            },
+            {
+              value: "Reserved matters",
+              text: "Reserved matters",
+              checked: checked("appealsub-"+version+"-beforeyoustart-whatareyouappealing", "Reserved matters")
+            },
+            {
+              value: "Removal or variation of conditions",
+              text: "Removal or variation of conditions",
+              checked: checked("appealsub-"+version+"-beforeyoustart-whatareyouappealing", "Removal or variation of conditions")
+            },
+            {
+              value: "Something else",
+              text: "Something else",
+              checked: checked("appealsub-"+version+"-beforeyoustart-whatareyouappealing", "Something else")
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "I have not made a planning application",
+              text: "I have not made a planning application",
+              checked: checked("appealsub-"+version+"-beforeyoustart-whatareyouappealing", "I have not made a planning application")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

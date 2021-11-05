@@ -1,0 +1,74 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% block pageTitle %}
+   - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to task list",
+    href: "/appellant-submission/"+version+"/full/task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+
+        {% if (data["appealsub-"+version+"-appealsite-siterelationship"] == "I own part of the appeal site") %}
+          {% set headingHtml %}
+            Have you told all the other owners about your appeal?
+          {% endset -%}
+        {% else %}
+          {% set headingHtml %}
+            Have you told all the owners you know about your appeal?
+          {% endset -%}
+        {% endif %}
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-appealsite-otherownerstold",
+          name: "appealsub-"+version+"-appealsite-otherownerstold",
+          fieldset: {
+            legend: {
+              text: headingHtml,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("appealsub-"+version+"-appealsite-otherownerstold", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("appealsub-"+version+"-appealsite-otherownerstold", "No")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% block pageTitle %}
+  Sensitive information - Upload documents for your appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to task list",
+    href: "/appellant-submission/"+version+"/full/task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Upload documents for your appeal
+        </span>
+        <h1 class="govuk-heading-l">
+          Supporting documents
+        </h1>
+
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Documents</th>
+              <th scope="col" class="govuk-table__header"></th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            {% set i = 0 %}
+            {% for file in data['appealsub-'+version+'-appealdocuments-supportinglist'] %}
+              {% set i = i + 1 %}
+              {% if file != "" %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">
+                    {{ file }}
+                  </td>
+                  <!--td class="govuk-table__cell govuk-table__cell--numeric">
+                    <a class="govuk-link" href="other-owners-delete?row={{ i }}">
+                      Delete<span class="govuk-visually-hidden"> {{ file }}</span>
+                    </a>
+                  </td-->
+                  <td class="govuk-table__cell govuk-table__cell--numeric">
+                    <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+          <a href="supporting-documents" class="govuk-button govuk-button--secondary">Add more</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
