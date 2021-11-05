@@ -1,0 +1,158 @@
+{% extends "layouts/case-officer/v6.html" %}
+
+{% block pageTitle %}
+  Check and confirm - Review incomplete questionnaire - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+<!--
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Questionnaires for review",
+        href: "/case-officer/"+version+""
+      },
+      {
+        text: "APP/B3030/D/21/3272772",
+        href: "/case-officer/"+version+"/review-questionnaire"
+      },
+      {
+        text: "Check and confirm"
+      }
+    ]
+  }) }}-->
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Review incomplete questionnaire
+      </h1>
+
+      <h2 class="govuk-heading-l">
+        Check and confirm
+      </h2>
+
+      <!-- loop through data from caseOfficerQuestionnaires.json -->
+      {% for item in data['caseOfficerQuestionnaires'] %}
+        <!-- match selected appeal by ref in data and show -->
+        {% if item.ref == data["caseofficer-"+version+"-currentappeal"] %}
+
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Review outcome
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["caseofficer-"+version+"-outcome"] }}
+              </dd>
+            </div>
+
+            {% if data["caseofficer-"+version+"-outcome"] == "Incomplete" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Missing or incorrect documents
+              </dt>
+              <dd class="govuk-summary-list__value">
+
+                <ul class="govuk-list">
+                  {% for reason in item.reasons %}
+                    <li>
+                      {{ reason }}{% if reason == "Plans used to reach decision" %}:<br>
+                        {{ item.reasonsPlansUsed }}
+                      {% endif %}{% if reason == "Statutory development plan policies" %}:<br>
+                        {{ item.reasonsStatutoryPolicies }}
+                      {% endif %}{% if reason == "Other relevant policies" %}:<br>
+                        {{ item.reasonsOtherPolicies }}
+                      {% endif %}{% if reason == "Supplementary planning documents" %}:<br>
+                        {{ item.reasonsSupplementaryPlanningDocs }}
+                      {% endif %}{% if reason == "Conservation area map and guidance" %}:<br>
+                        {{ item.reasonsConservationArea }}
+                      {% endif %}{% if reason == "Listed building description" %}:<br>
+                        {{ item.reasonsListedBuilding }}
+                      {% endif %}{% if reason == "Application notification" %}:<br>
+                        <ul class="govuk-list--bullet govuk-!-margin-top-0">
+                          {% for application in item.reasonsApplicationNotification %}
+                            <li class="govuk-!-margin-bottom-0">{{ application }}</li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}{% if reason == "Representations" %}:<br>
+                        {{ item.reasonsRepresentations }}
+                      {% endif %}{% if reason == "Appeal notification" %}:<br>
+                        <ul class="govuk-list--bullet govuk-!-margin-top-0">
+                          {% for appeal in item.reasonsAppealNotification %}
+                            <li class="govuk-!-margin-bottom-0">{{ appeal }}</li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+
+              </dd>
+            </div>
+            {% endif %}
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Appeal reference
+              </dt>
+              <dd class="govuk-summary-list__value">
+                APP/Q9999/D/21/{{ item.ref }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Appeal site
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ item.addressLine1 }}{% if item.addressLine2 %}<br>{% endif %}{{ item.addressLine2 }}{% if item.addressTown %}<br>{% endif %}{{ item.addressTown }}{% if item.addressCounty %}<br>{% endif %}{{ item.addressCounty }}{% if item.postcode %}<br>{% endif %}{{ item.postcode }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Local planning department
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% for lpa in data['lpas'] %}
+                  {% if lpa.key == item.lpa %}
+                    {{lpa['official-name']}}
+                  {% endif %}
+                {% endfor %}
+              </dd>
+            </div>
+
+          </dl>
+        {% endif %}
+      {% endfor %}
+
+      {% if data["caseofficer-"+version+"-outcome"] == "Complete" %}
+        {{ govukWarningText({
+          text: "Confirming the questionnaire as complete makes the appeal available to inspectors.",
+          iconFallbackText: "warning"
+        }) }}
+      {% endif %}
+    
+      <form action="" method="post">
+        
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Confirm outcome"
+          }) }}
+          <a class="govuk-link" href="review">Go back to review questionnaire</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

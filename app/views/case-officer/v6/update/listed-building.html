@@ -1,0 +1,65 @@
+{% extends "layouts/case-officer/v6.html" %}
+
+{% block pageTitle %}
+  Update listed building description - Review incomplete questionnaire - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Questionnaires for review",
+        href: "/case-officer/"+version+"/"
+      },
+      {
+        text: "APP/Q9999/D/21/"+data["caseofficer-"+version+"-currentappeal"],
+        href: "/case-officer/"+version+"/goto-incomplete-questionnaire/"+data["caseofficer-"+version+"-currentappeal"]
+      },
+      {
+        text: "Update listed building description"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        {{ govukTextarea({
+          name: "caseofficer-"+version+"-update-listedbuilding",
+          id: "caseofficer-"+version+"-update-listedbuilding",
+          label: {
+            text: "Update listed building description",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "This will be appended to the existing description in the questionnaire."
+          }
+        }) }}
+        
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+          <a class="govuk-link" href="javascript:history.go(-1);">Cancel</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
