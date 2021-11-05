@@ -1,0 +1,85 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% block pageTitle %}
+  What date was your decision due? - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+
+        {% if (data["appealsub-"+version+"-appealsite-siterelationship"] == "I own part of the appeal site") %}
+          <!-- Certificate B -->
+          {% set headingHtml %}
+            What date did you tell the other owners about the appeal?
+          {% endset -%}
+        {% else %}
+          <!-- Certificate C -->
+          {% set headingHtml %}
+            What date did you tell the owners you know about the appeal?
+          {% endset -%}
+        {% endif %}
+
+        {{ govukDateInput({
+          id: "appealsub-"+version+"-appealsite-noticeserved",
+          namePrefix: "appealsub-"+version+"-appealsite-noticeserved",
+          fieldset: {
+            legend: {
+              text: headingHtml,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["appealsub-"+version+"-appealsite-noticeserved-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["appealsub-"+version+"-appealsite-noticeserved-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["appealsub-"+version+"-appealsite-noticeserved-year"]
+            }
+          ]
+        }) }}
+          
+        <!--p class="govuk-form-group govuk-!-padding-bottom-2">
+          <a href="householder-planning-permission-out">I have not received a decision from the local planning department​</a>
+        </p-->
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

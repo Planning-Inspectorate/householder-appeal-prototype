@@ -1,0 +1,86 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% block pageTitle %}
+  Sensitive information - Upload documents for your appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to task list",
+    href: "/appellant-submission/"+version+"/full/task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+        <h1 class="govuk-heading-l">
+          {% if data["appealsub-"+version+"-appealsite-siterelationship"] == "I do not own any of the appeal site" %}
+            Site owner details
+          {% else %}
+            Other site owner details
+          {% endif %} 
+        </h1>
+
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Name</th>
+              <th scope="col" class="govuk-table__header">Address</th>
+              <th scope="col" class="govuk-table__header"></th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            {% set i = 0 %}
+            {% for item in data['appealsub-'+version+'-appealsite-otherownerslist'] %}
+              {% set i = i + 1 %}
+              {% if item.name != "" %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">
+                    {{ item.name }}
+                  </td>
+                  <td class="govuk-table__cell">
+                    {{ item.line1 }}{% if item.line2 != "" %}, {% endif %}{{ item.line2 }}{% if item.town != "" %}, {% endif %}{{ item.town }}{% if item.county != "" %}, {% endif %}{{ item.county }}{% if item.postcode != "" %}, {% endif %}{{ item.postcode }}
+                  </td>
+                  <!--td class="govuk-table__cell govuk-table__cell--numeric">
+                    <a class="govuk-link" href="other-owners-delete?row={{ i }}">
+                      Delete<span class="govuk-visually-hidden"> {{document.name}}</span>
+                    </a>
+                  </td-->
+                  <td class="govuk-table__cell govuk-table__cell--numeric">
+                    <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+        
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+          <a href="other-owners" class="govuk-button govuk-button--secondary">Add another</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

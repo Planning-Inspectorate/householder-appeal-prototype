@@ -1,0 +1,174 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% block pageTitle %}
+  Check what you've told us about your appeal  - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+        <h1 class="govuk-heading-l">
+          Check what you've told us about your appeal
+        </h1>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Local planning department
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% for lpa in data['lpas'] %}
+                {% if lpa.key == data["appealsub-"+version+"-beforeyoustart-planningdepartment"] %}
+                  {{lpa['official-name']}}
+                {% endif %}
+              {% endfor %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="planning-department">
+                Change<span class="govuk-visually-hidden"> local planning department</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Type of application
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["appealsub-"+version+"-beforeyoustart-whatareyouappealing"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="what-are-you-appealing">
+                Change<span class="govuk-visually-hidden"> type of application</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What you're appealing
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if (data["appealsub-"+version+"-beforeyoustart-permissiongrantedrefused"] == "Refused") %}
+                Reasons for refusal
+              {% elseif (data["appealsub-"+version+"-beforeyoustart-permissiongrantedrefused"] == "Granted") %}
+                Conditions for a granted application
+              {% else %}
+                Non-determination
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="permission-granted-refused">
+                Change<span class="govuk-visually-hidden"> what you're appealing</span>
+              </a>
+            </dd>
+          </div>
+          {% if (data["appealsub-"+version+"-beforeyoustart-permissiongrantedrefused"] == "I have not received a decision") %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date decision due
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["appealsub-"+version+"-beforeyoustart-decisiondatedue-day"] }}
+              {{ data["appealsub-"+version+"-beforeyoustart-decisiondatedue-month"] | formatMonth }}
+              {{ data["appealsub-"+version+"-beforeyoustart-decisiondatedue-year"] }}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="decision-date-due">
+                Change<span class="govuk-visually-hidden"> date decision due</span>
+              </a>
+            </dd>
+          </div>
+          {% else %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of decision
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["appealsub-"+version+"-beforeyoustart-decisiondate-day"] }}
+              {{ data["appealsub-"+version+"-beforeyoustart-decisiondate-month"] | formatMonth }}
+              {{ data["appealsub-"+version+"-beforeyoustart-decisiondate-year"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="notice-decision-date">
+                Change<span class="govuk-visually-hidden"> date of decision</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Appeal to be decided by
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["appealsub-"+version+"-beforeyoustart-appealprocedure"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="appeal-procedure">
+                Change<span class="govuk-visually-hidden"> appeal to be decided by</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+        <h2 class="govuk-heading-m">
+          Before you continue
+        </h2>
+        <p class="govuk-body">
+          You cannot save your progress and come back later. Before you continue, make sure you have everything you need for your appeal.
+        <p>
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Check what you need to submit
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">
+              You need certain documents to complete your appeal:
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>the decision letter from your local planning department</li>
+              <li>your appeal statement</li>
+              <li>your planning application form</li>
+            </ul>
+            <p class="govuk-body">
+              If you do not have a copy of your planning application form, you can search for it on your local planning department's website.
+            </p>
+          </div>
+        </details>
+
+        <p class="govuk-body">
+          Based on what you've told us, your deadline to submit your appeal is 11.59pm on Monday {{ data["appealsub-"+version+"-beforeyoustart-deadline-day"] }} {{ data["appealsub-"+version+"-beforeyoustart-deadline-month"] | formatMonth }} {{ data["appealsub-"+version+"-beforeyoustart-deadline-year"] }}.
+        </p>
+
+        {{ govukButton({
+          text: "Continue to my appeal"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
