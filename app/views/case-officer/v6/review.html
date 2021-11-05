@@ -299,28 +299,41 @@
                     Would the development affect the setting of a listed building?
                   </th>
                   <td class="govuk-table__cell">
-                    No
+                    Yes
                   </td>
                   <td class="govuk-table__cell">
                   </td>
                 </tr>
-                <!--
-                  NEED ROW FOR WHEN LISTED BUILDING = YES
-
-                    <div class="govuk-checkboxes__item">
-                      <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect-7" name="caseofficer-{{version}}-missingincorrect" type="checkbox" value="Listed building description" aria-controls="conditional-caseofficer-{{version}}-missingincorrect-7" aria-expanded="false">
-                      <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect-7">
-                      Listed building description
-                      </label>
-                    </div>
-                    <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-caseofficer-{{version}}-missingincorrect-7">
-                      <div class="govuk-form-group">
-                          <label class="govuk-label" for="caseofficer-{{version}}-missingincorrect-listedbuilding">
-                          What is missing or incorrect?
-                          </label>
-                          <textarea class="govuk-textarea" id="caseofficer-{{version}}-missingincorrect-listedbuilding" name="caseofficer-{{version}}-missingincorrect-listedbuilding" rows="3"></textarea>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">
+                    Listed building description
+                  </th>
+                  <td class="govuk-table__cell">
+                    There is a grade 2 listed building next door.
+                  </td>
+                  <td class="govuk-table__cell">
+                    
+                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="caseofficer-{{version}}-missingincorrect-7" name="caseofficer-{{version}}-missingincorrect" type="checkbox" value="Listed building description" aria-controls="conditional-caseofficer-{{version}}-missingincorrect-7" aria-expanded="false">
+                        <label class="govuk-label govuk-checkboxes__label" for="caseofficer-{{version}}-missingincorrect-7">
+                        Missing or incorrect
+                        </label>
+                      </div>
+                      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-caseofficer-{{version}}-missingincorrect-7">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="caseofficer-{{version}}-missingincorrect-listedbuilding">
+                            What is missing or incorrect?
+                            </label>
+                            <textarea class="govuk-textarea" id="caseofficer-{{version}}-missingincorrect-listedbuilding" name="caseofficer-{{version}}-missingincorrect-listedbuilding" rows="3"></textarea>
+                        </div>
                       </div>
                     </div>
+                    
+                  </td>
+                </tr>
+                <!--
+                  NEED ROW FOR WHEN LISTED BUILDING = YES
 
                 -->
               </tbody>
