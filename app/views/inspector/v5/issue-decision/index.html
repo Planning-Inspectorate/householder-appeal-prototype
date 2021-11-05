@@ -1,0 +1,153 @@
+{% extends "layouts/inspector/v5.html" %}
+
+{% block pageTitle %}
+  Issue a decision - My planning appeals
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/inspector/" + version + "/appeal-decision"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        Issue a decision
+      </h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-quarter content-list__sticky">
+      <aside class="govuk-!-margin-bottom-8">
+        <!-- display data driven appeal summary -->
+        {% include "includes/inspector/"+version+"/_appeal-summary-decision.html" %}
+      </aside>
+    </div>
+
+    <div class="govuk-grid-column-one-half">
+
+      <!--dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appellant name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Maria Sharma
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+            APP/2021/56789/3266594
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Site address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            8 The Chase, Findon, BN14 0TT
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Target date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ 12 | daysInFuture }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Local planning department
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Bradford Council
+          </dd>
+        </div>
+      </dl-->
+      
+      <h2 class="govuk-heading-l">
+        Decision details
+      </h2>
+
+      <form action="" method="post">
+      
+        <h3 class="govuk-heading-m">
+          Date
+        </h3>
+        <p class="govuk-body ">
+          Today, {{ date | formatDate ("D MMMM YYYY") }}
+        <p>
+
+        <input type="hidden" id="inspector-{{version}}-issuedecision-date-day" name="inspector-{{version}}-issuedecision-date-day" value="{{ date | formatDate ("D") }}">
+        <input type="hidden" id="inspector-{{version}}-issuedecision-date-month" name="inspector-{{version}}-issuedecision-date-month" value="{{ date | formatDate ("M") }}">
+        <input type="hidden" id="inspector-{{version}}-issuedecision-date-year" name="inspector-{{version}}-issuedecision-date-year" value="{{ date | formatDate ("YYYY") }}">
+
+        {{ govukRadios({
+          idPrefix: "inspector-"+version+"-issuedecision-outcome",
+          name: "inspector-"+version+"-issuedecision-outcome",
+          fieldset: {
+            legend: {
+              text: "Outcome",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Allowed",
+              text: "Allowed",
+              checked: checked("inspector-"+version+"-issuedecision-outcome", "Allowed")
+            },
+            {
+              value: "Dismissed",
+              text: "Dismissed",
+              checked: checked("inspector-"+version+"-issuedecision-outcome", "Dismissed")
+            },
+            {
+              value: "Split decision",
+              text: "Split decision",
+              checked: checked("inspector-"+version+"-issuedecision-outcome", "Split decision")
+            }
+          ]
+        }) }}
+
+        {{ govukFileUpload({
+          id: "inspector-"+version+"-issuedecision-decisionletter",
+          name: "inspector-"+version+"-issuedecision-decisionletter",
+          label: {
+            classes: "govuk-label--m",
+            text: "Upload decision letter"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+    </div>
+  </div>
+  
+</div>
+
+
+{% endblock %}

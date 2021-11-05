@@ -1,0 +1,50 @@
+{% extends "layout-email.html" %}
+
+{% block pageTitle %}
+  Chart schedule update
+{% endblock %}
+
+{% block content %}
+<!--p><strong>Subject:</strong> 9617 The Avenue, XM26 7YS – householder appeal started </p>
+<p><strong>From:</strong> appeals@planninginspectorate.gov.uk</p-->
+
+<img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-two-thirds">
+    <p>You need to update Marie Lightman's schedule in Chart.</p>
+    <p>
+      <strong>Provisional date for site visit(s)</strong><br>
+      Week of 18 October 2021
+    </p>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Appeal reference</th>
+          <th scope="col" class="govuk-table__header">Appeal site</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">APP/111/ABC/X</td>
+          <td class="govuk-table__cell">1 Church Lane, Bath BA1 2BL</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">APP/222/ABC/X</td>
+          <td class="govuk-table__cell">2 Church Lane, Bath BA1 2BL</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">APP/333/ABC/X</td>
+          <td class="govuk-table__cell">3 Church Lane, Bath BA1 2BL</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">APP/444/ABC/X</td>
+          <td class="govuk-table__cell">4 Church Lane, Bath BA1 2BL</td>
+        </tr>
+      </tbody>
+    </table>
+​
+  </div>
+</div>
+{% endblock %}

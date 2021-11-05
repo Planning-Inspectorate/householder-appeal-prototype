@@ -1,0 +1,220 @@
+{% extends "layouts/inspector/v5.html" %}
+
+{% block pageTitle %}
+  Schedule site visit - My planning appeals
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/inspector/"+version+"/appeal-unscheduled"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        Book site visit
+      </h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-quarter content-list__sticky">
+      <aside class="govuk-!-margin-bottom-8">
+        {% include "includes/inspector/"+version+"/_appeal-summary.html" %}
+      </aside>
+    </div>
+
+    <div class="govuk-grid-column-one-half">
+
+      <h2 class="govuk-heading-l">
+        Site visit details
+      </h2>
+
+      <form action="" method="post">
+   
+        <!-- loop through data from availableAppeals.json -->
+        {% for item in data['availableAppeals'] %}
+          <!-- match selected appeal by ref in data and show -->
+          {% if item.ref == data["inspector-"+version+"-currentappeal"] %}
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  Type of site visit
+                </legend>
+                <div class="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="inspector-{{version}}-schedule-type" name="inspector-{{version}}-schedule-type" type="radio" value="Access required"{% if item.proposedVisitType == "Access required" %} checked{% endif %}>
+                    <label class="govuk-label govuk-radios__label" for="inspector-{{version}}-schedule-type">
+                      Access required
+                      {% if item.proposedVisitType == "Access required" %}
+                        <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-3">Provisional type</strong>
+                      {% endif %}
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="inspector-{{version}}-schedule-type-2" name="inspector-{{version}}-schedule-type" type="radio" value="Accompanied"{% if item.proposedVisitType == "Accompanied" %} checked{% endif %}>
+                    <label class="govuk-label govuk-radios__label" for="inspector-{{version}}-schedule-type-2">
+                      Accompanied
+                      {% if item.proposedVisitType == "Accompanied" %}
+                        <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-3">Provisional type</strong>
+                      {% endif %}
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="inspector-{{version}}-schedule-type-3" name="inspector-{{version}}-schedule-type" type="radio" value="Unaccompanied"{% if item.proposedVisitType == "Unaccompanied" %} checked{% endif %}>
+                    <label class="govuk-label govuk-radios__label" for="inspector-{{version}}-schedule-type-3">
+                      Unaccompanied
+                      {% if item.proposedVisitType == "Unaccompanied" %}
+                        <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-3">Provisional type</strong>
+                      {% endif %}
+                    </label>
+                  </div>
+                </div>
+
+              </fieldset>
+            </div>
+
+          {% endif %}
+        {% endfor %}
+
+        {{ govukDateInput({
+          id: "inspector-"+version+"-schedule-date",
+          namePrefix: "inspector-"+version+"-schedule-date",
+          fieldset: {
+            legend: {
+              text: "Date of site visit",
+              classes: "govuk-fieldset__legend--m"
+            }
+          }
+        }) }}
+
+        {{ govukSelect({
+          id: "inspector-"+version+"-schedule-time",
+          name: "inspector-"+version+"-schedule-time",
+          label: {
+            text: "Time slot",
+            classes: "govuk-label--m"
+          },
+          items: [
+            {
+              value: "",
+              text: "Please select"
+            },
+            {
+              value: "8am to 10am",
+              text: "8am to 10am"
+            },
+            {
+              value: "9am to 11am",
+              text: "9am to 11am"
+            },
+            {
+              value: "10am to midday",
+              text: "10am to midday"
+            },
+            {
+              value: "11am to 1pm",
+              text: "11am to 1pm"
+            },
+            {
+              value: "midday to 2pm",
+              text: "midday to 2pm"
+            },
+            {
+              value: "1pm to 3pm",
+              text: "1pm to 3pm"
+            },
+            {
+              value: "2pm to 4pm",
+              text: "2pm to 4pm"
+            },
+            {
+              value: "3pm to 5pm",
+              text: "3pm to 5pm"
+            },
+            {
+              value: "4pm to 6pm",
+              text: "4pm to 6pm"
+            },
+            {
+              value: "5pm to 7pm",
+              text: "5pm to 7pm"
+            }
+          ]
+        }) }}
+        
+        {% set detailsHtml %}
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header app-custom-class"></th>
+                <th scope="col" class="govuk-table__header app-custom-class">Local planning department&apos;s answer</th>
+                <th scope="col" class="govuk-table__header app-custom-class">Appellant&apos;s answer</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Can the site been seen from public land?</th>
+                <td class="govuk-table__cell">No<br>The extension is to the rear of the property, and the garden has high hedges.</td>
+                <td class="govuk-table__cell">No<br>I&apos;ve got big hedges.</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Does the inspector need to enter the site?</th>
+                <td class="govuk-table__cell">Yes<br>The proposed development can only be viewed from the appellant&apos;s garden.</td>
+                <td class="govuk-table__cell">(not asked)</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Does the inspector need to access aneighbour&apos;s land?</th>
+                <td class="govuk-table__cell">Yes<br>54 Butcher Street</td>
+                <td class="govuk-table__cell">(not asked)</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Does the appellant own the whole site?</th>
+                <td class="govuk-table__cell">(not asked)</td>
+                <td class="govuk-table__cell">Yes</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Are there any health and safety issues?</th>
+                <td class="govuk-table__cell">Yes<br>A defensive dog</td>
+                <td class="govuk-table__cell">No</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header remove-bottom-border">Appeals in the immediate area still being considered</th>
+                <td class="govuk-table__cell remove-bottom-border">893482, 372839</td>
+                <td class="govuk-table__cell remove-bottom-border">(not asked)</td>
+              </tr>
+            </tbody>
+          </table>
+        {% endset -%}
+
+        {{ govukDetails({
+          classes: "govuk-!-margin-bottom-5",
+          summaryText: "Site visit details",
+          html: detailsHtml
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+  
+</div>
+
+
+{% endblock %}

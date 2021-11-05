@@ -1,0 +1,58 @@
+{% extends "layouts/inspector/v5.html" %}
+
+{% block pageTitle %}
+  Site visit confirmed - My planning appeals
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- loop through data from availableAppeals.json -->
+      {% for item in data['availableAppeals'] %}
+        <!-- match selected appeal by ref in data and show -->
+        {% if item.ref == data["inspector-"+version+"-currentappeal"] %}
+
+          {% set panelHtml %}
+            {{ item.address }}, {{ item.postcode }}<br><br>
+            {{ item.siteVisitDateDay }} {{ item.siteVisitDateMonth | formatShortMonth }} {{ item.siteVisitDateYear }}<br>
+            {{ item.siteVisitTime | capitalize }}
+          {% endset -%}
+    
+          {{ govukPanel({
+            titleText: data["inspector-"+version+"-schedule-type"] +" site visit booked",
+            html: panelHtml
+          }) }}
+
+        {% endif %}
+      {% endfor %}
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m">What next?</h2>
+      <ul class="govuk-list">
+        <li>
+          <a href="/inspector/{{version}}/" class="govuk-link">Return to your appeals</a>
+        </li>
+      </ul>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+    </div>
+  </div>
+  
+</div>
+
+
+{% endblock %}

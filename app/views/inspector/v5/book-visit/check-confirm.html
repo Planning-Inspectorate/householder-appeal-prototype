@@ -1,0 +1,93 @@
+{% extends "layouts/inspector/v5.html" %}
+
+{% block pageTitle %}
+  Schedule site visit - My planning appeals
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/inspector/"+version+"/book-visit/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        Check and confirm
+      </h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-quarter content-list__sticky">
+      <aside class="govuk-!-margin-bottom-8">
+        {% include "includes/inspector/"+version+"/_appeal-summary.html" %}
+      </aside>
+    </div>
+
+    <div class="govuk-grid-column-one-half">
+
+      <h2 class="govuk-heading-l">
+        Site visit details
+      </h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of site visit
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["inspector-"+version+"-schedule-type"]}}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of site visit
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["inspector-"+version+"-schedule-date-day"] }}
+            {{ data["inspector-"+version+"-schedule-date-month"] | formatShortMonth }}
+            {{ data["inspector-"+version+"-schedule-date-year"] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Time slot
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["inspector-"+version+"-schedule-time"] | capitalize }}
+          </dd>
+        </div>
+      </dl> 
+<!--
+      {{ govukWarningText({
+        text: "Confirming this site visit will trigger communications to the relevant parties",
+        iconFallbackText: "Warning"
+      }) }}
+-->
+      <form action="" method="post">
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Confirm site visit"
+          }) }}
+          <a href="/inspector/{{version}}/book-visit/" class="govuk-link">Change site visit details</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  
+</div>
+
+
+{% endblock %}

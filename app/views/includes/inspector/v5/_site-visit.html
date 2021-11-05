@@ -1,0 +1,52 @@
+
+<div class="govuk-related-items">
+  <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+    Site visit
+  </h3>
+  <!-- loop through data from availableAppeals.json -->
+  {% for item in data['availableAppeals'] %}
+    <!-- match selected appeal by ref in data and show -->
+    {% if item.ref == data["inspector-"+version+"-currentappeal"] %}
+      {% if item.status == "notyetbooked" %}
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
+          Recommended type
+        </h4>
+        <p class="govuk-body govuk-!-margin-bottom-1">
+          {{ item.proposedVisitType }}
+        </p>
+        <!--h4 class="govuk-heading-s govuk-!-margin-bottom-0">
+          Provisional site visit date
+        </h4>
+        <p class="govuk-body govuk-!-margin-bottom-1">
+          Week of {{ item.provisionalSiteVisit }}
+        </p-->
+        {{ govukButton({
+          href: "book-visit",
+          text: "Book site visit",
+          classes: "govuk-!-margin-top-3 govuk-!-margin-bottom-0"
+        }) }}
+      {% else %}
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
+          Date
+        </h4>
+        <p class="govuk-body govuk-!-margin-bottom-1">
+          {{ item.siteVisitDateDay }}
+          {{ item.siteVisitDateMonth | formatShortMonth }}
+          {{ item.siteVisitDateYear }}
+        </p>
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
+          Time
+        </h4>
+        <p class="govuk-body govuk-!-margin-bottom-1">
+          {{ item.siteVisitTime }}
+        </p>
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
+          Type
+        </h4>
+        <p class="govuk-body govuk-!-margin-bottom-1">
+          {{ item.siteVisitType }}
+        </p>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</div>

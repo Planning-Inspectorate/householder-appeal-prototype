@@ -1,0 +1,33 @@
+<h3 class="govuk-heading-m govuk-!-margin-bottom-4">
+  Summary
+</h3>
+<h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+  Appeal reference
+</h4>
+<p class="govuk-body-s govuk-!-margin-bottom-3">
+  APP/2021/56789/{{ data["inspector-"+version+"-currentappeal"] }}
+</p>
+<!-- loop through data from availableAppeals.json -->
+{% for item in data['availableAppeals'] %}
+  <!-- match selected appeal by ref in data and show -->
+  {% if item.ref == data["inspector-"+version+"-currentappeal"] %}
+    <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+      Appeal age
+    </h4>
+    <p class="govuk-body-s govuk-!-margin-bottom-3">
+      {{ item.daysOld }} days
+    </p>
+    <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+      Site address
+    </h4>
+    <p class="govuk-body-s govuk-!-margin-bottom-3">
+      {{ item.address}}, {{ item.postcode }}
+    </p>
+    <h4 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+      Local planning department
+    </h4>
+    <p class="govuk-body-s govuk-!-margin-bottom-3">
+      {{ item.lpa }}
+    </p>
+  {% endif %}
+{% endfor %}
