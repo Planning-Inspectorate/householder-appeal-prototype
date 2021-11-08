@@ -2,13 +2,11 @@
 	@include govuk-width-container(1200px);
 }
 
-.govuk-related-items,
-.pins-card {
+.pins-related-items {
 	border: 1px solid $govuk-border-colour;
 	border-top: 4px solid $govuk-link-colour;
 	margin-bottom: 30px;
 	padding: 20px;
-	//background-color: #f8f8f8;
 }
 
 .pins-align-right {
@@ -34,15 +32,3 @@
 .pins-table-questionnaires--status {
 	width: 10%
 }
-
-/*
-
-          <thead class="govuk-table__head">
-            <tr class="govuk-table__row">
-              <th scope="col" class="govuk-table__header">Appeal reference</th>
-              <th scope="col" class="govuk-table__header">Date due</th>
-              <th scope="col" class="govuk-table__header">Appeal site</th>
-              <th scope="col" class="govuk-table__header">Status</th>
-            </tr>
-          </thead>
-					*/
