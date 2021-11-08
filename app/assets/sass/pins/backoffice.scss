@@ -21,3 +21,28 @@
 		margin: 0 auto;
 	}
 }
+
+.pins-table-questionnaires--ref {
+	width: 25%
+}
+.pins-table-questionnaires--date {
+	width: 12.5%
+}
+.pins-table-questionnaires--address {
+	width: 52.5%
+}
+.pins-table-questionnaires--status {
+	width: 10%
+}
+
+/*
+
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Appeal reference</th>
+              <th scope="col" class="govuk-table__header">Date due</th>
+              <th scope="col" class="govuk-table__header">Appeal site</th>
+              <th scope="col" class="govuk-table__header">Status</th>
+            </tr>
+          </thead>
+					*/
