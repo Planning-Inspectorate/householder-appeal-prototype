@@ -16,25 +16,11 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-three-quarters">
+    <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-xl">
         My appeals
       </h1>
-
-    </div>
-    <div class="govuk-grid-column-one-quarter pins-align-right">
-<!--
-      {{ govukButton({
-        href: "get-appeals/",
-        text: "Get more appeals"
-      }) }}
--->
-    </div>
-  </div>
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
 
       <h2 class="govuk-heading-l govuk-!-margin-bottom-3">
         Decisions due
@@ -58,7 +44,7 @@
               {% set decisiondue = decisiondue + 1 %}
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
-                  <a href="/inspector/{{version}}/goto-appeal-decision/{{item.ref}}" class="govuk-link">APP/2021/56789/{{ item.ref }}</a>
+                  <a href="/inspector/{{version}}/goto-appeal-decision/{{item.ref}}" class="govuk-link">D/{{ item.ref }}</a>
                 </td>
                 <td class="govuk-table__cell">{{ item.address }}, {{ item.postcode }}</td>
                 <td class="govuk-table__cell" nowrap>{{ item.daysOld }} days</td>
@@ -107,7 +93,7 @@
               {% set booked = booked + 1 %}
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
-                  <a href="/inspector/{{version}}/goto-appeal-scheduled/{{item.ref}}" class="govuk-link">APP/2021/56789/{{ item.ref }}</a>
+                  <a href="/inspector/{{version}}/goto-appeal-scheduled/{{item.ref}}" class="govuk-link">D/{{ item.ref }}</a>
                 </td>
                 <td class="govuk-table__cell">{{ item.address }}, {{ item.postcode }}</td>
                 <td class="govuk-table__cell" nowrap>{{ item.daysOld }} days</td>
@@ -158,7 +144,7 @@
               {% set notyetbooked = notyetbooked + 1 %}
                 <tr class="govuk-table__row">
                   <td class="govuk-table__cell" nowrap>
-                    <a href="/inspector/{{version}}/goto-appeal-unscheduled/{{item.ref}}" class="govuk-link">APP/2021/56789/{{item.ref}}</a>
+                    <a href="/inspector/{{version}}/goto-appeal-unscheduled/{{item.ref}}" class="govuk-link">D/{{item.ref}}</a>
                   </td>
                   <td class="govuk-table__cell">
                     {% if item.viewed == "no" %}
