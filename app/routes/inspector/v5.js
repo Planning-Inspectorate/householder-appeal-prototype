@@ -48,6 +48,29 @@ module.exports = function (router) {
 
   })
 
+  router.post(base+'get-appeals/appeal-details', function (req, res) {
+    if (!req.session.data["inspector-"+v+"-myappeals-selected"]) {
+      req.session.data["inspector-"+v+"-myappeals-selected"] = []
+    }
+    req.session.data["inspector-"+v+"-myappeals-selected"].push(req.session.data["inspector-"+v+"-myappeals-selected-individual"]);
+    res.redirect(base+'get-appeals');
+  })
+
+
+  router.get(base+'goto-appeal-details/:ref', function (req, res, next) {
+
+    // find matching ref in availableAppeals
+    objIndex = req.session.data["availableAppeals"].findIndex((obj => obj.ref == req.params.ref));
+
+    // Store the selected ref in a session variable 
+    req.session.data["inspector-"+v+"-currentappeal"] = req.params.ref;
+    
+    res.redirect(base+'get-appeals/appeal-details');
+
+  })
+
+
+
 
   router.get(base+'goto-appeal-unscheduled/:ref', function (req, res, next) {
 
