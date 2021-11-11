@@ -48,6 +48,26 @@ module.exports = function (router) {
    res.redirect(base+'full/task-list');
  })
 
+ router.get(base+'skip/full-non-determinaton-task-list', function (req, res) {
+   req.session.data["appealsub-"+v+"-beforeyoustart-planningdepartment"] = "BRD";
+   req.session.data["appealsub-"+v+"-beforeyoustart-whatareyouappealing"] = "Full planning";
+   req.session.data["appealsub-"+v+"-beforeyoustart-appealabout"] = [
+     "None of these"
+   ],
+   req.session.data["appealsub-"+v+"-beforeyoustart-enforcementnotice"] = "No";
+   req.session.data["appealsub-"+v+"-beforeyoustart-permissiongrantedrefused"] = "I have not received a decision";
+   req.session.data["appealsub-"+v+"-beforeyoustart-decisiondatedue-day"] = "10";
+   req.session.data["appealsub-"+v+"-beforeyoustart-decisiondatedue-month"] = "10";
+   req.session.data["appealsub-"+v+"-beforeyoustart-decisiondatedue-year"] = "2021";
+   req.session.data["appealsub-"+v+"-beforeyoustart-deadline-day"] = 10,
+   req.session.data["appealsub-"+v+"-beforeyoustart-deadline-month"] = 4,
+   req.session.data["appealsub-"+v+"-beforeyoustart-deadline-year"] = 2022,
+   req.session.data["appealsub-"+v+"-beforeyoustart-claimingcosts"] = "No";
+   req.session.data["appealsub-"+v+"-beforeyoustart-appealprocedure"] = "Written representations";
+   req.session.data["appealsub-"+v+"-route"] = "full";
+   res.redirect(base+'full/task-list');
+ })
+
   router.get(base+'skip/full-check-answers', function (req, res) {
     req.session.data["appealsub-"+v+"-beforeyoustart-planningdepartment"] = "BRD";
     req.session.data["appealsub-"+v+"-beforeyoustart-whatareyouappealing"] = "Full planning";
@@ -331,12 +351,22 @@ module.exports = function (router) {
     if (req.session.data["appealsub-"+v+"-aboutapplication-designaccess"] == "Yes"){
       res.redirect(base+'full/planning-application-documents/design-access-statement-upload');
     } else {
-      res.redirect(base+'full/planning-application-documents/decision-letter');
+      if (req.session.data["appealsub-"+v+"-beforeyoustart-permissiongrantedrefused"] == "I have not received a decision"){
+        req.session.data["appealsub-"+v+"-taskliststatus-planningapplicationdocuments"] = "Complete";
+        res.redirect(base+'full/task-list');
+      } else {
+        res.redirect(base+'full/planning-application-documents/decision-letter');
+      }
     }
   })
 
   router.post(base+'full/planning-application-documents/design-access-statement-upload', function (req, res) {
-    res.redirect(base+'full/planning-application-documents/decision-letter');
+    if (req.session.data["appealsub-"+v+"-beforeyoustart-permissiongrantedrefused"] == "I have not received a decision"){
+      req.session.data["appealsub-"+v+"-taskliststatus-planningapplicationdocuments"] = "Complete";
+      res.redirect(base+'full/task-list');
+    } else {
+      res.redirect(base+'full/planning-application-documents/decision-letter');
+    }
   })
 
   router.post(base+'full/planning-application-documents/decision-letter', function (req, res) {
