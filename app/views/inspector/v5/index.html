@@ -47,7 +47,6 @@
             <th scope="col" class="govuk-table__header">Appeal site</th>
             <th scope="col" class="govuk-table__header">Appeal age</th>
             <th scope="col" class="govuk-table__header">Appeal type</th>
-            <th scope="col" class="govuk-table__header">Site visit type</th>
             <th scope="col" class="govuk-table__header">Site visit date</th>
           </tr>
         </thead>
@@ -64,7 +63,6 @@
                 <td class="govuk-table__cell">{{ item.address }}, {{ item.postcode }}</td>
                 <td class="govuk-table__cell" nowrap>{{ item.daysOld }} days</td>
                 <td class="govuk-table__cell">{{ item.appealType }}</td>
-                <td class="govuk-table__cell">{{ item.siteVisitType }}</td>
                 <td class="govuk-table__cell">
                   {{ item.siteVisitDateDay }}
                   {{ item.siteVisitDateMonth | formatShortMonth }}
