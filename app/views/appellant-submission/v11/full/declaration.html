@@ -1,0 +1,65 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% block pageTitle %}
+  Declaration - Check your answers and submit appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Check your answers and submit appeal
+        </span>
+        <h1 class="govuk-heading-xl">
+          Declaration
+        </h1>
+
+        <p class="govuk-body">
+          By submitting your appeal, you confirm you understand that:
+        <p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>this is your only opportunity to submit the appeal</li>
+          <li>if you have not included all the information we've requested, we may not be able to progress your appeal</li>
+          <li>we will contact you about any missing information, but this may delay your appeal​</li>
+        </ul>
+        <p class="govuk-body">
+          You also confirm that you've completed all sections and the details are correct to the best of your knowledge.
+        <p>
+        
+        <div class="govuk-inset-text">
+          The gathering and subsequent processing of the personal data supplied by you in this form is in accordance with the terms of our registration under the Data Protection Act 2018. Further information can be found in our <a href="javascript:preventDefault();">Privacy Notice</a> and <a href="javascript:preventDefault();">Terms and Conditions</a>.
+        </div>
+        
+        {{ govukWarningText({
+          text: "Once you submit your appeal, you cannot add to or edit it.",
+          iconFallbackText: "Warning"
+        }) }}        
+
+        {{ govukButton({
+          href: "confirmation",
+          text: "Confirm and submit appeal"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

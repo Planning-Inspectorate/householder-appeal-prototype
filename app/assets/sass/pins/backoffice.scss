@@ -9,7 +9,6 @@
 	border-top: 4px solid $govuk-link-colour;
 	margin-bottom: 30px;
 	padding: 20px;
-	//background-color: #f8f8f8;
 }
 
 .pins-align-right {
@@ -21,4 +20,17 @@
 	.govuk-checkboxes__input {
 		margin: 0 auto;
 	}
+}
+
+.pins-table-questionnaires--ref {
+	width: 25%
+}
+.pins-table-questionnaires--date {
+	width: 12.5%
+}
+.pins-table-questionnaires--address {
+	width: 52.5%
+}
+.pins-table-questionnaires--status {
+	width: 10%
 }

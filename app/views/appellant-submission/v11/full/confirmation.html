@@ -1,0 +1,57 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% block pageTitle %}
+  Confirmation - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleText: "Appeal submitted"
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <p class="govuk-body">
+        We aim to make a decision on your appeal in around 12 weeks.
+      </p>
+      <p class="govuk-body">
+        We've sent you a confirmation email with a link to download a copy of your appeal.
+      </p>
+      {{ govukInsetText({
+        text: "You need to send a copy of your appeal to the local planning department."
+      }) }}
+      <p class="govuk-body">
+        If you need to contact us, include your planning application number.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        What happens next?
+      </h2>
+
+      <p class="govuk-body">
+        We'll check you've submitted everything we need to progress your appeal. We'll contact you once we've done this.
+      </p>
+      <p class="govuk-body">
+        You can find out more about the appeals process in the <a href="javascript:preventDefault();">appeal a planning decision guidance</a>.
+      </p>
+      <p class="govuk-body">
+        <a href="javascript:preventDefault();">What did you think of this service?</a> (takes 2 minutes)
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

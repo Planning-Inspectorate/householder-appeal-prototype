@@ -1,0 +1,129 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% block pageTitle %}
+  Is your appeal about any of the following? - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to task list",
+    href: "/appellant-submission/"+version+"/full/task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+        <h1 class="govuk-heading-l">
+          {% if data["appealsub-"+version+"-appealsite-siterelationship"] == "I do not own any of the appeal site" %}
+            Site owner details
+          {% else %}
+            Other site owner details
+          {% endif %}          
+        </h1>
+
+        {% if data["appealsub-"+version+"-appealsite-siterelationship"] == "I do not own any of the appeal site" %}
+          <p class="govuk-body">
+            Enter the names and addresses of all known site owners. If there is more than one known site owner, you can add them in the next step.
+          <p>
+        {% else %}
+          <p class="govuk-body">
+            Enter the names and addresses of all the other site owners. If there is more than one other site owner, you can add them in the next step.
+          <p>
+        {% endif %} 
+        
+        {{ govukInput({
+          id: "appealsub-"+version+"-appealsite-otherowner-name",
+          name: "appealsub-"+version+"-appealsite-otherowner-name",
+          label: {
+            text: "Name",
+            classes: "govuk-label--m"
+          },
+          value: data["appealsub-"+version+"-appealsite-otherowner-name"]
+        }) }}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Address",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+        
+          {{ govukInput({
+            id: "appealsub-"+version+"-appealsite-otherowner-address-line-1",
+            name: "appealsub-"+version+"-appealsite-otherowner-address-line-1",
+            label: {
+              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+            },
+            value: data["appealsub-"+version+"-appealsite-otherowner-address-line-1"],
+            autocomplete: "appealsub-"+version+"-appealsite-otherowner-address-line1"
+          }) }}
+        
+          {{ govukInput({
+            id: "appealsub-"+version+"-appealsite-otherowner-address-line-2",
+            name: "appealsub-"+version+"-appealsite-otherowner-address-line-2",
+            label: {
+              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+            },
+            value: data["appealsub-"+version+"-appealsite-otherowner-address-line-2"],
+            autocomplete: "appealsub-"+version+"-appealsite-otherowner-address-line2"
+          }) }}
+        
+          {{ govukInput({
+            id: "appealsub-"+version+"-appealsite-otherowner-address-town",
+            name: "appealsub-"+version+"-appealsite-otherowner-address-town",
+            label: {
+              text: "Town or city"
+            },
+            value: data["appealsub-"+version+"-appealsite-otherowner-address-town"],
+            autocomplete: "appealsub-"+version+"-appealsite-otherowner-address-level2",
+            classes: "govuk-!-width-two-thirds"
+          }) }}
+        
+          {{ govukInput({
+            id: "appealsub-"+version+"-appealsite-otherowner-address-county",
+            name: "appealsub-"+version+"-appealsite-otherowner-address-county",
+            label: {
+              text: "County"
+            },
+            value: data["appealsub-"+version+"-appealsite-otherowner-address-county"],
+            classes: "govuk-!-width-two-thirds"
+          }) }}
+        
+          {{ govukInput({
+            id: "appealsub-"+version+"-appealsite-otherowner-address-postcode",
+            name: "appealsub-"+version+"-appealsite-otherowner-address-postcode",
+            label: {
+              text: "Postcode"
+            },
+            value: data["appealsub-"+version+"-appealsite-otherowner-address-postcode"],
+            autocomplete: "postal-code",
+            classes: "govuk-input--width-10"
+          }) }}
+        
+        {% endcall %}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

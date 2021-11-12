@@ -1,0 +1,104 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% block pageTitle %}
+  Sensitive information - Upload documents for your appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to task list",
+    href: "/appellant-submission/"+version+"/full/task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+
+        {% call govukFieldset({
+          legend: {
+            text: "What is the address of the appeal site?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        }) %}
+
+          <p class="govuk-body">
+            The appeal site is the area of property or land that your planning application relates to.
+          <p>
+
+          {{ govukInput({
+            id: "appealsub-"+version+"-appealsite-address-line-1",
+            name: "appealsub-"+version+"-appealsite-address-line-1",
+            label: {
+              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+            },
+            value: data["appealsub-"+version+"-appealsite-address-line-1"]
+          }) }}
+        
+          {{ govukInput({
+            id: "appealsub-"+version+"-appealsite-address-line-2",
+            name: "appealsub-"+version+"-appealsite-address-line-2",
+            label: {
+              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+            },
+            value: data["appealsub-"+version+"-appealsite-address-line-2"]
+          }) }}
+        
+          {{ govukInput({
+            id: "appealsub-"+version+"-appealsite-address-town",
+            name: "appealsub-"+version+"-appealsite-address-town",
+            label: {
+              text: "Town or city"
+            },
+            value: data["appealsub-"+version+"-appealsite-address-town"],
+            classes: "govuk-!-width-two-thirds"
+          }) }}
+        
+          {{ govukInput({
+            id: "appealsub-"+version+"-appealsite-address-county",
+            name: "appealsub-"+version+"-appealsite-address-county",
+            label: {
+              text: "County"
+            },
+            value: data["appealsub-"+version+"-appealsite-address-county"],
+            classes: "govuk-!-width-two-thirds"
+          }) }}
+        
+          {{ govukInput({
+            id: "appealsub-"+version+"-appealsite-address-postcode",
+            name: "appealsub-"+version+"-appealsite-address-postcode",
+            label: {
+              text: "Postcode"
+            },
+            value: "Value",
+            value: data["appealsub-"+version+"-appealsite-address-postcode"],
+            classes: "govuk-input--width-10"
+          }) }}
+        
+        {% endcall %}
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

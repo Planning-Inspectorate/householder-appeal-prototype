@@ -1,0 +1,79 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% block pageTitle %}
+  Is your appeal about any of the following? - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to task list",
+    href: "/appellant-submission/"+version+"/full/task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+        
+        {% set infoHtml %}
+          {{ govukTextarea({
+            id: "appealsub-"+version+"-appealsite-visible-info",
+            name: "appealsub-"+version+"-appealsite-visible-info",
+            label: {
+              text: "How is visibility restricted?"
+            },
+            value: data["appealsub-"+version+"-appealsite-visible-info"]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-appealsite-visible",
+          name: "appealsub-"+version+"-appealsite-visible",
+          fieldset: {
+            legend: {
+              text: "Is the site visible from a public road?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("appealsub-"+version+"-appealsite-visible", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("appealsub-"+version+"-appealsite-visible", "No"),
+              conditional: {
+                html: infoHtml
+              }
+            }
+          ]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
