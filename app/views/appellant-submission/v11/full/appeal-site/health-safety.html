@@ -1,0 +1,103 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% block pageTitle %}
+  Is your appeal about any of the following? - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to task list",
+    href: "/appellant-submission/"+version+"/full/task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+
+        <h1 class="govuk-heading-l">
+          Are there any health and safety issues on the appeal site?
+        </h1>
+        
+        {% set infoHtml %}
+          {{ govukTextarea({
+            id: "appealsub-"+version+"-appealsite-healthsafety-info",
+            name: "appealsub-"+version+"-appealsite-healthsafety-info",
+            label: {
+              text: "Tell us about the health and safety issues"
+            },
+            value: data["appealsub-"+version+"-appealsite-healthsafety-info"]
+          }) }}
+        {% endset -%}
+
+        <p class="govuk-body">
+          Tell us about any health and safety issues on the appeal site in case an Inspector needs to carry out a site visit.
+        </p>
+        <p class="govuk-body">
+          The appeal site is the area of property or land that your original planning application relates to.
+        </p>
+        {{ govukDetails({
+          summaryText: "List of health and safety concerns",
+          html: "
+            <p class='govuk-body'>
+              Tell us about:
+            </p>
+            <ul class='govuk-list govuk-list--bullet'>
+              <li>animals at the site, for example pets or livestock</li>
+              <li>poor mobile signal at the site</li>
+              <li>access issues for people with limited mobility</li>
+              <li>overgrown vegetation that could restrict access to the site</li>
+              <li>building works or other operations taking place on the site</li>
+              <li>site-specific safety arrangements that are in place</li>
+              <li>areas of the site that require specialist equipment or training for access, for example heights or confined spaces</li>
+              <li>requirements to view the site from a height, for example from a roof or balcony</li>
+              <li>risk of exposure to chemicals, asbestos or radiation</li>
+              <li>unmarked changes in level or missing fittings</li>
+            </ul>
+          "
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-appealsite-healthsafety",
+          name: "appealsub-"+version+"-appealsite-healthsafety",
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("appealsub-"+version+"-appealsite-healthsafety", "Yes"),
+              conditional: {
+                html: infoHtml
+              }
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("appealsub-"+version+"-appealsite-healthsafety", "No")
+            }
+          ]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

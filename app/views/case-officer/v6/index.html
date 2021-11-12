@@ -34,13 +34,13 @@
         {% endif %}
       {% endfor %}
 
-      <table class="govuk-table">
+      <table class="govuk-table pins-table--questionnaires">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Appeal reference</th>
-            <th scope="col" class="govuk-table__header">Date due</th>
-            <th scope="col" class="govuk-table__header">Appeal site</th>
-            <th scope="col" class="govuk-table__header">Status</th>
+              <th scope="col" class="govuk-table__header pins-table-questionnaires--ref">Appeal reference</th>
+              <th scope="col" class="govuk-table__header pins-table-questionnaires--date">Date due</th>
+              <th scope="col" class="govuk-table__header pins-table-questionnaires--address">Appeal site</th>
+              <th scope="col" class="govuk-table__header pins-table-questionnaires--status">Status</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
@@ -97,10 +97,10 @@
         {% if questionnairesincomplete > 0 %}
           <thead class="govuk-table__head">
             <tr class="govuk-table__row">
-              <th scope="col" class="govuk-table__header">Appeal reference</th>
-              <th scope="col" class="govuk-table__header">Date due</th>
-              <th scope="col" class="govuk-table__header">Appeal site</th>
-              <th scope="col" class="govuk-table__header">Status</th>
+              <th scope="col" class="govuk-table__header pins-table-questionnaires--ref">Appeal reference</th>
+              <th scope="col" class="govuk-table__header pins-table-questionnaires--date">Date due</th>
+              <th scope="col" class="govuk-table__header pins-table-questionnaires--address">Appeal site</th>
+              <th scope="col" class="govuk-table__header pins-table-questionnaires--status">Status</th>
             </tr>
           </thead>
           <tbody class="govuk-table__body">

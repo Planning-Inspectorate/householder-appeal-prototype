@@ -1,0 +1,64 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% block pageTitle %}
+  Have you received an enforcement notice? - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-beforeyoustart-enforcementnoticeabout",
+          name: "appealsub-"+version+"-beforeyoustart-enforcementnoticeabout",
+          fieldset: {
+            legend: {
+              text: "What is your enforcement notice about?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "The same development as my appeal",
+              text: "The same development as my appeal",
+              checked: checked("appealsub-"+version+"-beforeyoustart-enforcementnoticeabout", "The same development as my appeal")
+            },
+            {
+              value: "A different development to my appeal",
+              text: "A different development to my appeal",
+              checked: checked("appealsub-"+version+"-beforeyoustart-enforcementnoticeabout", "A different development to my appeal")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
