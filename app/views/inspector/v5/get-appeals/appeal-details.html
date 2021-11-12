@@ -93,14 +93,6 @@
       <aside class="govuk-!-margin-bottom-8">
         {% include "includes/inspector/"+version+"/_appeal-summary.html" %}
       </aside>
-
-      <form action="" method="post">
-        <input id="inspector-{{version}}-myappeals-selected-individual" name="inspector-{{version}}-myappeals-selected-individual" type="hidden" value="{{ data['inspector-'+version+'-currentappeal'] }}">
-        {{ govukButton({
-          text: "Select this appeal"
-        }) }}
-      </form>
-
     </div>
 
     <div class="govuk-grid-column-one-half">
@@ -115,9 +107,18 @@
     </div>
     <div class="govuk-grid-column-one-quarter">
 
-      <!--h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-        Select this appeal
-      </h3-->
+      <div class="pins-card">
+        <h3 class="govuk-heading-m">
+          Actions
+        </h3>
+        <form action="" method="post">
+          <input id="inspector-{{version}}-myappeals-selected-individual" name="inspector-{{version}}-myappeals-selected-individual" type="hidden" value="{{ data['inspector-'+version+'-currentappeal'] }}">
+          {{ govukButton({
+            classes: "govuk-!-margin-bottom-3",
+            text: "Select this appeal"
+          }) }}
+        </form>
+      </div>
 
     </div>
   </div>
