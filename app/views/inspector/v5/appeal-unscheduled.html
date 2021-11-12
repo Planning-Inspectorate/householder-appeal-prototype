@@ -110,6 +110,17 @@
       <!-- display data driven site visit details -->
       {% include "includes/inspector/"+version+"/_site-visit.html" %}
 
+      <div class="pins-card">
+        <h3 class="govuk-heading-m govuk-!-margin-bottom-0">
+          Actions
+        </h3>
+        {{ govukButton({
+          href: "unassign-appeal",
+          text: "Unassign appeal",
+          classes: "govuk-button--secondary govuk-!-margin-top-3 govuk-!-margin-bottom-0"
+        }) }}
+      </div>
+
     </div>
   </div>
   
