@@ -162,4 +162,18 @@ module.exports = function (router) {
     res.redirect(base+'issue-decision/confirmation');
   })
 
+
+  router.post(base+'unassign-appeal', function (req, res) {
+
+    objIndex = req.session.data["availableAppeals"].findIndex((obj => obj.ref == req.session.data["inspector-"+v+"-currentappeal"]));
+
+    if (req.session.data["inspector-"+v+"-unassignappeal"] == "Yes"){
+      req.session.data["availableAppeals"][objIndex].status = "available";
+      res.redirect(base+'unassign-appeal/confirmation');
+    } else {
+      res.redirect(base+'appeal-unscheduled');
+    }
+
+  })
+
 }

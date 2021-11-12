@@ -1,0 +1,45 @@
+{% extends "layouts/inspector/v5.html" %}
+
+{% block pageTitle %}
+  Unassign appeal confirmed - My planning appeals
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+          {{ govukPanel({
+            titleText: "Appeal unassigned",
+            html: "D/"+data["inspector-"+version+"-currentappeal"]
+          }) }}
+
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m">What next?</h2>
+      <ul class="govuk-list">
+        <li>
+          <a href="/inspector/{{version}}/" class="govuk-link">Return to your appeals</a>
+        </li>
+      </ul>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+    </div>
+  </div>
+  
+</div>
+
+
+{% endblock %}

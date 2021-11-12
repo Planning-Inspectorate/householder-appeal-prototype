@@ -1,0 +1,70 @@
+{% extends "layouts/inspector/v5.html" %}
+
+{% block pageTitle %}
+  Unassign appeal - My planning appeals
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/inspector/"+version+"/appeal-unscheduled"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-quarter content-list__sticky">
+      <aside class="govuk-!-margin-bottom-8">
+        {% include "includes/inspector/"+version+"/_appeal-summary.html" %}
+      </aside>
+    </div>
+    <div class="govuk-grid-column-one-half">
+
+      <form action="" method="post">
+
+        {{ govukRadios({
+          idPrefix: "inspector-"+version+"-unassignappeal",
+          name: "inspector-"+version+"-unassignappeal",
+          fieldset: {
+            legend: {
+              text: "Unassign appeal",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Unassigning the appeal will return it to the list of available appeals."
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+  
+</div>
+
+
+{% endblock %}
