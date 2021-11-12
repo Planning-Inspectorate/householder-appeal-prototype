@@ -2,7 +2,9 @@
 	@include govuk-width-container(1200px);
 }
 
-.pins-related-items {
+.govuk-related-items,
+.pins-related-items,
+.pins-card {
 	border: 1px solid $govuk-border-colour;
 	border-top: 4px solid $govuk-link-colour;
 	margin-bottom: 30px;
